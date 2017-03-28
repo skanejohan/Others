@@ -1,0 +1,20 @@
+﻿@model Author
+@using Books.Helpers
+
+<h2>Books for @Model.Name</h2>
+
+<div class="container">
+    @foreach (Book b in Model.Books)
+    {
+        <div class="row">
+            <p class="col-lg-10 col-md-10 col-sm-10 col-xs-10">@b.Title</p>
+            @Html.ActionLinkClass("Edit", "edit", new { id = b.Id }, "col-xs-1 btn btn-xs btn-success")
+            @Html.ActionLinkClass("Delete", "delete", new { id = b.Id }, "col-xs-1 btn btn-xs btn-danger")
+        </div>
+    }
+</div>
+
+<p>
+    @Html.ActionLinkClass("Create New", "Add", new { authorId = Model.Id }, "btn btn-xs btn-success")
+</p>
+

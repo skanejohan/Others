@@ -1,0 +1,68 @@
+<!DOCTYPE html> 
+
+<html>
+<head>
+	<title>Books</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+    <script src="/static/jquery.cookie.js"></script>
+
+    <script type="text/javascript">
+    	function confirm(text, callback) {
+  			$("#confirmation .text").text(text);
+  			$("#confirmation .yes").unbind("click.confirmation").on("click.confirmation", function() {
+    			callback(false);
+    			$(this).off("click.confirmation");
+  			});
+  			$.mobile.changePage("#confirmation");
+		}
+
+		function navigateFromConfirmation(url) {
+  			$("#confirmation .hidden").attr("href", url);
+  			$("#confirmation .hidden").click();
+		}
+
+	</script>
+
+</head>
+
+<body>
+	<div id="my_page" data-role="page" data-url="{{dataurl}}" data-title="Books">
+
+		<div data-role="header" data-position="fixed">
+            <h1>Books
+            	<div data-role="controlgroup" data-type="horizontal" data-mini="true">
+	                {% if user %}
+                    <a data-role="button" name="homebutton" href="/">home</a>
+                    <a data-role="button" name="downloadbutton" onclick="window.open('/download');">JSON</a>
+            		<a data-role="button" href="/logout">logout {{user.name}}</a>
+	                {% else %}
+            		<a data-role="button" href="/login">login</a>
+            		<a data-role="button" href="/signup">signup</a>
+	                {% endif %}
+            	</div>
+            </h1>
+		</div><!-- /header -->
+
+
+		<div data-role="content">
+            {% block content %}
+            {% endblock %}
+		</div><!-- /content -->
+
+	</div><!-- /page -->
+
+	<div id="confirmation" data-role="dialog"> <!-- Not displayed initially, activated by the confirm function -->
+        <div data-role="content">
+            <p class="text">Really?</p>
+            <a href="#" class="yes" data-role="button">Yes</a>
+            <a href="#" class="no" data-role="button" data-rel="back">No</a>
+            <a class="hidden" href="/"></a>
+        </div>
+    </div><!-- dialog -->
+
+</body>
+
+</html>

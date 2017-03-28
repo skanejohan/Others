@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html ng-app="map">
+  <head>
+    <meta charset="utf-8"> 
+    <meta property="og:title" content="lokalglennedom - hittar du på hemmaplan?" />
+    <meta property="og:url" content="http://apps.johanahlgren.se/mapquiz/" />
+    <meta property="og:image" content="http://apps.johanahlgren.se/mapquiz/static/lg.png"/>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/external/angular.min.js"></script>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry&key=AIzaSyAIQ3Vxs3dAPbkzeotgR4H6xu2sgXhn3ng&sensor=FALSE">
+    </script>
+    <script type="text/javascript" src="js/external/lodash.underscore.min.js"></script>
+    <script type="text/javascript" src="js/external/angular-google-maps.min.js"></script>
+    <script type="text/javascript" src="js/mapdata.js"></script>
+    <script type="text/javascript" src="js/gamedata.js"></script>
+    <script type="text/javascript" src="js/serverif.js"></script>
+    <script type="text/javascript" src="js/language.js"></script>
+    <script type="text/javascript" src="js/facebook.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+  </head>
+
+  <body>
+    <div class="main" ng-controller="AppController">
+    
+      <div id="google_map">
+        <ng-view>
+          <google-map id="the-map" center="mapdata.center" zoom="mapdata.zoom" events="events" draggable="true"></google-map>
+        </ng-view>
+      </div>
+
+      <div menu class="fix_right_half menu_container" ng-hide="!gamedata.gsNone()">
+        <div class="rel_left_half">
+          <img class="button" style="width: 300px" src="static/lg.png" ng-click="gamedata.restart()"/>
+        </div>
+      </div>
+
+      <div class="question_container" ng-hide="gamedata.gsNone()">
+        <div class="text_area">{{language.guessWhere()}}</div>
+        <div class="image_area" id="image_container">
+          <div></div>
+        </div>
+        <div class="text_area">
+            {{language.answered()}}<br>
+            {{language.score()}}
+        </div>
+        <div class="button_area">
+          <div class="div_left">
+            <button class="button" id="answer" ng-disabled="(!validselection) || gamedata.gsQuitRequest()" ng-hide="gamedata.gsFinished()" ng-click="answer()">{{language.answer()}}</button>
+          </div>
+          <div class="div_right">
+            <button class="button" id="quit" ng-disabled="gamedata.gsPending() || gamedata.gsQuitRequest()" ng-hide="gamedata.gsFinished()" ng-click="ask_quit()">{{language.quit()}}</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="fix_right_half center_container" ng-hide="!gamedata.gsQuitRequest()">
+        <div class="rel_left_half">
+          <div class="result">
+            <div class="text_area">
+              {{language.reallyQuit()}}
+            </div>
+            <div class="button_area">
+              <div class="div_left">
+                <button class="button" id="Yes" ng-click="quit()">{{language.yes()}}</button>
+              </div>
+              <div class="div_right">
+                <button class="button" id="No" ng-click="dont_quit()">{{language.no()}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fix_right_half center_container" ng-hide="!(gamedata.gsPending() || gamedata.gsFinished())">
+        <div class="rel_left_half">
+          <div class="result">
+            <div class="text_area">
+              {{language.result()}}
+            </div>
+            <div class="text_area final_score_area" ng-hide="!gamedata.gsFinished()">
+              {{language.finalscore()}}
+            </div>
+            <div class="button_area" ng-hide="gamedata.gsFinished()">
+              <button class="button" id="next" ng-click="gamedata.getFile()">{{language.next()}}</button>
+            </div>
+            <div class="button_area" ng-hide="!gamedata.gsFinished()">
+              <div class="div_left">
+                <button class="button" id="quit" ng-click="quit()">{{language.quit()}}</button>
+              </div>
+              <div class="div_right">
+                <button class="button" id="post" ng-click="post_fb(); quit()">{{language.post_fb()}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fix_right_95 fix_top_90">
+        <div class="rel_left_100">
+          <a class="link" href="#" onclick="window.open('http://www.johanahlgren.se')">Johan Åhlgren 2014</a>
+        </div>
+      </div>
+    </div>
+    
+    <div id="fb-root"></div>
+  </body>
+</html>

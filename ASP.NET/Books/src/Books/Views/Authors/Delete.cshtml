@@ -1,0 +1,11 @@
+﻿@model Author
+@using Books.Helpers
+
+<h2>Delete author</h2>
+
+<p>Really delete @Model.Name ?</p>
+
+<form asp-controller="Authors" asp-action="Delete" method="post">
+    <button class="btn btn-xs btn-default" type="submit">OK</button>
+    @Html.ActionLinkClass("Cancel", "index", null, "btn btn-xs btn-default")
+</form>

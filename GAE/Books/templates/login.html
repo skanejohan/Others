@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+  
+    <form method="post">
+      <label for="username">User name:</label>
+      <input type="text" name="username" id="username" value="{{user_name}}" />
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" value="" />
+      <input type="submit" value="OK">
+      <!--
+      <table>
+        <tr>
+          <td class="label">
+            Username
+          </td>
+          <td>
+            <input type="text" name="username" value="{{user_name}}">
+          </td>
+        </tr>
+        <tr>
+          <td class="label">
+            Password
+          </td>
+          <td>
+            <input type="password" name="password" value="">
+          </td>
+        </tr>
+        <tr>
+          <td class="error"> 
+            {{error}} 
+          </td>
+        </tr>
+      </table>-->
+    </form>
+
+{% endblock %}
+

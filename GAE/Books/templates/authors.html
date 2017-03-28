@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
+	<ul data-role="listview" data-inset="true" data-filter="true">  
+	{% for author in authors %}
+		<li>
+			<a href="/{{author.key().id()}}">{{author.name}}</a>
+		    <a href="#" onclick='confirm("Really delete \"{{author.name}}\"?", 
+                                            function(){ 
+                                                jQuery.post("/{{author.key().id()}}/delete", "", 
+                                                            	function(data, textStatus, jqXHR){
+                                                                    navigateFromConfirmation("/")
+                                                            	}
+                                                           );
+                                            }
+                                        )' data-icon="delete"></a>
+        </li> 
+  	{% endfor %}
+	</ul>		
+
+	<a data-role="button" href="/add">New author</a>
+
+{% endblock %}

@@ -1,0 +1,4541 @@
+[
+  {
+    "Id": "844c7570-db55-4a1a-ad3f-9e9e3073316e",
+    "Name": "Alexandersson Erik S",
+    "Books": [
+      {
+        "Id": "a6247773-aadb-4ab7-adbf-186cbf211884",
+        "Title": "Änglarna i Masthugget",
+        "PublishedIn": "1973-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "a98cde9b-491e-42e2-bb90-566d812e3b1b",
+        "Title": "Utblick från Masthugget",
+        "PublishedIn": "1971-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "df072130-4455-4dc2-9c75-c803424741f6",
+        "Title": "Revolt i Masthugget",
+        "PublishedIn": "1970-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "91e65051-9d8f-4c5a-b238-5353c8988d01",
+        "Title": "Heja Masthugget",
+        "PublishedIn": "1969-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      }
+    ]
+  },
+  {
+    "Id": "a4cb35b3-dbb9-4ceb-99f5-241a300184a9",
+    "Name": "Benson Raymond",
+    "Books": [
+      {
+        "Id": "885f5168-bd79-4f06-9961-789c87c830ce",
+        "Title": "Die another day",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "3f62c277-5db8-4716-b2a2-ef88d7b2aa57",
+        "Title": "The man with the red tatooo",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "4af73850-7d27-44e8-94b6-e3a3fe948287",
+        "Title": "Never dream of dying",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ed4afb46-3f20-4f4d-8ed4-c16b527c9fc5",
+        "Title": "Doubleshot",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "5967c36c-9f54-436a-a161-4e935c69bc61",
+        "Title": "The world is not enough",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "441b4559-6cff-4031-837c-973a6b515d38",
+        "Title": "Live at five",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "be72f4cf-365c-4a75-85de-af2597c03b2d",
+        "Title": "Midsummer night’s doom",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "a0296c3c-8f50-49cd-a61c-7463e960cde5",
+        "Title": "High time to kill",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "2c5218f8-e134-496b-9ee7-aa28c0e28d45",
+        "Title": "The facts of death",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "67de57fd-d60a-425a-a7c4-09744897ace9",
+        "Title": "Tomorrow never dies",
+        "PublishedIn": "1997-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "ae8095d5-6e9f-4c0f-9c63-e3c25e97cdfa",
+        "Title": "Zero minus ten",
+        "PublishedIn": "1997-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "2766b01c-99e0-42dd-bd14-0525a41194dd",
+        "Title": "Blast from the past",
+        "PublishedIn": "1997-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      }
+    ]
+  },
+  {
+    "Id": "13d2546c-478e-4168-bd19-803607fb1bbd",
+    "Name": "Brown Dan",
+    "Books": [
+      {
+        "Id": "5997e247-8748-46b9-b0a0-2db48bf559bc",
+        "Title": "The lost symbol",
+        "PublishedIn": "2009-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "23ecec3a-e93f-4ce4-8d36-6992290c94ac",
+        "Title": "The DaVinci Code",
+        "PublishedIn": "2003-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "802dee2d-1b6b-429b-afb6-844e843a5a62",
+        "Title": "Deception Point",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "c023f109-c0d9-4f8d-ae2f-0931b27d3ef9",
+        "Title": "Angels and Demons",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f42c045c-cddd-4e31-83c6-50cfcfd4dc1d",
+        "Title": "Digital Fortress",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "0c13af4e-9a4b-4b4c-bac1-54045aa41e7d",
+    "Name": "Child Lee",
+    "Books": [
+      {
+        "Id": "b4a692e5-357a-46b3-89bd-039ece884766",
+        "Title": "Worth dying for",
+        "PublishedIn": "2011-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f857f7c7-144d-427a-b5c3-19128c4650e1",
+        "Title": "61 hours",
+        "PublishedIn": "2010-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "06c08d58-1e38-464f-b6eb-86ec12bcc9b3",
+        "Title": "Gone tomorrow",
+        "PublishedIn": "2009-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "41fbfde1-33e0-4d69-9ee6-3285bae9564d",
+        "Title": "Nothing to lose",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "b656abb2-bbee-411f-ab82-615215239e99",
+        "Title": "Bad luck and trouble",
+        "PublishedIn": "2007-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "f03e94e0-4456-416e-ae73-adf1c1a15f70",
+        "Title": "The hard way",
+        "PublishedIn": "2006-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ac3a04a0-f596-4512-bc5e-9404ad5a4aea",
+        "Title": "One shot",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "0ee13d06-05e7-476b-9ce8-af4c65c944e5",
+        "Title": "The enemy",
+        "PublishedIn": "2004-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "8f24676b-b469-4146-a2b7-081c523c5964",
+        "Title": "Persuader",
+        "PublishedIn": "2003-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "28865e46-71d8-49e9-a501-9a6094f00949",
+        "Title": "Without fail",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "40781ee8-9ad8-44c6-99c6-081ff55796a4",
+        "Title": "Echo burning",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "ad81813b-0e45-464b-86ba-50a56b607123",
+        "Title": "Running Blind / The visitor",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "67c3853b-85b5-45a3-91a1-1211f632f35f",
+        "Title": "Tripwire",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "27c775c2-1467-413d-a38e-1b5317a9e0b3",
+        "Title": "Die trying",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "35cde33e-fcd4-49d7-852a-19382ad6fd8b",
+        "Title": "Killing floor",
+        "PublishedIn": "1997-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      }
+    ]
+  },
+  {
+    "Id": "5c1d4844-2eb6-4bbb-b0fd-5278467d9fee",
+    "Name": "Connelly Michael",
+    "Books": [
+      {
+        "Id": "42de1224-b612-4fa2-9c59-78b8f3712824",
+        "Title": "The Fifth Witness",
+        "PublishedIn": "2011-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "e4392473-3f41-4d42-91df-943660debe10",
+        "Title": "The Drop",
+        "PublishedIn": "2011-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "60aa4df4-4d74-4ade-ba86-9b05af37a2f2",
+        "Title": "The Reversal",
+        "PublishedIn": "2010-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "fa2b3161-2300-4e6a-9776-be7bfa7b595e",
+        "Title": "Nine dragons",
+        "PublishedIn": "2009-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "7d549a76-c872-486d-8fbe-b006b721d78f",
+        "Title": "The Scarecrow",
+        "PublishedIn": "2009-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "afa28b0a-36fb-4aa1-86b0-47c07b0c6647",
+        "Title": "The Brass Verdict",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "8df8dd4e-a0ff-4ae3-8b3e-bd25c157517b",
+        "Title": "The Overlook",
+        "PublishedIn": "2007-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "e66c85bd-02bc-4283-a679-ed4a75c5562a",
+        "Title": "Echo Park",
+        "PublishedIn": "2006-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f68b3e00-4760-40a4-8bc7-c387118a9c1c",
+        "Title": "The Lincoln Lawyer",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "2f6e4b9f-3d85-4a1c-923f-b8b2047b4770",
+        "Title": "The Closers",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "271e58ed-6367-4f39-9814-54507af79ce6",
+        "Title": "The Narrows",
+        "PublishedIn": "2004-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "fac2591a-75ea-4793-8307-736daac941fd",
+        "Title": "Lost Light",
+        "PublishedIn": "2003-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "2af2762d-2495-4bc1-8e84-d132efa7bf81",
+        "Title": "Chasing the Dime",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "08230621-fd01-4add-8358-380114922293",
+        "Title": "City of Bones",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "c79b1ef9-8b58-44a8-b3c9-a90f1c4213b1",
+        "Title": "A Darkness More Than Night",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "3c99cdf8-a94d-48bd-8f90-57e9df9453e2",
+        "Title": "Void Moon",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "0e436075-5609-4f16-9018-5d84f3257af3",
+        "Title": "Angels Flight",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "effa43a7-4185-4842-a2ef-f9bdea98cc13",
+        "Title": "Blood Work",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      },
+      {
+        "Id": "465789b0-45c4-4d92-beed-276f917357a3",
+        "Title": "Trunk Music",
+        "PublishedIn": "1997-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "7f136ad7-e301-4cbd-8857-be7a7571b9e5",
+        "Title": "The Poet",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "d364ca4f-b62d-4637-b01c-f93c2484145d",
+        "Title": "The Last Coyote",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "6362416c-3f9e-41c1-afd6-8476737696e1",
+        "Title": "The Concrete Blonde",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "b95eebe8-8310-4014-b6b5-6fde404f0c64",
+        "Title": "The Black Ice",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "8f4ea98c-9577-4c74-93ac-2a97a217b2d5",
+        "Title": "The Black Echo",
+        "PublishedIn": "1992-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "1aee330e-4dc0-49ff-9017-06a4c769003d",
+    "Name": "Crichton Michael",
+    "Books": [
+      {
+        "Id": "4617627e-8309-4de9-9dfa-e1e6edceed3d",
+        "Title": "Pirate Latitudes",
+        "PublishedIn": "2009-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "39735e6c-b0b5-4fa2-b7e2-9b411c226636",
+        "Title": "Next",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "4c1747ea-0bcf-4cf6-8d52-04d06b9bdae5",
+        "Title": "State of fear",
+        "PublishedIn": "2004-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "de608e98-6be1-4052-a227-e47f355d4103",
+        "Title": "Prey",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "204b0c0b-6d07-4675-9cb6-771e72ccd7a6",
+        "Title": "Timeline",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "e36abf2e-8100-4da0-930c-093ed41c79f2",
+        "Title": "Twister",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "0a301873-345a-4117-bda6-24cf44ff4c42",
+        "Title": "Airframe",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "38a1ca1f-ad22-46dc-9d79-37cc386748fe",
+        "Title": "The Lost World",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "072ed4e5-265f-4a9a-bf10-8cb3006d4831",
+        "Title": "Disclosure",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "ff86f5ba-18f2-4c27-82b6-e4df02a69318",
+        "Title": "Rising Sun",
+        "PublishedIn": "1991-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "85153b4a-ff7f-458d-bf01-eb642ab2dc12",
+        "Title": "Jurassic Park",
+        "PublishedIn": "1990-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "17915268-5d2e-46ca-b2ea-5f2d2e8001c2",
+        "Title": "Sphere",
+        "PublishedIn": "1987-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "a73ad7c1-f951-4246-bd5a-fa5e7639f37b",
+        "Title": "Congo",
+        "PublishedIn": "1980-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "fae613fd-c352-45da-b131-ebaee8806726",
+        "Title": "Eaters of the dead / The 13th Warrior",
+        "PublishedIn": "1976-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "11ef1b03-fd41-4b22-acda-db5d0be494ca",
+        "Title": "Westworld",
+        "PublishedIn": "1974-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "08f22ee1-aa75-4e96-9b65-f123b83452f7",
+        "Title": "The terminal man",
+        "PublishedIn": "1972-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "85c76096-ec62-4c84-9639-e415f76b2d3b",
+        "Title": "The great train robbery",
+        "PublishedIn": "1973-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "d1eb4fa0-259e-4430-ac57-9261e5854637",
+        "Title": "The Andromeda Strain",
+        "PublishedIn": "1969-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "29f6e60f-a827-40c5-8c41-04b3234bb455",
+    "Name": "Crichton Michael and Richard Preston",
+    "Books": [
+      {
+        "Id": "b080735d-2db7-4236-8a7b-bdb1c65abd3d",
+        "Title": "Micro",
+        "PublishedIn": "2011-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      }
+    ]
+  },
+  {
+    "Id": "3a5bc75d-7750-40ac-8bea-209edd0cdd0a",
+    "Name": "Cruz Smith Martin",
+    "Books": [
+      {
+        "Id": "275b279e-635c-4e4f-8882-95818a71aade",
+        "Title": "Tokyo Station",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "69ec00ac-1221-44e2-a60f-0f593e1d181c",
+        "Title": "Gorky Park",
+        "PublishedIn": "1981-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      }
+    ]
+  },
+  {
+    "Id": "cb56d6d5-6960-4461-bdc5-8113bdfba102",
+    "Name": "Dahl Arne",
+    "Books": [
+      {
+        "Id": "d84da46c-c6f3-4a01-900f-5699e4c09984",
+        "Title": "Sista paret ut",
+        "PublishedIn": "2014-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "da08bc1c-394e-4cc0-ac4a-fa88a55b2397",
+        "Title": "Blindbock",
+        "PublishedIn": "2013-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "760d88d6-a57d-45d1-b0f5-021989a40def",
+        "Title": "Hela havet stormar",
+        "PublishedIn": "2012-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "a5fac6c4-6bb3-4b0c-8802-04ea82078a70",
+        "Title": "Viskleken",
+        "PublishedIn": "2011-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "d2e780b7-e781-4067-892d-f105fb1e55cb",
+        "Title": "Elva",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "c5e7864c-85c7-4a62-9c20-09bb1728f160",
+        "Title": "Himmelsöga",
+        "PublishedIn": "2007-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "a5f835bb-f1f5-4e67-b592-482d77501ccf",
+        "Title": "Efterskalv",
+        "PublishedIn": "2006-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "552304e2-e72c-4ccf-8aa8-5886bd394e6c",
+        "Title": "Mörkertal",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "1f824284-fde5-4a70-ba5a-6a859917ec1b",
+        "Title": "Dödsmässa",
+        "PublishedIn": "2004-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "91d9af7f-bf7b-4705-b8bf-86973fc5f65f",
+        "Title": "En midsommarnattsdröm",
+        "PublishedIn": "2003-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "d79cfec9-9018-4cbc-8d3a-3034675dce77",
+        "Title": "De största vatten",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "badd2e8f-b96e-4cb9-8fe4-7a05f95b4fb7",
+        "Title": "Europa Blues",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "2daf9512-37a0-4dbb-9477-8afed19efeb5",
+        "Title": "Upp till toppen av berget",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "e796226d-e248-42df-9c84-2b4f13b15049",
+        "Title": "Ont blod",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "6cdc5af7-b881-4934-9afa-404349455d36",
+        "Title": "Misterioso",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "62c1bdc8-4bcc-4a3e-863d-af150fa1e290",
+    "Name": "Eddy Paul",
+    "Books": [
+      {
+        "Id": "2e8db961-a630-48d8-88d9-b219c9ab35a1",
+        "Title": "Flint's Code",
+        "PublishedIn": "2006-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "3e71470d-edbd-440d-813d-3d3426cb39cf",
+        "Title": "Flint's Law (Mandrake)",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "d09df84e-618b-4692-89c4-e6e054122b21",
+        "Title": "Flint",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "a6fab36f-210e-4b6f-a089-26efbdb98198",
+    "Name": "Edwardson Åke",
+    "Books": [
+      {
+        "Id": "5ee32a65-d13c-4ca7-9ceb-d40738331a7e",
+        "Title": "Den sista vintern",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "48c6e1b4-b722-470e-971f-9f9b50267686",
+        "Title": "Nästan död man",
+        "PublishedIn": "2007-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "938da9cc-e80b-45be-aaaa-501b7d869288",
+        "Title": "Vänaste land",
+        "PublishedIn": "2006-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "7423f1ad-6dc1-4d2e-a80f-4ed101266562",
+        "Title": "Rum nummer 10",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "2bc99f3c-0d15-461b-8a2b-3ec997ac6e03",
+        "Title": "Winterland",
+        "PublishedIn": "2003-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "7b8cedc8-695a-4418-8817-0bb995b0ed96",
+        "Title": "Segel av sten",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f9cdbc9e-de80-4f31-a943-12cfc6ba1780",
+        "Title": "Himlen är en plats på jorden",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "b90ec633-9962-4ce5-a52a-d4a4ad08ecbc",
+        "Title": "Låt det aldrig ta slut",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "7f71b717-7631-4760-91f4-f242822a270a",
+        "Title": "Sol och skugga ",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "e4108c77-5223-451a-9f3f-d58bf48e6be8",
+        "Title": "Rop från långt avstånd",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "a60e0d7a-e4a1-4ae9-a980-6b141963bb0a",
+        "Title": "Dans med en ängel",
+        "PublishedIn": "1997-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "51c1758e-aa26-4ce2-b4a6-75df4bed3cef",
+        "Title": "Gå ut min själ",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "aa5998c4-30e8-48ae-977f-555362b19d71",
+        "Title": "Till allt som varit dött",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "38fb69ce-4f5f-47e2-8604-f27c3ad019f0",
+    "Name": "Faulks Sebastian",
+    "Books": [
+      {
+        "Id": "900c1f8b-8730-474c-a802-9fc292f3510c",
+        "Title": "Devil may care",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "5cd36d23-7a5c-4cfa-a6fd-68e25ec58404",
+    "Name": "Fleming Ian",
+    "Books": [
+      {
+        "Id": "059c06af-618e-445e-9bb8-3d159971c812",
+        "Title": "007 in New York",
+        "PublishedIn": "1963-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "801d223d-edd9-4f98-b1ba-244503b6effa",
+        "Title": "Octopussy",
+        "PublishedIn": "1966-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "a81b1713-f10a-4ac6-861d-b44d5e916800",
+        "Title": "The man with the golden gun",
+        "PublishedIn": "1965-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "e75f56be-960c-441e-b63b-fbe3d4e26aaf",
+        "Title": "You only live twice",
+        "PublishedIn": "1964-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "b46cee69-262d-4e80-b415-10b9bb9a3efb",
+        "Title": "On her Majesty’s secret service",
+        "PublishedIn": "1963-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      },
+      {
+        "Id": "8ee553d0-1cfe-43f5-a477-0912770afb62",
+        "Title": "The spy who loved me",
+        "PublishedIn": "1962-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "fa2643b4-5dea-4011-b4d3-b3863e360338",
+        "Title": "Thunderball",
+        "PublishedIn": "1961-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "6b3ad9a5-394b-4422-8f75-30a3ac3272ba",
+        "Title": "For your eyes only",
+        "PublishedIn": "1960-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "d276c027-03b6-47f4-8064-9fd0c4056429",
+        "Title": "Goldfinger",
+        "PublishedIn": "1959-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "fec4a04a-3187-4595-b84e-15ab2da5a03f",
+        "Title": "Dr No",
+        "PublishedIn": "1958-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "a10894a0-9d1f-4b2a-8cac-33c516bc9241",
+        "Title": "From Russia with love",
+        "PublishedIn": "1957-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "10428b8d-ae24-4a95-8e53-ee5ad29861b2",
+        "Title": "Diamonds are forever",
+        "PublishedIn": "1956-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "32b43377-7c31-4894-9726-3302a21d137f",
+        "Title": "Moonraker",
+        "PublishedIn": "1955-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      },
+      {
+        "Id": "fa1594ca-48fb-4a1c-aa7c-c51336eeaa8c",
+        "Title": "Live and let die",
+        "PublishedIn": "1954-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "d30acd79-b0e0-4282-98e6-9f8c0d73f914",
+        "Title": "Casino Royale",
+        "PublishedIn": "1953-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "cc5ba0c5-83b9-4da1-991f-5f0e09fd97b8",
+    "Name": "Gardner John",
+    "Books": [
+      {
+        "Id": "acc533ca-50bb-4f6d-a8a7-58b98b76560f",
+        "Title": "Cold",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "759b3de5-acbf-4850-920d-ec3146f25570",
+        "Title": "GoldenEye",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "07f65a60-e099-40e3-97eb-40e1f2640c3e",
+        "Title": "SeaFire",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "edc80fd0-2ce3-43b4-9a36-86e2190d7e19",
+        "Title": "Never send flowers",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "08c43baa-5fbe-412d-9c52-b52ac194c2b0",
+        "Title": "Death is forever",
+        "PublishedIn": "1992-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "7fed9261-71de-4575-8a57-cd5f3b5ee186",
+        "Title": "The man from Barbarossa",
+        "PublishedIn": "1991-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "c64cebfb-a868-4b4b-9e35-934ec5b7dfab",
+        "Title": "Brokenclaw",
+        "PublishedIn": "1990-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "3b3fbbae-522f-4aa4-9416-fd6734a593d4",
+        "Title": "Win lose or die",
+        "PublishedIn": "1989-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "1cea7066-fd88-4aef-b8b9-0724c28570a1",
+        "Title": "License to kill",
+        "PublishedIn": "1989-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      },
+      {
+        "Id": "3146546f-193e-4c43-9acc-638f1c20fb3c",
+        "Title": "Scorpius",
+        "PublishedIn": "1988-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ccd1e3da-2d50-4c8f-a2a5-30604552a62d",
+        "Title": "No deals mr Bond",
+        "PublishedIn": "1987-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f9c84a7e-06a8-4188-a19d-c170466f19c1",
+        "Title": "Nobody lives forever",
+        "PublishedIn": "1986-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "1ad3617d-3863-474f-8e9e-9f321f915e61",
+        "Title": "Role of honour",
+        "PublishedIn": "1984-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "a558d6f9-b2e7-4094-9400-fc01cc6dae06",
+        "Title": "Icebreaker",
+        "PublishedIn": "1983-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "7339f09e-31d7-43dd-b729-9f629baa3e80",
+        "Title": "For special services",
+        "PublishedIn": "1982-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      },
+      {
+        "Id": "20fb7d10-b5af-4f93-a7e1-8ce4a79160b8",
+        "Title": "License renewed",
+        "PublishedIn": "1981-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "d569bbdc-bcee-4f1f-8394-7b0edf6c2e13",
+    "Name": "George Elisabeth",
+    "Books": [
+      {
+        "Id": "b4433665-fcef-487a-a226-9cd74cbcf89d",
+        "Title": "This body of death",
+        "PublishedIn": "2010-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "ebfb710b-1cbe-4d2e-9d27-66183bcf5126",
+        "Title": "Careless in red",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "9ad9ef90-812f-4ae8-bcbe-abc97d43d8e7",
+        "Title": "What came before he shot her",
+        "PublishedIn": "2006-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "39c7cb06-a3cd-41c0-b0d5-0c87fb1c9835",
+        "Title": "With no one as witness",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "3a8c1596-964d-4526-b9e7-05958c116c3e",
+        "Title": "A place of hiding",
+        "PublishedIn": "2003-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f86e8b3b-c5f1-4375-89ec-b8bb921a2e49",
+        "Title": "A Traitor to Memory",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "12902a8c-3d82-41d7-bc5a-8e9782a92ee6",
+        "Title": "In Pursuit of the Proper Sinner",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "660e65ac-daf8-4753-898e-b9d733e25f54",
+        "Title": "Deception on his mind",
+        "PublishedIn": "1997-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "77cfc1f7-be2d-40d4-a57b-4708d8c9b8d0",
+        "Title": "In the presence of the enemy",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "31ae0c5f-82e8-4a21-838b-3459efdb7bbd",
+        "Title": "Playing for the ashes",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f26a91d6-9ceb-40e0-b2ec-3042840c2da9",
+        "Title": "Missing Joseph",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "7507e434-06ab-4f83-8a59-b7dedea8fa4e",
+        "Title": "For the sake of Elena",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "8ae414f5-ab82-4edf-a937-4aef45c24b86",
+        "Title": "A suitable vengeance",
+        "PublishedIn": "1991-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "ce29cfe6-9df2-4949-88fe-1141249276cc",
+        "Title": "Well-schooled in murder",
+        "PublishedIn": "1990-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "67931d64-40af-4258-9497-1e71ad95423d",
+        "Title": "Payment in blood",
+        "PublishedIn": "1989-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "1ed7c8fd-b4fd-4b71-b680-c1c20c5835eb",
+        "Title": "A great deliverance",
+        "PublishedIn": "1988-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "d22b3d2e-da02-4d93-b3d9-d5fd6568f263",
+    "Name": "Grafton Sue",
+    "Books": [
+      {
+        "Id": "ebcff352-aa53-40dd-8aec-9077506e2059",
+        "Title": "V is for vengeance",
+        "PublishedIn": "2011-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "175ae87d-4ebd-41cf-b2d5-6dd0274960db",
+        "Title": "U is for undertow",
+        "PublishedIn": "2009-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "c0727165-875c-470e-b3ef-9a8da303dc42",
+        "Title": "T is for trespass",
+        "PublishedIn": "2007-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "0c6140d5-712b-4fc4-a89d-f593e3021e8e",
+        "Title": "S is for silence",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "742107d1-4434-4da5-ab1c-ddb69e23079f",
+        "Title": "R is for ricochet",
+        "PublishedIn": "2004-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "88e87fc6-0028-48ab-b9df-12cc109d0991",
+        "Title": "Q is for quarry",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "3622b90b-5683-4388-b0e3-b91feebf3981",
+        "Title": "P is for peril",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "d74fdbc9-100d-4a32-92dc-ee055521204b",
+        "Title": "O is for outlaw",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "69c02964-6bf3-4e6d-917f-43727cea1a84",
+        "Title": "N is for noose",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "7601ba35-907d-45eb-9e09-0559f4e70047",
+        "Title": "M is for malice",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "97e17c9f-a528-47e6-9e67-2b83c5a3fcf2",
+        "Title": "L is for lawless",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "907517b5-34ed-4d3e-9845-fc8e128380cf",
+        "Title": "K is for killer",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "a1726a65-3f48-4af4-9e67-566a7153eb66",
+        "Title": "J is for judgement",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "fb6d607e-4b48-4358-9575-ebc7fc413195",
+        "Title": "I is innocent",
+        "PublishedIn": "1992-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "32c442b6-09b5-46a4-a1c7-35b3a1152141",
+        "Title": "H is for homicide",
+        "PublishedIn": "1991-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "0f0c368a-6b10-42a3-b9e0-1104301348b6",
+        "Title": "G is for gumshoe",
+        "PublishedIn": "1990-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "aa3b23a2-bbe7-4d32-b957-b671bbaae4cb",
+        "Title": "F is for fugitive",
+        "PublishedIn": "1989-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "c9beb5b6-ccee-429c-8fa9-c7b544ad87ab",
+        "Title": "E is for evidence",
+        "PublishedIn": "1988-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "7e7a3d41-2289-4cd8-9a89-b4fca04a7b64",
+        "Title": "D is for deadbeat",
+        "PublishedIn": "1987-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "e0809176-a323-417a-b43a-feec251dc133",
+        "Title": "C is for corpse",
+        "PublishedIn": "1986-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "66b68734-10bd-4cb8-bd99-6980b2433e49",
+        "Title": "B is for burglar",
+        "PublishedIn": "1985-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "7e13dd2a-513d-4b9d-b693-ba8000fafdaa",
+        "Title": "A is for alibi",
+        "PublishedIn": "1983-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "b3f8e023-bccc-4fef-8e65-899ed966172f",
+    "Name": "Guillou Jan",
+    "Books": [
+      {
+        "Id": "9b920377-2072-421f-91b2-6ef2a885eb4b",
+        "Title": "Arvet efter Arn",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "fbbf3505-4bb7-4b97-a2da-5fe3cdc22ddd",
+        "Title": "Riket vid vägens slut",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "c0b86050-9e37-4f26-a648-8e638ebda037",
+        "Title": "Tempelriddaren",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "2d57765b-c5f0-4806-8909-36740b4f625a",
+        "Title": "Vägen till Jerusalem",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "36e18726-ad88-4503-8343-0f65713fddd8",
+        "Title": "Men inte om det gäller din dotter",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "2029916d-2906-4855-af40-ac4226c31e3a",
+        "Title": "Madame terror",
+        "PublishedIn": "2006-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "36d6c96d-3990-4d6e-bd50-6f341b1da230",
+        "Title": "Hamlon",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "d415e5c0-790c-4ace-9711-2f094599acba",
+        "Title": "En medborgare höjd över varje misstanke",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ce8b14f0-6c4b-41eb-8dca-0908e347806a",
+        "Title": "I hennes majestäts tjänst",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "dec17a5c-57b3-45e1-9c80-1e2126de6422",
+        "Title": "Den enda segern",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "072071f0-a180-49a6-867c-1ead460d02cb",
+        "Title": "Ingen mans land",
+        "PublishedIn": "1992-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "691279b5-1ab6-4fed-a4d8-42f8bc1ea763",
+        "Title": "Vendetta",
+        "PublishedIn": "1991-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "70b547b3-ee71-4722-8317-157c0ba1d672",
+        "Title": "Den hedervärde mördaren",
+        "PublishedIn": "1990-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "179655ee-ceea-453a-9b56-bfeadfae114b",
+        "Title": "Fiendens fiende",
+        "PublishedIn": "1989-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "042692a0-12d1-47d1-b078-3c8e78b969d8",
+        "Title": "I nationens intresse",
+        "PublishedIn": "1988-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "b1c2d362-2514-4354-9e2c-7029fc111b1c",
+        "Title": "Den demokratiske terroristen",
+        "PublishedIn": "1987-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "09c18715-2e06-4ac9-afd0-9779c8f21827",
+        "Title": "Coq Rouge",
+        "PublishedIn": "1986-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "4af29367-8d5d-40f5-ae07-7fe011c0d796",
+    "Name": "Hellberg Björn",
+    "Books": [
+      {
+        "Id": "dcf6fb3a-721f-4c0a-8489-22e89b657380",
+        "Title": "Den fleraldige mördaren",
+        "PublishedIn": "2010-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "483e9999-a88a-4bb4-a40c-909969871314",
+        "Title": "Nattvandraren",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "fba15e9d-5c45-4dde-a5c1-3c2e27405054",
+        "Title": "Trofésamlaren",
+        "PublishedIn": "2007-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "ac2bf37e-455d-4185-ab4f-bdaf3fd69901",
+        "Title": "Dödslängtan",
+        "PublishedIn": "2006-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "05345049-69a0-46b4-8431-864dd0e1b763",
+        "Title": "Dominans",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "80172b3d-ed4c-479f-bc12-f3d27b8cbfa2",
+        "Title": "Club Karaoke",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "bf9adf4b-9ae7-4811-9340-0f317c9ff748",
+        "Title": "Paria",
+        "PublishedIn": "2003-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "8607e965-f8a1-4e6b-bbae-a2ccc4098a70",
+        "Title": "Funny Fanny",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "2ed6938e-49e6-4dbb-ac83-d4f7df8f0da7",
+        "Title": "Den grå",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ecce0903-d6c0-417d-bb1b-992d226fcda1",
+        "Title": "Hotelldöd",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "5f561db3-4a34-4af0-b556-893470ed67ac",
+        "Title": "Misstaget",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "c6721a9b-c4fe-47ca-8261-cffe9850e044",
+        "Title": "Tacksägelsen",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ba035432-464b-424d-9d7f-76186bbb5425",
+        "Title": "Panelhönan",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "7c8aa7b8-886b-4b5e-bffa-4d226f5eca1f",
+        "Title": "Förhäxad",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "93e5aaca-76d7-489d-ae4c-12a9e3f9f710",
+        "Title": "Hedersmord",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "72bcd960-54c3-404a-a6b9-f2db6e5114d7",
+        "Title": "Gräddhyllan",
+        "PublishedIn": "1997-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "dc5a9c3f-7e01-4632-87e7-ab9f81f2f4d8",
+        "Title": "Då dagboken dog",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "c2935d61-d348-4c40-80c3-e1022e0eaedd",
+        "Title": "Slutkört",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "0da30706-61b8-49d9-9fdf-1e5a77c617b7",
+        "Title": "Inte önskvärd",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "e404cb08-f9e4-4419-aaf4-cbe0ae5d6924",
+        "Title": "Rovlystnad",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ac9f23b1-299b-4d29-b883-259150cf46f8",
+        "Title": "Dråpslaget",
+        "PublishedIn": "1992-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "b9d46a47-d7b1-466b-b391-7327c2e6e8c8",
+        "Title": "Födde: en dotter",
+        "PublishedIn": "1988-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "eb0d013f-6847-481a-950a-e7674b5ab3f8",
+        "Title": "Gråt i mörker",
+        "PublishedIn": "1981-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "dca5628d-3453-4810-95e7-b3321bd51385",
+    "Name": "Herbert James",
+    "Books": [
+      {
+        "Id": "0961961c-d2a0-4720-a2e1-b27259954674",
+        "Title": "Ash",
+        "PublishedIn": "2010-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "dfb92dd7-f167-495c-9f98-13eb0bf98ff2",
+        "Title": "The secret of Crickly hall",
+        "PublishedIn": "2006-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "d6209636-5e0f-4ebe-ae69-00b69bf436b8",
+        "Title": "Nobody true",
+        "PublishedIn": "2003-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "3c0b2cc6-59f1-47d4-b80c-14967e871481",
+        "Title": "Once",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "ec2f6f7d-e3f1-439b-9f21-db132cbc3c0b",
+        "Title": "Others",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "25998914-ca76-424a-8bda-8d14710135f6",
+        "Title": "48",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "70601983-ed09-4c5f-a39b-bc82fb2fa6aa",
+        "Title": "The ghosts of sleath",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "226f6f6c-f403-4486-8a19-7aba93356f78",
+        "Title": "James Herbert's dark places",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "8cc31763-e1a7-4346-8135-8c1621942c32",
+        "Title": "The city",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "29141de3-3560-4e79-81d8-8423f640e2c7",
+        "Title": "Portent",
+        "PublishedIn": "1992-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "a7cb8e2a-7ec4-454b-8fe9-fd9f8ef49a48",
+        "Title": "Creed",
+        "PublishedIn": "1990-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "2633b0e6-4252-4650-ac23-c58c0b39af03",
+        "Title": "Haunted",
+        "PublishedIn": "1988-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "db7ff45b-1c69-4f4f-9e60-dda634677cc1",
+        "Title": "Sepulchre",
+        "PublishedIn": "1987-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "a15abe08-c6b4-45b0-b52b-7d1fafcda3ec",
+        "Title": "The magic cottage",
+        "PublishedIn": "1986-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "1273c88a-9ca7-4424-b4fb-de6d4430fdd2",
+        "Title": "Moon",
+        "PublishedIn": "1985-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "904fd3f8-02a3-410c-8f39-c2cd62d40d28",
+        "Title": "Domain",
+        "PublishedIn": "1984-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "7c835386-18d5-40db-809f-2bd32469e7c3",
+        "Title": "Shrine",
+        "PublishedIn": "1983-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "309940f0-12e1-4188-af7d-de839e7edc87",
+        "Title": "The Jonah",
+        "PublishedIn": "1981-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "9177c647-586f-42c7-a626-07393a55100b",
+        "Title": "The dark",
+        "PublishedIn": "1980-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "e97dab66-db88-429f-91c4-3654262b3dbb",
+        "Title": "Lair",
+        "PublishedIn": "1979-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "aac41059-8506-4896-a803-5d2d4703843a",
+        "Title": "The spear",
+        "PublishedIn": "1978-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "6fce6297-0840-44ab-8a1d-0dd3ce30ab52",
+        "Title": "Fluke",
+        "PublishedIn": "1977-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "efa2f944-18f5-4fa9-b2f5-81a3cf95b7aa",
+        "Title": "The survivor",
+        "PublishedIn": "1976-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "7a043013-621a-4817-a41e-e3018ec9c811",
+        "Title": "The fog",
+        "PublishedIn": "1975-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "f620065b-1571-409b-a52a-b5178194fc6a",
+        "Title": "The rats",
+        "PublishedIn": "1974-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      }
+    ]
+  },
+  {
+    "Id": "de5d4356-52da-4bca-b6f7-e7b98c5003b0",
+    "Name": "Holmér Hans",
+    "Books": [
+      {
+        "Id": "fec30b2a-6813-4073-937b-f6884f6c7585",
+        "Title": "Blodshämnd",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "807dc9e4-a797-4008-a8a8-4cad22c0ee0a",
+        "Title": "Åttan",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "74c5d834-71e4-44df-aa93-d6364db1e88a",
+        "Title": "Birka",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "8922fcf5-cf08-485c-8cba-c39dff1c9f5e",
+        "Title": "Krysset",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "127c3768-bae5-44e9-880f-4676b92b156f",
+        "Title": "Stockholm 2004",
+        "PublishedIn": "1997-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "2dcb6de6-5e4d-4e91-9e59-5678ce7a167b",
+        "Title": "Cykeln",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "b6f8584e-3471-44e9-9933-ad0a9a041aef",
+        "Title": "Blindträff",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "fe21769d-2075-4c8a-9b1c-a8610c4fbae5",
+        "Title": "Tie-break",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "bc228b06-9e66-49dc-8164-37682f4c0f02",
+        "Title": "Masken",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "038d93d7-fd6f-4ca0-b284-b4b193d3c6f3",
+        "Title": "Igloo",
+        "PublishedIn": "1992-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "361a6e72-0d81-4fe9-b742-fb76e988c906",
+        "Title": "Monica",
+        "PublishedIn": "1991-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "c7ed1fb0-ff79-422f-8fc0-b8b7e6db64f9",
+        "Title": "Loppan",
+        "PublishedIn": "1990-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "1c00aba0-92f8-484e-a298-2fcbd8228ada",
+    "Name": "Holt Anne",
+    "Books": [
+      {
+        "Id": "6653c2af-61b8-44ba-afdc-a7559c306fee",
+        "Title": "Frukta inte",
+        "PublishedIn": "2009-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "6b1cdcdf-e6e0-4f4d-acb5-c00435a0c964",
+        "Title": "1222 över havet",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "ab18d8d6-d863-40b7-9b6c-1ac8c0f81ec4",
+        "Title": "Presidentens val",
+        "PublishedIn": "2007-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "bb832367-1bff-42c9-a7a9-55d39e34ac82",
+        "Title": "Det som aldrig sker",
+        "PublishedIn": "2004-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "bb1483df-ab39-4b6a-83f5-065ec33985ad",
+        "Title": "Bortom sanningen",
+        "PublishedIn": "2003-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "51792581-6e09-4f41-98ae-0c6ef09e443c",
+        "Title": "Det som tillhör mig",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "40ab4ab9-31ab-4408-84ac-7c0f608aeea6",
+        "Title": "Död joker",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "155be833-e0bd-4c63-bdbe-d4c7590f6a4d",
+        "Title": "Mea Culpa",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "68eaab1c-4a89-4e67-9f41-8492639eb7dd",
+        "Title": "Demonens död",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "c123a665-6698-4dad-ac4b-aba1cd5030f5",
+        "Title": "Saliga äro de som törsta",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "9b842526-e249-412d-9c0f-18030a29c611",
+        "Title": "Blind Gudinna",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "7446136e-fd77-4fab-94f7-63d323e583c9",
+    "Name": "Holt Anne & Reiss-Andersen Berit",
+    "Books": [
+      {
+        "Id": "96646df3-03ba-447e-ac74-c22b7ffcf264",
+        "Title": "Utan eko",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "70b509fb-5fb8-446a-bc8c-c7209ab64584",
+        "Title": "I lejonets gap",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      }
+    ]
+  },
+  {
+    "Id": "e8de6375-878d-4751-af9a-d262414af98f",
+    "Name": "Jeffrey Deaver",
+    "Books": [
+      {
+        "Id": "8b6d40b3-3583-4a21-8272-41a312c13d83",
+        "Title": "Carte Blanche",
+        "PublishedIn": "2011-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "6e01de66-0e13-423c-82a9-4181a24115da",
+    "Name": "LeCarré John",
+    "Books": [
+      {
+        "Id": "329378c0-7bf6-409d-836e-1c877bce4d6d",
+        "Title": "Our Game",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "1903e409-b30d-4f13-b6ed-b333b7f59ccd",
+        "Title": "The Night Manager",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "6f39feab-f846-43c1-97d1-f098a236feea",
+        "Title": "The Secret Pilgrim",
+        "PublishedIn": "1990-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "16e75da7-fb14-439b-8250-c4d5ed1a58de",
+        "Title": "The Russia House",
+        "PublishedIn": "1989-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "eaa60580-a41a-4d9e-b0f7-48ed1e3e6c77",
+        "Title": "A Perfect Spy",
+        "PublishedIn": "1986-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f023ad7f-fb4c-423f-b323-871545f0a629",
+        "Title": "The Little Drummer Girl",
+        "PublishedIn": "1983-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "b102ee1f-35da-47fb-bf82-1e5684537c99",
+        "Title": "Smiley's People",
+        "PublishedIn": "1979-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "e9f7c34f-0acb-4d43-845d-f33d1e837ad7",
+        "Title": "The Honourable Schoolboy",
+        "PublishedIn": "1977-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "cbd0c1c1-3e6c-4743-90dc-71dc887aab28",
+        "Title": "Tinker Tailor Soldier Spy",
+        "PublishedIn": "1974-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "26a5e22c-3ce3-4740-8f9a-1f764d220eaf",
+        "Title": "The Naive and Sentimental Lover",
+        "PublishedIn": "1971-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "ec066f88-e2b6-40cb-8ef7-2534bd0e6a5b",
+        "Title": "A Small Town In Germany",
+        "PublishedIn": "1968-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "4f3d4cc3-aa71-4341-8241-2b5c4c786c17",
+        "Title": "The Looking-Glass War",
+        "PublishedIn": "1965-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "b4f2ef06-b5ef-42ab-a02b-5c76982ad585",
+        "Title": "The Spy Who Came In From The Cold",
+        "PublishedIn": "1963-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "5ae67137-3392-42c6-a501-485178a7f30d",
+        "Title": "A Murder of Quality",
+        "PublishedIn": "1962-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "bbbc25b5-a2f9-4f5b-91f5-cf0f3489919e",
+        "Title": "Call for the Dead",
+        "PublishedIn": "1961-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      }
+    ]
+  },
+  {
+    "Id": "54af7a33-e685-4a10-aee9-4b067fc05dd8",
+    "Name": "Ludlum Robert",
+    "Books": [
+      {
+        "Id": "bed13f45-7f73-40e7-89c1-03b0e367815e",
+        "Title": "The Matarese Circle",
+        "PublishedIn": "1979-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      }
+    ]
+  },
+  {
+    "Id": "59a96d94-3b85-4746-80e0-32726f332043",
+    "Name": "MacDonald John D",
+    "Books": [
+      {
+        "Id": "c4de25f6-56c8-4c80-a5d9-a96669053fbe",
+        "Title": "The Lonely Silver Rain",
+        "PublishedIn": "1985-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      },
+      {
+        "Id": "517151c0-fc21-4473-b94c-78d0aa25f650",
+        "Title": "Cinnamon Skin",
+        "PublishedIn": "1982-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "e5515331-2f02-459c-8084-cf6b1b7325d0",
+        "Title": "Free Fall in Crimson",
+        "PublishedIn": "1981-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      },
+      {
+        "Id": "ebb8cb2d-b3f9-4e39-b569-a5322c623145",
+        "Title": "The green ripper",
+        "PublishedIn": "1979-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "c50b4a88-dde7-4bf8-ac4a-d01f0dd2049c",
+        "Title": "The Empty Copper Sea",
+        "PublishedIn": "1978-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      },
+      {
+        "Id": "79d7da06-563e-491c-b854-6f6621edccd0",
+        "Title": "The Dreadful Lemon Sky",
+        "PublishedIn": "1975-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      },
+      {
+        "Id": "74677691-7c60-4a90-a303-dcf252097a93",
+        "Title": "The Turqoise Lament",
+        "PublishedIn": "1973-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "7cac9be3-f535-4732-9b68-286f29cbafba",
+        "Title": "The Scarlet Ruse",
+        "PublishedIn": "1973-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "65170590-76f7-40d1-ba77-67c91daf75e5",
+        "Title": "A Tan and Sandy Silence",
+        "PublishedIn": "1972-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "5388550c-10fa-497f-b5b3-c2512ebef300",
+        "Title": "The Long Lavender Look",
+        "PublishedIn": "1970-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "454af087-d958-4c2d-8331-c271787bdf4f",
+        "Title": "Dress Her in Indigo",
+        "PublishedIn": "1969-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "fab86e6b-c0ce-495f-a2ba-5fdda3536365",
+        "Title": "The Girl in the Plain Brown Wrapper",
+        "PublishedIn": "1968-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "3b6ed701-b5b0-4dca-9260-a468ad41176f",
+        "Title": "Pale Grey for Guilt",
+        "PublishedIn": "1968-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "a51afa97-54da-41f1-8545-b6fd23d5d245",
+        "Title": "One Fearful Yellow Eye",
+        "PublishedIn": "1966-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "a286134a-1e26-411f-95bd-1b4bc2ea3c0c",
+        "Title": "Darker than Amber",
+        "PublishedIn": "1966-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "b3e0f687-201e-4016-9d97-29de4a3eac60",
+        "Title": "Bright orange for the shroud",
+        "PublishedIn": "1965-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "befc4801-3759-4a69-82bd-d851bba7b95f",
+        "Title": "A Deadly Shade of Gold",
+        "PublishedIn": "1965-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "0ddceeb1-ba5a-4fb2-b0ca-160c966e2bb7",
+        "Title": "The Quick Red Fox",
+        "PublishedIn": "1964-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "35fa4f3d-e427-4b3d-b2e4-391f5afd54eb",
+        "Title": "A Purple Place for Dying",
+        "PublishedIn": "1964-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "11f65101-5e63-4e30-bba8-c786dcc625c0",
+        "Title": "Nightmare in Pink",
+        "PublishedIn": "1964-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "f4438fff-7fef-4309-a4f3-50c596496f5a",
+        "Title": "The Deep Blue Goodbye",
+        "PublishedIn": "1964-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "051a1b82-f694-4b71-a264-69982d00e272",
+    "Name": "Mankell Henning",
+    "Books": [
+      {
+        "Id": "af82dcde-3428-4e3d-8af6-31b0c3a3cdd3",
+        "Title": "Comedia infantil",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "045f40d0-5e92-4791-826b-27b5217a9792",
+        "Title": "Leopardens öga",
+        "PublishedIn": "1990-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "2d3e753f-9305-4256-88d0-6b999bbf1afd",
+        "Title": "Kennedys hjärna",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "a01e942a-8ea0-42f3-acce-adee1afbb670",
+        "Title": "Danslärarens återkomst",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "0af049f6-eb13-425a-b876-419c4ef60a14",
+        "Title": "Den orolige mannen",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "8d2a0a4f-54fa-4236-9870-42d34b7d47bc",
+        "Title": "Innan frosten",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "a192e510-4b81-4d5a-ac43-c8b654d4bf05",
+        "Title": "Pyramiden",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "849c2649-6e12-4fb4-accc-92d229dcefa6",
+        "Title": "Brandvägg",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "d87f8278-6858-4dbd-8e33-fe9d5a0b449f",
+        "Title": "Steget efter",
+        "PublishedIn": "1997-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "1d01d0f8-aafe-45ff-a867-13979f63f515",
+        "Title": "Den femte kvinnan",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "7ed431c9-5daf-4e6e-be1b-d0783af8902c",
+        "Title": "Villospår",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "088fe7cb-9ee1-408f-9a5e-dcaa266b28bf",
+        "Title": "Mannen som log",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ba48eae5-15f5-4738-a5d7-fb321551bbe6",
+        "Title": "Den vita lejoninnan",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "e203e6de-d71c-4a99-9bbc-a39d26704ad7",
+        "Title": "Hundarna i Riga",
+        "PublishedIn": "1992-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "8af02dc2-1420-4031-bdbf-8a07ad900655",
+        "Title": "Mördare utan ansikte",
+        "PublishedIn": "1991-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "af2987ab-3472-42a1-826f-ed8f18e1a7fb",
+    "Name": "Markham Robert",
+    "Books": [
+      {
+        "Id": "ac3f024e-b8f6-428a-8862-86d535fbcab7",
+        "Title": "Colonel Sun",
+        "PublishedIn": "1968-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "b9528f70-70de-4a33-82a6-20aedce7029d",
+    "Name": "McBain Ed",
+    "Books": [
+      {
+        "Id": "d525eabe-659b-4914-8394-b533bd9cfe4a",
+        "Title": "Alice in jeopardy",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "230895d9-2063-4fc7-8bd1-654acee0ca7c",
+        "Title": "Downtown",
+        "PublishedIn": "1991-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "e97a3683-1907-41d9-baa7-c0459e451a0f",
+        "Title": "Another part of the city",
+        "PublishedIn": "1986-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "2ac2ad0a-a53d-462d-b35a-2475344975d2",
+        "Title": "Guns",
+        "PublishedIn": "1976-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "87e8e9c9-648a-4fc3-b77a-6c41d793da45",
+        "Title": "Doors",
+        "PublishedIn": "1975-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "7c855d7d-d772-46f4-b17e-11d71b97eb7a",
+        "Title": "Where there’s smoke",
+        "PublishedIn": "1975-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "6e7b4b2e-fa71-4627-b793-d124a444537f",
+        "Title": "The sentries",
+        "PublishedIn": "1965-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "b33d36e6-6271-400f-b199-03050fc6f745",
+        "Title": "Mothers and Daughters",
+        "PublishedIn": "1961-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "abb894d9-9436-417d-be41-c59fb86d4c3a",
+        "Title": "Big Man",
+        "PublishedIn": "1959-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "0b6c03c5-3340-49cf-bf7b-8bbb90986e4c",
+        "Title": "A matter of conviction",
+        "PublishedIn": "1959-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "1e97524e-c3c7-46f8-bdc7-17b552c9f944",
+        "Title": "The Jungle Kids",
+        "PublishedIn": "1956-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "84499a60-fab0-447a-b2fe-ba13871baefc",
+        "Title": "Death of a Nurse",
+        "PublishedIn": "1955-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "e49f32c6-4ece-49a0-a97c-026ca21fb4a8",
+        "Title": "Second ending",
+        "PublishedIn": "1954-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "48419acd-1d1c-4e82-b836-31a99f9d21a0",
+        "Title": "The last best Hope",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "adf74e75-4215-4095-801e-2f5f61170678",
+        "Title": "Gladly the cross-eyed bear",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "d9bfe17a-7fb8-4304-bc41-1414d26130f4",
+        "Title": "There was a little girl",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "6466c7ef-eae0-4665-ad8a-f8983a8fa61b",
+        "Title": "Mary Mary",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "3b9a4ade-ba26-4175-80fd-a9d56ddd5cbf",
+        "Title": "Three blind mice",
+        "PublishedIn": "1990-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "2aef07eb-6472-4b00-930e-5bfe406ae139",
+        "Title": "The house that Jack built",
+        "PublishedIn": "1988-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "4166b054-0c5a-494c-b2e9-aacc13ff7c9f",
+        "Title": "Puss in boots",
+        "PublishedIn": "1987-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ee568561-9cac-477a-9621-9ff09885f138",
+        "Title": "Cinderella",
+        "PublishedIn": "1986-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "fe973718-8459-4fab-a284-e3b4d10c0d9b",
+        "Title": "Snow white and rose red",
+        "PublishedIn": "1985-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      },
+      {
+        "Id": "8e4471e3-54c7-4e0e-b400-22cd7b38e718",
+        "Title": "Jack and the beanstalk",
+        "PublishedIn": "1984-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "39140470-0a52-4172-a473-357069b428b3",
+        "Title": "Beauty and the beast",
+        "PublishedIn": "1982-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "c4b50001-fe85-4cf3-9835-2e7937fe2db5",
+        "Title": "Rumpelstilskin",
+        "PublishedIn": "1981-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "9138db1c-1cf3-4d27-98fd-7ddda317515d",
+        "Title": "Goldilocks",
+        "PublishedIn": "1978-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "3edfd38e-1e4e-4e37-8852-e02b18ea63c6",
+        "Title": "Fiddlers",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "0fe7fb95-0514-406d-b15e-16a56d1b359a",
+        "Title": "Hark!",
+        "PublishedIn": "2004-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "30d6dba9-ee4f-4b14-a45a-8432d016a278",
+        "Title": "The frumious bandersnatch",
+        "PublishedIn": "2004-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "043e7e73-2402-4477-8b8a-1db797bbacba",
+        "Title": "Fat Ollie’s Book",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "0781ad55-8f7a-4ab8-8ba6-beafaa2d498d",
+        "Title": "Money Money Money",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "71dd4331-d59c-4a66-a5fd-a69cb0e162d1",
+        "Title": "The last dance",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f16f2937-f19f-4f9b-af36-699dac11de68",
+        "Title": "The big bad city",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f31a0caf-c4ba-406b-a654-9a9fbf0e1382",
+        "Title": "Nocturne",
+        "PublishedIn": "1997-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "5cb43b20-ece5-427b-94f2-281046579223",
+        "Title": "Romance",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "67b46355-8aa0-4143-be8c-7a382f6e0edc",
+        "Title": "And all through the house",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "6e2b040d-67b7-409a-b8fd-3d0434d58786",
+        "Title": "Mischief",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "6245a82a-1c36-4f22-92fd-ac5b55d47028",
+        "Title": "Kiss",
+        "PublishedIn": "1992-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "a342aa9c-a5f6-4946-b7e8-9814b29883bb",
+        "Title": "Widows",
+        "PublishedIn": "1991-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "0e9e879e-8a34-41aa-b9c3-249a52aef4ec",
+        "Title": "Vespers",
+        "PublishedIn": "1990-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "d38898c0-2e2c-4c9e-82ce-a921c89f7126",
+        "Title": "Lullaby",
+        "PublishedIn": "1989-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "1f16d8e7-4f41-473b-8cbe-8078cb1ff7c5",
+        "Title": "Tricks",
+        "PublishedIn": "1987-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      },
+      {
+        "Id": "fcad3522-e610-4dc4-9fda-0e8f0839fd55",
+        "Title": "Poison",
+        "PublishedIn": "1987-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "7d896a7c-1f4e-4f55-9260-960e055f8488",
+        "Title": "Eight black horses",
+        "PublishedIn": "1985-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ed57b607-e0c7-4602-bd78-534ca10f784f",
+        "Title": "Lightning",
+        "PublishedIn": "1984-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      },
+      {
+        "Id": "7deea1f5-8974-494f-b022-5b18c627b07c",
+        "Title": "Ice",
+        "PublishedIn": "1983-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "8ed0f8ae-3d2f-41aa-a0aa-9d33de86247d",
+        "Title": "Heat",
+        "PublishedIn": "1981-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "56a73c6c-fff9-4afc-a96f-3372f9d690eb",
+        "Title": "Ghosts",
+        "PublishedIn": "1980-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "36a62895-a24f-44e3-bcbe-be6a8417e574",
+        "Title": "Calypso",
+        "PublishedIn": "1979-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "e5a11902-18bf-4526-a68e-f2d1bdae0860",
+        "Title": "Long time no see",
+        "PublishedIn": "1977-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "8fa57189-3955-4dcb-9750-50d30810c2ad",
+        "Title": "So long as you both shall live",
+        "PublishedIn": "1976-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "485bfc33-2775-4135-85d2-10abdb6957a9",
+        "Title": "Blood relatives",
+        "PublishedIn": "1975-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f105af9d-c369-4baf-9f65-a4bc421d6c6c",
+        "Title": "Bread",
+        "PublishedIn": "1974-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "297847d8-4767-403f-9d6e-02b931df4b14",
+        "Title": "Hail to the chief",
+        "PublishedIn": "1973-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "a60422f9-6fd0-4084-865a-7a9dc440f995",
+        "Title": "Let’s hear it for the deaf man",
+        "PublishedIn": "1972-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "bf69c491-5ce5-45c7-b2c6-2303d3cff76a",
+        "Title": "Sadie when she died",
+        "PublishedIn": "1972-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "55afbfe4-e5d5-4370-b847-fad0e5b6e474",
+        "Title": "Hail hail the gang’s all here",
+        "PublishedIn": "1971-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f6869685-8f07-403c-8b82-94e639d80d40",
+        "Title": "Jigsaw",
+        "PublishedIn": "1970-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "1370814a-2a31-444b-ae2a-9bc678006040",
+        "Title": "Shotgun",
+        "PublishedIn": "1969-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "82a7fb1c-5026-45e8-b562-34fcb1a48a76",
+        "Title": "Fuzz",
+        "PublishedIn": "1968-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "3d5837a0-4561-4732-a575-a0dec3da9389",
+        "Title": "Eighty million eyes",
+        "PublishedIn": "1966-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "c149f16d-fa5a-4297-aee9-2e8b87e047f5",
+        "Title": "Doll",
+        "PublishedIn": "1965-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ce5b6c8f-1a8d-4a86-b6bd-6be14fe75ce2",
+        "Title": "He who hesitates",
+        "PublishedIn": "1965-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ee66f830-5876-42be-aa4b-37f10f37524a",
+        "Title": "Axe",
+        "PublishedIn": "1964-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "55133bfc-7006-46e3-844d-471ae8a8969b",
+        "Title": "Ten plus one",
+        "PublishedIn": "1963-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "c6e380a6-9504-4ce9-8b56-32caa69fd24f",
+        "Title": "Like love",
+        "PublishedIn": "1962-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "15bb6acf-bf51-4812-b3de-8b6ab57188e0",
+        "Title": "The empty hours",
+        "PublishedIn": "1962-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "606bfee9-ff06-4d12-8c6d-4d2a03b2f148",
+        "Title": "Lady lady I did it!",
+        "PublishedIn": "1961-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "9d09b83b-9588-4f4d-b895-2fced6c568e2",
+        "Title": "See them die",
+        "PublishedIn": "1960-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "47813aab-4e3e-41dc-95b0-2097ee14f44f",
+        "Title": "The heckler",
+        "PublishedIn": "1960-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "0dcb9381-5ca3-4d33-9876-592f6889b6d7",
+        "Title": "Give the boys a great big hand",
+        "PublishedIn": "1960-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "6d70e8bf-3bb8-4586-83af-f8bedac5c307",
+        "Title": "King’s ransom",
+        "PublishedIn": "1959-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "d4ed4044-9af2-4164-8c65-afe6abeab36b",
+        "Title": "’Till death",
+        "PublishedIn": "1959-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ea600877-3a61-4781-8976-ad49c49d8b98",
+        "Title": "Lady killer",
+        "PublishedIn": "1958-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "efbf1a0f-3746-40e9-823d-775951f56cf3",
+        "Title": "Killer’s wedge",
+        "PublishedIn": "1958-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "6a67fd26-1526-43f9-b07c-0954b782b53a",
+        "Title": "Killer’s payoff",
+        "PublishedIn": "1958-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "5d5872e3-2625-45d3-b305-a150721a9d50",
+        "Title": "Killer’s choice",
+        "PublishedIn": "1957-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "69764bf0-86d2-49ff-8720-4a9844643440",
+        "Title": "The con man",
+        "PublishedIn": "1957-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "9135dac5-1bf8-4123-a936-eaaa1f5d80f0",
+        "Title": "The pusher",
+        "PublishedIn": "1956-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "02253e3a-2382-470b-b41a-0db206f86638",
+        "Title": "The mugger",
+        "PublishedIn": "1956-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "1d556f80-0df6-43e3-aec4-a5a924ae7924",
+        "Title": "Cop hater",
+        "PublishedIn": "1956-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "b126ef9b-ff7f-4c3f-90b0-2f6e163b28af",
+    "Name": "Mårtensson Jan",
+    "Books": [
+      {
+        "Id": "364d0d4a-4058-48dd-adc6-444e0ed433a8",
+        "Title": "Mord i Havanna",
+        "PublishedIn": "2010-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "2ebc9817-de01-45c5-9b55-875a4515f86b",
+        "Title": "Palatsmordet",
+        "PublishedIn": "2009-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "d0f73b5f-9a0f-4a50-ac27-681dd7d96cbe",
+        "Title": "Dödssynden",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "134c52e3-4b57-4577-ba56-5340dd4569eb",
+        "Title": "Spionen",
+        "PublishedIn": "2007-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "425b12d1-ab88-4f4f-9251-f2b629e752f3",
+        "Title": "Den kinesiska trädgården",
+        "PublishedIn": "2006-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "4aac2667-3da4-4014-9a36-aabccafac2f3",
+        "Title": "Döden går på auktion",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "94ebca3a-8255-4492-ad54-822ac028f393",
+        "Title": "Ostindiefararen",
+        "PublishedIn": "2004-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "b3f4cfbc-0087-4d91-b8dd-52bb1a268dff",
+        "Title": "Dödligt svek",
+        "PublishedIn": "2003-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "3dc2aecc-c02a-4610-975e-980a6e277c86",
+        "Title": "Mord ombord",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "085378bd-efa5-4ae0-bd81-6d1f78a35029",
+        "Title": "Mord i Gamla Stan",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "6d6127c7-6a7c-4664-a5ba-6680c2b97f8e",
+        "Title": "Ikaros flykt",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ef67d7c4-fc77-4d7a-8da5-4a573a1dd27c",
+        "Title": "Mord på Mauritius",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "4e6a3536-87c5-4a34-9bb6-fd11d35d64f0",
+        "Title": "Häxan",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "b8146302-ae32-4f57-b713-c2b18b5fb0fd",
+        "Title": "Det svarta guldet",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "25c7445b-3fe0-4492-9c6e-52599598209d",
+        "Title": "Högt spel",
+        "PublishedIn": "1997-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "8c76c282-dcd0-4e64-a2d2-15f93debf7b7",
+        "Title": "Cesars örn",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f79bbccb-8164-4994-8c25-89b600f083bf",
+        "Title": "Karons färja",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "b30c1c04-490e-4d53-9f78-185d3f3b84e4",
+        "Title": "Tsarens guld",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "156a178a-91dc-45e9-ba89-1540c65a42e6",
+        "Title": "Gamens öga",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "5e6772f5-88a0-420c-b862-d2aa8e7066ad",
+        "Title": "Midas hand",
+        "PublishedIn": "1992-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "a811d42c-57bf-498d-bc51-37827acd2344",
+        "Title": "Ramses hämnd",
+        "PublishedIn": "1991-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "8577f100-32db-434d-881b-167a43f9592a",
+        "Title": "Akilles häl",
+        "PublishedIn": "1990-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "b27f3fe6-ed87-477a-9a3f-fc80b75f1866",
+        "Title": "Mord i Venedig",
+        "PublishedIn": "1989-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "4e06a714-0b83-41f3-8de1-f3b073f2ab78",
+        "Title": "Neros bägare",
+        "PublishedIn": "1988-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "24b6bfff-8511-4d4f-8267-eba4194c0856",
+        "Title": "Den röda näckrosen",
+        "PublishedIn": "1987-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "d1d88c44-4617-4a23-9fb7-313f96c10c06",
+        "Title": "Rosor från döden",
+        "PublishedIn": "1986-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "1234515b-7bc3-4ac1-8e90-d1af54c94e65",
+        "Title": "Häxmästaren",
+        "PublishedIn": "1985-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "ff4c59ff-86ef-4a1a-a141-aa2ea0106bc6",
+        "Title": "Guldmakaren",
+        "PublishedIn": "1984-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "0bc336e6-3c5a-4900-90b9-410023da9ea0",
+        "Title": "Vampyren",
+        "PublishedIn": "1983-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "fc94754d-84a9-456b-bb04-95fd60bb4926",
+        "Title": "Middag med döden",
+        "PublishedIn": "1982-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "0e6c13df-2040-4ddd-9bd6-e8c9ee698b23",
+        "Title": "Döden gör en tavla",
+        "PublishedIn": "1981-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "78031cbb-4803-4e1b-88b3-0a752cf79c07",
+        "Title": "Djävulens hand",
+        "PublishedIn": "1980-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "d1ae7504-ea63-42a6-8125-0a75f3b7f69b",
+        "Title": "Vinprovarna",
+        "PublishedIn": "1979-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "6d32d726-a01d-4c35-85e3-3411c89012f8",
+        "Title": "Döden går på cirkus",
+        "PublishedIn": "1978-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "368363a3-8844-4136-8df8-93e7f9746e93",
+        "Title": "Döden går på museum",
+        "PublishedIn": "1977-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "209258e6-5efd-4df0-8fed-57bbe048c8dc",
+        "Title": "Häxhammaren",
+        "PublishedIn": "1976-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "d91aeca2-a0f7-480f-b777-ec7510de5c63",
+        "Title": "Demonerna",
+        "PublishedIn": "1975-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "f71ab77a-1c0f-4e81-9aaf-c0c87f6a04fe",
+        "Title": "Drakguldet",
+        "PublishedIn": "1974-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "8162549d-8227-46b7-958d-06b619d10f03",
+        "Title": "Helgeandsmordet",
+        "PublishedIn": "1973-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "b8803cbf-a4a2-467c-87b4-13c3504ce390",
+    "Name": "Nesser Håkan",
+    "Books": [
+      {
+        "Id": "fdfe8995-f272-4500-a0e9-fbb19a8cfd52",
+        "Title": "De ensamma",
+        "PublishedIn": "2010-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "70ede166-61a9-4ca0-a102-1112b15d0c3d",
+        "Title": "Berättelsen om herr Roos",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "53d85319-ddc7-44eb-9b59-5499b3144ff7",
+        "Title": "En helt annan historia",
+        "PublishedIn": "2007-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "74f920f8-0ba0-4137-883e-0a7539b67736",
+        "Title": "Människa utan hund",
+        "PublishedIn": "2006-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "aea4c776-418a-4e66-b756-60dbb7247a2e",
+        "Title": "Fallet G",
+        "PublishedIn": "2003-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "d2949135-250f-4814-9e5b-6cb4d05fbd9e",
+        "Title": "Svalan katten rosen döden",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f2c5a9ef-342a-4bc3-998c-076fbfe36c21",
+        "Title": "Ewa Morenos fall",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "21cbe339-fde1-4a9b-bc40-8eb8f1ea07e8",
+        "Title": "Carambole",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "8acdfe98-b060-419b-b645-d1198afda55c",
+        "Title": "Münsters fall",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "44ac2120-b44a-45b2-9ee6-e2f942863b41",
+        "Title": "Kommissarien och tystnaden",
+        "PublishedIn": "1997-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ded620b2-0d1b-498e-bed9-737412b17c9c",
+        "Title": "Kvinna med födelsemärke",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f58c6ec3-a7a8-4b19-80e3-10bf21fd4989",
+        "Title": "Återkomsten",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "6e9f6172-4aa7-4189-a179-82f9c3e79bbb",
+        "Title": "Borkmanns punkt",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "dfb35d92-bee6-4c27-b1b1-0acca4b53230",
+        "Title": "Det grovmaskiga nätet",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "07934b0e-3443-4c98-8078-e6bd51a26e8c",
+    "Name": "Persson Leif GW",
+    "Books": [
+      {
+        "Id": "f8c2b92c-4153-4228-8859-6609ec746263",
+        "Title": "Den döende detektiven",
+        "PublishedIn": "2010-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "4bcbb114-a743-48f2-9ff3-53db3a24650c",
+        "Title": "Den som dödar draken",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "1387632d-38a6-49c8-9fbf-ec3e5291d861",
+        "Title": "Faller fritt som i en dröm",
+        "PublishedIn": "2007-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "2da35a09-863c-49c5-89d4-0f83b45f66a0",
+        "Title": "Linda - som i Lindamordet",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "44d4d17a-18f1-4be0-b420-5bff1d2a9ae5",
+        "Title": "En annan tid ett annat liv",
+        "PublishedIn": "2003-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "856e29d3-899c-461d-b421-5cf069a1c98f",
+        "Title": "Mellan sommarens längtan och vinterns köld",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      },
+      {
+        "Id": "9bb16056-a469-45e4-a199-06b192d06c86",
+        "Title": "Samhällsbärarna",
+        "PublishedIn": "1982-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "92e031cc-73eb-473b-a857-a4ddda9647b8",
+        "Title": "Profitörerna",
+        "PublishedIn": "1979-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "1a7ca4c2-d567-4c15-9b57-db2e8d886101",
+        "Title": "Grisfesten",
+        "PublishedIn": "1978-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "59fb0593-7531-4db9-9923-1662cb3d18b6",
+    "Name": "Robinson Peter",
+    "Books": [
+      {
+        "Id": "e3ba6d8a-5c3e-43ad-b6eb-1722c47e3286",
+        "Title": "Before the Poison",
+        "PublishedIn": "2011-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "79de18bf-2da1-4803-9f93-21d50e7621a4",
+        "Title": "Bad Boy",
+        "PublishedIn": "2010-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "e9260f49-d566-478c-b67c-5fae2e30a50d",
+        "Title": "The price of love",
+        "PublishedIn": "2009-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "0b5ce07f-18dd-4b1c-9329-4fccf6b22f58",
+        "Title": "All the colours of darkness",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "4da14593-2960-479e-b1a2-c64a6961c320",
+        "Title": "Friend of the devil",
+        "PublishedIn": "2007-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "3eb1caf4-0726-431a-ba86-f4de7e58da16",
+        "Title": "Piece of my heart",
+        "PublishedIn": "2006-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "223a15cc-9df6-48ee-9b19-83917a613aae",
+        "Title": "Strange affair",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "b66fdbe4-d8d2-4d3d-ab7e-6f196fa9becb",
+        "Title": "Playing with fire",
+        "PublishedIn": "2004-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "44c646e0-2868-4531-bc43-593d8a0b80b9",
+        "Title": "The summer that never was",
+        "PublishedIn": "2003-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "07b4e498-11f1-4ac2-94f9-b9090849c611",
+        "Title": "Aftermath",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "9f4bc4ea-1f53-4c72-bbe3-b66298721f2a",
+        "Title": "Cold is the grave",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ff08ec20-ec45-4e58-b180-42e9218f608e",
+        "Title": "In a dry season",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "da62c16e-bcb5-45ae-8cdc-40826fe7f204",
+        "Title": "Not safe after dark",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "0d9492ef-27ae-48e4-a3c0-04b403f78cde",
+        "Title": "Dead right",
+        "PublishedIn": "1997-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "571a7989-34fa-4b5e-8da1-7a45142bfdfb",
+        "Title": "Innocent graves",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "4210743d-d1a4-43a9-82e7-dd80a744277c",
+        "Title": "Dry bones that dream",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "1cc7994e-6c0a-4db7-942f-cebc24a09b1d",
+        "Title": "Wednesday's child",
+        "PublishedIn": "1992-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "2bbf0e0d-566e-4469-bed9-17e14791c14e",
+        "Title": "Past reasons hated",
+        "PublishedIn": "1991-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "64ce53cb-30e2-49de-9884-1fa03db8f437",
+        "Title": "The hanging valley",
+        "PublishedIn": "1989-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "e83c3bad-7270-4a25-9d72-c8a8c39fc069",
+        "Title": "A necessary end",
+        "PublishedIn": "1989-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "fdc01e89-3842-4c06-8226-44d1b676eb59",
+        "Title": "A dedicated man",
+        "PublishedIn": "1988-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "6616c12a-31b4-45c1-99c3-eb89138185d8",
+        "Title": "Gallows view",
+        "PublishedIn": "1987-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      }
+    ]
+  },
+  {
+    "Id": "2a79f780-ce4d-414b-ad58-d8f9823f64e3",
+    "Name": "Silbersky / Svedelid",
+    "Books": [
+      {
+        "Id": "c8cffc32-528e-4caf-832f-06547c0a9bea",
+        "Title": "Hämnden är aldrig rättvis",
+        "PublishedIn": "2006-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "a4ba3220-d049-46fb-96c9-2ecd7a40aaf0",
+        "Title": "Upplösningen",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "40642f8d-3ed8-4134-b1f2-49f45ea4cbfb",
+        "Title": "Den sista lögnen",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "5f137858-085b-44d2-ac48-90a37e76e76f",
+        "Title": "Mördaren har inga vänner",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "1884789c-b2d4-4c40-99c1-bf9e9adc2c55",
+        "Title": "Gå i döden",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "877284ec-1c5e-4b4e-92a3-743f019732c6",
+        "Title": "Den stora tystnaden",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "4001c967-83d4-462d-98dd-8308cd1cd3b3",
+        "Title": "Skrivet i blod",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "dcd4315f-38e7-44f6-80a5-2d3705d6dfe6",
+        "Title": "Svart är dödens färg",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "7d6f7be2-3670-4829-8dc6-b7034acea1bc",
+        "Title": "Döden tar inga mutor",
+        "PublishedIn": "1992-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "bac60869-6c07-4834-a838-4fcf17931e73",
+        "Title": "En röst för döden",
+        "PublishedIn": "1990-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "c8e816b2-2bec-47b0-9754-291a6f3b768c",
+        "Title": "Sprängstoff",
+        "PublishedIn": "1989-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "725ab231-2f1c-48c6-96cb-ff9c43bf831f",
+        "Title": "Narrspel",
+        "PublishedIn": "1988-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "0eca9981-d154-437d-882b-1eb9a7a68117",
+        "Title": "Bilden av ett mord",
+        "PublishedIn": "1986-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f6f6859d-8295-46e8-b038-d27745a303b8",
+        "Title": "Villebrådet",
+        "PublishedIn": "1985-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "74287025-2874-49ce-9534-d9232af74d5a",
+        "Title": "Villfarelsen",
+        "PublishedIn": "1984-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "b9e93566-00d6-4604-92ec-3f0588250032",
+        "Title": "Ont blod",
+        "PublishedIn": "1983-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "be6cd83a-0bdd-4a7e-ac34-c2f90dbb3325",
+        "Title": "Dina dagar är räknade",
+        "PublishedIn": "1982-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "b096d28b-6566-4c9d-b4b6-79bf863d1062",
+        "Title": "Dödens barn",
+        "PublishedIn": "1981-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "8e48e5b1-568d-4ba1-8810-ed979660b770",
+        "Title": "Målbrott",
+        "PublishedIn": "1980-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "b90bc5a7-188a-46c3-b016-6a9fc97a8ccc",
+        "Title": "Bländverk",
+        "PublishedIn": "1979-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "99ddc9bc-a711-436b-bfab-bb41b844d4ef",
+        "Title": "Straffspark",
+        "PublishedIn": "1978-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f7ece4b3-b6b2-46ee-b8f2-4a5406d4e17e",
+        "Title": "Sista vittnet",
+        "PublishedIn": "1977-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      }
+    ]
+  },
+  {
+    "Id": "7f0bc5a3-c402-4262-8dd4-2de8526b45f7",
+    "Name": "Svedelid Olov",
+    "Books": [
+      {
+        "Id": "93b054c7-40aa-4454-8505-906b63f704d5",
+        "Title": "Död i ruta ett",
+        "PublishedIn": "2004-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "1f3d61b0-4de5-4fcb-b6e2-f2a476b965d6",
+        "Title": "Främlingarna",
+        "PublishedIn": "2003-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "d0af9431-3343-4ec1-95ce-f26ff605497f",
+        "Title": "Nödens handelsmän",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "a5504aef-cddf-4bec-8568-ed2dfbfa91cb",
+        "Title": "Hassel och utpressarna",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ed240cee-02d1-4594-b4a8-3ee6540d6f4f",
+        "Title": "Hassel och jakten på lilla Mona",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "b321c72d-aa54-48be-8048-fa87f865bc9b",
+        "Title": "Dödens budbärare",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "eccb04be-6f54-4aa3-97ad-5c1b3afca716",
+        "Title": "Domens dag",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ece7530b-63c2-476f-a866-8f19ed11fe3f",
+        "Title": "Giftiga karameller",
+        "PublishedIn": "1997-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "2ffea17f-bfa5-49b4-b165-e7f3dd60e106",
+        "Title": "Dödens medicin",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "16f0b203-e517-411a-afb8-9797b4d6e491",
+        "Title": "Piraterna",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "e63b1395-2198-4db7-9701-10dcb843ac95",
+        "Title": "Förfalskarna",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "248717b9-8d19-4d59-8d0a-bd206b1d0e99",
+        "Title": "Förgörarna",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "7c03afe3-fe46-4abb-bf2b-bccec0ef27ef",
+        "Title": "Plundrarna",
+        "PublishedIn": "1992-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "58faf903-750b-482a-b23e-7e69658ee1ea",
+        "Title": "Utpressarna",
+        "PublishedIn": "1991-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "267c5b4e-1ef0-4b71-8b21-156c1ca44ad7",
+        "Title": "Facklorna",
+        "PublishedIn": "1990-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "c5775765-3bca-424c-82f3-9abc5e5dab1d",
+        "Title": "De giriga",
+        "PublishedIn": "1989-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "919bcca0-089d-426d-99f9-0e7275df018c",
+        "Title": "Gengångarna",
+        "PublishedIn": "1988-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "5745ca43-aedf-4c43-a326-4a2895e2c381",
+        "Title": "Barnarov",
+        "PublishedIn": "1987-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "e5c107a9-8014-4e60-81b3-f854063a1a2a",
+        "Title": "Offren",
+        "PublishedIn": "1984-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "71ec6e5e-84ca-4fd5-8c21-9f9266d7d1d3",
+        "Title": "Botgörarna",
+        "PublishedIn": "1983-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "25f7c672-9413-4a98-b53f-17b86e14ed57",
+        "Title": "Terrorns finger",
+        "PublishedIn": "1982-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "47eac4be-9ac9-496d-91e0-ebeb4f4d65e6",
+        "Title": "Glitter",
+        "PublishedIn": "1981-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f38f275b-0ef6-4b34-8c63-6a813f148b26",
+        "Title": "Säkra papper",
+        "PublishedIn": "1980-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "a9ff483a-2de3-4735-938c-33968f1a42bb",
+        "Title": "Slavhandlarna",
+        "PublishedIn": "1979-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "ac5eab4a-dc18-4062-a4e2-7f94ad857b3a",
+        "Title": "Guds rötter",
+        "PublishedIn": "1976-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "3f5e5ec7-e1bd-4e76-9480-74bef5cdbc4e",
+        "Title": "Vapenhandlarna",
+        "PublishedIn": "1975-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "7af1d243-8c39-4741-ab00-0414ae5471c5",
+        "Title": "Beskyddarna",
+        "PublishedIn": "1974-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "14da9df8-0f4d-4394-b417-e5ca99e70d09",
+        "Title": "Svarta banken",
+        "PublishedIn": "1973-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "6eaddf88-ec58-4b95-bfb6-0628d6d0a835",
+        "Title": "Anmäld försvunnen",
+        "PublishedIn": "1972-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "46fef53b-b963-429c-9e22-1bf56995820b",
+    "Name": "Tursten Helene",
+    "Books": [
+      {
+        "Id": "a0a09904-f5e2-4d66-8298-078f788545f4",
+        "Title": "Den som vakar i mörkret",
+        "PublishedIn": "2010-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "2aade68f-c2a7-43b4-951a-0ba7ff7ec519",
+        "Title": "Det lömska nätet",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "a04e23fa-6840-4c9e-a872-0a1dfb36cf80",
+        "Title": "En man med litet ansikte",
+        "PublishedIn": "2007-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "4dcb408a-21e9-4305-93c3-ddb2db6840c6",
+        "Title": "Eldsdansen",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "0fcbc614-3eda-49ac-b1f8-4a93dcd38975",
+        "Title": "Guldkalven",
+        "PublishedIn": "2004-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "56036de5-4ae9-4f3e-9a51-9f1bf812a0ad",
+        "Title": "Glasdjävulen",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "77214f16-c20d-40e9-997e-bdc6679c7b30",
+        "Title": "Tatuerad torso",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "3c9ded97-b35d-4c43-835b-655b762874a8",
+        "Title": "Nattrond",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "e3f1d381-583f-49ea-84f8-d47ea554defd",
+        "Title": "Den krossade tanghästen",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "f8ebf7ce-6acd-4a6b-b67e-38bc0f26c24a",
+    "Name": "Wambaugh Joseph",
+    "Books": [
+      {
+        "Id": "012b3714-5afc-4d5e-a1ac-16214f187780",
+        "Title": "Hollywood Hills",
+        "PublishedIn": "2010-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "63c0506c-a318-44ab-b745-df9e1fe95b56",
+        "Title": "Hollywood Moon",
+        "PublishedIn": "2009-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "283775f4-756a-4988-ac02-2de2245901f5",
+        "Title": "Hollywood Crows",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "02d1dfab-689b-435b-9f38-4121c0cedcf8",
+        "Title": "Hollywood Station",
+        "PublishedIn": "2006-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "49ec83fd-74ab-471a-b967-b59411d9032e",
+        "Title": "The fire lover",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "034c3521-b8df-43e1-905c-937df1e15c29",
+        "Title": "Floaters",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "7e1da970-cc40-45af-8cd7-5481bae5d4ec",
+        "Title": "Finnegan’s week",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "3d4aed96-9fe5-4878-9512-c670ad08a03f",
+        "Title": "Fugitive nights",
+        "PublishedIn": "1992-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "9823203d-bb76-4a92-859f-d55b081c0d17",
+        "Title": "The golden orange",
+        "PublishedIn": "1990-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "8e1a11bb-14f7-41ae-b666-0550d4a4ac92",
+        "Title": "The blooding",
+        "PublishedIn": "1989-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "c8337fee-c672-4610-8dba-c9e2b3b77d5a",
+        "Title": "Echoes in the darkness",
+        "PublishedIn": "1987-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "42aae809-6f2c-4078-926c-a1cf894bed30",
+        "Title": "The secrets of Harry Bright",
+        "PublishedIn": "1985-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "c03aeb71-b74e-48d8-a27a-69b573a64b5d",
+        "Title": "Lines and shadows",
+        "PublishedIn": "1984-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      },
+      {
+        "Id": "b6db5b52-90ee-4bac-a4af-972ed380ad12",
+        "Title": "The delta star",
+        "PublishedIn": "1983-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "82a5ee66-414d-4fad-ae2d-4b4217c94747",
+        "Title": "The glitter dome",
+        "PublishedIn": "1981-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "9d8ddf64-4bbd-42f0-9a2c-a2bd0a9a49b9",
+        "Title": "The black marble",
+        "PublishedIn": "1978-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "b7b84212-675f-4922-961b-197a21dabc20",
+        "Title": "The choirboys",
+        "PublishedIn": "1975-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      },
+      {
+        "Id": "146bc023-9b45-4ea4-a29b-32a44e06a6a0",
+        "Title": "The onion field",
+        "PublishedIn": "1973-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "981c5604-761a-4575-8113-c70600c59f7a",
+        "Title": "The blue knight",
+        "PublishedIn": "1972-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "f7c0b2f2-b53e-4422-9c6d-3d3647ba9fff",
+        "Title": "The new centurions",
+        "PublishedIn": "1971-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "41b38b75-c9f4-47ca-b63e-e3a767e8f0ac",
+    "Name": "Wood Christopher",
+    "Books": [
+      {
+        "Id": "96a4324f-c7a5-41ed-aab7-4dd530153aa4",
+        "Title": "James Bond and Moonraker",
+        "PublishedIn": "1979-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "e7c4b696-921c-4c7a-8ff9-0333b888c596",
+        "Title": "James Bond the spy who loved me",
+        "PublishedIn": "1977-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      }
+    ]
+  },
+  {
+    "Id": "c6c99c65-a152-4887-aa20-71debdbdf83a",
+    "Name": "Woods Stuart",
+    "Books": [
+      {
+        "Id": "93644d51-43b4-4190-974d-e9e4bbf7f63a",
+        "Title": "Choke",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "4d78ec48-137d-44ec-84a4-06519bcc30da",
+        "Title": "Imperfect Strangers",
+        "PublishedIn": "1995-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "67d82da4-43e0-4726-a766-c0a132a80d74",
+        "Title": "Heat",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "2e882780-4c01-4949-afe8-cf6126bbd823",
+        "Title": "Dead Eyes",
+        "PublishedIn": "1994-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "1d5cac29-b818-40e7-898d-4031c6cde760",
+        "Title": "L.A. Times",
+        "PublishedIn": "1993-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "False"
+      },
+      {
+        "Id": "e10441e5-4f1b-44c1-8308-0ac9cecd2a9d",
+        "Title": "Palindrome",
+        "PublishedIn": "1991-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "10bfd26a-cd7b-4305-8dbf-d54b9172b2a9",
+        "Title": "White cargo",
+        "PublishedIn": "1988-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "03c614d9-3132-43e1-ac13-6c3581b59279",
+        "Title": "Under the lake",
+        "PublishedIn": "1987-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "0af8e478-9392-4300-97dd-b0f1a2ec6644",
+        "Title": "Chiefs",
+        "PublishedIn": "1981-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "d0ba7550-27fd-44ff-bc7c-fd086fa305b0",
+        "Title": "Santa fe edge",
+        "PublishedIn": "2010-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "1ea30f6d-4c73-4da2-91bb-b8fb89328466",
+        "Title": "Santa fe dead",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "de78e674-a474-4c0f-a125-a812e26f4589",
+        "Title": "Short straw",
+        "PublishedIn": "2006-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "b15603a0-e1d8-4e76-8b1a-7d5ddf818910",
+        "Title": "Santa fe rules",
+        "PublishedIn": "1992-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      },
+      {
+        "Id": "ba223e20-f9ab-477a-bda5-2b8ef36f9aeb",
+        "Title": "Beverly Hills dead",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "93468e87-2095-4507-8620-c06fe3e01126",
+        "Title": "Prince of Beverly Hills",
+        "PublishedIn": "2004-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "6d40d3ee-b952-4405-96ca-f4b752add266",
+        "Title": "Hothouse orchid",
+        "PublishedIn": "2009-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "bd46a258-f54b-4790-afd4-00254625dbeb",
+        "Title": "Iron orchid",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "2592a21a-e156-4efd-8218-5bba47333715",
+        "Title": "Blood orchid",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "9d15c9e8-f385-4910-94c7-147bf6e1bf91",
+        "Title": "Orchid blues",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "dda99487-cdf7-4228-96ad-737bf95e1a8e",
+        "Title": "Orchid beach",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "4d960306-cbd3-4ddc-a685-de8bdb0784f2",
+        "Title": "Mounting fears",
+        "PublishedIn": "2009-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "61afc306-2040-4975-a727-ca4c841fb389",
+        "Title": "Capital crimes",
+        "PublishedIn": "2003-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "81ff626a-6f57-4f49-b946-6565fa427fc3",
+        "Title": "The run",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "2a201e2a-d62b-401c-b712-48a78c6b77cd",
+        "Title": "Grass roots",
+        "PublishedIn": "1989-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "1187a4f1-73b6-44c6-8d74-fd0acb32a365",
+        "Title": "Deep lie",
+        "PublishedIn": "1986-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      },
+      {
+        "Id": "f7f2a416-1368-49ff-9f81-d3bbaa946851",
+        "Title": "Run before the wind",
+        "PublishedIn": "1983-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "26509994-c0f5-4759-91f3-d22df071385b",
+        "Title": "Loitering with intent",
+        "PublishedIn": "2009-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "1cc81249-f1fe-46a1-ac28-c9788905d24f",
+        "Title": "Hot mahogany",
+        "PublishedIn": "2008-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "6de422dd-8509-4416-9c82-1050f328e386",
+        "Title": "Shoot him if he runs",
+        "PublishedIn": "2007-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "1963ddcf-8f04-4d2a-8cb5-8ff63868da98",
+        "Title": "Fresh disasters",
+        "PublishedIn": "2007-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "f42dc424-ed2a-4ddf-a243-5bedb3a1c3c4",
+        "Title": "Dark harbour",
+        "PublishedIn": "2006-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "1549e44b-77a4-46b7-a575-52cfbfc5a02d",
+        "Title": "Two dollar bill",
+        "PublishedIn": "2005-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "690d92e8-b003-4635-ba89-393eb5406646",
+        "Title": "Reckless abandon",
+        "PublishedIn": "2004-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "2a6375e6-94c7-42f6-bb73-6ae8535d12be",
+        "Title": "Dirty work",
+        "PublishedIn": "2003-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "2329caed-a09c-4570-acd4-e3b5e14c6122",
+        "Title": "The short forever",
+        "PublishedIn": "2002-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "8e6ee616-a94e-4921-86b1-e23e99330e40",
+        "Title": "Cold paradize",
+        "PublishedIn": "2001-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "5ee22310-46fb-4363-b830-2e2ad4414a2a",
+        "Title": "L.A. dead",
+        "PublishedIn": "2000-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "4f46b888-de62-4833-bfc0-b3fccddc0c12",
+        "Title": "Worst fears realized",
+        "PublishedIn": "1999-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "1b9596c7-6da3-45bf-8b1f-90405c645c91",
+        "Title": "Swimming to Catalina",
+        "PublishedIn": "1998-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "8e2cae26-878f-403b-a545-acfb127c79f7",
+        "Title": "Dead in the water",
+        "PublishedIn": "1997-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "False"
+      },
+      {
+        "Id": "7a7890fa-b2ac-45c1-926d-fb1859931f58",
+        "Title": "Dirt",
+        "PublishedIn": "1996-01-01T00:00:00",
+        "Owns": "True",
+        "Read": "True"
+      },
+      {
+        "Id": "a993e1d0-c037-4e77-905e-d1ed070aa96c",
+        "Title": "New York dead",
+        "PublishedIn": "1991-01-01T00:00:00",
+        "Owns": "False",
+        "Read": "True"
+      }
+    ]
+  }
+]

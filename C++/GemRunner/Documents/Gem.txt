@@ -1,0 +1,34 @@
+Creating the gems
+=================
+New image, 32 x 32.
+	New layer "Ring".
+		Ellipse select: create a 32 x 32 circle.
+		FG = 333333
+		BG = ffffff
+		Blend tool, FG -> BG, Reversed, Radial, Offset 3, Adaptive supersampling
+			Blend from top to bottom of selection
+		Shrink selection by 3 pixels
+		Blend tool with same settings
+			Blend from bottom to top of selection
+	New layer "Blue sphere"
+		Shrink selection by 3 pixels
+		FG = 0000ff
+		Fill bucket tool
+			Fill the selection
+	New layer "Gloss"
+		Ellipse select: create a 14 x 7 selection at (9, 6)
+		FG = ffffff
+		Blend tool, FG -> Transparent, Linear, Offset 0
+			Blend from top to bottom of selection
+		Set layer opacity to 85
+	Select layer "Blue sphere" and duplicate it, naming the new layer "Red sphere"
+		FG = ff0000
+		Fill bucket tool
+			Fill similar colors
+	Repeat for layer "Green sphere" (color 00ff00).
+	Repeat for layer "White sphere" (color eeeeee).
+	Repeat for layer "Black sphere" (color 333333).
+
+
+		
+		

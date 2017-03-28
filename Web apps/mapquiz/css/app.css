@@ -1,0 +1,185 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  font-family: arial;
+}
+
+:focus {
+  outline: none;
+}
+
+::-moz-focus-inner {
+  border:0;
+}
+
+.main { 
+  height:100%; 
+  width:100%; 
+  top:0; 
+  left:0; 
+  position: absolute; 
+}
+
+.angular-google-map-container { 
+  height:100%; 
+  width:100%; 
+  position:absolute; 
+  top:0; 
+  left:0; 
+}
+
+.question_container { 
+  position: absolute; 
+  top: 10px; 
+  left: 10px; 
+  width: 30%; 
+  z-index: 99;
+  background-color: white;
+  padding: 3px;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: #aaaaaa
+}
+
+.fix_right_half {
+  position: absolute; 
+  left: 50%; 
+}
+
+.rel_left_half {
+  position: relative;
+  left: -50%;
+}
+
+.fix_right_95 {
+  position: absolute; 
+  left: 95%; 
+}
+
+.fix_top_90 {
+  position: absolute; 
+  top: 90%; 
+}
+
+.rel_left_100 {
+  position: relative;
+  left: -100%;
+}
+
+.menu_container { 
+  top: 20%; 
+}
+
+.text_area {
+  border-bottom-style:solid; 
+  border-bottom-color: gray; 
+  border-bottom-width:1px; 
+  text-align: center;  
+  padding-top:10px; 
+  padding-bottom: 10px;
+}
+
+.image_area {
+  border-bottom-style:solid; 
+  border-bottom-color: gray; 
+  border-bottom-width:1px; 
+  padding-top:15px; 
+  padding-bottom: 15px;
+}
+
+.image {
+  max-height:50%;
+  max-width:100%;
+}
+
+.button_area {
+  padding-top:10px; 
+  padding-bottom: 10px;
+}
+
+.div_left {
+  width: 50%;
+  float: left;
+}
+
+.div_right {
+  margin-left: 50%;
+}
+
+.button {
+  cursor:pointer;
+  background-color: #b1d0fe; 
+  font: bold 18px Arial, Helvetica, Clean, sans-serif;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border-width: 2px;
+  border-color: #89b8fe;
+  color: white;
+}
+
+.button#start {
+  width: 200px;
+}
+
+.button#answer {
+  margin-left: 5%;
+  width: 90%;
+}
+
+.button#quit {
+  margin-left: 5%;
+  width: 90%;
+}
+
+.button#done {
+  margin-left: 5%;
+  width: 90%;
+}
+
+.button#next {
+  margin-left: 5%;
+  width: 90%;
+}
+
+.button:hover {
+  background-color: #89b8fe;
+  border-color: #6998fe;
+}
+
+.button:disabled {
+  cursor:default;
+  background-color: #f0ede5; 
+  font: bold 18px Arial, Helvetica, Clean, sans-serif;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #f0ede5; 
+  color: #dcd5c2; 
+}
+
+.center_container {
+  top: 30%; 
+  z-index: 100;
+  padding: 3px;
+}
+
+.result { 
+  z-index: 99;
+  background-color: white;
+  padding: 3px;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: #aaaaaa
+}
+
+.link {
+  font: bold 18px Arial, Helvetica, Clean, sans-serif;
+  padding: 3px;
+  background-color: white;
+  white-space: nowrap;
+  text-decoration: none;
+}

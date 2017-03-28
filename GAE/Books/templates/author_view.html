@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h3>Books for {{author.name}}</h3>
+
+    <form method="post">
+        <div data-role="collapsible">
+            <h3>Sort and filter</h3>
+            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                <select class="cookie-selector" name="sort" id="sort"> {{sort_options | safe}} </select>
+                <select class="cookie-selector" name="owns" id="owns"> {{owns_options | safe}} </select>
+                <select class="cookie-selector" name="read" id="read">{{read_options | safe}} </select>
+            </fieldset>
+            <input type="submit" action="/{{author.key().id()}}" value="Apply">
+        </div>
+    </form>
+
+    <ul data-role="listview" data-inset="true">  
+    {% for book in books %}
+        <li>
+            <a href="/{{author.key().id()}}/{{book.key().id()}}">{{book.name}} ({{book.year}})</a>
+            <a href="#" onclick='confirm("Really delete \"{{book.name}}\"?", 
+                                            function(){ 
+                                                jQuery.post("/{{author.key().id()}}/{{book.key().id()}}/delete", "",
+                                                                function(data, textStatus, jqXHR){
+                                                                    navigateFromConfirmation("/{{author.key().id()}}")
+                                                                }
+                                                            );
+                                            }
+                                        )' data-icon="delete"></a>
+        </li>
+    {% endfor %}
+    </ul>       
+
+    <a data-role="button" href="/{{author.key().id()}}/add">New book</a>
+
+{% endblock %}

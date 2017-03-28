@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+  
+    <form method="post">
+      <label for="author_name">Author:</label>
+      <input type="text" name="author_name" id="author_name" value="{{author_name}}" />
+      <input type="submit" value="OK">
+
+      <!--  <table>
+            <tr>
+                <td class="label">
+                    Author:
+                </td>
+                <td>
+                    <input type="text" name="author_name" value="{{author_name}}">
+                </td>
+                <td class="error">
+                    {{author_name_error}}
+                </td>
+            </tr>
+        </table>
+        <input type="submit">-->
+    </form>
+
+{% endblock %}

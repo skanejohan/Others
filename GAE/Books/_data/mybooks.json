@@ -1,0 +1,811 @@
+{
+  "authors": [
+    {
+      "name": "Alexandersson, Erik S",
+      "books": [
+        { "title": "Heja Masthugget", "year": 1969, "owns": true, "read": false },
+        { "title": "Revolt i Masthugget", "year": 1970, "owns": false, "read": false },
+        { "title": "Utblick från Masthugget", "year": 1971, "owns": true, "read": false },
+        { "title": "Änglarna i Masthugget", "year": 1973, "owns": true, "read": false }
+      ]
+    },
+    {
+      "name": "Benson, Raymond",
+      "books": [
+        { "title": "Blast from the past", "year": 1997, "owns": false, "read": false },
+        { "title": "Zero minus ten", "year": 1997, "owns": true, "read": true },
+        { "title": "Tomorrow never dies", "year": 1997, "owns": false, "read": false },
+        { "title": "The facts of death", "year": 1998, "owns": true, "read": true },
+        { "title": "High time to kill", "year": 1999, "owns": true, "read": true },
+        { "title": "Midsummer night’s doom", "year": 1999, "owns": false, "read": false },
+        { "title": "Live at five", "year": 1999, "owns": false, "read": false },
+        { "title": "The world is not enough", "year": 1999, "owns": false, "read": false },
+        { "title": "Doubleshot", "year": 2000, "owns": true, "read": true },
+        { "title": "Never dream of dying", "year": 2001, "owns": true, "read": true },
+        { "title": "The man with the red tatooo", "year": 2002, "owns": false, "read": false },
+        { "title": "Die another day", "year": 2002, "owns": false, "read": false }
+      ]
+    },
+    {
+      "name": "Brown, Dan",
+      "books": [
+        { "title": "Digital Fortress", "year": 1998, "owns": true, "read": true },
+        { "title": "Angels and Demons", "year": 2000, "owns": true, "read": true },
+        { "title": "Deception Point", "year": 2001, "owns": true, "read": false },
+        { "title": "The DaVinci Code", "year": 2003, "owns": true, "read": true },
+        { "title": "The lost symbol", "year": 2009, "owns": true, "read": true }
+      ]
+    },
+    {
+      "name": "Child, Lee",
+      "books": [
+        { "title": "Killing floor", "year": 1997, "owns": false, "read": false },
+        { "title": "Die trying", "year": 1998, "owns": false, "read": false },
+        { "title": "Tripwire", "year": 1999, "owns": true, "read": true },
+        { "title": "Running Blind / The visitor", "year": 2000, "owns": true, "read": true },
+        { "title": "Echo burning", "year": 2001, "owns": false, "read": false },
+        { "title": "Without fail", "year": 2002, "owns": false, "read": false },
+        { "title": "Persuader", "year": 2003, "owns": false, "read": false },
+        { "title": "The enemy", "year": 2004, "owns": true, "read": true },
+        { "title": "One shot", "year": 2005, "owns": false, "read": false },
+        { "title": "The hard way", "year": 2006, "owns": true, "read": true },
+        { "title": "Bad luck and trouble", "year": 2007, "owns": false, "read": false },
+        { "title": "Nothing to lose", "year": 2008, "owns": false, "read": false },
+        { "title": "Gone tomorrow", "year": 2009, "owns": true, "read": true },
+        { "title": "61 hours", "year": 2010, "owns": true, "read": true },
+        { "title": "Worth dying for", "year": 2011, "owns": true, "read": true }
+      ]
+    },
+    {
+      "name": "Crichton, Michael",
+      "books": [
+        { "title": "The Andromeda Strain", "year": 1969, "owns": false, "read": true },
+        { "title": "The great train robbery", "year": 1973, "owns": false, "read": false },
+        { "title": "The terminal man", "year": 1972, "owns": true, "read": true },
+        { "title": "Westworld", "year": 1974, "owns": false, "read": false },
+        { "title": "Eaters of the dead / The 13th Warrior", "year": 1976, "owns": true, "read": true },
+        { "title": "Congo", "year": 1980, "owns": false, "read": false },
+        { "title": "Sphere", "year": 1987, "owns": true, "read": true },
+        { "title": "Jurassic Park", "year": 1990, "owns": true, "read": true },
+        { "title": "Rising Sun", "year": 1991, "owns": true, "read": true },
+        { "title": "Disclosure", "year": 1993, "owns": false, "read": false },
+        { "title": "The Lost World", "year": 1995, "owns": true, "read": true },
+        { "title": "Airframe", "year": 1996, "owns": true, "read": true },
+        { "title": "Twister", "year": 1996, "owns": false, "read": false },
+        { "title": "Timeline", "year": 1998, "owns": true, "read": true },
+        { "title": "Prey", "year": 2002, "owns": true, "read": true },
+        { "title": "State of fear", "year": 2004, "owns": false, "read": false },
+        { "title": "Next", "year": 2005, "owns": false, "read": false },
+        { "title": "Pirate Latitudes", "year": 2009, "owns": true, "read": true }
+      ]
+    },
+    {
+      "name": "Crichton, Michael and Richard Preston",
+      "books": [
+        { "title": "Micro", "year": 2011, "owns": false, "read": false }
+      ]
+    },
+    {
+      "name": "Connelly, Michael",
+      "books": [
+        { "title": "The Black Echo", "year": 1992, "owns": true, "read": true },
+        { "title": "The Black Ice", "year": 1993, "owns": true, "read": true },
+        { "title": "The Concrete Blonde", "year": 1994, "owns": false, "read": false },
+        { "title": "The Last Coyote", "year": 1995, "owns": true, "read": true },
+        { "title": "The Poet", "year": 1996, "owns": true, "read": true },
+        { "title": "Trunk Music", "year": 1997, "owns": true, "read": true },
+        { "title": "Blood Work", "year": 1998, "owns": false, "read": true },
+        { "title": "Angels Flight", "year": 1999, "owns": true, "read": true },
+        { "title": "Void Moon", "year": 2000, "owns": true, "read": true },
+        { "title": "A Darkness More Than Night", "year": 2001, "owns": true, "read": true },
+        { "title": "City of Bones", "year": 2002, "owns": true, "read": true },
+        { "title": "Chasing the Dime", "year": 2002, "owns": true, "read": true },
+        { "title": "Lost Light", "year": 2003, "owns": true, "read": true },
+        { "title": "The Narrows", "year": 2004, "owns": true, "read": true },
+        { "title": "The Closers", "year": 2005, "owns": true, "read": true },
+        { "title": "The Lincoln Lawyer", "year": 2005, "owns": true, "read": true },
+        { "title": "Echo Park", "year": 2006, "owns": true, "read": true },
+        { "title": "The Overlook", "year": 2007, "owns": true, "read": true },
+        { "title": "The Brass Verdict", "year": 2008, "owns": true, "read": false },
+        { "title": "The Scarecrow", "year": 2009, "owns": true, "read": false },
+        { "title": "Nine dragons", "year": 2009, "owns": true, "read": true },
+        { "title": "The Reversal", "year": 2010, "owns": false, "read": false },
+        { "title": "The Drop", "year": 2011, "owns": false, "read": false },
+        { "title": "The Fifth Witness", "year": 2011, "owns": false, "read": false }
+      ]
+    },
+    {
+      "name": "Cruz Smith, Martin",
+      "books": [
+        { "title": "Gorky Park", "year": 1981, "owns": true, "read": false },
+        { "title": "Tokyo Station", "year": 2002, "owns": true, "read": false }
+      ]
+    },
+    {
+      "name": "Dahl, Arne",
+      "books": [
+        { "title": "Misterioso", "year": 1995, "owns": true, "read": true },
+        { "title": "Ont blod", "year": 1998, "owns": true, "read": true },
+        { "title": "Upp till toppen av berget", "year": 2000, "owns": false, "read": false },
+        { "title": "Europa Blues", "year": 2001, "owns": false, "read": false },
+        { "title": "De största vatten", "year": 2002, "owns": false, "read": false },
+        { "title": "En midsommarnattsdröm", "year": 2003, "owns": true, "read": false },
+        { "title": "Dödsmässa", "year": 2004, "owns": true, "read": false },
+        { "title": "Mörkertal", "year": 2005, "owns": false, "read": false },
+        { "title": "Efterskalv", "year": 2006, "owns": false, "read": false },
+        { "title": "Himmelsöga", "year": 2007, "owns": false, "read": false },
+        { "title": "Elva", "year": 2008, "owns": false, "read": false },
+        { "title": "Viskleken", "year": 2011, "owns": true, "read": false }
+      ]
+    },
+    {
+      "name": "Deaver, Jeffrey",
+      "books": [
+        { "title": "Carte Blanche", "year": 2011, "owns": true, "read": true }
+      ]
+    },
+    {
+      "name": "Eddy, Paul",
+      "books": [
+        { "title": "Flint", "year": 2000, "owns": true, "read": true },
+        { "title": "Flint's Law (Mandrake)", "year": 2002, "owns": true, "read": true },
+        { "title": "Flint's Code", "year": 2006, "owns": false, "read": false }
+      ]
+    },
+    {
+      "name": "Edwardson, Åke",
+      "books": [
+        { "title": "Till allt som varit dött", "year": 1995, "owns": true, "read": true },
+        { "title": "Gå ut min själ", "year": 1996, "owns": true, "read": true },
+        { "title": "Dans med en ängel", "year": 1997, "owns": true, "read": true },
+        { "title": "Rop från långt avstånd", "year": 1998, "owns": true, "read": true },
+        { "title": "Sol och skugga ", "year": 1999, "owns": true, "read": true },
+        { "title": "Låt det aldrig ta slut", "year": 2000, "owns": true, "read": true },
+        { "title": "Himlen är en plats på jorden", "year": 2001, "owns": true, "read": true },
+        { "title": "Segel av sten", "year": 2002, "owns": true, "read": true },
+        { "title": "Winterland", "year": 2003, "owns": true, "read": true },
+        { "title": "Rum nummer 10", "year": 2005, "owns": true, "read": true },
+        { "title": "Vänaste land", "year": 2006, "owns": true, "read": true },
+        { "title": "Nästan död man", "year": 2007, "owns": true, "read": true },
+        { "title": "Den sista vintern", "year": 2008, "owns": true, "read": true }
+      ]
+    },
+    {
+      "name": "Faulks, Sebastian",
+      "books": [
+        { "title": "Devil may care", "year": 2008, "owns": true, "read": true }
+      ]
+    },
+    {
+      "name": "Fleming, Ian",
+      "books": [
+        { "title": "Casino Royale", "year": 1953, "owns": true, "read": true },
+        { "title": "Live and let die", "year": 1954, "owns": true, "read": true },
+        { "title": "Moonraker", "year": 1955, "owns": false, "read": true },
+        { "title": "Diamonds are forever", "year": 1956, "owns": true, "read": true },
+        { "title": "From Russia with love", "year": 1957, "owns": true, "read": true },
+        { "title": "Dr No", "year": 1958, "owns": true, "read": true },
+        { "title": "Goldfinger", "year": 1959, "owns": true, "read": true },
+        { "title": "For your eyes only", "year": 1960, "owns": true, "read": true },
+        { "title": "Thunderball", "year": 1961, "owns": true, "read": true },
+        { "title": "The spy who loved me", "year": 1962, "owns": true, "read": true },
+        { "title": "007 in New York", "year": 1963, "owns": true, "read": true },
+        { "title": "On her Majesty’s secret service", "year": 1963, "owns": false, "read": true },
+        { "title": "You only live twice", "year": 1964, "owns": true, "read": true },
+        { "title": "The man with the golden gun", "year": 1965, "owns": true, "read": true },
+        { "title": "Octopussy", "year": 1966, "owns": true, "read": true }
+      ]
+    },
+    {
+      "name": "Gardner, John",
+      "books": [
+        { "title": "License renewed", "year": 1981, "owns": true, "read": true },
+        { "title": "For special services", "year": 1982, "owns": false, "read": true },
+        { "title": "Icebreaker", "year": 1983, "owns": true, "read": true },
+        { "title": "Role of honour", "year": 1984, "owns": true, "read": true },
+        { "title": "Nobody lives forever", "year": 1986, "owns": true, "read": true },
+        { "title": "No deals, mr Bond", "year": 1987, "owns": true, "read": true },
+        { "title": "Scorpius", "year": 1988, "owns": true, "read": true },
+        { "title": "License to kill", "year": 1989, "owns": false, "read": true },
+        { "title": "Win, lose or die", "year": 1989, "owns": true, "read": true },
+        { "title": "Brokenclaw", "year": 1990, "owns": true, "read": true },
+        { "title": "The man from Barbarossa", "year": 1991, "owns": true, "read": true },
+        { "title": "Death is forever", "year": 1992, "owns": false, "read": false },
+        { "title": "Never send flowers", "year": 1993, "owns": true, "read": true },
+        { "title": "SeaFire", "year": 1994, "owns": true, "read": true },
+        { "title": "GoldenEye", "year": 1995, "owns": true, "read": true },
+        { "title": "Cold", "year": 1996, "owns": true, "read": true }
+      ]
+    },
+    {
+      "name": "George, Elisabeth",
+      "books": [
+        { "title": "A great deliverance", "year": 1988, "owns": true, "read": true },
+        { "title": "Payment in blood", "year": 1989, "owns": false, "read": false },
+        { "title": "Well-schooled in murder", "year": 1990, "owns": true, "read": true },
+        { "title": "A suitable vengeance", "year": 1991, "owns": false, "read": false },
+        { "title": "For the sake of Elena", "year": 1993, "owns": false, "read": false },
+        { "title": "Missing Joseph", "year": 1994, "owns": false, "read": false },
+        { "title": "Playing for the ashes", "year": 1995, "owns": true, "read": true },
+        { "title": "In the presence of the enemy", "year": 1996, "owns": false, "read": false },
+        { "title": "Deception on his mind", "year": 1997, "owns": true, "read": true },
+        { "title": "In Pursuit of the Proper Sinner", "year": 1999, "owns": true, "read": true },
+        { "title": "A Traitor to Memory", "year": 2001, "owns": true, "read": true },
+        { "title": "A place of hiding", "year": 2003, "owns": true, "read": true },
+        { "title": "With no one as witness", "year": 2005, "owns": true, "read": true },
+        { "title": "What came before he shot her", "year": 2006, "owns": true, "read": true },
+        { "title": "Careless in red", "year": 2008, "owns": false, "read": false },
+        { "title": "This body of death", "year": 2010, "owns": false, "read": false }
+      ]
+    },
+    {
+      "name": "Grafton, Sue",
+      "books": [
+        { "title": "A is for alibi", "year": 1983, "owns": true, "read": true },
+        { "title": "B is for burglar", "year": 1985, "owns": true, "read": true },
+        { "title": "C is for corpse", "year": 1986, "owns": true, "read": true },
+        { "title": "D is for deadbeat", "year": 1987, "owns": true, "read": true },
+        { "title": "E is for evidence", "year": 1988, "owns": false, "read": false },
+        { "title": "F is for fugitive", "year": 1989, "owns": true, "read": true },
+        { "title": "G is for gumshoe", "year": 1990, "owns": true, "read": false },
+        { "title": "H is for homicide", "year": 1991, "owns": true, "read": true },
+        { "title": "I is innocent", "year": 1992, "owns": true, "read": true },
+        { "title": "J is for judgement", "year": 1993, "owns": true, "read": false },
+        { "title": "K is for killer", "year": 1994, "owns": true, "read": true },
+        { "title": "L is for lawless", "year": 1995, "owns": true, "read": true },
+        { "title": "M is for malice", "year": 1996, "owns": true, "read": false },
+        { "title": "N is for noose", "year": 1998, "owns": true, "read": true },
+        { "title": "O is for outlaw", "year": 1999, "owns": true, "read": false },
+        { "title": "P is for peril", "year": 2001, "owns": false, "read": false },
+        { "title": "Q is for quarry", "year": 2002, "owns": false, "read": false },
+        { "title": "R is for ricochet", "year": 2004, "owns": false, "read": false },
+        { "title": "S is for silence", "year": 2005, "owns": false, "read": false },
+        { "title": "T is for trespass", "year": 2007, "owns": false, "read": false },
+        { "title": "U is for undertow", "year": 2009, "owns": false, "read": false },
+        { "title": "V is for vengeance", "year": 2011, "owns": false, "read": false }
+      ]
+    },
+    {
+      "name": "Guillou, Jan",
+      "books": [
+        { "title": "Coq Rouge", "year": 1986, "owns": true, "read": true },
+        { "title": "Den demokratiske terroristen", "year": 1987, "owns": true, "read": true },
+        { "title": "I nationens intresse", "year": 1988, "owns": true, "read": true },
+        { "title": "Fiendens fiende", "year": 1989, "owns": true, "read": true },
+        { "title": "Den hedervärde mördaren", "year": 1990, "owns": true, "read": true },
+        { "title": "Vendetta", "year": 1991, "owns": true, "read": true },
+        { "title": "Ingen mans land", "year": 1992, "owns": true, "read": true },
+        { "title": "Den enda segern", "year": 1993, "owns": true, "read": true },
+        { "title": "I hennes majestäts tjänst", "year": 1994, "owns": true, "read": true },
+        { "title": "En medborgare höjd över varje misstanke", "year": 1995, "owns": true, "read": true },
+        { "title": "Hamlon", "year": 1995, "owns": true, "read": true },
+        { "title": "Madame terror", "year": 2006, "owns": true, "read": true },
+        { "title": "Men inte om det gäller din dotter", "year": 2008, "owns": true, "read": true },
+        { "title": "Vägen till Jerusalem", "year": 1998, "owns": true, "read": true },
+        { "title": "Tempelriddaren", "year": 1999, "owns": true, "read": true },
+        { "title": "Riket vid vägens slut", "year": 2000, "owns": true, "read": true },
+        { "title": "Arvet efter Arn", "year": 2001, "owns": true, "read": true }
+      ]
+    },
+    {
+      "name": "Hellberg, Björn",
+      "books": [
+        { "title": "Gråt i mörker", "year": 1981, "owns": true, "read": true },
+        { "title": "Födde: en dotter", "year": 1988, "owns": true, "read": true },
+        { "title": "Dråpslaget", "year": 1992, "owns": false, "read": false },
+        { "title": "Rovlystnad", "year": 1993, "owns": true, "read": true },
+        { "title": "Inte önskvärd", "year": 1994, "owns": true, "read": true },
+        { "title": "Slutkört", "year": 1995, "owns": true, "read": true },
+        { "title": "Då dagboken dog", "year": 1996, "owns": true, "read": true },
+        { "title": "Gräddhyllan", "year": 1997, "owns": true, "read": true },
+        { "title": "Hedersmord", "year": 1998, "owns": true, "read": true },
+        { "title": "Förhäxad", "year": 1998, "owns": true, "read": false },
+        { "title": "Panelhönan", "year": 1999, "owns": false, "read": false },
+        { "title": "Tacksägelsen", "year": 2000, "owns": true, "read": true },
+        { "title": "Misstaget", "year": 2000, "owns": true, "read": true },
+        { "title": "Hotelldöd", "year": 2001, "owns": false, "read": false },
+        { "title": "Den grå", "year": 2001, "owns": true, "read": true },
+        { "title": "Funny Fanny", "year": 2002, "owns": true, "read": true },
+        { "title": "Paria", "year": 2003, "owns": true, "read": true },
+        { "title": "Club Karaoke", "year": 2005, "owns": false, "read": false },
+        { "title": "Dominans", "year": 2005, "owns": false, "read": false },
+        { "title": "Dödslängtan", "year": 2006, "owns": false, "read": false },
+        { "title": "Trofésamlaren", "year": 2007, "owns": false, "read": false },
+        { "title": "Nattvandraren", "year": 2008, "owns": false, "read": false },
+        { "title": "Den fleraldige mördaren", "year": 2010, "owns": false, "read": false }
+      ]
+    },
+    {
+      "name": "Herbert, James",
+      "books": [
+        { "title": "The rats", "year": 1974, "owns": false, "read": false },
+        { "title": "The fog", "year": 1975, "owns": false, "read": false },
+        { "title": "The survivor", "year": 1976, "owns": false, "read": false },
+        { "title": "Fluke", "year": 1977, "owns": true, "read": true },
+        { "title": "The spear", "year": 1978, "owns": false, "read": false },
+        { "title": "Lair", "year": 1979, "owns": false, "read": false },
+        { "title": "The dark", "year": 1980, "owns": false, "read": false },
+        { "title": "The Jonah", "year": 1981, "owns": false, "read": false },
+        { "title": "Shrine", "year": 1983, "owns": false, "read": false },
+        { "title": "Domain", "year": 1984, "owns": true, "read": true },
+        { "title": "Moon", "year": 1985, "owns": false, "read": false },
+        { "title": "The magic cottage", "year": 1986, "owns": false, "read": false },
+        { "title": "Sepulchre", "year": 1987, "owns": false, "read": false },
+        { "title": "Haunted", "year": 1988, "owns": true, "read": true },
+        { "title": "Creed", "year": 1990, "owns": false, "read": false },
+        { "title": "Portent", "year": 1992, "owns": false, "read": false },
+        { "title": "The city", "year": 1993, "owns": false, "read": false },
+        { "title": "James Herbert's dark places", "year": 1993, "owns": false, "read": false },
+        { "title": "The ghosts of sleath", "year": 1994, "owns": false, "read": false },
+        { "title": "48", "year": 1996, "owns": false, "read": false },
+        { "title": "Others", "year": 1999, "owns": false, "read": false },
+        { "title": "Once", "year": 2001, "owns": false, "read": false },
+        { "title": "Nobody true", "year": 2003, "owns": false, "read": false },
+        { "title": "The secret of Crickly hall", "year": 2006, "owns": false, "read": false },
+        { "title": "Ash", "year": 2010, "owns": false, "read": false }
+      ]
+    },
+    {
+      "name": "Holmér, Hans",
+      "books": [
+        { "title": "Loppan", "year": 1990, "owns": true, "read": true },
+        { "title": "Monica", "year": 1991, "owns": true, "read": true },
+        { "title": "Igloo", "year": 1992, "owns": true, "read": true },
+        { "title": "Masken", "year": 1993, "owns": true, "read": true },
+        { "title": "Tie-break", "year": 1994, "owns": true, "read": true },
+        { "title": "Blindträff", "year": 1995, "owns": true, "read": true },
+        { "title": "Cykeln", "year": 1996, "owns": true, "read": true },
+        { "title": "Stockholm 2004", "year": 1997, "owns": true, "read": true },
+        { "title": "Krysset", "year": 1998, "owns": true, "read": true },
+        { "title": "Birka", "year": 1999, "owns": false, "read": false },
+        { "title": "Åttan", "year": 2000, "owns": true, "read": true },
+        { "title": "Blodshämnd", "year": 2001, "owns": true, "read": true }
+      ]
+    },
+    {
+      "name": "Holt, Anne",
+      "books": [
+        { "title": "Blind Gudinna", "year": 1995, "owns": true, "read": true },
+        { "title": "Saliga äro de som törsta", "year": 1995, "owns": true, "read": true },
+        { "title": "Demonens död", "year": 1996, "owns": false, "read": false },
+        { "title": "Mea Culpa", "year": 1998, "owns": false, "read": false },
+        { "title": "Död joker", "year": 2000, "owns": true, "read": true },
+        { "title": "Det som tillhör mig", "year": 2002, "owns": false, "read": false },
+        { "title": "Bortom sanningen", "year": 2003, "owns": true, "read": false },
+        { "title": "Det som aldrig sker", "year": 2004, "owns": false, "read": false },
+        { "title": "Presidentens val", "year": 2007, "owns": false, "read": false },
+        { "title": "1222 över havet", "year": 2008, "owns": false, "read": false },
+        { "title": "Frukta inte", "year": 2009, "owns": false, "read": false }
+      ]
+    },
+    {
+      "name": "Holt, Anne & Reiss-Andersen, Berit",
+      "books": [
+        { "title": "I lejonets gap", "year": 1998, "owns": false, "read": false },
+        { "title": "Utan eko", "year": 2001, "owns": true, "read": true }
+      ]
+    },
+    {
+      "name": "LeCarré, John",
+      "books": [
+        { "title": "Call for the Dead", "year": 1961, "owns": false, "read": false },
+        { "title": "A Murder of Quality", "year": 1962, "owns": false, "read": false },
+        { "title": "The Spy Who Came In From The Cold", "year": 1963, "owns": true, "read": true },
+        { "title": "The Looking-Glass War", "year": 1965, "owns": true, "read": true },
+        { "title": "A Small Town In Germany", "year": 1968, "owns": true, "read": false },
+        { "title": "The Naive and Sentimental Lover", "year": 1971, "owns": false, "read": false },
+        { "title": "Tinker, Tailor, Soldier, Spy", "year": 1974, "owns": false, "read": false },
+        { "title": "The Honourable Schoolboy", "year": 1977, "owns": false, "read": false },
+        { "title": "Smiley's People", "year": 1979, "owns": true, "read": true },
+        { "title": "The Little Drummer Girl", "year": 1983, "owns": false, "read": false },
+        { "title": "A Perfect Spy", "year": 1986, "owns": true, "read": true },
+        { "title": "The Russia House", "year": 1989, "owns": false, "read": false },
+        { "title": "The Secret Pilgrim", "year": 1990, "owns": false, "read": false },
+        { "title": "The Night Manager", "year": 1993, "owns": false, "read": false },
+        { "title": "Our Game", "year": 1995, "owns": true, "read": false }
+      ]
+    },
+    {
+      "name": "Ludlum, Robert",
+      "books": [
+        { "title": "The Matarese Circle", "year": 1979, "owns": true, "read": false }
+      ]
+    },
+    {
+      "name": "MacDonald, John D",
+      "books": [
+        { "title": "The Deep Blue Goodbye", "year": 1964, "owns": true, "read": true },
+        { "title": "Nightmare in Pink", "year": 1964, "owns": false, "read": false },
+        { "title": "A Purple Place for Dying", "year": 1964, "owns": false, "read": false },
+        { "title": "The Quick Red Fox", "year": 1964, "owns": false, "read": false },
+        { "title": "A Deadly Shade of Gold", "year": 1965, "owns": false, "read": false },
+        { "title": "Bright orange for the shroud", "year": 1965, "owns": false, "read": false },
+        { "title": "Darker than Amber", "year": 1966, "owns": false, "read": false },
+        { "title": "One Fearful Yellow Eye", "year": 1966, "owns": false, "read": false },
+        { "title": "Pale Grey for Guilt", "year": 1968, "owns": false, "read": false },
+        { "title": "The Girl in the Plain Brown Wrapper", "year": 1968, "owns": true, "read": true },
+        { "title": "Dress Her in Indigo", "year": 1969, "owns": false, "read": false },
+        { "title": "The Long Lavender Look", "year": 1970, "owns": true, "read": true },
+        { "title": "A Tan and Sandy Silence", "year": 1972, "owns": false, "read": false },
+        { "title": "The Scarlet Ruse", "year": 1973, "owns": false, "read": false },
+        { "title": "The Turqoise Lament", "year": 1973, "owns": true, "read": true },
+        { "title": "The Dreadful Lemon Sky", "year": 1975, "owns": false, "read": true },
+        { "title": "The Empty Copper Sea", "year": 1978, "owns": false, "read": true },
+        { "title": "The green ripper", "year": 1979, "owns": false, "read": false },
+        { "title": "Free Fall in Crimson", "year": 1981, "owns": false, "read": true },
+        { "title": "Cinnamon Skin", "year": 1982, "owns": true, "read": true },
+        { "title": "The Lonely Silver Rain", "year": 1985, "owns": false, "read": true }
+      ]
+    },
+    {
+      "name": "Mankell, Henning",
+      "books": [
+        { "title": "Leopardens öga", "year": 1990, "owns": true, "read": true },
+        { "title": "Mördare utan ansikte", "year": 1991, "owns": true, "read": true },
+        { "title": "Hundarna i Riga", "year": 1992, "owns": true, "read": true },
+        { "title": "Den vita lejoninnan", "year": 1993, "owns": true, "read": true },
+        { "title": "Mannen som log", "year": 1994, "owns": true, "read": true },
+        { "title": "Villospår", "year": 1995, "owns": true, "read": true },
+        { "title": "Comedia infantil", "year": 1995, "owns": true, "read": true },
+        { "title": "Den femte kvinnan", "year": 1996, "owns": true, "read": true },
+        { "title": "Steget efter", "year": 1997, "owns": true, "read": true },
+        { "title": "Brandvägg", "year": 1998, "owns": true, "read": true },
+        { "title": "Pyramiden", "year": 1999, "owns": true, "read": true },
+        { "title": "Danslärarens återkomst", "year": 2000, "owns": true, "read": true },
+        { "title": "Innan frosten", "year": 2002, "owns": true, "read": true },
+        { "title": "Kennedys hjärna", "year": 2005, "owns": false, "read": false },
+        { "title": "Den orolige mannen", "year": 2008, "owns": false, "read": false }
+      ]
+    },
+    {
+      "name": "Markham, Robert",
+      "books": [
+        { "title": "Colonel Sun", "year": 1968, "owns": true, "read": true }
+      ]
+    },
+    {
+      "name": "McBain, Ed",
+      "books": [
+        { "title": "Second ending", "year": 1954, "owns": true, "read": false },
+        { "title": "Death of a Nurse", "year": 1955, "owns": true, "read": false },
+        { "title": "The Jungle Kids", "year": 1956, "owns": true, "read": false },
+        { "title": "Cop hater", "year": 1956, "owns": true, "read": true },
+        { "title": "The mugger", "year": 1956, "owns": true, "read": true },
+        { "title": "The pusher", "year": 1956, "owns": true, "read": true },
+        { "title": "The con man", "year": 1957, "owns": true, "read": true },
+        { "title": "Killer’s choice", "year": 1957, "owns": true, "read": true },
+        { "title": "Killer’s payoff", "year": 1958, "owns": true, "read": true },
+        { "title": "Killer’s wedge", "year": 1958, "owns": true, "read": true },
+        { "title": "Lady killer", "year": 1958, "owns": true, "read": true },
+        { "title": "’Till death", "year": 1959, "owns": true, "read": true },
+        { "title": "King’s ransom", "year": 1959, "owns": true, "read": true },
+        { "title": "A matter of conviction", "year": 1959, "owns": true, "read": true },
+        { "title": "Big Man", "year": 1959, "owns": true, "read": false },
+        { "title": "Give the boys a great big hand", "year": 1960, "owns": false, "read": false },
+        { "title": "The heckler", "year": 1960, "owns": true, "read": true },
+        { "title": "See them die", "year": 1960, "owns": true, "read": true },
+        { "title": "Mothers and Daughters", "year": 1961, "owns": true, "read": false },
+        { "title": "Lady, lady, I did it!", "year": 1961, "owns": true, "read": true },
+        { "title": "The empty hours", "year": 1962, "owns": true, "read": true },
+        { "title": "Like love", "year": 1962, "owns": true, "read": true },
+        { "title": "Ten plus one", "year": 1963, "owns": true, "read": true },
+        { "title": "Axe", "year": 1964, "owns": true, "read": true },
+        { "title": "The sentries", "year": 1965, "owns": true, "read": true },
+        { "title": "He who hesitates", "year": 1965, "owns": true, "read": true },
+        { "title": "Doll", "year": 1965, "owns": true, "read": true },
+        { "title": "Eighty million eyes", "year": 1966, "owns": true, "read": true },
+        { "title": "Fuzz", "year": 1968, "owns": true, "read": true },
+        { "title": "Shotgun", "year": 1969, "owns": true, "read": true },
+        { "title": "Jigsaw", "year": 1970, "owns": true, "read": true },
+        { "title": "Hail, hail, the gang’s all here", "year": 1971, "owns": true, "read": true },
+        { "title": "Sadie when she died", "year": 1972, "owns": true, "read": true },
+        { "title": "Let’s hear it for the deaf man", "year": 1972, "owns": true, "read": true },
+        { "title": "Hail to the chief", "year": 1973, "owns": true, "read": true },
+        { "title": "Bread", "year": 1974, "owns": true, "read": true },
+        { "title": "Blood relatives", "year": 1975, "owns": true, "read": true },
+        { "title": "Where there’s smoke", "year": 1975, "owns": false, "read": false },
+        { "title": "Doors", "year": 1975, "owns": true, "read": false },
+        { "title": "Guns", "year": 1976, "owns": true, "read": true },
+        { "title": "So long as you both shall live", "year": 1976, "owns": false, "read": false },
+        { "title": "Long time no see", "year": 1977, "owns": true, "read": true },
+        { "title": "Calypso", "year": 1979, "owns": true, "read": true },
+        { "title": "Ghosts", "year": 1980, "owns": true, "read": true },
+        { "title": "Heat", "year": 1981, "owns": true, "read": true },
+        { "title": "Ice", "year": 1983, "owns": true, "read": true },
+        { "title": "Lightning", "year": 1984, "owns": false, "read": true },
+        { "title": "Eight black horses", "year": 1985, "owns": true, "read": true },
+        { "title": "Another part of the city", "year": 1986, "owns": true, "read": true },
+        { "title": "Poison", "year": 1987, "owns": true, "read": true },
+        { "title": "Tricks", "year": 1987, "owns": false, "read": true },
+        { "title": "Lullaby", "year": 1989, "owns": true, "read": true },
+        { "title": "Vespers", "year": 1990, "owns": true, "read": true },
+        { "title": "Widows", "year": 1991, "owns": true, "read": true },
+        { "title": "Kiss", "year": 1992, "owns": true, "read": true },
+        { "title": "Mischief", "year": 1993, "owns": true, "read": true },
+        { "title": "And all through the house", "year": 1994, "owns": false, "read": false },
+        { "title": "Romance", "year": 1995, "owns": true, "read": true },
+        { "title": "Nocturne", "year": 1997, "owns": false, "read": false },
+        { "title": "The big bad city", "year": 1999, "owns": true, "read": true },
+        { "title": "The last dance", "year": 2000, "owns": true, "read": true },
+        { "title": "Money Money Money", "year": 2001, "owns": true, "read": true },
+        { "title": "Fat Ollie’s Book", "year": 2002, "owns": true, "read": true },
+        { "title": "The frumious bandersnatch", "year": 2004, "owns": true, "read": true },
+        { "title": "Hark!", "year": 2004, "owns": true, "read": true },
+        { "title": "Fiddlers", "year": 2005, "owns": true, "read": true },
+        { "title": "Goldilocks", "year": 1978, "owns": true, "read": true },
+        { "title": "Rumpelstilskin", "year": 1981, "owns": true, "read": true },
+        { "title": "Beauty and the beast", "year": 1982, "owns": false, "read": false },
+        { "title": "Jack and the beanstalk", "year": 1984, "owns": true, "read": true },
+        { "title": "Snow white and rose red", "year": 1985, "owns": false, "read": true },
+        { "title": "Cinderella", "year": 1986, "owns": true, "read": false },
+        { "title": "Puss in boots", "year": 1987, "owns": true, "read": true },
+        { "title": "The house that Jack built", "year": 1988, "owns": true, "read": true },
+        { "title": "Three blind mice", "year": 1990, "owns": true, "read": false },
+        { "title": "Downtown", "year": 1991, "owns": true, "read": true },
+        { "title": "Mary, Mary", "year": 1993, "owns": true, "read": true },
+        { "title": "There was a little girl", "year": 1994, "owns": true, "read": true },
+        { "title": "Gladly the cross-eyed bear", "year": 1996, "owns": false, "read": false },
+        { "title": "The last best Hope", "year": 1998, "owns": true, "read": true },
+        { "title": "Alice in jeopardy", "year": 2005, "owns": true, "read": false }
+      ]
+    },
+    {
+      "name": "Mårtensson, Jan",
+      "books": [
+        { "title": "Helgeandsmordet", "year": 1973, "owns": true, "read": true },
+        { "title": "Drakguldet", "year": 1974, "owns": true, "read": true },
+        { "title": "Demonerna", "year": 1975, "owns": false, "read": false },
+        { "title": "Häxhammaren", "year": 1976, "owns": false, "read": false },
+        { "title": "Döden går på museum", "year": 1977, "owns": true, "read": false },
+        { "title": "Döden går på cirkus", "year": 1978, "owns": true, "read": true },
+        { "title": "Vinprovarna", "year": 1979, "owns": true, "read": true },
+        { "title": "Djävulens hand", "year": 1980, "owns": true, "read": false },
+        { "title": "Döden gör en tavla", "year": 1981, "owns": false, "read": false },
+        { "title": "Middag med döden", "year": 1982, "owns": false, "read": false },
+        { "title": "Vampyren", "year": 1983, "owns": true, "read": true },
+        { "title": "Guldmakaren", "year": 1984, "owns": false, "read": false },
+        { "title": "Häxmästaren", "year": 1985, "owns": false, "read": false },
+        { "title": "Rosor från döden", "year": 1986, "owns": false, "read": false },
+        { "title": "Den röda näckrosen", "year": 1987, "owns": true, "read": true },
+        { "title": "Neros bägare", "year": 1988, "owns": false, "read": false },
+        { "title": "Mord i Venedig", "year": 1989, "owns": true, "read": true },
+        { "title": "Akilles häl", "year": 1990, "owns": true, "read": true },
+        { "title": "Ramses hämnd", "year": 1991, "owns": true, "read": true },
+        { "title": "Midas hand", "year": 1992, "owns": false, "read": false },
+        { "title": "Gamens öga", "year": 1993, "owns": false, "read": false },
+        { "title": "Tsarens guld", "year": 1994, "owns": true, "read": true },
+        { "title": "Karons färja", "year": 1995, "owns": true, "read": true },
+        { "title": "Cesars örn", "year": 1996, "owns": true, "read": true },
+        { "title": "Högt spel", "year": 1997, "owns": true, "read": true },
+        { "title": "Det svarta guldet", "year": 1998, "owns": false, "read": false },
+        { "title": "Häxan", "year": 1999, "owns": true, "read": true },
+        { "title": "Mord på Mauritius", "year": 2000, "owns": false, "read": false },
+        { "title": "Ikaros flykt", "year": 2001, "owns": true, "read": true },
+        { "title": "Mord i Gamla Stan", "year": 2002, "owns": false, "read": false },
+        { "title": "Mord ombord", "year": 2002, "owns": false, "read": false },
+        { "title": "Dödligt svek", "year": 2003, "owns": false, "read": false },
+        { "title": "Ostindiefararen", "year": 2004, "owns": false, "read": false },
+        { "title": "Döden går på auktion", "year": 2005, "owns": false, "read": false },
+        { "title": "Den kinesiska trädgården", "year": 2006, "owns": false, "read": false },
+        { "title": "Spionen", "year": 2007, "owns": false, "read": false },
+        { "title": "Dödssynden", "year": 2008, "owns": false, "read": false },
+        { "title": "Palatsmordet", "year": 2009, "owns": false, "read": false },
+        { "title": "Mord i Havanna", "year": 2010, "owns": false, "read": false }
+      ]
+    },
+    {
+      "name": "Nesser, Håkan",
+      "books": [
+        { "title": "Det grovmaskiga nätet", "year": 1993, "owns": true, "read": true },
+        { "title": "Borkmanns punkt", "year": 1994, "owns": true, "read": true },
+        { "title": "Återkomsten", "year": 1995, "owns": true, "read": true },
+        { "title": "Kvinna med födelsemärke", "year": 1996, "owns": true, "read": true },
+        { "title": "Kommissarien och tystnaden", "year": 1997, "owns": true, "read": true },
+        { "title": "Münsters fall", "year": 1998, "owns": true, "read": true },
+        { "title": "Carambole", "year": 1999, "owns": true, "read": true },
+        { "title": "Ewa Morenos fall", "year": 2000, "owns": true, "read": true },
+        { "title": "Svalan, katten, rosen, döden", "year": 2001, "owns": true, "read": true },
+        { "title": "Fallet G", "year": 2003, "owns": false, "read": false },
+        { "title": "Människa utan hund", "year": 2006, "owns": true, "read": true },
+        { "title": "En helt annan historia", "year": 2007, "owns": true, "read": true },
+        { "title": "Berättelsen om herr Roos", "year": 2008, "owns": false, "read": false },
+        { "title": "De ensamma", "year": 2010, "owns": false, "read": false }
+      ]
+    },
+    {
+      "name": "Persson, Leif GW",
+      "books": [
+        { "title": "Grisfesten", "year": 1978, "owns": true, "read": true },
+        { "title": "Profitörerna", "year": 1979, "owns": true, "read": true },
+        { "title": "Samhällsbärarna", "year": 1982, "owns": true, "read": true },
+        { "title": "Mellan sommarens längtan och vinterns köld", "year": 2002, "owns": false, "read": true },
+        { "title": "En annan tid, ett annat liv", "year": 2003, "owns": true, "read": true },
+        { "title": "Linda - som i Lindamordet", "year": 2005, "owns": true, "read": true },
+        { "title": "Faller fritt som i en dröm", "year": 2007, "owns": true, "read": true },
+        { "title": "Den som dödar draken", "year": 2008, "owns": true, "read": true },
+        { "title": "Den döende detektiven", "year": 2010, "owns": true, "read": true }
+      ]
+    },
+    {
+      "name": "Robinson, Peter",
+      "books": [
+        { "title": "Gallows view", "year": 1987, "owns": false, "read": false },
+        { "title": "A dedicated man", "year": 1988, "owns": false, "read": false },
+        { "title": "A necessary end", "year": 1989, "owns": true, "read": true },
+        { "title": "The hanging valley", "year": 1989, "owns": false, "read": false },
+        { "title": "Past reasons hated", "year": 1991, "owns": false, "read": false },
+        { "title": "Wednesday's child", "year": 1992, "owns": false, "read": false },
+        { "title": "Dry bones that dream", "year": 1994, "owns": true, "read": true },
+        { "title": "Innocent graves", "year": 1996, "owns": false, "read": false },
+        { "title": "Dead right", "year": 1997, "owns": true, "read": true },
+        { "title": "Not safe after dark", "year": 1998, "owns": true, "read": false },
+        { "title": "In a dry season", "year": 1999, "owns": false, "read": false },
+        { "title": "Cold is the grave", "year": 2000, "owns": true, "read": true },
+        { "title": "Aftermath", "year": 2001, "owns": true, "read": true },
+        { "title": "The summer that never was", "year": 2003, "owns": false, "read": false },
+        { "title": "Playing with fire", "year": 2004, "owns": false, "read": false },
+        { "title": "Strange affair", "year": 2005, "owns": true, "read": false },
+        { "title": "Piece of my heart", "year": 2006, "owns": true, "read": true },
+        { "title": "Friend of the devil", "year": 2007, "owns": false, "read": false },
+        { "title": "All the colours of darkness", "year": 2008, "owns": true, "read": false },
+        { "title": "The price of love", "year": 2009, "owns": false, "read": false },
+        { "title": "Bad Boy", "year": 2010, "owns": true, "read": true },
+        { "title": "Before the Poison", "year": 2011, "owns": false, "read": false }
+      ]
+    },
+    {
+      "name": "Silbersky / Svedelid",
+      "books": [
+        { "title": "Sista vittnet", "year": 1977, "owns": false, "read": false },
+        { "title": "Straffspark", "year": 1978, "owns": true, "read": true },
+        { "title": "Bländverk", "year": 1979, "owns": false, "read": false },
+        { "title": "Målbrott", "year": 1980, "owns": false, "read": false },
+        { "title": "Dödens barn", "year": 1981, "owns": false, "read": false },
+        { "title": "Dina dagar är räknade", "year": 1982, "owns": false, "read": false },
+        { "title": "Ont blod", "year": 1983, "owns": true, "read": true },
+        { "title": "Villfarelsen", "year": 1984, "owns": false, "read": false },
+        { "title": "Villebrådet", "year": 1985, "owns": false, "read": false },
+        { "title": "Bilden av ett mord", "year": 1986, "owns": true, "read": true },
+        { "title": "Narrspel", "year": 1988, "owns": false, "read": false },
+        { "title": "Sprängstoff", "year": 1989, "owns": true, "read": true },
+        { "title": "En röst för döden", "year": 1990, "owns": false, "read": false },
+        { "title": "Döden tar inga mutor", "year": 1992, "owns": false, "read": false },
+        { "title": "Svart är dödens färg", "year": 1993, "owns": false, "read": false },
+        { "title": "Skrivet i blod", "year": 1994, "owns": true, "read": true },
+        { "title": "Den stora tystnaden", "year": 1995, "owns": false, "read": false },
+        { "title": "Gå i döden", "year": 1996, "owns": false, "read": false },
+        { "title": "Mördaren har inga vänner", "year": 1998, "owns": false, "read": false },
+        { "title": "Den sista lögnen", "year": 2000, "owns": false, "read": false },
+        { "title": "Upplösningen", "year": 2002, "owns": false, "read": false },
+        { "title": "Hämnden är aldrig rättvis", "year": 2006, "owns": false, "read": false }
+      ]
+    },
+    {
+      "name": "Svedelid, Olov",
+      "books": [
+        { "title": "Anmäld försvunnen", "year": 1972, "owns": true, "read": true },
+        { "title": "Svarta banken", "year": 1973, "owns": true, "read": true },
+        { "title": "Beskyddarna", "year": 1974, "owns": true, "read": true },
+        { "title": "Vapenhandlarna", "year": 1975, "owns": true, "read": true },
+        { "title": "Guds rötter", "year": 1976, "owns": true, "read": true },
+        { "title": "Slavhandlarna", "year": 1979, "owns": true, "read": true },
+        { "title": "Säkra papper", "year": 1980, "owns": true, "read": true },
+        { "title": "Glitter", "year": 1981, "owns": true, "read": true },
+        { "title": "Terrorns finger", "year": 1982, "owns": true, "read": true },
+        { "title": "Botgörarna", "year": 1983, "owns": true, "read": true },
+        { "title": "Offren", "year": 1984, "owns": true, "read": true },
+        { "title": "Barnarov", "year": 1987, "owns": true, "read": true },
+        { "title": "Gengångarna", "year": 1988, "owns": true, "read": true },
+        { "title": "De giriga", "year": 1989, "owns": true, "read": true },
+        { "title": "Facklorna", "year": 1990, "owns": true, "read": true },
+        { "title": "Utpressarna", "year": 1991, "owns": true, "read": true },
+        { "title": "Plundrarna", "year": 1992, "owns": true, "read": true },
+        { "title": "Förgörarna", "year": 1993, "owns": true, "read": true },
+        { "title": "Förfalskarna", "year": 1994, "owns": true, "read": true },
+        { "title": "Piraterna", "year": 1995, "owns": true, "read": true },
+        { "title": "Dödens medicin", "year": 1996, "owns": true, "read": true },
+        { "title": "Giftiga karameller", "year": 1997, "owns": true, "read": true },
+        { "title": "Domens dag", "year": 1998, "owns": true, "read": true },
+        { "title": "Dödens budbärare", "year": 1999, "owns": true, "read": true },
+        { "title": "Hassel och jakten på lilla Mona", "year": 2001, "owns": true, "read": true },
+        { "title": "Hassel och utpressarna", "year": 2002, "owns": true, "read": true },
+        { "title": "Nödens handelsmän", "year": 2002, "owns": true, "read": true },
+        { "title": "Främlingarna", "year": 2003, "owns": true, "read": true },
+        { "title": "Död i ruta ett", "year": 2004, "owns": false, "read": false }
+      ]
+    },
+    {
+      "name": "Tursten, Helene",
+      "books": [
+        { "title": "Den krossade tanghästen", "year": 1998, "owns": true, "read": true },
+        { "title": "Nattrond", "year": 1999, "owns": true, "read": true },
+        { "title": "Tatuerad torso", "year": 2000, "owns": true, "read": true },
+        { "title": "Glasdjävulen", "year": 2002, "owns": true, "read": true },
+        { "title": "Guldkalven", "year": 2004, "owns": true, "read": true },
+        { "title": "Eldsdansen", "year": 2005, "owns": true, "read": true },
+        { "title": "En man med litet ansikte", "year": 2007, "owns": true, "read": true },
+        { "title": "Det lömska nätet", "year": 2008, "owns": true, "read": true },
+        { "title": "Den som vakar i mörkret", "year": 2010, "owns": true, "read": false }
+      ]
+    },
+    {
+      "name": "Wambaugh, Joseph",
+      "books": [
+        { "title": "The new centurions", "year": 1971, "owns": true, "read": true },
+        { "title": "The blue knight", "year": 1972, "owns": true, "read": true },
+        { "title": "The onion field", "year": 1973, "owns": true, "read": true },
+        { "title": "The choirboys", "year": 1975, "owns": false, "read": true },
+        { "title": "The black marble", "year": 1978, "owns": true, "read": true },
+        { "title": "The glitter dome", "year": 1981, "owns": true, "read": true },
+        { "title": "The delta star", "year": 1983, "owns": true, "read": true },
+        { "title": "Lines and shadows", "year": 1984, "owns": false, "read": true },
+        { "title": "The secrets of Harry Bright", "year": 1985, "owns": true, "read": true },
+        { "title": "Echoes in the darkness", "year": 1987, "owns": false, "read": false },
+        { "title": "The blooding", "year": 1989, "owns": false, "read": false },
+        { "title": "The golden orange", "year": 1990, "owns": false, "read": false },
+        { "title": "Fugitive nights", "year": 1992, "owns": false, "read": false },
+        { "title": "Finnegan’s week", "year": 1993, "owns": false, "read": false },
+        { "title": "Floaters", "year": 1996, "owns": false, "read": false },
+        { "title": "The fire lover", "year": 2002, "owns": false, "read": false },
+        { "title": "Hollywood Station", "year": 2006, "owns": false, "read": false },
+        { "title": "Hollywood Crows", "year": 2008, "owns": false, "read": false },
+        { "title": "Hollywood Moon", "year": 2009, "owns": false, "read": false },
+        { "title": "Hollywood Hills", "year": 2010, "owns": false, "read": false }
+      ]
+    },
+    {
+      "name": "Wood, Christopher",
+      "books": [
+        { "title": "James Bond, the spy who loved me", "year": 1977, "owns": true, "read": true },
+        { "title": "James Bond and Moonraker", "year": 1979, "owns": false, "read": false }
+      ]
+    },
+    {
+      "name": "Woods, Stuart",
+      "books": [
+        { "title": "New York dead", "year": 1991, "owns": false, "read": true },
+        { "title": "Dirt", "year": 1996, "owns": true, "read": true },
+        { "title": "Dead in the water", "year": 1997, "owns": false, "read": false },
+        { "title": "Swimming to Catalina", "year": 1998, "owns": false, "read": false },
+        { "title": "Worst fears realized", "year": 1999, "owns": false, "read": false },
+        { "title": "L.A. dead", "year": 2000, "owns": false, "read": false },
+        { "title": "Cold paradize", "year": 2001, "owns": false, "read": false },
+        { "title": "The short forever", "year": 2002, "owns": false, "read": false },
+        { "title": "Dirty work", "year": 2003, "owns": false, "read": false },
+        { "title": "Reckless abandon", "year": 2004, "owns": false, "read": false },
+        { "title": "Two dollar bill", "year": 2005, "owns": false, "read": false },
+        { "title": "Dark harbour", "year": 2006, "owns": false, "read": false },
+        { "title": "Fresh disasters", "year": 2007, "owns": false, "read": false },
+        { "title": "Shoot him if he runs", "year": 2007, "owns": false, "read": false },
+        { "title": "Hot mahogany", "year": 2008, "owns": false, "read": false },
+        { "title": "Loitering with intent", "year": 2009, "owns": false, "read": false },
+        { "title": "Run before the wind", "year": 1983, "owns": false, "read": false },
+        { "title": "Deep lie", "year": 1986, "owns": false, "read": true },
+        { "title": "Grass roots", "year": 1989, "owns": true, "read": true },
+        { "title": "The run", "year": 2000, "owns": false, "read": false },
+        { "title": "Capital crimes", "year": 2003, "owns": false, "read": false },
+        { "title": "Mounting fears", "year": 2009, "owns": false, "read": false },
+        { "title": "Orchid beach", "year": 1998, "owns": true, "read": true },
+        { "title": "Orchid blues", "year": 2001, "owns": false, "read": false },
+        { "title": "Blood orchid", "year": 2002, "owns": false, "read": false },
+        { "title": "Iron orchid", "year": 2005, "owns": false, "read": false },
+        { "title": "Hothouse orchid", "year": 2009, "owns": false, "read": false },
+        { "title": "Prince of Beverly Hills", "year": 2004, "owns": false, "read": false },
+        { "title": "Beverly Hills dead", "year": 2008, "owns": false, "read": false },
+        { "title": "Santa fe rules", "year": 1992, "owns": false, "read": true },
+        { "title": "Short straw", "year": 2006, "owns": false, "read": false },
+        { "title": "Santa fe dead", "year": 2008, "owns": false, "read": false },
+        { "title": "Santa fe edge", "year": 2010, "owns": false, "read": false },
+        { "title": "Chiefs", "year": 1981, "owns": false, "read": false },
+        { "title": "Under the lake", "year": 1987, "owns": true, "read": true },
+        { "title": "White cargo", "year": 1988, "owns": true, "read": true },
+        { "title": "Palindrome", "year": 1991, "owns": false, "read": false },
+        { "title": "L.A. Times", "year": 1993, "owns": true, "read": false },
+        { "title": "Dead Eyes", "year": 1994, "owns": false, "read": false },
+        { "title": "Heat", "year": 1994, "owns": true, "read": true },
+        { "title": "Imperfect Strangers", "year": 1995, "owns": false, "read": false },
+        { "title": "Choke", "year": 1996, "owns": true, "read": false }
+      ]
+    }
+  ]
+}

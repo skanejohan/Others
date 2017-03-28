@@ -1,0 +1,22 @@
+﻿@model Author
+@using Books.Helpers
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-controller="Authors" asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="Name">Name:</label>
+        <input asp-for="Name" class="form-control" type="text" id="Name" placeholder="Enter name here"/>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    @if (Model != null)
+    {
+        foreach (Book b in Model.Books)
+        {
+        <p>@b.Title</p>
+
+        }
+    }
+    <button class="btn btn-xs btn-default" type="submit">OK</button>
+    @Html.ActionLinkClass("Cancel", "index", null, "btn btn-xs btn-default")
+</form>

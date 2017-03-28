@@ -1,0 +1,38 @@
+﻿body {
+    padding-top: 50px;
+}
+
+#filter {
+    width: 300px;
+}
+
+#filterclear {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    bottom: 0;
+    height: 14px;
+    margin: auto;
+    font-size: 14px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+#map-canvas {
+    width: 33.3333%;
+    height: calc(100% - 0);
+    position: absolute;
+    right: 16px;
+    top: 50px;
+    bottom: 0;
+    overflow: hidden;
+}
+
+#left {
+    width: 66%; 
+    height: calc(100% - 0);
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    overflow: scroll;
+}

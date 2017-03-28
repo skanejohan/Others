@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form method="post">
+        {{name}}
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" placeholder="Enter title here" value="{{name}}">
+        <label for="year">Year:</label>
+        <input type="number" name="year" id="year" placeholder="Enter year of publication here" value="{{year}}">
+        <label for="owns">Owns</label>
+        <input type="checkbox" name="owns" id="owns" value="True" {{owns_checked}}>
+        <label for="read">Read</label>
+        <input type="checkbox" name="read" id="read" value="True" {{read_checked}}>
+        <input type="submit" value="OK">
+        <!--<table>
+            <tr>
+                <td class="label">
+                    Book:
+                </td>
+                <td>
+                    <input type="text" name="name" value="{{name}}">
+                </td>
+                <td class="error">
+                    {{book_name_error}}
+                </td>
+                <td class="label">
+                    Year:
+                </td>
+                <td>
+                    <input type="number" name="year" value="{{year}}">
+                </td>
+                <td class="error">
+                    {{book_year_error}}
+                </td>
+                <td class="label">
+                    Owns:
+                </td>
+                <td>
+                    <input type="checkbox" name="owns" value="True" {{owns_checked}}>
+                </td>
+                <td class="label">
+                    Read:
+                </td>
+                <td>
+                    <input type="checkbox" name="read" value="True" {{read_checked}}>
+                </td>
+            </tr>
+        </table>
+        <input type="submit">-->
+    </form>
+
+{% endblock %}
+

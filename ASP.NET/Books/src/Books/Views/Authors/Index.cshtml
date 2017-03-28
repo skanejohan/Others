@@ -1,0 +1,22 @@
+﻿@model List<Author>
+@using Books.Helpers
+
+<h2>Authors</h2>
+
+<div class="container">
+    @foreach (Author a in Model)
+    {
+        <div class="row">
+            <p class="col-lg-9 col-md-9 col-sm-9 col-xs-9">@a.Name</p>
+            @*<a class="col-xs-1 btn btn-xs btn-success" href="/authors/{@a.Id}/books">Books</a>*@
+            @Html.ActionLinkClass("Books", "index", "books", new { authorId = a.Id }, "col-xs-1 btn btn-xs btn-success")
+            @Html.ActionLinkClass("Edit", "edit", new { id = a.Id }, "col-xs-1 btn btn-xs btn-success")
+            @Html.ActionLinkClass("Delete", "delete", new { id = a.Id }, "col-xs-1 btn btn-xs btn-danger")
+        </div>
+    }
+</div>
+
+<p>
+    @Html.ActionLinkClass("Create New", "add", new { }, "btn btn-xs btn-success")
+</p>
+

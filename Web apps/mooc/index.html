@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/courses.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <title>My online courses</title>
+</head>
+
+<body>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="/mooc/index.html" class="navbar-brand">My online courses</a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#hamburger-navigation">
+                    <span class="sr-only">Navigation toggle</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="hamburger-navigation">
+                <ul class="nav navbar-nav" role="menu">
+                    <li><a href="#" id="sortbyname" class="active">Sort by name</a><span class="sr-only">current</span></li>
+                    <li><a href="#" id="sortbydate">Sort by date</a></li>
+                </ul>
+                <form class="navbar-form">
+                    <div class="form-group" style="display:inline;">
+                        <div class="btn-group">
+                            <input type="text" id="filter" class="form-control" placeholder="Filter courses">
+                            <span id="filterclear" class="glyphicon glyphicon-remove-circle"></span>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </nav>
+
+    <div id="map-canvas"></div>
+
+    <div class="container-fluid" id="main">
+        <div class="row">
+            <div class="col-xs-8 panel-body" id="left">
+                <table class="table table-striped table-hover course-table pre-scrollable"></table>
+            </div>
+            <div class="col-xs-4"><!-- This div will hold the map canvas --></div>
+        </div>
+    </div>
+
+    <script src="Scripts/jquery-2.1.3.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyAIQ3Vxs3dAPbkzeotgR4H6xu2sgXhn3ng&sensor=FALSE"></script>
+    <script src="Scripts/courses_model.js"></script>
+    <script src="Scripts/courses_controller.js"></script>
+
+    <script type="text/javascript">
+
+        var map;
+        var model = Model();
+        controller = Controller(model, ".course-row", ".course-table", "#filter");
+
+        $("#filter").on("change keyup paste click", function () { controller.populate(); });
+        $("#sortbyname").on("click", function () { controller.setSort("name"); controller.populate(); });
+        $("#sortbydate").on("click", function () { controller.setSort("date"); controller.populate(); });
+
+        function setFilter(filter) {
+            $("#filter").val(filter);
+            $("#filter").click();
+        }
+
+        $("#filterclear").click(function () {
+            setFilter('');
+        });
+
+        function navigateTo(lat, lng) {
+            map.setZoom(14);
+            map.setCenter(new google.maps.LatLng(lat, lng));
+        }
+
+        google.maps.event.addDomListener(window, 'load',
+            function () {
+                controller.setSort("date");
+                controller.setSort("date"); // Twice, because initially we want the latest entry at the top.
+                controller.populate();
+
+                map = new google.maps.Map(
+                    document.getElementById("map-canvas"),
+                    {
+                        center: new google.maps.LatLng(57.707141, 11.966826),
+                        zoom: 15
+                    });
+
+                model.universities().map(
+                    function (uni) {
+                        var marker = new google.maps.Marker(
+                            {
+                                map: map,
+                                title: uni.name + " - click to filter the list of courses",
+                                position: new google.maps.LatLng(uni.lat, uni.lng)
+                            });
+                        google.maps.event.addListener(marker, 'click', function () { setFilter(uni.name); });
+                    });
+            });
+    </script>
+
+</body>
+</html>

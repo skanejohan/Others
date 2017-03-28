@@ -1,0 +1,160 @@
+var mockserverif = {
+    getScore: function(image_id, latlng) {
+        var clickedPosition = latlng;
+        var correctPosition = this.accessFile(image_id).loc;
+        var allowedRadius = this.accessFile(image_id).radius;
+        var dist = google.maps.geometry.spherical.computeDistanceBetween(clickedPosition, correctPosition);
+        var score = 0;
+        if (dist > allowedRadius + 100) 
+            score = 0;
+        else if (dist > allowedRadius)
+            score = 100 - (Math.floor(dist) - allowedRadius);
+        else
+            score = 100;
+        return { distance: dist, score: score }
+    },
+
+    getFile: function() {
+        index = Math.floor(Math.random() * this.files.length);
+        file = this.accessFile(index);
+        return { id: index, url: file.url, hint: file.hint, solution: file.solution, radius: file.radius };
+    },
+
+    accessFile: function(index) {
+        return {
+            url: "https://dl.dropboxusercontent.com/u/20822867/Map_Pics/" + this.files[index].url, 
+            loc: new google.maps.LatLng(this.files[index].loc[0], this.files[index].loc[1]),
+            hint: this.files[index].hint || "",
+            solution: this.files[index].solution,
+            radius: this.files[index].radius || 100
+        } 
+    },
+
+    files: [
+        { url: "DSC03161.JPG", loc: [57.697141, 11.936871], solution: "Masthuggskyrkan" }, 
+        { url: "DSC03164.JPG", loc: [57.697409, 11.933258], solution: "Gatenhielmska reservatet", radius: 200 },
+        { url: "DSC03166.JPG", loc: [57.699050, 11.931508], solution: "Sjöfartsmuseet" },
+        { url: "DSC03175.JPG", loc: [57.700209, 11.931680], solution: "Amerikaskjulet" },
+        { url: "DSC03176.JPG", loc: [57.699196, 11.932108], solution: "Sjöfartsmuseet" },
+        { url: "DSC03178.JPG", loc: [57.699650, 11.936342], solution: "restaurang Henriksberg" },
+        { url: "DSC03180.JPG", loc: [57.700001, 11.938953], solution: "Amerikahuset" },
+        { url: "DSC03182.JPG", loc: [57.699678, 11.942734], solution: "Kommersen loppmarknad" },
+        { url: "DSC03185.JPG", loc: [57.704933, 11.947479], solution: "Götaverkens flytdocka", radius: 200 },
+        { url: "DSC03189.JPG", loc: [57.704852, 11.955655], solution: 'det flytande parkeringshuset "P-arken"' },
+        { url: "DSC03192.JPG", loc: [57.707618, 11.971153], hint: "Hörnhuset", solution: "fastigheten i hörnet av Norra Hamngatan och Nils Ericsonsgatan" },
+        { url: "DSC03199.JPG", loc: [57.709412, 11.959748], solution: 'Jagaren "Småland"' },
+        { url: "DSC03202.JPG", loc: [57.710272, 11.961435], solution: "S/S Marieholm" },
+        { url: "DSC03203.JPG", loc: [57.710785, 11.962902], solution: "Göteborgsoperan", radius: 150 },
+        { url: "DSC03208.JPG", loc: [57.713312, 11.967575], solution: 'fastigheten Lilla Bommen 1 ("läppstiftet")' },
+        { url: "DSC03214.JPG", loc: [57.705412, 11.948727], solution: "Götaverkens flytdocka", radius: 200 },
+        { url: "DSC03218.JPG", loc: [57.704182, 11.945740], solution: "Götaverkens flytdocka", radius: 200 },
+        { url: "DSC03222.JPG", loc: [57.705353, 11.941342], solution: "Ericsson-huset på Lindholmen" },
+        { url: "DSC03225.JPG", loc: [57.703029, 11.934204], solution: "Chalmers sjösäkerhetscentrum" },
+        { url: "DSC03229.JPG", loc: [57.703601, 11.955212], solution: "Mercur-huset" },
+        { url: "DSC03417.JPG", loc: [57.696626, 11.950599], solution: "Viktoriahuset" },
+        { url: "DSC03418.JPG", loc: [57.695978, 11.955223], solution: "Skansen Kronan" },
+        { url: "DSC03423.JPG", loc: [57.694361, 11.949977], solution: "Nordhemsskolan" },
+        { url: "DSC03425.JPG", loc: [57.696386, 11.954949], solution: "Skansen Kronan" },
+        { url: "DSC03434.JPG", loc: [57.695321, 11.956360], solution: "Korsettfabriken" },
+        { url: "DSC03435.JPG", loc: [57.697220, 11.961477], solution: "Handelshögskolan" },
+        { url: "DSC03437.JPG", loc: [57.699038, 11.962205], solution: "Hagakyrkan" },
+        { url: "DSC03439.JPG", loc: [57.698431, 11.961644], solution: "Göteborgs Stads minnesmärke över Raoul Wallenberg" },
+        { url: "DSC03441.JPG", loc: [57.697929, 11.961906], solution: "universitetsbiblioteket" },
+        { url: "DSC03444.JPG", loc: [57.693055, 11.958644], solution: "Saronkyrkan" },
+        { url: "DSC03447.JPG", loc: [57.692500, 11.955082], solution: "Sveaplan" },
+        { url: "DSC03448.JPG", loc: [57.696543, 11.947564], solution: "Oscar Fredrikskyrkan" },
+        { url: "DSC03449.JPG", loc: [57.696602, 11.947131], solution: "Oscar Fredrikskyrkan" },
+        { url: "DSC03452.JPG", loc: [57.696741, 11.946101], solution: "Oscar Fredriksskolan" },
+        { url: "DSC03453.JPG", loc: [57.656028, 12.018724], solution: "Mölndals Station" },
+        { url: "DSC03455.JPG", loc: [57.702326, 11.964020], solution: "Pedagogen (hus A)" },
+        { url: "DSC03457.JPG", loc: [57.701653, 11.964184], solution: "Pedagogen (hus A)" },
+        { url: "DSC03459.JPG", loc: [57.701242, 11.963058], solution: "Pedagogen (hus B)" },
+        { url: "DSC03462.JPG", loc: [57.702692, 11.961294], solution: "Televerkets hus" },
+        { url: "DSC03464.JPG", loc: [57.702074, 11.961646], solution: "S:t Andrews Church (Engelska kyrkan)" },
+        { url: "DSC03465.JPG", loc: [57.700434, 11.960901], hint: "bron", solution: "Rosenlundsbron" },
+        { url: "DSC03466.JPG", loc: [57.700475, 11.960012], solution: "Klubb Rio Rio" },
+        { url: "DSC03467.JPG", loc: [57.701029, 11.957829], solution: "Feskekôrka" },
+        { url: "DSC03468.JPG", loc: [57.700274, 11.957563], solution: "Bensinmacken på Pusterviksplatsen" },
+        { url: "DSC03469.JPG", loc: [57.699634, 11.956358], solution: "Hagabadet" },
+        { url: "DSC03476.JPG", loc: [57.699769, 11.953009], solution: "Järntorgsbrunnen" },
+        { url: "DSC03477.JPG", loc: [57.683558, 11.957986], solution: "Sahlgrenska sjukuset (norra porten)" },
+        { url: "DSC03478.JPG", loc: [57.683798, 11.956814], solution: "Sahlgrenska sjukuset (parkeringshuset)" },
+        { url: "DSC03480.JPG", loc: [57.682980, 11.949852], solution: "Ingången till botaniska trädgården" },
+        { url: "20140807_163614.jpg", loc: [57.696543, 11.947564], solution: "Oscar Fredrikskyrkan" },
+        { url: "20140807_163653.jpg", loc: [57.696741, 11.946101], solution: "Oscar Fredriksskolan" },
+        { url: "DSC02995.JPG", loc: [57.710530, 11.966062], hint: "Innan flytten till Liseberg", solution: "Pariserhjulet som nu står på Liseberg" },
+        { url: "DSC03000.JPG", loc: [57.711407, 11.966454], hint: "Magasinshuset", solution: "Kajskjul 205 (Lilla Bommens torg 2)" },
+        { url: "DSC03232.JPG", loc: [57.697356, 11.909189], solution: "Eriksbergskranen" },
+        { url: "DSC03235.JPG", loc: [57.692116, 11.908258], hint: "Båtarna i förgrunden", solution: "Veteranbåtar vid Klippans Ångbåtsbrygga" },
+        { url: "DSC03236.JPG", loc: [57.692360, 11.900866], hint: "Norra pylonen", solution: "Älvsborgsbron", radius: 200 },
+        { url: "DSC03239.JPG", loc: [57.691577, 11.909116], solution: 'restaurang "Sjömagasinet", Klippan' },
+        { url: "DSC03242.JPG", loc: [57.690407, 11.907356], solution: 'hotell "Novotel", Klippan' },
+        { url: "DSC03243.JPG", loc: [57.688799, 11.903095], hint: "Södra pylonen", solution: "Älvsborgsbron", radius: 200 },
+        { url: "DSC03244.JPG", loc: [57.691741, 11.909028], solution: 'restaurang "Sjömagasinet", Klippan' },
+        { url: "DSC03245.JPG", loc: [57.689744, 11.906442], solution: "gamla sockerbruket, Klippan" },
+        { url: "DSC03246.JPG", loc: [57.689175, 11.901692], solution: "Röda Sten konsthall" },
+        { url: "DSC03255.JPG", loc: [57.689744, 11.906442], solution: "gamla sockerbruket, Klippan" },
+        { url: "DSC03257.JPG", loc: [57.690718, 11.909889], solution: "St. Birgittas kapell" },
+        { url: "DSC03263.JPG", loc: [57.684100, 11.892169], solution: "Nordiska högskolan för folkhälsovetenskap", radius: 200 },
+        { url: "DSC03264.JPG", loc: [57.683783, 11.889881], solution: 'restaurang "Malins skafferi", Nya Varvet' },
+        { url: "DSC03265.JPG", loc: [57.692501, 11.891064], solution: "Rya Kraftvärmeverk" },
+        { url: "DSC03267.JPG", loc: [57.676358, 11.883579], solution: "Hagenskolan" },
+        { url: "DSC03279.JPG", loc: [57.675596, 11.884360], solution: "Älvsborgs kyrka" },
+        { url: "DSC03284.JPG", loc: [57.669193, 11.881298], solution: "Påvelund motionscentral" },
+        { url: "DSC03289.JPG", loc: [57.663278, 11.910499], solution: "Ruddalens idrottscentrum", radius: 200 },
+        { url: "DSC03291.JPG", loc: [57.662437, 11.923181], solution: "Kaverös kyrka" },
+        { url: "DSC03294.JPG", loc: [57.689206, 11.936392], solution: "Majvallens idrottsplats" },
+        { url: "DSC03485.JPG", loc: [57.687149, 11.954055], solution: "Annedalskyrkan" },
+        { url: "DSC03491.JPG", loc: [57.652816, 11.913354], hint: "Ingången", solution: "ingång till Frölunda Torg köpcentrum" },
+        { url: "DSC03496.JPG", loc: [57.653120, 11.911100], solution: 'konstverket "Ställbart universum" vid Frölunda Torg' },
+        { url: "DSC03499.JPG", loc: [57.677657, 11.939556], solution: "Slottsskogsvallen", radius: 200 },
+        { url: "DSC03500.JPG", loc: [57.677657, 11.939556], solution: "Slottsskogsvallen" },
+        { url: "DSC03505.JPG", loc: [57.680140, 11.938191], hint: "Hål 5", solution: "Femte hålet på Slottsskogens discgolfbana", radius: 200 },
+        { url: "DSC03506.JPG", loc: [57.681948, 11.939040], hint: "Hoppbacken", solution: 'gamla backhoppningsbacken "Bragebacken" i Slottsskogen', radius: 200 },
+        { url: "DSC03510.JPG", loc: [57.650412, 11.912171], hint: "Höghuset", solution: "fastigheten Marconigatan 31, Frölunda Torg", radius: 200 },
+        { url: "DSC03512.JPG", loc: [57.651114, 11.919270], hint: "Bostadsområdet", solution: "bostadsområdet Södra Dragspelsgatan, Frölunda", radius: 250 },
+        { url: "DSC03515.JPG", loc: [57.717681, 11.981793], solution: "Gasklockan intill Oscarsleden" },
+        { url: "20140813_185236.jpg", loc: [57.661457, 12.012497], solution: "Mölndals sjukhus", radius: 200 },
+        { url: "20140813_190001.jpg", loc: [57.670353, 12.008314], solution: "Krokslätts fabriker", radius: 200 },
+        { url: "20140813_191257.jpg", loc: [57.682830, 12.009527], solution: 'SGS studentbostäder, "Ostkupan"' },
+        { url: "20140813_191308.jpg", loc: [57.683282, 12.002761], solution: "ÅF-huset", radius: 150 },
+        { url: "20140813_191438.jpg", loc: [57.685550, 12.004008], solution: "minnesstenen för färdigställandet av motorvägen mellan Kallebäck och Åbro" },
+        { url: "20140813_192608.jpg", loc: [57.697479, 11.989538], solution: "Gothia Towers" },
+        { url: "20140813_192649.jpg", loc: [57.696567, 11.992683], solution: 'restaurang "Rondo" på Liseberg', radius: 150 },
+        { url: "20140813_193401.jpg", loc: [57.698393, 11.994938], solution: "Lisebergsstationen" },
+        { url: "20140813_193650.jpg", loc: [57.697027, 11.991049], solution: "Lisebergs huvudentré" },
+        { url: "20140813_194005.jpg", loc: [57.699103, 11.987530], solution: "Scandinavium" },
+        { url: "20140813_194322.jpg", loc: [57.697735, 11.979945], solution: "Stadsbiblioteket" },
+        { url: "20140813_194514.jpg", loc: [57.698439, 11.979730], solution: "Lorensbergsteatern" },
+        { url: "20140813_194550.jpg", loc: [57.698017, 11.979488], solution: "Stadsbiblioteket" },
+        { url: "20140813_194640.jpg", loc: [57.698006, 11.979066], solution: "Karin Boye-statyn utanför stadsbiblioteket" },
+        { url: "20140813_194817.jpg", loc: [57.696919, 11.974857], solution: "Studenternas Hus" },
+        { url: "20140813_195516.jpg", loc: [57.693477, 11.971010], hint: "Var hittar vi torget?", solution: "Landala torg" },
+        { url: "20140813_195821.jpg", loc: [57.694323, 11.967815], solution: 'badmintonhallen "Fjäderborgen"' },
+        { url: "20140813_200043.jpg", loc: [57.694666, 11.964264], solution: "Samskolan" },
+        { url: "20140831_161742.jpg", loc: [57.697479, 11.989538], solution: "Gothia Towers" },
+        { url: "20140902_185452.jpg", loc: [57.726786, 12.007086], solution: "Gamlestadens fabriker" },
+        { url: "20140902_190306.jpg", loc: [57.720367, 12.002965], solution: "Pellerins margarinfabrik" },
+        { url: "20140902_190555.jpg", loc: [57.718982, 12.003101], solution: "Ånässkolan" },
+        { url: "20140902_191151.jpg", loc: [57.715898, 12.002650], solution: "Redbergsskolan" },
+        { url: "20140902_191422.jpg", loc: [57.714370, 12.003529], solution: "Sankt Pauli kyrka" },
+        { url: "20140902_192344.jpg", loc: [57.714263, 11.989501], solution: "Skansen Lejonet" },
+        { url: "20140902_193154.jpg", loc: [57.710415, 11.992653], solution: "Gårdahallen" },
+        { url: "20140902_193645.jpg", loc: [57.709391, 11.987718], solution: "Stampens kyrkogård", radius: 200 },
+        { url: "20140902_193905.jpg", loc: [57.705975, 11.987151], solution: "Nya Ullevi", radius: 150 },
+        { url: "20140902_193918.jpg", loc: [57.706511, 11.984072], solution: "Fastigheten Ullevigatan 17-19" },
+        { url: "20140902_194019.jpg", loc: [57.707748, 11.987702], solution: "Mariakyrkan" },
+        { url: "20140902_194740.jpg", loc: [57.707664, 11.979956], solution: "Barnhuset på Stampen" },
+        { url: "20140902_194929.jpg", loc: [57.707698, 11.976796], solution: "Muralmålningen på fastigheten Stampgatan 8" },
+        { url: "20140902_195010.jpg", loc: [57.708205, 11.975616], solution: "Hotell Post" },
+        { url: "20140902_195018.jpg", loc: [57.708873, 11.977928], solution: "GP-huset" },
+        { url: "20140902_195042.jpg", loc: [57.706297, 11.980090], solution: "Gamla Ullevi" },
+        { url: "20140902_195527.jpg", loc: [57.704348, 11.977989], solution: "Katolska kyrkan" },
+        { url: "20140902_195714.jpg", loc: [57.704409, 11.975921], solution: "Restaurang Trädgårn" }, // OK
+        { url: "20140902_195940.jpg", loc: [57.703304, 11.972463], solution: "Entrén till Trädgårdsföreningen" },
+        { url: "20140902_200016.jpg", loc: [57.702659, 11.971024], solution: "Stora teatern" },
+        { url: "20140902_200037.jpg", loc: [57.702985, 11.971573], solution: 'skulpturen "Bältespännarna"' }
+    ]
+
+        // { url: "", loc: [], solution: "" },
+};

@@ -1,0 +1,20 @@
+File | New | Project
+Other languages | Visual C++ | Win32 - Win32 Project
+  Name: Test
+  Location: D:\Johan\Documents\Development\Projects\Test projects\C++\HGE\
+OK
+  Application Settings - Empty Project
+Finish
+
+Right-click Test | Source Files, select Add | New item | C++ File
+  Name: Test
+OK
+
+- Select Properties | Test Properties
+- Select C/C++ | General | Additional Include Directories and enter "C:\Program Files\hge181\include"
+- Select Linker | General | Additional Library Directories and enter "C:\Program Files\hge181\lib\vc"
+- Select Linker | Input | Additional Dependencies and enter "hge.lib hgehelp.lib"
+- Select Linker | Input | Ignore specific library and enter "libc.lib"
+
+
+

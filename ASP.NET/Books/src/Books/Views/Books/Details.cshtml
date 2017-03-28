@@ -1,0 +1,14 @@
+﻿@model Book
+@using Books.Helpers
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-controller="Authors" asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="Title">Title:</label>
+        <input asp-for="Title" class="form-control" type="text" id="Name" placeholder="Enter title here" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <button class="btn btn-xs btn-default" type="submit">OK</button>
+    @Html.ActionLinkClass("Cancel", "", null, "btn btn-xs btn-default")
+</form>
