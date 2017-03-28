@@ -22,7 +22,7 @@ var mockserverif = {
 
     accessFile: function(index) {
         return {
-            url: "https://dl.dropboxusercontent.com/u/20822867/Map_Pics/" + this.files[index].url, 
+            url: "http://apps.johanahlgren.se/mapquiz/pics/" + this.files[index].url, 
             loc: new google.maps.LatLng(this.files[index].loc[0], this.files[index].loc[1]),
             hint: this.files[index].hint || "",
             solution: this.files[index].solution,
