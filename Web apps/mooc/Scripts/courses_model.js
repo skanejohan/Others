@@ -2,6 +2,7 @@
 
 
     var UNIVERSITIES = [ 
+        { id: "UPE", name: "University of Pennsylvania", city: "Philadelphia, PA, U.S.", lat: 39.952038, lng: -75.193750, url: "https://http://www.upenn.edu/" },
         { id: "MAQ", name: "Macquarie University", city: "Sydney, Australia", lat: -33.775001, lng: 151.112886, url: "https://www.mq.edu.au" },
         { id: "RIT", name: "Rochester Institute of Technology", city: "Rochester, NY, U.S.", lat: 43.085773, lng: -77.670407, url: "https://www.rit.edu//" },
         { id: "WIK", name: "University of Warwick", city: "Coventry, England", lat: 52.380864, lng: -1.561610, url: "http://www2.warwick.ac.uk/" },
@@ -24,6 +25,7 @@
     ];
 
     var COURSES = [ // Note: month = 0 - 11!
+        { unis: ["UPE"], name: "Greek and Roman Mythology", date: new Date(2017, 4), url: "https://www.coursera.org/learn/mythology"},
         { unis: ["MAQ"], name: "Big History: Connecting Knowledge", date: new Date(2017, 1), url: "https://www.coursera.org/learn/big-history"},
         { unis: ["RIC"], name: "America Through Foreign Eyes", date: new Date(2017, 1), url: "https://www.coursera.org/learn/america-through-foreign-eyes"},
         { unis: ["RIT"], name: "Video Game Design History", date: new Date(2016, 10), url: "https://www.edx.org/course/video-game-design-history-ritx-game101x"},
