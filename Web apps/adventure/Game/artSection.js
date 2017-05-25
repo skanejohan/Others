@@ -1,0 +1,6 @@
+var artSection = { 
+	name : "artSection",
+	caption : "art and architecture section",
+	items : [],
+	description : "You are in the art and architecture section. Many of the books in these shelves are of the \"coffee table book\" variety. Through the window, you can see the street outside. Both the street and the red letterbox immediately outside the window are covered by a fine layer of snow. From here you can go west to the main section or south to the history section.",
+}
