@@ -67,7 +67,7 @@ body {
   background-color: green
 }
 
-.codeKeyboard {
+.modal {
     position: fixed;
     font-family: Arial, Helvetica, sans-serif;
     top: 0;
@@ -83,12 +83,12 @@ body {
     pointer-events: none;
 }
 
-.codeKeyboard.target {
+.modal.target {
     opacity:1;
     pointer-events: auto;
 }
 
-.codeKeyboard > div {
+.keypad {
     width: 400px;
     position: relative;
     margin: 10% auto;

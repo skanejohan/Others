@@ -2,7 +2,7 @@ var plaque = {
 	name : "plaque",
 	caption : "plaque",
 	description: "This is a small copper plaque, on which is inscribed \"Parswick Books - City Centre merchant of the year 1979\". It is signed by \"The merchant guild of Parswick\". These were better times indeed.",
-	verbs : [examine]
+	verbs : ["examine"]
 }
 
 var frontDoor = (function() {
@@ -10,12 +10,12 @@ var frontDoor = (function() {
 		name : "frontDoor",
 		caption : "front door",
 		description : "This is the main entrance to your book shop. You see a sign that says \"Closed\". Luckily, that means that is says \"Open\" on the other side.",
-		verbs : [examine, open],
+		verbs : ["examine", "open"],
 		beforeOpen : beforeOpen,
 	}
 
-	function beforeOpen(gc) {
-		gc.result = "As you move toward the door to open it, you realise that you just got here and that it is not yet time for lunch. If ever a customer should venture into your shop, you had better be here.";
+	function beforeOpen() {
+		game.message = "As you move toward the door to open it, you realise that you just got here and that it is not yet time for lunch. If ever a customer should venture into your shop, you had better be here.";
 		return true;
 	}
 })();
