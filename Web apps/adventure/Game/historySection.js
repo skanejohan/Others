@@ -77,6 +77,7 @@ var wall = (function() {
 				   are a way of making sure that the character was in the same spot last time as now. 
 
 				   Probably, we can solve this instead by counting the number of moves the npc has taken.
+				   If these are fewer than the "delay" (1 in this case), the npc doesn't move at all,
 				   but stays where we placed him.
 				*/
 				game.apply(fictionSection, "moveTo");
