@@ -83,6 +83,9 @@ var game = (function() {
 			// addTo(location, item) - add item to the specified location.
 			addTo : (location, item) => addToItems(item, location.items),
 
+			// removeFrom(location, item) - remove item from the specified location.
+			removeFrom : (location, item) => removeFromItems(item, location.items),
+
 			// getVerbs(item)
 			getVerbs : itemGetVerbs,
 
@@ -131,6 +134,21 @@ var game = (function() {
 
 		},
 
+		npcs : {
+
+			// add(npc, loc) - add the npc to the given location
+			add : addNpc,
+
+			// move(npc, loc) - move the npc to the given location
+			move : moveNpc, 
+
+			// remove(npc) - remove the npc
+			remove : removeNpc, 
+
+			// The description of all npc's, like "A enters" or "B is here".
+			get descriptions() { return that.context.npcsDescription } 
+		},
+
 		// apply(item, verb) - applies the given verb to the item. If there is a function
 		// with the verb's name among the function of the actions object (typically because
 		// it is a general function, such as take, drop, examine...), that function is
@@ -144,6 +162,9 @@ var game = (function() {
 		// message = ...
 		set message(m) { that.context.result = m },
 	
+		// location(i) - returns the location where the player character was i steps ago.
+		location : function(i) { return that.context.previousLocations[i] },
+
 		saveGame : saveGame,
 
 		loadGame : loadGame,
@@ -158,6 +179,9 @@ var game = (function() {
         that.context.inventory = [];
         that.context.flags = new Set();
         that.context.result = msg;
+        that.context.previousLocations = [loc, loc, loc, loc, loc];
+        that.context.npcs = [];
+        that.context.npcsDescription = [];
     };
 
 	function flagsSet(flag) {
@@ -369,6 +393,7 @@ var game = (function() {
 	}
 
 	function apply(item, verb, param) {
+		that.context.npcsDescription = [];
 		var v = verbName(verb);
 		if (typeof game.actions[verb] === "function") {
 			game.actions[verb](item, param);
@@ -379,7 +404,42 @@ var game = (function() {
 		if (v != "enterCombination") {
 	    	state.add("game.apply(" + item.name + ", '" + v + "')");
 		}
+
+		that.context.previousLocations.pop();
+		that.context.previousLocations = [that.context.currentLocation].concat(that.context.previousLocations);
+		that.context.npcs.forEach(npc => npc.update());
 	}
+
+	function addNpc(npc, loc) {
+		if (that.context.npcs.indexOf(npc) == -1) {
+			that.context.npcs.push(npc);
+			game.items.addTo(loc, npc);
+			npc.location = loc;
+		}
+	}
+
+	function moveNpc(npc, loc) {
+		var oldLocation = npc.location;
+		game.items.removeFrom(oldLocation, npc);
+		npc.location = loc;
+		game.items.addTo(loc, npc);
+		if (loc == that.context.currentLocation) {
+			if (oldLocation != loc) {
+				that.context.npcsDescription.push(npc.caption + " enters");
+			}
+			else {
+				that.context.npcsDescription.push(npc.caption + " is also here");
+			}
+		}
+	}
+
+	function removeNpc(npc) {
+		var idx = that.context.npcs.indexOf(npc);
+		if (idx > -1) {
+			that.context.npcs.splice(idx, 1);	
+			game.items.removeFrom(npc.location, npc);
+		}
+	}		
 	
 	function saveGame(name) {
 		localStorage.setItem(that.savedGamesPrefix + name, state.toString());

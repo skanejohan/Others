@@ -1,3 +1,5 @@
+var bathroomDoor = simpleDoor("bathroomDoor", "bathroom door", DoorMode.Open);
+
 var sink = (function() {
   return { 
     name : "sink",
@@ -12,12 +14,28 @@ var sink = (function() {
   }
 })();
 
-var waterCooker = { 
-    name : "waterCooker",
-    caption : "water cooker",
-    description : "You have used this water cooker to make your tea for at many years. A trusty friend.",
-    verbs : ["examine"],
-}
+var waterCooker = (function() {
+    return {
+        name : "waterCooker",
+        caption : "water cooker",
+        description : "You have used this water cooker to make your tea for at many years. A trusty friend.",
+        verbs : ["examine"],
+        makeTea : makeTea,
+    } 
+
+    function makeTea() {
+        if (game.here.has(uncleAilbert)) {
+            game.message = "You make some tea and offer it to uncle Ailbert who drinks it a bit hesitantly. After a while, he excuses himself and enters the bathroom. You hear him lock the door.";
+            game.npcs.remove(uncleAilbert);
+            bathroomDoor.mode = DoorMode.locked;
+            game.flags.replace(Flag.UncleAilbertIntroduced, Flag.UncleAilbertGone);
+        }
+        else {
+            game.message = "You make yourself a cup of tea. It tastes lovely."
+        }
+    }
+
+})();
 
 var fridge = { 
     name : "fridge",
@@ -79,10 +97,17 @@ var chair = {
     verbs : ["examine"],
 }
 
-var kitchen = { 
-    name : "kitchen",
-    caption : "kitchen",
-    items: [sink, fridge, table, chair, cupboard],
-    description : "The cramped kitchen contains only the most essential - a sink and a small fridge. On the wall above the sink is a small cupboard with a plain white door. Here is also a small wooden table and a rickety old chair. This room has a musty smell, but you have decided not to pursue the reason for the pungent odour. Everything in here looks as if it was cheap even when the kitchen was installed many years ago. From here you can go north to the main section or south into the bathroom.",
-}
+var kitchen = (function() {
+    return { 
+        name : "kitchen",
+        caption : "kitchen",
+        items: [sink, fridge, table, chair, cupboard],
+        getExits : getExits,
+        description : "The cramped kitchen contains only the most essential - a sink and a small fridge. On the wall above the sink is a small cupboard with a plain white door. Here is also a small wooden table and a rickety old chair. This room has a musty smell, but you have decided not to pursue the reason for the pungent odour. Everything in here looks as if it was cheap even when the kitchen was installed many years ago. From here you can go north to the main section or south into the bathroom.",
+    }
+
+    function getExits() {
+        return bathroomDoor.mode == DoorMode.Closed ? { N : fictionSection } : { N : fictionSection, S : bathroom }
+    }
+})();
 

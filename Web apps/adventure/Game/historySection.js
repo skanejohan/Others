@@ -1,34 +1,3 @@
-// todo Utils\door.js
-
-DoorMode = {
-	Open : 1,
-	Closed : 2,
-	Locked : 3,
-}
-
-function lockableDoor(name, caption, mode, key) {
-	var door = { 
-		name : name,
-		caption : caption,
-		getVerbs : getVerbs,
-		mode : mode,
-		afterLock : () => {door.mode = DoorMode.Locked},
-		afterUnlock : () => {door.mode = DoorMode.Closed},
-		afterOpen : () => {door.mode = DoorMode.Open},
-		afterClose : () => {door.mode = DoorMode.Closed},
-	};
-
-	function getVerbs() {
-		var openVerb = door.mode == DoorMode.Closed ? ["open"] : []
-		var closeVerb = door.mode == DoorMode.Open ? ["close"] : []
-		var lockVerb = game.inventory.has(key) && door.mode == DoorMode.Closed ? ["lock"] : []
-		var unlockVerb = game.inventory.has(key) && door.mode == DoorMode.Locked ? ["unlock"] : []
-		return openVerb.concat(closeVerb.concat(lockVerb.concat(unlockVerb)));
-	}
-
-	return door;
-}
-
 var officeDoor = lockableDoor("officeDoor", "office door", DoorMode.Locked, officeDoorKey);
 
 var historyBookShelf = (function() {
@@ -99,12 +68,21 @@ var wall = (function() {
 			}	
 			else if (game.flags.isSet(Flag.UncleAilbertGone)) {
 				game.message = "You hit the wall with the axe until the door-shaped section has been demolished. Behind it, you see only darkness.";
+    			game.verbs.remove(wall, hit);
 		 	    game.flags.set(Flag.WallBroken);
 			}
 			else {
+				/* This is a bit of a hack. The first time we move uncle Ailbert, he will move to
+				   the location where the player character was one move ago. The following two lines
+				   are a way of making sure that the character was in the same spot last time as now. 
+
+				   Probably, we can solve this instead by counting the number of moves the npc has taken.
+				   but stays where we placed him.
+				*/
+				game.apply(fictionSection, "moveTo");
+				game.apply(fictionSection, "moveTo");
 				game.flags.set(Flag.UncleAilbertIntroduced);
-		        game.items.addTo(fictionSection, uncleAilbert);
-				game.actions.moveTo(fictionSection);
+				game.npcs.add(uncleAilbert, fictionSection);
 				game.message = "As you are about to hit the wall, the entrance door bell chimes. You take a short pause, then walk out to meet your presumed customer. It turns out to be your uncle Ailbert."
 			}
 		}
@@ -130,7 +108,7 @@ var historySection = (function() {
 	function look() {
 		var bookshelfDescription = game.flags.isSet(Flag.EntranceKnown) ? "You look at the bookshelf on the eastern wall in a way that you have never done before. " : "";
 		var officeDescription = game.flags.isSet(Flag.OfficeKeyFound) ? "." :  " which you know is filled with even more books. At least you could enter the office if the door wasn't locked and you hadn't misplaced the key. Upon second thought, north seems the only viable option here."
-		return "This windowless room contains books on history, a subject that has been dear to you ever since you took over the bookshop. Maybe as a result of this, the room is filled to the brim with books on the subjcect. Along the walls are books in the shelves from floor to ceiling. Two coffee tables are located here, both covered by large stacks of books. The two armchairs standing in one corner are also filled with books. You really ought to get rid of some of the books in here, and clean up the room a bit. If only someone would come in and buy a lot of these books... " + bookshelfDescription + "<br><br>From here you can go north to the art section or south to your office" + officeDescription;
+		return "This windowless room contains books on history, a subject that has been dear to you ever since you took over the bookshop. Maybe as a result of this, the room is filled to the brim with books on the subject. Along the walls are books in the shelves from floor to ceiling. Two coffee tables are located here, both covered by large stacks of books. The two armchairs standing in one corner are also filled with books. You really ought to get rid of some of the books in here, and clean up the room a bit. If only someone would come in and buy a lot of these books... " + bookshelfDescription + "<br><br>From here you can go north to the art section or south to your office" + officeDescription;
 	}
 })();
 

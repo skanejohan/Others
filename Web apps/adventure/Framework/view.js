@@ -8,14 +8,24 @@ var view = (function() {
 	this.eastBtn = null;
 	this.southBtn = null;
 	this.westBtn = null;
+	this.conversationContainer = null;
+	this.conversationDiv = null;
 	that = this;
 
 	return {
+		conversation : {
+			show : showConversation,
+			addStatement : addConversationStatement,
+			addResponse : addConversationResponse,
+			clear : clearConversation,
+			hide : hideConversation,
+		},
 		initialize : initialize,
 		update : update,
 	}
 
-	function initialize(locationDiv, messageDiv, locationItemsDiv, carriedItemsDiv, movementDiv, northBtn, eastBtn, southBtn, westBtn) {
+	function initialize(locationDiv, messageDiv, locationItemsDiv, carriedItemsDiv, movementDiv, northBtn, eastBtn, 
+		southBtn, westBtn, conversationContainer, conversationDiv) {
 		that.locationDiv = locationDiv;
 		that.messageDiv = messageDiv;
 		that.locationItemsDiv = locationItemsDiv;
@@ -25,10 +35,12 @@ var view = (function() {
 		that.eastBtn = eastBtn;
 		that.southBtn = southBtn;
 		that.westBtn = westBtn;
+		that.conversationContainer = conversationContainer;
+		that.conversationDiv = conversationDiv;
 	}
 
 	function update() {
-    	locationDiv.innerHTML = game.here.description();
+    	locationDiv.innerHTML = game.here.description() + "<br><br>" + game.npcs.descriptions.join("<br><br>");
     	locationItemsDiv.innerHTML = "You see:<br><br>" + htmlLocationItems();
     	carriedItemsDiv.innerHTML = "You are carrying:<br><br>" + htmlInventory();
     	movementDiv.innerHTML = htmlMovementButtons();
@@ -102,4 +114,26 @@ var view = (function() {
         return html;
 	}
 
+	function showConversation() {
+		that.conversationContainer.classList.add("target");
+		that.conversationDiv.classList.add("keypad");
+	}
+
+	function addConversationStatement(msg) {
+		that.conversationDiv.innerHTML += msg;
+		that.conversationDiv.innerHTML += "<br>";
+	}
+
+	function addConversationResponse(msg, target) {
+		that.conversationDiv.innerHTML += "<a href='#' onclick='" + target + "'>" + msg + "</a>";
+		that.conversationDiv.innerHTML += "<br>";
+	}
+
+	function clearConversation() {
+		that.conversationDiv.innerHTML = "";
+	}
+
+	function hideConversation() {
+		that.conversationContainer.classList.remove("target");
+	}
 })();

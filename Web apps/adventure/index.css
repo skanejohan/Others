@@ -74,7 +74,9 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.4);
+    _background: rgba(#ec, #d9, #c6, 0.8);
+    _background-color: #ecd9c6;
     z-index: 99999;
     opacity:0;
     -webkit-transition: opacity 400ms ease-in;
@@ -94,8 +96,9 @@ body {
     margin: 10% auto;
     padding: 5px 20px 13px 20px;
     border-radius: 10px;
-    background: #fff;
-    background: -moz-linear-gradient(#fff, #999);
-    background: -webkit-linear-gradient(#fff, #999);
-    background: -o-linear-gradient(#fff, #999);
+    _background: #fff;
+    background: #ecd9c6;
+    _background: -moz-linear-gradient(#fff, #999);
+    _background: -webkit-linear-gradient(#fff, #999);
+    _background: -o-linear-gradient(#fff, #999);
 }

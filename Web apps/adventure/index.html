@@ -2,10 +2,13 @@
   <meta charset="UTF-8">
   <head>
     <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Caudex" rel="stylesheet">
     <script type="text/javascript" src="Framework\game.js"></script>
     <script type="text/javascript" src="Framework\view.js"></script>
     <script type="text/javascript" src="Framework\keypad.js"></script>
     <script type="text/javascript" src="Framework\state.js"></script>
+    <script type="text/javascript" src="Framework\conv.js"></script>
+    <script type="text/javascript" src="Framework\door.js"></script>
 
     <script type="text/javascript" src="Game\flags.js"></script>
     <script type="text/javascript" src="Game\travelSection.js"></script>
@@ -21,6 +24,9 @@
     <script type="text/javascript" src="Game\Test\test.js"></script>
 
     <script type="text/javascript">
+        /* Credits:
+            Font: Caudex, https://fonts.google.com/specimen/Caudex
+        */
         function startGame() {
             game.initialize(travelSection, "Welcome to the game");
             view.initialize(
@@ -32,7 +38,9 @@
                 document.getElementById("northBtn"),
                 document.getElementById("eastBtn"),
                 document.getElementById("southBtn"),
-                document.getElementById("westBtn"));
+                document.getElementById("westBtn"),
+                document.getElementById('conversationContainer'),
+                document.getElementById('conversationDiv'));
             view.update();
         };
     </script>
@@ -73,6 +81,10 @@
             <p id='code'>Code: </p>
         </div>
     </div>  
+    <div id="conversationContainer" class="modal">
+        <div id="conversationDiv" class="conversation"> 
+        </div>
+    </div>  
     <script type="text/javascript">
       keypad.initialize(
         document.getElementById('keypadContainer'), 
@@ -87,14 +99,13 @@
         document.getElementById('btn7'),
         document.getElementById('btn8'),
         document.getElementById('btn9')); 
+      conversation.initialize(
+        view.conversation.show,
+        view.conversation.addStatement,
+        view.conversation.addResponse,
+        view.conversation.clear,
+        view.conversation.hide);
     </script>
-
-    <div id="conversationContainer" class="modal">
-        <div class="conversation"> 
-            <h2>Talk talk talk...</h2>
-        </div>
-    </div>  
-    <!-- document.getElementById('conversationContainer').classList.add("target"); -->
 
   </body>
 </html>

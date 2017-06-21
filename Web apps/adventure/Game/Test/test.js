@@ -38,6 +38,7 @@ function load(i) {
     eval("game.apply(historyBookShelf, 'pull')");
     eval("game.apply(wall, 'examine')");
     eval("game.apply(wall, 'hit')");
+    //eval("game.apply(uncleAilbert, 'talk')");
 
     /*
     talk to uncle Ailbert (eventually, he wants tea)

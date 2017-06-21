@@ -20,7 +20,7 @@ var drawer = (function() {
 		if (game.verbs.has(drawer, "open")) {
 			game.message = "The drawer is closed."
 		}
-		else if (game.message = awer.containedItems.indexOf(paperclip) > -1) {
+		else if (drawer.containedItems.indexOf(paperclip) > -1) {
 			game.message = "The drawer is, surprisingly enough, almost empty. The only thing you see is an old paper clip.";
 		}
 		else {
