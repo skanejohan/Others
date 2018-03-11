@@ -14,7 +14,8 @@
 
     <script type="text/javascript">
       var map;
-
+      var currentInfoWindow;
+      
       function formatDate(date) {
         var monthNames = ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", 
                           "September", "Oktober", "November", "December"];
@@ -24,15 +25,35 @@
         return day + ' ' + monthNames[monthIndex] + ' ' + year;
       }
 
-      function addMarker(map, title, position) {
+      function addMarker(map, title, popup, position) {
         var marker = new google.maps.Marker({position: position, map: map, title: title });
+        var infoWindow = new google.maps.InfoWindow({ content: popup });
+        google.maps.event.addListener(marker, 'click', 
+        	function () 
+        	{
+        		if (currentInfoWindow == infoWindow) {
+        			currentInfoWindow.close();
+        			currentInfoWindow = null;
+        		}
+        		else {
+        			if (currentInfoWindow != null) {
+        				currentInfoWindow.close();
+        			}
+	        	 	infoWindow.open(map, marker);
+	        	 	currentInfoWindow = infoWindow;
+        		}
+        	}
+        );
       }
 
       function addLocation(trip, loc) {
         s = trip.name + " (" + formatDate(trip.start) + " - " + formatDate(trip.end) + ")\n\n" + 
             loc.name + " (" + formatDate(loc.start) + " - " + formatDate(loc.end) + ")\n" +
             loc.address; 
-        addMarker(map, s, loc.position, s);
+        popup = "<b>" + trip.name + " (" + formatDate(trip.start) + " - " + formatDate(trip.end) + ")</b><br>" + 
+            loc.name + " (" + formatDate(loc.start) + " - " + formatDate(loc.end) + ")\n" +
+            loc.address;
+        addMarker(map, s, popup, loc.position);
       }
 
       function addTrip(trip) {
