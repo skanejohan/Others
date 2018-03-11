@@ -2,6 +2,7 @@
 
 
     var UNIVERSITIES = [ 
+        { id: "HVD", name: "Harvard University", city: "Cambridge, Massachusetts 02138, U.S.", lat: 42.377003, lng: -71.117293, url: "https://www.harvard.edu/" },
         { id: "PRI", name: "Princeton University", city: "Princeton, NJ, U.S.", lat: 40.344365, lng: -74.652628, url: "https://www.princeton.edu/" },
         { id: "UAZ", name: "University of Arizona", city: "Tuscon, AZ, U.S.", lat: 32.232121, lng: -110.951493, url: "http://www.arizona.edu/" },
         { id: "UPE", name: "University of Pennsylvania", city: "Philadelphia, PA, U.S.", lat: 39.952038, lng: -75.193750, url: "http://www.upenn.edu/" },
@@ -27,6 +28,7 @@
     ];
 
     var COURSES = [ // Note: month = 0 - 11!
+        { unis: ["HVD"], name: "CitiesX: The Past, Present and Future of Urban Life", date: new Date(2018, 1), url: "https://www.edx.org/course/citiesx-past-present-future-urban-life-harvardx-urban101x"},
         { unis: ["PRI"], name: "Bitcoin and Cryptocurrency Technologies", date: new Date(2017, 11), url: "https://www.coursera.org/learn/cryptocurrency"},
         { unis: ["UAZ"], name: "Roman Art and Archaeology", date: new Date(2017, 7), url: "https://www.coursera.org/learn/roman-art-archaeology"},
         { unis: ["UPE"], name: "Greek and Roman Mythology", date: new Date(2017, 4), url: "https://www.coursera.org/learn/mythology"},
