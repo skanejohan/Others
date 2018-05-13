@@ -3,7 +3,7 @@ var travels = [
 Haverdal med Farmor och Farfar. 2010?
 Hovfjället
 hyrd husbil 2015 (Kungälv, Olofsbo)
-
+Kris och Luhrs bröllop - Ronneby Brunn
 
 	{
 		name: "Rådastrands camping (Björnbyn, som mormor drev)",
@@ -57,6 +57,23 @@ hyrd husbil 2015 (Kungälv, Olofsbo)
 				address: "Järnvägsgatan 2, 533 30 Götene",
 				url: "hotellgustaf.se",
 				position: new google.maps.LatLng(58.528807, 13.492399),
+				start: new Date(2006, 8, 20), // TODO datum?
+				end: new Date(2006, 9, 10), // TODO datum?
+			},
+		]
+	},
+
+	Tjörn med Mario?
+	{
+		name: "Husbilsutflykt med Mario",
+		start: new Date(2017, 8, 20), // TODO datum?
+		end: new Date(2017, 9, 10), // TODO datum?
+		locations: [
+			{
+				name: "Hav & Logi Skärhamn",
+				address: "Rövallen 1, 471 95 Skärhamn",
+				url: "http://www.havologi.se",
+				position: new google.maps.LatLng(57.970486, 11.551854),
 				start: new Date(2006, 8, 20), // TODO datum?
 				end: new Date(2006, 9, 10), // TODO datum?
 			},
@@ -1614,6 +1631,75 @@ hyrd husbil 2015 (Kungälv, Olofsbo)
 				position: new google.maps.LatLng(28.226858, -13.991994),
 				start: new Date(2018, 1, 12),
 				end: new Date(2018, 1, 19),
+			},
+		]
+	},
+	{
+		name: "Skidåkning på Hovfjället",
+		start: new Date(2018, 2, 29),
+		end: new Date(2018, 3, 2),
+		locations: [
+			{
+				name: "Hovfjället",
+				address: "Överbyn 63, 685 94 Torsby",
+				url: "http://www.hovfjallet.se/",
+				position: new google.maps.LatLng(60.294786, 12.965671),
+				start: new Date(2018, 2, 29),
+				end: new Date(2018, 3, 2),
+			},
+		]
+	},
+	{
+		name: "Husbilstur valborgshelgen",
+		start: new Date(2018, 3, 27),
+		end: new Date(2018, 4, 1),
+		locations: [
+			{
+				name: "Prångens Camping och Stugby",
+				address: "Prångenvägen 3, 523 37 Ulricehamn",
+				url: "http://www.prangenscamping.se/",
+				position: new google.maps.LatLng(57.802778, 13.406214),
+				start: new Date(2018, 3, 27),
+				end: new Date(2018, 3, 28),
+			},
+			{
+				name: "Vadstena Camping",
+				address: "Hofslagaregatan 11, 592 30 Vadstena",
+				url: "http://www.vadstenacamping.se/",
+				position: new google.maps.LatLng(58.468567, 14.939141),
+				start: new Date(2018, 3, 28),
+				end: new Date(2018, 3, 29),
+			},
+			{
+				name: "Skeppsdockans Camping och Vandrarhem",
+				address: "Dockan 1, 614 92 Söderköping",
+				url: "http://www.soderkopingscamping.se/",
+				position: new google.maps.LatLng(58.490455, 16.306382),
+				start: new Date(2018, 3, 29),
+				end: new Date(2018, 3, 30),
+			},
+			{
+				name: "Paula och Jan-Åke",
+				address: "Kristdalavägen 12, 577 90 Hultsfred, Sverige",
+				url: "",
+				position: new google.maps.LatLng(57.520684, 15.971086),
+				start: new Date(2018, 3, 30),
+				end: new Date(2018, 4, 1),
+			},
+		]
+	},
+	{
+		name: "Bohuslän över Kristi Himmelsfärdshelgen",
+		start: new Date(2018, 4, 9),
+		end: new Date(2018, 4, 13),
+		locations: [
+			{
+				name: "Hafsten Resort",
+				address: "Hafsten 120, 451 96 Uddevalla",
+				url: "hafsten.se",
+				position: new google.maps.LatLng(58.316647, 11.722298),
+				start: new Date(2018, 4, 9),
+				end: new Date(2012, 4, 13),
 			},
 		]
 	},
