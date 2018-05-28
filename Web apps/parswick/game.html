@@ -1,0 +1,89 @@
+<html>
+
+<style>
+    html, body {
+        width:  100%;
+        height: 100%;
+        margin: 0px;
+        background-color: ecd9c6;
+    }
+</style>
+
+<canvas id="gameCanvas"></canvas>
+
+<link href="https://fonts.googleapis.com/css?family=Caudex" rel="stylesheet">
+
+<script type="text/javascript" src="theseus.framework.js"></script>
+
+<script type="text/javascript" src="theseus.drawing.canvas.js"></script>
+<script type="text/javascript" src="theseus.drawing.canvas.extensions.js"></script>
+<script type="text/javascript" src="theseus.drawing.layers.js"></script>
+<script type="text/javascript" src="theseus.drawing.gameobjects.js"></script>
+<script type="text/javascript" src="theseus.drawing.scene.js"></script>
+<script type="text/javascript" src="theseus.drawing.utils.js"></script>
+
+<script type="text/javascript" src="parswick.game.js"></script>
+<script type="text/javascript" src="parswick.game.drawingextensions.js"></script>
+
+<script>
+    var canvas;
+    var canvasContext;
+    var mousePos = { x: 0, y: 0 };
+    var sizedCanvas;
+    var layers;
+    var currentItem;
+
+    const BASE_LAYER = 0;
+    const HINT_LAYER = 1;
+    const NOTIFICATION_LAYER = 2;
+    const BG_COLOR = "black";
+    const FG_COLOR = "#ecd9c6";
+    const HINT_BG_COLOR = "gray";
+    const HL_COLOR = "white";
+    const FPS = 30;
+
+    window.onload = function() {
+        canvas = document.getElementById("gameCanvas");
+        canvasContext = canvas.getContext("2d");
+        sizedCanvas = new THESEUS.DRAWING.Canvas(canvas, 800, 450);
+        layers = new THESEUS.DRAWING.Layers();
+        canvasContext.translate(0.5, 0.5);
+        THESEUS.DRAWING.GAMEOBJECTS.initialize(sizedCanvas, layers, FG_COLOR, HINT_BG_COLOR);
+
+        THESEUS.context.initialize(THESEUS.PARSWICK.fictionSection, "Welcome to the game");
+            setInterval(function() {
+                sizedCanvas.setScale(window.innerWidth, window.innerHeight);
+                THESEUS.DRAWING.GAMEOBJECTS.setMousePos(mousePos);
+                currentItem = undefined;
+                layers.clear();
+                THESEUS.DRAWING.SCENE.draw();
+                layers.draw();
+            }, 1000 / FPS);
+
+        canvas.addEventListener("mousemove",
+            function(evt) {
+                calculateMousePos(evt);
+            });
+
+        canvas.addEventListener("click", 
+            function(evt) {
+                if (currentItem != undefined && currentItem.act != undefined) {
+                        currentItem.act(THESEUS.context);
+                        console.log(THESEUS.context.message());
+                }
+            }); 
+    }
+
+    function calculateMousePos(evt) {
+        var rect = canvas.getBoundingClientRect();
+        var root = document.documentElement;
+        var x = evt.clientX - rect.left - root.scrollLeft;
+        var y = evt.clientY - rect.top - root.scrollTop;
+        mousePos = { 
+            x : evt.clientX - rect.left - root.scrollLeft,
+            y : evt.clientY - rect.top - root.scrollTop 
+        }
+    }
+
+</script>
+</html>
