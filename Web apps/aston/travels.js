@@ -1703,4 +1703,19 @@ Kris och Luhrs bröllop - Ronneby Brunn
 			},
 		]
 	},
+	{
+		name: "Motorcykel till Danmark",
+		start: new Date(2018, 4, 25),
+		end: new Date(2018, 4, 27),
+		locations: [
+			{
+				name: "Lökken Badehotel",
+				address: "Torvet 8, 9480 Løkken, Danmark",
+				url: "loekken-badehotel.dk",
+				position: new google.maps.LatLng(57.370858, 9.711917),
+				start: new Date(2018, 4, 25),
+				end: new Date(2012, 4, 27),
+			},
+		]
+	},
 ]
