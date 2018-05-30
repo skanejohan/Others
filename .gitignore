@@ -301,3 +301,10 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+Theseus/Parswick/game/parswick.css
+Theseus/Parswick/game/parswick.framework.js
+Theseus/Parswick/game/parswick.html
+Theseus/Parswick/game/parswick.js
+Theseus/Parswick/game/parswick.test.js
+Web apps/parswick/parswick.game.js
+Web apps/parswick/theseus.framework.js
