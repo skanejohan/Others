@@ -1,0 +1,3 @@
+location dummy "dummy"
+----------------------
+Used as a way to make doors appear even if they are not used. 
