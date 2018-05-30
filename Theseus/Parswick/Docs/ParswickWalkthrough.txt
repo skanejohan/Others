@@ -1,0 +1,88 @@
+Part 1 - bookshop (present day)
+-------------------------------
+Go to the kitchen
+Open the cupboard
+Take the cup. A key is revealed.
+Take the key
+Go to the history section
+Unlock the office door with the key
+Open the door
+Go to the office
+
+Open the safe (combination 1979, as per the plaque in the outer room, although there should be many red herrings in the office)
+In the safe you find a book about the house in what is presumably latin.
+Take the book
+Go to the travel and language section
+Examine the language bookshelf - a latin dictionary is revealed (since you hold the old book)
+Get the latin dictionary
+Now examine the book about the house - this reveals the secret - a secret door in the eastern wall of what is now the history section.
+
+Go to the history section
+Remove the books from the shelf on the eastern side of the room. This reveals an old brick wall.
+
+Go to the office
+In the desk are a number of things, get the paper clip.
+There is a large cupboard filled with a lot of stuff. Get the small metal box - you remember it from your childhood... stamps? your stone collection?
+Examine the metal box. This reveals its lock.
+Pick the lock with the paper clip and open the box.
+It contains your old stone collection. Examine the stones. This reveals a small axe (term?).
+Get the small axe. 
+
+Go to the history section
+As you are about to strike the wall, the bell at the front door rings and you move to the fiction section. 
+It is your rich uncle (you need his money, so you don't want to strike the wall while he is here)
+Go to the kitchen
+Make some tea
+Give the tea to your uncle.
+Your uncle drinks the tea, then excuses himself and disappears into the bathroom, locking the door behind him.
+
+Go to the history section
+Strike the wall with the small axe. An opening is revealed.
+Enter. You walk down stairs into a dark room.
+
+TODO: How to get a light?
+
+You walk down the stairs again, into a small room with stone walls. To the east and south are entrances. Hovering in the air in front of the entrance to the east is a ghost. She prevents you from entering that entrance.
+You go south. You are in another stone room. A well-dressed (19th centrury?) ghost hovers here. He is handsome and wants to dance with you.
+You dance, but he is not satisfied with your performance. 
+You move north and up the stairs.
+In the history section, you find a book about 19th century dances. You read it.
+
+You walk down and dance again. The room is too small for his taste.
+You move out into the first room. 
+Stay for one move. He arrives. When the first ghost sees the dancer, she disappears. The dancer laughs, "she is afraid of ghosts - how ironic". You dance for a while and then he floats back into his room.
+
+You move east.
+
+TODO Who greets you here? Is it a mirror that takes you back in time?
+
+Part 2 - a country inn (early 17th century)
+-------------------------------------------
+You appear in room with a mirror. Everything looks old...
+You leave the room, walk down a corridor and down a staircase.
+You move to the bar where you start talking to people.
+
+This is the early 17th century.
+It is raining outside, which is why you can't leave.
+One of the men at the bar is Ben Jonson, famous stagewright (who drops the occasional reference to "the Bard").
+Ben Jonson has lost the manuscript for the play they are setting up for tonight. It is a disaster.
+
+You move into the kitchen. 
+You take a carrot out of a wooden bucket (trying to take the whole bucket results in "You may be fond of carrots, but stealing a whole bucket and carrying it around in the pub is probably not a good idea"). (Note: you can take one carrot at a time, as many as needed).
+You move outside into the stables.
+There are three horses. 
+Two of the horses will happily eat the carrot (you may go back and pick up more).
+The third one - belonging to Ben Jonson - is very shy and won't eat from your hand.
+Drop the carrot and the horse will move over and eat it.
+Examine hay - reveals the manuscript. (Examining the hay prior to this is possible but will not give any clue).
+
+You go back to the bar and hand the manuscript to Ben Jonson.
+
+Two very "manly" stage workers are setting up the stage. All of a sudden, they scream and head over to the bar for a beer. Rats - they refuse to continue. The rats are out of reach under the stage, you have to get the cat.
+
+
+
+...
+
+Possible: the ghost who sent you back shall be (alive) in one of the rooms, but obviously not recognize you.
+Possible: save Ben Jonson's life?
