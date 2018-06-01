@@ -57,36 +57,74 @@ THESEUS.DRAWING.GAMEOBJECTS = (function() {
         }
     }
 
+// ---------- item list --------------------------------------------------------
+
+function doDrawItemList(items, x, y, w, h, header) {
+    _canvas.pushAll(_fgColor, _fgColor, "Caudex", 16);
+    _canvas.strokeRect(x, y, w, h);
+    var _y = y + 10;
+    _canvas.fillText(header, x + 20, _y+15);
+    items.forEach(i => {
+        _y += 20;
+        item(i, x + 30, _y, _canvas.textWidth(i.caption) + 20, 20)
+            .leftAlignText()
+            .removeBorder()
+            .draw();
+    });
+    _canvas.popAll();
+}
+
+function drawItemList(items, x, y, w, h, header) {
+    _layers.addToLayer(BASE_LAYER, () => doDrawItemList(items, x, y, w, h, header) );
+}
+
 // ---------- inventory --------------------------------------------------------
 
-    function doDrawInventory() {
-        _canvas.pushAll(_fgColor, _fgColor, "Caudex", 16);
-        _canvas.strokeRect(500, 50, 250, 350);
-        _canvas.fillText("You are carrying:", 520, 80);
-        _canvas.popAll();
-    }
-
-    function drawInventory() {
-        _layers.addToLayer(BASE_LAYER, () => doDrawInventory() );
-    }
-
     function inventory() {
+        var _items = [];
+
         return { 
-            draw : drawInventory,
+            draw : () => drawItemList(_items, 500, 50, 250, 150, "You are carrying:"),
+            add : i => _items.push(i),
         }
     }
 
+// ---------- location items --------------------------------------------------------
+
+function locationItems() {
+    var _items = [];
+    return { 
+        draw : () => drawItemList(_items, 500, 250, 250, 150, "You also see:"),
+        add : i => _items.push(i),
+    }
+}
+
 // ---------- item --------------------------------------------------------
 
-    function doDrawItem(i, x, y, w, h) {
+    function doDrawItem(i, x, y, w, h, drawBorder, leftAlign) {
         _canvas.pushAll(_fgColor, _fgColor, "Caudex", 16);
-        _canvas.centeredTextRect(x, y, w, h, i.caption);
+        if (drawBorder) {
+            if (leftAlign) {
+                _canvas.leftAlignedTextRect(x, y, w, h, i.caption);
+            }
+            else {
+                _canvas.centeredTextRect(x, y, w, h, i.caption);
+            }
+        }
+        else {
+            if (leftAlign) {
+                _canvas.leftAlignedText(x, y, w, h, i.caption);
+            }
+            else {
+                _canvas.centeredText(x, y, w, h, i.caption);
+            }
+        }
         _canvas.popAll();
         i.mouseInsideItem = THESEUS.DRAWING.UTILS.insideRect(_mousePos, x, y, w, h);
     }
     
-    function drawItem(i, x, y, w, h) {
-        _layers.addToLayer(BASE_LAYER, () => doDrawItem(i, x, y, w, h) );
+    function drawItem(i, x, y, w, h, drawBorder, leftAlign) {
+        _layers.addToLayer(BASE_LAYER, () => doDrawItem(i, x, y, w, h, drawBorder, leftAlign) );
     }
     
     function doDrawItemHint(i, x, y, w) {
@@ -137,22 +175,34 @@ THESEUS.DRAWING.GAMEOBJECTS = (function() {
     }
 
     function item(i, x, y, w, h) {
+        var drawBorder = true;
+        var leftAlign = false;
+
         return { 
             draw : function() {
-                drawItem(i, x, y, w, h);
+                drawItem(i, x, y, w, h, drawBorder, leftAlign);
                 if (i.mouseInsideItem || i.mouseInsideItemHint) {
                     var hintX = x + w - 10;
                     var hintY = y;
                     var hintW = 250;
                     drawItemHint(i, hintX, hintY, hintW);
                 }
-        }}
+            },
+            leftAlignText : function() {
+                leftAlign = true;
+                return this;
+            },
+            removeBorder : function() {
+                drawBorder = false;
+                return this;
+            }
+        }
     }
 
 // ---------- walls --------------------------------------------------------
 
-    function getCoordinates(direction, startX, startY, endX, endY) {
-        if (direction == "top") {
+    function getCoordinates(direction, startX, startY, endX, endY, open) {
+        if (direction == "top" && !open) {
             return {
                 x : THESEUS.DRAWING.UTILS.roomX(startX + 1),
                 y : THESEUS.DRAWING.UTILS.roomY(startY),
@@ -160,28 +210,36 @@ THESEUS.DRAWING.GAMEOBJECTS = (function() {
                 h : THESEUS.DRAWING.UTILS.lengthY(DOOR_WINDOW_DEPTH),
             }
         }
-        if (direction == "right") {
+        if (direction == "right" && !open) {
             return {
                 x : THESEUS.DRAWING.UTILS.roomX(startX - DOOR_WINDOW_DEPTH),
-                y : THESEUS.DRAWING.UTILS.roomY(startY),
+                y : THESEUS.DRAWING.UTILS.roomY(startY + 1),
                 w : THESEUS.DRAWING.UTILS.lengthX(DOOR_WINDOW_DEPTH),
-                h : THESEUS.DRAWING.UTILS.lengthY(endY - startY),
+                h : THESEUS.DRAWING.UTILS.lengthY(endY - startY - 2),
             }
         }
-        if (direction == "bottom") {
+        if (direction == "bottom" && !open) {
             return {
-                x : THESEUS.DRAWING.UTILS.roomX(startX),
+                x : THESEUS.DRAWING.UTILS.roomX(startX + 1),
                 y : THESEUS.DRAWING.UTILS.roomY(startY - DOOR_WINDOW_DEPTH),
-                w : THESEUS.DRAWING.UTILS.lengthX(endX - startX),
+                w : THESEUS.DRAWING.UTILS.lengthX(endX - startX - 2),
                 h : THESEUS.DRAWING.UTILS.lengthY(DOOR_WINDOW_DEPTH),
             }
         }
-        if (direction == "left") {
+        if (direction == "bottom" && open) {
+            return {
+                x : THESEUS.DRAWING.UTILS.roomX(startX + 1),
+                y : THESEUS.DRAWING.UTILS.roomY(startY - (endX - startX - 2)),
+                w : THESEUS.DRAWING.UTILS.lengthX(DOOR_WINDOW_DEPTH),
+                h : THESEUS.DRAWING.UTILS.lengthY(endX - startX - 2),
+            }
+        }
+        if (direction == "left" && !open) {
             return {
                 x : THESEUS.DRAWING.UTILS.roomX(startX),
-                y : THESEUS.DRAWING.UTILS.roomY(startY),
+                y : THESEUS.DRAWING.UTILS.roomY(startY + 1),
                 w : THESEUS.DRAWING.UTILS.lengthX(DOOR_WINDOW_DEPTH),
-                h : THESEUS.DRAWING.UTILS.lengthY(endY - startY),
+                h : THESEUS.DRAWING.UTILS.lengthY(endY - startY - 2),
             }
         }
     }
@@ -191,9 +249,27 @@ THESEUS.DRAWING.GAMEOBJECTS = (function() {
         item(window, coords.x, coords.y, coords.w, coords.h).draw();
     }
 
-    function doDrawDoor(door, direction, startX, startY, endX, endY) {
-        var coords = getCoordinates(direction, startX, startY, endX, endY);
+    function doDrawDoor(door, direction, startX, startY, endX, endY, open) {
+        var coords = getCoordinates(direction, startX, startY, endX, endY, open);
         item(door, coords.x, coords.y, coords.w, coords.h).draw();
+    }
+
+    // function doDrawOpenDoor(door, direction, startX, startY, endX, endY) {
+    //     var sX = startX;
+    //     var sY = endY;
+    //     var eX = startX + (endY - startY);
+    //     var eY = endY - (endX - startX);
+     
+    //     var coords = getCoordinates(direction, sX, sY, eX, eY);
+    //     item(door, coords.x, coords.y, coords.w, coords.h).draw();
+    //     console.log(startX + "," + startY + "," + endX + "," + endY + " - " + sX + "," + sY + "," + eX + "," + eY);
+    // }
+
+    function doDrawOpening(direction, exitTo) {
+        THESEUS.DRAWING.GAMEOBJECTS[direction + "Arrow"](
+            THESEUS.DRAWING.UTILS.roomX(ARROW_DATA[direction].x), 
+            THESEUS.DRAWING.UTILS.roomY(ARROW_DATA[direction].y), 
+            () => THESEUS.context.setLocation(exitTo)).draw();
     }
 
     function doDrawWall(direction, openings, startX, startY) {
@@ -221,14 +297,15 @@ THESEUS.DRAWING.GAMEOBJECTS = (function() {
             if (o.type == "window") {
                 doDrawWindow(o.item, direction, oStartX, oStartY, oEndX, oEndY);
             }
-            else if (o.type == "door") {
-                doDrawDoor(o.item, direction, oStartX, oStartY, oEndX, oEndY);
+            else if (o.type == "closedDoor") {
+                doDrawDoor(o.item, direction, oStartX, oStartY, oEndX, oEndY, false);
+            }
+            else if (o.type == "openDoor") {
+                doDrawDoor(o.item, direction, oStartX, oStartY, oEndX, oEndY, true);
+                doDrawOpening(direction, o.exitTo);
             }
             else {
-                THESEUS.DRAWING.GAMEOBJECTS[direction + "Arrow"](
-                    THESEUS.DRAWING.UTILS.roomX(ARROW_DATA[direction].x), 
-                    THESEUS.DRAWING.UTILS.roomY(ARROW_DATA[direction].y), 
-                    () => THESEUS.context.setLocation(o.exitTo)).draw();
+                doDrawOpening(direction, o.exitTo);
             }
         });
         if (direction == "top" || direction == "bottom") {
@@ -340,6 +417,7 @@ return {
         setMousePos : setMousePos,
 
         background : background,
+        locationItems : locationItems,
         inventory : inventory,
         item : item,
     

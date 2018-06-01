@@ -119,12 +119,28 @@ THESEUS.DRAWING.UTILS = (function() {
         return location.items.toArray().filter(isFixed);
     }
     
+    function getVisibleItems(location) {
+        return location.items.toArray().filter(i => i.isVisible());
+    }
+    
     function getFixedVisibleItems(location) {
         return getFixedItems(location).filter(i => i.isVisible());
     }
     
     function getFixedVisibleDrawableItems(location) {
         return getFixedVisibleItems(location).filter(isDrawable);
+    };
+    
+    function getNormalItems(location) {
+        return location.items.toArray().filter(i => !isFixed(i));
+    }
+    
+    function getNormalVisibleItems(location) {
+        return getNormalItems(location).filter(i => i.isVisible());
+    }
+    
+    function getNormalVisibleDrawableItems(location) {
+        return getNormalVisibleItems(location).filter(isDrawable);
     };
     
     function getWindows(location, dir) {
@@ -140,8 +156,12 @@ THESEUS.DRAWING.UTILS = (function() {
     };
     
     function description(item) {
-        item.getVerbs(THESEUS.context).value("Examine")(THESEUS.context);
-        return THESEUS.context.message().replace(/&quot;/g, "\"").replace(/£/g, "\u00A3");
+        var examine = item.getVerbs(THESEUS.context).value("Examine");
+        if (typeof examine == "function") {
+            examine(THESEUS.context);
+            return THESEUS.context.message().replace(/&quot;/g, "\"").replace(/£/g, "\u00A3");
+        }
+        return "";
     }
 
     return {
@@ -157,9 +177,13 @@ THESEUS.DRAWING.UTILS = (function() {
         isDrawable : isDrawable,
         isWindow : isWindow,
         isDoor : isDoor,
+        getVisibleItems : getVisibleItems,
         getFixedItems : getFixedItems,
         getFixedVisibleItems : getFixedVisibleItems,
         getFixedVisibleDrawableItems : getFixedVisibleDrawableItems,
+        getNormalItems : getNormalItems,
+        getNormalVisibleItems : getNormalVisibleItems,
+        getNormalVisibleDrawableItems : getNormalVisibleDrawableItems,
         getWindows : getWindows,
         getDoor : getDoor,
         description : description,

@@ -16,27 +16,49 @@ THESEUS.DRAWING.SCENE = (function() {
                     item : window,
                 });
             });
-        if (exitTo != undefined) {
-            var door = THESEUS.DRAWING.UTILS.getDoor(location, dir);
-            if (door == undefined) {
+
+        var door = THESEUS.DRAWING.UTILS.getDoor(location, dir);
+        if (door != undefined) {
+            var c = door.getDrawCoords();
+            if (door.isOpen()) {
                 wall.addOpening({
-                    type: "opening", 
-                    start: 40, 
-                    length: 20, 
+                    type: "openDoor",
+                    start: c.start, 
+                    length: c.length,
                     exitTo : exitTo,
+                    item: door,
                 });
             }
             else {
-                var c = door.getDrawCoords();
                 wall.addOpening({
-                    type: "door", 
+                    type: "closedDoor", 
                     start: c.start, 
                     length: c.length,
                     item: door,
                 });
             }
         }
+        else if (exitTo != undefined) {
+            wall.addOpening({
+                type: "opening", 
+                start: 40, 
+                length: 20, 
+                exitTo : exitTo,
+            });
+        }
         wall.draw();
+    }
+
+    function itemCanBeDrawn(location, item) {
+        if (typeof item.getDrawCoords != "function") {
+            return false;
+        }
+
+        if (THESEUS.DRAWING.UTILS.isFixed(item)) {
+            return true;
+        }
+
+        return (typeof item.defaultLocation == "function" && item.defaultLocation() == location);
     }
 
     function draw() {
@@ -50,17 +72,25 @@ THESEUS.DRAWING.SCENE = (function() {
         drawWall(location, "bottom", location.getExits().S);
         drawWall(location, "left", location.getExits().W);
 
-        THESEUS.DRAWING.UTILS.getFixedVisibleDrawableItems(location).forEach(i => {
-            var c = i.getDrawCoords();
-            if (c.type === undefined) {
-                THESEUS.DRAWING.GAMEOBJECTS.item(i, 
-                    THESEUS.DRAWING.UTILS.roomX(c.x), THESEUS.DRAWING.UTILS.roomY(c.y), 
-                    THESEUS.DRAWING.UTILS.lengthX(c.w), THESEUS.DRAWING.UTILS.lengthY(c.h)
-                ).draw();
+        var locationItems = THESEUS.DRAWING.GAMEOBJECTS.locationItems();
+        THESEUS.DRAWING.UTILS.getVisibleItems(location).forEach(i => {
+            if (itemCanBeDrawn(location, i)) {
+                var c = i.getDrawCoords();
+                if (c.type === undefined) {
+                    THESEUS.DRAWING.GAMEOBJECTS.item(i, 
+                        THESEUS.DRAWING.UTILS.roomX(c.x), THESEUS.DRAWING.UTILS.roomY(c.y), 
+                        THESEUS.DRAWING.UTILS.lengthX(c.w), THESEUS.DRAWING.UTILS.lengthY(c.h)
+                    ).draw();
+                }
+            } 
+            else {
+                locationItems.add(i);
             }
         });
+        locationItems.draw();
 
         var inventory = THESEUS.DRAWING.GAMEOBJECTS.inventory();
+        THESEUS.context.inventory().forEach(i => inventory.add(i));
         inventory.draw();
     }
     

@@ -84,6 +84,22 @@ THESEUS.PARSWICK.cupboard.getDrawCoords = function() {
     return { x: 90, y: 22, w: 10, h: 46 }
 }
 
+THESEUS.PARSWICK.cup.getDrawCoords = function() {
+    return { x: 91, y: 23, w: 4, h: 4 }
+}
+
+THESEUS.PARSWICK.cup.defaultLocation = function() {
+    return THESEUS.PARSWICK.kitchen;
+}
+
+THESEUS.PARSWICK.officeDoorKey.getDrawCoords = function() {
+    return { x: 95, y: 23, w: 4, h: 4 }
+}
+
+THESEUS.PARSWICK.officeDoorKey.defaultLocation = function() {
+    return THESEUS.PARSWICK.kitchen;
+}
+
 THESEUS.PARSWICK.waterCooker.getDrawCoords = function() {
     return { x: 75, y: 60, w: 5, h: 5 }
 }
@@ -100,6 +116,10 @@ THESEUS.PARSWICK.fridge.getDrawCoords = function() {
     return { x: 1, y: 74, w: 25, h: 25 }
 }
 
+THESEUS.PARSWICK.bathroomDoor.getDrawCoords = function() {
+    return { type: "bottomDoor", start: 40, length: 20 }
+}
+
 // office
 
 THESEUS.PARSWICK.safe.getDrawCoords = function() {
@@ -112,6 +132,10 @@ THESEUS.PARSWICK.cabinet.getDrawCoords = function() {
 
 THESEUS.PARSWICK.desk.getDrawCoords = function() {
     return { x: 22, y: 30, w: 45, h: 30 }
+}
+
+THESEUS.PARSWICK.officeDoor.getDrawCoords = function() {
+    return { type: "bottomDoor", start: 40, length: 20 }
 }
 
 // travelSection

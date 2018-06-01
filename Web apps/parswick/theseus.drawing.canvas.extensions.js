@@ -142,13 +142,30 @@ THESEUS.DRAWING.CANVASEXTENSIONS.ExtendWithComplexDrawingFunctions = function(ca
         this.alignText(x+xMargin, y+yMargin+this.textHeight(), w-2*xMargin, text);
     }
 
-    canvas.centeredTextRect = function(x, y, w, h, text, allowOverflow = false) {
-        this.strokeRect(x, y, w, h);
+    canvas.centeredText = function(x, y, w, h, text, allowOverflow = false) {
         var textX = x + (w - this.textWidth(text)) / 2;
         var textY = y + (h + this.textHeight()) / 2;
         if ((this.textWidth(text) < w && this.textHeight() < h) || allowOverflow) {
             this.fillText(text, textX, textY);
         }
+    }
+
+    canvas.leftAlignedText = function(x, y, w, h, text, allowOverflow = false) {
+        var textX = x;
+        var textY = y + (h + this.textHeight()) / 2;
+        if ((this.textWidth(text) < w && this.textHeight() < h) || allowOverflow) {
+            this.fillText(text, textX, textY);
+        }
+    }
+
+    canvas.centeredTextRect = function(x, y, w, h, text, allowOverflow = false) {
+        this.strokeRect(x, y, w, h);
+        this.centeredText(x, y, w, h, text, allowOverflow);
+    }
+
+    canvas.leftAlignedTextRect = function(x, y, w, h, text, allowOverflow = false) {
+        this.strokeRect(x, y, w, h);
+        this.leftAlignedText(x, y, w, h, text, allowOverflow);
     }
 
     canvas.alignedTextBox = function(x, y, w, xMargin, yMargin, text, bgColor) {
