@@ -254,17 +254,6 @@ function locationItems() {
         item(door, coords.x, coords.y, coords.w, coords.h).draw();
     }
 
-    // function doDrawOpenDoor(door, direction, startX, startY, endX, endY) {
-    //     var sX = startX;
-    //     var sY = endY;
-    //     var eX = startX + (endY - startY);
-    //     var eY = endY - (endX - startX);
-     
-    //     var coords = getCoordinates(direction, sX, sY, eX, eY);
-    //     item(door, coords.x, coords.y, coords.w, coords.h).draw();
-    //     console.log(startX + "," + startY + "," + endX + "," + endY + " - " + sX + "," + sY + "," + eX + "," + eY);
-    // }
-
     function doDrawOpening(direction, exitTo) {
         THESEUS.DRAWING.GAMEOBJECTS[direction + "Arrow"](
             THESEUS.DRAWING.UTILS.roomX(ARROW_DATA[direction].x), 
