@@ -22,18 +22,16 @@ const ARROW_DATA = {
 }
 
 THESEUS.DRAWING.GAMEOBJECTS = (function() {
-    
+
     var _canvas;
     var _layers;
-    var _fgColor;
-    var _bgColor;
+    var _colors;
     var _mousePos = { x : 0, y : 0 };
 
-    function initialize(canvas, layers, fgColor, bgColor) {
+    function initialize(canvas, layers, colors) {
         _canvas = canvas;
         _layers = layers;
-        _fgColor = fgColor;
-        _bgColor = bgColor;
+        _colors = colors;
 
         THESEUS.DRAWING.CANVASEXTENSIONS.ExtendWithStackFunctions(_canvas);
         THESEUS.DRAWING.CANVASEXTENSIONS.ExtendWithComplexDrawingFunctions(_canvas);
@@ -53,14 +51,18 @@ THESEUS.DRAWING.GAMEOBJECTS = (function() {
 
     function background() {
         return { 
-            draw : () => layers.addToLayer(BASE_LAYER, () => { _canvas.fillRoundRect(10, 10, 780, 430, 30, _bgColor) })
+            draw : () => layers.addToLayer(BASE_LAYER, () => { 
+                _canvas.pushFillStyle(_colors.bg);
+                _canvas.fillRoundRect(10, 10, 780, 430, 30);
+                _canvas.popFillStyle();
+            })
         }
     }
 
 // ---------- item list --------------------------------------------------------
 
 function doDrawItemList(items, x, y, w, h, header) {
-    _canvas.pushAll(_fgColor, _fgColor, "Caudex", 16);
+    _canvas.pushAll(_colors.fg, _colors.fg, "Caudex", 16);
     _canvas.strokeRect(x, y, w, h);
     var _y = y + 10;
     _canvas.fillText(header, x + 20, _y+15);
@@ -102,7 +104,7 @@ function locationItems() {
 // ---------- item --------------------------------------------------------
 
     function doDrawItem(i, x, y, w, h, drawBorder, leftAlign) {
-        _canvas.pushAll(_fgColor, _fgColor, "Caudex", 16);
+        _canvas.pushAll(_colors.fg, _colors.fg, "Caudex", 16);
         if (drawBorder) {
             if (leftAlign) {
                 _canvas.leftAlignedTextRect(x, y, w, h, i.caption);
@@ -131,26 +133,26 @@ function locationItems() {
         let MARGIN = 10;
         let VERB_HEIGHT = 15;
         let VERB_OFFSET = 20;
-        _canvas.pushAll(_fgColor, _fgColor, "Caudex", 12);
-        var h = _canvas.alignedTextBox(x, y, w, MARGIN, MARGIN, THESEUS.DRAWING.UTILS.description(i), _bgColor);
+        _canvas.pushAll(_colors.hintFg, _colors.hintFg, "Caudex", 12);
+        var h = _canvas.alignedTextBox(x, y, w, MARGIN, MARGIN, THESEUS.DRAWING.UTILS.description(i), _colors.hintBg);
         i.getVerbs(THESEUS.context).forEach(
             (name, fn) => {
                 if (name != "Examine") {
                     var verbBgColor;
                     var verbFgColor;
                     if (THESEUS.DRAWING.UTILS.insideRect(_mousePos, x, y+h+VERB_OFFSET, w, VERB_HEIGHT)) {
-                        verbBgColor = "blue";  // TODO color
-                        verbFgColor = "white"; // TODO color
+                        verbBgColor = _colors.verbBg;
+                        verbFgColor = _colors.verbFg;
                         currentItem = { act : fn }
                     }
                     else {
-                        verbBgColor = _bgColor;
-                        verbFgColor = _fgColor;
+                        verbBgColor = _colors.hintBg;
+                        verbFgColor = _colors.hintFg;
                     }
                     _canvas.pushFillStyle(verbBgColor);
                     _canvas.fillRect(x, y+h+VERB_OFFSET, w, VERB_HEIGHT+1);
                     _canvas.popFillStyle();
-                    _canvas.pushFillStyle(_bgColor);
+                    _canvas.pushFillStyle(_colors.hintBg);
                     _canvas.fillRect(x, y+h+VERB_OFFSET+VERB_HEIGHT, w, VERB_OFFSET-VERB_HEIGHT+1);
                     _canvas.popFillStyle();
                     _canvas.pushFillStyle(verbFgColor);
@@ -159,7 +161,7 @@ function locationItems() {
                     h += VERB_OFFSET;
                 }
             });
-        _canvas.pushFillStyle(_bgColor);
+        _canvas.pushFillStyle(_colors.hintBg);
         _canvas.fillRect(x, y+h+VERB_OFFSET, w, MARGIN);
         _canvas.popFillStyle();
         h += VERB_OFFSET;
@@ -264,7 +266,7 @@ function locationItems() {
     function doDrawWall(direction, openings, startX, startY) {
         openings.sort((a, b) => a.start - b.start);
 
-        _canvas.pushStrokeStyle(_fgColor);
+        _canvas.pushStrokeStyle(_colors.fg);
         _canvas.beginPath();
         _canvas.moveTo(THESEUS.DRAWING.UTILS.roomX(startX), THESEUS.DRAWING.UTILS.roomY(startY));
         openings.forEach(o => {
@@ -330,7 +332,7 @@ function locationItems() {
     }
 
     function doDrawArrow(x, y, points, f) {
-        _canvas.pushFillStyle(_fgColor);
+        _canvas.pushFillStyle(_colors.fg);
         _canvas.beginPath();
         _canvas.moveTo(points[0].x, points[0].y);
         for (i = 1; i < points.length; i++) {
@@ -390,7 +392,7 @@ function locationItems() {
         return {
             draw : function() {
                 layers.addToLayer(BASE_LAYER, () => { 
-                    _canvas.pushAll(_fgColor, _fgColor, "Caudex", 16);
+                    _canvas.pushAll(_colors.fg, _colors.fg, "Caudex", 16);
                     _canvas.fillText(text, 70, 40);
                     _canvas.popAll();
                 }); 
