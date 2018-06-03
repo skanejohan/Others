@@ -143,7 +143,12 @@ function locationItems() {
                     if (THESEUS.DRAWING.UTILS.insideRect(_mousePos, x, y+h+VERB_OFFSET, w, VERB_HEIGHT)) {
                         verbBgColor = _colors.verbBg;
                         verbFgColor = _colors.verbFg;
-                        currentItem = { act : fn }
+                        currentItem = { act : context => {
+                            if (name == "Take") {
+                                i.getDrawCoords = undefined;
+                            }
+                            return fn(context);
+                        } }
                     }
                     else {
                         verbBgColor = _colors.hintBg;
