@@ -73,7 +73,7 @@ THESEUS.DRAWING.SCENE = (function() {
         drawWall(location, "left", location.getExits().W);
 
         var locationItems = THESEUS.DRAWING.GAMEOBJECTS.locationItems();
-        THESEUS.DRAWING.UTILS.getVisibleItems(location).forEach(i => {
+        THESEUS.context.location().items.forEachOpen(i => {
             if (itemCanBeDrawn(location, i)) {
                 var c = i.getDrawCoords();
                 if (c.type === undefined) {
@@ -90,7 +90,7 @@ THESEUS.DRAWING.SCENE = (function() {
         locationItems.draw();
 
         var inventory = THESEUS.DRAWING.GAMEOBJECTS.inventory();
-        THESEUS.context.inventory().forEach(i => inventory.add(i));
+        THESEUS.context.inventory().forEachOpen(i => inventory.add(i));
         inventory.draw();
     }
     
