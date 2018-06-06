@@ -26,12 +26,14 @@ THESEUS.DRAWING.GAMEOBJECTS = (function() {
     var _canvas;
     var _layers;
     var _colors;
+    var _setCurrentClickFunction;
     var _mousePos = { x : 0, y : 0 };
 
-    function initialize(canvas, layers, colors) {
+    function initialize(canvas, layers, colors, setCurrentClickFunction) {
         _canvas = canvas;
         _layers = layers;
         _colors = colors;
+        _setCurrentClickFunction = setCurrentClickFunction;
 
         THESEUS.DRAWING.CANVASEXTENSIONS.ExtendWithStackFunctions(_canvas);
         THESEUS.DRAWING.CANVASEXTENSIONS.ExtendWithComplexDrawingFunctions(_canvas);
@@ -143,12 +145,12 @@ function locationItems() {
                     if (THESEUS.DRAWING.UTILS.insideRect(_mousePos, x, y+h+VERB_OFFSET, w, VERB_HEIGHT)) {
                         verbBgColor = _colors.verbBg;
                         verbFgColor = _colors.verbFg;
-                        currentItem = { act : context => {
+                        _setCurrentClickFunction(context => {
                             if (name == "Take") {
                                 i.getDrawCoords = undefined;
                             }
                             return fn(context);
-                        } }
+                        });
                     }
                     else {
                         verbBgColor = _colors.hintBg;
@@ -347,7 +349,7 @@ function locationItems() {
         _canvas.stroke();
         _canvas.popFillStyle();
         if (THESEUS.DRAWING.UTILS.insidePoints(_mousePos, points)) {
-            currentItem = { act : f }
+            _setCurrentClickFunction(f);
         }
     }
     

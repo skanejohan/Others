@@ -4,6 +4,8 @@ THESEUS.DRAWING = THESEUS.DRAWING || {};
 
 THESEUS.DRAWING.SCENE = (function() {
 
+    var _currentClickFunction;
+
     function drawWall(location, dir, exitTo) {
         var wall = THESEUS.DRAWING.GAMEOBJECTS[dir + "Wall"]();
         THESEUS.DRAWING.UTILS.getWindows(location, dir).map(
@@ -62,6 +64,7 @@ THESEUS.DRAWING.SCENE = (function() {
     }
 
     function draw() {
+        _currentClickFunction = undefined;
         var location = THESEUS.context.location();
 
         THESEUS.DRAWING.GAMEOBJECTS.background().draw();
@@ -94,7 +97,20 @@ THESEUS.DRAWING.SCENE = (function() {
         inventory.draw();
     }
     
+    function click() {
+        if (_currentClickFunction != undefined) {
+            _currentClickFunction(THESEUS.context);
+            console.log(THESEUS.context.message());
+        }
+    }
+
+    function setCurrentClickFunction(fn) { 
+        _currentClickFunction = fn; 
+    }
+
     return { 
         draw : draw,
+        click : click,
+        setCurrentClickFunction : setCurrentClickFunction,
     }
 })();

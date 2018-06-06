@@ -31,7 +31,6 @@
     var mousePos = { x: 0, y: 0 };
     var sizedCanvas;
     var layers;
-    var currentItem;
 
     const BASE_LAYER = 0;
     const HINT_LAYER = 1;
@@ -52,13 +51,12 @@
         sizedCanvas = new THESEUS.DRAWING.Canvas(canvas, 800, 450);
         layers = new THESEUS.DRAWING.Layers();
         canvasContext.translate(0.5, 0.5);
-        THESEUS.DRAWING.GAMEOBJECTS.initialize(sizedCanvas, layers, COLORS);
+        THESEUS.DRAWING.GAMEOBJECTS.initialize(sizedCanvas, layers, COLORS, THESEUS.DRAWING.SCENE.setCurrentClickFunction);
 
         THESEUS.context.initialize(THESEUS.PARSWICK.fictionSection, "Welcome to the game");
             setInterval(function() {
                 sizedCanvas.setScale(window.innerWidth, window.innerHeight);
                 THESEUS.DRAWING.GAMEOBJECTS.setMousePos(mousePos);
-                currentItem = undefined;
                 layers.clear();
                 THESEUS.DRAWING.SCENE.draw();
                 layers.draw();
@@ -71,10 +69,7 @@
 
         canvas.addEventListener("click", 
             function(evt) {
-                if (currentItem != undefined && currentItem.act != undefined) {
-                        currentItem.act(THESEUS.context);
-                        console.log(THESEUS.context.message());
-                }
+                THESEUS.DRAWING.SCENE.click();
             }); 
     }
 
