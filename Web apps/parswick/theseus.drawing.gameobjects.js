@@ -26,14 +26,14 @@ THESEUS.DRAWING.GAMEOBJECTS = (function() {
     var _canvas;
     var _layers;
     var _colors;
-    var _setCurrentClickFunction;
+    var _getDrawState;
     var _mousePos = { x : 0, y : 0 };
 
-    function initialize(canvas, layers, colors, setCurrentClickFunction) {
+    function initialize(canvas, layers, colors, getDrawState) {
         _canvas = canvas;
         _layers = layers;
         _colors = colors;
-        _setCurrentClickFunction = setCurrentClickFunction;
+        _getDrawState = getDrawState;
 
         THESEUS.DRAWING.CANVASEXTENSIONS.ExtendWithStackFunctions(_canvas);
         THESEUS.DRAWING.CANVASEXTENSIONS.ExtendWithComplexDrawingFunctions(_canvas);
@@ -124,7 +124,6 @@ function locationItems() {
             }
         }
         _canvas.popAll();
-        i.mouseInsideItem = THESEUS.DRAWING.UTILS.insideRect(_mousePos, x, y, w, h);
     }
     
     function drawItem(i, x, y, w, h, drawBorder, leftAlign) {
@@ -145,12 +144,14 @@ function locationItems() {
                     if (THESEUS.DRAWING.UTILS.insideRect(_mousePos, x, y+h+VERB_OFFSET, w, VERB_HEIGHT)) {
                         verbBgColor = _colors.verbBg;
                         verbFgColor = _colors.verbFg;
-                        _setCurrentClickFunction(context => {
+                        _getDrawState().clickFunction = context => {
                             if (name == "Take") {
+                                // Once an item is taken, it should no longer be drawn in
+                                // the location, even after it has been dropped again. 
                                 i.getDrawCoords = undefined;
                             }
                             return fn(context);
-                        });
+                        };
                     }
                     else {
                         verbBgColor = _colors.hintBg;
@@ -173,7 +174,8 @@ function locationItems() {
         _canvas.popFillStyle();
         h += VERB_OFFSET;
 
-        i.mouseInsideItemHint = THESEUS.DRAWING.UTILS.insideRect(_mousePos, x, y, w, h+MARGIN);
+        _getDrawState().activeHint = { item : i, bounds : { x:x, y:y, w:w, h: h+MARGIN } };
+
         _canvas.popAll();
     }
 
@@ -187,10 +189,22 @@ function locationItems() {
         var drawBorder = true;
         var leftAlign = false;
 
+        function mouseInsideThisItem() {
+            return THESEUS.DRAWING.UTILS.insideRect(_mousePos, x, y, w, h);
+        }
+
+        function mouseInsideThisHint() {
+            return _getDrawState().activeHint && _getDrawState().activeHint.item == i;
+        }
+
+        function mouseInsideAnotherHint() {
+            return _getDrawState().activeHint && _getDrawState().activeHint.item != i;
+        }
+
         return { 
             draw : function() {
                 drawItem(i, x, y, w, h, drawBorder, leftAlign);
-                if (i.mouseInsideItem || i.mouseInsideItemHint) {
+                if ((mouseInsideThisItem() && !mouseInsideAnotherHint()) || mouseInsideThisHint()) {
                     var hintX = x + w - 10;
                     var hintY = y;
                     var hintW = 250;
@@ -349,7 +363,7 @@ function locationItems() {
         _canvas.stroke();
         _canvas.popFillStyle();
         if (THESEUS.DRAWING.UTILS.insidePoints(_mousePos, points)) {
-            _setCurrentClickFunction(f);
+            _getDrawState().clickFunction = f;
         }
     }
     

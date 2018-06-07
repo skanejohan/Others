@@ -51,7 +51,7 @@
         sizedCanvas = new THESEUS.DRAWING.Canvas(canvas, 800, 450);
         layers = new THESEUS.DRAWING.Layers();
         canvasContext.translate(0.5, 0.5);
-        THESEUS.DRAWING.GAMEOBJECTS.initialize(sizedCanvas, layers, COLORS, THESEUS.DRAWING.SCENE.setCurrentClickFunction);
+        THESEUS.DRAWING.GAMEOBJECTS.initialize(sizedCanvas, layers, COLORS, THESEUS.DRAWING.SCENE.getDrawState);
 
         THESEUS.context.initialize(THESEUS.PARSWICK.fictionSection, "Welcome to the game");
             setInterval(function() {

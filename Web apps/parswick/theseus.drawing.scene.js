@@ -4,7 +4,14 @@ THESEUS.DRAWING = THESEUS.DRAWING || {};
 
 THESEUS.DRAWING.SCENE = (function() {
 
-    var _currentClickFunction;
+    var drawState = {
+        clickFunction : undefined,
+        activeHint : undefined,
+    }
+
+    function getDrawState() {
+        return drawState;
+    }
 
     function drawWall(location, dir, exitTo) {
         var wall = THESEUS.DRAWING.GAMEOBJECTS[dir + "Wall"]();
@@ -64,7 +71,14 @@ THESEUS.DRAWING.SCENE = (function() {
     }
 
     function draw() {
-        _currentClickFunction = undefined;
+        drawState.clickFunction = undefined;
+        if (drawState.activeHint) {
+            var b = drawState.activeHint.bounds;
+            if (!THESEUS.DRAWING.UTILS.insideRect(THESEUS.DRAWING.GAMEOBJECTS.getMousePos(), b.x, b.y, b.w, b.h)) {
+                drawState.activeHint = undefined;
+            }
+        }
+        
         var location = THESEUS.context.location();
 
         THESEUS.DRAWING.GAMEOBJECTS.background().draw();
@@ -98,19 +112,15 @@ THESEUS.DRAWING.SCENE = (function() {
     }
     
     function click() {
-        if (_currentClickFunction != undefined) {
-            _currentClickFunction(THESEUS.context);
+        if (drawState.clickFunction != undefined) {
+            drawState.clickFunction(THESEUS.context);
             console.log(THESEUS.context.message());
         }
-    }
-
-    function setCurrentClickFunction(fn) { 
-        _currentClickFunction = fn; 
     }
 
     return { 
         draw : draw,
         click : click,
-        setCurrentClickFunction : setCurrentClickFunction,
+        getDrawState : getDrawState,
     }
 })();
