@@ -60,15 +60,7 @@ THESEUS.DRAWING.SCENE = (function() {
     }
 
     function itemCanBeDrawn(location, item) {
-        if (typeof item.getDrawCoords != "function") {
-            return false;
-        }
-
-        if (THESEUS.DRAWING.UTILS.isFixed(item)) {
-            return true;
-        }
-
-        return (typeof item.defaultLocation == "function" && item.defaultLocation() == location);
+        return typeof item.getDrawCoords == "function";
     }
 
     function draw() {
@@ -77,7 +69,6 @@ THESEUS.DRAWING.SCENE = (function() {
             var b = drawState.activeItem.bounds;
             if (!THESEUS.DRAWING.UTILS.insideRect(THESEUS.DRAWING.GAMEOBJECTS.getMousePos(), b.x, b.y, b.w, b.h)) {
                 drawState.activeItem = undefined;
-                console.log("undefined");
             }
         }
         if (drawState.activeHint) {

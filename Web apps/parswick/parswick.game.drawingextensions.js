@@ -95,16 +95,8 @@ THESEUS.PARSWICK.cup.getDrawCoords = function() {
     return { x: 91, y: 23, w: 4, h: 4, layer: ITEM_LAYER_3 }
 }
 
-THESEUS.PARSWICK.cup.defaultLocation = function() {
-    return THESEUS.PARSWICK.kitchen;
-}
-
 THESEUS.PARSWICK.officeDoorKey.getDrawCoords = function() {
     return { x: 95, y: 23, w: 4, h: 4, layer: ITEM_LAYER_3 }
-}
-
-THESEUS.PARSWICK.officeDoorKey.defaultLocation = function() {
-    return THESEUS.PARSWICK.kitchen;
 }
 
 THESEUS.PARSWICK.waterCooker.getDrawCoords = function() {
@@ -137,8 +129,27 @@ THESEUS.PARSWICK.cabinet.getDrawCoords = function() {
     return { x: 79, y: 22, w: 20, h: 46 }
 }
 
+THESEUS.PARSWICK.magnifyingGlass.getDrawCoords = function() {
+    return { x: 82, y: 30, w: 5, h: 5, layer: ITEM_LAYER_2 }
+}
+
+THESEUS.PARSWICK.metalBox.getDrawCoords = function() {
+    return { x: 85, y: 45, w: 5, h: 5, layer: ITEM_LAYER_2 }
+}
+
 THESEUS.PARSWICK.desk.getDrawCoords = function() {
     return { x: 22, y: 30, w: 45, h: 30 }
+}
+
+THESEUS.PARSWICK.drawer.getDrawCoords = function() {
+    if (this.isClosed()) {
+        return { x: 32, y: 50, w: 25, h: 10, layer: ITEM_LAYER_2 }
+    }
+    return { x: 32, y: 60, w: 25, h: 10, layer: ITEM_LAYER_2 }
+}
+
+THESEUS.PARSWICK.paperClip.getDrawCoords = function() {
+    return { x: 40, y: 62, w: 4, h: 4, layer: ITEM_LAYER_3 }
 }
 
 THESEUS.PARSWICK.officeDoor.getDrawCoords = function() {
