@@ -1,3 +1,10 @@
+const BASE_LAYER = 1;
+const ITEM_LAYER_1 = 1;
+const ITEM_LAYER_2 = 2;
+const ITEM_LAYER_3 = 3;
+const HINT_LAYER = 10;
+const NOTIFICATION_LAYER = 20;
+
 // artSection
 
 THESEUS.PARSWICK.artShelf1.getDrawCoords = function() {
@@ -81,11 +88,11 @@ THESEUS.PARSWICK.sink.getDrawCoords = function() {
 }
 
 THESEUS.PARSWICK.cupboard.getDrawCoords = function() {
-    return { x: 90, y: 22, w: 10, h: 46 }
+    return { x: 90, y: 22, w: 10, h: 46, layer: ITEM_LAYER_2 }
 }
 
 THESEUS.PARSWICK.cup.getDrawCoords = function() {
-    return { x: 91, y: 23, w: 4, h: 4 }
+    return { x: 91, y: 23, w: 4, h: 4, layer: ITEM_LAYER_3 }
 }
 
 THESEUS.PARSWICK.cup.defaultLocation = function() {
@@ -93,7 +100,7 @@ THESEUS.PARSWICK.cup.defaultLocation = function() {
 }
 
 THESEUS.PARSWICK.officeDoorKey.getDrawCoords = function() {
-    return { x: 95, y: 23, w: 4, h: 4 }
+    return { x: 95, y: 23, w: 4, h: 4, layer: ITEM_LAYER_3 }
 }
 
 THESEUS.PARSWICK.officeDoorKey.defaultLocation = function() {
@@ -101,7 +108,7 @@ THESEUS.PARSWICK.officeDoorKey.defaultLocation = function() {
 }
 
 THESEUS.PARSWICK.waterCooker.getDrawCoords = function() {
-    return { x: 75, y: 60, w: 5, h: 5 }
+    return { x: 75, y: 60, w: 5, h: 5, layer: ITEM_LAYER_2 }
 }
 
 THESEUS.PARSWICK.chair.getDrawCoords = function() {

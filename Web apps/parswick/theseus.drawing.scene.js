@@ -6,6 +6,7 @@ THESEUS.DRAWING.SCENE = (function() {
 
     var drawState = {
         clickFunction : undefined,
+        activeItem : undefined,
         activeHint : undefined,
     }
 
@@ -72,6 +73,13 @@ THESEUS.DRAWING.SCENE = (function() {
 
     function draw() {
         drawState.clickFunction = undefined;
+        if (drawState.activeItem) {
+            var b = drawState.activeItem.bounds;
+            if (!THESEUS.DRAWING.UTILS.insideRect(THESEUS.DRAWING.GAMEOBJECTS.getMousePos(), b.x, b.y, b.w, b.h)) {
+                drawState.activeItem = undefined;
+                console.log("undefined");
+            }
+        }
         if (drawState.activeHint) {
             var b = drawState.activeHint.bounds;
             if (!THESEUS.DRAWING.UTILS.insideRect(THESEUS.DRAWING.GAMEOBJECTS.getMousePos(), b.x, b.y, b.w, b.h)) {

@@ -105,6 +105,14 @@ function locationItems() {
 
 // ---------- item --------------------------------------------------------
 
+    function getLayer(i) {
+        var c = i.getDrawCoords && i.getDrawCoords();
+        if (c === undefined) {
+            return ITEM_LAYER_1;
+        }
+        return c.layer || ITEM_LAYER_1;
+    }
+
     function doDrawItem(i, x, y, w, h, drawBorder, leftAlign) {
         _canvas.pushAll(_colors.fg, _colors.fg, "Caudex", 16);
         if (drawBorder) {
@@ -127,7 +135,7 @@ function locationItems() {
     }
     
     function drawItem(i, x, y, w, h, drawBorder, leftAlign) {
-        _layers.addToLayer(BASE_LAYER, () => doDrawItem(i, x, y, w, h, drawBorder, leftAlign) );
+        _layers.addToLayer(getLayer(i), () => doDrawItem(i, x, y, w, h, drawBorder, leftAlign) );
     }
     
     function doDrawItemHint(i, x, y, w) {
@@ -193,6 +201,9 @@ function locationItems() {
             return THESEUS.DRAWING.UTILS.insideRect(_mousePos, x, y, w, h);
         }
 
+        function mouseInsideAnotherItem() {
+            return _getDrawState().activeItem && _getDrawState().activeItem.item != i;
+        }
         function mouseInsideThisHint() {
             return _getDrawState().activeHint && _getDrawState().activeHint.item == i;
         }
@@ -204,7 +215,11 @@ function locationItems() {
         return { 
             draw : function() {
                 drawItem(i, x, y, w, h, drawBorder, leftAlign);
-                if ((mouseInsideThisItem() && !mouseInsideAnotherHint()) || mouseInsideThisHint()) {
+                if (mouseInsideThisItem() && mouseInsideAnotherItem() && getLayer(_getDrawState().activeItem.item) < getLayer(i)) {
+                    _getDrawState().activeItem = undefined;
+                }
+                if ((mouseInsideThisItem() && !mouseInsideAnotherHint() && !mouseInsideAnotherItem()) || mouseInsideThisHint()) {
+                    _getDrawState().activeItem = { item : i, bounds : { x:x, y:y, w:w, h:h } };
                     var hintX = x + w - 10;
                     var hintY = y;
                     var hintW = 250;

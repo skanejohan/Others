@@ -1718,4 +1718,19 @@ Kris och Luhrs bröllop - Ronneby Brunn
 			},
 		]
 	},
+	{
+		name: "Kortutflykt med husbilen till Askikms camping",
+		start: new Date(2018, 5, 8),
+		end: new Date(2018, 5, 9),
+		locations: [
+			{
+				name: "Lisebergs camping Askim Strand",
+				address: "Marholmsvägen 124, 436 45 Askim",
+				url: "liseberg.se",
+				position: new google.maps.LatLng(57.627411, 11.921246),
+				start: new Date(2018, 5, 8),
+				end: new Date(2012, 5, 9),
+			},
+		]
+	},
 ]
