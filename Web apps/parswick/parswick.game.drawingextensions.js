@@ -3,6 +3,7 @@ const ITEM_LAYER_1 = 1;
 const ITEM_LAYER_2 = 2;
 const ITEM_LAYER_3 = 3;
 const HINT_LAYER = 10;
+const COMBINATION_LAYER = 15;
 const NOTIFICATION_LAYER = 20;
 
 // artSection

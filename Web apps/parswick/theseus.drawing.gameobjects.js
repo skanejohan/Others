@@ -49,6 +49,10 @@ THESEUS.DRAWING.GAMEOBJECTS = (function() {
         return _mousePos;
     }
 
+    function layerCanAcceptInput(layer) {
+        return _getDrawState().modalLayer == undefined || _getDrawState().modalLayer == layer;
+    }
+
 // ---------- background --------------------------------------------------------
 
     function background() {
@@ -153,6 +157,12 @@ function locationItems() {
                         verbBgColor = _colors.verbBg;
                         verbFgColor = _colors.verbFg;
                         _getDrawState().clickFunction = context => {
+                            if (name == "Enter combination") {
+                                _getDrawState().modalLayer = COMBINATION_LAYER;
+                                _getDrawState().combinationLockItem = i;
+                                _getDrawState().combination = "";
+                                return "";
+                            }
                             if (name == "Take") {
                                 // Once an item is taken, it should no longer be drawn in
                                 // the location, even after it has been dropped again. 
@@ -215,16 +225,18 @@ function locationItems() {
         return { 
             draw : function() {
                 drawItem(i, x, y, w, h, drawBorder, leftAlign);
-                if (mouseInsideThisItem() && mouseInsideAnotherItem() && getLayer(_getDrawState().activeItem.item) < getLayer(i)) {
-                    _getDrawState().activeItem = undefined;
-                }
-                if ((mouseInsideThisItem() && !mouseInsideAnotherHint() && !mouseInsideAnotherItem()) || mouseInsideThisHint()) {
-                    _getDrawState().activeItem = { item : i, bounds : { x:x, y:y, w:w, h:h } };
-                    var hintX = x + w - 10;
-                    var hintY = y;
-                    var hintW = 250;
-                    drawItemHint(i, hintX, hintY, hintW);
-                }
+                if (layerCanAcceptInput(getLayer(i))) {
+                    if (mouseInsideThisItem() && mouseInsideAnotherItem() && getLayer(_getDrawState().activeItem.item) < getLayer(i)) {
+                        _getDrawState().activeItem = undefined;
+                    }
+                    if ((mouseInsideThisItem() && !mouseInsideAnotherHint() && !mouseInsideAnotherItem()) || mouseInsideThisHint()) {
+                        _getDrawState().activeItem = { item : i, bounds : { x:x, y:y, w:w, h:h } };
+                        var hintX = x + w - 10;
+                        var hintY = y;
+                        var hintW = 250;
+                        drawItemHint(i, hintX, hintY, hintW);
+                    }
+                    }
             },
             leftAlignText : function() {
                 leftAlign = true;
@@ -359,6 +371,60 @@ function locationItems() {
         }
     }
 
+// ---------- combination lock --------------------------------------------------------
+
+    function doDrawCombinationLockButton(left, top, width, height, caption) {
+        if (!THESEUS.DRAWING.UTILS.insideRect(_mousePos, left, top, width, height)) {
+            _canvas.fillStyle = "gray";
+            _canvas.fillRect(left, top, width, height)
+            _canvas.fillStyle = _colors.fg;
+            _canvas.centeredTextRect(left, top, width, height, caption);
+            return;
+        }
+
+        _canvas.fillStyle = "lightgray";
+        _canvas.fillRect(left, top, width, height)
+        _canvas.fillStyle = _colors.fg;
+        _canvas.centeredTextRect(left, top, width, height, caption);
+        _canvas.centeredTextRect(left+1, top+1, width-2, height-2, caption);
+        _getDrawState().clickFunction = context => {
+            _getDrawState().combination += caption;
+            if (_getDrawState().combination.length == 4) {
+                _getDrawState().combinationLockItem.getVerbs(context).value("Enter combination")(context, _getDrawState().combination);
+                _getDrawState().combinationLockItem = undefined;
+                _getDrawState().modalLayer = undefined;
+            }
+        }
+    }
+
+    function doDrawCombinationLock(left, top, width, height) {
+        var bw = width / 4;
+        var bh = height / 5.5;
+        _canvas.get2dContext().filter = 'blur(0px)';
+        _canvas.pushAll(_colors.fg, _colors.fg, "Caudex", 16);
+        doDrawCombinationLockButton(left, top, bw, bh, "1");
+        doDrawCombinationLockButton(left + 1.5 * bw, top, bw, bh, "2");
+        doDrawCombinationLockButton(left + 3.0 * bw, top, bw, bh, "3");
+        doDrawCombinationLockButton(left, top + 1.5 * bh, bw, bh, "4");
+        doDrawCombinationLockButton(left + 1.5 * bw, top + 1.5 * bh, bw, bh, "5");
+        doDrawCombinationLockButton(left + 3.0 * bw, top + 1.5 * bh, bw, bh, "6");
+        doDrawCombinationLockButton(left, top + 3.0 * bh, bw, bh, "7");
+        doDrawCombinationLockButton(left + 1.5 * bw, top + 3.0 * bh, bw, bh, "8");
+        doDrawCombinationLockButton(left + 3.0 * bw, top + 3.0 * bh, bw, bh, "9");
+        doDrawCombinationLockButton(left + 1.5 * bw, top + 4.5 * bh, bw, bh, "0");
+        _canvas.popAll();
+    }
+
+    function drawCombinationLock(left, top, width, height) {
+        _layers.addToLayer(COMBINATION_LAYER, () => doDrawCombinationLock(left, top, width, height));
+    }
+
+    function combinationLock(left, top, width, height) {
+        return {
+            draw : () => drawCombinationLock(left, top, width, height),
+        }
+    }
+
 // ---------- arrows --------------------------------------------------------
 
     function calcArrowPoints(cx, cy, factors) {
@@ -436,6 +502,18 @@ function locationItems() {
         }
     }
 
+    function message(text) {
+        return {
+            draw : function() {
+                layers.addToLayer(BASE_LAYER, () => { 
+                    _canvas.pushAll(_colors.fg, _colors.fg, "Caudex", 16);
+                    _canvas.fillText(text, 170, 40);
+                    _canvas.popAll();
+                }); 
+            }
+        }
+    }
+
 // ---------- return --------------------------------------------------------
 
 return { 
@@ -453,11 +531,14 @@ return {
         bottomWall : () => wall("bottom", 0, 100),
         leftWall : () => wall("left", 0, 0),
 
+        combinationLock : combinationLock,
+
         rightArrow : rightArrow, 
         bottomArrow : bottomArrow, 
         leftArrow : leftArrow, 
         topArrow : topArrow, 
 
         roomCaption : roomCaption,
+        message : message,
     }
 })();

@@ -4,14 +4,23 @@ THESEUS.DRAWING = THESEUS.DRAWING || {};
 
 THESEUS.DRAWING.SCENE = (function() {
 
+    var message = "";
+
     var drawState = {
         clickFunction : undefined,
         activeItem : undefined,
         activeHint : undefined,
+        modalLayer : undefined,
+        combinationLockItem : undefined,
+        combination : "",
     }
 
     function getDrawState() {
         return drawState;
+    }
+
+    function combinationLockVisible() {
+        return drawState.combinationLockItem != undefined;
     }
 
     function drawWall(location, dir, exitTo) {
@@ -80,6 +89,10 @@ THESEUS.DRAWING.SCENE = (function() {
         
         var location = THESEUS.context.location();
 
+        // if (combinationLockVisible()) {
+        //     canvasContext.filter = 'blur(5px)';
+        // }
+
         THESEUS.DRAWING.GAMEOBJECTS.background().draw();
         THESEUS.DRAWING.GAMEOBJECTS.roomCaption(location.caption).draw();
 
@@ -108,12 +121,18 @@ THESEUS.DRAWING.SCENE = (function() {
         var inventory = THESEUS.DRAWING.GAMEOBJECTS.inventory();
         THESEUS.context.inventory().forEachOpen(i => inventory.add(i));
         inventory.draw();
+
+        if (combinationLockVisible()) {
+            THESEUS.DRAWING.GAMEOBJECTS.combinationLock(255, 25, 290, 400).draw();
+        }
+
+        THESEUS.DRAWING.GAMEOBJECTS.message(message).draw();
     }
     
     function click() {
         if (drawState.clickFunction != undefined) {
             drawState.clickFunction(THESEUS.context);
-            console.log(THESEUS.context.message());
+            message = THESEUS.context.message();
         }
     }
 
