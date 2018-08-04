@@ -774,7 +774,7 @@ Kris och Luhrs bröllop - Ronneby Brunn
 		]
 	},
 	{
-		name: "",
+		name: "Småland och Öland",
 		start: new Date(2015, 4, 13),
 		end: new Date(2015, 4, 17),
 		locations: [
