@@ -3,7 +3,11 @@ var Travels = function() {
     var map;
     var trips;
     var paths;
+    var bounds;
     var markers;
+    var tripSelector;
+    var showMarkersCheckBox;
+    var showPathsCheckBox;
     
     return {
         initialize : initialize,
@@ -21,12 +25,13 @@ var Travels = function() {
     }
 
     function addTrip(trip) {
-        if (true) { // TODO should the marker be drawn?
+        if (showMarkersCheckBox == undefined || showMarkersCheckBox.checked) {
             trip.locations.map(loc => addLocation(trip, loc));
         }
-        if (false) { // TODO should the path be drawn?
+        if (showPathsCheckBox != undefined && showPathsCheckBox.checked) {
             paths.add(trip);
         }
+        bounds.addTrip(trip);
     }
 
     function initialize(canvas, data) {
@@ -40,22 +45,62 @@ var Travels = function() {
         markers = new Markers(map);
         paths = new Paths(map);
         trips = new Trips(data);
+        bounds = new Bounds();
+
+        if (!Utils.isMobileDevice()) {
+            setupMapControls();
+        }
     }
 
     function getTrips() {
         return trips.get();
     }
 
-    function loadTrip(i) {
+    function loadTrip(i, zoom) {
         paths.clear();
         markers.clear();
+        bounds.clear();
         trips.select(i).map(addTrip);
+        if(zoom) {
+            zoomToFitTrips();
+        }
     }
     
-    function loadAll() {
+    function loadAll(zoom) {
         paths.clear();
         markers.clear();
+        bounds.clear();
         trips.all().map(addTrip);
+        if(zoom) {
+            zoomToFitTrips();
+        }
+    }
+
+    function zoomToFitTrips() {
+        map.fitBounds(bounds.get());
+        if (map.getZoom() > 15) {
+            map.setZoom(15);
+        }
+    }
+
+    function setupMapControls() {
+        var control = document.createElement("div");
+        map.controls[google.maps.ControlPosition.TOP_RIGHT].push(control);
+        tripSelector = UI.select(control);
+        UI.addSelectOption(tripSelector, "--- Alla resor ---")
+        trips.get().map(t => UI.addSelectOption(tripSelector, t));
+        tripSelector.onchange = () => loadSelectedTrips(true);
+        showMarkersCheckBox = UI.checkbox(control, "showMarkersCheckBox", "Show markers", true, () => loadSelectedTrips(false));
+        showPathsCheckBox = UI.checkbox(control, "showPathsCheckBox", "Show paths", false, () => loadSelectedTrips(false));
+    }
+
+    function loadSelectedTrips(zoom) {
+        if (tripSelector.selectedIndex == 0) {
+            loadAll(zoom);
+        }
+        else {
+            loadTrip(tripSelector.selectedIndex - 1, zoom);
+        }
     }
 }
 
@@ -123,6 +168,31 @@ var Markers = function(map) {
     }
 }
 
+// ---------- Bounds (used internally by Travels) --------------------------------------------------
+
+var Bounds = function(map) {
+
+    var _bounds = new google.maps.LatLngBounds();
+
+    return {
+        clear : clear,
+        addTrip : addTrip,
+        get : get,
+    }
+
+    function clear() {
+        _bounds = new google.maps.LatLngBounds();
+    }
+
+    function addTrip(trip) {
+        trip.locations.map(loc => _bounds.extend(loc.position));
+    }
+
+    function get() {
+        return _bounds;
+    }
+}
+
 // ---------- Paths (used internally by Travels) --------------------------------------------------
 
 var Paths = function(map) {
@@ -153,10 +223,15 @@ var Paths = function(map) {
 var Utils = (function(data) {
 
     return {
+        isMobileDevice : isMobileDevice,
         formatDate : formatDate,
         tripTitle : tripTitle,
         locTitle : locTitle,
     }
+
+    function isMobileDevice() {
+        return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+    };
 
     function formatDate(date) {
         var monthNames = ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", 
@@ -175,3 +250,43 @@ var Utils = (function(data) {
         return loc.name + " (" + Utils.formatDate(loc.start) + " - " + Utils.formatDate(loc.end) + ")"; 
     }
 })();
+
+// ---------- UI (used internally by Travels) -----------------------------------------------------
+
+var UI = (function() {
+
+    return {
+        checkbox : checkbox,
+        select : select,
+        addSelectOption : addSelectOption,
+    }
+
+    function checkbox(container, id, caption, checked, callback) {
+        var cb = document.createElement('input');
+        cb.type = "checkbox";
+        cb.checked = checked;
+        cb.onchange = callback;
+        cb.id = id;
+
+        var l = document.createElement('label')
+        l.htmlFor = id;
+        l.appendChild(document.createTextNode(caption));
+
+        container.appendChild(cb);
+        container.appendChild(l);
+
+        return cb;
+    }
+
+    function select(container) {
+        var s = document.createElement("select");
+        container.appendChild(s);
+        return s;
+    }
+
+    function addSelectOption(checkBox, option) {
+        var o = document.createElement("option");
+        o.text = option;
+        checkBox.add(o);
+    }
+})()
