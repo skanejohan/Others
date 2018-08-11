@@ -8,40 +8,51 @@ function setupUI(mapDiv) {
     var movies;
     var markers;
     var bounds;
-    
-    function selectMovie() {
+
+    function AddMarkers(locations) {
         // Delete existing markers
         markers.map(m => m.setMap(null));
         markers = [];
-    
-        // Determine selected moview
-        var selectedMovies;
-        if (movieSelector.selectedIndex > 0) {
-            selectedMovies = movies.byMovie(movieSelector.selectedIndex-1).get();
-        } 
-        else {
-            selectedMovies = movies.get();
-        }
 
         // Add markers for selected movies
         bounds = new google.maps.LatLngBounds();
-        selectedMovies.map(m => {
-            m.locations.map(l => {
-                var marker = new google.maps.Marker({position: l.position, map: map, title: l.movieName });
-                markers.push(marker);
-                bounds.extend(l.position);
-            });
+        locations.map(l => {
+            var marker = new google.maps.Marker({position: l.position, map: map, title: l.movieName });
+            markers.push(marker);
+            bounds.extend(l.position);
         });
-
+        
         // Zoom around the markers
         map.fitBounds(bounds);
         if (map.getZoom() > 15) {
             map.setZoom(15);
         }
+    }
+
+    function AddMovieMarkers(movies) {
+        var locations = []; 
+        movies.map(m => m.locations.map(l => locations.push(l)));
+        AddMarkers(locations);
+    }
+
+    function AddSequenceMarkers(movie, sequence) {
+        var locations = []; 
+        movie.locations.filter(l => sequence.ids.includes(l.id)).map(l => locations.push(l));
+        AddMarkers(locations);
+        console.log("AddSequenceMarkers: " + sequence.start + " - " + sequence.end + " " + sequence.ids);
+    }
+
+    function selectMovie() {
+        var selectedMovies = movieSelector.selectedIndex > 0 
+            ? movies.byMovie(movieSelector.selectedIndex-1).get() 
+            : movies.get();
+        AddMovieMarkers(selectedMovies);
 
         // Display the time line if a specific movie was selected.
         map.controls[google.maps.ControlPosition.BOTTOM_CENTER].clear();
         if (movieSelector.selectedIndex > 0) {
+            timeDiv.innerHTML = "";
+            setupTimeLine(timeDiv, selectedMovies[0], index => AddSequenceMarkers(selectedMovies[0], selectedMovies[0].sequences[index]));
             map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(timeDiv);
         }
     }

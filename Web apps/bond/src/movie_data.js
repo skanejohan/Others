@@ -1,3 +1,7 @@
+function time(h, m, s) {
+    return new Date(2000, 1, 1, h, m, s, 0);
+}
+
 const movie_data = [
     {
 		title: "Dr. No",
@@ -38,8 +42,10 @@ const movie_data = [
                 position: new google.maps.LatLng(18.415916, -77.137944),
                 description: "",
             },
-		]
-	},
+		],
+        sequences : [
+        ],
+    },
     {
 		title: "On her Majesty's Secret Service",
 		year: 1969,
@@ -52,14 +58,16 @@ const movie_data = [
 
             // 1:20-1:25 Bond drives away from his hotel.
             {
-				name: "Parada da Artilharia Anti Aerea / Av. Dom Carlos I",
-                position: new google.maps.LatLng(38.694306, -9.419764),
+                id: "road_from_hotel",
+                name: "Parada da Artilharia Anti Aerea / Av. Dom Carlos I",
+                position: new google.maps.LatLng(38.694550, -9.419931),
                 description: "This is the road Bond uses to get to and from his hotel.",
             },
 
             // 1:25-2:15 Bond is overtaken by Tracy on her way to the beach.
             {
-				name: "N247 road",
+                id: "N247",
+                name: "N247 road",
                 position: new google.maps.LatLng(38.764472, -9.470995),
                 description: "This is where Tracy overtakes Bond on her way to the beach.",
                 sources: ["https://www.onthetracksof007.com/maps"],
@@ -68,6 +76,7 @@ const movie_data = [
             
             // 2:15-6:34 Bond rescues Tracy from the sea and fights Draco's goons
             {
+                id: "fight_beach",
 				name: "Praia Grande do Guincho",
                 position: new google.maps.LatLng(38.732384, -9.473209),
                 description: "This is where Bond rescues Tracy di Vicenzo from the sea and fights Draco's goons.",
@@ -79,7 +88,8 @@ const movie_data = [
 
             // 8:58-19:20 Bond arrives at the hotel, rescues Tracy at the card table, fights off Draco's goons again and goes to bed with Tracy.
 			{
-				name: "Palácio Estoril Hotel",
+                id: "palacio_hotel",
+                name: "Palácio Estoril Hotel",
                 position: new google.maps.LatLng(38.704813, -9.396409),
                 description: "This is the hotel in which both Bond and Tracy live at the beginning of the movie. The images from the lobby are said to have been recorded in the hotel. Most other indoors scenes are probably recorded in the studio.",
                 sources: [
@@ -90,6 +100,7 @@ const movie_data = [
 
             // 19:20-19:45 Bond is taken to a meeting with Marc-Ange Draco
 			{
+                id: "pte25apr",
 				name: "Ponte 25 de Abril",
                 position: new google.maps.LatLng(38.690775, -9.177354),
                 description: "When taken to Draco, Bond is driven over the 25th of April Bridge in Lissabon.",
@@ -103,6 +114,7 @@ const movie_data = [
 
             // 29:15-29:30 Tracy arrives at her father's home
 			{
+                id: "draco_entrance",
 				movieName: "The home of Marc-Ange Draco (entrance road)",
 				name: "Unknown road in Portugal.",
                 position: new google.maps.LatLng(38.566376, -8.729593),
@@ -111,8 +123,9 @@ const movie_data = [
 
             // 29:15-33:54 Draco's birthday party.
 			{
+                id: "bullfight",
 				movieName: "The home of Marc-Ange Draco (bullfighting arena)",
-                name: "Potuguese bullfighting arena",
+                name: "Portuguese bullfighting arena",
                 position: new google.maps.LatLng(38.567394, -8.724836),
                 description: "This is the bullfighting arena where the scenes for Marc-Ange Draco's birthday party were shot.",
             },
@@ -121,6 +134,7 @@ const movie_data = [
 
             // 34:12-34:22 Bond and Tracy fall in love - walking in a park, playing with a cat
 			{
+                id: "love_marqueses",
                 name: "Palácio dos Marqueses da Fronteira",
                 position: new google.maps.LatLng(38.740097, -9.179777),
                 description: "",
@@ -130,6 +144,7 @@ const movie_data = [
 
             // 34:27-34:32 Bond and Tracy fall in love - walking on a beach
 			{
+                id: "love_beach",
                 name: "Private beach",
                 position: new google.maps.LatLng(38.523848, -8.738378),
                 description: "",
@@ -143,6 +158,7 @@ const movie_data = [
 
             // 34:44-34:47 Bond and Tracy fall in love - looking at a ring
 			{
+                id: "love_jewelers",
                 name: "Joalharia Ferreira Marques",
                 position: new google.maps.LatLng(38.712922, -9.139027),
                 description: "",
@@ -150,6 +166,11 @@ const movie_data = [
 
             // 34:47-35:10 Bond and Tracy fall in love - repeated locations
             
+
+            // TODO TIME?
+
+
+
             // 34:47-35:10 Draco takes Bond and Tracy to Bern
 			{
                 name: "Bärengraben",
@@ -175,7 +196,87 @@ const movie_data = [
                 description: "",
                 confirmed: false,
             },
-		]
+        ],
+        sequences : [
+            { 
+                start: time(0, 0, 0),    
+                end : time(0, 0, 40),  
+                description: 'Introduction and gun-barrel sequence',
+                ids: [],
+            },
+            { 
+                start: time(0, 0, 40),   
+                end : time(0, 0, 45),  
+                description: 'Big Ben is reflected in the "Universal Exports" sign',
+                ids: [],
+            },
+            { 
+                start: time(0, 0, 45),   
+                end : time(0, 1, 20),  
+                description: 'M, Q and Moneypenny wonder where Bond is. MI6, London (shot in studio)', 
+                ids: [], 
+            },
+            { 
+                start: time(0, 1, 20),   
+                end : time(0, 1, 25),  
+                description: 'Bond drives away from his hotel', 
+                ids: ["road_from_hotel"], 
+            },
+            { 
+                start: time(0, 1, 25),   
+                end : time(0, 2, 15),  
+                description: 'Bond is overtaken by Tracy on her way to the beach', 
+                ids: ["N247"], 
+            },
+            { 
+                start: time(0, 2, 15),   
+                end : time(0, 6, 34),  
+                description: 'Bond rescues Tracy from the sea and fights Draco\'s goons', 
+                ids: ["fight_beach"], 
+            },
+            { 
+                start: time(0, 6, 34),   
+                end : time(0, 8, 58),  
+                description: 'The theme song plays', 
+                ids: [], 
+            },
+            { 
+                start: time(0, 8, 58),   
+                end : time(0, 19, 20), 
+                description: 'Bond arrives at the hotel, rescues Tracy at the card table, fights off Draco\'s goons again and goes to bed with Tracy', 
+                ids: ["palacio_hotel"], 
+            },
+            { 
+                start: time(0, 19, 20),  
+                end : time(0, 20, 00), 
+                description: 'Bond is taken to a meeting with Marc-Ange Draco',
+                ids: ["pte25apr"], 
+            },
+            { 
+                start: time(0, 20, 00),  
+                end : time(0, 25, 35), 
+                description: 'Bond is meeting with Marc-Ange Draco (shot in studio)', 
+                ids: [], 
+            },
+            { 
+                start: time(0, 25, 35),  
+                end : time(0, 29, 15), 
+                description: 'Bond fails to resign. MI6, London (shot in studio)', 
+                ids: [], 
+            },
+            { 
+                start: time(0, 29, 15),  
+                end : time(0, 33, 54), 
+                description: 'Bond meets Marc-Ange Draco and Tracy at Draco\'s birthday party', 
+                ids: ["draco_entrance", "bullfight"], 
+            },
+            { 
+                start: time(0, 33, 54),  
+                end : time(0, 35, 10), 
+                description: 'Bond and Tracy fall in love', 
+                ids: ["love_marqueses", "love_beach", "love_jewelers"], 
+            },
+        ]
 	},
     {
 		title: "Live and Let Die",
@@ -186,7 +287,9 @@ const movie_data = [
                 position: new google.maps.LatLng(18.460957, -77.374510),
                 description: "",
             },
-		]
+		],
+        sequences : [
+        ],
 	},
     {
 		title: "The Man with the Golden Gun",
@@ -228,6 +331,8 @@ const movie_data = [
             // 1:28 South China Sea - JB island
             // 1:53 Junk
             // 1:58 Emd credits
-        ]
+		],
+        sequences : [
+        ],
 	},
 ]
