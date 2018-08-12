@@ -150,42 +150,40 @@ function locationItems() {
         var h = _canvas.alignedTextBox(x, y, w, MARGIN, MARGIN, i.caption, _colors.hintBg);
         i.getVerbs(THESEUS.context).forEach(
             (name, fn) => {
-                if (true) {
-                    var verbBgColor;
-                    var verbFgColor;
-                    if (THESEUS.DRAWING.UTILS.insideRect(_mousePos, x, y+h+VERB_OFFSET, w, VERB_HEIGHT)) {
-                        verbBgColor = _colors.verbBg;
-                        verbFgColor = _colors.verbFg;
-                        _getDrawState().clickFunction = context => {
-                            if (name == "Enter combination") {
-                                _getDrawState().modalLayer = COMBINATION_LAYER;
-                                _getDrawState().combinationLockItem = i;
-                                _getDrawState().combination = "";
-                                return "";
-                            }
-                            if (name == "Take") {
-                                // Once an item is taken, it should no longer be drawn in
-                                // the location, even after it has been dropped again. 
-                                i.getDrawCoords = undefined;
-                            }
-                            return fn(context);
-                        };
-                    }
-                    else {
-                        verbBgColor = _colors.hintBg;
-                        verbFgColor = _colors.hintFg;
-                    }
-                    _canvas.pushFillStyle(verbBgColor);
-                    _canvas.fillRect(x, y+h+VERB_OFFSET, w, VERB_HEIGHT+1);
-                    _canvas.popFillStyle();
-                    _canvas.pushFillStyle(_colors.hintBg);
-                    _canvas.fillRect(x, y+h+VERB_OFFSET+VERB_HEIGHT, w, VERB_OFFSET-VERB_HEIGHT+1);
-                    _canvas.popFillStyle();
-                    _canvas.pushFillStyle(verbFgColor);
-                    _canvas.fillText(name, x+VERB_OFFSET, y+h+VERB_OFFSET+_canvas.textHeight());
-                    _canvas.popFillStyle();
-                    h += VERB_OFFSET;
+                var verbBgColor;
+                var verbFgColor;
+                if (THESEUS.DRAWING.UTILS.insideRect(_mousePos, x, y+h+VERB_OFFSET, w, VERB_HEIGHT)) {
+                    verbBgColor = _colors.verbBg;
+                    verbFgColor = _colors.verbFg;
+                    _getDrawState().clickFunction = context => {
+                        if (name == "Enter combination") {
+                            _getDrawState().modalLayer = COMBINATION_LAYER;
+                            _getDrawState().combinationLockItem = i;
+                            _getDrawState().combination = "";
+                            return "";
+                        }
+                        if (name == "Take") {
+                            // Once an item is taken, it should no longer be drawn in
+                            // the location, even after it has been dropped again. 
+                            i.getDrawCoords = undefined;
+                        }
+                        return fn(context);
+                    };
                 }
+                else {
+                    verbBgColor = _colors.hintBg;
+                    verbFgColor = _colors.hintFg;
+                }
+                _canvas.pushFillStyle(verbBgColor);
+                _canvas.fillRect(x, y+h+VERB_OFFSET, w, VERB_HEIGHT+1);
+                _canvas.popFillStyle();
+                _canvas.pushFillStyle(_colors.hintBg);
+                _canvas.fillRect(x, y+h+VERB_OFFSET+VERB_HEIGHT, w, VERB_OFFSET-VERB_HEIGHT+1);
+                _canvas.popFillStyle();
+                _canvas.pushFillStyle(verbFgColor);
+                _canvas.fillText(name, x+VERB_OFFSET, y+h+VERB_OFFSET+_canvas.textHeight());
+                _canvas.popFillStyle();
+                h += VERB_OFFSET;
             });
         _canvas.pushFillStyle(_colors.hintBg);
         _canvas.fillRect(x, y+h+VERB_OFFSET, w, MARGIN);
