@@ -147,10 +147,10 @@ function locationItems() {
         let VERB_HEIGHT = 15;
         let VERB_OFFSET = 20;
         _canvas.pushAll(_colors.hintFg, _colors.hintFg, "Caudex", 12);
-        var h = _canvas.alignedTextBox(x, y, w, MARGIN, MARGIN, THESEUS.DRAWING.UTILS.description(i), _colors.hintBg);
+        var h = _canvas.alignedTextBox(x, y, w, MARGIN, MARGIN, i.caption, _colors.hintBg);
         i.getVerbs(THESEUS.context).forEach(
             (name, fn) => {
-                if (name != "Examine") {
+                if (true) {
                     var verbBgColor;
                     var verbFgColor;
                     if (THESEUS.DRAWING.UTILS.insideRect(_mousePos, x, y+h+VERB_OFFSET, w, VERB_HEIGHT)) {
