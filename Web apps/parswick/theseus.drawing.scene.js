@@ -122,17 +122,26 @@ THESEUS.DRAWING.SCENE = (function() {
         THESEUS.context.inventory().forEachOpen(i => inventory.add(i));
         inventory.draw();
 
+        THESEUS.context.location().characters.forEach(c => {
+            inventory.add(c);
+        });
+
         if (combinationLockVisible()) {
             THESEUS.DRAWING.GAMEOBJECTS.combinationLock(255, 25, 290, 400).draw();
         }
 
-        THESEUS.DRAWING.GAMEOBJECTS.message(message).draw();
+        if (THESEUS.context.conversation != undefined) {
+            THESEUS.DRAWING.GAMEOBJECTS.conversation(100, 25, 600, 400, THESEUS.context.conversation).draw();
+        }
     }
     
     function click() {
         if (drawState.clickFunction != undefined) {
             drawState.clickFunction(THESEUS.context);
-            message = THESEUS.context.message();
+            if (message != THESEUS.context.message()) {
+                message = THESEUS.context.message();
+                console.log(message);
+            }
         }
     }
 

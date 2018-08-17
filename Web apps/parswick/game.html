@@ -50,14 +50,15 @@
         canvasContext.translate(0.5, 0.5);
         THESEUS.DRAWING.GAMEOBJECTS.initialize(sizedCanvas, layers, COLORS, THESEUS.DRAWING.SCENE.getDrawState);
 
-        THESEUS.context.initialize(THESEUS.PARSWICK.fictionSection, "Welcome to the game");
-            setInterval(function() {
-                sizedCanvas.setScale(window.innerWidth, window.innerHeight);
-                THESEUS.DRAWING.GAMEOBJECTS.setMousePos(mousePos);
-                layers.clear();
-                THESEUS.DRAWING.SCENE.draw();
-                layers.draw();
-            }, 1000 / FPS);
+        THESEUS.PARSWICK.startGame();
+
+        setInterval(function() {
+            sizedCanvas.setScale(window.innerWidth, window.innerHeight);
+            THESEUS.DRAWING.GAMEOBJECTS.setMousePos(mousePos);
+            layers.clear();
+            THESEUS.DRAWING.SCENE.draw();
+            layers.draw();
+        }, 1000 / FPS);
 
         canvas.addEventListener("mousemove",
             function(evt) {
@@ -79,6 +80,10 @@
             x : evt.clientX - rect.left - root.scrollLeft,
             y : evt.clientY - rect.top - root.scrollTop 
         }
+    }
+
+    function load() {
+        THESEUS.context.restore("M-THESEUS.PARSWICK.kitchen,A-THESEUS.PARSWICK.cupboard-open,A-THESEUS.PARSWICK.cup-take,A-THESEUS.PARSWICK.officeDoorKey-take,M-THESEUS.PARSWICK.fictionSection,M-THESEUS.PARSWICK.artSection,M-THESEUS.PARSWICK.historySection,A-THESEUS.PARSWICK.officeDoor-unlock,A-THESEUS.PARSWICK.officeDoor-open,M-THESEUS.PARSWICK.office,A-THESEUS.PARSWICK.cabinet-open,A-THESEUS.PARSWICK.metalBox-take,A-THESEUS.PARSWICK.desk-examine,A-THESEUS.PARSWICK.drawer-open,A-THESEUS.PARSWICK.paperClip-take,A-THESEUS.PARSWICK.metalBox-pick,A-THESEUS.PARSWICK.metalBox-open,A-THESEUS.PARSWICK.rockPick-take,A-THESEUS.PARSWICK.safe-examine,A-THESEUS.PARSWICK.safe-enterCombination-1979,A-THESEUS.PARSWICK.safe-open,A-THESEUS.PARSWICK.houseHistoryBook-take,A-THESEUS.PARSWICK.houseHistoryBook-examine,M-THESEUS.PARSWICK.historySection,M-THESEUS.PARSWICK.artSection,M-THESEUS.PARSWICK.fictionSection,M-THESEUS.PARSWICK.travelSection,A-THESEUS.PARSWICK.languageShelf-examine,A-THESEUS.PARSWICK.latinDictionary-take,A-THESEUS.PARSWICK.houseHistoryBook-examine,M-THESEUS.PARSWICK.fictionSection,M-THESEUS.PARSWICK.artSection,M-THESEUS.PARSWICK.historySection,A-THESEUS.PARSWICK.historyBookShelf-examine,A-THESEUS.PARSWICK.historyBookShelf-empty,A-THESEUS.PARSWICK.historyBookShelf-pull,A-THESEUS.PARSWICK.wall-examine,A-THESEUS.PARSWICK.wall-hit");
     }
 
 </script>

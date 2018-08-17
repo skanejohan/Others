@@ -162,6 +162,9 @@ function locationItems() {
                             _getDrawState().combination = "";
                             return "";
                         }
+                        if (name == "Talk") {
+                            _getDrawState().modalLayer = CONVERSATION_LAYER;
+                        }
                         if (name == "Take") {
                             // Once an item is taken, it should no longer be drawn in
                             // the location, even after it has been dropped again. 
@@ -423,6 +426,44 @@ function locationItems() {
         }
     }
 
+// ---------- conversation  --------------------------------------------------------
+
+    function doDrawConversation(left, top, width, height, conversation) {
+        var t = top;
+        var yMargin = 10;
+        var marginHeight = 2*(yMargin+1);
+        _canvas.pushAll(_colors.fg, _colors.fg, "Caudex", 16);
+        _canvas.fillStyle = _colors.bg;
+        _canvas.fillRect(left, top, width, height);
+        _canvas.fillStyle = _colors.fg;
+        var h = _canvas.alignedTextBox(left, t, width, 10, yMargin, conversation.currentStatement());
+        t += h + marginHeight + 10;
+        conversation.currentResponses().forEach(r => {
+            var h = _canvas.alignedTextBox(left + 20, t, width-20, 10, 10, r.text);
+            if (THESEUS.DRAWING.UTILS.insideRect(_mousePos, left, t, width, h + 2*(yMargin+1))) {
+                _getDrawState().clickFunction = context => {
+                    r.fn();
+                    if (conversation.currentStatement() == undefined) {
+                        THESEUS.context.conversation = undefined;
+                        _getDrawState().modalLayer = undefined;
+                    }    
+                };
+            }
+            t += h + marginHeight;
+        });
+        _canvas.popAll();
+    }
+
+    function drawConversation(left, top, width, height, conversation) {
+        _layers.addToLayer(CONVERSATION_LAYER, () => doDrawConversation(left, top, width, height, conversation));
+    }
+
+    function conversation(left, top, width, height, conversation) {
+        return {
+            draw : () => drawConversation(left, top, width, height, conversation),
+        }
+    }
+
 // ---------- arrows --------------------------------------------------------
 
     function calcArrowPoints(cx, cy, factors) {
@@ -530,6 +571,8 @@ return {
         leftWall : () => wall("left", 0, 0),
 
         combinationLock : combinationLock,
+
+        conversation : conversation,
 
         rightArrow : rightArrow, 
         bottomArrow : bottomArrow, 
