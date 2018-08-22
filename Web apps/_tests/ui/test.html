@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        html, body {
+            width:  100%;
+            height: 100%;
+            margin: 0px;
+            background-color: ecd9c6;
+        }
+    </style>
+    
+<head>
+    <title>Test</title>
+    <script src="..\..\_include\timing\timer.js"></script>
+    <script src="..\..\_include\timing\timedvaluemodifier.js"></script>
+    <script src="..\..\_include\drawing\scaling_canvas.js"></script>
+    <script src="..\..\_include\drawing\ui\animations.js"></script>
+    <script src="..\..\_include\drawing\ui\elements.js"></script>
+    <script src="..\..\_include\drawing\ui\engine.js"></script>
+
+    <script>
+        var engine;
+        var sizedCanvas;
+
+        function draw(timestamp) {
+            window.requestAnimationFrame(draw);
+            sizedCanvas.setDimensions(window.innerWidth, window.innerHeight);
+            engine.draw();
+        }
+
+        function randomElement(x, y) {
+            switch(Math.floor(Math.random() * 2)) {
+                case 0: return new Rect(x, y, 100, 100, "black");
+                case 1: return new FillRect(x, y, 100, 100, "red");
+            }
+        }
+
+        function init() {
+            let w = 800;
+            let h = 450;
+            sizedCanvas = new ScalingCanvas(document.getElementById("canvas"), w, h);
+            engine = new Engine(sizedCanvas);
+
+            engine.onclick = function(x, y, elem) {
+                var r = new Rect(x, y, 100, 100, "black", () => {
+                    r.finishAfterAnimations = true; 
+                    r.popup.fadeOut(200);
+                    r.fadeOut(200); });
+                r.popup = new Rect(0, 0, 100, 100, "red");
+                r.fadeIn(200);
+                engine.add(r);
+            }
+
+            window.requestAnimationFrame(draw);
+        }
+</script>
+</head>
+
+<body onload="init();">
+    <canvas id="canvas" />
+</body>
+
+</html>
