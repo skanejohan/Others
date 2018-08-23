@@ -8,9 +8,23 @@ class Engine {
         this._onclick = undefined;
         this.elements = [];
         let that = this;
-        canvas.onmousemove = function(e) {
+        canvas.onmousemove = function(e, info) {
             ElementBase.mousePos.x = e.clientX;
             ElementBase.mousePos.y = e.clientY;
+            if (info !== undefined) {
+                // This is the case if we use a ScalingCanvas
+                ElementBase.canvasRect.left = info.left;
+                ElementBase.canvasRect.right = info.right;
+                ElementBase.canvasRect.top = info.top;
+                ElementBase.canvasRect.bottom = info.bottom;
+            }
+            else {
+                // This is the case for the normal - non-scaling - canvas
+                ElementBase.canvasRect.left = 0;
+                ElementBase.canvasRect.right = canvas.width;
+                ElementBase.canvasRect.top = 0;
+                ElementBase.canvasRect.bottom = canvas.height;
+            }
         }
         canvas.onclick = function(e) {
             var handled = false;

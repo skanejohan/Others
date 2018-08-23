@@ -122,21 +122,22 @@ class ScalingCanvasContext {
 
 class ScalingCanvas {
 
-    constructor(canvas, virtualWidth, height) {
+    constructor(canvas, virtualWidth, virtualHeight) {
         this._scale = 1;
         this._offsetX = 0;
         this._offsetY = 0;
         this._virtualWidth = virtualWidth;
-        this._height = height;
+        this._virtualHeight = virtualHeight;
         this._onclick = undefined;
         this._onmousemove = undefined;
-        this._currentPosition = { x : 0, y : 0 };
+        this._currentVirtualPosition = { x : 0, y : 0 };
+        this._boundingVirtualRect = { left : 0, right : 0, top : 0, bottom : 0 };
         this._underlyingCanvas = canvas;
         this._context = new ScalingCanvasContext(canvas.getContext("2d"));
         this._underlyingCanvas.onclick = e => this._onclick == undefined || this._onclick(this._mouseEvent("onmouseclick"));
         this._underlyingCanvas.onmousemove = e => {
             this._calculateMousePos(e);
-            this._onmousemove == undefined || this._onmousemove(this._mouseEvent("onmousemove"));
+            this._onmousemove === undefined || this._onmousemove(this._mouseEvent("onmousemove"), this._boundingVirtualRect);
         };
     }
 
@@ -162,7 +163,7 @@ class ScalingCanvas {
         this._underlyingCanvas.width  = width;
         this._underlyingCanvas.height = height;
         var scaleX = width / this._virtualWidth;
-        var scaleY = height / this._height;
+        var scaleY = height / this._virtualHeight;
         if (scaleX > scaleY) {
             this._scale = scaleY;
             this._offsetX = (width - this._virtualWidth * this._scale) / 2;
@@ -170,7 +171,7 @@ class ScalingCanvas {
         } else {
             this._scale = scaleX;
             this._offsetX = 0;
-            this._offsetY = (height - this._height * this._scale) / 2;
+            this._offsetY = (height - this._virtualHeight * this._scale) / 2;
         }
         this._context._setOffsetAndScale(this._offsetX, this._offsetY, this._scale);
     }
@@ -180,16 +181,20 @@ class ScalingCanvas {
     _calculateMousePos(evt) {
         var root = document.documentElement;
         var rect = this._underlyingCanvas.getBoundingClientRect();
-        this._currentPosition = { 
+        this._currentVirtualPosition = { 
             x : this._context._actualToVirtualX(evt.clientX - rect.left - root.scrollLeft),
             y : this._context._actualToVirtualY(evt.clientY - rect.top - root.scrollTop),
         }
+        this._boundingVirtualRect.left = this._context._actualToVirtualX(0 - rect.left - root.scrollLeft);
+        this._boundingVirtualRect.top = this._context._actualToVirtualY(0 - rect.top - root.scrollTop);
+        this._boundingVirtualRect.right = this._context._actualToVirtualX(this._underlyingCanvas.width - rect.left - root.scrollLeft);
+        this._boundingVirtualRect.bottom = this._context._actualToVirtualY(this._underlyingCanvas.height - rect.top - root.scrollTop);
     }
 
     _mouseEvent(s) {
         return new MouseEvent(s, { 
-            "clientX" : this._currentPosition.x,
-            "clientY" : this._currentPosition.y,
+            "clientX" : this._currentVirtualPosition.x,
+            "clientY" : this._currentVirtualPosition.y,
         });
     }
 }

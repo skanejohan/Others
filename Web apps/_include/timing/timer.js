@@ -8,7 +8,10 @@ class Timer {
     }
 
     activate(ms, fn) {
-        this.timeOut = setTimeout(fn, ms);
+        this.timeOut = setTimeout(() => {
+            this.timeOut = undefined;    
+            fn();
+        }, ms);
     }
 
     deactivate() {

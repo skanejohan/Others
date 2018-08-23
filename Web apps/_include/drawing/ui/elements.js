@@ -1,5 +1,3 @@
-// TODO introduce a "show popup" timer, so that you have to remain above an element for a short while before the popup is shown
-
 // ---------- Base class for all elements -----------------------------------------------------------------------------------------
 
 class ElementBase {
@@ -76,25 +74,28 @@ class ElementBase {
             return;
         }
 
-        // If we hover over this element, it has a popup, and no popup is visible, 
-        // set the popup's coordinates, make the popup visible and tell the system 
-        // that this is the only allowed popup.
-        if (this.hovering() && this._popup !== undefined && ElementBase.currentPopup === undefined) {
+        // If we hover over this element, it has a popup, no popup is visible, and no other popup
+        // is waiting to be shown, activate the "show popup" timer.  
+        if (this.hovering() && this._popup !== undefined && ElementBase.currentPopup === undefined && !ElementBase.showPopupTimer.isActive()) {
+            ElementBase.showPopupTimer.activate(200, () => {
+            // Set the popup's coordinates, make the popup visible and tell the system 
+            // that this is the only allowed popup.
             ElementBase.currentPopup = this._popup;
-            this.setPopupCoordinates();
-            this._popup.fadeIn(300);
+                this.setPopupCoordinates();
+                this._popup.fadeIn(300); 
+            });
         }
 
         // If we hover over this element, or its visible popup, deactivate the "hide 
         // popup" timer if it is active.
-        if ((this.hovering() || this.popupHovering()) && this.popupVisible() && ElementBase.popupTimer.isActive()) {
-            ElementBase.popupTimer.deactivate();
+        if ((this.hovering() || this.popupHovering()) && this.popupVisible() && ElementBase.hidePopupTimer.isActive()) {
+            ElementBase.hidePopupTimer.deactivate();
         }
 
         // If we don't hover over this element or its popup, but the popup is visible, 
         // and the "hide popup" timer is not active, activate it.
-        if (!this.hovering() && !this.popupHovering() && this.popupVisible() && !ElementBase.popupTimer.isActive()) {
-            ElementBase.popupTimer.activate(300, () => {
+        if (!this.hovering() && !this.popupHovering() && this.popupVisible() && !ElementBase.hidePopupTimer.isActive()) {
+            ElementBase.hidePopupTimer.activate(300, () => {
                 // If the "hide popup" timer reaches 0, make the popup invisible.
                 this.popup.fadeOut(100, () => ElementBase.currentPopup = undefined);
             });
@@ -102,10 +103,8 @@ class ElementBase {
     }
 
     setPopupCoordinates() {
-        this._popup.x = this.x + (this.w / 3);
-        this._popup.y = this.y + (this.h / 3);
-        // TODO limit so that it always fits
-        // TODO probably configurable if the popup should appear above, below, right, left etc. of the mouse cursor. Or?
+        this._popup.x = Math.max(ElementBase.canvasRect.left + 5, Math.min(ElementBase.mousePos.x, ElementBase.canvasRect.right - this._popup.w - 5));
+        this._popup.y = Math.max(ElementBase.canvasRect.top + 5, Math.min(ElementBase.mousePos.y, ElementBase.canvasRect.bottom - this._popup.h - 5));
     }
 
     hovering() {
@@ -126,7 +125,9 @@ class ElementBase {
 
 ElementBase.mousePos = { x : 0, y : 0 };
 ElementBase.currentPopup = undefined;
-ElementBase.popupTimer = new Timer();
+ElementBase.showPopupTimer = new Timer();
+ElementBase.hidePopupTimer = new Timer();
+ElementBase.canvasRect = { left : 0, top : 0, right : 0, bottom : 0 };
 
 // ---------- Specific elements -----------------------------------------------------------------------------------------
 
