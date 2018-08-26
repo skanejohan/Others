@@ -1,12 +1,12 @@
-// TODO : handle layers
-// TODO group elements and attach animations to the group
+// TODO : modal layer
+// TODO : more "high-level" drawing objects, but not game-specific
 
 class Engine {
     constructor(canvas) {
         this.canvas = canvas;
         this.context = canvas.getContext("2d");
         this._onclick = undefined;
-        this.elements = [];
+        this._layers = {};
         let that = this;
         canvas.onmousemove = function(e, info) {
             ElementBase.mousePos.x = e.clientX;
@@ -28,7 +28,7 @@ class Engine {
         }
         canvas.onclick = function(e) {
             var handled = false;
-            that.elements.forEach(e => {
+            that._forEachElement(e => {
                 if(e.hovering()) {
                     handled = true;
                     if (e.fn !== undefined) {
@@ -42,29 +42,63 @@ class Engine {
         }
     }
 
-    add(element) {
+    add(element, layerIndex) {
         element.context = this.canvas.getContext("2d");
         if (element.popup !== undefined) {
             element.popup.context = element.context;
         }
-        this.elements.push(element);
+        element.layerIndex = layerIndex || 0;
+        if (this._layers[element.layerIndex] == null) {
+            this._layers[element.layerIndex] = []
+        }
+        this._layers[element.layerIndex].push(element);
+    }
+
+    remove(element) {
+        var index = this._layers[element.layerIndex].indexOf(element);
+        if (index > -1) {
+            this._layers[element.layerIndex].splice(index, 1);
+            if (this._layers[element.layerIndex].length == 0) {
+                delete this._layers[element.layerIndex];
+            }
+        }
     }
 
     draw() {
-        this.elements.map(e => {
+        // Draw all elements, in layer order.
+        this._forEachElement(e => {
             e.draw();
             if (e.finished && e.popup === ElementBase.currentPopup) {
                 ElementBase.currentPopup = undefined;
             }
         });
+
+        // Draw the current popup, if defined
         if (ElementBase.currentPopup !== undefined) {
             ElementBase.currentPopup.draw();
         }
 
-        this.elements = this.elements.filter(e => !e.finished);
+        // TODO draw the elements on the modal layer, if applicable
+
+        // Remove elements that were finished in this round
+        var finishedElements= [];
+        this._forEachElement(e => { if (e.finished) { finishedElements.push(e) } });
+        finishedElements.forEach(e => this.remove(e));
     }
 
     set onclick(value) {
         this._onclick = value;
+    }
+
+    _layerIndices() {
+        return Object.keys(this._layers);
+    }
+
+    _forEachLayer(fn) {
+        this._layerIndices().forEach(i => fn(this._layers[i]));
+    }
+
+    _forEachElement(fn) {
+        this._forEachLayer(l => l.forEach(fn));
     }
 }

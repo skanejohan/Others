@@ -28,10 +28,10 @@
             engine.draw();
         }
 
-        function randomElement(x, y) {
+        function randomElement(x, y, fn) {
             switch(Math.floor(Math.random() * 2)) {
-                case 0: return new Rect(x, y, 100, 100, "black");
-                case 1: return new FillRect(x, y, 100, 100, "red");
+                case 0: return { layer : 0, element : new FillRect(x, y, 100, 100, "red", fn) };
+                case 1: return { layer : 1, element : new Rect(x, y, 100, 100, "black", fn) };
             }
         }
 
@@ -42,13 +42,13 @@
             engine = new Engine(sizedCanvas);
 
             engine.onclick = function(x, y, elem) {
-                var r = new Rect(x, y, 100, 100, "black", () => {
-                    r.finishAfterAnimations = true; 
-                    r.popup.fadeOut(200);
-                    r.fadeOut(200); });
-                r.popup = new Rect(0, 0, 100, 100, "red");
-                r.fadeIn(200);
-                engine.add(r);
+                var e = randomElement(x, y, () => {
+                    e.element.finishAfterAnimations = true; 
+                    e.element.popup.fadeOut(200);
+                    e.element.fadeOut(200); });
+                e.element.popup = new Rect(0, 0, 100, 100, "red");
+                e.element.fadeIn(200);
+                engine.add(e.element, e.layer);
             }
 
             window.requestAnimationFrame(draw);
