@@ -1901,4 +1901,19 @@ Kris och Luhrs bröllop - Ronneby Brunn
 			},
 		]
 	},
+	{
+		name: "Motorcykel till Danmark",
+		start: new Date(2018, 7, 16),
+		end: new Date(2018, 7, 17),
+		locations: [
+			{
+				name: "Hotel Fårup",
+				address: "Pirupvejen 151, 9492 Blokhus, Denmark",
+				url: "faarupsommerland.dk",
+				position: new google.maps.LatLng(57.270145, 9.643621),
+				start: new Date(2018, 7, 16),
+				end: new Date(2012, 7, 16),
+			},
+		]
+	},
 ]
