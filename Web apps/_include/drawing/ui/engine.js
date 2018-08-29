@@ -1,4 +1,3 @@
-// TODO : modal layer
 // TODO : more "high-level" drawing objects, but not game-specific
 
 class Engine {
@@ -6,7 +5,8 @@ class Engine {
         this.canvas = canvas;
         this.context = canvas.getContext("2d");
         this._onclick = undefined;
-        this._layers = {};
+        this._layers = [];
+        this._modalLayer = [];
         let that = this;
         canvas.onmousemove = function(e, info) {
             ElementBase.mousePos.x = e.clientX;
@@ -29,7 +29,7 @@ class Engine {
         canvas.onclick = function(e) {
             var handled = false;
             that._forEachElement(e => {
-                if(e.hovering()) {
+                if(e.hovering() && (that._modalLayer.length === 0 || e.onModalLayer)) {
                     handled = true;
                     if (e.fn !== undefined) {
                         e.fn();
@@ -43,23 +43,26 @@ class Engine {
     }
 
     add(element, layerIndex) {
-        element.context = this.canvas.getContext("2d");
-        if (element.popup !== undefined) {
-            element.popup.context = element.context;
+        layerIndex = layerIndex || 0;
+        if (this._layers[layerIndex] == null) {
+            this._layers[layerIndex] = []
         }
-        element.layerIndex = layerIndex || 0;
-        if (this._layers[element.layerIndex] == null) {
-            this._layers[element.layerIndex] = []
+        this._addElement(element, this._layers[layerIndex]);
+    }
+
+    addModal(element) {
+        if (this._modalLayer.length === 0) {
+            this._forEachNonModalElement(e => e.pause());
         }
-        this._layers[element.layerIndex].push(element);
+        this._addElement(element, this._modalLayer);
     }
 
     remove(element) {
-        var index = this._layers[element.layerIndex].indexOf(element);
-        if (index > -1) {
-            this._layers[element.layerIndex].splice(index, 1);
-            if (this._layers[element.layerIndex].length == 0) {
-                delete this._layers[element.layerIndex];
+        this._removeFromArray(element.layer, element);
+        if (element.layer.length == 0) {
+            this._removeFromArray(this._layers, element.layer);
+            if (element.layer === this._modalLayer) {
+                this._forEachNonModalElement(e => e.unpause());
             }
         }
     }
@@ -78,8 +81,6 @@ class Engine {
             ElementBase.currentPopup.draw();
         }
 
-        // TODO draw the elements on the modal layer, if applicable
-
         // Remove elements that were finished in this round
         var finishedElements= [];
         this._forEachElement(e => { if (e.finished) { finishedElements.push(e) } });
@@ -90,6 +91,16 @@ class Engine {
         this._onclick = value;
     }
 
+    _addElement(element, layer) {
+        element.context = this.canvas.getContext("2d");
+        if (element.popup !== undefined) {
+            element.popup.context = element.context;
+        }
+        element.onModalLayer = layer === this._modalLayer;
+        element.layer = layer;
+        layer.push(element);
+    }
+
     _layerIndices() {
         return Object.keys(this._layers);
     }
@@ -98,7 +109,19 @@ class Engine {
         this._layerIndices().forEach(i => fn(this._layers[i]));
     }
 
-    _forEachElement(fn) {
+    _forEachNonModalElement(fn) {
         this._forEachLayer(l => l.forEach(fn));
+    }
+
+    _forEachElement(fn) {
+        this._forEachNonModalElement(fn);
+        this._modalLayer.forEach(fn);
+    }
+
+    _removeFromArray(array, element) {
+        var index = array.indexOf(element);
+        if (index > -1) {
+            array.splice(index, 1);
+        }
     }
 }

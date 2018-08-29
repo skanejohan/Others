@@ -15,6 +15,14 @@ class AnimationBase {
             this.doneFn();
         }
     }
+
+    pause() {
+        this.valueModifier.pause();
+    }
+
+    unpause() {
+        this.valueModifier.unpause();
+    }
 }
 
 class FadeInAnimation extends AnimationBase {

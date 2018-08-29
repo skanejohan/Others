@@ -10,9 +10,11 @@ class ElementBase {
         this._fn = fn;
         this._alpha = 1;
         this._popup = undefined;
+        this._paused = false;
         this._finished = false;
         this._context = undefined;
         this._animations = [];
+        this._onModalLayer = true;
         this._finishAfterAnimations = false;
     }
 
@@ -39,6 +41,9 @@ class ElementBase {
         elem.context = this._context;
     }
 
+    get onModalLayer() { return this._onModalLayer; }
+    set onModalLayer(b) { this._onModalLayer = b; }
+    
     get finished() { return this._finished; };
 
     get context() { return this._context; }
@@ -62,25 +67,41 @@ class ElementBase {
         this._animations.push(new VerticalTranslateAnimation(this, dist, ms, doneFn));
     }
 
+    pause() {
+        this._animations.forEach(a => a.pause());
+        this._paused = true;
+    }
+
+    unpause() {
+        this._animations.forEach(a => a.unpause());
+        this._paused = false;
+    }
+  
+    isPaused() {
+        return this._paused;
+    }
+
     draw() {
-        this._animations.map(a => a.update());
+        this._animations.forEach(a => a.update());
         this._animations = this._animations.filter(a => !a.finished);
         if (this._animations.length === 0 && this._finishAfterAnimations) {
             this._finished = true;
         }
         this._context.globalAlpha = this._alpha;
 
-        if (this._finished) {
+        if (this._finished || this.isPaused()) {
             return;
         }
 
         // If we hover over this element, it has a popup, no popup is visible, and no other popup
         // is waiting to be shown, activate the "show popup" timer.  
         if (this.hovering() && this._popup !== undefined && ElementBase.currentPopup === undefined && !ElementBase.showPopupTimer.isActive()) {
+            ElementBase.pendingPopup = this._popup;
             ElementBase.showPopupTimer.activate(200, () => {
-            // Set the popup's coordinates, make the popup visible and tell the system 
-            // that this is the only allowed popup.
-            ElementBase.currentPopup = this._popup;
+                // Set the popup's coordinates, make the popup visible and tell the system 
+                // that this is the only allowed popup.
+                ElementBase.currentPopup = this._popup;
+                ElementBase.pendingPopup = undefined;
                 this.setPopupCoordinates();
                 this._popup.fadeIn(300); 
             });
@@ -99,6 +120,12 @@ class ElementBase {
                 // If the "hide popup" timer reaches 0, make the popup invisible.
                 this.popup.fadeOut(100, () => ElementBase.currentPopup = undefined);
             });
+        }
+
+        // If we don't hover over this element, but its "show popup" timer is active, deactivate it.
+        if (!this.hovering() && ElementBase.showPopupTimer.isActive() && ElementBase.pendingPopup === this._popup) {
+            ElementBase.showPopupTimer.deactivate();
+            ElementBase.pendingPopup = undefined;
         }
     }
 
@@ -124,6 +151,7 @@ class ElementBase {
 };
 
 ElementBase.mousePos = { x : 0, y : 0 };
+ElementBase.pendingPopup = undefined;
 ElementBase.currentPopup = undefined;
 ElementBase.showPopupTimer = new Timer();
 ElementBase.hidePopupTimer = new Timer();

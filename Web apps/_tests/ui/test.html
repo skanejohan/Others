@@ -29,26 +29,38 @@
         }
 
         function randomElement(x, y, fn) {
-            switch(Math.floor(Math.random() * 2)) {
-                case 0: return { layer : 0, element : new FillRect(x, y, 100, 100, "red", fn) };
-                case 1: return { layer : 1, element : new Rect(x, y, 100, 100, "black", fn) };
+            switch(Math.floor(Math.random() * 3)) {
+                case 0: return { element : new FillRect(x, y, 100, 100, "red", fn), layer : 0 };
+                case 1: return { element : new Rect(x, y, 100, 100, "black", fn), layer : 1 };
+                case 2: return { element : new FillRect(350, 175, 100, 100, "blue", fn) };
             }
         }
 
         function init() {
             let w = 800;
             let h = 450;
+            let modal = false;
             sizedCanvas = new ScalingCanvas(document.getElementById("canvas"), w, h);
             engine = new Engine(sizedCanvas);
 
             engine.onclick = function(x, y, elem) {
-                var e = randomElement(x, y, () => {
-                    e.element.finishAfterAnimations = true; 
-                    e.element.popup.fadeOut(200);
-                    e.element.fadeOut(200); });
-                e.element.popup = new Rect(0, 0, 100, 100, "red");
-                e.element.fadeIn(200);
-                engine.add(e.element, e.layer);
+                if (modal == false) {
+                    var e = randomElement(0, y, () => {
+                        e.element.finishAfterAnimations = true; 
+                        e.element.popup.fadeOut(200);
+                        e.element.fadeOut(200, () => modal = false); });
+                    e.element.popup = new Rect(0, 0, 100, 100, "red");
+                    e.element.fadeIn(200);
+                    if (e.layer === undefined) {
+                        e.element.x = x;
+                        engine.addModal(e.element);
+                        modal = true;
+                    }
+                    else {
+                        e.element.translateX(x, 2000);
+                        engine.add(e.element, e.layer);
+                    }
+                }
             }
 
             window.requestAnimationFrame(draw);
