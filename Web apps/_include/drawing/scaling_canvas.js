@@ -34,13 +34,22 @@ class ScalingCanvasContext {
     moveTo(x, y) {
         this._underlyingContext.moveTo(
             this._virtualToActualX(x), 
-            this.__virtualToActualY(y));
+            this._virtualToActualY(y));
     }
 
     lineTo(x, y) {
         this._underlyingContext.lineTo(
             this._virtualToActualX(x), 
             this._virtualToActualY(y));
+    }
+
+    quadraticCurveTo(cpx,cpy,x,y) {
+        this._underlyingContext.quadraticCurveTo(
+            this._virtualToActualX(cpx), 
+            this._virtualToActualY(cpy),
+            this._virtualToActualX(x), 
+            this._virtualToActualY(y)
+        );
     }
 
     stroke() {

@@ -89,6 +89,10 @@ class ElementBase {
         }
         this._context.globalAlpha = this._alpha;
 
+        if (!this.finished) {
+            this.doDraw();
+        }
+
         if (this._finished || this.isPaused()) {
             return;
         }
@@ -157,35 +161,67 @@ ElementBase.showPopupTimer = new Timer();
 ElementBase.hidePopupTimer = new Timer();
 ElementBase.canvasRect = { left : 0, top : 0, right : 0, bottom : 0 };
 
-// ---------- Specific elements -----------------------------------------------------------------------------------------
+// ---------- Base classes for specific elements ------------------------------------------------------------------------
 
-class Rect extends ElementBase {
+class RectBase extends ElementBase {
     constructor(x, y, w, h, style, fn) {
         super(x, y, w, h, fn);
         this.style = style;
-    }
-
-    draw() {
-        super.draw();
-        if (!this.finished) {
-            this.context.strokeStyle = this.style;
-            this.context.strokeRect(this.x, this.y, this.w, this.h);
-        }
     }
 }
 
-class FillRect extends ElementBase {
-    constructor(x, y, w, h, style, fn) {
+class RoundRectBase extends ElementBase {
+    constructor(x, y, w, h, r, style, fn) {
         super(x, y, w, h, fn);
         this.style = style;
+        this.r = r;
     }
 
-    draw() {
-        super.draw();
-        if (!this.finished) {
-            this.context.fillStyle = this.style;
-            this.context.fillRect(this.x, this.y, this.w, this.h);
-        }
+    doDraw() {
+        this.context.strokeStyle = this.style;
+        this.context.beginPath();
+        this.context.moveTo(this.x + this.r, this.y);
+        this.context.lineTo(this.x + this.w - this.r, this.y);
+        this.context.quadraticCurveTo(this.x + this.w, this.y, this.x + this.w, this.y + this.r);
+        this.context.lineTo(this.x + this.w, this.y + this.h - this.r);
+        this.context.quadraticCurveTo(this.x + this.w, this.y + this.h, this.x + this.w - this.r, this.y + this.h);
+        this.context.lineTo(this.x + this.r, this.y + this.h);
+        this.context.quadraticCurveTo(this.x, this.y + this.h, this.x, this.y + this.h - this.r);
+        this.context.lineTo(this.x, this.y + this.r);
+        this.context.quadraticCurveTo(this.x, this.y, this.x + this.r, this.y);
+        this.context.closePath();
+    }
+}
+
+// ---------- Implementation of Specific elements -----------------------------------------------------------------------
+
+class Rect extends RectBase {
+    doDraw() {
+        this.context.strokeStyle = this.style;
+        this.context.strokeRect(this.x, this.y, this.w, this.h);
+    }
+}
+
+class FillRect extends RectBase {
+    doDraw() {
+        this.context.fillStyle = this.style;
+        this.context.fillRect(this.x, this.y, this.w, this.h);
+    }
+}
+
+class RoundRect extends RoundRectBase {
+    doDraw() {
+        super.doDraw();
+        this.context.strokeStyle = this.style;
+        this.context.stroke();
+    }
+}
+
+class FillRoundRect extends RoundRectBase {
+    doDraw() {
+        super.doDraw();
+        this.context.fillStyle = this.style;
+        this.context.fill();
     }
 }
 

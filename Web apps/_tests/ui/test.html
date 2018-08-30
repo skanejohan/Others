@@ -29,10 +29,12 @@
         }
 
         function randomElement(x, y, fn) {
-            switch(Math.floor(Math.random() * 3)) {
-                case 0: return { element : new FillRect(x, y, 100, 100, "red", fn), layer : 0 };
-                case 1: return { element : new Rect(x, y, 100, 100, "black", fn), layer : 1 };
-                case 2: return { element : new FillRect(350, 175, 100, 100, "blue", fn) };
+            switch(Math.floor(Math.random() * 5)) {
+                case 0: return { element : new FillRect(350, 175, 100, 100, "blue", fn) };
+                case 1: return { element : new FillRect(x, y, 100, 100, "red", fn), layer : 0 };
+                case 2: return { element : new Rect(x, y, 100, 100, "black", fn), layer : 1 };
+                case 3: return { element : new RoundRect(x, y, 100, 100, 15, "green", fn), layer : 1 };
+                case 4: return { element : new FillRoundRect(x, y, 100, 100, 15, "yellow", fn), layer : 0 };
             }
         }
 
