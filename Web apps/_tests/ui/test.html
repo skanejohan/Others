@@ -69,12 +69,16 @@
             engine.add(new Rect(250, 100, 300, 100, "green"));
             var title = new Text(250, 100, 300, 100, "M elements test M", "24px arial", "red", HorizontalAlignment.JUSTIFY, VerticalAlignment.MIDDLE);
             engine.add(title);
-            fadeTitle();
+            flash(title);
 
+            var textBox = new TextBox(250, 200, 300, 300, "This is a very long text that will most likely not fit on one line", "24px arial", "blue");
+            engine.add(textBox);
+            flash(textBox);
+            
             window.requestAnimationFrame(draw);
 
-            function fadeTitle() {
-                title.fadeIn(200, () => title.fadeOut(200, fadeTitle));
+            function flash(element) {
+                element.fadeIn(200, () => element.fadeOut(200, () => flash(element)));
             }
         }
 </script>

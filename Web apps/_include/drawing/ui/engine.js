@@ -98,6 +98,7 @@ class Engine {
         }
         element.onModalLayer = layer === this._modalLayer;
         element.layer = layer;
+        element.engine = this;
         layer.push(element);
     }
 

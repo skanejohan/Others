@@ -31,6 +31,7 @@ class ElementBase {
         this._animations = [];
         this._onModalLayer = true;
         this._finishAfterAnimations = false;
+        this._engine = undefined;
     }
 
     get x() { return this._x; }
@@ -63,6 +64,9 @@ class ElementBase {
 
     get context() { return this._context; }
     set context(value) { this._context = value; }
+    
+    get engine() { return this._engine; }
+    set engine(value) { this._engine = value; }
     
     set finishAfterAnimations(value) { this._finishAfterAnimations = value; }
 
@@ -262,7 +266,7 @@ class Text extends ElementBase {
         var textWidth = this.context.measureText(this.text).width;
         switch (this.h_align) {
             case HorizontalAlignment.LEFT:
-                this.x = xOriginal;
+                this.x = this.xOriginal;
                 this.w = textWidth; 
                 positionedTexts.push({ x : 0, text: this.text }); 
                 break;
@@ -298,6 +302,57 @@ class Text extends ElementBase {
         }
                
         positionedTexts.forEach(t => this.context.fillText(t.text, this.x + t.x, this.y + textHeight));
+    }
+}
+
+class TextBox extends ElementBase {
+
+    constructor(x, y, w, h, text, font, style, fn) {
+        super(x, y, w, h, fn);
+        this.font = font;
+        this.style = style;
+        this.text = text;
+        this.texts = [];
+    }
+
+    fadeIn(ms, doneFn) {
+        super.fadeIn(ms, doneFn);
+        this.texts.forEach(t => t.fadeIn(ms));
+    }
+
+    fadeOut(ms, doneFn) {
+        super.fadeOut(ms, doneFn);
+        this.texts.forEach(t => t.fadeOut(ms));
+    }
+
+    translateX(dist, ms, doneFn) {
+        super.translateX(dist, ms, doneFn);
+        this.texts.forEach(t => t.translateX(dist, ms));
+    }
+
+    translateY(dist, ms, doneFn) {
+        super.translateY(dist, ms, doneFn);
+        this.texts.forEach(t => t.translateY(dist, ms));
+    }
+
+    doDraw() {
+        if (this.texts.length == 0) {
+            this._addTexts();
+        }
+    }
+
+    _addTexts() {
+        var yOffset = 0;
+        var textHeight = this.context.getScaledFontSize();
+        var lines = TextUtils.splitUpInLines(this.text, this.w, t => this.context.measureText(t).width);
+        lines.forEach((line, index) => {
+            var ha = index == lines.length-1 ? HorizontalAlignment.LEFT : HorizontalAlignment.JUSTIFY;
+            var text = new Text(this.x, this.y + yOffset, this.w, textHeight, line, 
+                this.font, this.style, ha, VerticalAlignment.MIDDLE, this.fn);
+            this.engine.add(text);
+            this.texts.push(text);
+            yOffset += textHeight;
+        });
     }
 }
 

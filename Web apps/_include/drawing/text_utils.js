@@ -35,6 +35,39 @@ class TextUtils {
     
         return result;
     }
+
+    static splitUpInLines(text, width, widthMeasurer) {
+        var words = text.split(' ');
+        var lines = [];
+        var line = "";
+    
+        if (widthMeasurer(text) < width) {
+            return [text];
+        }
+        
+        while (words.length > 0) {
+            while (widthMeasurer(words[0]) >= width) {
+                var tmp = words[0];
+                words[0] = tmp.slice(0, -1);
+                if (words.length > 1) {
+                    words[1] = tmp.slice(-1) + words[1];
+                } else {
+                    words.push(tmp.slice(-1));
+                }
+            }
+            if (widthMeasurer(line + words[0]) < width) {
+                line += words.shift() + " ";
+            } else {
+                lines.push(line);
+                line = "";
+            }
+            if (words.length === 0) {
+                lines.push(line);
+            }
+        }
+        return lines;
+    }
+
     // ---------- Private members --------------------------------------------------------------
 
     static _styleToObject(s) {
