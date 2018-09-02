@@ -14,6 +14,7 @@
     <script src="..\..\_include\timing\timer.js"></script>
     <script src="..\..\_include\timing\timedvaluemodifier.js"></script>
     <script src="..\..\_include\drawing\scaling_canvas.js"></script>
+    <script src="..\..\_include\drawing\text_utils.js"></script>
     <script src="..\..\_include\drawing\ui\animations.js"></script>
     <script src="..\..\_include\drawing\ui\elements.js"></script>
     <script src="..\..\_include\drawing\ui\engine.js"></script>
@@ -65,7 +66,16 @@
                 }
             }
 
+            engine.add(new Rect(250, 100, 300, 100, "green"));
+            var title = new Text(250, 100, 300, 100, "M elements test M", "24px arial", "red", HorizontalAlignment.JUSTIFY, VerticalAlignment.MIDDLE);
+            engine.add(title);
+            fadeTitle();
+
             window.requestAnimationFrame(draw);
+
+            function fadeTitle() {
+                title.fadeIn(200, () => title.fadeOut(200, fadeTitle));
+            }
         }
 </script>
 </head>

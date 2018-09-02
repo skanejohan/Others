@@ -5,6 +5,7 @@ class ScalingCanvasContext {
         this._offsetX = 0;
         this._offsetY = 0;
         this._scale = 1;
+        this._font = "";
     }
 
     // Public properties, corresponding to these in standard canvas context
@@ -17,8 +18,13 @@ class ScalingCanvasContext {
         this._underlyingContext.fillStyle = value; 
     }
 
+    get font() {
+        return this.font;
+    }
+
     set font(value) { 
-        this._underlyingContext.font = value; 
+        this._font = value;
+        this._underlyingContext.font = TextUtils.scaledFont(value, this._scale); 
     }
 
     set globalAlpha(value) { 
@@ -61,7 +67,8 @@ class ScalingCanvasContext {
     }
 
     measureText(text) {
-        this._underlyingContext.measureText(text);
+        var obj = this._underlyingContext.measureText(text);
+        return { width : obj.width / this._scale };
     }
 
     fill() {
@@ -85,10 +92,17 @@ class ScalingCanvasContext {
     }
 
     fillText(text, x, y, maxWidth) {
-        this._underlyingContext.fillText(text, 
-            this._virtualToActualX(x), 
-            this._virtualToActualY(y), 
-            this._virtualToActual(maxWidth));
+        if (maxWidth === undefined) {
+            this._underlyingContext.fillText(text, 
+                this._virtualToActualX(x), 
+                this._virtualToActualY(y)); 
+        }
+        else {
+            this._underlyingContext.fillText(text, 
+                this._virtualToActualX(x), 
+                this._virtualToActualY(y), 
+                this._virtualToActual(maxWidth));
+        }
     }
 
     save() {
@@ -97,6 +111,12 @@ class ScalingCanvasContext {
 
     restore() {
         this._underlyingContext.restore();
+    }
+
+    // Public methods, not present in standard canvas context
+
+    getScaledFontSize() {
+        return TextUtils.getFontSize(this._underlyingContext.font, 1) / this._scale;
     }
 
     // Private methods, and methods used by ScalingCanvas

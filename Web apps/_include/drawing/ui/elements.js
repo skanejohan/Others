@@ -1,3 +1,18 @@
+// ---------- Enums used by the element classes -----------------------------------------------------------------------------------
+
+var HorizontalAlignment = {
+    LEFT: 1,
+    CENTER: 2,
+    RIGHT: 3,
+    JUSTIFY: 4,
+};
+
+var VerticalAlignment = {
+    TOP: 1,
+    MIDDLE: 2,
+    BOTTOM: 3,
+};
+
 // ---------- Base class for all elements -----------------------------------------------------------------------------------------
 
 class ElementBase {
@@ -87,7 +102,7 @@ class ElementBase {
         if (this._animations.length === 0 && this._finishAfterAnimations) {
             this._finished = true;
         }
-        this._context.globalAlpha = this._alpha;
+        this.context.globalAlpha = this._alpha;
 
         if (!this.finished) {
             this.doDraw();
@@ -222,6 +237,67 @@ class FillRoundRect extends RoundRectBase {
         super.doDraw();
         this.context.fillStyle = this.style;
         this.context.fill();
+    }
+}
+
+class Text extends ElementBase {
+    constructor(x, y, w, h, text, font, style, h_align, v_align, fn) {
+        super(x, y, w, h, fn);
+        this.font = font;
+        this.style = style;
+        this.text = text;
+        this.h_align = h_align || HorizontalAlignment.LEFT; 
+        this.v_align = v_align || VerticalAlignment.MIDDLE;
+        this.xOriginal = x;
+        this.yOriginal = y;
+        this.wOriginal = w;
+        this.hOriginal = h;
+    }
+
+    doDraw() {
+        this.context.font = this.font;
+        this.context.fillStyle = this.style;
+
+        var positionedTexts = [];
+        var textWidth = this.context.measureText(this.text).width;
+        switch (this.h_align) {
+            case HorizontalAlignment.LEFT:
+                this.x = xOriginal;
+                this.w = textWidth; 
+                positionedTexts.push({ x : 0, text: this.text }); 
+                break;
+            case HorizontalAlignment.CENTER:
+                this.x = this.xOriginal + (this.wOriginal - textWidth) / 2;
+                this.w = textWidth; 
+                positionedTexts.push({ x : 0, text: this.text }); 
+                break;
+            case HorizontalAlignment.RIGHT:
+                this.x = this.xOriginal + this.wOriginal - textWidth;
+                this.w = textWidth; 
+                positionedTexts.push({ x : 0, text: this.text }); 
+                break;
+            case HorizontalAlignment.JUSTIFY:
+                positionedTexts = TextUtils.justifyText(this.text, this.w, t => this.context.measureText(t).width);
+                break;
+        }
+
+        var textHeight = this.context.getScaledFontSize();
+        switch (this.v_align) {
+            case VerticalAlignment.TOP:
+                this.y = this.yOriginal;
+                this.h = textHeight;
+                break;
+            case VerticalAlignment.MIDDLE:
+                this.y = this.yOriginal + (this.hOriginal - textHeight) / 2;
+                this.h = textHeight;
+                break;
+            case VerticalAlignment.BOTTOM:
+                this.y = this.yOriginal + this.hOriginal - textHeight;
+                this.h = textHeight;
+                break;
+        }
+               
+        positionedTexts.forEach(t => this.context.fillText(t.text, this.x + t.x, this.y + textHeight));
     }
 }
 
