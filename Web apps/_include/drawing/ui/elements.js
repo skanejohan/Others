@@ -1,3 +1,5 @@
+// TODO: figure out why the popups flash weirdly (seen when fillrect is a popup)
+
 // ---------- Enums used by the element classes -----------------------------------------------------------------------------------
 
 var HorizontalAlignment = {
@@ -27,11 +29,9 @@ class ElementBase {
         this._popup = undefined;
         this._paused = false;
         this._finished = false;
-        this._context = undefined;
         this._animations = [];
         this._onModalLayer = true;
         this._finishAfterAnimations = false;
-        this._engine = undefined;
     }
 
     get x() { return this._x; }
@@ -52,22 +52,13 @@ class ElementBase {
     set alpha(value) { this._alpha = value; }
 
     get popup() { return this._popup; }
-    set popup(elem) {
-        this._popup = elem;
-        elem.context = this._context;
-    }
+    set popup(elem) { this._popup = elem; }
 
     get onModalLayer() { return this._onModalLayer; }
     set onModalLayer(b) { this._onModalLayer = b; }
     
     get finished() { return this._finished; };
 
-    get context() { return this._context; }
-    set context(value) { this._context = value; }
-    
-    get engine() { return this._engine; }
-    set engine(value) { this._engine = value; }
-    
     set finishAfterAnimations(value) { this._finishAfterAnimations = value; }
 
     fadeIn(ms, doneFn) {
@@ -106,10 +97,10 @@ class ElementBase {
         if (this._animations.length === 0 && this._finishAfterAnimations) {
             this._finished = true;
         }
-        this.context.globalAlpha = this._alpha;
+        ElementBase.context.globalAlpha = this._alpha;
 
         if (!this.finished) {
-            this.doDraw();
+            this._doDraw();
         }
 
         if (this._finished || this.isPaused()) {
@@ -179,6 +170,61 @@ ElementBase.currentPopup = undefined;
 ElementBase.showPopupTimer = new Timer();
 ElementBase.hidePopupTimer = new Timer();
 ElementBase.canvasRect = { left : 0, top : 0, right : 0, bottom : 0 };
+ElementBase.context = undefined;
+
+// ---------- Base class for composite elements -----------------------------------------------------------------------------------------
+
+class CompositeElementBase extends ElementBase {
+
+    constructor(x, y, w, h, fn) {
+        super(x, y, w, h, fn);
+        this.elements = [];
+    }
+
+    get x() { return this._x; }
+
+    set x(value) { 
+        var delta = value - this._x;
+        this._x = value; 
+        this.elements.forEach(e => e.x = e.x + delta);
+    }
+
+    get y() { return this._y; }
+
+    set y(value) { 
+        var delta = value - this._y;
+        this._y = value; 
+        this.elements.forEach(e => e.y = e.y + delta);
+    }
+
+    fadeIn(ms, doneFn) {
+        super.fadeIn(ms, doneFn);
+        this.elements.forEach(t => t.fadeIn(ms));
+    }
+
+    fadeOut(ms, doneFn) {
+        super.fadeOut(ms, doneFn);
+        this.elements.forEach(t => t.fadeOut(ms));
+    }
+
+    translateX(dist, ms, doneFn) {
+        super.translateX(dist, ms, doneFn);
+        this.elements.forEach(t => t.translateX(dist, ms));
+    }
+
+    translateY(dist, ms, doneFn) {
+        super.translateY(dist, ms, doneFn);
+        this.elements.forEach(t => t.translateY(dist, ms));
+    }
+
+    addElement(e) {
+        this.elements.push(e);
+    }
+
+    _doDraw() {
+        this.elements.forEach(e => e.draw());
+    }
+}
 
 // ---------- Base classes for specific elements ------------------------------------------------------------------------
 
@@ -196,166 +242,158 @@ class RoundRectBase extends ElementBase {
         this.r = r;
     }
 
-    doDraw() {
-        this.context.strokeStyle = this.style;
-        this.context.beginPath();
-        this.context.moveTo(this.x + this.r, this.y);
-        this.context.lineTo(this.x + this.w - this.r, this.y);
-        this.context.quadraticCurveTo(this.x + this.w, this.y, this.x + this.w, this.y + this.r);
-        this.context.lineTo(this.x + this.w, this.y + this.h - this.r);
-        this.context.quadraticCurveTo(this.x + this.w, this.y + this.h, this.x + this.w - this.r, this.y + this.h);
-        this.context.lineTo(this.x + this.r, this.y + this.h);
-        this.context.quadraticCurveTo(this.x, this.y + this.h, this.x, this.y + this.h - this.r);
-        this.context.lineTo(this.x, this.y + this.r);
-        this.context.quadraticCurveTo(this.x, this.y, this.x + this.r, this.y);
-        this.context.closePath();
+    _doDraw() {
+        ElementBase.context.strokeStyle = this.style;
+        ElementBase.context.beginPath();
+        ElementBase.context.moveTo(this.x + this.r, this.y);
+        ElementBase.context.lineTo(this.x + this.w - this.r, this.y);
+        ElementBase.context.quadraticCurveTo(this.x + this.w, this.y, this.x + this.w, this.y + this.r);
+        ElementBase.context.lineTo(this.x + this.w, this.y + this.h - this.r);
+        ElementBase.context.quadraticCurveTo(this.x + this.w, this.y + this.h, this.x + this.w - this.r, this.y + this.h);
+        ElementBase.context.lineTo(this.x + this.r, this.y + this.h);
+        ElementBase.context.quadraticCurveTo(this.x, this.y + this.h, this.x, this.y + this.h - this.r);
+        ElementBase.context.lineTo(this.x, this.y + this.r);
+        ElementBase.context.quadraticCurveTo(this.x, this.y, this.x + this.r, this.y);
+        ElementBase.context.closePath();
     }
 }
 
 // ---------- Implementation of Specific elements -----------------------------------------------------------------------
 
 class Rect extends RectBase {
-    doDraw() {
-        this.context.strokeStyle = this.style;
-        this.context.strokeRect(this.x, this.y, this.w, this.h);
+    _doDraw() {
+        ElementBase.context.strokeStyle = this.style;
+        ElementBase.context.strokeRect(this.x, this.y, this.w, this.h);
     }
 }
 
 class FillRect extends RectBase {
-    doDraw() {
-        this.context.fillStyle = this.style;
-        this.context.fillRect(this.x, this.y, this.w, this.h);
+    _doDraw() {
+        ElementBase.context.fillStyle = this.style;
+        ElementBase.context.fillRect(this.x, this.y, this.w, this.h);
     }
 }
 
 class RoundRect extends RoundRectBase {
-    doDraw() {
-        super.doDraw();
-        this.context.strokeStyle = this.style;
-        this.context.stroke();
+    _doDraw() {
+        super._doDraw();
+        ElementBase.context.strokeStyle = this.style;
+        ElementBase.context.stroke();
     }
 }
 
 class FillRoundRect extends RoundRectBase {
-    doDraw() {
-        super.doDraw();
-        this.context.fillStyle = this.style;
-        this.context.fill();
+    _doDraw() {
+        super._doDraw();
+        ElementBase.context.fillStyle = this.style;
+        ElementBase.context.fill();
     }
 }
 
-class Text extends ElementBase {
-    constructor(x, y, w, h, text, font, style, h_align, v_align, fn) {
+class TextSegment extends ElementBase {
+
+    constructor(x, y, w, h, text, font, style, fn) {
         super(x, y, w, h, fn);
+        this.text = text;
         this.font = font;
         this.style = style;
-        this.text = text;
-        this.h_align = h_align || HorizontalAlignment.LEFT; 
-        this.v_align = v_align || VerticalAlignment.MIDDLE;
-        this.xOriginal = x;
-        this.yOriginal = y;
-        this.wOriginal = w;
-        this.hOriginal = h;
     }
 
-    doDraw() {
-        this.context.font = this.font;
-        this.context.fillStyle = this.style;
-
-        var positionedTexts = [];
-        var textWidth = this.context.measureText(this.text).width;
-        switch (this.h_align) {
-            case HorizontalAlignment.LEFT:
-                this.x = this.xOriginal;
-                this.w = textWidth; 
-                positionedTexts.push({ x : 0, text: this.text }); 
-                break;
-            case HorizontalAlignment.CENTER:
-                this.x = this.xOriginal + (this.wOriginal - textWidth) / 2;
-                this.w = textWidth; 
-                positionedTexts.push({ x : 0, text: this.text }); 
-                break;
-            case HorizontalAlignment.RIGHT:
-                this.x = this.xOriginal + this.wOriginal - textWidth;
-                this.w = textWidth; 
-                positionedTexts.push({ x : 0, text: this.text }); 
-                break;
-            case HorizontalAlignment.JUSTIFY:
-                positionedTexts = TextUtils.justifyText(this.text, this.w, t => this.context.measureText(t).width);
-                break;
-        }
-
-        var textHeight = this.context.getScaledFontSize();
-        switch (this.v_align) {
-            case VerticalAlignment.TOP:
-                this.y = this.yOriginal;
-                this.h = textHeight;
-                break;
-            case VerticalAlignment.MIDDLE:
-                this.y = this.yOriginal + (this.hOriginal - textHeight) / 2;
-                this.h = textHeight;
-                break;
-            case VerticalAlignment.BOTTOM:
-                this.y = this.yOriginal + this.hOriginal - textHeight;
-                this.h = textHeight;
-                break;
-        }
-               
-        positionedTexts.forEach(t => this.context.fillText(t.text, this.x + t.x, this.y + textHeight));
+    _doDraw() {
+        ElementBase.context.font = this.font;
+        ElementBase.context.fillStyle = this.style;
+        ElementBase.context.fillText(this.text, this.x, this.y);
     }
 }
 
-class TextBox extends ElementBase {
+class Text extends CompositeElementBase {
+
+    constructor(x, y, w, h, text, font, style, h_align, v_align, fn) {
+        super(x, y, w, h, fn);
+        this._setupTexts(text, font, style, h_align, v_align, fn);
+    }
+
+    _setupTexts(text, font, style, h_align, v_align, fn) {
+        var positionedTexts = [];
+        ElementBase.context.font = font;
+        var th = ElementBase.context.getScaledFontSize();
+        var tw = ElementBase.context.measureText(text).width;
+
+        var yh = getYandH(this);
+        if (h_align == HorizontalAlignment.JUSTIFY) {
+            positionedTexts = TextUtils.justifyText(text, this.w, t => ElementBase.context.measureText(t).width);
+        }
+        else {
+            var xw = getXandW(this);
+            positionedTexts.push({ x : xw.x, w : xw.w, text: text }); 
+        }
+
+        positionedTexts.forEach(t => this.addElement(new TextSegment(this.x + t.x, yh.y + yh.h, t.w, yh.h, t.text, font, style, fn)));
+
+        function getXandW(obj) {
+            switch (h_align) {
+                case HorizontalAlignment.LEFT: return { x : 0, w : tw };
+                case HorizontalAlignment.CENTER: return { x : (obj.w - tw) / 2, w : tw };
+                case HorizontalAlignment.RIGHT: return { x : 0 + obj.w - tw, w : tw };
+            }
+        }
+
+        function getYandH(obj) {
+            switch (v_align) {
+                case VerticalAlignment.TOP: return { y : obj.y, h : th };
+                case VerticalAlignment.MIDDLE: return { y : obj.y + (obj.h - th) / 2, h : th };
+                case VerticalAlignment.BOTTOM: return { y : obj.y + obj.h - th, h : th };
+            }
+        }
+    }
+}
+
+class TextBox extends CompositeElementBase {
 
     constructor(x, y, w, h, text, font, style, fn) {
         super(x, y, w, h, fn);
         this.font = font;
         this.style = style;
-        this.text = text;
-        this.texts = [];
+        this._setupTexts(text);
     }
 
-    fadeIn(ms, doneFn) {
-        super.fadeIn(ms, doneFn);
-        this.texts.forEach(t => t.fadeIn(ms));
-    }
-
-    fadeOut(ms, doneFn) {
-        super.fadeOut(ms, doneFn);
-        this.texts.forEach(t => t.fadeOut(ms));
-    }
-
-    translateX(dist, ms, doneFn) {
-        super.translateX(dist, ms, doneFn);
-        this.texts.forEach(t => t.translateX(dist, ms));
-    }
-
-    translateY(dist, ms, doneFn) {
-        super.translateY(dist, ms, doneFn);
-        this.texts.forEach(t => t.translateY(dist, ms));
-    }
-
-    doDraw() {
-        if (this.texts.length == 0) {
-            this._addTexts();
-        }
-    }
-
-    _addTexts() {
+    _setupTexts(text) {
         var yOffset = 0;
-        var textHeight = this.context.getScaledFontSize();
-        var lines = TextUtils.splitUpInLines(this.text, this.w, t => this.context.measureText(t).width);
+        ElementBase.context.font = this.font;
+        var textHeight = ElementBase.context.getScaledFontSize();
+        var lines = TextUtils.splitUpInLines(text, this.w, t => ElementBase.context.measureText(t).width);
         lines.forEach((line, index) => {
             var ha = index == lines.length-1 ? HorizontalAlignment.LEFT : HorizontalAlignment.JUSTIFY;
-            var text = new Text(this.x, this.y + yOffset, this.w, textHeight, line, 
-                this.font, this.style, ha, VerticalAlignment.MIDDLE, this.fn);
-            this.engine.add(text);
-            this.texts.push(text);
+            this.addElement(new Text(this.x, this.y + yOffset, this.w, textHeight, line, 
+                this.font, this.style, ha, VerticalAlignment.MIDDLE, this.fn));
             yOffset += textHeight;
         });
     }
 }
 
-class Popup extends ElementBase {
+class TextRect extends CompositeElementBase {
 
+    constructor(x, y, w, h, text, margin, font, fontStyle, bgStyle, h_align, v_align, fn) {
+        super(x, y, w, h, fn);
+        this.addElement(new FillRect(x, y, w, h, bgStyle, fn));
+        this.addElement(new Text(x + margin, y + margin, w - 2 * margin, h - 2 * margin, text, font, fontStyle, h_align, v_align, fn));
+    }
+}
+
+class Menu extends CompositeElementBase {
+
+    constructor(x, y, w, font, fontStyle, bgStyle, itemHeight, margin) {
+        super(x, y, w, 0, () => this.elements.forEach(e => { if (e.hovering) { e.fn(); }}));
+        this.font = font;
+        this.fontStyle = fontStyle;
+        this.bgStyle = bgStyle;
+        this.itemHeight = itemHeight;
+        this.margin = margin;
+    }
+
+    addItem(text, fn) {
+        this.addElement(new TextRect(this.x, this.y + this.itemHeight * this.elements.length, this.w, this.itemHeight, text, 
+            this.margin, this.font, this.fontStyle, this.bgStyle, HorizontalAlignment.LEFT, VerticalAlignment.TOP, fn));
+        this.h += this.itemHeight;
+    }
 }

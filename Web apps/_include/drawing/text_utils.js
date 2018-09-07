@@ -27,7 +27,7 @@ class TextUtils {
             var txtWidth = widthMeasurer(txt);
             var remainingTextWidth = widthMeasurer(remainingText);
     
-            result.push({ x : currentX, text: txt });
+            result.push({ x : currentX, w : txtWidth, text: txt });
     
             var spaceWidth = (width - currentX - txtWidth - remainingTextWidth) / subTexts.length;
             currentX += (txtWidth + spaceWidth);

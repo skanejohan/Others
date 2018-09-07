@@ -28,7 +28,7 @@ class Engine {
         }
         canvas.onclick = function(e) {
             var handled = false;
-            that._forEachElement(e => {
+            that._forPopupAndEachElement(e => {
                 if(e.hovering() && (that._modalLayer.length === 0 || e.onModalLayer)) {
                     handled = true;
                     if (e.fn !== undefined) {
@@ -40,6 +40,7 @@ class Engine {
                 that._onclick(ElementBase.mousePos.x, ElementBase.mousePos.y);
             }
         }
+        ElementBase.context = this.context;
     }
 
     add(element, layerIndex) {
@@ -98,7 +99,6 @@ class Engine {
         }
         element.onModalLayer = layer === this._modalLayer;
         element.layer = layer;
-        element.engine = this;
         layer.push(element);
     }
 
@@ -117,6 +117,13 @@ class Engine {
     _forEachElement(fn) {
         this._forEachNonModalElement(fn);
         this._modalLayer.forEach(fn);
+    }
+
+    _forPopupAndEachElement(fn) {
+        if (ElementBase.currentPopup != undefined) {
+            fn(ElementBase.currentPopup);
+        }
+        this._forEachElement(fn);
     }
 
     _removeFromArray(array, element) {
