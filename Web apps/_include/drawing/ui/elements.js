@@ -1,5 +1,3 @@
-// TODO: figure out why the popups flash weirdly (seen when fillrect is a popup)
-
 // ---------- Enums used by the element classes -----------------------------------------------------------------------------------
 
 var HorizontalAlignment = {
@@ -14,6 +12,15 @@ var VerticalAlignment = {
     MIDDLE: 2,
     BOTTOM: 3,
 };
+
+var PopupState = {
+    HIDDEN: "HIDDEN",
+    SHOWPENDING: "SHOWPENDING",
+    SHOWING: "SHOWING",
+    VISIBLE: "VISIBLE",
+    HIDEPENDING: "HIDEPENDING",
+    HIDING: "HIDING",
+}
 
 // ---------- Base class for all elements -----------------------------------------------------------------------------------------
 
@@ -32,7 +39,11 @@ class ElementBase {
         this._animations = [];
         this._onModalLayer = true;
         this._finishAfterAnimations = false;
+        this._state = PopupState.HIDDEN;
     }
+
+    get state() { return this._state; }
+    set state(value) { this._state = value; }
 
     get x() { return this._x; }
     set x(value) { this._x = value; }
@@ -52,7 +63,7 @@ class ElementBase {
     set alpha(value) { this._alpha = value; }
 
     get popup() { return this._popup; }
-    set popup(elem) { this._popup = elem; }
+    set popup(elem) { this._popup = elem; this._popup.state = PopupState.HIDDEN; }
 
     get onModalLayer() { return this._onModalLayer; }
     set onModalLayer(b) { this._onModalLayer = b; }
@@ -103,43 +114,48 @@ class ElementBase {
             this._doDraw();
         }
 
-        if (this._finished || this.isPaused()) {
+        if (this._finished || this.isPaused() || this._popup == undefined) {
             return;
         }
 
-        // If we hover over this element, it has a popup, no popup is visible, and no other popup
-        // is waiting to be shown, activate the "show popup" timer.  
-        if (this.hovering() && this._popup !== undefined && ElementBase.currentPopup === undefined && !ElementBase.showPopupTimer.isActive()) {
-            ElementBase.pendingPopup = this._popup;
+        // If we hover over this element and it has a hidden popup, activate the "show popup" timer.  
+        if (this.hovering() && ElementBase.currentPopup === undefined && this._popup.state == PopupState.HIDDEN) {
+            ElementBase.currentPopup = this._popup;
+            this._popup.state = PopupState.SHOWPENDING;
             ElementBase.showPopupTimer.activate(200, () => {
-                // Set the popup's coordinates, make the popup visible and tell the system 
-                // that this is the only allowed popup.
-                ElementBase.currentPopup = this._popup;
-                ElementBase.pendingPopup = undefined;
                 this.setPopupCoordinates();
-                this._popup.fadeIn(300); 
+                this._popup.state = PopupState.SHOWING;
+                this._popup.fadeIn(300, () => {
+                    this._popup.state = PopupState.VISIBLE;
+                });
             });
         }
 
         // If we hover over this element, or its visible popup, deactivate the "hide 
         // popup" timer if it is active.
-        if ((this.hovering() || this.popupHovering()) && this.popupVisible() && ElementBase.hidePopupTimer.isActive()) {
+        if ((this.hovering() || this.popupHovering()) && this._popup.state == PopupState.HIDEPENDING) {
+            this._popup.state = PopupState.VISIBLE;
             ElementBase.hidePopupTimer.deactivate();
         }
 
         // If we don't hover over this element or its popup, but the popup is visible, 
         // and the "hide popup" timer is not active, activate it.
-        if (!this.hovering() && !this.popupHovering() && this.popupVisible() && !ElementBase.hidePopupTimer.isActive()) {
+        if (!this.hovering() && !this.popupHovering() && this._popup.state == PopupState.VISIBLE) {
+            this._popup.state = PopupState.HIDEPENDING;
             ElementBase.hidePopupTimer.activate(300, () => {
-                // If the "hide popup" timer reaches 0, make the popup invisible.
-                this.popup.fadeOut(100, () => ElementBase.currentPopup = undefined);
+                this._popup.state = PopupState.HIDING;
+                this.popup.fadeOut(100, () => {
+                    this._popup.state = PopupState.HIDDEN;
+                    ElementBase.currentPopup = undefined;
+                });
             });
         }
 
         // If we don't hover over this element, but its "show popup" timer is active, deactivate it.
-        if (!this.hovering() && ElementBase.showPopupTimer.isActive() && ElementBase.pendingPopup === this._popup) {
+        if (!this.hovering() && this._popup.state == PopupState.SHOWPENDING) {
+            this._popup.state = PopupState.HIDDEN;
             ElementBase.showPopupTimer.deactivate();
-            ElementBase.pendingPopup = undefined;
+            ElementBase.currentPopup = undefined;
         }
     }
 
@@ -155,17 +171,12 @@ class ElementBase {
                this._y + this._h > ElementBase.mousePos.y;
     }
 
-    popupVisible() {
-        return this._popup !== undefined && this._popup === ElementBase.currentPopup;
-    }
-
     popupHovering() {
-        return this.popupVisible() && this._popup.hovering();
+        return this._popup !== undefined && this._popup == PopupState.VISIBLE && this._popup.hovering();
     }
 };
 
 ElementBase.mousePos = { x : 0, y : 0 };
-ElementBase.pendingPopup = undefined;
 ElementBase.currentPopup = undefined;
 ElementBase.showPopupTimer = new Timer();
 ElementBase.hidePopupTimer = new Timer();

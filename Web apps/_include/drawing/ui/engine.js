@@ -78,7 +78,12 @@ class Engine {
         });
 
         // Draw the current popup, if defined
-        if (ElementBase.currentPopup !== undefined) {
+        if (ElementBase.currentPopup !== undefined && 
+            (ElementBase.currentPopup.state == PopupState.SHOWING ||
+             ElementBase.currentPopup.state == PopupState.VISIBLE ||
+             ElementBase.currentPopup.state == PopupState.HIDEPENDING ||
+             ElementBase.currentPopup.state == PopupState.HIDING)
+            ) {
             ElementBase.currentPopup.draw();
         }
 
