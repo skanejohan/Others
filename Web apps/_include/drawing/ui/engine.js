@@ -31,8 +31,8 @@ class Engine {
             that._forPopupAndEachElement(e => {
                 if(e.hovering() && (that._modalLayer.length === 0 || e.onModalLayer)) {
                     handled = true;
-                    if (e.fn !== undefined) {
-                        e.fn();
+                    if (e.onclick !== undefined) {
+                        e.onclick();
                     }                
                 } 
             });
@@ -49,6 +49,7 @@ class Engine {
             this._layers[layerIndex] = []
         }
         this._addElement(element, this._layers[layerIndex]);
+        return element;
     }
 
     addModal(element) {

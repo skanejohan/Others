@@ -26,12 +26,12 @@ var PopupState = {
 
 class ElementBase {
 
-    constructor(x, y, w, h, fn) {
+    constructor(x, y, w, h, onclick) {
         this._x = x;
         this._y = y;
         this._w = w;
         this._h = h;
-        this._fn = fn;
+        this._onclick = onclick;
         this._alpha = 1;
         this._popup = undefined;
         this._paused = false;
@@ -57,7 +57,7 @@ class ElementBase {
     get h() { return this._h; }
     set h(value) { this._h = value; }
 
-    get fn() { return this._fn; }
+    get onclick() { return this._onclick; }
 
     get alpha() { return this._alpha; };
     set alpha(value) { this._alpha = value; }
@@ -187,8 +187,8 @@ ElementBase.context = undefined;
 
 class CompositeElementBase extends ElementBase {
 
-    constructor(x, y, w, h, fn) {
-        super(x, y, w, h, fn);
+    constructor(x, y, w, h, onclick) {
+        super(x, y, w, h, onclick);
         this.elements = [];
     }
 
@@ -240,15 +240,15 @@ class CompositeElementBase extends ElementBase {
 // ---------- Base classes for specific elements ------------------------------------------------------------------------
 
 class RectBase extends ElementBase {
-    constructor(x, y, w, h, style, fn) {
-        super(x, y, w, h, fn);
+    constructor(x, y, w, h, style, onclick) {
+        super(x, y, w, h, onclick);
         this.style = style;
     }
 }
 
 class RoundRectBase extends ElementBase {
-    constructor(x, y, w, h, r, style, fn) {
-        super(x, y, w, h, fn);
+    constructor(x, y, w, h, r, style, onclick) {
+        super(x, y, w, h, onclick);
         this.style = style;
         this.r = r;
     }
@@ -303,8 +303,8 @@ class FillRoundRect extends RoundRectBase {
 
 class TextSegment extends ElementBase {
 
-    constructor(x, y, w, h, text, font, style, fn) {
-        super(x, y, w, h, fn);
+    constructor(x, y, w, h, text, font, style, onclick) {
+        super(x, y, w, h, onclick);
         this.text = text;
         this.font = font;
         this.style = style;
@@ -319,12 +319,12 @@ class TextSegment extends ElementBase {
 
 class Text extends CompositeElementBase {
 
-    constructor(x, y, w, h, text, font, style, h_align, v_align, fn) {
-        super(x, y, w, h, fn);
-        this._setupTexts(text, font, style, h_align, v_align, fn);
+    constructor(x, y, w, h, text, font, style, h_align, v_align, onclick) {
+        super(x, y, w, h, onclick);
+        this._setupTexts(text, font, style, h_align, v_align, onclick);
     }
 
-    _setupTexts(text, font, style, h_align, v_align, fn) {
+    _setupTexts(text, font, style, h_align, v_align, onclick) {
         var positionedTexts = [];
         ElementBase.context.font = font;
         var th = ElementBase.context.getScaledFontSize();
@@ -339,7 +339,7 @@ class Text extends CompositeElementBase {
             positionedTexts.push({ x : xw.x, w : xw.w, text: text }); 
         }
 
-        positionedTexts.forEach(t => this.addElement(new TextSegment(this.x + t.x, yh.y + yh.h, t.w, yh.h, t.text, font, style, fn)));
+        positionedTexts.forEach(t => this.addElement(new TextSegment(this.x + t.x, yh.y + yh.h, t.w, yh.h, t.text, font, style, onclick)));
 
         function getXandW(obj) {
             switch (h_align) {
@@ -361,8 +361,8 @@ class Text extends CompositeElementBase {
 
 class TextBox extends CompositeElementBase {
 
-    constructor(x, y, w, h, text, font, style, fn) {
-        super(x, y, w, h, fn);
+    constructor(x, y, w, h, text, font, style, onclick) {
+        super(x, y, w, h, onclick);
         this.font = font;
         this.style = style;
         this._setupTexts(text);
@@ -376,7 +376,7 @@ class TextBox extends CompositeElementBase {
         lines.forEach((line, index) => {
             var ha = index == lines.length-1 ? HorizontalAlignment.LEFT : HorizontalAlignment.JUSTIFY;
             this.addElement(new Text(this.x, this.y + yOffset, this.w, textHeight, line, 
-                this.font, this.style, ha, VerticalAlignment.MIDDLE, this.fn));
+                this.font, this.style, ha, VerticalAlignment.MIDDLE, this.onclick));
             yOffset += textHeight;
         });
     }
@@ -384,17 +384,17 @@ class TextBox extends CompositeElementBase {
 
 class TextRect extends CompositeElementBase {
 
-    constructor(x, y, w, h, text, margin, font, fontStyle, bgStyle, h_align, v_align, fn) {
-        super(x, y, w, h, fn);
-        this.addElement(new FillRect(x, y, w, h, bgStyle, fn));
-        this.addElement(new Text(x + margin, y + margin, w - 2 * margin, h - 2 * margin, text, font, fontStyle, h_align, v_align, fn));
+    constructor(x, y, w, h, text, margin, font, fontStyle, bgStyle, h_align, v_align, onclick) {
+        super(x, y, w, h, onclick);
+        this.addElement(new FillRect(x, y, w, h, bgStyle, onclick));
+        this.addElement(new Text(x + margin, y + margin, w - 2 * margin, h - 2 * margin, text, font, fontStyle, h_align, v_align, onclick));
     }
 }
 
 class Menu extends CompositeElementBase {
 
     constructor(x, y, w, font, fontStyle, bgStyle, itemHeight, margin) {
-        super(x, y, w, 0, () => this.elements.forEach(e => { if (e.hovering) { e.fn(); }}));
+        super(x, y, w, 0, () => this.elements.forEach(e => { if (e.hovering) { e.onclick(); }}));
         this.font = font;
         this.fontStyle = fontStyle;
         this.bgStyle = bgStyle;
@@ -402,9 +402,9 @@ class Menu extends CompositeElementBase {
         this.margin = margin;
     }
 
-    addItem(text, fn) {
+    addItem(text, onclick) {
         this.addElement(new TextRect(this.x, this.y + this.itemHeight * this.elements.length, this.w, this.itemHeight, text, 
-            this.margin, this.font, this.fontStyle, this.bgStyle, HorizontalAlignment.LEFT, VerticalAlignment.TOP, fn));
+            this.margin, this.font, this.fontStyle, this.bgStyle, HorizontalAlignment.LEFT, VerticalAlignment.TOP, onclick));
         this.h += this.itemHeight;
     }
 }
