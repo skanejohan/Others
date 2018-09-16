@@ -8,6 +8,9 @@ var Movies = function(data) {
                 if (!location.hasOwnProperty("movieName")) {
                     location.movieName = location.name;
                 }
+                if (!location.hasOwnProperty("id")) {
+                    location.id = location.name;
+                }
             }
         )
     );
