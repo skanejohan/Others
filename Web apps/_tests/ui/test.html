@@ -22,6 +22,20 @@
     <script>
         var engine;
         var sizedCanvas;
+        var flashing;
+
+        let w = 920;
+        let h = 450;
+
+        function randomX() {
+            let margin = 10;
+            return margin + Math.random() * (w - 2 * margin);
+        }
+
+        function randomY() {
+            let margin = 80;
+            return margin + Math.random() * (h - 2 * margin);
+        }
 
         function draw(timestamp) {
             window.requestAnimationFrame(draw);
@@ -29,57 +43,54 @@
             engine.draw();
         }
 
-        function randomElement(x, y, fn) {
-            switch(Math.floor(Math.random() * 5)) {
-                case 0: return { element : new FillRect(350, 175, 100, 100, "blue", fn) };
-                case 1: return { element : new FillRect(x, y, 100, 100, "red", fn), layer : 0 };
-                case 2: return { element : new Rect(x, y, 100, 100, "black", fn), layer : 1 };
-                case 3: return { element : new RoundRect(x, y, 100, 100, 15, "green", fn), layer : 1 };
-                case 4: return { element : new FillRoundRect(x, y, 100, 100, 15, "yellow", fn), layer : 0 };
+        function addMenuTo(element) {
+            var menu = new Menu(0, 0, 300, "16px arial", "black", "gray", 28, 2);
+            menu.addItem("Close", () => {
+                element.finishAfterAnimations = true; 
+                element.popup.fadeOut(200);
+                element.fadeOut(200, () => modal = false);
+            });
+            element.popup = menu;
+        }
+
+
+        function flash(element) {
+            element.fadeIn(200, () => element.fadeOut(200, () => flash(element)));
+        }
+
+        function addElement(element) {
+            element.x = randomX();
+            element.y = randomY();
+            element.fadeIn(200);
+            element.translateX(randomX() - element.x, 1000);
+            element.translateY(randomY() - element.y, 1000);
+            addMenuTo(element);
+            if (flashing) {
+                flash(element);
             }
+            engine.add(element);
+        }
+
+        function addModalElement(element) {
+            addMenuTo(element);
+            engine.addModal(element);
         }
 
         function init() {
-            let w = 800;
-            let h = 450;
-            let modal = false;
             sizedCanvas = new ScalingCanvas(document.getElementById("canvas"), w, h);
             engine = new Engine(sizedCanvas);
 
-            engine.onclick = function(x, y, elem) {
-                if (modal == false) {
-                    var e = randomElement(0, y, () => {
-                        e.element.finishAfterAnimations = true; 
-                        e.element.popup.fadeOut(200);
-                        e.element.fadeOut(200, () => modal = false); });
-                    e.element.popup = new Rect(0, 0, 100, 100, "red");
-                    e.element.fadeIn(200);
-                    if (e.layer === undefined) {
-                        e.element.x = x;
-                        engine.addModal(e.element);
-                        modal = true;
-                    }
-                    else {
-                        e.element.translateX(x, 2000);
-                        engine.add(e.element, e.layer);
-                    }
-                }
-            }
+            engine.add(new Button(10, 10, 300, 30, "Rect", () => addElement(new Rect(0, 0, 100, 100, "black"))));
+            engine.add(new Button(310, 10, 300, 30, "FillRect", () => addElement(new FillRect(0, 0, 100, 100, "red"))));
+            engine.add(new Button(610, 10, 300, 30, "RoundRect", () => addElement(new RoundRect(0, 0, 100, 100, 15, "green"))));
+            engine.add(new Button(10, 40, 300, 30, "FillRoundRect", () => addElement(new FillRoundRect(0, 0, 100, 100, 15, "yellow"))));
+            engine.add(new Button(310, 40, 300, 30, "Text", () => addElement(new Text(250, 100, 300, 100, "Text", "24px arial", "red", HorizontalAlignment.JUSTIFY, VerticalAlignment.MIDDLE))));
+            engine.add(new Button(610, 40, 300, 30, "TextBox", () => addElement(new TextBox(250, 200, 300, 300, "This is a very long text that will most likely not fit on one line", "24px arial", "blue"))));
 
-            engine.add(new Rect(250, 100, 300, 100, "green"));
-            var title = new Text(250, 100, 300, 100, "M elements test M", "24px arial", "red", HorizontalAlignment.JUSTIFY, VerticalAlignment.MIDDLE);
-            engine.add(title);
-            flash(title);
+            engine.add(new TogglableButton(10, 410, 300, 30, "Flashing", () => flashing = true, () => flashing = false));
+            engine.add(new Button(610, 410, 300, 30, "Modal", () => addModalElement(new FillRect(350, 175, 100, 100, "blue"))));
 
-            var textBox = new TextBox(250, 200, 300, 300, "This is a very long text that will most likely not fit on one line", "24px arial", "blue");
-            engine.add(textBox);
-            flash(textBox);
-            
             window.requestAnimationFrame(draw);
-
-            function flash(element) {
-                element.fadeIn(200, () => element.fadeOut(200, () => flash(element)));
-            }
         }
 </script>
 </head>

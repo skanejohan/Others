@@ -32,6 +32,9 @@ class ElementBase {
         this._w = w;
         this._h = h;
         this._onclick = onclick;
+        this._onenter = undefined;
+        this._onhover = undefined;
+        this._onleave = undefined;
         this._alpha = 1;
         this._popup = undefined;
         this._paused = false;
@@ -40,6 +43,7 @@ class ElementBase {
         this._onModalLayer = true;
         this._finishAfterAnimations = false;
         this._state = PopupState.HIDDEN;
+        this._previouslyHovering = false;
     }
 
     get state() { return this._state; }
@@ -58,6 +62,16 @@ class ElementBase {
     set h(value) { this._h = value; }
 
     get onclick() { return this._onclick; }
+    set onclick(value) { this._onclick = value; }
+
+    get onenter() { return this._onenter; }
+    set onenter(value) { this._onenter = value; }
+
+    get onhover() { return this._onhover; }
+    set onhover(value) { this._onhover = value; }
+
+    get onleave() { return this._onleave; }
+    set onleave(value) { this._onleave = value; }
 
     get alpha() { return this._alpha; };
     set alpha(value) { this._alpha = value; }
@@ -71,6 +85,10 @@ class ElementBase {
     get finished() { return this._finished; };
 
     set finishAfterAnimations(value) { this._finishAfterAnimations = value; }
+
+    animate(ms, animFn, doneFn) {
+        this._animations.push(new AnimationBase(this, 0, 1, ms, animFn, doneFn));
+    }
 
     fadeIn(ms, doneFn) {
         this._animations.push(new FadeInAnimation(this, ms, doneFn));
@@ -113,6 +131,20 @@ class ElementBase {
         if (!this.finished) {
             this._doDraw();
         }
+
+        if (!this._previouslyHovering && this.hovering() && this._onenter != undefined) {
+            this.onenter();
+        }
+
+        if (this.hovering() && this._onhover != undefined) {
+            this.onhover();
+        }
+
+        if (this._previouslyHovering && !this.hovering() && this._onleave != undefined) {
+            this.onleave();
+        }
+
+        this._previouslyHovering = this.hovering();
 
         if (this._finished || this.isPaused() || this._popup == undefined) {
             return;
@@ -208,6 +240,21 @@ class CompositeElementBase extends ElementBase {
         this.elements.forEach(e => e.y = e.y + delta);
     }
 
+    get style() { return this._style; }
+    set style(value) { 
+        this._style = value; 
+        this.elements.forEach(e => { 
+            if ("style" in e) { 
+                e.style = value; 
+            } 
+        });
+    }
+
+    animate(ms, animFn, doneFn) {
+        super.animate(ms, animFn, doneFn);
+        this.elements.forEach(t => t.animate(ms, animFn));
+    }
+
     fadeIn(ms, doneFn) {
         super.fadeIn(ms, doneFn);
         this.elements.forEach(t => t.fadeIn(ms));
@@ -230,6 +277,7 @@ class CompositeElementBase extends ElementBase {
 
     addElement(e) {
         this.elements.push(e);
+        return e;
     }
 
     _doDraw() {
@@ -242,16 +290,25 @@ class CompositeElementBase extends ElementBase {
 class RectBase extends ElementBase {
     constructor(x, y, w, h, style, onclick) {
         super(x, y, w, h, onclick);
-        this.style = style;
+        this._style = style;
     }
+
+    get style() { return this._style; }
+    set style(value) { this._style = value; }
 }
 
 class RoundRectBase extends ElementBase {
     constructor(x, y, w, h, r, style, onclick) {
         super(x, y, w, h, onclick);
-        this.style = style;
-        this.r = r;
+        this._style = style;
+        this._r = r;
     }
+
+    get style() { return this._style; }
+    set style(value) { this._style = value; }
+
+    get r() { return this._r; }
+    set r(value) { this._r = value; }
 
     _doDraw() {
         ElementBase.context.strokeStyle = this.style;
@@ -269,7 +326,7 @@ class RoundRectBase extends ElementBase {
     }
 }
 
-// ---------- Implementation of Specific elements -----------------------------------------------------------------------
+// ---------- Rectangles -----------------------------------------------------------------------
 
 class Rect extends RectBase {
     _doDraw() {
@@ -300,6 +357,8 @@ class FillRoundRect extends RoundRectBase {
         ElementBase.context.fill();
     }
 }
+
+// ---------- Text elements -----------------------------------------------------------------------
 
 class TextSegment extends ElementBase {
 
@@ -391,6 +450,8 @@ class TextRect extends CompositeElementBase {
     }
 }
 
+// ---------- Menu -----------------------------------------------------------------------
+
 class Menu extends CompositeElementBase {
 
     constructor(x, y, w, font, fontStyle, bgStyle, itemHeight, margin) {
@@ -408,3 +469,83 @@ class Menu extends CompositeElementBase {
         this.h += this.itemHeight;
     }
 }
+
+// ---------- Buttons -----------------------------------------------------------------------
+
+class ButtonBase extends CompositeElementBase {
+    constructor(x, y, w, h, text) {
+        super(x, y, w, h);
+        this._pressed = false;
+        this._frameColor =          "gray"; 
+        this._frameColorHighlight = "lightgray";
+        this._frameColorClicked =   "lightgray";
+        this._bgColor =             "lightGray";
+        this._bgColorHighlight =    "white";
+        this._bgColorClicked =      "yellow";
+        this._fontColor =           "black";
+        this._fontColorHighlight =  "black";
+        this._fontColorClicked =    "black";
+        this._font = "18px arial";
+        this._margin = 3;           
+
+        this._frameElement = this.addElement(new FillRect(x, y, w, h, this._frameColor));
+        this._bgElement = this.addElement(new FillRect(x + this._margin, y + this._margin, w - 2 * this._margin, h - 2 * this._margin, this._bgColor));
+        this._textElement = this.addElement(new Text(x + this._margin, y, w - 2 * this._margin, h - 2 * this._margin, text, this._font, this._fontColor, HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE));
+    }
+
+    _doDraw() {
+        if (this._pressed) {
+            this._frameElement.style = this._frameColorClicked;
+            this._bgElement.style = this._bgColorClicked;
+            this._textElement.style = this._fontColorClicked;
+        }
+        else if (this.hovering()) {
+            this._frameElement.style = this._frameColorHighlight;
+            this._bgElement.style = this._bgColorHighlight;
+            this._textElement.style = this._fontColorHighlight;
+        }
+        else {
+            this._frameElement.style = this._frameColor;
+            this._bgElement.style = this._bgColor;
+            this._textElement.style = this._fontColor;
+        }
+        super._doDraw();
+    }
+}
+
+class Button extends ButtonBase {
+    constructor(x, y, w, h, text, fn) {
+        super(x, y, w, h, text);
+
+        this.onclick = () => {
+            if (!this._pressed) {
+                fn();
+                this._pressed = true;
+                this._bgElement.animate(50, (e,v) => {}, () => {
+                    this._pressed = false;
+                });
+            }
+        }
+    }
+}
+
+class TogglableButton extends ButtonBase {
+    constructor(x, y, w, h, text, onFn, offFn) {
+        super(x, y, w, h, text);
+
+        this.onclick = () => {
+            if (!this._pressed) {
+                onFn();
+                this._pressed = true;
+            } else {
+                offFn();
+                this._pressed = false;
+            }
+        }
+    }
+
+    deToggle() {
+        this._pressed = false;
+    }
+}
+

@@ -9,7 +9,7 @@ class AnimationBase {
     }
 
     update() {
-        this.updateFn(this.valueModifier.current);
+        this.updateFn(this.element, this.valueModifier.current);
         this.finished = this.valueModifier.finished;
         if (this.finished && this.doneFn != undefined) {
             this.doneFn();
@@ -27,24 +27,24 @@ class AnimationBase {
 
 class FadeInAnimation extends AnimationBase {
     constructor(element, ms, doneFn) {
-        super(element, 0, 1, ms, value => this.element.alpha = value, doneFn);
+        super(element, 0, 1, ms, (_, value) => this.element.alpha = value, doneFn);
     }
 }
 
 class FadeOutAnimation extends AnimationBase {
     constructor(element, ms, doneFn) {
-        super(element, 1, 0, ms, value => this.element.alpha = value, doneFn);
+        super(element, 1, 0, ms, (_, value) => this.element.alpha = value, doneFn);
     }
 }
 
 class HorizontalTranslateAnimation extends AnimationBase {
     constructor(element, delta, ms, doneFn) {
-        super(element, element.x, element.x + delta, ms, value => this.element.x = value, doneFn);
+        super(element, element.x, element.x + delta, ms, (_, value) => this.element.x = value, doneFn);
     }
 }
 
 class VerticalTranslateAnimation extends AnimationBase {
     constructor(element, delta, ms, doneFn) {
-        super(element, element.y, element.y + delta, ms, value => this.element.y = value, doneFn);
+        super(element, element.y, element.y + delta, ms, (_, value) => this.element.y = value, doneFn);
     }
 }
