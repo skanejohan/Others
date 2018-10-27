@@ -27,6 +27,10 @@
     </div>
     
     <div id="footer" class="footer">
+        <div id="locationdiv"></div>
+        <input id="streetviewbutton" type="button" class="viewbutton" value="Street View" disabled="true"/>
+        <input id="overviewbutton" type="button" class="viewbutton" value="Overview" disabled="true"/>
+        <input id="imageviewbutton" type="button" class="viewbutton" value="Image View" disabled="true"/>
     </div>
 
     <div id="popup" class="popupcontainer">
@@ -47,6 +51,10 @@
         var mapDiv = document.getElementById("mapdiv");
         var descriptionDiv = document.getElementById("description");
         var footerDiv = document.getElementById("footer");
+        var locationDiv = document.getElementById("locationdiv");
+        var streetViewButton = document.getElementById("streetviewbutton");
+        var overviewButton = document.getElementById("overviewbutton");
+        var imageViewButton = document.getElementById("imageviewbutton");
         var popupDiv = document.getElementById("popup");
         var popupHeaderDiv = document.getElementById("popupheader");
         var popupContentDiv = document.getElementById("popupcontent");
@@ -57,6 +65,9 @@
             popupHeaderDiv.style.setProperty("width", (window.innerWidth - 200) + "px");
             popupContentDiv.style.setProperty("width", (window.innerWidth - 200) + "px");
             popupContentDiv.style.setProperty("height", (window.innerHeight - 200) + "px");
+            streetViewButton.style.setProperty("margin-left", (window.innerWidth - 380) + "px");
+            overviewButton.style.setProperty("margin-left", (window.innerWidth - 260) + "px");
+            imageViewButton.style.setProperty("margin-left", (window.innerWidth - 140) + "px");
         }
 
         var closePopup = function() {
@@ -68,6 +79,11 @@
             popupDiv: popupDiv,
             descriptionDiv: descriptionDiv,
             popupContentDiv: popupContentDiv,
+            currentLocationDiv: footerDiv,
+            locationNameDiv: locationDiv,
+            streetViewButton: streetViewButton,
+            overviewButton: overviewButton,
+            imageViewButton: imageViewButton,
         });
 
         ui.setMovie(ohmss);

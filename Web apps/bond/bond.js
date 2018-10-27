@@ -1,4 +1,3 @@
-// TODO CurrentLocationUI with buttons for map etc. instead of auto-popup on anchor click
 // const normalIcon = "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
 // const highlightIcon = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
 //     anchor.onmouseenter = () => location.marker.setIcon(highlightIcon);
@@ -88,6 +87,49 @@ class MapUI {
     }
 }
 
+class CurrentLocationUI {
+    constructor(div, locationNameDiv, streetViewButton, overviewButton, imageviewButton) {
+        this.locationNameDiv = locationNameDiv;
+
+        this.streetViewButton = streetViewButton;
+        div.appendChild(this.streetViewButton);
+
+        this.overviewButton = overviewButton;
+        div.appendChild(this.overviewButton);
+
+        this.imageViewButton = imageviewButton;
+        div.appendChild(this.imageViewButton);
+    }
+
+    setLocation(location, streetViewFunction, overviewFunction, imageViewFunction) {
+        this.locationNameDiv.innerHTML = location.name;
+
+        if (streetViewFunction === undefined) {
+            this.streetViewButton.disabled = true;
+        }
+        else {
+            this.streetViewButton.onclick = streetViewFunction;
+            this.streetViewButton.disabled = false;
+        }
+
+        if (overviewFunction === undefined) {
+            this.overviewButton.disabled = true;
+        }
+        else {
+            this.overviewButton.onclick = overviewFunction;
+            this.overviewButton.disabled = false;
+        }
+
+        if (imageViewFunction === undefined) {
+            this.imageViewButton.disabled = true;
+        }
+        else {
+            this.imageViewButton.onclick = imageViewFunction;
+            this.imageViewButton.disabled = false;
+        }
+    }
+}
+
 class StreetViewUI {
     constructor(containerDiv, contentDiv) {
         this.containerDiv = containerDiv;
@@ -162,6 +204,12 @@ class UI {
         this.imageViewUI = new ImageViewUI(def.popupDiv, def.popupContentDiv);
         this.streetViewUI = new StreetViewUI(def.popupDiv, def.popupContentDiv);
         this.mapOverviewUI = new MapOverviewUI(def.popupDiv, def.popupContentDiv);
+        this.currentLocationUI = new CurrentLocationUI(
+            def.currentLocationDiv, 
+            def.locationNameDiv,
+            def.streetViewButton, 
+            def.overviewButton, 
+            def.imageViewButton);
         this.descriptionUI = new DescriptionUI(def.descriptionDiv, (a,l) => this._onAnchorAdded(a, l));
     }
 
@@ -186,8 +234,9 @@ class UI {
                     location.position.lng || 0,
                     location.position.zoom || 15);
 
+                var streetViewFunction = undefined;
                 if (location.hasOwnProperty("streetView")) {
-                    this.streetViewUI.show(
+                    streetViewFunction = () => this.streetViewUI.show(
                         location.streetView.lat || location.position.lat || 0,
                         location.streetView.lng || location.position.lng || 0,
                         location.streetView.zoom || 0,
@@ -195,21 +244,25 @@ class UI {
                         location.streetView.pitch || 0);
                 }
 
-                else if (location.hasOwnProperty("mapView")) {
-                    this.mapOverviewUI.show(
+                var overviewFunction = undefined;
+                if (location.hasOwnProperty("mapView")) {
+                    overviewFunction = () => this.mapOverviewUI.show(
                         location.mapView.lat || location.position.lat || 0, 
                         location.mapView.lng || location.position.lng || 0,
                         location.mapView.zoom || 20,
                         location.mapView.heading || 0);
                 }
 
-                else if (location.hasOwnProperty("imageView")) {
-                    this.imageViewUI.show(
+                var imageViewFunction = undefined;
+                if (location.hasOwnProperty("imageView")) {
+                    imageViewFunction = () => this.imageViewUI.show(
                         location.imageView.title, 
                         location.imageView.href, 
                         location.imageView.alt, 
                         location.imageView.src); 
                 }
+
+                this.currentLocationUI.setLocation(location, streetViewFunction, overviewFunction, imageViewFunction);
             }
         }
     }
