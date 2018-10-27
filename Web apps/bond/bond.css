@@ -1,5 +1,50 @@
 body, html {
     height: 100%;
+    margin: 0;
+}
+
+.header {
+    position: absolute;
+    height: 50px;
+    width: 100%;
+}
+
+.content {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+}
+
+.footer {
+    position: absolute;
+    top: 100px;
+    height: 50px;
+    width: 100%;
+}
+
+.left {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 50%
+}
+
+.right {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    height: 100%;
+    width: 50%;
+}
+
+.container {
+    _padding: 30px;
+    height: 100%;
+}
+
+#mapdiv {
+    height: 100%;
 }
 
 #description {
@@ -12,3 +57,34 @@ a:link {
     text-decoration-line:  none;
 }
 
+.popupcontainer {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    visibility: hidden;
+}
+
+#popupheader {
+    background-color: darkgray; 
+    height: 31px; 
+    width: 100px;
+}
+
+#popupclose {
+    margin-top: 1px;
+    width: 28px;
+    height: 28px;
+    float: right;
+}
+
+#popupcontent {
+    background-color: lightgray;
+}
+
+#popupimage {
+    height: 100%; 
+    max-width: 100%;
+    margin-left: auto;
+	margin-right: auto;
+    display: block;
+}

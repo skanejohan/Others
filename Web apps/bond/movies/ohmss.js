@@ -13,7 +13,7 @@ const ohmss = {
         { 
             // 0:01:20
             title: "Bond rescues Tracy", 
-            description: "The scene starts with [Bond driving in a small town|road_from_hotel] in his Aston Martin DBS. We then see him driving along the coast. [Here|N247], he is overtaken by Tracy in her red Mercury Cougar XR7. Bond arrives at [Guincho Beach|guincho] where Tracy tries to kill herself. Bond rescues her and then has to fight Draco's goons.",
+            description: "The scene starts with [Bond driving through Cascais|road_from_hotel], about 30 km west of Lisbon, in his Aston Martin DBS. We then see him driving along the coast. [Here|N247], he is overtaken by Tracy in her red Mercury Cougar XR7. Bond arrives at [Guincho Beach|guincho] where Tracy tries to kill herself. Bond rescues her and then has to fight Draco's goons.",
         },
         {
             // 0:06:34
@@ -23,7 +23,7 @@ const ohmss = {
         {
             // 0:08:58
             title: "Bond rescues Tracy... again",
-            description: "We see bond returning [the same way|road_from_hotel] and then stopping outside [his hotel|palacio], where Tracy's car is already parked. Later on, Bond rescues Tracy at the card table, fights off Draco's goons again and goes to bed with Tracy. The images from the lobby are said to have been recorded in the hotel. Most other indoor scenes are probably recorded in the studio.", 
+            description: "We see bond returning [the same way|road_from_hotel] and then stopping outside [his hotel|palacio] - the Palacio Estoril - where Tracy's car is already parked. Later on, Bond rescues Tracy at the card table, fights off Draco's goons again and goes to bed with Tracy. The images from the lobby are said to have been recorded in the hotel. Most other indoor scenes are probably recorded in the studio.", 
         },
         {
             // 0:19:00
@@ -38,7 +38,7 @@ const ohmss = {
         {
             // 0:29:15
             title: "We meet again",
-            description: "The scene opens with Tracy [arriving|draco_entrance] arriving at her father's estate for his birthday party. Bond is there as well, enjoying the [bullfighting|bullfight] spectacle put on by Draco. ",
+            description: "The scene opens with Tracy [arriving|draco_entrance] at her father's estate for his birthday party. Bond is there as well, enjoying the [bullfighting|bullfight] spectacle put on by Draco. ",
         },
         { 
             // 0:33:54  
@@ -48,7 +48,7 @@ const ohmss = {
         { 
             // 0:35:10  
             title: "A visit to Bern",
-            description: "Draco takes Bond and Tracy to Bern. They pass the [Bärengraben|barengraben], an old bear pit that still houses bears,and drive across the [Nydeggbrücke|nydeggbrucke]. We also get a quick glimpse of the bell tower of the [Heiliggeistkirche|heiliggeistkirche] (Church of the Holy Spirit) on the way to [solicitor Gumbolds office|gumbold], which is in reality the Schweizerhof hotel. Parts of the interior scenes - specifically Bond entering the elevator - also seem to have been filmed here. The hotel has since been renovated, but the elevator and the stairwell next to it can still be clearly seen. [The entrance to solicitor Gumbold's office|gumbold_entrance] is not the Schweizerhof hotel, but an adjacent building. The Café Brésil next door is still (2018) there. [Bern's main railway station|bern_hbf] was being rebuilt during filming, and one of the cranes used featured in the film - the device Bond uses to crack Gumbold's safe is transported using it. While Bond is investigating Gumbold's office, Draco and Tracy have a discussion in the car. We can clearly see that this is taken in the [Kramgasse|kramgasse] (\"Grocer's Alley\"), a now pedestrian street. The clock tower in the background is the \"Zytglogge\", and we can also see the Simsonbrunnen (Samson fountain).", 
+            description: "Draco takes Bond and Tracy to Bern. They pass the [Bärengraben|barengraben], an old bear pit that still houses bears,and drive across the [Nydeggbrücke|nydeggbrucke]. We also get a quick glimpse of the bell tower of the [Heiliggeistkirche|heiliggeistkirche] (Church of the Holy Spirit) on the way to [solicitor Gumbolds office|gumbold], which is in reality the Schweizerhof hotel. Parts of the interior scenes - specifically Bond entering the elevator - also seem to have been filmed here. The hotel has since been renovated, but the elevator and the stairwell next to it can still be clearly seen. [The entrance to solicitor Gumbold's office|gumbold_entrance] is not the Schweizerhof hotel, but an adjacent building. The Café Brésil next door is still (2018) there. [Bern's main railway station|bern_hbf] was being rebuilt during filming, and one of the cranes used featured in the film - the device Bond uses to crack Gumbold's safe is transported using it. While Bond is investigating Gumbold's office, Draco and Tracy have a discussion in the car. We can clearly see that this is taken in the [Kramgasse|kramgasse] (\"Grocer's Alley\"), today a partially pedestrian street. The clock tower in the background is the \"Zytglogge\", and we can also see the Simsonbrunnen (Samson fountain).", 
         },
         { 
             // 0:42:00
@@ -88,7 +88,7 @@ const ohmss = {
         {
             // 1:34:20
             title: "Civilization at last",
-            description: "When Bond has escaped down the mountain, he arrives in the small town of [Grindelwald|grindelwald], over ten miles east of Piz Gloria, meaning that he would most likely have passed the town of Lauterbrunnen, where he arrived in Switzerland. In the first shot of the town, seen from up the mountain, we can clearly see a large house, today's Grand Hotel Regina (2018). Irma Bunt sees the girls off at what is most likely the Schilthorn cable car station at [Stechelberg|stechelberg], given that the sign at the entrance says \"Gimmelwald Mürren Birg\". Bond fights some of the henchmen in what seems to be a storage area for bells, a fight that makes a horrible noise. Bond then enters the [ice rink|ice_rink] near hotel Regina in Grindelwald, an ice rink that is no longer there. Irma Bunt is seen outside a hotel, telling her goons to \"come on\". According to [this video|https://www.youtube.com/watch?v=agby3qCQ6YA], this could be current (2014) [hotel Bernerhof|bernerhof]. In these scenes, we clearly see a \"Hotel Oberland\" as well, but I haven't been able to locate that. There is a hotel Oberland in Lauterbrunnen. Possibly, they have recorded sequences for this scene in both places. At the ice rink, Bond meets Tracy again and they escape in her car.", 
+            description: "When Bond has escaped down the mountain, he arrives in the small town of [Grindelwald|grindelwald], over ten miles east of Piz Gloria, meaning that he would most likely have passed the town of Lauterbrunnen, where he arrived in Switzerland. In the first shot of the town, seen from up the mountain, we can clearly see a large house, today's [Grand Hotel Regina|regina] (2018). Irma Bunt sees the girls off at what is most likely the Schilthorn cable car station at [Stechelberg|stechelberg], given that the sign at the entrance says \"Gimmelwald Mürren Birg\". Bond fights some of the henchmen in what seems to be a storage area for bells, a fight that makes a horrible noise. Bond then enters the [ice rink|ice_rink] near hotel Regina in Grindelwald, an ice rink that is no longer there. Irma Bunt is seen outside a hotel, telling her goons to \"come on\". According to [this video|https://www.youtube.com/watch?v=agby3qCQ6YA], this could be current (2014) [hotel Bernerhof|bernerhof]. In these scenes, we clearly see a \"Hotel Oberland\" as well, but I haven't been able to locate that. There is a hotel Oberland in Lauterbrunnen. Possibly, they have recorded sequences for this scene in both places. At the ice rink, Bond meets Tracy again and they escape in her car.", 
         },
         {
             // 1:39:20
@@ -144,34 +144,72 @@ const ohmss = {
     locations: [
         {
             id: "univex",
-            position: new google.maps.LatLng(51.501214, -0.127420),
+            position: {
+                lat: 51.501214, 
+                lng: -0.127420,
+                zoom: 17,
+            },
+            streetView: {
+                zoom: 1,
+                heading: 90,
+                pitch: 0,
+            },
             description: "\"Universal exports\" sign.",
         },
         {
             id: "road_from_hotel",
+            position: {
+                lat: 38.694550, 
+                lng: -9.419931,
+            },
+            streetView: {
+            },
             name: "Parada da Artilharia Anti Aerea / Av. Dom Carlos I",
-            position: new google.maps.LatLng(38.694550, -9.419931),
             description: "Road by the sea.",
             sources: ["https://www.onthetracksof007.com/maps"],
         },
         {
             id: "N247",
             name: "N247 road",
-            position: new google.maps.LatLng(38.764472, -9.470995),
+            position: {
+                lat: 38.764472, 
+                lng: -9.470995,
+            },
+            streetView: {
+                heading: 200,
+            },
             description: "This is where Tracy overtakes Bond on her way to the beach.",
             sources: ["https://www.onthetracksof007.com/maps"],
         },
         {
             id: "guincho",
-			name: "Praia Grande do Guincho",
-            position: new google.maps.LatLng(38.732384, -9.473209),
+            name: "Praia Grande do Guincho",
+            position: {
+                lat: 38.732384, 
+                lng: -9.473209,
+            },
+            streetView: {
+                lat: 38.7298129,
+                lng: -9.4724117,
+                heading: 300,
+            },
             description: "This is where Bond rescues Tracy di Vicenzo from the sea and fights Draco's goons.",
             sources: ["mi6 declassified # 7, page 26|http://www.mi6magazine.com"], 
         },
         {
             id: "palacio",
             name: "Palácio Estoril Hotel",
-            position: new google.maps.LatLng(38.704813, -9.396409),
+            position: {
+                lat: 38.704813, 
+                lng: -9.396409,
+                zoom: 17,
+            },
+            mapView: {
+                lat: 38.704803,
+                lng: -9.396327,
+                heading: 90,
+                zoom: 19,
+            },
             description: "Bond and Tracy stay at the Palacio hotel.",
             sources: [
                 "http://www.movie-locations.com/movies/o/On-Her-Majestys-Secret-Service.php", 
@@ -181,14 +219,25 @@ const ohmss = {
         {
             id: "pte25apr",
             name: "Ponte 25 de Abril",
-            position: new google.maps.LatLng(38.690775, -9.177354),
+            position: {
+                lat: 38.690775, 
+                lng: -9.177354,
+            },
+            streetView: {
+            },
             description: "When taken to Draco, Bond is driven over the 25th of April Bridge in Lissabon.",
         },
         {
             id: "draco_entrance",
             movieName: "The home of Marc-Ange Draco (entrance road)",
             name: "DeVinho estate",
-            position: new google.maps.LatLng(38.566376, -8.729593),
+            position: { 
+                lat: 38.566376, 
+                lng: -8.729593 
+            },
+            mapView: {
+                // TODO
+            },
             description: "This road is used by Tracy when she arrives at her father's estate.",
             sources: ["mi6 declassified # 7, page 26|http://www.mi6magazine.com"], 
         },
@@ -196,52 +245,105 @@ const ohmss = {
             id: "bullfight",
             movieName: "The home of Marc-Ange Draco (bullfighting arena)",
             name: "DeVinho estate",
-            position: new google.maps.LatLng(38.567394, -8.724836),
+            position: { 
+                lat: 38.567394, 
+                lng: -8.724836,
+            },
+            mapView: {
+                // TODO
+            },
             description: "This is the bullfighting arena where the scenes for Marc-Ange Draco's birthday party were shot.",
             sources: ["mi6 declassified # 7, page 26|http://www.mi6magazine.com"], 
         },
         {
             id: "love_marqueses",
             name: "Palácio dos Marqueses da Fronteira",
-            position: new google.maps.LatLng(38.740097, -9.179777),
+            position: { 
+                lat: 38.740097, 
+                lng: -9.179777,
+            },
+            streetView: {
+            },
             description: "Bond and Tracy walk in this park as they are falling in love.",
         },
         {
             id: "love_beach",
             name: "Private beach",
-            position: new google.maps.LatLng(38.523848, -8.738378),
+            position: { 
+                lat: 38.523848, 
+                lng: -8.738378,
+            },
             description: "Bond and Tracy walk on this beach as they are falling in love.",
             sources: ["https://www.onthetracksof007.com/maps"],
         },
         {
             id: "love_jewelers",
             name: "Joalharia Ferreira Marques",
-            position: new google.maps.LatLng(38.712922, -9.139027),
+            position: { 
+                lat: 38.712922, 
+                lng: -9.139027,
+            },
+            streetView: {
+                lat: 38.7131389,
+                lng: -9.1390499,
+                heading: 190,
+                zoom: 3,
+            },
             description: "The jeweller's store where Bond and Tracy look at rings.",
         },
         {
             id: "barengraben",
             name: "Bärengraben",
-            position: new google.maps.LatLng(46.948070, 7.459631),
+            position: { 
+                lat: 46.948070, 
+                lng: 7.459631,
+            },
+            mapView: {
+            },
             description: "The car takes Bond and Tracy past the Bärengraben, an old bear pit that still houses bears.",
         },
         {
             id: "nydeggbrucke",
             name: "Nydeggbrücke",
-            position: new google.maps.LatLng(46.948478, 7.458368),
+            position: { 
+                lat: 46.948478, 
+                lng: 7.458368,
+            },
+            streetView: {
+                lat: 46.948451,
+                lng: 7.458682,
+                heading: 270,
+            },
             description: "The car takes Bond and Tracy across the Nydeggbrücke into the old city of Bern.",
         },
         {
             id: "heiliggeistkirche",
             name: "Heiliggeistkirche",
-            position: new google.maps.LatLng(46.948127, 7.440724),
+            position: { 
+                lat: 46.948127, 
+                lng: 7.440724,
+            },
+            streetView: {
+                lat: 46.948980, 
+                lng: 7.440613,
+                heading: 180,
+            },
             description: "We get a quick glimpse of the bell tower of the Heiliggeistkirche (Church of the Holy Spirit).",
         },
         {
             id: "gumbold",
             movieName: "Solicitor Gumbold's office",
             name: "Hotel Schweizerhof",
-            position: new google.maps.LatLng(46.948629, 7.440921),
+            position: { 
+                lat: 46.948629, 
+                lng: 7.440921,
+            },
+            streetView: {
+                lat: 46.9487414,
+                lng: 7.4406734,
+                heading: 80,
+                pitch: 20,
+            },
             description: "Solicitor Gumbold's office.", 
             source: "https://www.youtube.com/watch?v=agby3qCQ6YA",
         },
@@ -249,27 +351,58 @@ const ohmss = {
             id: "gumbold_entrance",
             movieName: "Solicitor Gumbold's office (entrance)",
             name: "House on Bollwerk 15, Bern",
-            position: new google.maps.LatLng(46.949359, 7.440662),
+            position: { 
+                lat: 46.949359, 
+                lng: 7.440662,
+            },
+            streetView: {
+                lat: 46.9493792,
+                lng: 7.4404928,
+                heading: 110,
+            },
             description: "The entrance to solicitor Gumbold's office.",
         },
         {
         id: "bern_hbf",
             name: "Bern Bahnhof",
-            position: new google.maps.LatLng(46.948940, 7.440281),
+            position: { 
+                lat: 46.948940, 
+                lng: 7.440281,
+            },
+            streetView: {
+                lat: 46.9487414,
+                lng: 7.4406734,
+                heading: 280,
+                pitch: 10,
+            },
             description: "Bern's main railway station.",
             source: "https://www.bernerzeitung.ch/kultur/kino/Bern-im-BondFilm--damals-und-heute/story/30649899",
         },
         {
             id: "kramgasse",
             name: "Kramgasse",
-            position: new google.maps.LatLng(46.947979, 7.450369),
+            position: { 
+                lat: 46.947979, 
+                lng: 7.450369,
+            },
+            streetView: {
+                lat: 46.9479457,
+                lng: 7.4501483,
+                heading: 270,
+            },
             description: "Kramgasse"
         },
         {
             id: "m_entrance",
             name: "Thames Lawn Estate (entrance)",
             movieName: "Entrance to M's house",
-            position: new google.maps.LatLng(51.568250, -0.771983),
+            position: { 
+                lat: 51.568250, 
+                lng: -0.771983,
+            },
+            streetView: {
+                heading: 30,
+            },
             description: "Bond enters M's house through an imposing gate. The gate remains today.",
             sources: ["mi6 declassified # 7, page 26|http://www.mi6magazine.com"], 
 
@@ -278,112 +411,230 @@ const ohmss = {
             id: "m_house",
             name: "Thames Lawn Estate",
             movieName: "M's house",
-            position: new google.maps.LatLng(51.568363, -0.770401),
+            position: { 
+                lat: 51.568363, 
+                lng: -0.770401,
+            },
+            mapView: {
+
+            },
             description: "M's house.",
             sources: ["mi6 declassified # 7, page 26|http://www.mi6magazine.com"], 
         },
         {
             id: "st_paul",
             name: "St. Paul's Cathedral",
-            position: new google.maps.LatLng(51.513766, -0.098320),
+            position: { 
+                lat: 51.513766, 
+                lng: -0.098320,
+            },
+            mapView: {
+                // TODO
+            },
             description: "St. Paul's Cathedral",
         },
         {
             id: "arms",
             name: "The College of Arms",
-            position: new google.maps.LatLng(51.512152, -0.098734),
+            position: { 
+                lat: 51.512152, 
+                lng: -0.098734,
+            },
+            streetView: {
+                lat: 51.5119807,
+                lng: -0.0987014,
+            },
             description: "The College of Arms",
         },
         {
             id: "lauterbrunnen",
             name: "Lauterbrunnen, railway station",
-            position: new google.maps.LatLng(46.598314, 7.907782), 
+            position: { 
+                lat: 46.598314, 
+                lng: 7.907782, 
+            },
+            streetView: {
+                lat: 46.5976,
+                lng: 7.9074303,
+                heading: 45,
+                pitch: -20,
+                zoom: 1,
+            },
             description: "Lauterbrunnen", 
         },
         {
             id: "heli_arrive",
             name: "Bond arrives at the helicopter",
-            position: new google.maps.LatLng(46.639905, 8.055360),
+            position: { 
+                lat: 46.639905, 
+                lng: 8.055360,
+            },
+            streetView: {
+                lat: 46.6398652,
+                lng: 8.0556495,
+                heading: 130,
+                zoom: 2,
+            },
             description: "Helicopter"
         },
         {
             id: "birg_view",
             name: "Birg",
-            position: new google.maps.LatLng(46.561823, 7.857703),
+            position: { 
+                lat: 46.561823, 
+                lng: 7.857703,
+            },
+            // TODO picture
             description: "Birg",
         },
         {
             id: "piz",
             name: "Piz Gloria",
-            position: new google.maps.LatLng(46.557227, 7.835204),
+            position: { 
+                lat: 46.557227, 
+                lng: 7.835204,
+            },
+            imageView: {
+                title: "By Yesuitus2001 [CC BY-SA 2.5 (https://creativecommons.org/licenses/by-sa/2.5)], from Wikimedia Commons",
+                href: "https://commons.wikimedia.org/wiki/File:Piz-Gloria093.JPG",
+                alt: "Piz-Gloria093",
+                src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Piz-Gloria093.JPG/512px-Piz-Gloria093.JPG",
+            },
             description: "Piz Gloria",
         },
         {
             id: "birg",
             name: "Birg",
-            position: new google.maps.LatLng(46.561823, 7.857703),
+            position: { 
+                lat: 46.561823, 
+                lng: 7.857703,
+            },
             description: "Birg",
             confirmed: false,
         },
         {
+            // TODO circle
             id: "grindelwald",
             name: "Grindelwald",
-            position: new google.maps.LatLng(46.624077, 8.033693),
+            position: { 
+                lat: 46.624077, 
+                lng: 8.033693,
+                zoom: 17,
+            },
             description: "Grindelwald",
+        },
+        {
+            id: "regina",
+            name: "Hotel Regina",
+            position: { 
+                lat: 46.624077, 
+                lng: 8.033693,
+                zoom: 17,
+            },
+            streetView: {
+                lat: 46.6242404,
+                lng: 8.0348341,
+                heading: 270,
+                zoom: 2,
+            },
+            description: "Hotel Regina",
         },
         {
             id: "stechelberg",
             name: "Stechelberg",
-            position: new google.maps.LatLng(46.555083, 7.901748),
+            position: { 
+                lat: 46.555083, 
+                lng: 7.901748,
+            },
+            streetView: {
+                lat: 46.5553092,
+                lng: 7.9017925,
+                heading: 90,
+            },
             description: "Schilthorn cable car station at Stechelberg",
         },
         {
             id: "ice_rink",
             name: "Ice rink",
-            position: new google.maps.LatLng(46.624304, 8.034437),
+            position: { 
+                lat: 46.624304, 
+                lng: 8.034437,
+                zoom: 17,
+            },
+            streetView: {
+                lat: 46.6242404,
+                lng: 8.0348341,
+                heading: 270,
+                zoom: 2,
+            },
             description: "The ice rink where Bond meets Tracy again.",
         },
         {
             id: "bernerhof",
             name: "Hotel Bernerhof",
-            position: new google.maps.LatLng(46.624402, 8.034372),
+            position: { 
+                lat: 46.624402, 
+                lng: 8.034372,
+                zoom: 17,
+            },
+            streetView: { 
+                lat: 46.6244068,
+                lng: 8.034429, 
+            },
             description: "Hotel Bernerhof",
         },
         {
             id: "l_church",
             name: "Lauterbrunnen church",
-            position: new google.maps.LatLng(46.592701, 7.908466),
+            position: { 
+                lat: 46.592701, 
+                lng: 7.908466,
+            },
             description: "We see an overview shot of the church in Lauterbrunnen.",
         },
         {
             id: "staubbach",
             name: "Hotel Staubbach",
-            position: new google.maps.LatLng(46.593282, 7.907721),
+            position: { 
+                lat: 46.593282, 
+                lng: 7.907721,
+            },
             description: "Hotel Staubbach",
         },
         {
             id: "phone_booth",
             name: "Phone booth",
-            position: new google.maps.LatLng(46.593640, 7.907140),
+            position: { 
+                lat: 46.593640, 
+                lng: 7.907140,
+            },
             description: "Phone booth",
         },
         {
             id: "jungfrau",
             name: "Hotel Jungfrau",
-            position: new google.maps.LatLng(46.593942, 7.907142),
+            position: { 
+                lat: 46.593942, 
+                lng: 7.907142,
+            },
             description: "Hotel Jungfrau",
         },
-
         {
             id: "crossing",
             name: "Road crossing",
-            position: new google.maps.LatLng(46.592858, 7.907516),
+            position: { 
+                lat: 46.592858, 
+                lng: 7.907516,
+            },
             description: "Crossing",
         },
         {
             id: "stock_car",
             name: "Stock car race",
-            position: new google.maps.LatLng(46.583531, 7.913499),
+            position: { 
+                lat: 46.583531, 
+                lng: 7.913499,
+            },
             description: "This is where the stock car race was filmed.",
             source: ["https://www.onthetracksof007.com/maps", "https://007travelers.blogspot.com/2014/12/007-travel-story-lauterbrunnen.html",
             "mi6 declassified # 7, page 26|http://www.mi6magazine.com"],
@@ -391,44 +642,65 @@ const ohmss = {
         {
             id: "barn",
             name: "Barn",
-            position: new google.maps.LatLng(46.755356, 7.686779),
+            position: { 
+                lat: 46.755356, 
+                lng: 7.686779,
+            },
             description: "Barn",
         },
         {
             id: "hillside",
             name: "Hillside", 
-            position: new google.maps.LatLng(46.754188, 7.687437),
+            position: { 
+                lat: 46.754188, 
+                lng: 7.687437,
+            },
             description: "Blofeld and his men arrive"
         },
         {
             id: "winteregg",
             name: "Winteregg", 
-            position: new google.maps.LatLng(46.581872, 7.896059),
+            position: { 
+                lat: 46.581872, 
+                lng: 7.896059,
+            },
             description: "In this region, the hunt for Bond and Tracy was filmed."
         },
         {
             id: "zurich_airport",
             name: "Zurich airport", 
-            position: new google.maps.LatLng(47.458376, 8.555497),
+            position: { 
+                lat: 47.458376, 
+                lng: 8.555497,
+            },
             description: "Zurich airport",
             category: "unseen",
         },
         {
             id: "bob_run",
             name: "Bob sleigh run", 
-            position: new google.maps.LatLng(46.563826, 7.889260),
+            position: { 
+                lat: 46.563826, 
+                lng: 7.889260,
+            },
             description: "Bob sleigh run",
         },
         {
             id: "draco",
             name: "Draco's residence", 
-            position: new google.maps.LatLng(38.566969, -8.730118),
+            position: { 
+                lat: 38.566969, 
+                lng: -8.730118,
+            },
             description: "The wedding party takes place on Draco's residence."
         },
         {
             id: "tragedy",
             name: "Tragedy", 
-            position: new google.maps.LatLng(38.480622, -8.989766),
+            position: { 
+                lat: 38.480622, 
+                lng: -8.989766,
+            },
             description: "Tracy gets killed by Irma Bunt.",
         },
     ]

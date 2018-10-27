@@ -38,19 +38,42 @@ const dn = {
         {
             // 00:15:45
             title: "Jamaica",
-            description: "Bond's flight lands at the [Norman Manley International Airport|airport] in Kingston. He is picked up by \"Mr. Jones, chauffeur from Government House\" but a call to the Principal Secretary revels that no car has been sent to meet him. This scene also introduces the mysterious photographer, as well as a - as yet unnamed - Felix Leiter.",
+            description: "Bond's flight lands at the [Norman Manley International Airport|airport] in Kingston. He is picked up by \"Mr. Jones, chauffeur from Government House\" but a call to the Principal Secretary reveals that no car has been sent to meet him. This scene also introduces the mysterious photographer, as well as a - as yet unnamed - Felix Leiter.",
         },
         {
             // 00:17:55
-            title: "A drive in the country",
-            description: ""
+            title: "\"Mr. Jones\"",
+            description: "\"Mr. Jones\" drives Bond from the airport, shaking their tail on the way. When Bond confronts him, he kills himself rather than letting Bond know who he works for. These scenes are likely shot along the [Norman Manley highway|nmhighway], which leads from the airport.",
         },
+        {
+            // 00:21:00
+            title: "Government House",
+            description: "Bond arrives at [\"Government House\"|gov_house] where he meets with Pleydell-Smith and Superintendent Duff. ",
+        },
+        {
+            // 00:22:15
+            title: "Strangways' house",
+            description: "Bond and Superintendent Duff visit [Strangways' house|kinsale] where Bond finds the geological connection to Professor Dent, and the picture of Strangways and Quarrel. ",
+        },
+        {
+            // 00:23:40
+            title: "\"One medium dry vodka martini\"",
+            description: "At his hotel, Bond does some actual spy stuff to be able to detect if anyone later breaks into his room. The hotel  "
+        },
+        {
+            // 00:25:05
+            title: "",
+            description: ""
+        }
     ],
     locations: [
         {
             id: "metcalfe",
             name: "Statue of Sir Charles Metcalfe",
-            position: new google.maps.LatLng(17.963709, -76.793368),
+            position: {
+                lat: 17.963709, 
+                lng: -76.793368,
+            },
             description: "Statue of Sir Charles Metcalfe",
             sources: ["https://www.gettyimages.com/detail/news-photo/view-of-a-statue-of-sir-charles-metcalf-and-ship-at-port-in-news-photo/589949093#/view-of-a-statue-of-sir-charles-metcalf-and-ship-at-port-in-kingston-picture-id589949093",
             "http://www.jamaicanfamilysearch.com/images/photos33.htm"], 
@@ -60,50 +83,93 @@ const dn = {
             name: "Queens Club",
             address: "Knutsford Boulevard, New Kingston, Kingston 5, Jamaica W.I.",
             url: "http://www.theliguaneaclub.com/",
-            position: new google.maps.LatLng(18.004705, -76.789442),
+            position: {
+                lat: 18.004705, 
+                lng: -76.789442,
+            },
             description: "Queens Club",
         },
         {
             id: "kinsale",
             name: "Kinsale Avenue",
-            position: new google.maps.LatLng(18.038589, -76.770155),
+            position: {
+                lat: 18.038589,
+                lng: -76.770155,
+            },
             description: "Kinsale Avenue",
         },
         {
             id: "hp",
             name: "Houses of Parliament",
-            position: new google.maps.LatLng(51.499887, -0.124435),
-            view_position: "https://www.google.se/maps/@51.5000167,-0.1200933,3a,75y,347.4h,89.66t/data=!3m8!1e1!3m6!1sAF1QipNll5eJSErtdAqsW3hVLLZ08E24tEim4WeufelQ!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipNll5eJSErtdAqsW3hVLLZ08E24tEim4WeufelQ%3Dw203-h100-k-no-pi0.04655526-ya112.655556-ro0.6307372-fo100!7i5376!8i2688",
+            position: {
+                lat: 51.499887, 
+                lng: -0.124435,
+                zoom: 17,
+            },
+            streetView: {
+                lat: 51.5000167,
+                lng: -0.1200933,
+                zoom: 2,
+            },
             description: "Houses of Parliament",
         },
         {
             id: "lesamb",
             name: "Les Ambassadeurs Club",
-            position: new google.maps.LatLng(51.504425, -0.150407),
-            view_position: "https://www.google.se/maps/@51.5045279,-0.1502475,3a,75y,248.49h,89.98t/data=!3m6!1e1!3m4!1stbpA-7CQDeP6U6gB6MYJzg!2e0!7i13312!8i6656",
+            position: {
+                lat: 51.504425, 
+                lng: -0.150407,
+                zoom: 17,
+            },
+            streetView: {
+                lat: 51.5045279,
+                lng: -0.1502475,
+                heading: 250,
+                zoom: 3,
+            },
             description: "Les Ambassadeurs Club",
         },
         {
             id: "airport",
             name: "Norman Manley International Airport",
             url: "nmia.aero",
-            position: new google.maps.LatLng(17.937866, -76.778962),
+            position: {
+                lat: 17.937866, 
+                lng: -76.778962,
+            },
+            streetView: {
+            },
             description: "Norman Manley International Airport",
         },
- 
+        {
+            id: "nmhighway",
+            name: "The Norman Manley highway",
+            position: {
+                lat: 17.943593, 
+                lng: -76.747634,
+            },
+        },
+        {
+            id: "gov_house",
+            movieName: "Government House",
+            name: "The Office Of The Governor General",
+            address: "King’s House, Hope Road, Kingston 6, Jamaica",
+            position: {
+                lat: 18.0225406,
+                lng: -76.7845049,
+            },
+            streetView: {
+                lat: 18.0225406,
+                lng: -76.7845049,
+            },
+            description: "Government House",
+        },
+
         // Morgans's harbour where Bond meets Quarrel and Pussfeller - https://www.youtube.com/watch?v=rlmbuqNheic
         // The white river is where Honey and Quarrel hide from the guards
         // Reynold's Pier - Dr No's HQ
         // Laughing waters beach - underneath the mango tree
         /*locations: [
-			{
-                movieName: "Government House",
-				name: "The Office Of The Governor General",
-				address: "King’s House, Hope Road, Kingston 6, Jamaica",
-				url: "nmia.aero",
-                position: new google.maps.LatLng(17.937866, -76.778962),
-                description: "",
-            },
 			{
                 movieName: "The beach on Crab Key",
 				name: "Laughing Waters Beach",
