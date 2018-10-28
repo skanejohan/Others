@@ -2,6 +2,7 @@
 // const highlightIcon = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
 //     anchor.onmouseenter = () => location.marker.setIcon(highlightIcon);
 //     anchor.onmouseleave = () => location.marker.setIcon(normalIcon);
+// TODO when in street view on the main map, we should leave it when switching to another location. 
 
 class DescriptionUI {
     constructor(div, onAnchorAdded) {
