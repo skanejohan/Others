@@ -12,7 +12,7 @@
  - Is Southampton used? (https://en.wikipedia.org/wiki/Diamonds_Are_Forever_(film)#Filming)
  - Use pendleton for Blofeld's Oil Rig Lair (don't know which scene). Modify the coordinates - they are currently at the entrance.
 
-  Made by EON PRODUCTIONS LIMITED on location in USA, Germeny, Holland, France and at Pinewood Studios, London, England
+  Made by EON PRODUCTIONS LIMITED on location in USA, Germany, Holland, France and at Pinewood Studios, London, England
  */
 
 const daf = {

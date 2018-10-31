@@ -9,6 +9,8 @@
   Feb 26 filming begins at Pinewood, scene with M and major Boothroyd
   Mar 2, introduction as James Bond, card game.
   Oct 6, 1962 premiere at the London Pavillion Cinema, Piccadilly Circus
+
+  Released by United Artists - Filmed in Jamaica and at Pinewood Studios, London, England
 */
 
 const dn = {
@@ -106,13 +108,88 @@ const dn = {
         {
             // 00:36:50
             title: "Crab Key",
-            description: "Professor Dent arrives at \"Crab Key\" by way of [Reynold's Pier|reynold], previously homne to a bauxite mining company. In 2016, Reynold's Pier was renovated and is now one of the major cruise ship ports in Jamaica. At Crab Key, Professor Dent is handed the spider with which to kill Bond.",
+            description: "Professor Dent arrives at \"Crab Key\" by way of [Reynold's Pier|reynold], previously home to a bauxite mining company. In 2016, Reynold's Pier was renovated and is now one of the major cruise ship ports in Jamaica. When looking at these scenes, it is very evident that all shots were cautiously taken out to sea. Had they been taken towards land, it would have shattered the illusion of Crab Key as a remote little island. At Crab Key, Professor Dent is handed the spider with which to kill Bond.",
         },
         {
             // 00:39:45
-            title: "Back at the hotel",
-            description: "",
+            title: "A furry friend",
+            description: "Back at the hotel Bond realizes that someone has been in his room before calmly having another drink (this time he mixes it himself). During the night he is awoken by the infamous spider, presumably placed there by Professor Dent.",
         },
+        {
+            // 00:42:55
+            title: "Lost files",
+            description: "At Government House, Bond asks for all information on Dr. No and Crab Key. The information has mysteriously disappeared, and Bond begins to suspect Ms. Taro.",
+        },
+        {
+            // 00:44:55
+            title: "Radioactivity",
+            description: "Back at [Quarrel's boat|quarrel], Bond realizes that the rock samples brought back from Crab Key, that were dismissed by Professor Dent, were radioactive. He persuades Quarrel to take him to Crab Key.",
+        },
+        {
+            // 00:46:25
+            title: "Ms. Taro",
+            description: "Back at his hotel, Bond calls Ms. Taro who asks him to see her at her apartment, as \"it is lovely up here in the mountains\". We see him make a left turn at the [cement factory|cement] as per Ms. Taro's instructions.",
+        },
+        {
+            // 00:47:45
+            title: "On their way to a funeral",
+            description: "On his way to ms. Taro's house, Bond manages to shake off his followers, having them crash their car with a fatal outcome.",
+        },
+        {
+            // 00:49:25
+            title: "An unexpected visitor",
+            description: "Bond arrives at Ms Taro's house, which in reality was the hotel (today [Couples Sans Souci hotel|sans_souci]) where the crew stayed during filming. Ms. Taro is surprised to see him but allows him in. After sleeping with her, Bond hands her over to the police.",
+        },
+        {
+            // 00:53:20
+            title: "\"A Smith & Wesson\"",
+            description: "Bond waits for professor Dent in Ms. Taro's house. The professor tries to kill Bond who turns the tables and coldly shoots Dent.",
+        },
+        {
+            // 00:56:35
+            title: "Sailing to Crab Key",
+            description: "Bond arrives at [the docks|quarrel] where Quarrel and Leiter are waiting. They take off and when they get close to Crab Key, Leiter heads back, while Bond and Quarrel continue to the island. These scenes are shot around [Laughing Waters beach|laughing] west of Ocho Rios on the northern shore.",
+        },
+        {
+            // 00:59:30
+            title: "Sunrise",
+            description: "The famous scene where Honey gets out of the water was also shot at [Laughing Waters beach|laughing], as are the scenes when they are attacked by Dr No's men.",
+        },
+        {
+            // 01:06:05
+            title: "Up the river",
+            description: "The river Bond, Quarrel and Honey use when moving inland is the [White River|white_river]. This is where they hide from the dogs and where Bond eventually kills one of the guards.",
+        },
+        {
+            // 01:09:10
+            title: "Taking a bath",
+            description: "When they have escaped the guards, they rest at the a waterfall. This is [Dunn's River Falls|dunn], the main [tourist attraction|tourist] in Jamaica.",
+        },
+        {
+            // 01:09:10
+            title: "The dragon",
+            description: "When they leave for the dragon, we see them in the [falls|dunn], then we see scenes in the [White River|white_river] again, before they end up in the swamp. The scenes in the swamp where Quarrel gets killed were shot much farther west, in the [Vanzie Swamp|swamp] near Falmouth.",
+        },
+        {
+            // 01:14:55
+            title: "\"We didn't know when to expect you\"",
+            description: "Bond and Honey are taken to Dr. No's headquarter, where they are cleaned up to get rid of radiation. They are then taken to their rooms where they are drugged and placed in their beds. This is all shot at [Pinewood Studios|pinewood] and for the first, but certainly not last, time we see some of Ken Adam's marvellous sets.",
+        },
+        {
+            // 01:21:20
+            title: "\"One million dollars, mr. Bond\"",
+            description: "The whole dinner scene is shot at [Pinewood Studios|pinewood]...",
+        },
+        {
+            // 01:21:20
+            title: "Mayhem",
+            description: "...as are the scenes where Bond escapes, gets into the control room, causes a disaster and kills dr. No. ",
+        },
+        {
+            // 01:41:50
+            title: "Finale",
+            description: "The final scenes, when Bond has rescued Honey and everyone escape from Crab Key, are recorded at [Reynold's Pier|reynold].",
+        }
     ],
     locations: [
         {
@@ -134,6 +211,12 @@ const dn = {
             position: {
                 lat: 18.004705, 
                 lng: -76.789442,
+            },
+            imageView: {
+                title: "Photo by Johan Åhlgren, 26 December 2015.\n\nThis is as close as you get unless you are a member.",
+                href: "#",
+                alt: "Dr. No - Liguanea Club",
+                src: "img/dn_liguanea.jpg",
             },
             description: "Queens Club",
         },
@@ -230,25 +313,105 @@ const dn = {
             position: {
                 lat: 18.410129, 
                 lng: -77.114200,
+            },
+            imageView: {
+                title: "Photo by Johan Åhlgren, 24 December 2015.\n\nWe see that the pier, which acts as Crab Key, is in a rather populated location,\nwhich explains why all shots are taken from the shore, out to sea.\n\nThe photo was taken from Mystic Mountain, a major tourist attraction.",
+                href: "#",
+                alt: "Dr. No - reynold's pier",
+                src: "img/dn_reynolds.jpg",
             }
-        }
-
-        // The white river is where Honey and Quarrel hide from the guards
-        // Reynold's Pier - Dr No's HQ
-        // Laughing waters beach - underneath the mango tree
-        /*locations: [
-			{
-                movieName: "The beach on Crab Key",
-				name: "Laughing Waters Beach",
-                position: new google.maps.LatLng(18.422675, -77.148348),
-                description: "",
+        },
+        {
+            id: "quarrel",
+            name: "Quarrel's boat",
+            position: {
+                lat: 17.940610, 
+                lng: -76.838721,
+            }
+        },
+        {
+            id: "cement",
+            name: "Cement factory",
+            position: {
+                lat: 17.961552, 
+                lng: -76.730102,
             },
-			{
-                movieName: "Waterfall on Crab Key",
-				name: "Dunn's River Falls & Park",
-                position: new google.maps.LatLng(18.415916, -77.137944),
-                description: "",
+            imageView: {
+                title: "Photo by Johan Åhlgren, 26 December 2015",
+                href: "#",
+                alt: "Dr. No - cement factory",
+                src: "img/dn_cement.png",
             },
-        ],*/
+        },
+        {
+            id: "sans_souci",
+            name: "",
+            position: {
+                lat: 18.417491, 
+                lng: -77.067259,
+            }
+        },
+        {
+            id: "laughing",
+            name: "Laughing Waters Beach",
+            position: {
+                lat: 18.422675, 
+                lng: -77.148348,
+            }
+        },
+        {
+            id: "white_river",
+            name: "White River",
+            position: {
+                lat: 18.413986, 
+                lng: -77.071649,
+            }
+        },
+        {
+            id: "dunn",
+            movieName: "Waterfall on Crab Key",
+            name: "Dunn's River Falls & Park",
+            position: {
+                lat: 18.415916,
+                lng: -77.137944,
+            },
+            imageView: {
+                title: "Photo by Johan Åhlgren, 22 December 2015",
+                href: "#",
+                alt: "Dr. No - Dunn's River Falls",
+                src: "img/dn_fall.jpg",
+            },
+        },
+        {
+            id: "tourist",
+            movieName: "Waterfall on Crab Key",
+            name: "Dunn's River Falls & Park",
+            position: {
+                lat: 18.415916,
+                lng: -77.137944,
+            },
+            imageView: {
+                title: "Photo by Johan Åhlgren, 22 December 2015",
+                href: "#",
+                alt: "Dr. No - Dunn's River Falls",
+                src: "img/dn_tourist.jpg",
+            },
+        },
+        {
+            id: "swamp",
+            name: "Vanzie Swamp",
+            position: {
+                lat: 18.492751,
+                lng: -77.673410,
+            },
+        },
+        {
+            id: "pinewood",
+            name: "Pinewood Studios",
+            position: {
+                lat: 51.548884,
+                lng: -0.535017,
+            },
+        },
     ]
 }
