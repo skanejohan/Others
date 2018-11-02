@@ -43,6 +43,11 @@ class Engine {
         ElementBase.context = this.context;
     }
 
+    clear() {
+        this._layers = [];
+        this._modalLayer = [];
+    }
+
     add(element, layerIndex) {
         layerIndex = layerIndex || 0;
         if (this._layers[layerIndex] == null) {
