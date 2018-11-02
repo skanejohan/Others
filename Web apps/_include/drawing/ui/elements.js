@@ -505,7 +505,7 @@ class FillTextRect extends CompositeElementBase {
 class Menu extends CompositeElementBase {
 
     constructor(x, y, w, font, fontStyle, bgStyle, itemHeight, margin) {
-        super(x, y, w, 0, () => this.elements.forEach(e => { if (e.hovering) { e.onclick(); }}));
+        super(x, y, w, 0, () => this.elements.forEach(e => { if (e.hovering()) { e.onclick(); }}));
         this.font = font;
         this.fontStyle = fontStyle;
         this.bgStyle = bgStyle;
