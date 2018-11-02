@@ -146,65 +146,65 @@ class ElementBase {
 
         this._previouslyHovering = this.hovering();
 
-        if (this._finished || this.isPaused() || this._popup == undefined) {
+        if (this._finished || this.isPaused() || this.popup == undefined) {
             return;
         }
 
         // If we hover over this element and it has a hidden popup, activate the "show popup" timer.  
-        if (this.hovering() && ElementBase.currentPopup === undefined && this._popup.state == PopupState.HIDDEN) {
-            ElementBase.currentPopup = this._popup;
-            this._popup.state = PopupState.SHOWPENDING;
+        if (this.hovering() && ElementBase.currentPopup === undefined && this.popup.state == PopupState.HIDDEN) {
+            ElementBase.currentPopup = this.popup;
+            this.popup.state = PopupState.SHOWPENDING;
             ElementBase.showPopupTimer.activate(200, () => {
                 this.setPopupCoordinates();
-                this._popup.state = PopupState.SHOWING;
-                this._popup.fadeIn(300, () => {
-                    this._popup.state = PopupState.VISIBLE;
+            this.popup.state = PopupState.SHOWING;
+                this.popup.fadeIn(300, () => {
+                    this.popup.state = PopupState.VISIBLE;
                 });
             });
         }
 
         // If we hover over this element, or its visible popup, deactivate the "hide 
         // popup" timer if it is active.
-        if ((this.hovering() || this.popupHovering()) && this._popup.state == PopupState.HIDEPENDING) {
-            this._popup.state = PopupState.VISIBLE;
+        if ((this.hovering() || this.popupHovering()) && this.popup.state == PopupState.HIDEPENDING) {
+            this.popup.state = PopupState.VISIBLE;
             ElementBase.hidePopupTimer.deactivate();
         }
 
         // If we don't hover over this element or its popup, but the popup is visible, 
         // and the "hide popup" timer is not active, activate it.
-        if (!this.hovering() && !this.popupHovering() && this._popup.state == PopupState.VISIBLE) {
-            this._popup.state = PopupState.HIDEPENDING;
+        if (!this.hovering() && !this.popupHovering() && this.popup.state == PopupState.VISIBLE) {
+            this.popup.state = PopupState.HIDEPENDING;
             ElementBase.hidePopupTimer.activate(300, () => {
-                this._popup.state = PopupState.HIDING;
+                this.popup.state = PopupState.HIDING;
                 this.popup.fadeOut(100, () => {
-                    this._popup.state = PopupState.HIDDEN;
+                    this.popup.state = PopupState.HIDDEN;
                     ElementBase.currentPopup = undefined;
                 });
             });
         }
 
         // If we don't hover over this element, but its "show popup" timer is active, deactivate it.
-        if (!this.hovering() && this._popup.state == PopupState.SHOWPENDING) {
-            this._popup.state = PopupState.HIDDEN;
+        if (!this.hovering() && this.popup.state == PopupState.SHOWPENDING) {
+            this.popup.state = PopupState.HIDDEN;
             ElementBase.showPopupTimer.deactivate();
             ElementBase.currentPopup = undefined;
         }
     }
 
     setPopupCoordinates() {
-        this._popup.x = Math.max(ElementBase.canvasRect.left + 5, Math.min(ElementBase.mousePos.x, ElementBase.canvasRect.right - this._popup.w - 5));
-        this._popup.y = Math.max(ElementBase.canvasRect.top + 5, Math.min(ElementBase.mousePos.y, ElementBase.canvasRect.bottom - this._popup.h - 5));
+        this.popup.x = Math.max(ElementBase.canvasRect.left + 5, Math.min(ElementBase.mousePos.x, ElementBase.canvasRect.right - this.popup.w - 5));
+        this.popup.y = Math.max(ElementBase.canvasRect.top + 5, Math.min(ElementBase.mousePos.y, ElementBase.canvasRect.bottom - this.popup.h - 5));
     }
 
     hovering() {
-        return this._x < ElementBase.mousePos.x && 
-               this._x + this._w > ElementBase.mousePos.x && 
-               this._y < ElementBase.mousePos.y && 
-               this._y + this._h > ElementBase.mousePos.y;
+        return this.x < ElementBase.mousePos.x && 
+               this.x + this.w > ElementBase.mousePos.x && 
+               this.y < ElementBase.mousePos.y && 
+               this.y + this.h > ElementBase.mousePos.y;
     }
 
     popupHovering() {
-        return this._popup !== undefined && this._popup == PopupState.VISIBLE && this._popup.hovering();
+        return this.popup !== undefined && this.popup.state == PopupState.VISIBLE && this.popup.hovering();
     }
 };
 
@@ -238,6 +238,18 @@ class CompositeElementBase extends ElementBase {
         var delta = value - this._y;
         this._y = value; 
         this.elements.forEach(e => e.y = e.y + delta);
+    }
+
+    get state() { return this._state }
+    set state(value) { 
+        this._state = value; 
+        this.elements.forEach(e => e.state = value);
+    }
+
+    get alpha() { return this._alpha; };
+    set alpha(value) { 
+        this._alpha = value; 
+        this.elements.forEach(e => e.alpha = value);
     }
 
     get style() { return this._style; }
@@ -326,6 +338,28 @@ class RoundRectBase extends ElementBase {
     }
 }
 
+// ---------- Lines -----------------------------------------------------------------------
+
+class Line extends ElementBase {
+    constructor(x1, y1, x2, y2, style) {
+        super(x1, y1, x2-x1, y2-y1);
+        this.x1 = x1;
+        this.y1 = y1;
+        this.x2 = x2;
+        this.y2 = y2;
+        this._style = style;
+    }
+
+    _doDraw() {
+        ElementBase.context.strokeStyle = this._style;
+        ElementBase.context.beginPath();
+        ElementBase.context.moveTo(this.x1, this.y1);
+        ElementBase.context.lineTo(this.x2, this.y2);
+        ElementBase.context.closePath();
+        ElementBase.context.stroke();
+    }
+}
+
 // ---------- Rectangles -----------------------------------------------------------------------
 
 class Rect extends RectBase {
@@ -385,12 +419,14 @@ class Text extends CompositeElementBase {
 
     _setupTexts(text, font, style, h_align, v_align, onclick) {
         var positionedTexts = [];
+        var hAlign = h_align || HorizontalAlignment.LEFT;
+        var vAlign = v_align || VerticalAlignment.TOP;
         ElementBase.context.font = font;
         var th = ElementBase.context.getScaledFontSize();
         var tw = ElementBase.context.measureText(text).width;
 
         var yh = getYandH(this);
-        if (h_align == HorizontalAlignment.JUSTIFY) {
+        if (hAlign == HorizontalAlignment.JUSTIFY) {
             positionedTexts = TextUtils.justifyText(text, this.w, t => ElementBase.context.measureText(t).width);
         }
         else {
@@ -401,7 +437,7 @@ class Text extends CompositeElementBase {
         positionedTexts.forEach(t => this.addElement(new TextSegment(this.x + t.x, yh.y + yh.h, t.w, yh.h, t.text, font, style, onclick)));
 
         function getXandW(obj) {
-            switch (h_align) {
+            switch (hAlign) {
                 case HorizontalAlignment.LEFT: return { x : 0, w : tw };
                 case HorizontalAlignment.CENTER: return { x : (obj.w - tw) / 2, w : tw };
                 case HorizontalAlignment.RIGHT: return { x : 0 + obj.w - tw, w : tw };
@@ -409,7 +445,7 @@ class Text extends CompositeElementBase {
         }
 
         function getYandH(obj) {
-            switch (v_align) {
+            switch (vAlign) {
                 case VerticalAlignment.TOP: return { y : obj.y, h : th };
                 case VerticalAlignment.MIDDLE: return { y : obj.y + (obj.h - th) / 2, h : th };
                 case VerticalAlignment.BOTTOM: return { y : obj.y + obj.h - th, h : th };
@@ -420,28 +456,42 @@ class Text extends CompositeElementBase {
 
 class TextBox extends CompositeElementBase {
 
-    constructor(x, y, w, h, text, font, style, onclick) {
+    constructor(x, y, w, h, text, font, style, bgStyle, onclick) {
         super(x, y, w, h, onclick);
         this.font = font;
         this.style = style;
+        this.bgStyle = bgStyle;
         this._setupTexts(text);
     }
 
     _setupTexts(text) {
-        var yOffset = 0;
+        var yOffset = 0, texts = [];
         ElementBase.context.font = this.font;
         var textHeight = ElementBase.context.getScaledFontSize();
         var lines = TextUtils.splitUpInLines(text, this.w, t => ElementBase.context.measureText(t).width);
         lines.forEach((line, index) => {
             var ha = index == lines.length-1 ? HorizontalAlignment.LEFT : HorizontalAlignment.JUSTIFY;
-            this.addElement(new Text(this.x, this.y + yOffset, this.w, textHeight, line, 
-                this.font, this.style, ha, VerticalAlignment.MIDDLE, this.onclick));
+            texts.push(new Text(this.x, this.y + yOffset, this.w, textHeight, line, 
+                this.font, this.style, ha, VerticalAlignment.MIDDLE));
             yOffset += textHeight;
         });
+        yOffset += 0.3 * textHeight;
+        this.addElement(new FillRect(this.x-10, this.y, this.w+20, yOffset, this.bgStyle, this.onclick))
+        texts.forEach(t => this.addElement(t));
+        this.h = yOffset;
     }
 }
 
 class TextRect extends CompositeElementBase {
+
+    constructor(x, y, w, h, text, margin, font, fontStyle, rectStyle, h_align, v_align, onclick) {
+        super(x, y, w, h, onclick);
+        this.addElement(new Rect(x, y, w, h, rectStyle, onclick));
+        this.addElement(new Text(x + margin, y + margin, w - 2 * margin, h - 2 * margin, text, font, fontStyle, h_align, v_align, onclick));
+    }
+}
+
+class FillTextRect extends CompositeElementBase {
 
     constructor(x, y, w, h, text, margin, font, fontStyle, bgStyle, h_align, v_align, onclick) {
         super(x, y, w, h, onclick);
@@ -464,7 +514,7 @@ class Menu extends CompositeElementBase {
     }
 
     addItem(text, onclick) {
-        this.addElement(new TextRect(this.x, this.y + this.itemHeight * this.elements.length, this.w, this.itemHeight, text, 
+        this.addElement(new FillTextRect(this.x, this.y + this.itemHeight * this.elements.length, this.w, this.itemHeight, text, 
             this.margin, this.font, this.fontStyle, this.bgStyle, HorizontalAlignment.LEFT, VerticalAlignment.TOP, onclick));
         this.h += this.itemHeight;
     }
