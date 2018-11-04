@@ -72,6 +72,9 @@ class Engine {
                 this._forEachNonModalElement(e => e.unpause());
             }
         }
+        if (element.popup === ElementBase.currentPopup) {
+            ElementBase.currentPopup = undefined;
+        }
     }
 
     draw() {

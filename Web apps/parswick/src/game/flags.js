@@ -1,0 +1,11 @@
+export { Flag };
+
+const Flag = {
+    WALL_BROKEN: 1,
+    ENTRANCE_KNOWN: 2,
+    UNCLE_AILBERT_INTRODUCED: 3,
+    UNCLE_AILBERT_GONE: 4,
+    MAKE_TEA_POSSIBLE: 5,
+    BOOKSHELF_PULLED: 6,
+    BOOKSHELF_EMPTY: 7,
+};

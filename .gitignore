@@ -309,3 +309,7 @@ Theseus/Parswick/game/parswick.js
 Theseus/Parswick/game/parswick.test.js
 Web apps/parswick/parswick.game.js
 Web apps/parswick/theseus.framework.js
+
+**/.out
+**/mongoose-5.0.exe
+**/mongoose.conf

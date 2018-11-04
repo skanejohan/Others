@@ -518,6 +518,11 @@ class Menu extends CompositeElementBase {
             this.margin, this.font, this.fontStyle, this.bgStyle, HorizontalAlignment.LEFT, VerticalAlignment.TOP, onclick));
         this.h += this.itemHeight;
     }
+
+    clear() {
+        this.elements = [];
+        this.h = 0;
+    }
 }
 
 // ---------- Buttons -----------------------------------------------------------------------

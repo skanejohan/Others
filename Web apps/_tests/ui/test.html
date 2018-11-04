@@ -53,6 +53,14 @@
             element.popup = menu;
         }
 
+        function addTextBoxTo(element, text) {
+            element.popup = new TextBox(0, 0, 300, 0, text, "16px arial", "black", "black", () => {
+                element.finishAfterAnimations = true; 
+                element.popup.fadeOut(200);
+                element.fadeOut(200, () => modal = false);
+            }); 
+        }
+
 
         function flash(element) {
             element.fadeIn(200, () => element.fadeOut(200, () => flash(element)));
@@ -72,7 +80,7 @@
         }
 
         function addModalElement(element) {
-            addMenuTo(element);
+            addTextBoxTo(element, "This is a very long text and when you click it, I will disappear");
             engine.addModal(element);
         }
 
