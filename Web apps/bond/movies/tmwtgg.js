@@ -35,54 +35,126 @@ const tmwtgg = {
             // 1:28 South China Sea - JB island
             // 1:53 Junk
             // 1:58 Emd credits
-            scenes : [
-        /*{ 
-            // 0:01:20
-            title: "Bond rescues Tracy", 
-            description: "The scene starts with [Bond driving in a small town|road_from_hotel] in his Aston Martin DBS. We then see him driving along the coast. [Here|N247], he is overtaken by Tracy in her red Mercury Cougar XR7. Bond arrives at [Guincho Beach|guincho] where Tracy tries to kill herself. Bond rescues her and then has to fight Draco's goons.",
-        },*/
-        {
-            title: "",
-            description: "",
+    scenes : [
+    {
+        // 00:00:00
+        title: "Gun-barrel sequence",
+        description: "Roger Moore's second.",
+    },
+    {
+        // 00:00:30
+        title: "Scaramanga's fun house",
+        description: "The movie opens up at Scaramanga's island, where we are introduced to Scaramanga, ms. Anders and Nick Nack. The scenes where we see them sunbathing, and are exposed to Scaramanga's third nipple, are shot on the [western-most beach|west_beach] of Khao Phing Kan, or as it is now better known, James Bond Island. We get a glimpse of their unhealthy relationship as Nick Nack tries to have Scaramanga killed with the help of a hired assassin, played by Marc Lawrence who also played one the Slumber Inc. goons in Diamonds are Forever. ",
+    },
+    {
+        // 00:07:50
+        title: "Main Theme",
+        description: "Naked ladies, a golden gun and fireworks, all deviced by Maurice Binder as usual.",
+    },
+    {
+        // 00:10:15
+        title: "\"A superfluous papilla\"",
+        description: "In M's office, Bond shows off as usual. In his discussion with Moneypenny, it turns out that a former double-oh, 002, was killed by Scaramanga in Beirut in 1969.",
+    },
+    {
+        // 00:14:15
+        title: "The golden bullet",
+        description: "Bond heads to Beirut to find a belly-dancer, Saida, with whom 002 spent his last time. After some mandatory cuddling and fighting, he leaves with the bullet. Q's laboratory is able to inform him that the bullet was made by mr. Lazar, living in Macau.",
+    },
+    {
+        // 00:20:30
+        title: "Macau",
+        description: "Most of the scenes with Lazar are likely shot at Pinewood. Bond finds out about ms. Anders at a casino in Macao. In his autobiography \"My Word is My Bond: A Memoir\", Roger Moore says that they filmed \"...on the gambling boats in Macau...\"",
+    },
+    {
+        // 00:24:30
+        title: "Ferry to Hong Kong",
+        description: "Bond follows ms. Anders to Hong Kong, taking the \"Flying Sandpiper\" hydrofoil boat, built in 1972. On their way, they pass former Britsh flagship Queen Elizabeth II, which sunk in Hong Kong harbour under mysterious circumstances in 1971. The ship is no longer there - the site has long been converted into land, and a few remains of the ship are now buried under Hong Kong harbour's [container terminal 9|terminal9].",
+    },
+    {
+        // 00:25:14
+        title: "Hong Kong",
+        description: "Bond arrives in Hong Kong at the [Hong Kong Macau ferry terminal|ferry_terminal]. Since Hong Kong has changes tremendously in the years since the movie, it is hard to recognize scenes from the movie. In the scene where Bond gets picked up by Mary Goodnight, we see the Western Market building in the background. It can still be spotted from the [same point|western], although the rest of the place is unrecognizable. Recognizing the green Rolls Royce in which ms. Anders disappeared, Goodnight leads Bond to the [Peninsula Hotel|peninsula]. ",
+    },
+    {
+        // 00:26:45
+        title: "Room 602",
+        description: "Not Bond's finest moment, when he persuades ms. Anders to tell him where he can find Scaramanga. She tells him that Scaramanga will be at the \"Bottoms Up\" club the same night.",
+    },
+    {
+        // 00:31:50
+        title: "Bottoms Up",
+        description: "The \"Bottoms Up\" club, where Gibson is killed, resided at nr [14 Hankow Road|hankow] between 1971 and 2004.",
+    },
+
+    // Tom of [James Bond Radio|] has made an excellent [video|http://jamesbondradio.com/trip-james-bond-island-khao-phing-kan-thailand-video/] of his visit to James Bond Island.
+],
+locations: [
+    {
+        id: "west_beach",
+        name: "Khao Phing Kan (James Bond Island), western beach",
+        position: {
+            lat: 8.274055, 
+            lng: 98.499729,
+            zoom: 18,
         },
-        {
-            title: "",
-            description: "",
+    },
+    {
+        id: "terminal9",
+        name: "Hong Kong harbour, container terminal 9",
+        position: {
+            lat: 22.332125, 
+            lng: 114.115088,
+            zoom: 12,
         },
-        {
-            title: "",
-            description: "",
+    },
+    {
+        id: "ferry_terminal",
+        name: "Hong Kong Macau ferry terminal",
+        position: {
+            lat: 22.289685, 
+            lng: 114.152142,
         },
-    ],
-    locations: [
-        /*
-        {
-            id: "N247",
-            name: "N247 road",
-            position: new google.maps.LatLng(38.764472, -9.470995),
-            description: "This is where Tracy overtakes Bond on her way to the beach.",
-            sources: ["https://www.onthetracksof007.com/maps"],
-        },*/
-        {
-            id: "",
-			name: "",
-            position: new google.maps.LatLng(38.732384, -9.473209),
-            description: "",
-            sources: [], 
+    },
+    {
+        id: "western",
+        name: "Western Market",
+        position: {
+            lat: 22.2877956, 
+            lng: 114.1509273,
         },
-        {
-            id: "",
-			name: "",
-            position: new google.maps.LatLng(38.732384, -9.473209),
-            description: "",
-            sources: [], 
+        streetView: {
+            lat: 22.2877956, 
+            lng: 114.1509273,
+            heading: 200,
         },
-        {
-            id: "",
-			name: "",
-            position: new google.maps.LatLng(38.732384, -9.473209),
-            description: "",
-            sources: [], 
+    },
+    {
+        id: "peninsula",
+        name: "Peninsula Hotel",
+        position: {
+            lat: 22.295249, 
+            lng: 114.171818,
         },
-    ]
-}
+        mapView: {
+            lat: 22.295418, 
+            lng: 114.171886,
+        },
+        streetView: {
+            lat: 22.294592, 
+            lng: 114.171913,
+            heading: 0,
+        },
+    },
+    {
+        id: "hankow",
+        name: "The \"Bottoms Up\" club",
+        position: {
+            lat: 22.296767, 
+            lng: 114.171148,
+        },
+        streetView: {
+        },
+    },
+
+]}
