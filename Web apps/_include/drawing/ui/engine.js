@@ -59,6 +59,14 @@ class Engine {
         return element;
     }
 
+    pause() {
+        this._forEachElement(e => e.pause());
+    }
+    
+    unPause() {
+        this._forEachElement(e => e.unPause());
+    }
+    
     addModal(element) {
         if (this._modalLayer.length === 0) {
             this._forEachNonModalElement(e => e.pause());

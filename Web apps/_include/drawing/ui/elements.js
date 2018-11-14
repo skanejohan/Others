@@ -623,10 +623,8 @@ class Button extends ButtonBase {
             if (!this._pressed) {
                 fn();
                 this._pressed = true;
-                console.log("pressed");
                 this.wait(50, () => {
                     this._pressed = false;
-                    console.log("unpressed");
                 });
             }
         }
