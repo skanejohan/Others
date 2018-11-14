@@ -1,3 +1,18 @@
+// TODO remove animations when they are done.
+
+/*
+    Drawing simple and composite objects:
+        draw() gets called by the engine
+            draw() for ElementBase 
+                - calls this.doDraw(context)
+            draw() for CompositeElement 
+                - clears the buffer
+                - calls this.doDraw() which calls doDraw(bufferContext) for all contained stuff
+                - draws the buffer onto the main context
+        doDraw() draws itself on the supplied canvas
+*/
+
+
 // ---------- Enums used by the element classes -----------------------------------------------------------------------------------
 
 var HorizontalAlignment = {
@@ -121,17 +136,21 @@ class ElementBase {
     }
 
     draw() {
+        this._beforeDraw();
+        if (!this.finished) { this._doDraw(ElementBase.context); }
+        this._afterDraw();
+    }
+
+    _beforeDraw() {
         this._animations.forEach(a => a.update());
         this._animations = this._animations.filter(a => !a.finished);
         if (this._animations.length === 0 && this._finishAfterAnimations) {
             this._finished = true;
         }
         ElementBase.context.globalAlpha = this._alpha;
+    }
 
-        if (!this.finished) {
-            this._doDraw();
-        }
-
+    _afterDraw() {
         if (!this._previouslyHovering && this.hovering() && this._onenter != undefined) {
             this.onenter();
         }
@@ -246,12 +265,6 @@ class CompositeElementBase extends ElementBase {
         this.elements.forEach(e => e.state = value);
     }
 
-    get alpha() { return this._alpha; };
-    set alpha(value) { 
-        this._alpha = value; 
-        this.elements.forEach(e => e.alpha = value);
-    }
-
     get style() { return this._style; }
     set style(value) { 
         this._style = value; 
@@ -269,12 +282,12 @@ class CompositeElementBase extends ElementBase {
 
     fadeIn(ms, doneFn) {
         super.fadeIn(ms, doneFn);
-        this.elements.forEach(t => t.fadeIn(ms));
+        // Do not transfer fading animations to owned objects. These are handled on the top level.
     }
 
     fadeOut(ms, doneFn) {
         super.fadeOut(ms, doneFn);
-        this.elements.forEach(t => t.fadeOut(ms));
+        // Do not transfer fading animations to owned objects. These are handled on the top level.
     }
 
     translateX(dist, ms, doneFn) {
@@ -292,8 +305,22 @@ class CompositeElementBase extends ElementBase {
         return e;
     }
 
+    draw() {
+        this._beforeDraw();
+        if (!this.finished) { 
+            ElementBase.bufferContext.clearRect(this._x-5, this._y-5, this._w+10, this._h+10);
+            this._doDraw();
+            ElementBase.context.copyImageFromAnotherScalingCanvasWithSameDimensions(
+                ElementBase.bufferCanvas._underlyingCanvas, 
+                this._x-5, this._y-5, this._w+10, this._h+10, 
+                this._x-5, this._y-5, this._w+10, this._h+10);
+            // TODO underlyingCanvas only if it has it, otherwise ElementBase.bufferCanvas itself
+        }
+        this._afterDraw();
+    }
+
     _doDraw() {
-        this.elements.forEach(e => e.draw());
+        this.elements.forEach(e => { e._doDraw(ElementBase.bufferContext); });
     }
 }
 
@@ -322,19 +349,19 @@ class RoundRectBase extends ElementBase {
     get r() { return this._r; }
     set r(value) { this._r = value; }
 
-    _doDraw() {
-        ElementBase.context.strokeStyle = this.style;
-        ElementBase.context.beginPath();
-        ElementBase.context.moveTo(this.x + this.r, this.y);
-        ElementBase.context.lineTo(this.x + this.w - this.r, this.y);
-        ElementBase.context.quadraticCurveTo(this.x + this.w, this.y, this.x + this.w, this.y + this.r);
-        ElementBase.context.lineTo(this.x + this.w, this.y + this.h - this.r);
-        ElementBase.context.quadraticCurveTo(this.x + this.w, this.y + this.h, this.x + this.w - this.r, this.y + this.h);
-        ElementBase.context.lineTo(this.x + this.r, this.y + this.h);
-        ElementBase.context.quadraticCurveTo(this.x, this.y + this.h, this.x, this.y + this.h - this.r);
-        ElementBase.context.lineTo(this.x, this.y + this.r);
-        ElementBase.context.quadraticCurveTo(this.x, this.y, this.x + this.r, this.y);
-        ElementBase.context.closePath();
+    _doDraw(ctx) {
+        ctx.strokeStyle = this.style;
+        ctx.beginPath();
+        ctx.moveTo(this.x + this.r, this.y);
+        ctx.lineTo(this.x + this.w - this.r, this.y);
+        ctx.quadraticCurveTo(this.x + this.w, this.y, this.x + this.w, this.y + this.r);
+        ctx.lineTo(this.x + this.w, this.y + this.h - this.r);
+        ctx.quadraticCurveTo(this.x + this.w, this.y + this.h, this.x + this.w - this.r, this.y + this.h);
+        ctx.lineTo(this.x + this.r, this.y + this.h);
+        ctx.quadraticCurveTo(this.x, this.y + this.h, this.x, this.y + this.h - this.r);
+        ctx.lineTo(this.x, this.y + this.r);
+        ctx.quadraticCurveTo(this.x, this.y, this.x + this.r, this.y);
+        ctx.closePath();
     }
 }
 
@@ -350,45 +377,45 @@ class Line extends ElementBase {
         this._style = style;
     }
 
-    _doDraw() {
-        ElementBase.context.strokeStyle = this._style;
-        ElementBase.context.beginPath();
-        ElementBase.context.moveTo(this.x1, this.y1);
-        ElementBase.context.lineTo(this.x2, this.y2);
-        ElementBase.context.closePath();
-        ElementBase.context.stroke();
+    _doDraw(ctx) {
+        ctx.strokeStyle = this._style;
+        ctx.beginPath();
+        ctx.moveTo(this.x1, this.y1);
+        ctx.lineTo(this.x2, this.y2);
+        ctx.closePath();
+        ctx.stroke();
     }
 }
 
 // ---------- Rectangles -----------------------------------------------------------------------
 
 class Rect extends RectBase {
-    _doDraw() {
-        ElementBase.context.strokeStyle = this.style;
-        ElementBase.context.strokeRect(this.x, this.y, this.w, this.h);
+    _doDraw(ctx) {
+        ctx.strokeStyle = this.style;
+        ctx.strokeRect(this.x, this.y, this.w, this.h);
     }
 }
 
 class FillRect extends RectBase {
-    _doDraw() {
-        ElementBase.context.fillStyle = this.style;
-        ElementBase.context.fillRect(this.x, this.y, this.w, this.h);
+    _doDraw(ctx) {
+        ctx.fillStyle = this.style;
+        ctx.fillRect(this.x, this.y, this.w, this.h);
     }
 }
 
 class RoundRect extends RoundRectBase {
-    _doDraw() {
-        super._doDraw();
-        ElementBase.context.strokeStyle = this.style;
-        ElementBase.context.stroke();
+    _doDraw(ctx) {
+        super._doDraw(ctx);
+        ctx.strokeStyle = this.style;
+        ctx.stroke();
     }
 }
 
 class FillRoundRect extends RoundRectBase {
-    _doDraw() {
-        super._doDraw();
-        ElementBase.context.fillStyle = this.style;
-        ElementBase.context.fill();
+    _doDraw(ctx) {
+        super._doDraw(ctx);
+        ctx.fillStyle = this.style;
+        ctx.fill();
     }
 }
 
@@ -403,10 +430,10 @@ class TextSegment extends ElementBase {
         this.style = style;
     }
 
-    _doDraw() {
-        ElementBase.context.font = this.font;
-        ElementBase.context.fillStyle = this.style;
-        ElementBase.context.fillText(this.text, this.x, this.y);
+    _doDraw(ctx) {
+        ctx.font = this.font;
+        ctx.fillStyle = this.style;
+        ctx.fillText(this.text, this.x, this.y);
     }
 }
 
@@ -471,12 +498,12 @@ class TextBox extends CompositeElementBase {
         var lines = TextUtils.splitUpInLines(text, this.w, t => ElementBase.context.measureText(t).width);
         lines.forEach((line, index) => {
             var ha = index == lines.length-1 ? HorizontalAlignment.LEFT : HorizontalAlignment.JUSTIFY;
-            texts.push(new Text(this.x, this.y + yOffset, this.w, textHeight, line, 
+            texts.push(new Text(this.x+10, this.y + yOffset, this.w-20, textHeight, line, 
                 this.font, this.style, ha, VerticalAlignment.MIDDLE));
             yOffset += textHeight;
         });
         yOffset += 0.3 * textHeight;
-        this.addElement(new FillRect(this.x-10, this.y, this.w+20, yOffset, this.bgStyle, this.onclick))
+        this.addElement(new FillRect(this.x, this.y, this.w, yOffset, this.bgStyle, this.onclick))
         texts.forEach(t => this.addElement(t));
         this.h = yOffset;
     }
@@ -548,7 +575,7 @@ class ButtonBase extends CompositeElementBase {
         this._textElement = this.addElement(new Text(x + this._margin, y, w - 2 * this._margin, h - 2 * this._margin, text, this._font, this._fontColor, HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE));
     }
 
-    _doDraw() {
+    _doDraw(ctx) {
         if (this._pressed) {
             this._frameElement.style = this._frameColorClicked;
             this._bgElement.style = this._bgColorClicked;
@@ -564,7 +591,7 @@ class ButtonBase extends CompositeElementBase {
             this._bgElement.style = this._bgColor;
             this._textElement.style = this._fontColor;
         }
-        super._doDraw();
+        super._doDraw(ctx);
     }
 }
 

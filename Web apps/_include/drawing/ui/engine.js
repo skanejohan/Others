@@ -1,9 +1,11 @@
 // TODO : more "high-level" drawing objects, but not game-specific
 
 class Engine {
-    constructor(canvas) {
+    constructor(canvas, bufferCanvas) {
         this.canvas = canvas;
         this.context = canvas.getContext("2d");
+        this.bufferCanvas = bufferCanvas;
+        this.bufferContext = this.bufferCanvas.getContext("2d");
         this._onclick = undefined;
         this._layers = [];
         this._modalLayer = [];
@@ -40,6 +42,8 @@ class Engine {
                 that._onclick(ElementBase.mousePos.x, ElementBase.mousePos.y);
             }
         }
+        ElementBase.bufferCanvas = this.bufferCanvas;
+        ElementBase.bufferContext = this.bufferContext;
         ElementBase.context = this.context;
     }
 
@@ -77,7 +81,12 @@ class Engine {
         }
     }
 
-    draw() {
+    draw(w, h) {
+        // TODO if they have the setDimensions function
+        this.canvas.setDimensions(w, h);
+        this.bufferCanvas.setDimensions(w, h);
+
+        
         // Draw all elements, in layer order.
         this._forEachElement(e => {
             e.draw();
@@ -107,7 +116,6 @@ class Engine {
     }
 
     _addElement(element, layer) {
-        element.context = this.canvas.getContext("2d");
         if (element.popup !== undefined) {
             element.popup.context = element.context;
         }

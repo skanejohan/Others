@@ -105,6 +105,34 @@ class ScalingCanvasContext {
         }
     }
 
+    clearRect(x, y, w, h) {
+        this._underlyingContext.clearRect(
+            this._virtualToActualX(x),
+            this._virtualToActualY(y),
+            this._virtualToActual(w),
+            this._virtualToActual(h));
+    }
+
+    drawImage(img, xSrc, ySrc, wSrc, hSrc, x, y, w, h) {
+        this._underlyingContext.drawImage(img, xSrc, ySrc, wSrc, hSrc,
+            this._virtualToActualX(x),
+            this._virtualToActualY(y),
+            this._virtualToActual(w),
+            this._virtualToActual(h));
+    }
+
+    copyImageFromAnotherScalingCanvasWithSameDimensions(img, xSrc, ySrc, wSrc, hSrc, x, y, w, h) {
+        this._underlyingContext.drawImage(img,  
+            this._virtualToActualX(xSrc),
+            this._virtualToActualY(ySrc),
+            this._virtualToActual(wSrc),
+            this._virtualToActual(hSrc),
+            this._virtualToActualX(x),
+            this._virtualToActualY(y),
+            this._virtualToActual(w),
+            this._virtualToActual(h));
+    }
+
     save() {
         this._underlyingContext.save();
     }

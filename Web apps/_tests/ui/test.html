@@ -21,7 +21,8 @@
 
     <script>
         var engine;
-        var sizedCanvas;
+        var canvas;
+        var bufferCanvas;
         var flashing;
 
         let w = 920;
@@ -39,8 +40,7 @@
 
         function draw(timestamp) {
             window.requestAnimationFrame(draw);
-            sizedCanvas.setDimensions(window.innerWidth, window.innerHeight);
-            engine.draw();
+            engine.draw(window.innerWidth, window.innerHeight);
         }
 
         function addMenuTo(element) {
@@ -54,7 +54,7 @@
         }
 
         function addTextBoxTo(element, text) {
-            element.popup = new TextBox(0, 0, 300, 0, text, "16px arial", "black", "black", () => {
+            element.popup = new TextBox(0, 0, 300, 0, text, "16px arial", "gray", "black", () => {
                 element.finishAfterAnimations = true; 
                 element.popup.fadeOut(200);
                 element.fadeOut(200, () => modal = false);
@@ -85,8 +85,9 @@
         }
 
         function init() {
-            sizedCanvas = new ScalingCanvas(document.getElementById("canvas"), w, h);
-            engine = new Engine(sizedCanvas);
+            canvas = new ScalingCanvas(document.getElementById("canvas"), w, h);
+            bufferCanvas = new ScalingCanvas(new OffscreenCanvas(w, h), w, h);
+            engine = new Engine(canvas, bufferCanvas);
 
             engine.add(new Button(10, 10, 300, 30, "Rect", () => addElement(new Rect(0, 0, 100, 100, "black"))));
             engine.add(new Button(310, 10, 300, 30, "FillRect", () => addElement(new FillRect(0, 0, 100, 100, "red"))));
