@@ -1,5 +1,3 @@
-// TODO : more "high-level" drawing objects, but not game-specific
-
 class Engine {
     constructor(canvas, bufferCanvas) {
         this.canvas = canvas;
@@ -82,10 +80,16 @@ class Engine {
     }
 
     draw(w, h) {
-        // TODO if they have the setDimensions function
-        this.canvas.setDimensions(w, h);
-        this.bufferCanvas.setDimensions(w, h);
-
+        if (this.canvas.__proto__.hasOwnProperty("setDimensions")) {
+            this.canvas.setDimensions(w, h);
+            this.bufferCanvas.setDimensions(w, h);
+        } 
+        else {
+            this.canvas.width = w;
+            this.canvas.height = h;
+            this.bufferCanvas.width = w;
+            this.bufferCanvas.height = h;
+        }
         
         // Draw all elements, in layer order.
         this._forEachElement(e => {

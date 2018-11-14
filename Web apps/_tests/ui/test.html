@@ -85,8 +85,15 @@
         }
 
         function init() {
-            canvas = new ScalingCanvas(document.getElementById("canvas"), w, h);
-            bufferCanvas = new ScalingCanvas(new OffscreenCanvas(w, h), w, h);
+            var useScaledCanvas = true;
+            if (useScaledCanvas) {
+                canvas = new ScalingCanvas(document.getElementById("canvas"), w, h);
+                bufferCanvas = new ScalingCanvas(new OffscreenCanvas(w, h), w, h);
+            }
+            else {
+                canvas = document.getElementById("canvas");
+                bufferCanvas = new OffscreenCanvas(w, h);
+            }
             engine = new Engine(canvas, bufferCanvas);
 
             engine.add(new Button(10, 10, 300, 30, "Rect", () => addElement(new Rect(0, 0, 100, 100, "black"))));

@@ -310,11 +310,17 @@ class CompositeElementBase extends ElementBase {
         if (!this.finished) { 
             ElementBase.bufferContext.clearRect(this._x-5, this._y-5, this._w+10, this._h+10);
             this._doDraw();
-            ElementBase.context.copyImageFromAnotherScalingCanvasWithSameDimensions(
-                ElementBase.bufferCanvas._underlyingCanvas, 
-                this._x-5, this._y-5, this._w+10, this._h+10, 
-                this._x-5, this._y-5, this._w+10, this._h+10);
-            // TODO underlyingCanvas only if it has it, otherwise ElementBase.bufferCanvas itself
+            if (ElementBase.context.__proto__.hasOwnProperty("copyImageFromAnotherScalingCanvasWithSameDimensions")) {
+                ElementBase.context.copyImageFromAnotherScalingCanvasWithSameDimensions(
+                    ElementBase.bufferCanvas._underlyingCanvas, 
+                    this._x-5, this._y-5, this._w+10, this._h+10, 
+                    this._x-5, this._y-5, this._w+10, this._h+10);
+            }
+            else {
+                ElementBase.context.drawImage(ElementBase.bufferCanvas, 
+                    this._x-5, this._y-5, this._w+10, this._h+10, 
+                    this._x-5, this._y-5, this._w+10, this._h+10);
+            }
         }
         this._afterDraw();
     }
@@ -449,7 +455,13 @@ class Text extends CompositeElementBase {
         var hAlign = h_align || HorizontalAlignment.LEFT;
         var vAlign = v_align || VerticalAlignment.TOP;
         ElementBase.context.font = font;
-        var th = ElementBase.context.getScaledFontSize();
+        var th;
+        if (ElementBase.context.hasOwnProperty("getScaledFontSize")) {
+            th = ElementBase.context.getScaledFontSize();
+        }
+        else {
+            th = TextUtils.getFontSize(font, 1)
+        }
         var tw = ElementBase.context.measureText(text).width;
 
         var yh = getYandH(this);
@@ -494,7 +506,14 @@ class TextBox extends CompositeElementBase {
     _setupTexts(text) {
         var yOffset = 0, texts = [];
         ElementBase.context.font = this.font;
-        var textHeight = ElementBase.context.getScaledFontSize();
+        var textHeight;
+        if (ElementBase.context.hasOwnProperty("getScaledFontSize")) {
+            textHeight = ElementBase.context.getScaledFontSize();
+        }
+        else {
+            textHeight = TextUtils.getFontSize(this.font, 1)
+        }
+
         var lines = TextUtils.splitUpInLines(text, this.w, t => ElementBase.context.measureText(t).width);
         lines.forEach((line, index) => {
             var ha = index == lines.length-1 ? HorizontalAlignment.LEFT : HorizontalAlignment.JUSTIFY;
