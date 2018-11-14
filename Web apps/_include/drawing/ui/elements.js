@@ -1,5 +1,3 @@
-// TODO remove animations when they are done.
-
 /*
     Drawing simple and composite objects:
         draw() gets called by the engine
@@ -11,7 +9,6 @@
                 - draws the buffer onto the main context
         doDraw() draws itself on the supplied canvas
 */
-
 
 // ---------- Enums used by the element classes -----------------------------------------------------------------------------------
 
@@ -100,6 +97,10 @@ class ElementBase {
     get finished() { return this._finished; };
 
     set finishAfterAnimations(value) { this._finishAfterAnimations = value; }
+
+    wait(ms, doneFn) {
+        this._animations.push(new NoAnimation(this, ms, doneFn));
+    }
 
     animate(ms, animFn, doneFn) {
         this._animations.push(new AnimationBase(this, 0, 1, ms, animFn, doneFn));
@@ -622,8 +623,10 @@ class Button extends ButtonBase {
             if (!this._pressed) {
                 fn();
                 this._pressed = true;
-                this._bgElement.animate(50, (e,v) => {}, () => {
+                console.log("pressed");
+                this.wait(50, () => {
                     this._pressed = false;
+                    console.log("unpressed");
                 });
             }
         }

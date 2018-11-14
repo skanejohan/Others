@@ -25,6 +25,12 @@ class AnimationBase {
     }
 }
 
+class NoAnimation extends AnimationBase {
+    constructor(element, ms, doneFn) {
+        super(element, 0, 1, ms, () => {}, doneFn);
+    }
+}
+
 class FadeInAnimation extends AnimationBase {
     constructor(element, ms, doneFn) {
         super(element, 0, 1, ms, (_, value) => this.element.alpha = value, doneFn);
