@@ -372,6 +372,36 @@ class RoundRectBase extends ElementBase {
     }
 }
 
+// ---------- Polygons ----------------------------------------------------------------------
+
+class PolygonBase extends ElementBase {
+    constructor(positions, style, onclick) {
+        var xs = positions.map(p => p.x);
+        var ys = positions.map(p => p.y);
+        var minX = xs.reduce((a,b) => Math.min(a,b));
+        var minY = ys.reduce((a,b) => Math.min(a,b));
+        var maxX = xs.reduce((a,b) => Math.max(a,b));
+        var maxY = ys.reduce((a,b) => Math.max(a,b));
+
+        super(minX, minY, maxX-minX, maxY-minY, onclick);
+        this._positions = positions;
+        this._style = style;
+    }
+}
+
+class Polygon extends PolygonBase {
+    _doDraw(ctx) {
+        ctx.strokeStyle = this._style;
+        ctx.beginPath();
+        ctx.moveTo(this._positions[0].x, this._positions[0].y);
+        for (var i = 1; i < this._positions.length; i++) {
+            ctx.lineTo(this._positions[i].x, this._positions[i].y); 
+        }
+        ctx.closePath();
+        ctx.stroke();
+    }
+}
+
 // ---------- Lines -----------------------------------------------------------------------
 
 class Line extends ElementBase {
