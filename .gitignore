@@ -311,5 +311,6 @@ Web apps/parswick/parswick.game.js
 Web apps/parswick/theseus.framework.js
 
 **/.out
+**/.old
 **/mongoose-5.0.exe
 **/mongoose.conf
