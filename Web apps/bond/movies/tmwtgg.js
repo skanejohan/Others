@@ -84,7 +84,27 @@ const tmwtgg = {
     {
         // 00:31:50
         title: "Bottoms Up",
-        description: "The \"Bottoms Up\" club, where Gibson is killed, resided at nr [14 Hankow Road|hankow] between 1971 and 2004.",
+        description: "The \"Bottoms Up\" club, where Gibson is killed, resided at nr [14 Hankow Road|hankow] between 1971 and 2004. Bond is taken by liutenant Hip to a boat waiting in the harbour, where Hip tells him they are going to the police station at the Kowloon side - where they already are. In the background, we see the structure of [City Hall|cityhall]. The actual harbour - the [Queen's Pier|queenspier] - has since been demolished and the land reclaimed. You can read more about this over at [\"James Bond Locations\"|https://jamesbondlocations.blogspot.com/2016/08/queens-pier-hong-kong-lost-bond-location.html].",
+    },
+    {
+        // 00:35:40
+        title: "The djonk",
+        description: "At the same time, Scaramanga and Nick Nack also leave, by the djonk also moored in the harbour, where an invigorated Scaramanga forces himself on ms. Anders.",
+    },
+    {
+        // 00:36:50
+        title: "Kowloon, the New Territories... or what?",
+        description: "We see glimpses of Hong Kong as Bond and Hip travel across Victoria Harbour. Again, refer to [\"James Bond Locations\"|https://jamesbondlocations.blogspot.com/2016/08/queens-pier-hong-kong-lost-bond-location.html] for a detailed description.",
+    },
+    {
+        // 00:37:45
+        title: "\"Welcome aboard, commander Bond\"",
+        description: "Bond escapes onboard the [Queen Elizabeth II|terminal9], where M conveniently has set up camp. During their discussions, it turns out that Gibson was working for multimillionaire businessman Hai Fat in Bangkok. It is decided that Bond, Hip and Goodnight leave for Bangkok.",
+    },
+    {
+        // 00:42:10
+        title: "",
+        description: "",
     },
 
     // Tom of [James Bond Radio|] has made an excellent [video|http://jamesbondradio.com/trip-james-bond-island-khao-phing-kan-thailand-video/] of his visit to James Bond Island.
@@ -101,7 +121,7 @@ locations: [
     },
     {
         id: "terminal9",
-        name: "Hong Kong harbour, container terminal 9",
+        name: "Queen Elizabeth II (today Hong Kong harbour, container terminal 9)",
         position: {
             lat: 22.332125, 
             lng: 114.115088,
@@ -156,5 +176,25 @@ locations: [
         streetView: {
         },
     },
-
+    {
+        id: "cityhall",
+        name: "City Hall",
+        position: {
+            lat: 22.282667, 
+            lng: 114.161715,
+        },
+        streetView: {
+            lat: 22.283194, 
+            lng: 114.161844,
+            heading: 200,
+        },
+    },
+    {
+        id: "queenspier",
+        name: "Queen's Pier",
+        position: {
+            lat: 22.283364, 
+            lng: 114.163037,
+        },
+    },
 ]}
