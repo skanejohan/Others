@@ -217,14 +217,18 @@ class ElementBase {
     }
 
     hovering() {
-        return this.x < ElementBase.mousePos.x && 
-               this.x + this.w > ElementBase.mousePos.x && 
-               this.y < ElementBase.mousePos.y && 
-               this.y + this.h > ElementBase.mousePos.y;
+        return this.mouseInside(this.x, this.y, this.x + this.w, this.y + this.h);
     }
 
     popupHovering() {
         return this.popup !== undefined && this.popup.state == PopupState.VISIBLE && this.popup.hovering();
+    }
+
+    mouseInside(left, top, right, bottom) {
+        return left < ElementBase.mousePos.x && 
+               right > ElementBase.mousePos.x && 
+               top < ElementBase.mousePos.y && 
+               bottom > ElementBase.mousePos.y;
     }
 };
 
@@ -372,9 +376,45 @@ class RoundRectBase extends ElementBase {
     }
 }
 
+// ---------- ComplexElementBase - for complex click rects -----------------------------------------------
+
+class ComplexElementBase extends ElementBase {
+    constructor(x, y, w, h, onclick) {
+        super(x, y, w, h, onclick);
+        this._clickRects = [];
+    }
+
+    addClickRect(left, top, right, bottom) {
+        this._clickRects.push({
+            left: Math.min(left, right), 
+            top: Math.min(top, bottom), 
+            right: Math.max(left, right),
+            bottom: Math.max(top, bottom),
+        });
+    }
+
+    hovering() {
+        if (!super.hovering()) {
+            return false;
+        }
+        for (var i = 0; i < this._clickRects.length; i++) {
+            let r = this._clickRects[i];
+            if (this.mouseInside(r.left, r.top, r.right, r.bottom)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    _drawClickRects(ctx) {
+        ctx.strokeStyle = "red";
+        this._clickRects.forEach(r => ctx.strokeRect(r.left, r.top, r.right-r.left, r.bottom-r.top));
+    }
+}
+
 // ---------- Polygons ----------------------------------------------------------------------
 
-class PolygonBase extends ElementBase {
+class PolygonBase extends ComplexElementBase {
     constructor(positions, style, onclick) {
         var xs = positions.map(p => p.x);
         var ys = positions.map(p => p.y);

@@ -113,6 +113,14 @@ class ScalingCanvasContext {
             this._virtualToActual(h));
     }
 
+    arc(x, y, r, sAngle, eAngle, counterclockwise) {
+        this._underlyingContext.arc(
+            this._virtualToActualX(x),
+            this._virtualToActualY(y),
+            this._virtualToActual(r),
+            sAngle, eAngle, counterclockwise);
+    }
+
     drawImage(img, xSrc, ySrc, wSrc, hSrc, x, y, w, h) {
         this._underlyingContext.drawImage(img, xSrc, ySrc, wSrc, hSrc,
             this._virtualToActualX(x),
