@@ -1916,4 +1916,59 @@ Kris och Luhrs bröllop - Ronneby Brunn
 			},
 		]
 	},
+	{
+		name: "Florida med mamma",
+		start: new Date(2018, 9, 26),
+		end: new Date(2018, 10, 4),
+		locations: [
+			{
+				name: "Best Western Airport Inn & Suites",
+				address: "8101 Aircenter Ct, Orlando, FL 32809, USA",
+				url: "bworlandoairport.com",
+				position: new google.maps.LatLng(28.450687, -81.356314),
+				start: new Date(2018, 9, 26),
+				end: new Date(2012, 9, 27),
+			},
+			{
+				name: "Barefoot Beach Club",
+				address: "13238 Gulf Blvd, Madeira Beach, FL 33708, USA",
+				url: "barefootbeachclub.com",
+				position: new google.maps.LatLng(27.788433, -82.787025),
+				start: new Date(2018, 9, 27),
+				end: new Date(2012, 9, 29),
+			},
+			{
+				name: "The Boat House Motel",
+				address: "2006, 1180 Edington Pl, Marco Island, FL 34145, USA",
+				url: "theboathousemotel.com",
+				position: new google.maps.LatLng(25.973193, -81.731510),
+				start: new Date(2018, 9, 29),
+				end: new Date(2012, 9, 30),
+			},
+			{
+				name: "The Sea Lord Hotel & Suites",
+				address: "4140 El Mar Dr, Lauderdale-By-The-Sea, FL 33308, USA",
+				url: "sealordhotel.com",
+				position: new google.maps.LatLng(26.185289, -80.095767),
+				start: new Date(2018, 9, 30),
+				end: new Date(2012, 9, 31),
+			},
+			{
+				name: "Radisson Resort at the Port",
+				address: "8701 Astronaut Blvd, Cape Canaveral, FL 32920, USA",
+				url: "radisson.com",
+				position: new google.maps.LatLng(28.395194, -80.612405),
+				start: new Date(2018, 9, 31),
+				end: new Date(2012, 10, 1),
+			},
+			{
+				name: "Universal's Cabana Bay Beach Resort",
+				address: "6550 Adventure Way, Orlando, FL 32819, USA",
+				url: "universalorlando.com",
+				position: new google.maps.LatLng(28.465461, -81.473651),
+				start: new Date(2018, 10, 1),
+				end: new Date(2012, 10, 3),
+			},
+		]
+	},
 ]
