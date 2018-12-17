@@ -141,6 +141,16 @@ class ScalingCanvasContext {
             this._virtualToActual(h));
     }
 
+    translate(x, y) {
+        let _x = x < 0 ? -this._virtualToActualX(Math.abs(x)) : this._virtualToActualX(x);
+        let _y = y < 0 ? -this._virtualToActualY(Math.abs(y)) : this._virtualToActualY(y);        
+        this._underlyingContext.translate(_x, _y);
+    }
+
+    rotate(angle) {
+        this._underlyingContext.rotate(angle);
+    }
+
     save() {
         this._underlyingContext.save();
     }

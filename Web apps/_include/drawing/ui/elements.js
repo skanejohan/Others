@@ -56,16 +56,30 @@ class ElementBase {
         this._finishAfterAnimations = false;
         this._state = PopupState.HIDDEN;
         this._previouslyHovering = false;
+        this._pivotPoint = undefined;
+        this._angle = 0;
     }
 
     get state() { return this._state; }
     set state(value) { this._state = value; }
 
     get x() { return this._x; }
-    set x(value) { this._x = value; }
+    set x(value) { 
+        var delta = value - this._x;
+        this._x = value; 
+        if (this._pivotPoint) {
+            this._pivotPoint.x += delta;
+        }
+    }
 
     get y() { return this._y; }
-    set y(value) { this._y = value; }
+    set y(value) { 
+        var delta = value - this._y;
+        this._y = value; 
+        if (this._pivotPoint) {
+            this._pivotPoint.y += delta;
+        }
+    }
 
     get w() { return this._w; }
     set w(value) { this._w = value; }
@@ -122,6 +136,10 @@ class ElementBase {
         this._animations.push(new VerticalTranslateAnimation(this, dist, ms, doneFn));
     }
 
+    rotate(startAngle, endAngle, ms, doneFn) {
+        this._animations.push(new RotateAnimation(this, startAngle, endAngle, ms, doneFn));
+    }
+
     pause() {
         this._animations.forEach(a => a.pause());
         this._paused = true;
@@ -149,9 +167,19 @@ class ElementBase {
             this._finished = true;
         }
         ElementBase.context.globalAlpha = this._alpha;
+        if (this._pivotPoint && this._angle != 0) {
+            ElementBase.context.save();
+            ElementBase.context.translate(this._pivotPoint.x, this._pivotPoint.y);
+            ElementBase.context.rotate(this._angle);
+            ElementBase.context.translate(-this._pivotPoint.x, -this._pivotPoint.y);
+        }
     }
 
     _afterDraw() {
+        if (this._pivotPoint && this._angle != 0) {
+            ElementBase.context.restore();
+        }
+
         if (!this._previouslyHovering && this.hovering() && this._onenter != undefined) {
             this.onenter();
         }
@@ -384,6 +412,20 @@ class ComplexElementBase extends ElementBase {
         this._clickRects = [];
     }
 
+    get x() { return this._x; }
+    set x(value) { 
+        var delta = value - this._x;
+        this._x = value; 
+        this._clickRects.forEach(r => { r.left += delta; r.right += delta; });
+    }
+
+    get y() { return this._y; }
+    set y(value) { 
+        var delta = value - this._y;
+        this._y = value; 
+        this._clickRects.forEach(r => { r.top += delta; r.bottom += delta; });
+    }
+
     addClickRect(left, top, right, bottom) {
         this._clickRects.push({
             left: Math.min(left, right), 
@@ -457,8 +499,8 @@ class Line extends ElementBase {
     _doDraw(ctx) {
         ctx.strokeStyle = this._style;
         ctx.beginPath();
-        ctx.moveTo(this.x1, this.y1);
-        ctx.lineTo(this.x2, this.y2);
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x + this.w, this.y + this.h);
         ctx.closePath();
         ctx.stroke();
     }

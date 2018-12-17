@@ -54,3 +54,9 @@ class VerticalTranslateAnimation extends AnimationBase {
         super(element, element.y, element.y + delta, ms, (_, value) => this.element.y = value, doneFn);
     }
 }
+
+class RotateAnimation extends AnimationBase {
+    constructor(element, startAngle, endAngle, ms, doneFn) {
+        super(element, startAngle, endAngle, ms, (_, value) => this.element._angle = value, doneFn);
+    }
+}
