@@ -281,6 +281,9 @@ class CompositeElementBase extends ElementBase {
     set x(value) { 
         var delta = value - this._x;
         this._x = value; 
+        if (this._pivotPoint) {
+            this._pivotPoint.x += delta;
+        }
         this.elements.forEach(e => e.x = e.x + delta);
     }
 
@@ -289,6 +292,9 @@ class CompositeElementBase extends ElementBase {
     set y(value) { 
         var delta = value - this._y;
         this._y = value; 
+        if (this._pivotPoint) {
+            this._pivotPoint.y += delta;
+        }
         this.elements.forEach(e => e.y = e.y + delta);
     }
 
@@ -416,6 +422,9 @@ class ComplexElementBase extends ElementBase {
     set x(value) { 
         var delta = value - this._x;
         this._x = value; 
+        if (this._pivotPoint) {
+            this._pivotPoint.x += delta;
+        }
         this._clickRects.forEach(r => { r.left += delta; r.right += delta; });
     }
 
@@ -423,6 +432,9 @@ class ComplexElementBase extends ElementBase {
     set y(value) { 
         var delta = value - this._y;
         this._y = value; 
+        if (this._pivotPoint) {
+            this._pivotPoint.y += delta;
+        }
         this._clickRects.forEach(r => { r.top += delta; r.bottom += delta; });
     }
 
