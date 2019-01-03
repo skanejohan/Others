@@ -114,6 +114,9 @@ class Kitchen extends Location {
             "officeDoorKey":  { x: 350, y: 200, w: 20, h: 20 }, // TODO make it possible to put it inside the cupboard (x=390)
             "waterCooker": { x: 390, y: 140, w: 20, h: 20 },
         };
+        this.doorPositions = {
+            "bathroomDoor": { type: "S", start: 210, length: 80 },
+        };
         this.exits.N = { target: "fictionSection" };
         this.exits.S = { target: "bathroom", door: "bathroomDoor" };
     }

@@ -1,21 +1,22 @@
 import { State } from "./state.js";
+import { ArrayUtils } from "../../_include/arrayutils.js";
 
 export { Context };
 
 class Context {
     constructor(items, locations, characters, initialLocation, initialMessage, onActionPerformed) {
-        this.allItems = items;                 // Dictionary string -> Item
-        this.allLocations = locations;         // Dictionary string -> Location
-        this.allCharacters = characters;       // Dictionary string -> Character
-        this.inventory = [];                    // Array of string
-        this.historicInventory = new Set([]);   // Set of string
-        this.flags = new Set([]);               // Set of Flag
-        this.messages = [initialMessage];
-        this.currentLocation = initialLocation;
-        this.onActionPerformed = onActionPerformed;
-        this.state = new State();
+        this.allItems = items;                        // Dictionary string -> Item
+        this.allLocations = locations;                // Dictionary string -> Location
+        this.allCharacters = characters;              // Dictionary string -> Character
+        this.inventory = [];                          // Array of string
+        this.historicInventory = new Set([]);         // Set of string
+        this.flags = new Set([]);                     // Set of Flag
+        this.messages = [initialMessage];             // Array of string
+        this.currentLocation = initialLocation;       // string
+        this.onActionPerformed = onActionPerformed;   // (string, string) => undefined
+        this.state = new State();                     // State  
 
-        // Set the container property of all items
+        // Set the container property of all items (either to a location or another item)
         Object.keys(this.allLocations).forEach(name => {
             this.allLocations[name].containedItems.forEach(i => this.allItems[i].container = name);
         });
@@ -24,104 +25,82 @@ class Context {
         });
     }
 
-    // ---------- Relationship between items - the containedItems and container properties
+    // ---------- Returns an item regardless of whether you pass in the item itself or its key string
 
-    findContainer(containerName) {
-        var container = this.allItems[containerName];
-        if (!container) {
-            container = this.allLocations[containerName];
+    item(i) {
+        if (typeof i === "object") {
+            return i;
         }
-        return container;
+        return this.allItems[i];
     }
     
-    removeItemFromContainer(item) {
-        var container = this.findContainer(item.container);
-        if (container) {
-            ArrayUtils.remove(container.containedItems, item.name);
+    // ---------- Given a list of items, return a list of all items including contained ones for open containers.
+
+    getItems(items) {
+        var is = [];
+        for (var item of items) {
+            var item = this.item(item);
+            if (item) {
+                is.push(item);
+                if (item.isOpen) {
+                    is = is.concat(this.getItems(item.containedItems));
+                }
+            }
         }
+        return is;
     }
 
-    // ---------- Inventory management
+    // ---------- Moving items around
 
     isItemInInventory(item) {
+        item = this.item(item);
         return this.inventory.indexOf(item.name) > -1;
     }
 
     addItemToInventory(item) {
-        //this.removeFromInventory(item); // In case we pick up an item that was in another carried item
+        item = this.item(item);
         this.inventory.push(item.name);
         this.historicInventory.add(item.name);
     }
 
     removeItemFromInventory(item) {
+        item = this.item(item);
         ArrayUtils.remove(this.inventory, item.name);
     }
 
     addItemToCurrentLocation(item) {
+        item = this.item(item);
         this.allLocations[this.currentLocation].containedItems.push(item.name);
     }
 
-
-
-
-    // Items
-
-    // setContainers() {
-    //     var locationNames = Object.keys(this.allLocations);
-    //     locationNames.forEach(name => {
-    //         this.allLocations[name].containedItems.forEach(i => this.allItems[i].container = name);
-    //     });
-    //     var itemNames = Object.keys(this.allItems);
-    //     itemNames.forEach(name => {
-    //         this.allItems[name].containedItems.forEach(i => this.allItems[i].container = name);
-    //     });
-    // }
-
-    getItem(name, itemPositions) {
-        var item = this.allItems[name];
-        if (item && itemPositions && itemPositions[name]) {
-            item.position = itemPositions[name];
-        } 
-        return item;
-    }
-
-    /* Given a list of item names, return a list<Item> of all items, including contained ones 
-       for open containers. Items that have an entry in the positions list will have these 
-       values appended as property "position". */
-    getAllItems(names, positions) {
-        var items = [];
-        for (var name of names) {
-            var item = this.getItem(name, positions);
-            if (item) {
-                items.push(item);
-                var containedOpenItems = item.containedItems.filter(i => this.getItem(i).isOpen); 
-                items = items.concat(this.getAllItems(containedOpenItems, positions));
-            }
+    removeItemFromContainer(item) {
+        item = this.item(item);
+        var container = this.allItems[item.container] || this.allLocations[item.container];
+        if (container) {
+            ArrayUtils.remove(container.containedItems, item.name);
         }
-        return items;
     }
 
+    // ---------- Locations
 
+    location(loc) {
+        if (typeof loc == "object") {
+            return loc;
+        }
+        return this.allLocations[loc];
+    }
 
-
-    moveTo(location) {
+    moveTo(location, direction) {
         this.currentLocation = location;
         this.setMessage("You move to the " + this.allLocations[this.currentLocation].caption);
-        this.reportActionPerformed("move", location);
+        this.reportActionPerformed("move", location, direction);
     }
 
     getCurrentLocation() {
-        return this.allLocations[this.currentLocation];
+        return this.location(this.currentLocation);
     }
 
-
-    removeFromCurrentLocation(item) {
-        let items = this.allLocations[this.currentLocation].containedItems;
-        var idx = items.indexOf(item);
-        if (idx > -1) {
-            items.splice(idx, 1);
-        }
-    }
+    // ---------- Messages
 
     setMessage(m) {
         this.messages.push(m);
@@ -133,19 +112,11 @@ class Context {
         return result;
     }
 
-    reportActionPerformed(verb, noun) {
-        if (this.onActionPerformed !== undefined) {
-            this.onActionPerformed(verb, noun);
-        }
-    }
-}
+    // ---------- Generated when an action has been performed
 
-// TODO MOVE
-class ArrayUtils {
-    static remove(array, item) {
-        var idx = array.indexOf(item);
-        if (idx > -1) {
-            array.splice(idx, 1);
+    reportActionPerformed(verb, noun, extraData, preventedBeforeAction) {
+        if (this.onActionPerformed !== undefined) {
+            this.onActionPerformed(verb, noun, extraData, preventedBeforeAction);
         }
     }
 }

@@ -76,7 +76,7 @@ class Item {
     }
 }
 
-class OpenableItem extends Item { // TODO openDescription, closedDescription ?
+class OpenableItem extends Item {
     constructor(name, caption, fixed, visible, state) {
         super(name, caption, fixed, visible);
 
@@ -133,7 +133,6 @@ class PickableItem extends Item {
 
 }
 
-// TODO EnterCombination. 
 class LockableItem extends Item {
     constructor(name, caption, fixed, visible, state, key) {
         super(name, caption, fixed, visible, state);
@@ -166,6 +165,8 @@ class LockableItem extends Item {
     verbLockVisible(context) {
         return this.state === AccessState.LOCKED && context.isItemInInventory(key);
     }
+
+    // TODO verbEnterCombination 
 }
 
 // Private functions
@@ -177,6 +178,7 @@ class Private {
     }
 
     do(verb, context, action) {
+        var handled = false;
         var beforeAction = "before" + this.capitalizeFirstLetter(verb);
         var beforeOnceAction = beforeAction + "Once";
         var afterAction = "after" + this.capitalizeFirstLetter(verb);
@@ -185,23 +187,25 @@ class Private {
         context.state.addAction(this.item.name, verb);
     
         if (this.hasProperty(beforeAction)) {
-            this.item[beforeAction](context);
+            handled |= this.item[beforeAction](context);
         }
         if (this.hasProperty(beforeOnceAction) && !this.getHasBeenCalled(verb)) {
-            this.item[beforeOnceAction](context);
+            handled |= this.item[beforeOnceAction](context);
         }
         
-        action();
+        if (!handled) {
+            action();
     
-        if (this.hasProperty(afterAction)) {
-            this.item[afterAction](context);
+            if (this.hasProperty(afterAction)) {
+                this.item[afterAction](context);
+            }
+            if (this.hasProperty(afterOnceAction) && !this.getHasBeenCalled(verb)) {
+                this.item[afterOnceAction](context);
+            }
         }
-        if (this.hasProperty(afterOnceAction) && !this.getHasBeenCalled(verb)) {
-            this.item[afterOnceAction](context);
-        }
-    
+
         this.setHasBeenCalled(verb);
-        context.reportActionPerformed(verb, this.item.name);
+        context.reportActionPerformed(verb, this.item.name, undefined, handled);
     }
     
     getAllPropertyNames(obj) {
@@ -230,66 +234,3 @@ class Private {
         }
     }
 }
-
-
-// TODO UTILITY
-function removeFromList(list, item) {
-    var idx = list.indexOf(item);
-    if (idx > -1) {
-        list.splice(idx, 1);
-    }
-}
-
-/*
-let getActionInfo = function(item) {
-    let props = getAllPropertyNames(item);
-
-    var additionalVerbs = [];
-    props.forEach(key => {
-        if (typeof item[key] === "function" && key.startsWith("verb")) {
-            additionalVerbs.push(key);
-        }});
-
-    return {
-        standardVerbs: {
-            examine: {
-                before: item.beforeExamine,
-                after: item.afterExamine,
-            },
-            drop: {
-                before: item.beforeDrop,
-                after: item.afterDrop,
-            },
-            take: {
-                before: item.beforeTake,
-                after: item.afterTake,
-            },
-            close: {
-                before: item.beforeClose,
-                after: item.afterClose,
-            },
-            open: {
-                before: item.beforeOpen,
-                after: item.afterOpen,
-            },
-            lock: {
-                before: item.beforeLock,
-                after: item.afterLock,
-            },
-            enterCombination: {
-                before: item.beforeEnterCombination,
-                after: item.afterEnterCombination,
-            },
-            unlock: {
-                before: item.beforeUnlock,
-                after: item.afterUnlock,
-            },
-            pick: {
-                before: item.beforePick,
-                after: item.afterPick,
-            },
-        },
-        additionalVerbs: additionalVerbs,
-    }
-}
-*/

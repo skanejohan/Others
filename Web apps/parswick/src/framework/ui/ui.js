@@ -1,17 +1,21 @@
-import { BackgroundPainter } from "./backgroundpainter.js";
-import { LocationPainter } from "./locationpainter.js";
-import { ItemContainerPainter } from "./itemcontainerpainter.js";
+import { BackgroundUI } from "./background.js";
+import { LocationUI } from "./location.js";
+import { ItemListUI } from "./itemlist.js";
+import { Utils } from "./utils.js";
 
 export { UI };
 
 class UI {
     constructor(canvasDiv, context) {
         this.context = context;
-        this.locationPainter = {};
         this.context.onActionPerformed = this.onActionPerformed.bind(this);
         this.canvas = new ScalingCanvas(canvasDiv, 800, 450);
-        this.engine = new Engine(this.canvas);
-        this.elements = {};
+        this.engine = new Engine(this.canvas, new ScalingCanvas(new OffscreenCanvas(800, 450), 800, 450));
+
+        this.backgroundUI = new BackgroundUI(this.engine);
+        this.locationUI = new LocationUI(this.engine, this.context);
+        this.inventoryUI = new ItemListUI(this.engine, this.context, 500, 50, 250, 165, "You are carrying:");
+        this.itemsHereUI = new ItemListUI(this.engine, this.context, 500, 235, 250, 165, "You also see:");
 
         this.updateLocation();
 
@@ -21,49 +25,76 @@ class UI {
         this.showMessages();
     }
 
-    updateLocation() {
+    updateLocation(direction) {
         let location = this.context.getCurrentLocation();
-
-        this.engine.clear()
-        new BackgroundPainter(this.engine, this.elements, this.context).register();
-        this.locationPainter = new LocationPainter(this.engine, this.elements, this.context);
-        this.locationPainter.register(location);
-        
-        this.inventoryPainter = new ItemContainerPainter(this.engine, this.elements, this.context);
-        this.inventoryPainter.register(500, 50, 250, 200, "You are carrying:", [], "inventory");
+        this.itemsHereUI.clear();
+        this.locationUI.enter(location, direction, () => {
+            for (var item of this.context.getItems(location.containedItems)) {
+                let position = location.itemPositions[item.name];
+                if (item.isVisible && !position && !item.isDoor && !item.isWindow) { 
+                    this.itemsHereUI.addItem(item);
+                }
+            }
+        });
     }
 
     draw() {
         window.requestAnimationFrame(() => this.draw());
         this.canvas.setDimensions(window.innerWidth, window.innerHeight);
-        this.engine.draw();
+        this.engine.draw(window.innerWidth, window.innerHeight);
     }
 
-    onActionPerformed(verb, noun) {
-        //console.log(`onAction: ${verb} - ${noun}`);
-        if (verb == "move") {
-            this.updateLocation();
-            this.showMessages();
-            return;
-        }
+    onActionPerformed(verb, noun, extraData, preventedBeforeAction) {
+        var item = this.context.item(noun);
+        var itemPosition = this.context.getCurrentLocation().itemPositions[noun];
 
-        switch(verb) {
-            case "open":
-                this.locationPainter.showContainedItems(noun);
-                break;
-            case "close":
-                this.locationPainter.hideContainedItems(noun);
-                break;
-            case "take":
-                this.locationPainter.hideItem(noun);
-                this.inventoryPainter.showItem(noun);
-                break;
-            case "drop":
-                this.inventoryPainter.hideItem(noun);
-                this.locationPainter.showItem(noun);
-                break;
+        if (!preventedBeforeAction) {
+            if (verb == "move") {
+                this.updateLocation(extraData);
+                this.showMessages();
+                return;
+            }
+
+            switch(verb) {
+                case "open":
+                    if(item.isDoor) {
+                        this.locationUI.openDoor(item);
+                    }
+                    else {
+                        this.locationUI.addItems(this.context.getItems(item.containedItems));
+                    }
+                    break;
+                case "close":
+                    if(item.isDoor) {
+                        this.locationUI.closeDoor(item);
+                    }
+                    else {
+                        this.locationUI.removeItems(this.context.getItems(item.containedItems));
+                    }
+                    break;
+                case "take":
+                    if (itemPosition) {
+                        this.locationUI.removeItem(item.element);
+                    }
+                    else {
+                        this.itemsHereUI.removeItem(item.element);
+                    }
+                    this.inventoryUI.addItem(item);
+                    break;
+                case "drop":
+                    this.inventoryUI.removeItem(item.element);
+                    if (itemPosition) {
+                        this.locationUI.addItem(item, itemPosition);
+                    }
+                    else {
+                        this.itemsHereUI.addItem(item);
+                    }
+                    break;
+            }
+            if (!item.isDoor && !item.isWindow) {
+                Utils.setVerbs(item.element, item, this.context);
+            }
         }
-        this.context.allItems[noun].painter.updateVerbs();
         this.showMessages();
     }
 

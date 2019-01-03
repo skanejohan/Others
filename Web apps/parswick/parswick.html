@@ -16,8 +16,13 @@
 <script type="text/javascript">
     const FONT = "16px Caudex";
     const COLOR = "#ecd9c6";
+    const DARKCOLOR = "#bca996";
     const HINTCOLOR = "gray";
+    const CHANGELOCATIONTIME = 1000;
+    const FADETIME = 300;
 </script>
+
+<script type="module" src="./_include/arrayutils.js"></script>
 
 <script src="./_include/timer.js"></script>
 <script src="./_include/timedvaluemodifier.js"></script>
@@ -31,12 +36,8 @@
 <script type="module" src="./framework/content/item.js"></script>
 <script type="module" src="./framework/content/location.js"></script>
 
-<script type="module" src="./framework/ui/basepainter.js"></script>
-<script type="module" src="./framework/ui/itempainter.js"></script>
-<script type="module" src="./framework/ui/itemcontainerpainter.js"></script>
-<script type="module" src="./framework/ui/arrowpainter.js"></script>
-<script type="module" src="./framework/ui/backgroundpainter.js"></script>
-<script type="module" src="./framework/ui/locationpainter.js"></script>
+<script type="module" src="./framework/ui/background.js"></script>
+<script type="module" src="./framework/ui/location.js"></script>
 <script type="module" src="./framework/ui/ui.js"></script>
 
 <script type="module" src="./game/flags.js"></script>

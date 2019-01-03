@@ -68,6 +68,7 @@ class ArtShelf extends Item {
 class BathroomDoor extends OpenableItem {
     constructor() {
         super("bathroomDoor", "bathroom door", true, true, AccessState.CLOSED);
+        this.isDoor = true;
     }
 }
 
@@ -155,6 +156,7 @@ class FictionLeftWindow extends Item {
     constructor() {
         super("fictionLeftWindow", "", true, true);
         this.description = "Through the windows, you can see the large square, and the beatiful old Gothic cathedral at the other side of it. Tourists are milling about, but as usual nobody seems to notice your fine establishment.";
+        this.isWindow = true;
     }
 }
 
@@ -162,6 +164,7 @@ class FictionRightWindow extends Item {
     constructor() {
         super("fictionRightWindow", "", true, true);
         this.description = "Through the windows, you can see the large square, and the beatiful old Gothic cathedral at the other side of it. Tourists are milling about, but as usual nobody seems to notice your fine establishment.";
+        this.isWindow = true;
     }
 }
 
@@ -207,17 +210,15 @@ class Fridge extends Item {
     }
 }
 
-class FrontDoor extends Item {
+class FrontDoor extends OpenableItem {
     constructor() {
-        super("frontDoor", "front door", true, true);
-        this.description = "This is the main entrance to your book shop. You see a sign that says &quot;Closed&quot;. Luckily, that means that is says &quot;Open&quot; on the other side. Above the door is a small bell to indicate when a customer enters. Too rarely does it sound."; 
+        super("frontDoor", "front door", true, true, AccessState.CLOSED);
+        this.description = "This is the main entrance to your book shop. You see a sign that says &quot;Closed&quot;. Luckily, that means that is says &quot;Open&quot; on the other side. Above the door is a small bell to indicate when a customer enters. Too rarely does it sound.";         
+        this.isDoor = true;
     }
 
-    verbOpen(context) {
+    beforeOpen(context) {
         context.setMessage("As you move toward the door to open it, you realise that you just got here and that it is not yet time for lunch. If ever a customer should venture into your shop, you had better be here.");
-    }
-
-    verbOpenVisible(context) {
         return true;
     }
 }
@@ -370,6 +371,7 @@ class ModelCar extends Item {
 class OfficeDoor extends LockableItem {
     constructor() {
         super("officeDoor", "office door", true, true, AccessState.LOCKED, "officeDoorKey");
+        this.isDoor = true;
     }
 }
 
@@ -422,7 +424,7 @@ class Safe extends LockableItem { // TODO combination lock!
 class Sink extends Item {
     constructor() {
         super("sink", "sink", true, true);
-        this.description = "Oh, the books in this shelf. How you have read them, some from cover to cover, others more haphazardly, wishing that you were somewhere other than in this dreary town.";
+        this.description = "The stainless steel sink has a strange coloration at one end. You have a faint memory of pouring some kind of paint into it it an early age. The tap provides cold water only. On the sink there is a small water cooker.";
     }
 
     afterExamine(context) {
@@ -469,6 +471,7 @@ class TravelWindow extends Item {
     constructor() {
         super("travelWindow", "", true, true);
         this.description = "Through the window, you can see the street outside, currently covered in a thin white layer of snow.";
+        this.isWindow = true;
     }
 }
 
