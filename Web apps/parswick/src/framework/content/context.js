@@ -1,5 +1,6 @@
 import { State } from "./state.js";
 import { ArrayUtils } from "../../_include/arrayutils.js";
+import { AccessState } from "./item.js";
 
 export { Context };
 
@@ -42,7 +43,7 @@ class Context {
             var item = this.item(item);
             if (item) {
                 is.push(item);
-                if (item.isOpen) {
+                if (item.state === AccessState.OPEN) {
                     is = is.concat(this.getItems(item.containedItems));
                 }
             }
