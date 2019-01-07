@@ -17,25 +17,12 @@ class UI {
         this.inventoryUI = new ItemListUI(this.engine, this.context, 500, 50, 250, 165, "You are carrying:");
         this.itemsHereUI = new ItemListUI(this.engine, this.context, 500, 235, 250, 165, "You also see:");
 
-        this.updateLocation();
+        this.moveToCurrentLocation();
 
         window.requestAnimationFrame(() => this.draw());
         window.context = context; // FOR DEBUGGING TODO REMOVE
 
         this.showMessages();
-    }
-
-    updateLocation(direction) {
-        let location = this.context.getCurrentLocation();
-        this.itemsHereUI.clear();
-        this.locationUI.enter(location, direction, () => {
-            for (var item of this.context.getItems(location.containedItems)) {
-                let position = location.itemPositions[item.name];
-                if (item.isVisible && !position && !item.isDoor && !item.isWindow) { 
-                    this.itemsHereUI.addItem(item);
-                }
-            }
-        });
     }
 
     draw() {
@@ -45,13 +32,14 @@ class UI {
     }
 
     onActionPerformed(verb, noun, extraData, preventedBeforeAction) {
+        
+        //console.log(`${verb} - ${noun}`);
         var item = this.context.item(noun);
-        var itemPosition = this.context.getCurrentLocation().itemPositions[noun];
 
         if (!preventedBeforeAction) {
+        
             if (verb == "move") {
-                this.updateLocation(extraData);
-                this.showMessages();
+                this.moveToCurrentLocation()
                 return;
             }
 
@@ -60,43 +48,40 @@ class UI {
                     if(item.isDoor) {
                         this.locationUI.openDoor(item);
                     }
-                    else {
-                        this.locationUI.addItems(this.context.getItems(item.containedItems));
-                    }
                     break;
                 case "close":
                     if(item.isDoor) {
                         this.locationUI.closeDoor(item);
                     }
-                    else {
-                        this.locationUI.removeItems(this.context.getItems(item.containedItems));
-                    }
-                    break;
-                case "take":
-                    if (itemPosition) {
-                        this.locationUI.removeItem(item.element);
-                    }
-                    else {
-                        this.itemsHereUI.removeItem(item.element);
-                    }
-                    this.inventoryUI.addItem(item);
-                    break;
-                case "drop":
-                    this.inventoryUI.removeItem(item.element);
-                    if (itemPosition) {
-                        this.locationUI.addItem(item, itemPosition);
-                    }
-                    else {
-                        this.itemsHereUI.addItem(item);
-                    }
                     break;
             }
-            if (!item.isDoor && !item.isWindow) {
+
+            this.updateItemElements();
+
+            if (item && !item.isDoor && !item.isWindow) {
                 Utils.setVerbs(item.element, item, this.context);
             }
         }
+    
         this.showMessages();
     }
+
+    moveToCurrentLocation() {
+        this.locationUI.enter(this.context.getCurrentLocation(), () => {
+            this.updateItemElements();
+            this.showMessages();
+        });
+    }
+
+    updateItemElements() {
+        this.locationUI.removeElementsForNoLongerVisibleItems(Utils.visiblePositionedItemsHere(this.context));
+        this.itemsHereUI.removeElementsForNoLongerVisibleItems(Utils.visibleUnpositionedItemsHere(this.context));
+        this.inventoryUI.removeElementsForNoLongerVisibleItems(this.context.getItems(this.context.inventory));
+
+        this.locationUI.addElementsForNowVisibleItems(Utils.visiblePositionedItemsHere(this.context));
+        this.itemsHereUI.addElementsForNowVisibleItems(Utils.visibleUnpositionedItemsHere(this.context));
+        this.inventoryUI.addElementsForNowVisibleItems(this.context.getItems(this.context.inventory));
+}
 
     showMessages() {
         console.log(this.context.getMessages());

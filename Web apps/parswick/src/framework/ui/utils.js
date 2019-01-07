@@ -1,3 +1,5 @@
+import { AccessState } from "../content/item.js";
+
 export { Utils };
 
 class Utils {
@@ -15,4 +17,15 @@ class Utils {
         });
     }
 
+    static visiblePositionedItemsHere(context) {
+        let location = context.location(context.currentLocation);
+        let allItemsHere = context.getItems(location.containedItems);
+        return allItemsHere.filter(i => i.isVisible && location.itemPositions[i.name]);
+    }
+
+    static visibleUnpositionedItemsHere(context) {
+        let location = context.location(context.currentLocation);
+        let allItemsHere = context.getItems(location.containedItems);
+        return allItemsHere.filter(i => i.isVisible && !location.itemPositions[i.name] && !i.isDoor && !i.isWindow);
+    }
 }
