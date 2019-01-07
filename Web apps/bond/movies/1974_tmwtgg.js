@@ -103,8 +103,38 @@ const tmwtgg = {
     },
     {
         // 00:42:10
-        title: "",
-        description: "",
+        title: "A dinner invitation",
+        description: "Hai Fat's house is in reality the [Dragon Garden|dragongarden] in Hong Kong. Posing as Scaramanga, Bond gets invited to dinner. He is seen out of the house through the imposing [front door|dg_door], still there today albeit slightly less well-polished. After he has left, we see that Scaramanga is already there, and in a scene in front of his [mausoleum|mausoleum], Hai Fat makes it clear that he wants Bond killed.",
+    },
+    {
+        // 00:46:20
+        title: "\"Take mr. Bond to school\"",
+        description: "Bond gets picked up at the hotel by Lt. Yip and his two nieces. They drop him off at [Hai Fat's house|dragongarden] where he has to fight the sumo wrestler before being knocked unconscious by Nick Nack.",
+    },
+    {
+        // 00:49:35
+        title: "The school - and the escape",
+        description: "When Bond wakes up at the Karate school, we are finally in Bangkok for real. These scenes were filmed at Ancient Siam, an outdoor museum about 20 miles south of Bangkok. The actual building used for \"the school\" is called the [Dharavati House|ThapKhwan]. When Bond escapes on the boat, the first sequence is likely also filmed in Acient Siam. Later on, we are on the klongs - the canals of Bangkok. According to [tokyofox.net|https://tokyofox.net/2014/02/06/se-asia-201314-pt-xiii-james-bond-filming-locations-in-bangkok], scenes are recorded at the [Damnoen Saduak Floating Market|DamnoenSaduak] and [Klong Dan|KlongDan].",
+    },
+    {
+        // 01:00:40
+        title: "The new chairman",
+        description: "Back in [Hai Fat's house|dragongarden], Scaramanga has grown tired of Hai Fat telling him what to do, so he assembles his golden gun and shoots his employer.",
+    },
+    {
+        // 01:02:40
+        title: "Phuyuck '74",
+        description: "After having dinner with Goodnight at his hotel, present day [Mandarin Oriental Hotel|orientalhotel], they are interrupted by the appearance of ms. Anders, who admits to having sent the golden bullet to London. She lets Bond know where she will be, carrying the solex agitator, the next day.",
+    },
+    {
+        // 01:11:40
+        title: "The end of ms. Anders",
+        description: "The fighting match where Scaramanga kills ms. Anders, and meets Bond was recorded at [Rajadamnern Boxing Stadium|Rajadamnern]. Goodnight gets locked in the boot of Scaramanga's car which takes off.",
+    },
+    {
+        // 01:17:45
+        title: "AMC",
+        description: "Since Goodnight has the car keys, Bond runs out on the street to catch a taxi but instead finds an AMC car dealership. AMC cars were not sold in Thailand at the time, but according to [the James Bond wiki|https://jamesbond.fandom.com/wiki/Bangkok] the dealership was located in the [Chokchai Building|chokchai], which has since been demolished.",
     },
 
     // Tom of [James Bond Radio|] has made an excellent [video|http://jamesbondradio.com/trip-james-bond-island-khao-phing-kan-thailand-video/] of his visit to James Bond Island.
@@ -195,6 +225,99 @@ locations: [
         position: {
             lat: 22.283364, 
             lng: 114.163037,
+        },
+    },
+    {
+        id: "dragongarden",
+        name: "Dragon Garden",
+        position: {
+            lat: 22.363341,  
+            lng: 114.051109,
+            zoom: 18,
+        },
+    },
+    {
+        id: "dg_door",
+        name: "Dragon Garden's front door",
+        position: {
+            lat: 22.3631384,  
+            lng: 114.0519933,
+            zoom: 18,
+        },
+        streetView: {
+            lat: 22.3631384, 
+            lng: 114.0519933,
+            heading: 330,
+        },
+    },
+    {
+        id: "mausoleum",
+        name: "Dragon Garden's mausoleum",
+        position: {
+            lat: 22.363942,  
+            lng: 114.050606,
+            zoom: 18,
+        },
+    },
+    {
+        id: "ThapKhwan",
+        name: "Thap Khwan House, The Ancient City",
+        position: {
+            lat: 13.546187,   
+            lng: 100.627332,
+            zoom: 18,
+        },
+        streetView: {
+            lat: 13.5459212,
+            lng: 100.6275781,
+            heading: 315,
+            zoom: 1.2,
+        },
+    },
+    {
+        id: "DamnoenSaduak",
+        name: "Damnoen Saduak floating market",
+        position: {
+            lat: 13.521455,   
+            lng: 99.959272,
+        },
+    },
+    {
+        id: "KlongDan",
+        name: "Klong Dan",
+        position: {
+            lat: 13.505506,   
+            lng: 100.817912,
+        },
+    },
+    {
+        id: "orientalhotel",
+        name: "The Mandarin Oriental Hotel",
+        position: {
+            lat: 13.505506,   
+            lng: 100.817912,
+        },
+    },
+    {
+        id: "Rajadamnern",
+        name: "Rajadamnern boxing stadium",
+        position: {
+            lat: 13.760935,   
+            lng: 100.508814,
+        },
+        streetView: {
+            lat: 13.7611464,
+            lng: 100.508435,
+            heading: 130,
+            zoom: 1.2,
+        },
+    },
+    {
+        id: "chokchai",
+        name: "The Chokchai building (demolished)",
+        position: {
+            lat: 13.729670,    
+            lng: 100.570431,
         },
     },
 ]}
