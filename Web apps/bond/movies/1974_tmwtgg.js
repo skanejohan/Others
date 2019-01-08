@@ -1,40 +1,4 @@
 const tmwtgg = {
-            // 0:30-7:50     James Bond Island
-            // 7:50-10:15    intro
-            // 10:15-14 M's office
-            // 14-18:15    Beirut (cabaret)
-            // 18:15-19_00: street in Beriut
-            // 19_00-20:30  Qs lab
-            // 20_30-20:45 Macau (sign Casino de Macau) 
-            // 20:45-23:45 Lazars lab
-            // -24:30  Casino
-            // 24:30: Hongkong harbour
-            // 25 Hong Kong Macau Hydrofoil Ltd - Mary Goodnight
-            // 26:15-26_45 outside The Peninsula Hotel
-            // 26:45-31:45  The Peninsula Hotel
-            // Bottoms-Up Club
-            // 32_22 Golden Dragon Company (street looking at club)
-            // 35 Harbour (Bond)
-            // 35 Harbour (Scaramanga, Djonk)
-            // 37 Harbour (Bond) in boat - Bayer?
-            // 38 Queen Elizabeth (stage)
-            // 42:10 Hai Fat's house, Bangkok
-            // 45:45 Road outside Hai Fat's house
-            // 46 Peninsula Hotel (?)
-            // 47: Hai Fat's house
-            // 50: "school"
-            // 54:19 outside school... canal, temple... canal race
-            // 1:00 Hai Fat's house
-            // 1:02 Hotel, Bangkok
-            // 1:11 Kickboxing
-            // 1:16 Outside kickboxing
-            // 1:17 AMC dealer (streets of Bangkok, where?)
-            // 1:21: leaving Bangkok
-            // 1:23: bridge jump
-            // 1:27 Queen Elizabeth
-            // 1:28 South China Sea - JB island
-            // 1:53 Junk
-            // 1:58 Emd credits
     scenes : [
     {
         // 00:00:00
@@ -133,11 +97,24 @@ const tmwtgg = {
     },
     {
         // 01:17:45
-        title: "AMC",
-        description: "Since Goodnight has the car keys, Bond runs out on the street to catch a taxi but instead finds an AMC car dealership. AMC cars were not sold in Thailand at the time, but according to [the James Bond wiki|https://jamesbond.fandom.com/wiki/Bangkok] the dealership was located in the [Chokchai Building|chokchai], which has since been demolished.",
+        title: "Meeting an old friend",
+        description: "Since Goodnight has the car keys, Bond runs out on the street to catch a taxi but instead finds an AMC car dealership. AMC cars were not sold in Thailand at the time, but according to [the James Bond wiki|https://jamesbond.fandom.com/wiki/Bangkok] the dealership was located in the [Chokchai Building|chokchai], which has since been demolished. During the car chase, we first see Bond, with a \"deputized\" Sheriff J.W. Pepper in the passenger seat, driving down Ratchadamnoen Avenue, with the [Democracy Monument|dem] in the background. Later, the local police start chasing them near the buddhist temple [Wat Suthat Thepwararam and the Giant Swing|swing], before they leave Bangkok. It is not known where the famous spiral car jump was filmed, nor the location of the barn where Scaramanga hides the wings that he so conveniently attaches to his car.",
     },
-
-    // Tom of [James Bond Radio|] has made an excellent [video|http://jamesbondradio.com/trip-james-bond-island-khao-phing-kan-thailand-video/] of his visit to James Bond Island.
+    {
+        // 01:27:15
+        title: "M is not pleased",
+        description: "Back on \"The Queen Elisabeth\", where all the scenes are shot in the studio.",
+    },
+    {
+        // 01:28:40
+        title: "Showdown",
+        description: "The final scenes of the film - the fight between Bond and Scaramanga as well as the concluding trip on the junk - are shot in the \"South China Sea\", in reality the area around Phang Na Bay, just north of Phuket, Thailand. For details on Scaramanga's hideout [Khao Phing Kan|jbisland], Tom of [James Bond Radio|http://jamesbondradio.com] has made an excellent [video|http://jamesbondradio.com/trip-james-bond-island-khao-phing-kan-thailand-video/] of his visit there.",
+    },
+    {
+        // 01:18:50
+        title: "End credits",
+        description: "\"Made by Eon Productions Limited on location in Hong Kong, Macau, Thailand and at Pinewood Studios, London, England\"",
+    },
 ],
 locations: [
     {
@@ -318,6 +295,40 @@ locations: [
         position: {
             lat: 13.729670,    
             lng: 100.570431,
+        },
+    },
+    {
+        id: "dem",
+        name: "The Democracy Monument",
+        position: {
+            lat: 13.756684,     
+            lng: 100.501911,
+        },
+        streetView: {
+            lat: 13.7567142,
+            lng: 100.5008656,
+            heading: 120,
+        }
+    },
+    {
+        id: "swing",
+        name: "Wat Suthat Thepwararam and the Giant Swing",
+        position: {
+            lat: 13.751502,     
+            lng: 100.501121,
+        },
+        streetView: {
+            lat: 13.7519618,
+            lng: 100.5015321,
+            heading: 210,
+        }
+    },
+    {
+        id: "jbisland",
+        name: "James Bond Island (Khao Phing Kan)",
+        position: {
+            lat: 8.274880,     
+            lng: 98.501365,
         },
     },
 ]}

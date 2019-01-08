@@ -9,7 +9,6 @@
  - Mention the Riviera hotel was used for indoor scenes.
 
  -  The are claims that some of the desert scenes were shot in the Black Rock Desert, but this is questioned on the web page of "Friends of Black Rock High Rock" (http://blackrockdesert.org/wiki/index.php/Motion_Pictures)
- - Is Southampton used? (https://en.wikipedia.org/wiki/Diamonds_Are_Forever_(film)#Filming)
  - Use pendleton for Blofeld's Oil Rig Lair (don't know which scene). Modify the coordinates - they are currently at the entrance.
 
   Made by EON PRODUCTIONS LIMITED on location in USA, Germany, Holland, France and at Pinewood Studios, London, England
@@ -152,6 +151,12 @@ const daf = {
             title: "Love Boat",
             description: "The final scene, where Mr. Wint and Mr. Kidd try to kill Bond on the boat is recorded on the ocean liner Canberra, a P&O liner at that time in traffic between Southampton and Australia. The scene where Leiter and Whyte bid them farewell is recorded in [Southampton|southampton].",
         },
+        {
+            title: "End credits",
+            description: "\"Made by EON PRODUCTIONS LIMITED on location in USA, Germany, Holland, France and at Pinewood Studios, London, England\"",
+        },
+
+        
     ],
     locations: [
         {

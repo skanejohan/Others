@@ -132,13 +132,13 @@ const ohmss = {
         },
         {
             // 2:12:20
-            title: "Tradegy",
+            title: "Tragedy",
             description: "Bond stops the car at the side of the [road|tragedy] to remove the flowers, and Blofeld and Irma Bunt drive by. Irma Bunt shoots and kills Tracy.", 
         },
         {
             // 2:15:00 - 2:15:40
             title: "End credits",
-            description: "", 
+            description: "\"Made by EON PRODUCTIONS LTD on location in SWITZERLAND and PORTUGAL and at PINEWOOD STUDIOS, LONDON, ENGLAND\"", 
         },
     ],
     locations: [

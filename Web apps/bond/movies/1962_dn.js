@@ -189,6 +189,10 @@ const dn = {
             // 01:41:50
             title: "Finale",
             description: "The final scenes, when Bond has rescued Honey and everyone escape from Crab Key, are recorded at [Reynold's Pier|reynold].",
+        },
+        {
+            title: "End credits",
+            description: "\"Released by United Artists - Filmed in Jamaica and at Pinewood Studios, London, England\"",
         }
     ],
     locations: [
