@@ -1971,4 +1971,51 @@ Kris och Luhrs bröllop - Ronneby Brunn
 			},
 		]
 	},
+	{
+		name: "Julresa till Innsbruck",
+		start: new Date(2018, 11, 21),
+		end: new Date(2018, 11, 31),
+		locations: [
+			{
+				name: "Kielfärjan",
+				address: "",
+				url: "stena.se",
+				position: new google.maps.LatLng(56.431173, 11.349044),
+				start: new Date(2018, 11, 21),
+				end: new Date(2018, 11, 22),
+			},
+			{
+				name: "Nattåg Hamburg - Innsbruck",
+				address: "",
+				url: "https://www.oebb.at/",
+				position: new google.maps.LatLng(48.364875, 10.885127),
+				start: new Date(2018, 11, 22),
+				end: new Date(2012, 11, 23),
+			},
+			{
+				name: "Altstadthotel Weisses Kreuz",
+				address: "Herzog-Friedrich-Straße 31, 6020 Innsbruck, Österrike",
+				url: "weisseskreuz.at",
+				position: new google.maps.LatLng(47.267706, 11.393572),
+				start: new Date(2018, 11, 23),
+				end: new Date(2012, 11, 29),
+			},
+			{
+				name: "Nattåg Innsbruck - Hamburg",
+				address: "",
+				url: "https://www.oebb.at/",
+				position: new google.maps.LatLng(48.364875, 10.885127),
+				start: new Date(2018, 11, 29),
+				end: new Date(2012, 11, 30),
+			},
+			{
+				name: "Kielfärjan",
+				address: "",
+				url: "stena.se",
+				position: new google.maps.LatLng(56.431173, 11.349044),
+				start: new Date(2018, 11, 30),
+				end: new Date(2018, 11, 31),
+			},
+		]
+	},
 ]
