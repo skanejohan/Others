@@ -28,10 +28,12 @@ class Engine {
         }
         canvas.onclick = function(e) {
             var handled = false;
+            var clicked = false;
             that._forPopupAndEachElement(e => {
-                if(e.hovering() && (that._modalLayer.length === 0 || e.onModalLayer)) {
+                if(e.hovering() && (that._modalLayer.length === 0 || e.onModalLayer) && !clicked) {
                     handled = true;
                     if (e.onclick !== undefined) {
+                        clicked = true;
                         e.onclick();
                     }                
                 } 
