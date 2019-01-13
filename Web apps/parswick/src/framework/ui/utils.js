@@ -1,6 +1,4 @@
-import { AccessState } from "../content/item.js";
-
-export { Utils };
+export { Utils, BACKGROUNDLAYERINDEX, ELEMENTBASELAYERINDEX };
 
 class Utils {
 
@@ -29,3 +27,6 @@ class Utils {
         return allItemsHere.filter(i => i.isVisible && !location.itemPositions[i.name] && !i.isDoor && !i.isWindow);
     }
 }
+
+const BACKGROUNDLAYERINDEX = 0;
+const ELEMENTBASELAYERINDEX = 1;

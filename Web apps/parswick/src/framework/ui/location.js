@@ -3,7 +3,7 @@ import { addItemElements, removeItemElements } from "./itemcalculator.js";
 import { ArrowElement } from "./elements/arrow.js";
 import { AccessState } from "../content/item.js";
 import { DoorElement } from "./elements/door.js";
-import { Utils } from "./utils.js";
+import { Utils, ELEMENTBASELAYERINDEX } from "./utils.js";
 
 export { LocationUI };
 
@@ -100,7 +100,7 @@ class LocationUI {
         Utils.addMenuTo(elem);
         this.doorElements[door.name] = elem;
         Utils.setVerbs(elem, _door, this.context);
-        this.engine.add(elem);
+        this.engine.add(elem, ELEMENTBASELAYERINDEX);
         elem.fadeIn(FADETIME);
     }
 
@@ -115,7 +115,7 @@ class LocationUI {
             this.context.moveTo(this.location.exits[direction].target, direction);
         });
         this.arrowElements[direction] = arrowElement;
-        this.engine.add(arrowElement);
+        this.engine.add(arrowElement, ELEMENTBASELAYERINDEX);
         arrowElement.fadeIn(FADETIME);
         return arrowElement;
     }
@@ -123,7 +123,7 @@ class LocationUI {
     addWall(x1, y1, x2, y2, fadeInDirection) {
         let lineElement = new Line(x1, y1, x2, y2, COLOR);
         this.wallElements.push(lineElement);
-        this.engine.add(lineElement);
+        this.engine.add(lineElement, ELEMENTBASELAYERINDEX);
         lineElement.fadeIn(FADETIME);
     }
 }

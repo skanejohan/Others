@@ -99,6 +99,15 @@ class Engine {
             this.bufferCanvas.height = h;
         }
         
+        // Calculate the hovering element, i.e. the element with highest 
+        // layerIndex whose hovering() method returns true. 
+        ElementBase.currentHoveringElement = null;
+        this._forEachElementReversed(e => {
+            if (ElementBase.currentHoveringElement == null && e.hovering()) {
+                ElementBase.currentHoveringElement = e;
+            }
+        }); 
+
         // Draw all elements, in layer order.
         this._forEachElement(e => {
             e.draw();
@@ -144,13 +153,26 @@ class Engine {
         this._layerIndices().forEach(i => fn(this._layers[i]));
     }
 
+    _forEachLayerReversed(fn) {
+        this._layerIndices().slice(0).reverse().forEach(i => fn(this._layers[i]));
+    }
+
     _forEachNonModalElement(fn) {
         this._forEachLayer(l => l.forEach(fn));
+    }
+
+    _forEachNonModalElementReversed(fn) {
+        this._forEachLayerReversed(l => l.forEach(fn));
     }
 
     _forEachElement(fn) {
         this._forEachNonModalElement(fn);
         this._modalLayer.forEach(fn);
+    }
+
+    _forEachElementReversed(fn) {
+        this._modalLayer.forEach(fn);
+        this._forEachNonModalElementReversed(fn);
     }
 
     _forPopupAndEachElement(fn) {

@@ -1,5 +1,6 @@
 import { ItemElement } from "./item.js";
 import { ArrowElement } from "./arrow.js";
+import { ELEMENTBASELAYERINDEX } from "../utils.js";
 
 export { DoorElement };
 
@@ -80,7 +81,7 @@ class DoorElement extends ItemElement {
     }
 
     _showArrow() {
-        this.engine.add(this.arrowElement);
+        this.engine.add(this.arrowElement, ELEMENTBASELAYERINDEX);
         this.arrowElement.fadeIn(FADETIME);
     }
 

@@ -105,14 +105,14 @@ class Kitchen extends Location {
         super("kitchen");
         this.containedItems = ["sink", "waterCooker", "fridge", "table", "chair", "cupboard", "bathroomDoor"];
         this.itemPositions = {
-            "cup":  { x: 390, y: 160, w: 20, h: 20, layerIndex: 1 }, // TODO make it possible to put it inside the cupboard (x=390)
+            "cup":  { x: 390, y: 110, w: 20, h: 20, layerIndex: 2 },
             "cupboard": { x: 380, y: 100, w: 70, h: 70 },
             "sink": { x: 350, y: 180, w: 100, h: 160 },
             "chair":  { x: 130, y: 100, w: 40, h: 40 },
             "table":  { x: 100, y: 150, w: 100, h: 100 },
             "fridge":  { x: 50, y: 320, w: 80, h: 80 },
-            "officeDoorKey":  { x: 350, y: 200, w: 20, h: 20, layerIndex: 1 }, // TODO make it possible to put it inside the cupboard (x=390)
-            "waterCooker": { x: 390, y: 140, w: 20, h: 20 },
+            "officeDoorKey":  { x: 390, y: 140, w: 20, h: 20, layerIndex: 2 },
+            "waterCooker": { x: 390, y: 200, w: 20, h: 20 },
         };
         this.doorPositions = {
             "bathroomDoor": { type: "S", start: 210, length: 80 },

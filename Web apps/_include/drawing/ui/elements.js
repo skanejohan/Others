@@ -199,7 +199,8 @@ class ElementBase {
         }
 
         // If we hover over this element and it has a hidden popup, activate the "show popup" timer.  
-        if (this.hovering() && ElementBase.currentPopup === undefined && this.popup.state == PopupState.HIDDEN) {
+        if (ElementBase.currentHoveringElement == this && ElementBase.currentPopup === undefined && 
+            this.popup.state == PopupState.HIDDEN) {
             ElementBase.currentPopup = this.popup;
             this.popup.state = PopupState.SHOWPENDING;
             ElementBase.showPopupTimer.activate(200, () => {
@@ -213,14 +214,14 @@ class ElementBase {
 
         // If we hover over this element, or its visible popup, deactivate the "hide 
         // popup" timer if it is active.
-        if ((this.hovering() || this.popupHovering()) && this.popup.state == PopupState.HIDEPENDING) {
+        if ((ElementBase.currentHoveringElement == this || this.popupHovering()) && this.popup.state == PopupState.HIDEPENDING) {
             this.popup.state = PopupState.VISIBLE;
             ElementBase.hidePopupTimer.deactivate();
         }
 
         // If we don't hover over this element or its popup, but the popup is visible, 
         // and the "hide popup" timer is not active, activate it.
-        if (!this.hovering() && !this.popupHovering() && this.popup.state == PopupState.VISIBLE) {
+        if (ElementBase.currentHoveringElement != this && !this.popupHovering() && this.popup.state == PopupState.VISIBLE) {
             this.popup.state = PopupState.HIDEPENDING;
             ElementBase.hidePopupTimer.activate(300, () => {
                 this.popup.state = PopupState.HIDING;
@@ -232,7 +233,7 @@ class ElementBase {
         }
 
         // If we don't hover over this element, but its "show popup" timer is active, deactivate it.
-        if (!this.hovering() && this.popup.state == PopupState.SHOWPENDING) {
+        if (ElementBase.currentHoveringElement != this && this.popup.state == PopupState.SHOWPENDING) {
             this.popup.state = PopupState.HIDDEN;
             ElementBase.showPopupTimer.deactivate();
             ElementBase.currentPopup = undefined;

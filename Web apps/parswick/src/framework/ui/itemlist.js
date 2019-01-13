@@ -1,4 +1,5 @@
 import { addItemElements, removeItemElements } from "./itemcalculator.js";
+import { ELEMENTBASELAYERINDEX } from "./utils.js";
 
 export { ItemListUI } ;
 
@@ -9,8 +10,8 @@ class ItemListUI {
         this.context = context;
         this.itemElements = [];
 
-        this.engine.add(new Rect(x, y, w, h, COLOR));
-        this.engine.add(new TextSegment(x+10, y+26, w, 20, caption, FONT, COLOR));
+        this.engine.add(new Rect(x, y, w, h, COLOR), ELEMENTBASELAYERINDEX);
+        this.engine.add(new TextSegment(x+10, y+26, w, 20, caption, FONT, COLOR), ELEMENTBASELAYERINDEX);
 
         this.x = x;
         this.y = y;
@@ -32,7 +33,7 @@ class ItemListUI {
                 let w = this.w - 40;
                 let h = 26;
                 this.yDelta += 30;
-                return { x: x, y: y, w: w, h: h };
+                return { x: x, y: y, w: w, h: h, layerIndex: ELEMENTBASELAYERINDEX + 1 };
             }, 
             this.engine, this.context);
     }

@@ -1,6 +1,6 @@
 import { ItemElement } from "./elements/item.js";
 import { ArrayUtils } from "../../_include/arrayutils.js";
-import { Utils } from "./utils.js";
+import { Utils, ELEMENTBASELAYERINDEX } from "./utils.js";
 
 export { addItemElements, removeItemElements };
 
@@ -31,7 +31,7 @@ function addItemElement(item, posFn, elems, engine, context, onAdded) {
     Utils.addMenuTo(elem);
     Utils.setVerbs(elem, item, context);
     elems.push(elem);
-    engine.add(elem);
+    engine.add(elem, pos.layerIndex || ELEMENTBASELAYERINDEX);
     item.element = elem;
     elem.item = item;
     elem.fadeIn(FADETIME, onAdded);
