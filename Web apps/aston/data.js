@@ -2018,4 +2018,19 @@ Kris och Luhrs bröllop - Ronneby Brunn
 			},
 		]
 	},
+	{
+		name: "Med mamma, Richard, Jessica och Wilhelm i Småland (MC-inköp)",
+		start: new Date(2019, 0, 4),
+		end: new Date(2019, 0, 5),
+		locations: [
+			{
+				name: "Elite Stadshotellet Växjö",
+				address: "Kungsgatan 6, 352 33 Växjö",
+				url: "elite.se",
+				position: new google.maps.LatLng(56.877891, 14.808869),
+				start: new Date(2019, 0, 4),
+				end: new Date(2019, 0, 5),
+			},
+		]
+	},
 ]
