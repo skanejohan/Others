@@ -158,6 +158,9 @@ class ElementBase {
         this._beforeDraw();
         if (!this.finished) { this._doDraw(ElementBase.context); }
         this._afterDraw();
+        if (ElementBase.drawClickRects) {
+            this._drawClickRects(ElementBase.context);
+        } 
     }
 
     _beforeDraw() {
@@ -240,12 +243,26 @@ class ElementBase {
         }
     }
 
+    _drawClickRects(ctx) {
+        ctx.strokeStyle = "red";
+        if (this.clickRect) {
+            ctx.strokeRect(this.clickRect.x, this.clickRect.y, this.clickRect.w, this.clickRect.h);
+        }
+        else {
+            ctx.strokeRect(this._x, this._y, this._w, this._h);
+        }
+    }
+
     setPopupCoordinates() {
         this.popup.x = Math.max(ElementBase.canvasRect.left + 5, Math.min(ElementBase.mousePos.x, ElementBase.canvasRect.right - this.popup.w - 5));
         this.popup.y = Math.max(ElementBase.canvasRect.top + 5, Math.min(ElementBase.mousePos.y, ElementBase.canvasRect.bottom - this.popup.h - 5));
     }
 
     hovering() {
+        if (this.clickRect) {
+            return this.mouseInside(this.clickRect.x, this.clickRect.y, this.clickRect.x + this.clickRect.w, 
+                this.clickRect.y + this.clickRect.h);
+        }
         return this.mouseInside(this.x, this.y, this.x + this.w, this.y + this.h);
     }
 
@@ -363,11 +380,24 @@ class CompositeElementBase extends ElementBase {
             }
         }
         this._afterDraw();
+        if (ElementBase.drawClickRects) {
+            this._drawClickRects();
+        } 
     }
 
     _doDraw() {
         this.elements.forEach(e => { e._doDraw(ElementBase.bufferContext); });
     }
+
+    _drawClickRects() {
+        if (this.clickRect) {
+            ElementBase.context.strokeRect(this.clickRect.x, this.clickRect.y, this.clickRect.w, this.clickRect.h);
+        }
+        else {
+            this.elements.forEach(e => { e._drawClickRects(ElementBase.context); });
+        }
+    }
+
 }
 
 // ---------- Base classes for specific elements ------------------------------------------------------------------------
@@ -463,7 +493,12 @@ class ComplexElementBase extends ElementBase {
 
     _drawClickRects(ctx) {
         ctx.strokeStyle = "red";
-        this._clickRects.forEach(r => ctx.strokeRect(r.left, r.top, r.right-r.left, r.bottom-r.top));
+        if (this.clickRect) {
+            ctx.strokeRect(this.clickRect.x, this.clickRect.y, this.clickRect.w, this.clickRect.h);
+        }
+        else {
+            this._clickRects.forEach(r => ctx.strokeRect(r.left, r.top, r.right-r.left, r.bottom-r.top));
+        }
     }
 }
 

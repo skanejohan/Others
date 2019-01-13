@@ -26,16 +26,29 @@ class DoorElement extends ItemElement {
         else {
             this._angle = 0;
         }
+
+        this.setClickRect();
+    }
+
+    setClickRect() {
+        let cs = this.isOpen ? this.coords.open : this.coords.closed;
+        this.clickRect = { x: cs.x, y: cs.y, w: cs.w, h: cs.h };
     }
 
     open(doneFn) {
-        this.rotate(0, this.coords.openAngle, 300, doneFn);
+        this.rotate(0, this.coords.openAngle, 300, () => {
+            this.setClickRect();
+            doneFn();
+        });
         this._showArrow();
         this.isOpen = true;
     }
 
     close(doneFn) {
-        this.rotate(this.coords.openAngle, 0, 300, doneFn);
+        this.rotate(this.coords.openAngle, 0, 300, () => {
+            this.setClickRect();
+            doneFn();
+        });
         this._hideArrow();
         this.isOpen = false;
     }
@@ -90,7 +103,7 @@ class DoorElement extends ItemElement {
     }
 }
 
-function _getDoorOrWindowCoordinates(startX, startY, endX, endY, direction, open) {
+function _getDoorOrWindowCoordinates(startX, startY, endX, endY, direction) {
     switch(direction) {
         case "N":
             return {
@@ -116,7 +129,7 @@ function _getDoorOrWindowCoordinates(startX, startY, endX, endY, direction, open
                 open : {x : startX + 1, y : startY - (endX - startX - 2), w : DOOR_WINDOW_DEPTH, h : endX - startX - 2},
                 closed : { x : startX + 1, y : startY - DOOR_WINDOW_DEPTH, w : endX - startX - 2, h : DOOR_WINDOW_DEPTH },
                 openAngle: -Math.PI / 2,
-                pivotPoint : { x : startX + 1, y : startY - DOOR_WINDOW_DEPTH },
+                pivotPoint : { x : startX + DOOR_WINDOW_DEPTH / 2, y : startY - DOOR_WINDOW_DEPTH / 2 },
                 arrow: {}, 
             }   
         case "W":

@@ -21,6 +21,7 @@ class UI {
 
         window.requestAnimationFrame(() => this.draw());
         window.context = context; // FOR DEBUGGING TODO REMOVE
+        // ElementBase.drawClickRects = true;  // FOR DEBUGGING TODO REMOVE
 
         this.showMessages();
     }
