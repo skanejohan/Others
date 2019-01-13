@@ -22,7 +22,11 @@ class ItemListUI {
 
     removeElementsForNoLongerVisibleItems(items) {
         removeItemElements(items, this.itemElements);
-        // TODO compress list
+        this.yDelta = 30;
+        this.itemElements.forEach(e => {
+            e.y = this.y + this.yDelta;
+            this.yDelta += 30;
+        });
     }
 
     addElementsForNowVisibleItems(items) {

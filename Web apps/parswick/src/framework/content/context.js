@@ -72,6 +72,7 @@ class Context {
     addItemToCurrentLocation(item) {
         item = this.item(item);
         this.allLocations[this.currentLocation].containedItems.push(item.name);
+        item.container = this.currentLocation;
     }
 
     removeItemFromContainer(item) {
@@ -79,6 +80,7 @@ class Context {
         var container = this.allItems[item.container] || this.allLocations[item.container];
         if (container) {
             ArrayUtils.remove(container.containedItems, item.name);
+            item.container = undefined;
         }
     }
 

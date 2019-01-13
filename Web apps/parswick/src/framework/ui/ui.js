@@ -74,13 +74,23 @@ class UI {
     }
 
     updateItemElements() {
-        this.locationUI.removeElementsForNoLongerVisibleItems(Utils.visiblePositionedItemsHere(this.context));
-        this.itemsHereUI.removeElementsForNoLongerVisibleItems(Utils.visibleUnpositionedItemsHere(this.context));
-        this.inventoryUI.removeElementsForNoLongerVisibleItems(this.context.getItems(this.context.inventory));
+        let locationItems = Utils.visiblePositionedItemsHere(this.context);
+        let itemsHereItems = Utils.visibleUnpositionedItemsHere(this.context);
+        let inventoryItems = this.context.getItems(this.context.inventory);
 
-        this.locationUI.addElementsForNowVisibleItems(Utils.visiblePositionedItemsHere(this.context));
-        this.itemsHereUI.addElementsForNowVisibleItems(Utils.visibleUnpositionedItemsHere(this.context));
-        this.inventoryUI.addElementsForNowVisibleItems(this.context.getItems(this.context.inventory));
+        if (false) { // Debugging
+            console.log("Location:  " + locationItems.map(i => i.name).join());
+            console.log("Inventory: " + inventoryItems.map(i => i.name).join());
+            console.log("Items:     " + itemsHereItems.map(i => i.name).join());
+        }
+
+        this.locationUI.removeElementsForNoLongerVisibleItems(locationItems);
+        this.itemsHereUI.removeElementsForNoLongerVisibleItems(itemsHereItems);
+        this.inventoryUI.removeElementsForNoLongerVisibleItems(inventoryItems);
+
+        this.locationUI.addElementsForNowVisibleItems(locationItems);
+        this.itemsHereUI.addElementsForNowVisibleItems(itemsHereItems);
+        this.inventoryUI.addElementsForNowVisibleItems(inventoryItems);
 }
 
     showMessages() {

@@ -39,10 +39,10 @@ function addItemElement(item, posFn, elems, engine, context, onAdded) {
 
 function removeItemElement(elem, elems, onRemoved) {
     if (LOG) console.log("Remove item element for " + elem.item.caption);
+    ArrayUtils.remove(elems, elem);
     elem.item.element = undefined;
     elem.finishAfterAnimations = true;
     elem.fadeOut(FADETIME, () => {
-        ArrayUtils.remove(elems, elem);
         if (onRemoved != undefined) {
             onRemoved();
         }
