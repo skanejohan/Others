@@ -72,8 +72,17 @@ class LocationUI {
 
     addElementsForNowVisibleItems(items) {
         addItemElements(items, this.itemElements, 
-            item => this.location.itemPositions[item.name], 
+            item => this.calcItemPosAndColor(item), 
             this.engine, this.context);
+    }
+
+    calcItemPosAndColor(item) {
+        let result = this.location.itemPositions[item.name];
+        if (result.layerIndex == 2) {
+            result.color = LAYER2COLOR;
+            result.frameColor = LAYER2FRAMECOLOR;
+        }
+        return result;
     }
 
     openDoor(doorItem) {
@@ -121,7 +130,7 @@ class LocationUI {
     }
 
     addWall(x1, y1, x2, y2, fadeInDirection) {
-        let lineElement = new Line(x1, y1, x2, y2, COLOR);
+        let lineElement = new Line(x1, y1, x2, y2, LAYER1COLOR);
         this.wallElements.push(lineElement);
         this.engine.add(lineElement, ELEMENTBASELAYERINDEX);
         lineElement.fadeIn(FADETIME);

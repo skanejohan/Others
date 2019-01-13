@@ -27,7 +27,7 @@ function removeItemElements(availableItems, currentElements, onRemoved) {
 function addItemElement(item, posFn, elems, engine, context, onAdded) {
     if (LOG) console.log("Add item element for " + item.caption);
     let pos = posFn(item);
-    let elem = new ItemElement(pos.x, pos.y, pos.w, pos.h, item.caption);
+    let elem = new ItemElement(pos.x, pos.y, pos.w, pos.h, item.caption, pos.color, pos.frameColor);
     Utils.addMenuTo(elem);
     Utils.setVerbs(elem, item, context);
     elems.push(elem);

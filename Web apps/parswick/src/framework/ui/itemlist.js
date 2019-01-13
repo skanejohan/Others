@@ -10,8 +10,8 @@ class ItemListUI {
         this.context = context;
         this.itemElements = [];
 
-        this.engine.add(new Rect(x, y, w, h, COLOR), ELEMENTBASELAYERINDEX);
-        this.engine.add(new TextSegment(x+10, y+26, w, 20, caption, FONT, COLOR), ELEMENTBASELAYERINDEX);
+        this.engine.add(new Rect(x, y, w, h, LAYER1COLOR), ELEMENTBASELAYERINDEX);
+        this.engine.add(new TextSegment(x+10, y+26, w, 20, caption, FONT, LAYER1COLOR), ELEMENTBASELAYERINDEX);
 
         this.x = x;
         this.y = y;

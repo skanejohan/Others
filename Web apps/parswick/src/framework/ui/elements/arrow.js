@@ -42,7 +42,7 @@ class ArrowElement extends ComplexElementBase {
             ctx.fillStyle = "white";
         }
         else {
-            ctx.fillStyle = COLOR;
+            ctx.fillStyle = LAYER1COLOR;
         }
         ctx.beginPath();
         OUTEREDGE.forEach(obj => {
@@ -62,7 +62,7 @@ class ArrowElement extends ComplexElementBase {
         ctx.closePath();
         ctx.fill();
 
-        ctx.fillStyle = DARKCOLOR;
+        ctx.fillStyle = LAYER1FRAMECOLOR;
         ctx.beginPath();
         INNEREDGE.forEach(obj => {
             var dObj = this._getDirectionalEdgeInfo(obj);
