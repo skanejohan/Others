@@ -722,7 +722,14 @@ class Menu extends CompositeElementBase {
 
     addItem(text, onclick) {
         this.addElement(new FillTextRect(this.x, this.y + this.itemHeight * this.elements.length, this.w, this.itemHeight, text, 
-            this.margin, this.font, this.fontStyle, this.bgStyle, HorizontalAlignment.LEFT, VerticalAlignment.TOP, onclick));
+            this.margin, this.font, this.fontStyle, this.bgStyle, HorizontalAlignment.LEFT, VerticalAlignment.TOP, () => {
+                this.state = PopupState.HIDING;
+                this.fadeOut(100, () => {
+                    this.state = PopupState.HIDDEN;
+                    ElementBase.currentPopup = undefined;
+                });
+                onclick();
+            }));
         this.h += this.itemHeight;
     }
 
