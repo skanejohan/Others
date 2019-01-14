@@ -90,7 +90,7 @@ class HistorySection extends Location {
            "wall": { x: 430, y: 125, w: 16, h: 200 },
         };
         this.doorPositions = {
-            // "frontDoor": { type: "N", start: 210, length: 80 },
+            "officeDoor": { type: "S", start: 210, length: 80 },
         };
         this.windowPositions = {
             // "fictionLeftWindow": { type: "N", start: 110, length: 80 },

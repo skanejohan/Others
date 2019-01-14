@@ -17,7 +17,7 @@ class Item {
         else {
             this.isVisible = visible;
         }
-        this.description = "There is nothing special about the " + this.name;
+        this.description = "There is nothing special about the " + this.caption;
         this.containedItems = [];
         this.container = undefined; // name of location, another item or undefined
         this.private = new Private(this);
@@ -133,7 +133,7 @@ class PickableItem extends Item {
 
 }
 
-class LockableItem extends Item {
+class LockableItem extends OpenableItem {
     constructor(name, caption, fixed, visible, state, key) {
         super(name, caption, fixed, visible, state);
 
@@ -151,7 +151,7 @@ class LockableItem extends Item {
     }
 
     verbUnlockVisible(context) {
-        return this.state === AccessState.LOCKED && context.isItemInInventory(key);
+        return this.state === AccessState.LOCKED && context.isItemInInventory(this.key);
     }
 
     verbLock(context) {
@@ -163,7 +163,7 @@ class LockableItem extends Item {
     }
 
     verbLockVisible(context) {
-        return this.state === AccessState.LOCKED && context.isItemInInventory(key);
+        return this.state === AccessState.CLOSED && context.isItemInInventory(this.key);
     }
 
     // TODO verbEnterCombination 

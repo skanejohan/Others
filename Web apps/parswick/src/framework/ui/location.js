@@ -106,6 +106,7 @@ class LocationUI {
         let elem = new DoorElement(this.engine, x1, y1, x2, y2, direction, isOpen, () => {
             this.context.moveTo(this.location.exits[direction].target, direction);
         });
+        _door.element = elem;
         Utils.addMenuTo(elem);
         this.doorElements[door.name] = elem;
         Utils.setVerbs(elem, _door, this.context);

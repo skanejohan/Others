@@ -58,8 +58,7 @@ class UI {
             }
 
             this.updateItemElements();
-
-            if (item && !item.isDoor && !item.isWindow) {
+            if (item && item.element && item.element.popup) {
                 Utils.setVerbs(item.element, item, this.context);
             }
         }
