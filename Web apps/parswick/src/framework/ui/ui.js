@@ -20,10 +20,13 @@ class UI {
         this.moveToCurrentLocation();
 
         window.requestAnimationFrame(() => this.draw());
-        window.context = context; // FOR DEBUGGING TODO REMOVE
         // ElementBase.drawClickRects = true;  // FOR DEBUGGING TODO REMOVE
 
         this.showMessages();
+    }
+
+    clear() {
+        this.engine.clear();
     }
 
     draw() {
@@ -32,8 +35,20 @@ class UI {
         this.engine.draw(window.innerWidth, window.innerHeight);
     }
 
+    beginBatchOperations() {
+        this.inBatchOperation = true;
+    }
+
+    endBatchOperations() {
+        this.inBatchOperation = false;
+        this.moveToCurrentLocation();
+    }
+
     onActionPerformed(verb, noun, extraData, preventedBeforeAction) {
-        
+        if (this.inBatchOperation) {
+            return;
+        }
+
         //console.log(`${verb} - ${noun}`);
         var item = this.context.item(noun);
 

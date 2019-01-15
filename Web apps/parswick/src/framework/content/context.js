@@ -15,7 +15,7 @@ class Context {
         this.messages = [initialMessage];             // Array of string
         this.currentLocation = initialLocation;       // string
         this.onActionPerformed = onActionPerformed;   // (string, string) => undefined
-        this.state = new State();                     // State  
+        this.state = new State(this);                 // State  
 
         // Set the container property of all items (either to a location or another item)
         Object.keys(this.allLocations).forEach(name => {
@@ -95,6 +95,7 @@ class Context {
 
     moveTo(location, direction) {
         this.currentLocation = location;
+        this.state.addAction(this.currentLocation, "move");
         this.setMessage("You move to the " + this.allLocations[this.currentLocation].caption);
         this.reportActionPerformed("move", location, direction);
     }
