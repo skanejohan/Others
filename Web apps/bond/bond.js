@@ -67,9 +67,15 @@ class MapUI {
             zoom: this.defaultZoom,
             mapTypeId: 'roadmap',
         });
+        this.movie = undefined;
     }
 
     setMovie(movie) {
+        if (this.movie) {
+            this.movie.locations.forEach(location => {
+                location.marker.setMap(null);
+            });
+        }
         movie.locations.forEach(location => 
             location.marker = new google.maps.Marker({
                 position: {
@@ -77,9 +83,11 @@ class MapUI {
                     lng: location.position.lng 
                 },
                 map: this.map,
+                title: location.name,
                 // TODO icon: normalIcon,
             })
         );
+        this.movie = movie;
     }
 
     navigateTo(lat, lng, zoom) {
@@ -212,6 +220,18 @@ class UI {
             def.overviewButton, 
             def.imageViewButton);
         this.descriptionUI = new DescriptionUI(def.descriptionDiv, (a,l) => this._onAnchorAdded(a, l));
+        
+        def.movies.forEach(m => {
+            let o = document.createElement("option");
+            o.text = m.name;
+            o.movie = m;
+            def.movieSelector.add(o);
+        });
+        def.movieSelector.onchange = o => {
+            let obj = def.movieSelector.options[def.movieSelector.selectedIndex];
+            this.setMovie(obj.movie);
+        }
+        this.setMovie(def.movie);
     }
 
     setMovie(movie) {

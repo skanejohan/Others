@@ -1,4 +1,6 @@
 const tmwtgg = {
+    name: "The Man With The Golden Gun",
+    year: 1974,
     scenes : [
     {
         // 00:00:00

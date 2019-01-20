@@ -13,6 +13,12 @@
 <body onresize="updateElements()">
 
     <div class="header">  
+        <div class="left text-centered">
+            <h3 class="header-title">The physical world of James Bond</h3>
+        </div>
+        <div class="right text-centered">
+            <select class="header-selector" id="movieSelector"></select>
+        </div>
     </div>
     
     <div id="content" class="content">
@@ -85,9 +91,10 @@
             streetViewButton: streetViewButton,
             overviewButton: overviewButton,
             imageViewButton: imageViewButton,
+            movieSelector: movieSelector,
+            movies: [dn, ohmss, daf, tmwtgg],
+            movie: dn,
         });
-
-        ui.setMovie(tmwtgg);
         updateElements();
     </script>
 

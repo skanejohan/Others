@@ -1,4 +1,6 @@
 const ohmss = {
+    name: "On Her Majesty's Secret Service",
+    year: 1969,
     scenes : [
         {
             // 0:00:00

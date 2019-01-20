@@ -15,6 +15,8 @@
  */
 
 const daf = {
+    name: "Diamonds Are Forever",
+    year: 1971,
     scenes : [
         {
             // 0:00:00
