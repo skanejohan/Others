@@ -125,13 +125,13 @@ class Kitchen extends Location {
 class Office extends Location {
     constructor() {
         super("office");
-        this.containedItems = ["safe", "cabinet", "desk"];
+        this.containedItems = ["safe", "cabinet", "desk", "drawer"];
         this.itemPositions = {
-            "safe": { x: 100, y: 330, w: 90, h: 70 },
-            "cabinet": { x: 380, y: 100, w: 70, h: 130 },
-            "desk": { x: 200, y: 200, w: 120, h: 70 },
-            "drawer": { x: 380, y: 100, w: 70, h: 70 },
-            "paperClip": { x: 380, y: 100, w: 70, h: 70 },
+            "safe": { x: 100, y: 325, w: 90, h: 70 },
+            "cabinet": { x: 375, y: 100, w: 70, h: 130 },
+            "desk": { x: 150, y: 150, w: 170, h: 120 },
+            "drawer": { x: 180, y: 200, w: 110, h: 70, layerIndex: 2 },
+            "paperClip": { x: 230, y: 240, w: 30, h: 30, layerIndex: 3 },
             "magnifyingGlass": { x: 180, y: 100, w: 20, h: 20 },
             "metalBox": { x: 220, y: 100, w: 20, h: 20 },
         };

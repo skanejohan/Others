@@ -71,11 +71,7 @@ class UI {
                     }
                     break;
             }
-
             this.updateItemElements();
-            if (item && item.element && item.element.popup) {
-                Utils.setVerbs(item.element, item, this.context);
-            }
         }
     
         this.showMessages();
@@ -106,7 +102,19 @@ class UI {
         this.locationUI.addElementsForNowVisibleItems(locationItems);
         this.itemsHereUI.addElementsForNowVisibleItems(itemsHereItems);
         this.inventoryUI.addElementsForNowVisibleItems(inventoryItems);
-}
+
+        this.setVerbsForItems(locationItems);
+        this.setVerbsForItems(itemsHereItems);
+        this.setVerbsForItems(inventoryItems);
+    }
+
+    setVerbsForItems(items) {
+        items.forEach(item => {
+            if (item && item.element && item.element.popup) {
+                Utils.setVerbs(item.element, item, this.context);
+            }
+        });
+    }
 
     showMessages() {
         console.log(this.context.getMessages());

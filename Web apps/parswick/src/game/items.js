@@ -135,7 +135,7 @@ class Desk extends Item {
 
 class Drawer extends OpenableItem {
     constructor() {
-        super("drawer", "drawer", true, false);
+        super("drawer", "drawer", true, false, AccessState.CLOSED);
         this.containedItems = ["paperClip"];
     }
 
@@ -335,7 +335,7 @@ class MagnifyingGlass extends Item {
 
 class MetalBox extends PickableItem {
     constructor() {
-        super("metalBox", "metal box", false, true, "paperClip");
+        super("metalBox", "metal box", false, true, "paperClip", AccessState.LOCKED);
         this.containedItems = ["stones", "rockPick", "modelCar"];
     }
 
@@ -425,10 +425,6 @@ class Sink extends Item {
     constructor() {
         super("sink", "sink", true, true);
         this.description = "The stainless steel sink has a strange coloration at one end. You have a faint memory of pouring some kind of paint into it it an early age. The tap provides cold water only. On the sink there is a small water cooker.";
-    }
-
-    afterExamine(context) {
-        context.allItems["waterCooker"].isVisible = true;
     }
 }
 
@@ -521,7 +517,7 @@ class Wall extends Item {
 
 class WaterCooker extends Item {
     constructor() {
-        super("waterCooker", "water cooker", true, false);
+        super("waterCooker", "water cooker", true, true);
         this.description = "You have used this water cooker to make your tea for at many years. A trusty friend."; 
         this.verbMakeTea.caption = "Make tea";
     }

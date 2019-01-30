@@ -112,10 +112,12 @@ class OpenableItem extends Item {
 }
 
 class PickableItem extends Item {
-    constructor(name, caption, fixed, visible, key) {
+    constructor(name, caption, fixed, visible, key, state) {
         super(name, caption, fixed, visible);
 
         this.key = key;
+        this.state = state;
+        this.historicStates = new Set([state]);
         this.verbPick.caption = "Pick";
     }        
 
@@ -128,7 +130,7 @@ class PickableItem extends Item {
     }
 
     verbPickVisible(context) {
-        return this.state === AccessState.LOCKED && context.isItemInInventory(key);
+        return this.state === AccessState.LOCKED && context.isItemInInventory(this.key);
     }
 
 }
