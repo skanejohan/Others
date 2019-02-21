@@ -1,6 +1,7 @@
 import { BackgroundUI } from "./background.js";
 import { LocationUI } from "./location.js";
 import { ItemListUI } from "./itemlist.js";
+import { MessagesUI } from "./messages.js";
 import { Utils } from "./utils.js";
 
 export { UI };
@@ -16,13 +17,12 @@ class UI {
         this.locationUI = new LocationUI(this.engine, this.context);
         this.inventoryUI = new ItemListUI(this.engine, this.context, 500, 50, 250, 165, "You are carrying:");
         this.itemsHereUI = new ItemListUI(this.engine, this.context, 500, 235, 250, 165, "You also see:");
+        this.messagesUI = new MessagesUI(this.engine, 450, 400, 300);
 
         this.moveToCurrentLocation();
 
         window.requestAnimationFrame(() => this.draw());
         // ElementBase.drawClickRects = true;  // FOR DEBUGGING TODO REMOVE
-
-        this.showMessages();
     }
 
     clear() {
@@ -117,6 +117,6 @@ class UI {
     }
 
     showMessages() {
-        console.log(this.context.getMessages());
+        this.messagesUI.addMessages(this.context.getMessages());
     }
 }
