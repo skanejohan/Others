@@ -8,12 +8,17 @@ class MessagesUI {
         this.width = width;
         this.left = left;
         this.messages = [];
+        this.timeout = null;
     }
 
     addMessages(messages) {
+        this._deactivateTimer();
+
         if (messages.length == 0) {
+            this._activateTimer();
             return;
         }
+
         let m = messages[0];
         messages.shift();
 
@@ -36,6 +41,26 @@ class MessagesUI {
         this.messages.push(e);
     }
 
+    _activateTimer() {
+        if (this.messages.length > 0) {
+            setTimeout(() => this._timerEvent(), this.messages[0].millisecondsLeft());
+        }
+    }
+
+    _deactivateTimer() {
+        clearTimeout(this.timeout);
+    }
+
+    _timerEvent() {
+        while (this.messages.length > 0 && this.messages[0].millisecondsLeft() <= 0) {
+            var m = this.messages.shift();
+            m.finishAfterAnimations = true;
+            m.fadeOut(300);
+        }
+        this._deactivateTimer();
+        this._activateTimer();
+    }
+
     _messageTimeMs(m) {
         return 1000 + this.message.length * 50;
     }
@@ -54,10 +79,17 @@ class MessageElement extends CompositeElementBase {
         
         super(left-10, textBox.y-10, textBox.w+20, textBox.h+20, onclick);
 
+        var messageTimeMS = 1000 + message.length * 50;
+        this.endTime = new Date(new Date().getTime() + messageTimeMS);
+
         this.addElement(new FillRoundRect(left-10, textBox.y-10, w+20, textBox.h+20, 5, LAYER1COLOR));
         this.addElement(new FillRoundRect(left-5, textBox.y-5, w+10, textBox.h+10, 2, LAYER1FRAMECOLOR));
         this.addElement(textBox);
         this.fadeIn(300);
+    }
+
+    millisecondsLeft() {
+        return this.endTime - new Date();
     }
 
     finalize() {
@@ -65,4 +97,3 @@ class MessageElement extends CompositeElementBase {
         this.fadeOut(300, () => this._animations = []); 
     }
 }
-
