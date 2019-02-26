@@ -29,7 +29,7 @@ class Item {
 
     verbExamine(context) {
         this.private.do("examine", context, () => {
-            context.setMessage(this.description);
+            context.setMessage(`(About ${this.caption}) ${this.description}`);
         });
     }
 
