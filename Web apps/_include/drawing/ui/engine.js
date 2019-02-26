@@ -29,7 +29,7 @@ class Engine {
         canvas.onclick = function(e) {
             var handled = false;
             var clicked = false;
-            that._forPopupAndEachElement(e => {
+            that._forPopupAndEachElementReversed(e => {
                 if(e.hovering() && (that._modalLayer.length === 0 || e.onModalLayer) && !clicked) {
                     handled = true;
                     if (e.onclick !== undefined) {
@@ -182,6 +182,13 @@ class Engine {
             fn(ElementBase.currentPopup);
         }
         this._forEachElement(fn);
+    }
+
+    _forPopupAndEachElementReversed(fn) {
+        if (ElementBase.currentPopup != undefined) {
+            fn(ElementBase.currentPopup);
+        }
+        this._forEachElementReversed(fn);
     }
 
     _removeFromArray(array, element) {
