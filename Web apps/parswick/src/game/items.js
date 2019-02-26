@@ -61,7 +61,7 @@ class Armchair extends Item {
 class ArtShelf extends Item {
     constructor(name) {
         super(name || "artShelf", "architecture shelf", true);
-        this.description = "Many of the books in these shelves are of the &quot;coffee table book&quot; variety."; 
+        this.description = "Many of the books in these shelves are of the \"coffee table book\" variety."; 
     }
 }
 
@@ -105,7 +105,7 @@ class Chair extends Item {
 class Cup extends Item {
     constructor() {
         super("cup", "cup", false, true);
-        this.description = "The cup is white and has the text &quot;Hotel del Sol, Tenerife&quot; written on it. As far as you can remember, you have never been to Tenerife."; 
+        this.description = "The cup is white and has the text \"Hotel del Sol, Tenerife\" written on it. As far as you can remember, you have never been to Tenerife."; 
     }
 
     afterTakeOnce(context) {
@@ -125,7 +125,7 @@ class Cupboard extends OpenableItem {
 class Desk extends Item {
     constructor() {
         super("desk", "desk", true);
-        this.description = "The mahogany desk is cluttered with papers, most of them bills. It seems that you owe the gas company £19.32 and the phone company £26.53, and the unpaid bill of £35 is most likely the reason why the morning paper hasn't appeared in a while. Looking through the piles, you realise that you have never really cleaned out the desk since your father's death. Among other things, you find a few old magazines - it seems like the pound hit a record high in December of 1957 and a record low in Febrary of 1985. And who would have known that the &quot;Benny Hill Show&quot; was cancelled in 1989 (you vividly remember your parents dislike of the show)? Or that French president de Gaulle accused the British government of lacking the necessary commitment to European integration in January of 1963? Well, well... In the desk, there is also a small drawer.";
+        this.description = "The mahogany desk is cluttered with papers, most of them bills. It seems that you owe the gas company £19.32 and the phone company £26.53, and the unpaid bill of £35 is most likely the reason why the morning paper hasn't appeared in a while. Looking through the piles, you realise that you have never really cleaned out the desk since your father's death. Among other things, you find a few old magazines - it seems like the pound hit a record high in December of 1957 and a record low in Febrary of 1985. And who would have known that the \"Benny Hill Show\" was cancelled in 1989 (you vividly remember your parents dislike of the show)? Or that French president de Gaulle accused the British government of lacking the necessary commitment to European integration in January of 1963? Well, well... In the desk, there is also a small drawer.";
     }
 
     afterExamine(context) {
@@ -213,7 +213,7 @@ class Fridge extends Item {
 class FrontDoor extends OpenableItem {
     constructor() {
         super("frontDoor", "front door", true, true, AccessState.CLOSED);
-        this.description = "This is the main entrance to your book shop. You see a sign that says &quot;Closed&quot;. Luckily, that means that is says &quot;Open&quot; on the other side. Above the door is a small bell to indicate when a customer enters. Too rarely does it sound.";         
+        this.description = "This is the main entrance to your book shop. You see a sign that says \"Closed\". Luckily, that means that is says \"Open\" on the other side. Above the door is a small bell to indicate when a customer enters. Too rarely does it sound.";         
         this.isDoor = true;
     }
 
@@ -305,7 +305,7 @@ class LanguageShelf extends Item {
 
     beforeExamine(context) {
         if (context.isItemInInventory("houseHistoryBook") && !context.allItems["latinDictionary"].isVisible) {
-            this.description = "The shelf is filled with dictionaries and grammar guides. Pondering the old book in your hand, you look more closely for a latin dictionary which you are able to find, squeezed between Astrid Stedje's &quot;Deutsche Sprache gestern und heute&quot; and an old edition of &quot;The Oxford Companion to English Literature&quot;.";
+            this.description = "The shelf is filled with dictionaries and grammar guides. Pondering the old book in your hand, you look more closely for a latin dictionary which you are able to find, squeezed between Astrid Stedje's \"Deutsche Sprache gestern und heute\" and an old edition of \"The Oxford Companion to English Literature\".";
         }
         else {
             this.description = "The shelf is filled with dictionaries and grammar guides. To be honest, you have probably not opened one of them after placing them in the shelf.";
@@ -322,7 +322,7 @@ class LanguageShelf extends Item {
 class LatinDictionary extends Item {
     constructor() {
         super("latinDictionary", "latin dictionary", false, false);
-        this.description = "The cover of this book simply says &quot;A Latin Dictionary&quot;. &quot;Well&quot;, you mutter to yourself, &quot;I guess no more information is needed&quot;.";
+        this.description = "The cover of this book simply says \"A Latin Dictionary\". \"Well\", you mutter to yourself, \"I guess no more information is needed\".";
     }
 }
 
@@ -392,7 +392,7 @@ class PaperClip extends Item {
 class Plaque extends Item {
     constructor() {
         super("plaque", "", true, true);
-        this.description = "This is a small copper plaque, on which is inscribed &quot;Parswick Books - City Centre merchant of the year 1979&quot;. It is signed by &quot;The merchant guild of Parswick&quot;. These were better times indeed.";
+        this.description = "This is a small copper plaque, on which is inscribed \"Parswick Books - City Centre merchant of the year 1979\". It is signed by \"The merchant guild of Parswick\". These were better times indeed.";
     }
 }
 
@@ -415,7 +415,7 @@ class Safe extends LockableItem { // TODO combination lock!
             s += "is open.";
         }
         else {
-            s += "has golden details, and a sign saying &quot;Samuel Withers & Co. Ltd. West Bromwich&quot;. It has a dial for entering the correct combination and a large handle for opening the door.";
+            s += "has golden details, and a sign saying \"Samuel Withers & Co. Ltd. West Bromwich\". It has a dial for entering the correct combination and a large handle for opening the door.";
         }
         this.description = s;
     }
