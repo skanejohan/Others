@@ -1,0 +1,6 @@
+{
+    "files.exclude": {
+        "**/.old": true,
+        "**/.out": true
+    }
+}
