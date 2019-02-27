@@ -26,6 +26,12 @@ class Utils {
         let allItemsHere = context.getItems(location.containedItems);
         return allItemsHere.filter(i => i.isVisible && !location.itemPositions[i.name] && !i.isDoor && !i.isWindow);
     }
+
+    static doorsAndWindowsHere(context) {
+        let location = context.location(context.currentLocation);
+        let allItemsHere = context.getItems(location.containedItems);
+        return allItemsHere.filter(i => i.isVisible && (i.isDoor || i.isWindow));
+    }
 }
 
 const BACKGROUNDLAYERINDEX = 0;

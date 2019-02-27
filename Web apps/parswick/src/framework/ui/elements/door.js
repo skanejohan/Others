@@ -5,7 +5,7 @@ import { ELEMENTBASELAYERINDEX } from "../utils.js";
 export { DoorElement };
 
 class DoorElement extends ItemElement {
-    constructor(engine, x1, y1, x2, y2, direction, isOpen, onArrowClick) {
+    constructor(engine, x1, y1, x2, y2, direction, isOpen, onArrowClick, onUpdateMenu) {
         let coords = _getDoorOrWindowCoordinates(x1, y1, x2, y2, direction);
         super(coords.closed.x, coords.closed.y, coords.closed.w, coords.closed.h, "");
         this._pivotPoint = coords.pivotPoint;
@@ -27,6 +27,8 @@ class DoorElement extends ItemElement {
             this._angle = 0;
         }
 
+        this.onUpdateMenu = onUpdateMenu;
+
         this.setClickRect();
     }
 
@@ -35,19 +37,21 @@ class DoorElement extends ItemElement {
         this.clickRect = { x: cs.x, y: cs.y, w: cs.w, h: cs.h };
     }
 
-    open(doneFn) {
+    open() {
+        this.popup.clear();
         this.rotate(0, this.coords.openAngle, 300, () => {
             this.setClickRect();
-            doneFn();
+            this.onUpdateMenu();
         });
         this._showArrow();
         this.isOpen = true;
     }
 
-    close(doneFn) {
+    close() {
+        this.popup.clear();
         this.rotate(this.coords.openAngle, 0, 300, () => {
             this.setClickRect();
-            doneFn();
+            this.onUpdateMenu();
         });
         this._hideArrow();
         this.isOpen = false;

@@ -59,18 +59,17 @@ class UI {
                 return;
             }
 
-            switch(verb) {
-                case "open":
-                    if(item.isDoor) {
-                        this.locationUI.openDoor(item);
+            if (item.isDoor) {
+                switch(verb) {
+                    case "open":
+                        item.element.open();
+                        break;
+                    case "close":
+                        item.element.close();
+                        break;
                     }
-                    break;
-                case "close":
-                    if(item.isDoor) {
-                        this.locationUI.closeDoor(item);
-                    }
-                    break;
-            }
+                }
+
             this.updateItemElements();
         }
     
@@ -106,6 +105,9 @@ class UI {
         this.setVerbsForItems(locationItems);
         this.setVerbsForItems(itemsHereItems);
         this.setVerbsForItems(inventoryItems);
+        
+        let doorsAndWindows = Utils.doorsAndWindowsHere(this.context);
+        this.setVerbsForItems(doorsAndWindows);
     }
 
     setVerbsForItems(items) {

@@ -85,27 +85,17 @@ class LocationUI {
         return result;
     }
 
-    openDoor(doorItem) {
-        let doorElement = this.doorElements[doorItem.name];
-        doorElement.popup.clear();
-        doorElement.open(() => {
-            Utils.setVerbs(doorElement, doorItem, this.context);
-        });
-    }
-
-    closeDoor(doorItem) {
-        let doorElement = this.doorElements[doorItem.name];
-        doorElement.arrow = undefined;
-        doorElement.popup.clear();
-        doorElement.close(() => Utils.setVerbs(doorElement, doorItem, this.context));
-    }
-
-    addDoor(x1, y1, x2, y2, door, direction, fadeInDirection) {
+    addDoor(x1, y1, x2, y2, door, direction) {
         let _door = this.context.item(door.name);
         let isOpen = _door.state == AccessState.OPEN;
-        let elem = new DoorElement(this.engine, x1, y1, x2, y2, direction, isOpen, () => {
-            this.context.moveTo(this.location.exits[direction].target, direction);
-        });
+        let elem = new DoorElement(this.engine, x1, y1, x2, y2, direction, isOpen, 
+            () => {
+                this.context.moveTo(this.location.exits[direction].target, direction);
+            },
+            () => {
+                Utils.setVerbs(elem, _door, this.context);
+            }
+        );
         _door.element = elem;
         Utils.addMenuTo(elem);
         this.doorElements[door.name] = elem;
@@ -114,11 +104,11 @@ class LocationUI {
         elem.fadeIn(FADETIME);
     }
 
-    addWindow(x1, y1, x2, y2, window, direction, fadeInDirection) {
-        this.addDoor(x1, y1, x2, y2, window, direction, fadeInDirection);
+    addWindow(x1, y1, x2, y2, window, direction) {
+        this.addDoor(x1, y1, x2, y2, window, direction);
     }
 
-    addArrow(x1, y1, x2, y2, direction, fadeInDirection) {
+    addArrow(x1, y1, x2, y2, direction) {
         let x = x1 + (x2-x1) / 2;
         let y = y1 + (y2-y1) / 2;
         let arrowElement = new ArrowElement(x, y, direction, () => {
@@ -130,7 +120,7 @@ class LocationUI {
         return arrowElement;
     }
 
-    addWall(x1, y1, x2, y2, fadeInDirection) {
+    addWall(x1, y1, x2, y2) {
         let lineElement = new Line(x1, y1, x2, y2, LAYER1COLOR);
         this.wallElements.push(lineElement);
         this.engine.add(lineElement, ELEMENTBASELAYERINDEX);
