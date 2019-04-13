@@ -1,8 +1,24 @@
-// const normalIcon = "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
-// const highlightIcon = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
-//     anchor.onmouseenter = () => location.marker.setIcon(highlightIcon);
-//     anchor.onmouseleave = () => location.marker.setIcon(normalIcon);
 // TODO when in street view on the main map, we should leave it when switching to another location. 
+
+const normalIcon = {
+    path: google.maps.SymbolPath.CIRCLE,
+    fillColor: '#F00',
+    fillOpacity: 0.6,
+    strokeColor: '#00A',
+    strokeOpacity: 0.9,
+    strokeWeight: 1,
+    scale: 3
+}
+
+const highlightIcon = {
+    path: google.maps.SymbolPath.CIRCLE,
+    fillColor: '#F00',
+    fillOpacity: 0.8,
+    strokeColor: '#00A',
+    strokeOpacity: 0.9,
+    strokeWeight: 2,
+    scale: 9
+}
 
 class DescriptionUI {
     constructor(div, onAnchorAdded) {
@@ -84,7 +100,7 @@ class MapUI {
                 },
                 map: this.map,
                 title: location.name,
-                // TODO icon: normalIcon,
+                icon: normalIcon,
             })
         );
         this.movie = movie;
@@ -93,6 +109,14 @@ class MapUI {
     navigateTo(lat, lng, zoom) {
         this.map.setCenter({ lat: lat, lng: lng });
         this.map.setZoom(zoom);
+        this.movie.locations.forEach(location => {
+            if (location.marker.position.equals(new google.maps.LatLng(lat, lng))) {
+                location.marker.setIcon(highlightIcon);
+            }
+            else {
+                location.marker.setIcon(normalIcon);
+            }
+        });
     }
 }
 
