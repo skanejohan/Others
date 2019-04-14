@@ -208,7 +208,7 @@ class ElementBase {
             this.popup.state = PopupState.SHOWPENDING;
             ElementBase.showPopupTimer.activate(200, () => {
                 this.setPopupCoordinates();
-            this.popup.state = PopupState.SHOWING;
+                this.popup.state = PopupState.SHOWING;
                 this.popup.fadeIn(300, () => {
                     this.popup.state = PopupState.VISIBLE;
                 });
