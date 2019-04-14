@@ -254,14 +254,16 @@ class ElementBase {
     }
 
     setPopupCoordinates() {
+        var xOffset = this.popup.xOffset || 0;
+        var yOffset = this.popup.yOffset || 0;
         this.popup.x = Math.max(
             ElementBase.canvasRect.left + 5, Math.min(
-                ElementBase.mousePos.x - 5, 
+                ElementBase.mousePos.x - 5 + xOffset, 
                 ElementBase.canvasRect.right - this.popup.w - 5
         ));
         this.popup.y = Math.max(
             ElementBase.canvasRect.top + 5, Math.min(
-                ElementBase.mousePos.y - 5, 
+                ElementBase.mousePos.y - 5 + yOffset, 
                 ElementBase.canvasRect.bottom - this.popup.h - 5
         ));
     }
