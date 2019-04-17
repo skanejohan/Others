@@ -9,6 +9,7 @@ class MessagesUI {
         this.left = left;
         this.messages = [];
         this.timeout = null;
+        this.maxMessageLength = 3;
     }
 
     addMessages(messages) {
@@ -39,6 +40,15 @@ class MessagesUI {
     _doAddMessageElement(e) {
         this.engine.add(e, 10);
         this.messages.push(e);
+        if (this.messages.length > this.maxMessageLength) {
+            this._removeLastMessageElement();
+        }
+    }
+
+    _removeLastMessageElement() {
+        var m = this.messages.shift();
+        m.finishAfterAnimations = true;
+        m.fadeOut(300);
     }
 
     _activateTimer() {
@@ -53,9 +63,7 @@ class MessagesUI {
 
     _timerEvent() {
         while (this.messages.length > 0 && this.messages[0].millisecondsLeft() <= 0) {
-            var m = this.messages.shift();
-            m.finishAfterAnimations = true;
-            m.fadeOut(300);
+            this._removeLastMessageElement();
         }
         this._deactivateTimer();
         this._activateTimer();

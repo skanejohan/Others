@@ -21,6 +21,7 @@ copy src\framework\ui\elements\*.* .out\framework\ui\elements
 copy src\framework\ui\*.* .out\framework\ui
 
 copy src\game\*.* .out\game
+copy src\game\test\*.* .out\game
 
 copy .\parswick.html .out
 copy .\parswick.js .out

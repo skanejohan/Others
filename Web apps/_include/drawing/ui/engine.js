@@ -26,7 +26,7 @@ class Engine {
                 ElementBase.canvasRect.bottom = canvas.height;
             }
         }
-        canvas.onclick = function(e) {
+        canvas.onclick = function() {
             var handled = false;
             var clicked = false;
             that._forPopupAndEachElementReversed(e => {
@@ -39,7 +39,7 @@ class Engine {
                 } 
             });
             if (that._onclick !== undefined && !handled) {
-                that._onclick(ElementBase.mousePos.x, ElementBase.mousePos.y);
+                that._onclick(ElementBase.getMousePos().x, ElementBase.getMousePos().y);
             }
         }
         ElementBase.bufferCanvas = this.bufferCanvas;

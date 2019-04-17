@@ -258,12 +258,12 @@ class ElementBase {
         var yOffset = this.popup.yOffset || 0;
         this.popup.x = Math.max(
             ElementBase.canvasRect.left + 5, Math.min(
-                ElementBase.mousePos.x - 5 + xOffset, 
+                ElementBase.getMousePos().x - 5 + xOffset, 
                 ElementBase.canvasRect.right - this.popup.w - 5
         ));
         this.popup.y = Math.max(
             ElementBase.canvasRect.top + 5, Math.min(
-                ElementBase.mousePos.y - 5 + yOffset, 
+                ElementBase.getMousePos().y - 5 + yOffset, 
                 ElementBase.canvasRect.bottom - this.popup.h - 5
         ));
     }
@@ -281,10 +281,10 @@ class ElementBase {
     }
 
     mouseInside(left, top, right, bottom) {
-        return left < ElementBase.mousePos.x && 
-               right > ElementBase.mousePos.x && 
-               top < ElementBase.mousePos.y && 
-               bottom > ElementBase.mousePos.y;
+        return left < ElementBase.getMousePos().x && 
+               right > ElementBase.getMousePos().x && 
+               top < ElementBase.getMousePos().y && 
+               bottom > ElementBase.getMousePos().y;
     }
 };
 
@@ -294,6 +294,7 @@ ElementBase.showPopupTimer = new Timer();
 ElementBase.hidePopupTimer = new Timer();
 ElementBase.canvasRect = { left : 0, top : 0, right : 0, bottom : 0 };
 ElementBase.context = undefined;
+ElementBase.getMousePos = () => ElementBase.mousePos;
 
 // ---------- Base class for composite elements -----------------------------------------------------------------------------------------
 
