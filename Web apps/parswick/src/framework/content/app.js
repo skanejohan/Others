@@ -15,7 +15,7 @@ class App {
         window.theseusApp = this; // FOR DEBUGGING TODO REMOVE
     }
 
-    reset() {
+    reset(suppressWelcomeMessage) {
         if (this.ui) {
             this.ui.clear();
         }
@@ -26,13 +26,17 @@ class App {
             undefined,  // TODO characters
             this.startLocation,
             this.startMessage);
+        if (suppressWelcomeMessage) {
+            this.context.removeAllMessages();
+        }
         this.ui = new UI(this.canvasDiv, this.context);
     }
 
     applyState(s) {
-        this.reset();
+        this.reset(true);
         this.ui.beginBatchOperations();
         this.context.state.fromString(s);
+        this.context.removeAllMessages();
         this.ui.endBatchOperations();
     }
 

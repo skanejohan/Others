@@ -116,6 +116,10 @@ class Context {
         return result;
     }
 
+    removeAllMessages() {
+        this.messages = [];
+    }
+
     // ---------- Generated when an action has been performed
 
     reportActionPerformed(verb, noun, extraData, preventedBeforeAction) {
