@@ -177,7 +177,7 @@ class LockableItem extends OpenableItem {
     }
 
     verbEnterCombinationVisible(context) {
-        return this.state === AccessState.LOCKED && this.combination != "";
+        return this.state === AccessState.LOCKED && this.combination && this.combination != "";
     }
 
     applyCombination(context, combination) {
