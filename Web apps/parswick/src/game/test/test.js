@@ -1,4 +1,4 @@
-doTest = function() {
+uiTest = function() {
     var test = new Test(window.app);
     test.addClickArrow("S");
     test.addClickElementMenu("cupboard", "Open");
@@ -17,6 +17,14 @@ doTest = function() {
     test.addClickElementMenu("paperClip", "Take");
     test.addClickElementMenu("metalBox", "Pick");
     test.runActions();
+}
+
+
+test = function() {
+    window.app.applyState(
+        "move-kitchen,open-cupboard,take-cup,take-officeDoorKey,move-fictionSection,move-artSection," + 
+        "move-historySection,unlock-officeDoor,open-officeDoor,move-office,open-cabinet,take-metalBox," +
+        "examine-desk,open-drawer,take-paperClip,pick-metalBox")
 }
 
 class Test {
