@@ -4,9 +4,10 @@ import { UI } from "../ui/ui.js";
 export { App };
 
 class App {
-    constructor(canvasDiv, startLocation, startMessage, items, locations) {
+    constructor(canvasDiv, startLocation, startMessage, items, locations, characters) {
         this.items = items;
         this.locations = locations;
+        this.characters = characters;
         this.startLocation = startLocation;
         this.startMessage = startMessage;
         this.canvasDiv = canvasDiv;
@@ -23,7 +24,7 @@ class App {
         this.context = new Context(
             this.items.getAll(), 
             this.locations.getAll(), 
-            undefined,  // TODO characters
+            this.characters.getAll(),
             this.startLocation,
             this.startMessage);
         if (suppressWelcomeMessage) {
