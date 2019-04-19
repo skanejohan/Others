@@ -6,8 +6,13 @@ class State {
         this.actions = [];
     }
 
-    addAction(noun, verb) {
-        this.actions.push(verb + "-" + noun);
+    addAction(noun, verb, extraData) {
+        if (extraData) {
+            this.actions.push(verb + "-" + noun + "-" + extraData);
+        }
+        else {
+            this.actions.push(verb + "-" + noun);
+        }
     }
 
     clear() {
@@ -17,10 +22,15 @@ class State {
     fromString(s) {
         let actions = s.split(",");
         actions.forEach((s,i) => {
-            var verb = s.split("-")[0];
-            var noun = s.split("-")[1]; 
+            var parts = s.split("-");
+            var verb = parts[0];
+            var noun = parts[1]; 
             if (verb == "move") {
                 this.context.moveTo(noun);
+            }
+            else if (verb == "applyCombination") {
+                var combination = parts[2];
+                this.context.item(noun).applyCombination(this.context, combination);
             }
             else {
                 let verbName = "verb" + this.capitalizeFirstLetter(verb);

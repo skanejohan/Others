@@ -2,6 +2,7 @@ import { BackgroundUI } from "./background.js";
 import { LocationUI } from "./location.js";
 import { ItemListUI } from "./itemlist.js";
 import { MessagesUI } from "./messages.js";
+import { CombinationLockUI } from "./combinationLock.js";
 import { Utils } from "./utils.js";
 
 export { UI };
@@ -18,6 +19,7 @@ class UI {
         this.inventoryUI = new ItemListUI(this.engine, this.context, 500, 50, 250, 165, "You are carrying:");
         this.itemsHereUI = new ItemListUI(this.engine, this.context, 500, 235, 250, 165, "You also see:");
         this.messagesUI = new MessagesUI(this.engine, 450, 400, 300);
+        this.combinationLockUI = new CombinationLockUI(this.engine, 130, 30, 540, 390, 30, "black", LAYER1COLOR)
 
         this.moveToCurrentLocation();
 
@@ -69,6 +71,13 @@ class UI {
                         break;
                     }
                 }
+
+            if (verb == "enterCombination") {
+                this.combinationLockUI.askForCombination(item.combination, combination => {
+                    item.applyCombination(this.context, combination);
+                    //console.log(combination);
+                });
+            }
 
             this.updateItemElements();
         }

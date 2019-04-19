@@ -228,6 +228,8 @@ class HistoryBookshelf extends Item {
         super("historyBookshelf", "history bookshelf", true);
         this.emptyIsVisible = false;
         this.pullIsVisible = false;
+        this.verbEmpty.caption = "Empty";
+        this.verbPull.caption = "Pull";
     }
 
     beforeExamine(context) {
@@ -261,7 +263,7 @@ class HistoryBookshelf extends Item {
     }
 
     verbPull(context) {
-        this.private.do("empty", context, () => {
+        this.private.do("pull", context, () => {
             context.flags.delete(Flag.BOOKSHELF_EMPTY);
             context.flags.add(Flag.BOOKSHELF_PULLED);
             this.pullIsVisible = false;
@@ -284,11 +286,11 @@ class HouseHistoryBook extends Item {
         if (context.flags.has(Flag.WALL_BROKEN)) {
             this.description = "You examine the map. The entrance to the cellar turned out to be exactly where the book indicated.";
         }
-        else if (context.allItems["historyBookShelf"].isVisible) {
+        else if (context.flags.has(Flag.ENTRANCE_KNOWN)) {
             this.description = "You examine the map. Behind the bookshelf on the eastern wall of the history section it seems like there has once been an entrance to the cellar.";
         }
         else if (context.isItemInInventory("latinDictionary")) {
-            context.allItems["historyBookShelf"].isVisible = true;
+            context.allItems["historyBookshelf"].isVisible = true;
             context.flags.add(Flag.ENTRANCE_KNOWN);
             this.description = "Using the latin dictionary, you are able to decipher the contents of the old book. It describes the history of the house in which the bookshop is located. Most of what is in the book you already know since your parents passed this information to you - whether as a child you wanted it or not - but you find a few nuggets of new information. The most interesting part is the fact that there used to be an entrance to a cellar from what is now the history section. Looking at the map, and reading the text surrounding it, you conclude that there must be a hidden entrance to the basement behind the eastern wall, currently covered by book shelves.";
         }
@@ -405,7 +407,7 @@ class RockPick extends Item {
 
 class Safe extends LockableItem { // TODO combination lock!
     constructor() {
-        super("safe", "safe", true, true, "1979");
+        super("safe", "safe", true, true, AccessState.LOCKED, "", "1979");
         this.containedItems = ["houseHistoryBook"];
     }
 

@@ -136,12 +136,14 @@ class PickableItem extends Item {
 }
 
 class LockableItem extends OpenableItem {
-    constructor(name, caption, fixed, visible, state, key) {
+    constructor(name, caption, fixed, visible, state, key, combination) {
         super(name, caption, fixed, visible, state);
 
         this.key = key;
+        this.combination = combination;
         this.verbLock.caption = "Lock";
         this.verbUnlock.caption = "Unlock";
+        this.verbEnterCombination.caption = "Enter combination";
     }        
 
     verbUnlock(context) {
@@ -153,7 +155,7 @@ class LockableItem extends OpenableItem {
     }
 
     verbUnlockVisible(context) {
-        return this.state === AccessState.LOCKED && context.isItemInInventory(this.key);
+        return this.state === AccessState.LOCKED && this.key !="" && context.isItemInInventory(this.key);
     }
 
     verbLock(context) {
@@ -165,10 +167,31 @@ class LockableItem extends OpenableItem {
     }
 
     verbLockVisible(context) {
-        return this.state === AccessState.CLOSED && context.isItemInInventory(this.key);
+        return this.state === AccessState.CLOSED && this.key !="" && context.isItemInInventory(this.key);
     }
 
-    // TODO verbEnterCombination 
+    verbEnterCombination(context) {
+        this.private.do("enterCombination", context, () => {
+            // The actual job is driven from the UI, which should eventually call applyCombination().
+        });
+    }
+
+    verbEnterCombinationVisible(context) {
+        return this.state === AccessState.LOCKED && this.combination != "";
+    }
+
+    applyCombination(context, combination) {
+        this.private.do("applyCombination", context, () => {
+            if (combination == this.combination) {
+                this.state = AccessState.CLOSED;
+                this.historicStates.add(AccessState.CLOSED);
+                context.setMessage("You enter the correct combination and unlock the " + this.caption + ".");
+            }
+            else {
+                context.setMessage("You enter a combination but the " + this.caption + " remains locked.");
+            }
+        }, combination);
+    }
 }
 
 // Private functions
@@ -179,14 +202,14 @@ class Private {
         this.calledFunctions = [];
     }
 
-    do(verb, context, action) {
+    do(verb, context, action, extraData) {
         var handled = false;
         var beforeAction = "before" + this.capitalizeFirstLetter(verb);
         var beforeOnceAction = beforeAction + "Once";
         var afterAction = "after" + this.capitalizeFirstLetter(verb);
         var afterOnceAction = afterAction + "Once";
     
-        context.state.addAction(this.item.name, verb);
+        context.state.addAction(this.item.name, verb, extraData);
     
         if (this.hasProperty(beforeAction)) {
             handled |= this.item[beforeAction](context);
