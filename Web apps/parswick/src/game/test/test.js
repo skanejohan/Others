@@ -22,6 +22,7 @@ uiTest = function() {
     test.addClickCombinationLockButton("7");
     test.addClickCombinationLockButton("9");
     test.addClickElementMenu("metalBox", "Drop");
+    test.addClickElementMenu("rockPick", "Take");
     test.addClickElementMenu("safe", "Open");
     test.addClickElementMenu("houseHistoryBook", "Take");
     test.addClickArrow("N");
@@ -47,10 +48,10 @@ test = function() {
         "move-kitchen,open-cupboard,take-cup,take-officeDoorKey,move-fictionSection,move-artSection," + 
         "move-historySection,unlock-officeDoor,open-officeDoor,move-office,open-cabinet,take-metalBox," +
         "examine-desk,open-drawer,take-paperClip,pick-metalBox,enterCombination-safe,applyCombination-safe-1979," + 
-        "drop-metalBox,open-safe,take-houseHistoryBook,move-historySection,move-artSection,move-fictionSection," + 
-        "move-travelSection,examine-languageShelf,take-latinDictionary,examine-houseHistoryBook,move-fictionSection," + 
-        "move-artSection,move-historySection,examine-historyBookshelf,empty-historyBookshelf,pull-historyBookshelf," + 
-        "examine-wall")
+        "drop-metalBox,take-rockPick,open-safe,take-houseHistoryBook,move-historySection,move-artSection," + 
+        "move-fictionSection,move-travelSection,examine-languageShelf,take-latinDictionary,examine-houseHistoryBook," + 
+        "move-fictionSection,move-artSection,move-historySection,examine-historyBookshelf,empty-historyBookshelf," + 
+        "pull-historyBookshelf,examine-wall")
 }
 
 class Test {
@@ -74,7 +75,6 @@ class Test {
 
     addClickArrow(arrowName) {
         this.actions.push(() => {
-            console.log(arrowName);
             this.highlight(this.findArrow(arrowName));
             return 100; 
         });

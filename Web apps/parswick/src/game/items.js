@@ -493,18 +493,18 @@ class Wall extends Item {
     verbHit(context) {
         this.private.do("hit", context, () => {
             if (!context.isItemInInventory("rockPick")) {
-                this.description = "You knock at the wall. When you knock in the middle of the newer section, it sounds hollow. When you look closer, it actually has the shape of a door. Could the book be right?";
+                context.setMessage("You knock at the wall. When you knock in the middle of the newer section, it sounds hollow. When you look closer, it actually has the shape of a door. Could the book be right?");
             }
             else if (context.flags.has(Flag.UNCLE_AILBERT_INTRODUCED)) {
-                this.description = "You really don't want to smash the wall in uncle Ailbert's presence.";
+                context.setMessage("You really don't want to smash the wall in uncle Ailbert's presence.");
             }
             else if (context.flags.has(Flag.UNCLE_AILBERT_GONE)) {
-                this.description = "You hit the wall with the axe until the door-shaped section has been demolished. Behind it, you see only darkness.";
+                context.setMessage("You hit the wall with the axe until the door-shaped section has been demolished. Behind it, you see only darkness.");
                 context.flags.add(Flag.WALL_BROKEN);
                 this.hitIsVisible = false;
             }
             else {
-                this.description = "As you are about to hit the wall, the entrance door bell chimes. You take a short pause, then walk out to meet your presumed customer. It turns out to be your uncle Ailbert.";
+                context.setMessage("As you are about to hit the wall, the entrance door bell chimes. You take a short pause, then walk out to meet your presumed customer. It turns out to be your uncle Ailbert.");
                 context.flags.add(Flag.UNCLE_AILBERT_INTRODUCED);
                 // TODO THESEUS.PARSWICK.uncleAilbert.setVisible(true);
                 context.moveTo("fictionSection");

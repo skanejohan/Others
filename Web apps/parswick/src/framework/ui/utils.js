@@ -9,9 +9,6 @@ class Utils {
     }
 
     static setVerbs(element, item, context) {
-        if (item.name == "fictionTable") {
-            console.log("calling clear on table");
-        }
         element.popup.clear();
         item.getVerbs(context).forEach(v => {
             element.popup.addItem(item[v].caption, () => {

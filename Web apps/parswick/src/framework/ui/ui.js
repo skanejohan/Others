@@ -53,7 +53,6 @@ class UI {
             return;
         }
 
-        //console.log(`${verb} - ${noun}`);
         var item = this.context.item(noun);
 
         if (!preventedBeforeAction) {
