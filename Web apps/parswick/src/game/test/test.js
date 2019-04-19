@@ -16,6 +16,28 @@ uiTest = function() {
     test.addClickElementMenu("drawer", "Open");
     test.addClickElementMenu("paperClip", "Take");
     test.addClickElementMenu("metalBox", "Pick");
+    test.addClickElementMenu("safe", "Enter combination");
+    test.addClickCombinationLockButton("1");
+    test.addClickCombinationLockButton("9");
+    test.addClickCombinationLockButton("7");
+    test.addClickCombinationLockButton("9");
+    test.addClickElementMenu("metalBox", "Drop");
+    test.addClickElementMenu("safe", "Open");
+    test.addClickElementMenu("houseHistoryBook", "Take");
+    test.addClickArrow("N");
+    test.addClickArrow("N");
+    test.addClickArrow("W");
+    test.addClickArrow("W");
+    test.addClickElementMenu("languageShelf", "Examine");
+    test.addClickElementMenu("latinDictionary", "Take");
+    test.addClickElementMenu("houseHistoryBook", "Examine");
+    test.addClickArrow("E");
+    test.addClickArrow("E");
+    test.addClickArrow("S");
+    test.addClickElementMenu("historyBookshelf", "Examine");
+    test.addClickElementMenu("historyBookshelf", "Empty");
+    test.addClickElementMenu("historyBookshelf", "Pull");
+    test.addClickElementMenu("wall", "Examine");
     test.runActions();
 }
 
@@ -39,12 +61,14 @@ class Test {
 
     saveAndModifyEnvironment() {
         this.app.ui.messagesUI.maxMessageLength = 1;
+        this.oldMessageTimeMs = this.app.ui.messagesUI._messageTimeMs;
+        this.app.ui.messagesUI._messageTimeMs = () => 200;
         this.oldGetMousePos = ElementBase.getMousePos;
-
     }
 
     restoreEnvironment() {
         ElementBase.getMousePos = this.oldGetMousePos;
+        this.app.ui.messagesUI._messageTimeMs = this.oldMessageTimeMs;
         this.app.ui.messagesUI.maxMessageLength = 3;
     }
 
@@ -80,6 +104,19 @@ class Test {
         })
     }
 
+    addClickCombinationLockButton(digit) {
+        this.actions.push(() => {
+            var b = this.findCombinationLockButton(digit);
+            this.highlight(b);
+            return 200; 
+        });
+        this.actions.push(() => {
+            this.app.ui.canvas._onclick();
+            this.moveTo(0, 0);
+            return 200;
+        })
+    }
+
     runActions(skipSaveEnvironment) {
         if (!skipSaveEnvironment) {
             this.saveAndModifyEnvironment();
@@ -106,6 +143,9 @@ class Test {
         if (!element) {
             element = this.app.ui.inventoryUI.itemElements.find(e => e.item.name == itemName);
         }
+        if (!element) {
+            element = this.app.ui.itemsHereUI.itemElements.find(e => e.item.name == itemName);
+        }
         return element;
     }
 
@@ -116,6 +156,16 @@ class Test {
                 return e;
             }
         }
+    }
+
+    findCombinationLockButton(digit) {
+        return this.app.ui.combinationLockUI.lockElements.find(e => {
+            var te = e._textElement;
+            if (!te) {
+                return false;
+            }
+            return te.elements[0].text == digit;
+        });
     }
 
     findArrow(arrowName) {

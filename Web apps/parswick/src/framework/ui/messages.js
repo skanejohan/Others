@@ -23,7 +23,7 @@ class MessagesUI {
         let m = messages[0];
         messages.shift();
 
-        var element = new MessageElement(this.left, this.bottom, this.width, m, () => this._clear());
+        var element = new MessageElement(this.left, this.bottom, this.width, m, this._messageTimeMs(m), () => this._clear());
         if (this.messages.length == 0) {
             this._doAddMessageElement(element);
             this.addMessages(messages);
@@ -70,7 +70,7 @@ class MessagesUI {
     }
 
     _messageTimeMs(m) {
-        return 1000 + this.message.length * 50;
+        return 1000 + m.length * 50;
     }
 
     _clear() {
@@ -80,15 +80,14 @@ class MessagesUI {
 }
 
 class MessageElement extends CompositeElementBase {
-    constructor(left, bottom, w, message, onclick) {
+    constructor(left, bottom, w, message, messageTime, onclick) {
          // TODO should TextBox really take height?       
         let textBox = new TextBox(left, bottom, w, 0, message, FONT, "black", LAYER1FRAMECOLOR); 
         textBox.y = textBox.y - textBox.h;
         
         super(left-10, textBox.y-10, textBox.w+20, textBox.h+20, onclick);
 
-        var messageTimeMS = 1000 + message.length * 50;
-        this.endTime = new Date(new Date().getTime() + messageTimeMS);
+        this.endTime = new Date(new Date().getTime() + messageTime);
 
         this.addElement(new FillRoundRect(left-10, textBox.y-10, w+20, textBox.h+20, 5, LAYER1COLOR));
         this.addElement(new FillRoundRect(left-5, textBox.y-5, w+10, textBox.h+10, 2, LAYER1FRAMECOLOR));
