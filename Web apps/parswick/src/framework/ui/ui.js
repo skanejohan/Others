@@ -53,7 +53,7 @@ class UI {
             return;
         }
 
-        var item = this.context.item(noun);
+        var item = this.context.item(noun) || this.context.character(noun);
 
         if (!preventedBeforeAction) {
         
@@ -93,8 +93,8 @@ class UI {
     }
 
     updateItemElements() {
-        let locationItems = Utils.visiblePositionedItemsHere(this.context);
-        let itemsHereItems = Utils.visibleUnpositionedItemsHere(this.context);
+        let locationItems = Utils.visiblePositionedItemsAndCharactersHere(this.context);
+        let itemsHereItems = Utils.visibleUnpositionedItemsAndCharactersHere(this.context);
         let inventoryItems = this.context.getItems(this.context.inventory);
 
         if (false) { // Debugging

@@ -58,11 +58,11 @@ function getOpenings(location, direction) {
 }
 
 function _getDoor(location, direction) {
-    let key = Object.keys(location.doorPositions).find(k => location.doorPositions[k].type == direction);
+    let key = Object.keys(location.positions).find(k => location.positions[k].door && location.positions[k].type == direction);
     if (key) {
         return {
-            start: location.doorPositions[key].start,
-            length: location.doorPositions[key].length,
+            start: location.positions[key].start,
+            length: location.positions[key].length,
             type: "door",
             name: key,
         };
@@ -84,12 +84,12 @@ function _getExit(location, direction) {
 }
 
 function _getWindows(location, direction) {
-    let keys = Object.keys(location.windowPositions).filter(k => location.windowPositions[k].type == direction);
+    let keys = Object.keys(location.positions).filter(k => location.positions[k].window && location.positions[k].type == direction);
     var windows = [];
     keys.forEach(key => {
         windows.push({ 
-            start: location.windowPositions[key].start, 
-            length: location.windowPositions[key].length, 
+            start: location.positions[key].start, 
+            length: location.positions[key].length, 
             type: "window",
             name: key, 
         });

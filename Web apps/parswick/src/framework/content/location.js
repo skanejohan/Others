@@ -6,9 +6,8 @@ class Location {
         this.description = "You are in " + this.caption;
         this.exits = {}
         this.containedItems = [];
-        this.itemPositions = {};
-        this.doorPositions = {};
-        this.windowPositions = {};
+        this.containedCharacters = [];
+        this.positions = {};
     }
 
     look(context) {

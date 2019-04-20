@@ -505,8 +505,8 @@ class Wall extends Item {
             }
             else {
                 context.setMessage("As you are about to hit the wall, the entrance door bell chimes. You take a short pause, then walk out to meet your presumed customer. It turns out to be your uncle Ailbert.");
+                context.allCharacters["uncleAilbert"].isVisible = true;
                 context.flags.add(Flag.UNCLE_AILBERT_INTRODUCED);
-                // TODO THESEUS.PARSWICK.uncleAilbert.setVisible(true);
                 context.moveTo("fictionSection");
             }
         });

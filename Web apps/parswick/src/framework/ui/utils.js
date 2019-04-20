@@ -17,16 +17,18 @@ class Utils {
         });
     }
 
-    static visiblePositionedItemsHere(context) {
+    static visiblePositionedItemsAndCharactersHere(context) {
         let location = context.location(context.currentLocation);
         let allItemsHere = context.getItems(location.containedItems);
-        return allItemsHere.filter(i => i.isVisible && location.itemPositions[i.name]);
+        let allCharactersHere = context.getCharacters(location.containedCharacters);
+        return (allItemsHere.concat(allCharactersHere)).filter(i => i.isVisible && location.positions[i.name] && !i.isDoor && !i.isWindow);
     }
 
-    static visibleUnpositionedItemsHere(context) {
+    static visibleUnpositionedItemsAndCharactersHere(context) {
         let location = context.location(context.currentLocation);
         let allItemsHere = context.getItems(location.containedItems);
-        return allItemsHere.filter(i => i.isVisible && !location.itemPositions[i.name] && !i.isDoor && !i.isWindow);
+        let allCharactersHere = context.getCharacters(location.containedCharacters);
+        return allItemsHere.concat(allCharactersHere).filter(i => i.isVisible && !location.positions[i.name] && !i.isDoor && !i.isWindow);
     }
 
     static doorsAndWindowsHere(context) {

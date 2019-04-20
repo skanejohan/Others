@@ -39,6 +39,7 @@ uiTest = function() {
     test.addClickElementMenu("historyBookshelf", "Empty");
     test.addClickElementMenu("historyBookshelf", "Pull");
     test.addClickElementMenu("wall", "Examine");
+    test.addClickElementMenu("wall", "Hit");
     test.runActions();
 }
 

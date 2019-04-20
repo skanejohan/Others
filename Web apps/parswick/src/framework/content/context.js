@@ -17,9 +17,10 @@ class Context {
         this.onActionPerformed = onActionPerformed;   // (string, string) => undefined
         this.state = new State(this);                 // State  
 
-        // Set the container property of all items (either to a location or another item)
+        // Set the container property of all items and characters (either to a location or another item)
         Object.keys(this.allLocations).forEach(name => {
             this.allLocations[name].containedItems.forEach(i => this.allItems[i].container = name);
+            this.allLocations[name].containedCharacters.forEach(c => this.allCharacters[c].container = name);
         });
         Object.keys(this.allItems).forEach(name => {
             this.allItems[name].containedItems.forEach(i => this.allItems[i].container = name);
@@ -33,6 +34,15 @@ class Context {
             return i;
         }
         return this.allItems[i];
+    }
+    
+    // ---------- Returns a character regardless of whether you pass in the character itself or its key string
+
+    character(c) {
+        if (typeof c === "object") {
+            return c;
+        }
+        return this.allCharacters[c];
     }
     
     // ---------- Given a list of items, return a list of all items including contained ones for open containers.
@@ -49,6 +59,12 @@ class Context {
             }
         }
         return is;
+    }
+
+    // ---------- Given a list of characters (names or objects), return a list of all character objects.
+
+    getCharacters(characters) {
+        return characters.map(c => this.character(c));
     }
 
     // ---------- Moving items around

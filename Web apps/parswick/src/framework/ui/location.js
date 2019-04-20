@@ -77,7 +77,7 @@ class LocationUI {
     }
 
     calcItemPosAndColor(item) {
-        let result = this.location.itemPositions[item.name];
+        let result = this.location.positions[item.name];
         if (result.layerIndex == 2) {
             result.color = LAYER2COLOR;
             result.frameColor = LAYER2FRAMECOLOR;
