@@ -34,7 +34,7 @@ class State {
             }
             else {
                 let verbName = "verb" + this.capitalizeFirstLetter(verb);
-                var item = this.context.item(noun);
+                var item = this.context.item(noun) || this.context.character(noun);
                 item.getVerbs(this.context).forEach(v => {
                     if (v == verbName) {
                         item[verbName](this.context);

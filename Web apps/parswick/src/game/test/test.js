@@ -40,6 +40,7 @@ uiTest = function() {
     test.addClickElementMenu("historyBookshelf", "Pull");
     test.addClickElementMenu("wall", "Examine");
     test.addClickElementMenu("wall", "Hit");
+    test.addClickElementMenu("uncleAilbert", "Talk");
     test.runActions();
 }
 
@@ -52,7 +53,7 @@ test = function() {
         "drop-metalBox,take-rockPick,open-safe,take-houseHistoryBook,move-historySection,move-artSection," + 
         "move-fictionSection,move-travelSection,examine-languageShelf,take-latinDictionary,examine-houseHistoryBook," + 
         "move-fictionSection,move-artSection,move-historySection,examine-historyBookshelf,empty-historyBookshelf," + 
-        "pull-historyBookshelf,examine-wall")
+        "pull-historyBookshelf,examine-wall,hit-wall,talk-uncleAilbert")
 }
 
 class Test {

@@ -7,7 +7,20 @@ class Character extends Item {
         super(name, caption, true, visible);
         this.description = "There is nothing special about " + this.caption;
         this.movementStrategy = this.getNoMoveStrategy();
+        this.conversation = undefined;
+        this.verbTalk.caption = "Talk";
     }
+
+    verbTalk(context) {
+        this.private.do("talk", context, () => {
+            // The actual work is done from the UI
+        });
+    }
+
+    verbTalkVisible(context) {
+        return this.conversation != undefined;
+    }
+
 
     move(context) {
         if (this.isVisible) {
