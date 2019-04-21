@@ -230,6 +230,10 @@ class Private {
         }
 
         this.setHasBeenCalled(verb);
+
+        context.visitedLocations.push(context.currentLocation);
+        Object.keys(context.allCharacters).forEach(k => context.allCharacters[k].move(context));
+
         context.reportActionPerformed(verb, this.item.name, undefined, handled);
     }
     

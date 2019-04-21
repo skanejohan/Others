@@ -14,6 +14,7 @@ class Context {
         this.flags = new Set([]);                     // Set of Flag
         this.messages = [initialMessage];             // Array of string
         this.currentLocation = initialLocation;       // string
+        this.visitedLocations = [initialLocation];    // Array of string
         this.onActionPerformed = onActionPerformed;   // (string, string) => undefined
         this.state = new State(this);                 // State  
 
@@ -100,6 +101,20 @@ class Context {
         }
     }
 
+    // ---------- Moving items around
+
+    addCharacterToLocation(character, location) {
+        character = this.character(character);
+        this.allLocations[location].containedCharacters.push(character.name);
+        character.container = location;
+    }
+
+    removeCharacterFromLocation(character, location) {
+        character = this.character(character);
+        ArrayUtils.remove(this.allLocations[location].containedCharacters, character.name);
+        character.container = undefined;
+    }
+
     // ---------- Locations
 
     location(loc) {
@@ -111,6 +126,7 @@ class Context {
 
     moveTo(location, direction) {
         this.currentLocation = location;
+        this.visitedLocations.push(location);
         this.state.addAction(this.currentLocation, "move");
         this.setMessage("You move to the " + this.allLocations[this.currentLocation].caption);
         this.reportActionPerformed("move", location, direction);

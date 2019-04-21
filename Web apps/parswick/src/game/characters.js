@@ -11,5 +11,6 @@ var getAll = function() {
 class UncleAilbert extends Character{
     constructor() {
         super("uncleAilbert", "uncle Ailbert", false);
+        this.movementStrategy = this.getFollowPlayerStrategy(1);
     }
 }
