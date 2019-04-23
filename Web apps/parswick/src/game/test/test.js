@@ -53,7 +53,9 @@ test = function() {
         "drop-metalBox,take-rockPick,open-safe,take-houseHistoryBook,move-historySection,move-artSection," + 
         "move-fictionSection,move-travelSection,examine-languageShelf,take-latinDictionary,examine-houseHistoryBook," + 
         "move-fictionSection,move-artSection,move-historySection,examine-historyBookshelf,empty-historyBookshelf," + 
-        "pull-historyBookshelf,examine-wall,hit-wall,talk-uncleAilbert,addMakeTeaVerbToWaterCooker-uncleAilbert")
+        "pull-historyBookshelf,examine-wall,hit-wall,talk-uncleAilbert,addMakeTeaVerbToWaterCooker-uncleAilbert," + 
+        "move-kitchen,examine-waterCooker,makeTea-waterCooker,move-fictionSection,move-artSection,move-historySection," + 
+        "hit-wall");
 }
 
 class Test {

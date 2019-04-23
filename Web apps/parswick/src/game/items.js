@@ -526,7 +526,7 @@ class WaterCooker extends Item {
 
     verbMakeTea(context) {
         this.private.do("makeTea", context, () => {
-            if (context.characterIsHere("uncleAilbert") && context.flags.has(Flag.UNCLE_AILBERT_INTRODUCED)) {
+            if (context.location("kitchen").hasCharacter("uncleAilbert") && context.flags.has(Flag.UNCLE_AILBERT_INTRODUCED)) {
                 context.setMessage("You make some tea and offer it to uncle Ailbert who drinks it a bit hesitantly. After a while, he excuses himself and enters the bathroom. You hear him lock the door.");
                 context.allCharacters["uncleAilbert"].isVisible = false;
                 context.allItems["bathroomDoor"].isVisible = false;

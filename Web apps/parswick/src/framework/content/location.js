@@ -13,4 +13,18 @@ class Location {
     look(context) {
         context.setMessage(this.description);
     }
+
+    hasItem(item) {
+        if (typeof item == "object") {
+            return this.containedItems.indexOf(item.name) > -1;
+        }
+        return this.containedItems.indexOf(item) > -1;
+    }
+
+    hasCharacter(char) {
+        if (typeof char == "object") {
+            return this.containedCharacters.indexOf(char.name) > -1;
+        }
+        return this.containedCharacters.indexOf(char) > -1;
+    }
 }
