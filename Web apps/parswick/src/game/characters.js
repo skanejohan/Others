@@ -41,10 +41,16 @@ class UncleAilbert extends Character{
         .addStatement(15, "Now that is a shame!", [11, 12])
     
         .addStatement(16, "A cup of tea? Well, if you are out of whiskey... yes please.", [17])
-        .addResponseWithAction(17, "Follow me into the kitchen. I will make you a nice cup.", ctx => ctx.flags.add(Flag.MAKE_TEA_POSSIBLE))
+        .addResponseWithAction(17, "Follow me into the kitchen. I will make you a nice cup.", ctx => this.actionAddMakeTeaVerbToWaterCooker(ctx))
     
         .addStatement(18, "Water? I may be old and possibly not in perfect health but there are limits to your stupid modernity!", [10, 11])
     
         .setInitialStatement(1);
+    }
+
+    actionAddMakeTeaVerbToWaterCooker(context) {
+        this.private.do("addMakeTeaVerbToWaterCooker", context, () => {
+            context.flags.add(Flag.MAKE_TEA_POSSIBLE);
+        });
     }
 }

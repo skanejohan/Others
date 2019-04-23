@@ -65,6 +65,10 @@ class Item {
         return this.private.getAllPropertyNames(this).filter(name => this.isVisibleVerb(name, context));    
     }
 
+    getActions() {
+        return this.private.getAllPropertyNames(this).filter(name => name.startsWith("action"));
+    }
+
     isVisibleVerb(name, context) {
         if (!name.startsWith("verb")) {
             return false;

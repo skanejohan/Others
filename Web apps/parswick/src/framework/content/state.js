@@ -34,10 +34,16 @@ class State {
             }
             else {
                 let verbName = "verb" + this.capitalizeFirstLetter(verb);
+                let actionName = "action" + this.capitalizeFirstLetter(verb);
                 var item = this.context.item(noun) || this.context.character(noun);
                 item.getVerbs(this.context).forEach(v => {
                     if (v == verbName) {
                         item[verbName](this.context);
+                    }
+                });
+                item.getActions().forEach(a => {
+                    if (a == actionName) {
+                        item[actionName](this.context);
                     }
                 });
             }
