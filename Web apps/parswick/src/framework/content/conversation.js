@@ -17,7 +17,7 @@ class Conversation {
     }
 
     addResponseWithAction(id, msg, action, statementId) {
-        this.responses[id] = { msg: msg, action: action, statementId: statementId };
+        this.responses[id] = { id: id, msg: msg, action: action, statementId: statementId };
         return this;
     }
 

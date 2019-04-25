@@ -41,6 +41,17 @@ uiTest = function() {
     test.addClickElementMenu("wall", "Examine");
     test.addClickElementMenu("wall", "Hit");
     test.addClickElementMenu("uncleAilbert", "Talk");
+    test.addClickConversationResponse("2");
+    test.addClickConversationResponse("5");
+    test.addClickConversationResponse("11");
+    test.addClickConversationResponse("17");
+    test.addClickArrow("S");
+    test.addClickElementMenu("waterCooker", "Examine");
+    test.addClickElementMenu("waterCooker", "Make tea");
+    test.addClickArrow("N");
+    test.addClickArrow("E");
+    test.addClickArrow("S");
+    test.addClickElementMenu("wall", "Hit");
     test.runActions();
 }
 
@@ -121,6 +132,19 @@ class Test {
         })
     }
 
+    addClickConversationResponse(id) {
+        this.actions.push(() => {
+            var b = this.findConversationResponse(id);
+            this.highlight(b);
+            return 500; 
+        });
+        this.actions.push(() => {
+            this.app.ui.canvas._onclick();
+            this.moveTo(0, 0);
+            return 500;
+        })
+    }
+
     runActions(skipSaveEnvironment) {
         if (!skipSaveEnvironment) {
             this.saveAndModifyEnvironment();
@@ -170,6 +194,11 @@ class Test {
             }
             return te.elements[0].text == digit;
         });
+    }
+
+    findConversationResponse(id) {
+        var result = this.app.ui.conversationUI.statementAndResponses.find(r => r.responseId == id);
+        return result.elements[1].elements[0]; // Return the first text segment of the first text element, for click.
     }
 
     findArrow(arrowName) {

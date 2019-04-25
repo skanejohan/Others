@@ -24,12 +24,12 @@ class ConversationUI {
 
         var xOffset = 20;
         var yOffset = 20;
-        var entry = this._doPresentEntry(xOffset, yOffset, statement.msg);
+        var entry = this._doPresentEntry(statementId, xOffset, yOffset, statement.msg);
 
         xOffset = 40;
         yOffset = 50 + entry.h;
         responses.forEach(r => {
-            entry = this._doPresentEntry(xOffset, yOffset, r.msg, () => {
+            entry = this._doPresentEntry(r.id, xOffset, yOffset, r.msg, () => {
                 if (r.action) {
                     r.action(this.context);
                 }
@@ -55,8 +55,9 @@ class ConversationUI {
         this.engine.remove(this.background);
     }
 
-    _doPresentEntry(xOffset, yOffset, msg, fn) {
+    _doPresentEntry(id, xOffset, yOffset, msg, fn) {
         var entry = new TextBox(this.dimensions.x + xOffset, this.dimensions.y + yOffset, this.dimensions.w - 2 * xOffset, 0, msg, FONT, LAYER1FRAMECOLOR, "black", fn); 
+        entry.responseId = id;
         this.engine.addModal(entry);
         this.statementAndResponses.push(entry);
         return entry;
