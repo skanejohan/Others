@@ -123,9 +123,14 @@ class Engine {
             (ElementBase.currentPopup.state == PopupState.SHOWING ||
              ElementBase.currentPopup.state == PopupState.VISIBLE ||
              ElementBase.currentPopup.state == PopupState.HIDEPENDING ||
-             ElementBase.currentPopup.state == PopupState.HIDING)
-            ) {
-            ElementBase.currentPopup.draw();
+             ElementBase.currentPopup.state == PopupState.HIDING) &&
+            !ElementBase.currentPopup.element._paused) {
+                ElementBase.currentPopup.draw();
+        }
+
+        // If applicable, draw the mouse position
+        if (ElementBase.drawMousePos) {
+            ElementBase._drawMousePos();
         }
 
         // Remove elements that were finished in this round

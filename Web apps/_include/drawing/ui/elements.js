@@ -103,7 +103,7 @@ class ElementBase {
     set alpha(value) { this._alpha = value; }
 
     get popup() { return this._popup; }
-    set popup(elem) { this._popup = elem; this._popup.state = PopupState.HIDDEN; }
+    set popup(elem) { this._popup = elem; this._popup.state = PopupState.HIDDEN; this._popup.element = this; }
 
     get onModalLayer() { return this._onModalLayer; }
     set onModalLayer(b) { this._onModalLayer = b; }
@@ -295,6 +295,12 @@ ElementBase.hidePopupTimer = new Timer();
 ElementBase.canvasRect = { left : 0, top : 0, right : 0, bottom : 0 };
 ElementBase.context = undefined;
 ElementBase.getMousePos = () => ElementBase.mousePos;
+ElementBase._drawMousePos = () => {
+    var x = ElementBase.getMousePos().x;
+    var y = ElementBase.getMousePos().y;        
+    ElementBase.context.strokeStyle = "red";
+    ElementBase.context.strokeRect(x-1, y-1, 2, 2);    
+}
 
 // ---------- Base class for composite elements -----------------------------------------------------------------------------------------
 
@@ -602,7 +608,7 @@ class FillRoundRect extends RoundRectBase {
 class TextSegment extends ElementBase {
 
     constructor(x, y, w, h, text, font, style, onclick) {
-        super(x, y, w, h, onclick);
+        super(x, y-h, w, h, onclick);
         this.text = text;
         this.font = font;
         this.style = style;
@@ -611,7 +617,7 @@ class TextSegment extends ElementBase {
     _doDraw(ctx) {
         ctx.font = this.font;
         ctx.fillStyle = this.style;
-        ctx.fillText(this.text, this.x, this.y);
+        ctx.fillText(this.text, this.x, this.y + this.h);
     }
 }
 

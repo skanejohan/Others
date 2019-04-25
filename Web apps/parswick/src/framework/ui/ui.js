@@ -27,6 +27,7 @@ class UI {
 
         window.requestAnimationFrame(() => this.draw());
         // ElementBase.drawClickRects = true;  // FOR DEBUGGING TODO REMOVE
+        // ElementBase.drawMousePos = true;  // FOR DEBUGGING TODO REMOVE
     }
 
     clear() {
