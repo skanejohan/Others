@@ -7,7 +7,7 @@ export { addItemElements, removeItemElements };
 // Given a list of available items, and a list of item elements currently shown,
 // this function will the missing item elements. 
 function addItemElements(availableItems, currentElements, posFn, engine, context, onAdded) {
-    availableItems.forEach(i => {
+    availableItems.filter(i => i.isVisible).forEach(i => {
         if (!currentElements.some(e => e.item == i)) {
             addItemElement(i, posFn, currentElements, engine, context, onAdded);
         }
@@ -18,7 +18,7 @@ function addItemElements(availableItems, currentElements, posFn, engine, context
 // function will the remove item elements no longer among the available items. 
 function removeItemElements(availableItems, currentElements, onRemoved) {
     currentElements.forEach(e => {
-        if (!availableItems.some(i => i.element == e)) {
+        if (!availableItems.filter(i => i.isVisible).some(i => i.element == e)) {
             removeItemElement(e, currentElements, onRemoved);
         }
     });
