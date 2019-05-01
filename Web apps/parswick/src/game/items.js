@@ -291,6 +291,7 @@ class HouseHistoryBook extends Item {
         }
         else if (context.isItemInInventory("latinDictionary")) {
             context.allItems["historyBookshelf"].isVisible = true;
+            context.allItems["latinDictionary"].isVisible = false;
             context.flags.add(Flag.ENTRANCE_KNOWN);
             this.description = "Using the latin dictionary, you are able to decipher the contents of the old book. It describes the history of the house in which the bookshop is located. Most of what is in the book you already know since your parents passed this information to you - whether as a child you wanted it or not - but you find a few nuggets of new information. The most interesting part is the fact that there used to be an entrance to a cellar from what is now the history section. Looking at the map, and reading the text surrounding it, you conclude that there must be a hidden entrance to the basement behind the eastern wall, currently covered by book shelves.";
         }
@@ -298,6 +299,13 @@ class HouseHistoryBook extends Item {
             this.description = "The leather-bound old book is written in what you assume is latin. Although you may recognize a word here and there, you really have no way of telling what the book is about. You see a small map in one of the pages. You can't be sure but you have a slight feeling of recognition.";
         }
     }
+
+    afterExamine(context) {
+        // TODO context.replaceLastMessage ?
+        context.setMessage("Using the paper clip, you manage to open the lock. You open the box and it turns out to contain your old rock collection. Not much of a collection actually, a few small stones and your old rock pick.");
+        context.allItems["metalBox"].state = AccessState.OPEN;
+    }
+
 }
 
 class LanguageShelf extends Item {
@@ -353,6 +361,7 @@ class MetalBox extends PickableItem {
         // TODO context.replaceLastMessage ?
         context.setMessage("Using the paper clip, you manage to open the lock. You open the box and it turns out to contain your old rock collection. Not much of a collection actually, a few small stones and your old rock pick.");
         context.allItems["metalBox"].state = AccessState.OPEN;
+        context.allItems["paperClip"].isVisible = false;
     }
 }
 
@@ -374,6 +383,10 @@ class OfficeDoor extends LockableItem {
     constructor() {
         super("officeDoor", "office door", true, true, AccessState.LOCKED, "officeDoorKey");
         this.isDoor = true;
+    }
+
+    afterUnlock(context) {
+        context.allItems["officeDoorKey"].isVisible = false;
     }
 }
 
