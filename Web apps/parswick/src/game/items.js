@@ -481,13 +481,8 @@ class Wall extends Item {
     }
 
     beforeExamine(context) {
-        if (context.flags.has(Flag.WALL_BROKEN)) {
-            this.description = "There is a hole in the wall, large enough to enter.";
-        }
-        else {
-            this.description = "When you look closer at the wall, one section of it looks newer than the rest.";
-            this.hitIsVisible = true;
-        }
+        this.description = "When you look closer at the wall, one section of it looks newer than the rest.";
+        this.hitIsVisible = true;
     }
 
     verbHit(context) {
@@ -500,8 +495,10 @@ class Wall extends Item {
             }
             else if (context.flags.has(Flag.UNCLE_AILBERT_GONE)) {
                 context.setMessage("You hit the wall with the axe until the door-shaped section has been demolished. Behind it, you see only darkness.");
+                context.location("historySection").addExit(context, "E", "cellarEntrance");
+                context.allItems["rockPick"].isVisible = false;
                 context.flags.add(Flag.WALL_BROKEN);
-                this.hitIsVisible = false;
+                this.isVisible = false;
             }
             else {
                 context.setMessage("As you are about to hit the wall, the entrance door bell chimes. You take a short pause, then walk out to meet your presumed customer. It turns out to be your uncle Ailbert.");

@@ -11,6 +11,9 @@ var getAll = function() {
         "kitchen": new Kitchen(),
         "office": new Office(),
         "travelSection": new TravelSection(),
+        "cellarEntrance": new CellarEntrance(),
+        "cellarEast": new CellarEast(),
+        "cellarSouth": new CellarSouth(),
     }
 }
 
@@ -42,6 +45,44 @@ class Bathroom extends Location {
         };
         this.exits = {
             "N": { target: "kitchen", door: "bathroomDoor" },
+        }
+    }
+}
+
+class CellarEntrance extends Location {
+    constructor() {
+        super("cellar entrance");
+        this.containedItems = [];
+        this.positions = {
+        };
+        this.exits = {
+            "W": { target: "historySection" },
+            "E": { target: "cellarEast" },
+            "S": { target: "cellarSouth" },
+        }
+    }
+}
+
+class CellarEast extends Location {
+    constructor() {
+        super("east room of the cellar");
+        this.containedItems = [];
+        this.positions = {
+        };
+        this.exits = {
+            "W": { target: "cellarEntrance" },
+        }
+    }
+}
+
+class CellarSouth extends Location {
+    constructor() {
+        super("south room of the cellar");
+        this.containedItems = [];
+        this.positions = {
+        };
+        this.exits = {
+            "N": { target: "cellarEntrance" },
         }
     }
 }
