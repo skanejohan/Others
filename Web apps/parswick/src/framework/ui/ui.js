@@ -85,6 +85,7 @@ class UI {
             }
 
             this.updateItemElements();
+            this.locationUI.updateExits();
         }
     
         this.showMessages();

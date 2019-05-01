@@ -26,6 +26,8 @@ class Context {
         Object.keys(this.allItems).forEach(name => {
             this.allItems[name].containedItems.forEach(i => this.allItems[i].container = name);
         });
+
+        this._exitsHaveChanged = false;
     }
 
     // ---------- Returns an item regardless of whether you pass in the item itself or its key string
@@ -150,6 +152,18 @@ class Context {
 
     removeAllMessages() {
         this.messages = [];
+    }
+
+    // ---------- Exits
+
+    setExitsHaveChanged() {
+        this._exitsHaveChanged = true;
+    }
+
+    haveExitsChanged() {
+        var result = this._exitsHaveChanged;
+        this._exitsHaveChanged = false;
+        return result;
     }
 
     // ---------- Generated when an action has been performed

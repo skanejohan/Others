@@ -38,31 +38,58 @@ class LocationUI {
     }
 
     enterLocation(doneFn) {
-        ["E", "S", "W", "N"].forEach(
-            dir => calculateWall(
-                this.location, dir, 
-                (x1, y1, x2, y2) => this.addWall(x1, y1, x2, y2),
-                (x1, y1, x2, y2, window) => this.addWindow(x1, y1, x2, y2, window, dir),
-                (x1, y1, x2, y2, door) => this.addDoor(x1, y1, x2, y2, door, dir),
-                (x1, y1, x2, y2) => this.addArrow(x1, y1, x2, y2, dir)));
+        this.calculateWalls(true);
         if (doneFn) {
             doneFn();
         }
     }
 
+    calculateWalls(fadeIn) {
+        ["E", "S", "W", "N"].forEach(
+            dir => calculateWall(
+                this.location, dir, 
+                (x1, y1, x2, y2) => this.addWall(x1, y1, x2, y2, fadeIn),
+                (x1, y1, x2, y2, window) => this.addWindow(x1, y1, x2, y2, window, dir, fadeIn),
+                (x1, y1, x2, y2, door) => this.addDoor(x1, y1, x2, y2, door, dir, fadeIn),
+                (x1, y1, x2, y2) => this.addArrow(x1, y1, x2, y2, dir, fadeIn)));
+    }
+
+    updateExits() {
+        if (this.context.haveExitsChanged()) {
+            this.clearWallElements(true);
+            this.calculateWalls(false);
+        }
+    }
+
     clearAllElements() {
-        this.doorElements = {};
-        this.arrowElements = {};
-        this.wallElements = [];
+        this.clearWallElements();
         this.itemElements = [];
     }
 
+    clearWallElements(removeFromEngine) {
+        if (removeFromEngine) {
+            this.getWallElements().forEach(e => this.engine.remove(e));
+        }
+        this.doorElements = {};
+        this.arrowElements = {};
+        this.wallElements = [];
+    }
+
     getAllElements() {
+        var allElements = this.getWallElements();
+        Array.prototype.push.apply(allElements, this.itemElements);
+        return allElements;
+    }
+
+    getWallElements() {
         var allElements = [];
         ["E", "S", "W", "N"].forEach(d => { if (this.arrowElements[d]) { allElements.push(this.arrowElements[d]) }});
-        for (var d in this.doorElements) { allElements.push(this.doorElements[d]) };
+        for (var d in this.doorElements) { 
+            let doorElement = this.doorElements[d];
+            allElements.push(doorElement);
+            allElements.push(doorElement.arrowElement); 
+        };
         Array.prototype.push.apply(allElements, this.wallElements);
-        Array.prototype.push.apply(allElements, this.itemElements);
         return allElements;
     }
 
@@ -85,7 +112,7 @@ class LocationUI {
         return result;
     }
 
-    addDoor(x1, y1, x2, y2, door, direction) {
+    addDoor(x1, y1, x2, y2, door, direction, fadeIn) {
         let _door = this.context.item(door.name);
         let isOpen = _door.state == AccessState.OPEN;
         let elem = new DoorElement(this.engine, x1, y1, x2, y2, direction, isOpen, 
@@ -101,14 +128,16 @@ class LocationUI {
         this.doorElements[door.name] = elem;
         Utils.setVerbs(elem, _door, this.context);
         this.engine.add(elem, ELEMENTBASELAYERINDEX);
-        elem.fadeIn(FADETIME);
+        if (fadeIn) {
+            elem.fadeIn(FADETIME);
+        }
     }
 
-    addWindow(x1, y1, x2, y2, window, direction) {
-        this.addDoor(x1, y1, x2, y2, window, direction);
+    addWindow(x1, y1, x2, y2, window, direction, fadeIn) {
+        this.addDoor(x1, y1, x2, y2, window, direction, fadeIn);
     }
 
-    addArrow(x1, y1, x2, y2, direction) {
+    addArrow(x1, y1, x2, y2, direction, fadeIn) {
         let x = x1 + (x2-x1) / 2;
         let y = y1 + (y2-y1) / 2;
         let arrowElement = new ArrowElement(x, y, direction, () => {
@@ -116,14 +145,18 @@ class LocationUI {
         });
         this.arrowElements[direction] = arrowElement;
         this.engine.add(arrowElement, ELEMENTBASELAYERINDEX);
-        arrowElement.fadeIn(FADETIME);
+        if (fadeIn) {
+            arrowElement.fadeIn(FADETIME);
+        }
         return arrowElement;
     }
 
-    addWall(x1, y1, x2, y2) {
+    addWall(x1, y1, x2, y2, fadeIn) {
         let lineElement = new Line(x1, y1, x2, y2, LAYER1COLOR);
         this.wallElements.push(lineElement);
         this.engine.add(lineElement, ELEMENTBASELAYERINDEX);
-        lineElement.fadeIn(FADETIME);
+        if (fadeIn) {
+            lineElement.fadeIn(FADETIME);
+        }
     }
 }

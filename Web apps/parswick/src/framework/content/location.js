@@ -27,4 +27,9 @@ class Location {
         }
         return this.containedCharacters.indexOf(char) > -1;
     }
+
+    addExit(context, direction, targetLocation) {
+        this.exits[direction] = { target: targetLocation }
+        context.setExitsHaveChanged(); 
+    }
 }
