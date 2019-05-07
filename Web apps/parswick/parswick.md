@@ -46,10 +46,11 @@ Goal: reveal the secret door (again)
 
 Cut-scene: discussing how you remember discussions about the ghosts in the basement.
 
-Goal: Find the ghosts
-- Enter the opening. You walk down stairs into a dark room.
-- TODO: How to get a light?
-- Enter the opening. You walk dow the stairs and end up in a small room with stone walls. Hovering in the air is the ghost of a young woman.  
+Goal: Meet the ghosts
+- Enter the opening. It is dark and you can't continue.
+- Go to the kitchen. Open the broom cupboard. Take the flashlight. 
+- Go to the history section. 
+- Enter the opening. You walk down the stairs and end up in a small room with stone walls. Hovering in the air is the ghost of a young woman.  
 
 Goal: Make friends with a ghost
 - Try to go east. The ghost prevents you from going that way.
@@ -80,3 +81,11 @@ Goal: Make friends with a ghost
 - Dance with the male ghost.
 
 Cut scene: you dance. When the female ghost sees the dancer, she disappears. The dancer laughs, "she is afraid of ghosts - how ironic". You dance for a while and then he floats back into his room.
+
+
+
+travel and lang - fiction - art and arch
+                     |           |
+                  kitchen     history ----- celler entrance - cellar east
+                     |           |                 |  
+                  bathroom     office          cellar south
