@@ -1,3 +1,4 @@
+import { Flag }  from "./flags.js";
 import { Location }  from "../framework/content/location.js";
 
 export { getAll };
@@ -60,6 +61,15 @@ class CellarEntrance extends Location {
             "E": { target: "cellarEast" },
             "S": { target: "cellarSouth" },
         }
+    }
+
+    canEnterFrom(location, context) {
+        if (context.isItemInInventory("flashlight")) {
+            return true;
+        }
+        context.setMessage("You take a few steps down the stairs but turn around again. It is completely dark and you realize that you need some kind of light.");
+        context.flags.add(Flag.NEED_LIGHT_SOURCE);
+        return false;
     }
 }
 
@@ -129,6 +139,7 @@ class HistorySection extends Location {
         this.exits = {
             "S": { target: "office", door: "officeDoor" },
             "N": { target: "artSection" },
+            "E": { target: "cellarEntrance", isVisible: false },
         }
     }
 }
@@ -136,12 +147,13 @@ class HistorySection extends Location {
 class Kitchen extends Location {
     constructor() {
         super("kitchen");
-        this.containedItems = ["sink", "waterCooker", "fridge", "table", "chair", "cupboard", "bathroomDoor"];
+        this.containedItems = ["sink", "waterCooker", "fridge", "table", "chair", "cupboard", "bathroomDoor", "broomCupboard"];
         this.positions = {
             "cup":  { x: 390, y: 110, w: 20, h: 20, layerIndex: 2 },
             "cupboard": { x: 365, y: 100, w: 80, h: 70 },
             "sink": { x: 345, y: 180, w: 100, h: 160 },
-            "chair":  { x: 130, y: 100, w: 40, h: 40 },
+            "broomCupboard":  { x: 55, y: 55, w: 140, h: 40 },
+            "chair":  { x: 210, y: 180, w: 40, h: 40 },
             "table":  { x: 100, y: 150, w: 100, h: 100 },
             "fridge":  { x: 55, y: 318, w: 80, h: 80 },
             "officeDoorKey":  { x: 390, y: 140, w: 20, h: 20, layerIndex: 2 },

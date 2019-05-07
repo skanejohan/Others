@@ -11,6 +11,7 @@ var getAll = function() {
         "artShelf3": new ArtShelf("artShelf3"),
         "bathroomDoor": new BathroomDoor(),
         "bathroomSink": new BathroomSink(),
+        "broomCupboard" : new BroomCupboard(),
         "cabinet": new Cabinet(),
         "chair": new Chair(),
         "cup": new Cup(),
@@ -23,6 +24,7 @@ var getAll = function() {
         "fictionShelf2": new FictionShelf("fictionShelf2"),
         "fictionShelf3": new FictionShelf("fictionShelf3"),
         "fictionTable": new FictionTable(),
+        "flashlight": new Flashlight(),
         "fridge": new Fridge(),
         "frontDoor": new FrontDoor(),
         "historyBookshelf": new HistoryBookshelf(),
@@ -76,6 +78,40 @@ class BathroomSink extends Item {
     constructor() {
         super("bathroomSink", "sink", true);
         this.description = "Old, stained and maybe not completely clean.";
+    }
+}
+
+class BroomCupboard extends OpenableItem {
+    constructor() {
+        super("broomCupboard", "broom cupboard", true, true, AccessState.CLOSED);
+        this.containedItems = ["flashlight"];
+    }
+
+    beforeOpen(context) {
+        if (!this.flashlightNeededAndInsideCupboard(context)) {
+            context.setMessage("You open the door and take a quick look inside. Then you close it again, feeling slightly guilty since you know that the whole bookstore could do with a proper clean-up.");
+            return true;
+        }
+        return false;
+    }
+
+    beforeExamine(context) {
+        if (this.state == AccessState.CLOSED) {
+            if (this.flashlightNeededAndInsideCupboard(context)) {
+                this.description = "A plain white door. You seem to remember an old flashlight that just might be inside this cupboard.";
+            } else {
+                this.description = "A plain white door. Behind it, you know you will find a lot of cleaning utensils. Nothing that feels particularly interesting.";
+            }
+        }
+        else {
+            this.description = "Among a lot of cleaning utensils, you see your old flashlight.";
+        }
+    }
+
+    flashlightNeededAndInsideCupboard(context) {
+        var needsFlashlight = context.flags.has(Flag.NEED_LIGHT_SOURCE);
+        var containsFlashlight = this.containsItem("flashlight");
+        return needsFlashlight && containsFlashlight;
     }
 }
 
@@ -200,6 +236,17 @@ class FictionTable extends Item {
     constructor() {
         super("fictionTable", "table", true, true);
         this.description = "A small coffee table and two rickety chairs. This is where you intend to serve your loyal customers a cup of tea or coffee, and maybe a homemade biscuit or two, while they ponder on their purchases or just enjoy the literary ambience. This assumes, of course, that you have any loyal customers. Hardly anyone has used this table since you placed it there, nearly two years ago.";
+    }
+}
+
+class Flashlight extends Item {
+    constructor() {
+        super("flashlight", "flashlight");
+        this.description = "A small flashlight with a surprisingly efficient beam";
+    }
+
+    afterTake(context) {
+        context.item("broomCupboard").state = AccessState.CLOSED;
     }
 }
 
@@ -508,7 +555,8 @@ class Wall extends Item {
             }
             else if (context.flags.has(Flag.UNCLE_AILBERT_GONE)) {
                 context.setMessage("You hit the wall with the axe until the door-shaped section has been demolished. Behind it, you see only darkness.");
-                context.location("historySection").addExit(context, "E", "cellarEntrance");
+                context.location("historySection").exits["E"].isVisible = true;
+                context.setExitsHaveChanged();
                 context.allItems["rockPick"].isVisible = false;
                 context.flags.add(Flag.WALL_BROKEN);
                 this.isVisible = false;

@@ -8,4 +8,5 @@ const Flag = {
     MAKE_TEA_POSSIBLE: 5,
     BOOKSHELF_PULLED: 6,
     BOOKSHELF_EMPTY: 7,
+    NEED_LIGHT_SOURCE: 8,
 };

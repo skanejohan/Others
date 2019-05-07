@@ -1,5 +1,7 @@
 uiTest = function() {
     var test = new Test(window.app);
+    
+    // Get into the office
     test.addClickArrow("S");
     test.addClickElementMenu("cupboard", "Open");
     test.addClickElementMenu("cup", "Take");
@@ -10,19 +12,13 @@ uiTest = function() {
     test.addClickElementMenu("officeDoor", "Unlock");
     test.addClickElementMenu("officeDoor", "Open");
     test.addClickArrow("officeDoor");
-    test.addClickElementMenu("cabinet", "Open");
-    test.addClickElementMenu("metalBox", "Take");
-    test.addClickElementMenu("desk", "Examine");
-    test.addClickElementMenu("drawer", "Open");
-    test.addClickElementMenu("paperClip", "Take");
-    test.addClickElementMenu("metalBox", "Pick");
+
+    // Find the hidden secret
     test.addClickElementMenu("safe", "Enter combination");
     test.addClickCombinationLockButton("1");
     test.addClickCombinationLockButton("9");
     test.addClickCombinationLockButton("7");
     test.addClickCombinationLockButton("9");
-    test.addClickElementMenu("metalBox", "Drop");
-    test.addClickElementMenu("rockPick", "Take");
     test.addClickElementMenu("safe", "Open");
     test.addClickElementMenu("houseHistoryBook", "Take");
     test.addClickArrow("N");
@@ -32,14 +28,28 @@ uiTest = function() {
     test.addClickElementMenu("languageShelf", "Examine");
     test.addClickElementMenu("latinDictionary", "Take");
     test.addClickElementMenu("houseHistoryBook", "Examine");
+
+    // Reveal the secret door
     test.addClickArrow("E");
     test.addClickArrow("E");
     test.addClickArrow("S");
     test.addClickElementMenu("historyBookshelf", "Examine");
     test.addClickElementMenu("historyBookshelf", "Empty");
     test.addClickElementMenu("historyBookshelf", "Pull");
+    test.addClickArrow("officeDoor");
+    test.addClickElementMenu("desk", "Examine");
+    test.addClickElementMenu("drawer", "Open");
+    test.addClickElementMenu("paperClip", "Take");
+    test.addClickElementMenu("cabinet", "Open");
+    test.addClickElementMenu("metalBox", "Take");
+    test.addClickElementMenu("metalBox", "Pick");
+    test.addClickElementMenu("rockPick", "Take");
+    test.addClickElementMenu("metalBox", "Drop");
+    test.addClickArrow("N");
     test.addClickElementMenu("wall", "Examine");
     test.addClickElementMenu("wall", "Hit");
+
+    // Hide the truth from uncle Ailbert
     test.addClickElementMenu("uncleAilbert", "Talk");
     test.addClickConversationResponse("2");
     test.addClickConversationResponse("5");
@@ -48,25 +58,60 @@ uiTest = function() {
     test.addClickArrow("S");
     test.addClickElementMenu("waterCooker", "Examine");
     test.addClickElementMenu("waterCooker", "Make tea");
+
+    // Reveal the secret door - again
     test.addClickArrow("N");
     test.addClickArrow("E");
     test.addClickArrow("S");
     test.addClickElementMenu("wall", "Hit");
+
+    // Meet the ghosts
+    test.addClickArrow("E");
+    test.addClickArrow("N");
+    test.addClickArrow("W");
+    test.addClickArrow("S");
+    test.addClickElementMenu("broomCupboard", "Open");
+    test.addClickElementMenu("flashlight", "Take");
+    test.addClickArrow("N");
+    test.addClickArrow("E");
+    test.addClickArrow("S");
+    test.addClickArrow("E");
+
     test.runActions();
 }
 
-
 test = function() {
-    window.app.applyState(
+    var getIntoOffice = 
         "move-kitchen,open-cupboard,take-cup,take-officeDoorKey,move-fictionSection,move-artSection," + 
-        "move-historySection,unlock-officeDoor,open-officeDoor,move-office,open-cabinet,take-metalBox," +
-        "examine-desk,open-drawer,take-paperClip,pick-metalBox,enterCombination-safe,applyCombination-safe-1979," + 
-        "drop-metalBox,take-rockPick,open-safe,take-houseHistoryBook,move-historySection,move-artSection," + 
-        "move-fictionSection,move-travelSection,examine-languageShelf,take-latinDictionary,examine-houseHistoryBook," + 
+        "move-historySection,unlock-officeDoor,open-officeDoor,move-office";
+
+    var findHiddenSecret =
+        "enterCombination-safe,applyCombination-safe-1979,open-safe,take-houseHistoryBook,move-historySection,move-artSection," + 
+        "move-fictionSection,move-travelSection,examine-languageShelf,take-latinDictionary,examine-houseHistoryBook";
+    
+    var revealTheSecretDoor = 
         "move-fictionSection,move-artSection,move-historySection,examine-historyBookshelf,empty-historyBookshelf," + 
-        "pull-historyBookshelf,examine-wall,hit-wall,talk-uncleAilbert,addMakeTeaVerbToWaterCooker-uncleAilbert," + 
-        "move-kitchen,examine-waterCooker,makeTea-waterCooker,move-fictionSection,move-artSection,move-historySection," + 
-        "hit-wall");
+        "pull-historyBookshelf,move-office,examine-desk,open-drawer,take-paperClip,open-cabinet,take-metalBox,pick-metalBox," + 
+        "take-rockPick,drop-metalBox,move-historySection,examine-wall,hit-wall"; 
+
+    var hideTheTruthFromUncleAilbert = 
+        "talk-uncleAilbert,addMakeTeaVerbToWaterCooker-uncleAilbert,move-kitchen,examine-waterCooker,makeTea-waterCooker";
+
+    var revealTheSecretDoorAgain = 
+        "move-fictionSection,move-artSection,move-historySection,hit-wall";
+
+    var meetTheGhosts =
+        "move-cellarEntrance,move-artSection,move-fictionSection,move-kitchen,open-broomCupboard,take-flashlight," +
+        "move-fictionSection,move-artSection,move-historySection,move-cellarEntrance";
+
+    window.app.applyState([
+        getIntoOffice, 
+        findHiddenSecret, 
+        revealTheSecretDoor,
+        hideTheTruthFromUncleAilbert,
+        revealTheSecretDoorAgain,
+        meetTheGhosts,
+    ].join());
 }
 
 class Test {
