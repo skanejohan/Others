@@ -59,7 +59,7 @@ function getOpenings(location, direction) {
 
 function _getDoor(location, direction) {
     let key = Object.keys(location.positions).find(k => location.positions[k].door && location.positions[k].type == direction);
-    if (key) {
+    if (key && location.positions[key].isVisible != false) {
         return {
             start: location.positions[key].start,
             length: location.positions[key].length,
@@ -72,7 +72,7 @@ function _getDoor(location, direction) {
 
 function _getExit(location, direction) {
     let exit = location.exits[direction];
-    if (exit) {
+    if (exit && exit.isVisible != false) {
         return {
             start: { N : 210, E : 190, S : 210, W: 190 }[direction],
             length: 80,
@@ -86,7 +86,7 @@ function _getExit(location, direction) {
 function _getWindows(location, direction) {
     let keys = Object.keys(location.positions).filter(k => location.positions[k].window && location.positions[k].type == direction);
     var windows = [];
-    keys.forEach(key => {
+    keys.filter(key => location.positions[key].isVisible != false).forEach(key => {
         windows.push({ 
             start: location.positions[key].start, 
             length: location.positions[key].length, 

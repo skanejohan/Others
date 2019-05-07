@@ -127,11 +127,16 @@ class Context {
     }
 
     moveTo(location, direction) {
-        this.currentLocation = location;
-        this.visitedLocations.push(location);
-        this.state.addAction(this.currentLocation, "move");
-        this.setMessage("You move to the " + this.allLocations[this.currentLocation].caption);
-        this.reportActionPerformed("move", location, direction);
+        if (this.location(location).canEnterFrom(this.currentLocation, this)) {
+            this.currentLocation = location;
+            this.visitedLocations.push(location);
+            this.state.addAction(this.currentLocation, "move");
+            this.setMessage("You move to the " + this.allLocations[this.currentLocation].caption);
+            this.reportActionPerformed("move", location, direction);
+        }
+        else {
+            this.reportActionPerformed("move", location, direction, true);
+        }
     }
 
     getCurrentLocation() {
