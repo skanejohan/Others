@@ -346,13 +346,6 @@ class HouseHistoryBook extends Item {
             this.description = "The leather-bound old book is written in what you assume is latin. Although you may recognize a word here and there, you really have no way of telling what the book is about. You see a small map in one of the pages. You can't be sure but you have a slight feeling of recognition.";
         }
     }
-
-    afterExamine(context) {
-        // TODO context.replaceLastMessage ?
-        context.setMessage("Using the paper clip, you manage to open the lock. You open the box and it turns out to contain your old rock collection. Not much of a collection actually, a few small stones and your old rock pick.");
-        context.allItems["metalBox"].state = AccessState.OPEN;
-    }
-
 }
 
 class LanguageShelf extends Item {
@@ -405,7 +398,6 @@ class MetalBox extends PickableItem {
     }
 
     afterPick(context) {
-        // TODO context.replaceLastMessage ?
         context.setMessage("Using the paper clip, you manage to open the lock. You open the box and it turns out to contain your old rock collection. Not much of a collection actually, a few small stones and your old rock pick.");
         context.allItems["metalBox"].state = AccessState.OPEN;
         context.allItems["paperClip"].isVisible = false;
