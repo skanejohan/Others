@@ -27,6 +27,13 @@ class Item {
         this.verbDrop.caption = "Drop";
     }
 
+    containsItem(item) {
+        if (typeof item == "object") {
+            return this.containedItems.indexOf(item.name) > -1;
+        }
+        return this.containedItems.indexOf(item) > -1;
+    }
+
     verbExamine(context) {
         this.private.do("examine", context, () => {
             context.setMessage(`(About ${this.caption}) ${this.description}`);
