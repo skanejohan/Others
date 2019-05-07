@@ -77,15 +77,20 @@ class Engine {
     }
 
     remove(element) {
-        this._removeFromArray(element.layer, element);
-        if (element.layer.length == 0) {
-            this._removeFromArray(this._layers, element.layer);
-            if (element.layer === this._modalLayer) {
-                this._forEachNonModalElement(e => e.unpause());
+        if (element.layer) {
+            this._removeFromArray(element.layer, element);
+            if (element.layer.length == 0) {
+                this._removeFromArray(this._layers, element.layer);
+                if (element.layer === this._modalLayer) {
+                    this._forEachNonModalElement(e => e.unpause());
+                }
+            }
+            if (element.popup === ElementBase.currentPopup) {
+                ElementBase.currentPopup = undefined;
             }
         }
-        if (element.popup === ElementBase.currentPopup) {
-            ElementBase.currentPopup = undefined;
+        else {
+            console.log(element);
         }
     }
 
