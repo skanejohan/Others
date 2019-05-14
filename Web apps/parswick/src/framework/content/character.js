@@ -12,9 +12,13 @@ class Character extends Item {
     }
 
     verbTalk(context) {
+        this.selectConversation(context);
         this.private.do("talk", context, () => {
             // The actual work is done from the UI
         });
+    }
+
+    selectConversation(context) {
     }
 
     verbTalkVisible(context) {
