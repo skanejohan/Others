@@ -47,6 +47,7 @@ class ConversationUI {
 
     removeStatementAndResponses() {
         this.statementAndResponses.forEach(ui => this.engine.remove(ui));
+        this.statementAndResponses = [];
     }
 
     close() {
