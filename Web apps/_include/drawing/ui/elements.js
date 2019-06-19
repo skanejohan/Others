@@ -759,7 +759,7 @@ class Menu extends CompositeElementBase {
 // ---------- Buttons -----------------------------------------------------------------------
 
 class ButtonBase extends CompositeElementBase {
-    constructor(x, y, w, h, text) {
+    constructor(x, y, w, h, text, appearance) {
         super(x, y, w, h);
         this._pressed = false;
         this._frameColor =          "gray"; 
@@ -771,8 +771,22 @@ class ButtonBase extends CompositeElementBase {
         this._fontColor =           "black";
         this._fontColorHighlight =  "black";
         this._fontColorClicked =    "black";
-        this._font = "18px arial";
-        this._margin = 3;           
+        this._font =                "18px arial";
+        this._margin =              3;           
+
+        if (appearance) {
+            this._frameColor =          appearance.frameColor || this._frameColor; 
+            this._frameColorHighlight = appearance.frameColorHighlight || this._frameColorHighlight;
+            this._frameColorClicked =   appearance.frameColorClicked || this._frameColorClicked;
+            this._bgColor =             appearance.bgColor || this._bgColor;
+            this._bgColorHighlight =    appearance.bgColorHighlight || this._bgColorHighlight;
+            this._bgColorClicked =      appearance.bgColorClicked || this._bgColorClicked;
+            this._fontColor =           appearance.fontColor || this._fontColor;
+            this._fontColorHighlight =  appearance.fontColorHighlight || this._fontColorHighlight;
+            this._fontColorClicked =    appearance.fontColorClicked || this._fontColorClicked;
+            this._font =                appearance.font || this._font;
+            this._margin =              appearance.margin || this._margin;
+        }
 
         this._frameElement = this.addElement(new FillRect(x, y, w, h, this._frameColor));
         this._bgElement = this.addElement(new FillRect(x + this._margin, y + this._margin, w - 2 * this._margin, h - 2 * this._margin, this._bgColor));
@@ -800,8 +814,8 @@ class ButtonBase extends CompositeElementBase {
 }
 
 class Button extends ButtonBase {
-    constructor(x, y, w, h, text, fn) {
-        super(x, y, w, h, text);
+    constructor(x, y, w, h, text, fn, appearance) {
+        super(x, y, w, h, text, appearance);
 
         this.onclick = () => {
             if (!this._pressed) {
@@ -816,8 +830,8 @@ class Button extends ButtonBase {
 }
 
 class TogglableButton extends ButtonBase {
-    constructor(x, y, w, h, text, onFn, offFn) {
-        super(x, y, w, h, text);
+    constructor(x, y, w, h, text, onFn, offFn, appearance) {
+        super(x, y, w, h, text, appearance);
 
         this.onclick = () => {
             if (!this._pressed) {

@@ -1,3 +1,5 @@
+import { ButtonElement } from "./elements/button.js"
+
 export { CombinationLockUI };
 
 class CombinationLockUI {
@@ -33,7 +35,7 @@ class CombinationLockUI {
         var height = b.h / 5;
         var left = b.x + col * b.w - width / 2;
         var top = b.y + row * b.h;
-        return new Button(left, top, width, height, digit, () => {
+        return new ButtonElement(left, top, width, height, digit, () => {
             this.currentCombination += digit;
             if (this.currentCombination.length == this.expectedCombination.length) {
                 this.fn(this.currentCombination);
