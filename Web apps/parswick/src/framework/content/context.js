@@ -5,15 +5,17 @@ import { AccessState } from "./item.js";
 export { Context };
 
 class Context {
-    constructor(items, locations, characters, initialLocation, initialMessage, onActionPerformed) {
+    constructor(items, locations, characters, cutscenes, initialLocation, initialCutscene, initialMessage, onActionPerformed) {
         this.allItems = items;                        // Dictionary string -> Item
         this.allLocations = locations;                // Dictionary string -> Location
         this.allCharacters = characters;              // Dictionary string -> Character
+        this.allCutscenes = cutscenes;                // Dictionary string -> string
         this.inventory = [];                          // Array of string
         this.historicInventory = new Set([]);         // Set of string
         this.flags = new Set([]);                     // Set of Flag
         this.messages = [initialMessage];             // Array of string
         this.currentLocation = initialLocation;       // string
+        this.setCutscene(initialCutscene);            // string
         this.visitedLocations = [initialLocation];    // Array of string
         this.onActionPerformed = onActionPerformed;   // (string, string) => undefined
         this.state = new State(this);                 // State  
@@ -157,6 +159,18 @@ class Context {
 
     removeAllMessages() {
         this.messages = [];
+    }
+
+    // ---------- Cutscene
+
+    setCutscene(sceneId) {
+        this.cutscene = this.allCutscenes[sceneId];
+    }
+
+    getCutscene() {
+        var cs = this.cutscene;
+        this.cutscene = undefined;
+        return cs;
     }
 
     // ---------- Exits

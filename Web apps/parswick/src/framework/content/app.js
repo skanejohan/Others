@@ -4,11 +4,13 @@ import { UI } from "../ui/ui.js";
 export { App };
 
 class App {
-    constructor(canvasDiv, startLocation, startMessage, items, locations, characters) {
+    constructor(canvasDiv, startLocation, startCutscene, startMessage, items, locations, characters, cutscenes) {
         this.items = items;
         this.locations = locations;
         this.characters = characters;
+        this.cutscenes = cutscenes;
         this.startLocation = startLocation;
+        this.startCutscene = startCutscene;
         this.startMessage = startMessage;
         this.canvasDiv = canvasDiv;
         this.reset();
@@ -25,10 +27,13 @@ class App {
             this.items.getAll(), 
             this.locations.getAll(), 
             this.characters.getAll(),
+            this.cutscenes.getAll(),
             this.startLocation,
+            this.startCutscene,
             this.startMessage);
         if (suppressWelcomeMessage) {
             this.context.removeAllMessages();
+            this.context.setCutscene(undefined);
         }
         this.ui = new UI(this.canvasDiv, this.context);
     }
@@ -39,6 +44,7 @@ class App {
         this.context.state.fromString(s);
         this.context.removeAllMessages();
         this.ui.endBatchOperations();
+        this.context.setCutscene(undefined);
     }
 
     readState() {

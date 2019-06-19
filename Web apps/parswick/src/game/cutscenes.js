@@ -1,0 +1,11 @@
+export { getAll };
+
+var getAll = function() {
+    return {
+        "intro": "Outside the large front windows, the snow is falling down onto the cobbled street. You sigh when pondering all the lucky people preparing for Christmas and spending time with their loved ones while you spend your time here. Alone in a bookshop that hasn't made a profit for years. You haven't had a vacation in a long time and with the current income flow, you are unlikely to get one anytime soon. Money is running out quickly, and if you don't do anything, the next Christmas the family's old shop will no longer be around. You don't want to be the person that lost it.",
+
+        "ghosts": "You remember the older people of your family, uncle Ailbert among them, talking about the old basement. In Victorian times, when the shop sold not only books, it was used for storage. During some time people also made their living down there - a seamstress and a dressmaker worked there for a while, as did a watchmaker. Legend has it that at one point, two young lovers were locked inside, never to be seen again, and that their ghosts still exist somewhere down there. The basement was locked up well before you were born, and you are probably the first person still alive to see it.",
+
+        "dance": "You have no idea how, but suddenly soft music fills the air. You enter in an embrace with the semi-transparent man who encourages you along. It is a strange sensation, to be locked in an embrace with a character neither living nor dead, whose firm grip, while seemingly non-existent, at the same time is very firm. As you start dancing, you wonder whether you will actually be able to get out of his grip, should you want to do so. <br><br>He dances well, and you feel a strang joy flow through you. After a while, he slowly guides you of the room and you realize that he wants to continue dancing in the outer room, where there is more room.<br><br>As you enter the outer room, the female ghost looks at you with a strange expression on her face before she floats through one of the walls and disappears.<br><br>\"She is afraid of ghosts - how ironic\", the dancer states laconically. You dance for a while before he releases his grip, thanks you with a bow of his head and floats back into his room.",
+    }
+}

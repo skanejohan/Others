@@ -5,6 +5,7 @@ import { MessagesUI } from "./messages.js";
 import { CombinationLockUI } from "./combinationLock.js";
 import { ConversationUI } from "./conversation.js";
 import { Utils } from "./utils.js";
+import { CutsceneUI } from "./cutscene.js";
 
 export { UI };
 
@@ -20,8 +21,9 @@ class UI {
         this.inventoryUI = new ItemListUI(this.engine, this.context, 500, 50, 250, 165, "You are carrying:");
         this.itemsHereUI = new ItemListUI(this.engine, this.context, 500, 235, 250, 165, "You also see:");
         this.messagesUI = new MessagesUI(this.engine, 450, 400, 300);
-        this.combinationLockUI = new CombinationLockUI(this.engine, 130, 30, 540, 390, 30, "black", LAYER1COLOR)
-        this.conversationUI = new ConversationUI(this.engine, this.context, 130, 30, 540, 390, 30, "black", LAYER1COLOR)
+        this.combinationLockUI = new CombinationLockUI(this.engine, 130, 30, 540, 390, 30, "black", LAYER1COLOR);
+        this.conversationUI = new ConversationUI(this.engine, this.context, 130, 30, 540, 390, 30, "black", LAYER1COLOR);
+        this.cutsceneUI = new CutsceneUI(this.engine, this.context, 130, 30, 540, 390, 30, "black", LAYER1COLOR);
 
         this.moveToCurrentLocation();
 
@@ -87,13 +89,15 @@ class UI {
             this.updateItemElements();
             this.locationUI.updateExits();
         }
-    
+        
+        this.showCutscene();
         this.showMessages();
     }
 
     moveToCurrentLocation() {
         this.locationUI.enter(this.context.getCurrentLocation(), () => {
             this.updateItemElements();
+            this.showCutscene();
             this.showMessages();
         });
     }
@@ -131,6 +135,13 @@ class UI {
                 Utils.setVerbs(item.element, item, this.context);
             }
         });
+    }
+
+    showCutscene() {
+        var cs = this.context.getCutscene();
+        if (cs != undefined) {
+            this.cutsceneUI.display(cs);
+        }
     }
 
     showMessages() {
