@@ -2,6 +2,7 @@ uiTest = function() {
     var test = new Test(window.app);
     
     // Get into the office
+    test.addCloseCutscene();
     test.addClickArrow("S");
     test.addClickElementMenu("cupboard", "Open");
     test.addClickElementMenu("cup", "Take");
@@ -78,6 +79,7 @@ uiTest = function() {
     test.addClickArrow("E");
 
     // Learn to dance
+    test.addCloseCutscene();
     test.addClickArrow("S");
     test.addClickElementMenu("maleGhost", "Talk");
     test.addClickConversationResponse("2");
@@ -156,6 +158,18 @@ class Test {
         ElementBase.getMousePos = this.oldGetMousePos;
         this.app.ui.messagesUI._messageTimeMs = this.oldMessageTimeMs;
         this.app.ui.messagesUI.maxMessageLength = 3;
+    }
+
+    addCloseCutscene() {
+        this.actions.push(() => {
+            this.highlight(this.app.ui.cutsceneUI.btn);
+            return 1000;
+        });
+        this.actions.push(() => {
+            this.app.ui.canvas._onclick();
+            this.moveTo(0, 0);
+            return 500;
+        })
     }
 
     addClickArrow(arrowName) {
