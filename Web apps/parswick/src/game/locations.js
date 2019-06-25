@@ -1,4 +1,5 @@
 import { Flag }  from "./flags.js";
+import { AccessState }  from "../framework/content/item.js";
 import { Location }  from "../framework/content/location.js";
 
 export { getAll };
@@ -55,7 +56,9 @@ class CellarEntrance extends Location {
         super("cellar entrance");
         this.containedItems = [];
         this.positions = {
+            "femaleGhost": { x: 320, y: 180, w: 100, h: 100 },
         };
+        this.containedCharacters = ["femaleGhost"];
         this.exits = {
             "W": { target: "historySection" },
             "E": { target: "cellarEast" },
@@ -65,6 +68,10 @@ class CellarEntrance extends Location {
 
     canEnterFrom(location, context) {
         if (context.isItemInInventory("flashlight")) {
+            if (!context.flags.has(Flag.GHOSTS_HAVE_BEEN_DESCRIBED)) {
+                context.setCutscene("ghosts");
+                context.flags.add(Flag.GHOSTS_HAVE_BEEN_DESCRIBED);
+            }
             return true;
         }
         context.setMessage("You take a few steps down the stairs but turn around again. It is completely dark and you realize that you need some kind of light.");
@@ -83,6 +90,14 @@ class CellarEast extends Location {
             "W": { target: "cellarEntrance" },
         }
     }
+
+    canEnterFrom(location, context) {
+        if(context.allCharacters["uncleAilbert"].isVisible) {
+            return true;
+        }
+        context.setMessage("The young woman hovering in the air prevents you from entering.");
+        return false;
+    }
 }
 
 class CellarSouth extends Location {
@@ -90,7 +105,9 @@ class CellarSouth extends Location {
         super("south room of the cellar");
         this.containedItems = [];
         this.positions = {
+            "maleGhost": { x: 180, y: 180, w: 100, h: 100 },
         };
+        this.containedCharacters = ["maleGhost"];
         this.exits = {
             "N": { target: "cellarEntrance" },
         }
@@ -125,7 +142,7 @@ class FictionSection extends Location {
 class HistorySection extends Location {
     constructor() {
         super("history section");
-        this.containedItems = ["historyBookshelf", "wall", "officeDoor"];
+        this.containedItems = ["historyBookshelf", "wall", "officeDoor", "danceBook"];
         this.positions = {
             /* TODO ... and historyBookshelf2 is the interesting one...
             "historyBookshelf1": { x: 200, y: 100, w: 230, h: 40 },
@@ -165,6 +182,14 @@ class Kitchen extends Location {
             "S": { target: "bathroom", door: "bathroomDoor" },
         }
     }
+
+    canEnterFrom(location, context) {
+        if (!context.flags.has(Flag.NEEDS_TO_PRACTICE_DANCING) || (context.allItems["frontDoor"].state == AccessState.LOCKED)) {
+            return true;
+        }
+        context.setMessage("As you move towards the kitchen, the front door opens and a man and a woman enter. They ask if you know where the choir will sing Christmas carols in a short while. You point out the direction. They thank you and leave, closing the front door as they leave.");
+        return false;
+    }
 }
 
 class Office extends Location {
@@ -192,7 +217,7 @@ class TravelSection extends Location {
         this.containedItems = ["travelShelf", "languageShelf", "latinDictionary", "armchair", "travelWindow"];
         this.positions = {
             "travelShelf": { x: 100, y: 120, w: 150, h: 30 },
-            "languageshelf": { x: 100, y: 180, w: 150, h: 30 },
+            "languageShelf": { x: 100, y: 180, w: 150, h: 30 },
             "armchair":  { x: 320, y: 280, w: 80, h: 80 },
             "travelWindow": { window: true, type: "N", start: 210, length: 80 },
         };

@@ -77,6 +77,26 @@ uiTest = function() {
     test.addClickArrow("S");
     test.addClickArrow("E");
 
+    // Learn to dance
+    test.addClickArrow("S");
+    test.addClickElementMenu("maleGhost", "Talk");
+    test.addClickConversationResponse("2");
+    test.addClickConversationResponse("5");
+    test.addClickArrow("N");
+    test.addClickArrow("W");
+    test.addClickElementMenu("historyBookshelf", "Examine");
+    test.addClickElementMenu("danceBook", "Take");
+    test.addClickElementMenu("danceBook", "Read");
+    test.addClickArrow("E");
+    test.addClickArrow("S");
+    test.addClickElementMenu("maleGhost", "Talk");
+    test.addClickConversationResponse("2");
+    test.addClickConversationResponse("5");
+    test.addClickArrow("N");
+    test.addClickArrow("W");
+    test.addClickArrow("N");
+    test.addClickArrow("W");
+
     test.runActions();
 }
 
@@ -104,6 +124,10 @@ test = function() {
         "move-cellarEntrance,move-artSection,move-fictionSection,move-kitchen,open-broomCupboard,take-flashlight," +
         "move-fictionSection,move-artSection,move-historySection,move-cellarEntrance";
 
+    var learnToDance = "move-cellarSouth,talk-maleGhost,firstDance-maleGhost,move-cellarEntrance,move-historySection," + 
+        "examine-historyBookshelf,take-danceBook,move-cellarEntrance,move-cellarSouth,talk-maleGhost,secondDance-maleGhost," +
+        "move-cellarEntrance,move-historySection,move-artSection,move-fictionSection";
+
     window.app.applyState([
         getIntoOffice, 
         findHiddenSecret, 
@@ -111,6 +135,7 @@ test = function() {
         hideTheTruthFromUncleAilbert,
         revealTheSecretDoorAgain,
         meetTheGhosts,
+        learnToDance,
     ].join());
 }
 

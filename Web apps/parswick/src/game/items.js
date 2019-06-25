@@ -16,6 +16,7 @@ var getAll = function() {
         "chair": new Chair(),
         "cup": new Cup(),
         "cupboard": new Cupboard(),
+        "danceBook": new DanceBook(),
         "desk": new Desk(),
         "drawer": new Drawer(),
         "fictionLeftWindow": new FictionLeftWindow(),
@@ -158,6 +159,25 @@ class Cupboard extends OpenableItem {
     }    
 }
 
+class DanceBook extends Item {
+    constructor() {
+        super("danceBook", "dance book", false, false);
+        this.description = "The cover, depicting two dancing ladies wearing typical nineteenth century robes, also displays the book's title - \"From the Ballroom to Hell: Grace and Folly in Nineteenth-Century Dance\".";
+        this.verbRead.caption = "Read";
+    }
+
+    verbRead(context) {
+        this.private.do("read", context, () => {
+            context.setMessage("You read the book, and after a while believe that you know enough to dance with the handsome ghost.");
+            context.flags.add(Flag.HAVE_READ_DANCE_BOOK);
+        });
+    }
+
+    verbReadVisible(context) {
+        return true;
+    }
+}
+
 class Desk extends Item {
     constructor() {
         super("desk", "desk", true);
@@ -262,11 +282,24 @@ class FrontDoor extends OpenableItem {
         super("frontDoor", "front door", true, true, AccessState.CLOSED);
         this.description = "This is the main entrance to your book shop. You see a sign that says \"Closed\". Luckily, that means that is says \"Open\" on the other side. Above the door is a small bell to indicate when a customer enters. Too rarely does it sound.";         
         this.isDoor = true;
+        this.verbLock.caption = "Lock";
     }
 
     beforeOpen(context) {
         context.setMessage("As you move toward the door to open it, you realise that you just got here and that it is not yet time for lunch. If ever a customer should venture into your shop, you had better be here.");
         return true;
+    }
+
+    verbLock(context) {
+        this.private.do("lock", context, () => {
+            this.state = AccessState.LOCKED;
+            this.historicStates.add(AccessState.LOCKED);
+            context.setMessage("You lock the " + this.caption + ".");
+        });
+    }
+
+    verbLockVisible(context) {
+        return this.state === AccessState.CLOSED && context.flags.has(Flag.NEEDS_TO_PRACTICE_DANCING);
     }
 }
 
@@ -280,7 +313,12 @@ class HistoryBookshelf extends Item {
     }
 
     beforeExamine(context) {
-        if (context.flags.has(Flag.BOOKSHELF_PULLED)) {
+        if (context.flags.has(Flag.NEED_DANCE_BOOK)) {
+            this.description = "You examine the bookshelf more closely. In the lower left corner, you find a book entitled \"From the Ballroom to Hell: Grace and Folly in Nineteenth-Century Dance\".";
+            context.allItems["danceBook"].isVisible = true;
+            context.flags.delete(Flag.NEED_DANCE_BOOK);
+        }
+        else if (context.flags.has(Flag.BOOKSHELF_PULLED)) {
             this.description = "The dusty bookshelf has been pulled from its place along the wall. Behind it, you can see a part of a brick wall.";
         }
         else if (context.flags.has(Flag.BOOKSHELF_EMPTY)) {
@@ -356,6 +394,8 @@ class LanguageShelf extends Item {
     beforeExamine(context) {
         if (context.isItemInInventory("houseHistoryBook") && !context.allItems["latinDictionary"].isVisible) {
             this.description = "The shelf is filled with dictionaries and grammar guides. Pondering the old book in your hand, you look more closely for a latin dictionary which you are able to find, squeezed between Astrid Stedje's \"Deutsche Sprache gestern und heute\" and an old edition of \"The Oxford Companion to English Literature\".";
+            context.removeItemFromContainer("latinDictionary");
+            context.addItemToInventory("latinDictionary");
         }
         else {
             this.description = "The shelf is filled with dictionaries and grammar guides. To be honest, you have probably not opened one of them after placing them in the shelf.";

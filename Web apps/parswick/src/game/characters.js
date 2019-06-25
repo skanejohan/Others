@@ -6,13 +6,78 @@ import { Flag }  from "./flags.js";
 
 var getAll = function() {
     return {
+        "femaleGhost": new FemaleGhost(),
+        "maleGhost": new MaleGhost(),
         "uncleAilbert": new UncleAilbert(),
+    }
+}
+
+class FemaleGhost extends Character {
+    constructor() {
+        super("femaleGhost", "beautiful woman");
+        this.description = "Hovering in the air is the ghost of a young woman. Pearly-white and slightly transparent, with cherry-red lips, her ankle-long gown resting inches above the crude stone floor. She has an unmistakable nineteenth-century air about her.";
+    }
+}
+
+class MaleGhost extends Character {
+    constructor() {
+        super("maleGhost", "handsome man");
+        this.description = "Hovering in the air is the ghost of a handsome young man. His dark brown frock coat covers a crimson vest and a white shirt with a painfully starched collar. His brown eyes look at you with a friendly expression, and his mouth, surrounded by a neatly trimmed beard, is smiling slightly.";
+        this.conversation = this.getFirstConversation();
+    }
+
+    selectConversation(context) {
+        if (context.flags.has(Flag.HAVE_READ_DANCE_BOOK)) {
+            this.conversation = this.getSecondConversation();
+        }
+        else {
+            this.conversation = this.getFirstConversation();
+        }
+    }
+
+    getFirstConversation() {
+        return new Conversation()
+            .addStatement(1, "Hello, my young lady!", [2])
+            .addResponse(2, "Uh... hello?", 3)
+        
+            .addStatement(3, "Do you want to dance with me?", [4, 5])
+            .addResponse(4, "I would not, thank you.")
+            .addResponseWithAction(5, "I would like that very much!", ctx => this.actionFirstDance(ctx))
+        
+            .setInitialStatement(1);
+    }
+
+    actionFirstDance(context) {
+        this.private.do("firstDance", context, () => {
+            context.setMessage("You dance for a while, but it soon becomes apparent that he is not satisfied with your performance.");
+            context.flags.add(Flag.NEED_DANCE_BOOK);
+        });
+    }
+
+    getSecondConversation() {
+        return new Conversation()
+            .addStatement(1, "Hello again, my dear!", [2])
+            .addResponse(2, "Hello again!", 3)
+        
+            .addStatement(3, "Would you like another dance?", [4, 5])
+            .addResponse(4, "No, thank you, I am still embarrassed with my last performance.")
+            .addResponseWithAction(5, "Yes please, this time I will not let you down!", ctx => this.actionSecondDance(ctx))
+        
+            .setInitialStatement(1);
+    }
+
+    actionSecondDance(context) {
+        this.private.do("secondDance", context, () => {
+            context.setMessage("You dance for a little longer this time, but he still does not seem completely satisfied.");
+            context.flags.add(Flag.NEEDS_TO_PRACTICE_DANCING);
+        });
     }
 }
 
 class UncleAilbert extends Character{
     constructor() {
         super("uncleAilbert", "uncle Ailbert", false);
+        this.description = "Your beloved uncle is getting old but he still looks at you the way he did when you were young and he told you stories from the Scottish heaths, the smell of whisky ever present in his breath.";
         this.movementStrategy = this.getFollowPlayerStrategy(1);
         this.conversation = this.createConversation();
     }
