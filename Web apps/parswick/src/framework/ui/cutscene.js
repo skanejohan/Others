@@ -3,13 +3,14 @@ import { ButtonElement } from "./elements/button.js"
 export { CutsceneUI };
 
 class CutsceneUI {
-    constructor(engine, context, x, y, w, h, radius, bgColor, fgColor) {
+    constructor(engine, context, x, y, w, h, radius, bgColor, fgColor, onHide) {
         this.engine = engine;
         this.context = context;
         this.dimensions = { x: x, y: y, w: w, h: h };
         this.frame = new FillRoundRect(x, y, w, h, radius, fgColor);
         this.background = new FillRoundRect(x+3, y+3, w-6, h-6, radius, bgColor);
-        
+        this.onHide = onHide;
+
         this.btn = new ButtonElement(
             this.dimensions.x + this.dimensions.w - 120, 
             this.dimensions.y + this.dimensions.h - 50, 
@@ -35,6 +36,7 @@ class CutsceneUI {
         this.engine.remove(this.background);
         this.engine.remove(this.text);
         this.engine.remove(this.btn);
+        this.onHide();
     }
 }
 

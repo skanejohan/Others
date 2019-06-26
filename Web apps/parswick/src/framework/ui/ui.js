@@ -23,7 +23,8 @@ class UI {
         this.messagesUI = new MessagesUI(this.engine, 450, 400, 300);
         this.combinationLockUI = new CombinationLockUI(this.engine, 130, 30, 540, 390, 30, "black", LAYER1COLOR);
         this.conversationUI = new ConversationUI(this.engine, this.context, 130, 30, 540, 390, 30, "black", LAYER1COLOR);
-        this.cutsceneUI = new CutsceneUI(this.engine, this.context, 130, 30, 540, 390, 30, "black", LAYER1COLOR);
+        this.cutsceneUI = new CutsceneUI(this.engine, this.context, 130, 30, 540, 390, 30, "black", LAYER1COLOR, 
+            () => this.messagesUI.activate());
 
         this.moveToCurrentLocation();
 
@@ -141,6 +142,7 @@ class UI {
         var cs = this.context.getCutscene();
         if (cs != undefined) {
             this.cutsceneUI.display(cs);
+            this.messagesUI.deactivate();
         }
     }
 

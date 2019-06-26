@@ -72,6 +72,7 @@ class CellarEntrance extends Location {
                 context.setCutscene("ghosts");
                 context.flags.add(Flag.GHOSTS_HAVE_BEEN_DESCRIBED);
             }
+            context.setGoal("makeFriend");
             return true;
         }
         context.setMessage("You take a few steps down the stairs but turn around again. It is completely dark and you realize that you need some kind of light.");

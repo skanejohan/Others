@@ -4,14 +4,16 @@ import { UI } from "../ui/ui.js";
 export { App };
 
 class App {
-    constructor(canvasDiv, startLocation, startCutscene, startMessage, items, locations, characters, cutscenes) {
+    constructor(canvasDiv, startLocation, startCutscene, startMessage, startGoal, items, locations, characters, cutscenes, goals) {
         this.items = items;
         this.locations = locations;
         this.characters = characters;
         this.cutscenes = cutscenes;
+        this.goals = goals;
         this.startLocation = startLocation;
         this.startCutscene = startCutscene;
         this.startMessage = startMessage;
+        this.startGoal = startGoal;
         this.canvasDiv = canvasDiv;
         this.reset();
 
@@ -28,9 +30,11 @@ class App {
             this.locations.getAll(), 
             this.characters.getAll(),
             this.cutscenes.getAll(),
+            this.goals.getAll(),
             this.startLocation,
             this.startCutscene,
-            this.startMessage);
+            this.startMessage,
+            this.startGoal);
         if (suppressWelcomeMessage) {
             this.context.removeAllMessages();
             this.context.setCutscene(undefined);

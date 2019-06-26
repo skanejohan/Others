@@ -10,9 +10,34 @@ class MessagesUI {
         this.messages = [];
         this.timeout = null;
         this.maxMessageLength = 3;
+        this.pendingMessages = [];
+        this.active = true;
     }
 
+    activate() {
+        if (!this.active) {
+            this.active = true;
+            this._activateTimer();
+            if (this.pendingMessages.length > 0) {
+                this.addMessages(this.pendingMessages);
+                this.pendingMessages = [];
+            }
+        }
+    }
+    
+    deactivate() {
+        if (this.active) {
+            this.active = false;
+            this._deactivateTimer();
+        }
+    }
+    
     addMessages(messages) {
+        if (!this.active) {
+            this.pendingMessages = messages;
+            return;
+        }
+
         this._deactivateTimer();
 
         if (messages.length == 0) {

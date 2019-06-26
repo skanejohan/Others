@@ -379,6 +379,7 @@ class HouseHistoryBook extends Item {
             context.allItems["latinDictionary"].isVisible = false;
             context.flags.add(Flag.ENTRANCE_KNOWN);
             this.description = "Using the latin dictionary, you are able to decipher the contents of the old book. It describes the history of the house in which the bookshop is located. Most of what is in the book you already know since your parents passed this information to you - whether as a child you wanted it or not - but you find a few nuggets of new information. The most interesting part is the fact that there used to be an entrance to a cellar from what is now the history section. Looking at the map, and reading the text surrounding it, you conclude that there must be a hidden entrance to the basement behind the eastern wall, currently covered by book shelves.";
+            context.setGoal("revealDoor");
         }
         else {
             this.description = "The leather-bound old book is written in what you assume is latin. Although you may recognize a word here and there, you really have no way of telling what the book is about. You see a small map in one of the pages. You can't be sure but you have a slight feeling of recognition.";
@@ -466,6 +467,7 @@ class OfficeDoor extends LockableItem {
 
     afterUnlock(context) {
         context.allItems["officeDoorKey"].isVisible = false;
+        context.setGoal("findSecret");
     }
 }
 
@@ -591,6 +593,7 @@ class Wall extends Item {
                 context.setExitsHaveChanged();
                 context.allItems["rockPick"].isVisible = false;
                 context.flags.add(Flag.WALL_BROKEN);
+                context.setGoal("meetGhosts");
                 this.isVisible = false;
             }
             else {
@@ -598,6 +601,7 @@ class Wall extends Item {
                 context.allCharacters["uncleAilbert"].isVisible = true;
                 context.flags.add(Flag.UNCLE_AILBERT_INTRODUCED);
                 context.moveTo("fictionSection");
+                context.setGoal("hideTruth");
             }
         });
     }
@@ -622,6 +626,7 @@ class WaterCooker extends Item {
                 context.allItems["bathroomDoor"].isVisible = false;
                 context.flags.delete(Flag.UNCLE_AILBERT_INTRODUCED);
                 context.flags.add(Flag.UNCLE_AILBERT_GONE);
+                context.setGoal("revealDoorAgain");
             }
             else {
                 context.setMessage("You make yourself a cup of tea. It tastes lovely.");

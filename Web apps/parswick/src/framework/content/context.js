@@ -5,13 +5,15 @@ import { AccessState } from "./item.js";
 export { Context };
 
 class Context {
-    constructor(items, locations, characters, cutscenes, initialLocation, initialCutscene, initialMessage, onActionPerformed) {
+    constructor(items, locations, characters, cutscenes, goals, initialLocation, initialCutscene, initialMessage, initialGoal, onActionPerformed) {
         this.allItems = items;                        // Dictionary string -> Item
         this.allLocations = locations;                // Dictionary string -> Location
         this.allCharacters = characters;              // Dictionary string -> Character
         this.allCutscenes = cutscenes;                // Dictionary string -> string
+        this.allGoals = goals;                        // Dictionary string -> string
         this.inventory = [];                          // Array of string
         this.historicInventory = new Set([]);         // Set of string
+        this.historicGoals = new Set([]);             // Set of string
         this.flags = new Set([]);                     // Set of Flag
         this.messages = [initialMessage];             // Array of string
         this.currentLocation = initialLocation;       // string
@@ -19,6 +21,13 @@ class Context {
         this.visitedLocations = [initialLocation];    // Array of string
         this.onActionPerformed = onActionPerformed;   // (string, string) => undefined
         this.state = new State(this);                 // State  
+        if (initialGoal == "") {
+            this.goal = "";
+        }
+        else {
+            this.setGoal(initialGoal)
+        }
+        this.goal = initialGoal;
 
         // Set the container property of all items and characters (either to a location or another item)
         Object.keys(this.allLocations).forEach(name => {
@@ -159,6 +168,24 @@ class Context {
 
     removeAllMessages() {
         this.messages = [];
+    }
+
+    // ---------- Goals
+
+    setGoal(goal) {
+        if (!this.historicGoals.has(goal)) {
+            this.setMessage("New goal: " + this.allGoals[goal]);
+            this.historicGoals.add(goal);
+            this.goal = goal;
+        }
+    }
+
+    getGoal() {
+        return this.goal;
+    }
+
+    clearGoal() {
+        this.goal = "";
     }
 
     // ---------- Cutscene
