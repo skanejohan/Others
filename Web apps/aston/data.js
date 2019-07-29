@@ -1,7 +1,7 @@
 var data = [
 /*
 Haverdal med Farmor och Farfar. 2010?
-Hovfjället
+Hovfjället - 2009, till 30 december.
 hyrd husbil 2015 (Kungälv, Olofsbo)
 Kris och Luhrs bröllop - Ronneby Brunn
 
@@ -2030,6 +2030,172 @@ Kris och Luhrs bröllop - Ronneby Brunn
 				position: new google.maps.LatLng(56.877891, 14.808869),
 				start: new Date(2019, 0, 4),
 				end: new Date(2019, 0, 5),
+			},
+		]
+	},
+	// {
+	// 	name: "Med mamma på skidresa i Österrike",
+	// 	start: new Date(2019, 0, 4),
+	// 	end: new Date(2019, 0, 5),
+	// 	locations: [
+	// 		{
+	// 			name: "",
+	// 			address: "",
+	// 			url: "",
+	// 			position: new google.maps.LatLng(56.877891, 14.808869),
+	// 			start: new Date(2019, 0, 4),
+	// 			end: new Date(2019, 0, 5),
+	// 		},
+	// 	]
+	// },
+	{
+		name: "Englandsresa",
+		start: new Date(2019, 6, 7),
+		end: new Date(2019, 6, 28),
+		locations: [
+			{
+				name: "Legoland Hotel",
+				address: "Windsor Resort, Winkfield Rd, Windsor SL4 4AY, UK",
+				url: "legoland.co.uk",
+				position: new google.maps.LatLng(51.464669, -0.645779),
+				start: new Date(2019, 6, 7),
+				end: new Date(2019, 6, 8),
+			},
+			{
+				name: "The Christopher Hotel",
+				address: "110 High St, Eton, Windsor SL4 6AN, UK",
+				url: "thechristopher.co.uk",
+				position: new google.maps.LatLng(51.488146, -0.610209),
+				start: new Date(2019, 6, 8),
+				end: new Date(2019, 6, 9),
+			},
+			{
+				name: "Queens Hotel",
+				address: "1-3 Kings Road, Brighton BN1 1NS, UK",
+				url: "queenshotelbrighton.com",
+				position: new google.maps.LatLng(50.819639, -0.139471),
+				start: new Date(2019, 6, 9),
+				end: new Date(2019, 6, 10),
+			},
+			{
+				name: "Seacrest Hotel",
+				address: "12 S Parade, Portsmouth, Southsea PO5 2JB, UK",
+				url: "seacresthotel.co.uk",
+				position: new google.maps.LatLng(50.779850, -1.082472),
+				start: new Date(2019, 6, 10),
+				end: new Date(2019, 6, 11),
+			},
+			{
+				name: "Marsham Court Hotel",
+				address: "3 Russell Cotes Rd, Bournemouth BH1 3AB, UK",
+				url: "marshamcourthotel.co.uk",
+				position: new google.maps.LatLng(50.717933, -1.870465),
+				start: new Date(2019, 6, 11),
+				end: new Date(2019, 6, 12),
+			},
+			{
+				name: "The Abbey Sands Hotel",
+				address: "Belgrave Rd, Torquay TQ2 5HG, UK",
+				url: "abbeysandshotel.co.uk",
+				position: new google.maps.LatLng(50.464470, -3.536761),
+				start: new Date(2019, 6, 12),
+				end: new Date(2019, 6, 13),
+			},
+			{
+				name: "YHA Eden Project",
+				address: "Eden Project, Bodelva Rd, Bodelva, Par PL24 2SG, UK",
+				url: "yha.org.uk",
+				position: new google.maps.LatLng(50.364011, -4.748957),
+				start: new Date(2019, 6, 13),
+				end: new Date(2019, 6, 14),
+			},
+			{
+				name: "Poldhu Guest House",
+				address: "60 Fore St, Saint Ives TR26 1HW, UK",
+				url: "",
+				position: new google.maps.LatLng(50.214743, -5.480119),
+				start: new Date(2019, 6, 14),
+				end: new Date(2019, 6, 15),
+			},
+			{
+				name: "Lifeboat Inn",
+				address: "Wharf Rd, Saint Ives TR26 1LF, UK",
+				url: "lifeboatinnstives.co.uk",
+				position: new google.maps.LatLng(50.213293, -5.479805),
+				start: new Date(2019, 6, 15),
+				end: new Date(2019, 6, 16),
+			},
+			{
+				name: "Gordons Hotel",
+				address: "Cliff St, Cheddar BS27 3PT, UK",
+				url: "gordonshotel.co.uk",
+				position: new google.maps.LatLng(51.279224, -2.774703),
+				start: new Date(2019, 6, 16),
+				end: new Date(2019, 6, 17),
+			},
+			{
+				name: "Llanerch Vineyard Hotel",
+				address: "Hensol Rd, Pontyclun CF72 8GG, UK",
+				url: "llanerch.co.uk",
+				position: new google.maps.LatLng(51.507401, -3.369802),
+				start: new Date(2019, 6, 17),
+				end: new Date(2019, 6, 18),
+			},
+			{
+				name: "Hotel Portmeirion",
+				address: "Portmeirion, Penrhyndeudraeth LL48 6ER, UK",
+				url: "portmeirion-village.com",
+				position: new google.maps.LatLng(52.913642, -4.098372),
+				start: new Date(2019, 6, 18),
+				end: new Date(2019, 6, 19),
+			},
+			{
+				name: "Jurys Inn Liverpool",
+				address: "31 Keel Wharf, Liverpool L3 4FN, UK",
+				url: "jurysinns.com",
+				position: new google.maps.LatLng(53.398397, -2.989831),
+				start: new Date(2019, 6, 19),
+				end: new Date(2019, 6, 21),
+			},
+			{
+				name: "Shakespeare Hotel",
+				address: "Chapel St, Stratford-upon-Avon CV37 6ER, UK",
+				url: "https://www.accorhotels.com/gb/hotel-6630-mercure-stratford-upon-avon-shakespeare-hotel/index.shtml",
+				position: new google.maps.LatLng(52.191099, -1.707101),
+				start: new Date(2019, 6, 21),
+				end: new Date(2019, 6, 22),
+			},
+			{
+				name: "De Vere Horwood Estate",
+				address: "Mursley Rd, Little Horwood, Milton Keynes MK17 0PH, UK",
+				url: "https://www.devere.co.uk/horwood-estate",
+				position: new google.maps.LatLng(51.958902, -0.844210),
+				start: new Date(2019, 6, 22),
+				end: new Date(2019, 6, 23),
+			},
+			{
+				name: "The Galaxie",
+				address: "180 Banbury Rd, Oxford OX2 7BT, UK",
+				url: "galaxie-booking.com",
+				position: new google.maps.LatLng(51.775220, -1.263666),
+				start: new Date(2019, 6, 23),
+				end: new Date(2019, 6, 24),
+			},
+			{
+				name: "Grand Hotel",
+				address: "King Edward's Parade, Eastbourne BN21 4EQ, UK",
+				url: "grandeastbourne.com",
+				position: new google.maps.LatLng(50.759998, 0.282634),
+				start: new Date(2019, 6, 24),
+				end: new Date(2019, 6, 27),
+			},
+			{
+				name: "Safari Hotel",
+				address: "Leatherhead Rd, Chessington KT9 2NE, UK",
+				url: "https://www.chessington.com/resort-hotels/chessington-safari-hotel.aspx",
+				position: new google.maps.LatLng(51.350513, -0.316280),
+				start: new Date(2019, 6, 27),
+				end: new Date(2019, 6, 28),
 			},
 		]
 	},
