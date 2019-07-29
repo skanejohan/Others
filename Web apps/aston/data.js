@@ -2033,21 +2033,51 @@ Kris och Luhrs bröllop - Ronneby Brunn
 			},
 		]
 	},
-	// {
-	// 	name: "Med mamma på skidresa i Österrike",
-	// 	start: new Date(2019, 0, 4),
-	// 	end: new Date(2019, 0, 5),
-	// 	locations: [
-	// 		{
-	// 			name: "",
-	// 			address: "",
-	// 			url: "",
-	// 			position: new google.maps.LatLng(56.877891, 14.808869),
-	// 			start: new Date(2019, 0, 4),
-	// 			end: new Date(2019, 0, 5),
-	// 		},
-	// 	]
-	// },
+	{
+		name: "Med mamma på skidresa i Österrike",
+		start: new Date(2019, 3, 13),
+		end: new Date(2019, 3, 20),
+		locations: [
+			{
+				name: "Hotel Marietta",
+				address: "Ringstraße 8, 5562 Obertauern, Austria",
+				url: "marietta.at",
+				position: new google.maps.LatLng(47.250169, 13.554718),
+				start: new Date(2019, 3, 13),
+				end: new Date(2019, 3, 20),
+			},
+		]
+	},
+	{
+		name: "Med husbilen i Västervik",
+		start: new Date(2019, 4, 30),
+		end: new Date(2019, 5, 1),
+		locations: [
+			{
+				name: "Västervik Resort",
+				address: "Lysingsvägen, 593 53 Västervik, Sverige",
+				url: "vastervikresort.se",
+				position: new google.maps.LatLng(57.737664, 16.676493),
+				start: new Date(2019, 4, 30),
+				end: new Date(2019, 5, 1)
+			},
+		]
+	},
+	{
+		name: "Med husbilen i Marstrand",
+		start: new Date(2019, 5, 6),
+		end: new Date(2019, 5, 8),
+		locations: [
+			{
+				name: "Marstrands Familjecamping",
+				address: "Långedalsvägen 16, 442 66 Marstrand",
+				url: "marstrandscamping.se",
+				position: new google.maps.LatLng(57.895254, 11.606876),
+				start: new Date(2019, 5, 6),
+				end: new Date(2019, 5, 8),
+			},
+		]
+	},
 	{
 		name: "Englandsresa",
 		start: new Date(2019, 6, 7),
