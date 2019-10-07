@@ -44,6 +44,7 @@ uiTest = function() {
     test.addClickElementMenu("cabinet", "Open");
     test.addClickElementMenu("metalBox", "Take");
     test.addClickElementMenu("metalBox", "Pick");
+    test.addScrollInventoryDown();
     test.addClickElementMenu("rockPick", "Take");
     test.addClickElementMenu("metalBox", "Drop");
     test.addClickArrow("N");
@@ -184,6 +185,35 @@ class Test {
         })
     }
 
+
+    addScrollInventoryUp() {
+        this.addScrollListItem({x: 735, y:56, w:2, h: 2});
+    }
+
+    addScrollInventoryDown() {
+        this.addScrollListItem({x: 735, y:203, w:2, h: 2});
+    }
+
+    addScrollItemsHereUp() {
+        this.addScrollListItem({x: 735, y:242, w:2, h: 2});
+    }
+
+    addScrollItemsHereDown() {
+        this.addScrollListItem({x: 735, y:388, w:2, h: 2});
+    }
+
+    addScrollListItem(pos) {
+            this.actions.push(() => {
+            this.highlight(pos)
+            return 100; 
+        });
+        this.actions.push(() => {
+            this.app.ui.canvas._onclick();
+            this.moveTo(0, 0);
+            return 500;
+        })
+    }
+
     addClickElementMenu(itemName, menuCaption) {
         this.actions.push(() => {
             this.highlight(this.findElement(itemName));
@@ -253,10 +283,16 @@ class Test {
             element = this.app.ui.locationUI.doorElements[itemName];
         }
         if (!element) {
-            element = this.app.ui.inventoryUI.itemElements.find(e => e.item.name == itemName);
+            var item = this.app.ui.inventoryUI.items.find(i => i.name == itemName);
+            if (item) {
+                element = item.element;
+            } 
         }
         if (!element) {
-            element = this.app.ui.itemsHereUI.itemElements.find(e => e.item.name == itemName);
+            var item = this.app.ui.itemsHereUI.items.find(i => i.name == itemName);
+            if (item) {
+                element = item.element;
+            } 
         }
         return element;
     }

@@ -120,7 +120,9 @@ class UI {
 
         this.locationUI.addElementsForNowVisibleItems(locationItems);
         this.itemsHereUI.addElementsForNowVisibleItems(itemsHereItems);
+        this.itemsHereUI.updateVisibleElementList();
         this.inventoryUI.addElementsForNowVisibleItems(inventoryItems);
+        this.inventoryUI.updateVisibleElementList();
 
         this.setVerbsForItems(locationItems);
         this.setVerbsForItems(itemsHereItems);
