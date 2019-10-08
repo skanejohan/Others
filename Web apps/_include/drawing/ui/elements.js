@@ -519,6 +519,45 @@ class ComplexElementBase extends ElementBase {
     }
 }
 
+// ---------- EdgeElement - complex element based on edges ----------------------------------------
+
+class EdgeElement extends ComplexElementBase {
+
+    constructor(x, y, w, h, onclick) {
+        super(x, y, w, h, onclick);
+        this._edges = [];
+    }
+
+    addEdge(edge, fillStyleFunc) {
+        this._edges.push({edge: edge, fillStyleFunc: fillStyleFunc});
+    }
+
+    _doDraw(ctx) {
+        this._edges.forEach(e => {
+            ctx.fillStyle = e.fillStyleFunc(ctx);
+            ctx.beginPath();
+            e.edge.forEach(obj => this._apply(ctx, obj));
+            ctx.closePath();
+            ctx.fill();
+        })
+        //this._drawClickRects(ctx);
+    }
+
+    _apply(ctx, obj) {
+        switch(obj.type) {
+            case "move":
+                ctx.moveTo(this.x + obj.pc1, this.y + obj.pc2);
+                break;
+            case "qc":
+                ctx.quadraticCurveTo(this.x + obj.cc1, this.y + obj.cc2, this.x + obj.pc1, this.y + obj.pc2);
+                break;
+            case "line":
+                ctx.lineTo(this.x + obj.pc1, this.y + obj.pc2);
+                break;
+        }
+    }
+}
+
 // ---------- Polygons ----------------------------------------------------------------------
 
 class PolygonBase extends ComplexElementBase {

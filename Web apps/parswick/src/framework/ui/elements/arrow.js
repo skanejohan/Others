@@ -1,6 +1,6 @@
 export { ArrowElement };
 
-class ArrowElement extends ComplexElementBase {
+class ArrowElement extends EdgeElement {
     constructor(cx, cy, direction, onclick) {
         var x, y;
         switch(direction) {
@@ -12,6 +12,9 @@ class ArrowElement extends ComplexElementBase {
         super(x, y, SIZE, SIZE, onclick);
         this.direction = direction;
 
+        this.addEdge(OUTEREDGE.map(o => this._getDirectionalEdgeInfo(o)), ctx => this.hovering() ? ctx.fillStyle = "white" : LAYER1COLOR);
+        this.addEdge(INNEREDGE.map(o => this._getDirectionalEdgeInfo(o)), ctx => ctx.fillStyle = LAYER1FRAMECOLOR);
+
         CLICKRECTS.forEach(obj => {
             var dObj = this._getDirectionalClickRectInfo(obj);
             this.addClickRect(this.x + dObj.p1c1, this.y + dObj.p1c2, 
@@ -21,10 +24,10 @@ class ArrowElement extends ComplexElementBase {
 
     _getDirectionalEdgeInfo(obj) {
         switch(this.direction) {
-            case "E": return { cc1: obj.cc2, cc2: obj.cc1, pc1: obj.pc2, pc2: obj.pc1 }
-            case "S": return { cc1: obj.cc1, cc2: obj.cc2, pc1: obj.pc1, pc2: obj.pc2 }
-            case "W": return { cc1: SIZE - obj.cc2, cc2: obj.cc1, pc1: SIZE - obj.pc2, pc2: obj.pc1 }
-            case "N": return { cc1: obj.cc1, cc2: SIZE - obj.cc2, pc1: obj.pc1, pc2: SIZE - obj.pc2 }
+            case "E": return { type: obj.type, cc1: obj.cc2, cc2: obj.cc1, pc1: obj.pc2, pc2: obj.pc1 }
+            case "S": return { type: obj.type, cc1: obj.cc1, cc2: obj.cc2, pc1: obj.pc1, pc2: obj.pc2 }
+            case "W": return { type: obj.type, cc1: SIZE - obj.cc2, cc2: obj.cc1, pc1: SIZE - obj.pc2, pc2: obj.pc1 }
+            case "N": return { type: obj.type, cc1: obj.cc1, cc2: SIZE - obj.cc2, pc1: obj.pc1, pc2: SIZE - obj.pc2 }
         }
     }
 
@@ -35,53 +38,6 @@ class ArrowElement extends ComplexElementBase {
             case "W": return { p1c1: SIZE - obj.p1c2, p1c2: obj.p1c1, p2c1: SIZE - obj.p2c2, p2c2: obj.p2c1 }
             case "N": return { p1c1: obj.p1c1, p1c2: SIZE - obj.p1c2, p2c1: obj.p2c1, p2c2: SIZE - obj.p2c2 }
         }
-    }
-
-    _doDraw(ctx) {
-        if (this.hovering()) {
-            ctx.fillStyle = "white";
-        }
-        else {
-            ctx.fillStyle = LAYER1COLOR;
-        }
-        ctx.beginPath();
-        OUTEREDGE.forEach(obj => {
-            var dObj = this._getDirectionalEdgeInfo(obj);
-            switch(obj.type) {
-                case "move":
-                    ctx.moveTo(this.x + dObj.pc1, this.y + dObj.pc2);
-                    break;
-                case "qc":
-                    ctx.quadraticCurveTo(this.x + dObj.cc1, this.y + dObj.cc2, this.x + dObj.pc1, this.y + dObj.pc2);
-                    break;
-                case "line":
-                    ctx.lineTo(this.x + dObj.pc1, this.y + dObj.pc2);
-                    break;
-            }
-        });
-        ctx.closePath();
-        ctx.fill();
-
-        ctx.fillStyle = LAYER1FRAMECOLOR;
-        ctx.beginPath();
-        INNEREDGE.forEach(obj => {
-            var dObj = this._getDirectionalEdgeInfo(obj);
-            switch(obj.type) {
-                case "move":
-                    ctx.moveTo(this.x + dObj.pc1, this.y + dObj.pc2);
-                    break;
-                case "qc":
-                    ctx.quadraticCurveTo(this.x + dObj.cc1, this.y + dObj.cc2, this.x + dObj.pc1, this.y + dObj.pc2);
-                    break;
-                case "line":
-                    ctx.lineTo(this.x + dObj.pc1, this.y + dObj.pc2);
-                    break;
-            }
-        });
-        ctx.closePath();
-        ctx.fill();
-
-        //this._drawClickRects(ctx);
     }
 }
 
