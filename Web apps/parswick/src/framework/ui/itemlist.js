@@ -14,10 +14,10 @@ class ItemListUI {
         this.engine.add(new Rect(x, y, w, h, LAYER1COLOR), ELEMENTBASELAYERINDEX);
         this.engine.add(new TextSegment(x+10, y+26, w, 20, caption, FONT, LAYER1COLOR), ELEMENTBASELAYERINDEX);
 
-        this.upButton = new TextSegment(x+w-17, y+15, w, 20, "U", FONT, LAYER1COLOR, () => this.scrollDown()), ELEMENTBASELAYERINDEX;
+        this.upButton = new ArrowElement(x+w-37, y+11, false, () => this.scrollDown());
         this.engine.add(this.upButton);
 
-        this.downButton = new TextSegment(x+w-17, y+h-5, w, 20, "D", FONT, LAYER1COLOR, () => this.scrollUp()), ELEMENTBASELAYERINDEX;
+        this.downButton = new ArrowElement(x+w-37, y+h-20, true, () => this.scrollUp());
         this.engine.add(this.downButton);
 
         this.x = x;
@@ -98,4 +98,42 @@ class ItemListUI {
             this.packList();
         }
     }
+}
+
+class ArrowElement extends EdgeElement {
+    constructor(x, y, down, onclick) {
+        super(x, y, 30, 15, onclick);
+        var outerEdge = down ? flipEdge(OUTEREDGE) : OUTEREDGE;
+        var innerEdge = down ? flipEdge(INNEREDGE) : INNEREDGE;
+        this.addEdge(outerEdge, ctx => this.hovering() ? ctx.fillStyle = "white" : LAYER1COLOR);
+        this.addEdge(innerEdge, _ => LAYER1FRAMECOLOR);
+
+        this.addClickRect(this.x + 3, this.y + 5, this.x + 27, this.y + 15);
+    }
+}
+
+const OUTEREDGE = [
+        { type: "move", pc1: 5, pc2: 15 },
+        { type: "line", pc1: 25, pc2: 15 },
+        { type: "qc", cc1: 29, cc2: 13, pc1: 25, pc2: 10},
+        { type: "line", pc1: 17, pc2: 5 },
+        { type: "qc", cc1: 15, cc2: 4, pc1: 13, pc2: 5},
+        { type: "line", pc1: 5, pc2: 10 },
+        { type: "qc", cc1: 1, cc2: 13, pc1: 5, pc2: 15},
+    ];
+
+const INNEREDGE = [
+        { type: "move", pc1: 8, pc2: 13 },
+        { type: "line", pc1: 22, pc2: 13 },
+        { type: "qc", cc1: 26, cc2: 11, pc1: 24, pc2: 12},
+        { type: "line", pc1: 17, pc2: 8 },
+        { type: "qc", cc1: 15, cc2: 7, pc1: 13, pc2: 8},
+        { type: "line", pc1: 6, pc2: 12 },
+        { type: "qc", cc1: 4, cc2: 11, pc1: 8, pc2: 13},
+    ];
+
+function flipEdge(edge) {
+    return edge.map(obj => {
+        return { type: obj.type, pc1: obj.pc1, pc2: 20-obj.pc2, cc1: obj.cc1, cc2: 20-obj.cc2 };
+    });
 }
