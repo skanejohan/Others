@@ -15,10 +15,10 @@ class ItemListUI {
         this.engine.add(new TextSegment(x+10, y+26, w, 20, caption, FONT, LAYER1COLOR), ELEMENTBASELAYERINDEX);
 
         this.upButton = new ArrowElement(x+w-37, y+11, false, () => this.scrollDown());
-        this.engine.add(this.upButton);
+        this.upButtonVisible = false;
 
         this.downButton = new ArrowElement(x+w-37, y+h-20, true, () => this.scrollUp());
-        this.engine.add(this.downButton);
+        this.downButtonVisible = false;
 
         this.x = x;
         this.y = y;
@@ -42,6 +42,7 @@ class ItemListUI {
 
     updateVisibleElementList() {
         this.packList();
+        this.updateScrollButtons();
     }
 
     // Remove item from items list and if it is visible, fade it out.
@@ -81,6 +82,27 @@ class ItemListUI {
         }
     }
 
+    updateScrollButtons() {
+        var downShouldBeVisible = this.items.length > this.firstVisibleItem + this.maxVisibleItems;
+        var upShouldBeVisible = this.firstVisibleItem > 0;
+        if (downShouldBeVisible && !this.downButtonVisible) {
+            this.engine.add(this.downButton);
+            this.downButtonVisible = true;
+        }
+        if (!downShouldBeVisible && this.downButtonVisible) {
+            this.engine.remove(this.downButton);
+            this.downButtonVisible = false;
+        }
+        if (upShouldBeVisible && !this.upButtonVisible) {
+            this.engine.add(this.upButton);
+            this.upButtonVisible = true;
+        }
+        if (!upShouldBeVisible && this.upButtonVisible) {
+            this.engine.remove(this.upButton);
+            this.upButtonVisible = false;
+        }
+    }
+
     _itemAtIndexShouldBeVisible(idx) {
         return idx >= this.firstVisibleItem && idx < this.firstVisibleItem + this.maxVisibleItems;
     }
@@ -88,14 +110,14 @@ class ItemListUI {
     scrollUp() {
         if (this.items.length > this.firstVisibleItem + this.maxVisibleItems) {
             this.firstVisibleItem += 1;
-            this.packList();
+            this.updateVisibleElementList();
         }
     }
 
     scrollDown() {
         if (this.firstVisibleItem > 0) {
             this.firstVisibleItem -= 1;
-            this.packList();
+            this.updateVisibleElementList();
         }
     }
 }
