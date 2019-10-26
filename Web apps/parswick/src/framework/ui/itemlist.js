@@ -56,11 +56,9 @@ class ItemListUI {
     }
 
     _addItems(topLevelItems, remainingItems) {
-        console.log(topLevelItems);
-        console.log(remainingItems);
         topLevelItems.forEach(ti => {
             this.items.push(ti);
-            var childItems = remainingItems.filter(ri => topLevelItems.indexOf(this.context.item(ri.container)) > -1);
+            var childItems = remainingItems.filter(ri => this.context.item(ri.container) == ti);
             remainingItems = remainingItems.filter(ri => childItems.indexOf(ri) == -1);
             this._addItems(childItems, remainingItems);
         });
