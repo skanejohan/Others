@@ -33,16 +33,37 @@ class ItemListUI {
     removeElementsForNoLongerVisibleItems(items) {
         var visibleItems = items.filter(i => i.isVisible);
         this.items.filter(i => visibleItems.indexOf(i) == -1).forEach(i => this._remove(i));
+        this._sortList();
     }
 
     addElementsForNowVisibleItems(items) {
         var visibleItems = items.filter(i => i.isVisible);
         visibleItems.filter(i => this.items.indexOf(i) == -1).forEach(i => this._add(i));
+        this._sortList();
     }
 
     updateVisibleElementList() {
         this.packList();
         this.updateScrollButtons();
+    }
+
+    // Sort the list so that all contained items end up immediately after their containers
+    _sortList() {
+        var topLevelItems = this.items.filter(i => this.items.indexOf(this.context.item(i.container)) == -1);
+        var remainingItems = this.items.filter(i => topLevelItems.indexOf(i) == -1);
+        this.items = [];
+        this._addItems(topLevelItems, remainingItems);
+    }
+
+    _addItems(topLevelItems, remainingItems) {
+        console.log(topLevelItems);
+        console.log(remainingItems);
+        topLevelItems.forEach(ti => {
+            this.items.push(ti);
+            var childItems = remainingItems.filter(ri => topLevelItems.indexOf(this.context.item(ri.container)) > -1);
+            remainingItems = remainingItems.filter(ri => childItems.indexOf(ri) == -1);
+            this._addItems(childItems, remainingItems);
+        });
     }
 
     // Remove item from items list and if it is visible, fade it out.
