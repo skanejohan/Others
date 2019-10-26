@@ -9,6 +9,7 @@ class CutsceneUI {
         this.dimensions = { x: x, y: y, w: w, h: h };
         this.frame = new FillRoundRect(x, y, w, h, radius, fgColor);
         this.background = new FillRoundRect(x+3, y+3, w-6, h-6, radius, bgColor);
+        var textBoxes = [];
         this.onHide = onHide;
 
         this.btn = new ButtonElement(
@@ -18,23 +19,36 @@ class CutsceneUI {
     }
 
     display(text) {
-        this.text = new TextBox(
-            this.dimensions.x + 20, this.dimensions.y + 20, 
-            this.dimensions.w - 40, 0, text, FONT, 
-            LAYER1FRAMECOLOR, "black"); 
-        this.text.y = (this.dimensions.h - this.text.h) / 2;
+        var paragraphDistance = 10;
+        var totalHeight = 0;
+        this.textBoxes = [];
+
+        text.split("<br>").forEach(t => {
+            var textBox = new TextBox(
+                this.dimensions.x + 20, this.dimensions.y + 20, 
+                this.dimensions.w - 40, 0, t, FONT, 
+                LAYER1FRAMECOLOR, "black"); 
+            totalHeight += textBox.h;
+            this.textBoxes.push(textBox);
+        });
+        totalHeight += (this.textBoxes.length-1) * paragraphDistance;
+
+        var top = (this.dimensions.h - totalHeight) / 2;
+        this.textBoxes.forEach(tb => {
+            tb.y = top;
+            top += tb.h + paragraphDistance;
+        });
 
         this.engine.addModal(this.frame);
         this.engine.addModal(this.background);
-        this.engine.addModal(this.text);
+        this.textBoxes.forEach(tb => this.engine.addModal(tb));
         this.engine.addModal(this.btn);
-
     }
 
     hide() {
         this.engine.remove(this.frame);
         this.engine.remove(this.background);
-        this.engine.remove(this.text);
+        this.textBoxes.forEach(tb => this.engine.remove(tb));
         this.engine.remove(this.btn);
         this.onHide();
     }
