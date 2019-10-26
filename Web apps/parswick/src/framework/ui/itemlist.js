@@ -56,12 +56,22 @@ class ItemListUI {
 
     // Create an element, connect item and element, and add the item to the items list
     _add(item) {
-        let elem = new ItemElement(this.x + 20, this.y, this.w - 40, 26, item.caption); 
+        var indent = 20 * (this._getIndentation(item) + 1);
+        let elem = new ItemElement(this.x + indent, this.y, this.w - 20 - indent, 26, item.caption); 
         Utils.addMenuTo(elem);
         Utils.setVerbs(elem, item, this.context);
         item.element = elem;
         elem.item = item;
         this.items.push(item);
+    }
+
+    _getIndentation(item, indentation) {
+        indentation = indentation || 0;
+        if (item.container) {
+            var container = this.context.item(item.container);
+            return container ? this._getIndentation(container, indentation+1) : indentation;
+        }
+        return indentation;
     }
 
     // Make sure that all items in the list have the proper y coordinate, and that the correct items are shown
