@@ -104,6 +104,16 @@ uiTest = function() {
     test.addClickArrow("S");
     test.addClickElementMenu("bathroomDoor", "Open");
     test.addClickArrow("bathroomDoor");
+    test.addClickElementMenu("mirror", "Practice dancing");
+    test.addClickArrow("N");
+    test.addClickArrow("N");
+    test.addClickArrow("E");
+    test.addClickArrow("S");
+    test.addClickArrow("E");
+    test.addClickArrow("S");
+    test.addClickElementMenu("maleGhost", "Talk");
+    test.addClickConversationResponse("2");
+    test.addClickConversationResponse("4");
 
     test.runActions();
 }
@@ -133,9 +143,11 @@ test = function() {
         "move-fictionSection,move-artSection,move-historySection,move-cellarEntrance";
 
     var learnToDance = "move-cellarSouth,talk-maleGhost,firstDance-maleGhost,move-cellarEntrance,move-historySection," + 
-        "examine-historyBookshelf,take-danceBook,move-cellarEntrance,move-cellarSouth,talk-maleGhost,secondDance-maleGhost," +
-        "move-cellarEntrance,move-historySection,move-artSection,move-fictionSection,move-kitchen,lock-frontDoor,move-kitchen," +
-        "open-bathroomDoor,move-bathroom";
+        "examine-historyBookshelf,take-danceBook,read-danceBook,move-cellarEntrance,move-cellarSouth,talk-maleGhost," +
+        "secondDance-maleGhost,move-cellarEntrance,move-historySection,move-artSection,move-fictionSection,move-kitchen," +
+        "lock-frontDoor,move-kitchen,open-bathroomDoor,move-bathroom,practice-mirror,move-kitchen,move-fictionSection," + 
+        "move-artSection,move-historySection,move-cellarEntrance,move-cellarSouth,talk-maleGhost,thirdDance-maleGhost," +
+        "move-cellarEntrance";
 
     window.app.applyState([
         getIntoOffice, 

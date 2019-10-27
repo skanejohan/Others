@@ -27,7 +27,10 @@ class MaleGhost extends Character {
     }
 
     selectConversation(context) {
-        if (context.flags.has(Flag.HAVE_READ_DANCE_BOOK)) {
+        if (context.flags.has(Flag.CAN_DANCE)) {
+            this.conversation = this.getThirdConversation();
+        }
+        else if (context.flags.has(Flag.HAVE_READ_DANCE_BOOK)) {
             this.conversation = this.getSecondConversation();
         }
         else {
@@ -72,6 +75,28 @@ class MaleGhost extends Character {
             context.flags.add(Flag.NEEDS_TO_PRACTICE_DANCING);
         });
     }
+
+    getThirdConversation() {
+        return new Conversation()
+            .addStatement(1, "Ah, my dear, how lovely to see you. I have been awaiting your return!", [2])
+            .addResponse(2, "Hello again!", 3)
+        
+            .addStatement(3, "Would you like another dance?", [4])
+            .addResponseWithAction(4, "I certainly would. I have been looking forward to this!", ctx => this.actionThirdDance(ctx))
+        
+            .setInitialStatement(1);
+    }
+
+    actionThirdDance(context) {
+        this.private.do("thirdDance", context, () => {
+            context.flags.delete(Flag.NEEDS_TO_PRACTICE_DANCING);
+            context.allCharacters["femaleGhost"].isVisible = false;
+            context.allCharacters["maleGhost"].isVisible = false;
+            context.moveTo("cellarEntrance");
+            context.setCutscene("dance");
+        });
+    }
+
 }
 
 class UncleAilbert extends Character{

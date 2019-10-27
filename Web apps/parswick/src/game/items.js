@@ -449,6 +449,19 @@ class Mirror extends Item {
     constructor() {
         super("mirror", "", true);
         this.description = "You see a handsome figure in the mirror. At 45, you are satisfied with what you see. Your flowing red hair and strong arms are unmistakably celtic traits that your family has valued for centuries.";
+        this.verbPractice.caption = "Practice dancing";
+    }
+
+    verbPractice(context) {
+        this.private.do("practice", context, () => {
+            context.setMessage("With the book held tightly in your hands, you practice dancing in front of the mirror until you are convinced that you can make the handsome ghost satisfied.");
+            context.flags.delete(Flag.NEEDS_TO_PRACTICE_DANCING);
+            context.flags.add(Flag.CAN_DANCE);
+        });
+    }
+
+    verbPracticeVisible(context) {
+        return context.flags.has(Flag.NEEDS_TO_PRACTICE_DANCING) && context.isItemInInventory("danceBook");
     }
 }
 
