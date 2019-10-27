@@ -188,7 +188,8 @@ class Kitchen extends Location {
         if (!context.flags.has(Flag.NEEDS_TO_PRACTICE_DANCING) || (context.allItems["frontDoor"].state == AccessState.LOCKED)) {
             return true;
         }
-        context.setMessage("As you move towards the kitchen, the front door opens and a man and a woman enter. They ask if you know where the choir will sing Christmas carols in a short while. You point out the direction. They thank you and leave, closing the front door as they leave.");
+        context.setMessage("As you move towards the kitchen, the front door opens and a man and a woman enter. They ask if you know where the choir will sing Christmas carols in a short while. You point out the direction. They thank you and leave, closing the front door behind them.");
+        context.flags.add(Flag.HAVE_BEEN_STOPPED_BY_TOURISTS);
         return false;
     }
 }

@@ -99,6 +99,11 @@ uiTest = function() {
     test.addClickArrow("W");
     test.addClickArrow("N");
     test.addClickArrow("W");
+    test.addClickArrow("S");
+    test.addClickElementMenu("frontDoor", "Lock");
+    test.addClickArrow("S");
+    test.addClickElementMenu("bathroomDoor", "Open");
+    test.addClickArrow("bathroomDoor");
 
     test.runActions();
 }
@@ -129,7 +134,8 @@ test = function() {
 
     var learnToDance = "move-cellarSouth,talk-maleGhost,firstDance-maleGhost,move-cellarEntrance,move-historySection," + 
         "examine-historyBookshelf,take-danceBook,move-cellarEntrance,move-cellarSouth,talk-maleGhost,secondDance-maleGhost," +
-        "move-cellarEntrance,move-historySection,move-artSection,move-fictionSection";
+        "move-cellarEntrance,move-historySection,move-artSection,move-fictionSection,move-kitchen,lock-frontDoor,move-kitchen," +
+        "open-bathroomDoor,move-bathroom";
 
     window.app.applyState([
         getIntoOffice, 

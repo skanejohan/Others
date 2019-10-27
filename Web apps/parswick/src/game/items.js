@@ -299,7 +299,7 @@ class FrontDoor extends OpenableItem {
     }
 
     verbLockVisible(context) {
-        return this.state === AccessState.CLOSED && context.flags.has(Flag.NEEDS_TO_PRACTICE_DANCING);
+        return this.state === AccessState.CLOSED && context.flags.has(Flag.HAVE_BEEN_STOPPED_BY_TOURISTS);
     }
 }
 
