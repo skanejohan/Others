@@ -87,10 +87,10 @@ class UI {
                 this.conversationUI.startConversation(item.conversation);
             }
 
-            this.updateItemElements();
-            this.locationUI.updateExits();
         }
         
+        this.updateItemElements();
+        this.locationUI.updateExits();
         this.showCutscene();
         this.showMessages();
     }
