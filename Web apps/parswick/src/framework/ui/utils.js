@@ -4,8 +4,8 @@ export { Utils, BACKGROUNDLAYERINDEX, ELEMENTBASELAYERINDEX };
 
 class Utils {
 
-    static addMenuTo(element) {
-        element.popup = new MenuElement(element.caption);
+    static addMenuTo(element, caption) {
+        element.popup = new MenuElement(caption || element.caption);
     }
 
     static setVerbs(element, item, context) {

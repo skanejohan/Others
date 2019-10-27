@@ -10,7 +10,8 @@ class Item {
     constructor(name, caption, fixed, visible) {
         this.name = name;
         this.fixed = fixed || false;
-        this.caption = caption || "";
+        this.caption = caption ? caption.replace(/<br>/g, " ") : "";
+        this.multiLineCaption = caption || "";
         if (visible === undefined) {
             this.isVisible = true;
         }

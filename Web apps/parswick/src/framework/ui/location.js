@@ -1,5 +1,6 @@
+import { ArrayUtils } from "../../_include/arrayutils.js";
 import { calculateWall } from "./wallcalculator.js";
-import { addItemElements, removeItemElements } from "./itemcalculator.js";
+import { MultiLineItemElement } from "./elements/multilineitem.js";
 import { ArrowElement } from "./elements/arrow.js";
 import { AccessState } from "../content/item.js";
 import { DoorElement } from "./elements/door.js";
@@ -159,4 +160,49 @@ class LocationUI {
             lineElement.fadeIn(FADETIME);
         }
     }
+}
+
+// ---------- private members ----------
+
+// Given a list of available items, and a list of item elements currently shown,
+// this function will the missing item elements. 
+function addItemElements(availableItems, currentElements, posFn, engine, context, onAdded) {
+    availableItems.filter(i => i.isVisible).forEach(i => {
+        if (!currentElements.some(e => e.item == i)) {
+            addItemElement(i, posFn, currentElements, engine, context, onAdded);
+        }
+    });
+}
+
+// Given a list of available items, and a list of item elements currently shown, this
+// function will the remove item elements no longer among the available items. 
+function removeItemElements(availableItems, currentElements, onRemoved) {
+    currentElements.forEach(e => {
+        if (!availableItems.filter(i => i.isVisible).some(i => i.element == e)) {
+            removeItemElement(e, currentElements, onRemoved);
+        }
+    });
+}
+
+function addItemElement(item, posFn, elems, engine, context, onAdded) {
+    let pos = posFn(item);
+    let elem = new MultiLineItemElement(pos.x, pos.y, pos.w, pos.h, item.multiLineCaption, pos.color, pos.frameColor);
+    Utils.addMenuTo(elem, item.caption);
+    Utils.setVerbs(elem, item, context);
+    elems.push(elem);
+    engine.add(elem, pos.layerIndex || ELEMENTBASELAYERINDEX);
+    item.element = elem;
+    elem.item = item;
+    elem.fadeIn(FADETIME, onAdded);
+}
+
+function removeItemElement(elem, elems, onRemoved) {
+    ArrayUtils.remove(elems, elem);
+    elem.item.element = undefined;
+    elem.finishAfterAnimations = true;
+    elem.fadeOut(FADETIME, () => {
+        if (onRemoved != undefined) {
+            onRemoved();
+        }
+    });
 }
