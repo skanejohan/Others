@@ -14,14 +14,14 @@ var getAll = function() {
 
 class FemaleGhost extends Character {
     constructor() {
-        super("femaleGhost", "beautiful woman");
+        super("femaleGhost", "beautiful<br>woman");
         this.description = "Hovering in the air is the ghost of a young woman. Pearly-white and slightly transparent, with cherry-red lips, her ankle-long gown resting inches above the crude stone floor. She has an unmistakable nineteenth-century air about her.";
     }
 }
 
 class MaleGhost extends Character {
     constructor() {
-        super("maleGhost", "handsome man");
+        super("maleGhost", "handsome<br>man");
         this.description = "Hovering in the air is the ghost of a handsome young man. His dark brown frock coat covers a crimson vest and a white shirt with a painfully starched collar. His brown eyes look at you with a friendly expression, and his mouth, surrounded by a neatly trimmed beard, is smiling slightly.";
         this.conversation = this.getFirstConversation();
     }
@@ -76,7 +76,7 @@ class MaleGhost extends Character {
 
 class UncleAilbert extends Character{
     constructor() {
-        super("uncleAilbert", "uncle Ailbert", false);
+        super("uncleAilbert", "uncle<br>Ailbert", false);
         this.description = "Your beloved uncle is getting old but he still looks at you the way he did when you were young and he told you stories from the Scottish heaths, the smell of whisky ever present in his breath.";
         this.movementStrategy = this.getFollowPlayerStrategy(1);
         this.conversation = this.createConversation();

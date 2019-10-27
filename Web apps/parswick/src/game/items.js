@@ -419,14 +419,14 @@ class LatinDictionary extends Item {
 
 class MagnifyingGlass extends Item {
     constructor() {
-        super("magnifyingGlass", "magnifying glass");
+        super("magnifyingGlass", "magnifying<br>glass");
         this.description = "It works. The thing you look at actually appears just a little bit bigger than it actually is. As you remember, it can also be used with insects in a rather harmful way. You feel a pang of guilt at the thought."; 
     }
 }
 
 class MetalBox extends PickableItem {
     constructor() {
-        super("metalBox", "metal box", false, true, "paperClip", AccessState.LOCKED);
+        super("metalBox", "metal<br>box", false, true, "paperClip", AccessState.LOCKED);
         this.containedItems = ["stones", "rockPick", "modelCar"];
     }
 
@@ -473,7 +473,7 @@ class OfficeDoor extends LockableItem {
 
 class OfficeDoorKey extends Item {
     constructor() {
-        super("officeDoorKey", "office door key", false, false);
+        super("officeDoorKey", "office<br>door<br>key", false, false);
         this.description = "This is the key to the office.";
     }
 }
@@ -569,7 +569,7 @@ class TravelWindow extends Item {
 
 class Wall extends Item {
     constructor() {
-        super("wall", "wall", true, false);
+        super("wall", "", true, false);
         this.hitIsVisible = false;
         this.verbHit.caption = "Hit";
     }
@@ -613,7 +613,7 @@ class Wall extends Item {
 
 class WaterCooker extends Item {
     constructor() {
-        super("waterCooker", "water cooker", true, true);
+        super("waterCooker", "water<br>cooker", true, true);
         this.description = "You have used this water cooker to make your tea for at many years. A trusty friend."; 
         this.verbMakeTea.caption = "Make tea";
     }

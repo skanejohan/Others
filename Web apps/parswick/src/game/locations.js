@@ -167,15 +167,15 @@ class Kitchen extends Location {
         super("kitchen");
         this.containedItems = ["sink", "waterCooker", "fridge", "table", "chair", "cupboard", "bathroomDoor", "broomCupboard"];
         this.positions = {
-            "cup":  { x: 390, y: 110, w: 20, h: 20, layerIndex: 2 },
-            "cupboard": { x: 365, y: 100, w: 80, h: 70 },
-            "sink": { x: 345, y: 180, w: 100, h: 160 },
+            "cup":  { x: 390, y: 85, w: 30, h: 30, layerIndex: 2 },
+            "cupboard": { x: 365, y: 80, w: 80, h: 130 },
+            "sink": { x: 345, y: 220, w: 100, h: 160 },
             "broomCupboard":  { x: 55, y: 55, w: 140, h: 40 },
             "chair":  { x: 210, y: 180, w: 40, h: 40 },
             "table":  { x: 100, y: 150, w: 100, h: 100 },
             "fridge":  { x: 55, y: 318, w: 80, h: 80 },
-            "officeDoorKey":  { x: 390, y: 140, w: 20, h: 20, layerIndex: 2 },
-            "waterCooker": { x: 390, y: 200, w: 20, h: 20, layerIndex: 2 },
+            "officeDoorKey":  { x: 380, y: 155, w: 50, h: 50, layerIndex: 2 },
+            "waterCooker": { x: 370, y: 230, w: 55, h: 55, layerIndex: 2 },
             "bathroomDoor": { door: true, type: "S", start: 210, length: 80 },
         };
         this.exits = {
@@ -199,12 +199,12 @@ class Office extends Location {
         this.containedItems = ["safe", "cabinet", "desk", "drawer"];
         this.positions = {
             "safe": { x: 100, y: 325, w: 90, h: 70 },
-            "cabinet": { x: 375, y: 100, w: 70, h: 130 },
-            "desk": { x: 150, y: 150, w: 170, h: 120 },
-            "drawer": { x: 180, y: 200, w: 110, h: 70, layerIndex: 2 },
-            "paperClip": { x: 230, y: 240, w: 30, h: 30, layerIndex: 3 },
-            "magnifyingGlass": { x: 180, y: 100, w: 20, h: 20 },
-            "metalBox": { x: 220, y: 100, w: 20, h: 20 },
+            "cabinet": { x: 325, y: 100, w: 120, h: 200 },
+            "desk": { x: 100, y: 150, w: 170, h: 120 },
+            "drawer": { x: 130, y: 180, w: 110, h: 100, layerIndex: 2 },
+            "paperClip": { x: 150, y: 240, w: 70, h: 30, layerIndex: 3 },
+            "magnifyingGlass": { x: 335, y: 120, w: 100, h: 40, layerIndex: 2 },
+            "metalBox": { x: 350, y: 230, w: 70, h: 40, layerIndex: 2 },
         };
         this.exits = {
             "N": { target: "historySection", door: "officeDoor" },
