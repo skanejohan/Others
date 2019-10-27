@@ -37,7 +37,12 @@ class Item {
 
     verbExamine(context) {
         this.private.do("examine", context, () => {
-            context.setMessage(`(About ${this.caption}) ${this.description}`);
+            if (this.caption == "") {
+                context.setMessage(this.description);
+            }
+            else {
+                context.setMessage(`(About ${this.caption}) ${this.description}`);
+            }
         });
     }
 
