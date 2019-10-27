@@ -125,7 +125,7 @@ class UncleAilbert extends Character{
         .addResponse(11, "Would you like a cup of tea?", 16)
         .addResponse(12, "I can get you a glass of water", 18)
     
-        .addStatement(13, "Yes, she came to visit me the other day. Sends her regards, she does."[14])
+        .addStatement(13, "Yes, she came to visit me the other day. Sends her regards, she does.", [14])
         .addResponse(14, "Send her my best, won't you?")
     
         .addStatement(15, "Now that is a shame!", [11, 12])
