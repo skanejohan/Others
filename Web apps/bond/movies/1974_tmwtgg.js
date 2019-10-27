@@ -101,6 +101,7 @@ const tmwtgg = {
         // 01:17:45
         title: "Meeting an old friend",
         description: "Since Goodnight has the car keys, Bond runs out on the street to catch a taxi but instead finds an AMC car dealership. AMC cars were not sold in Thailand at the time, but according to [the James Bond wiki|https://jamesbond.fandom.com/wiki/Bangkok] the dealership was located in the [Chokchai Building|chokchai], which has since been demolished. During the car chase, we first see Bond, with a \"deputized\" Sheriff J.W. Pepper in the passenger seat, driving down Ratchadamnoen Avenue, with the [Democracy Monument|dem] in the background. Later, the local police start chasing them near the buddhist temple [Wat Suthat Thepwararam and the Giant Swing|swing], before they leave Bangkok. It is not known where the famous spiral car jump was filmed, nor the location of the barn where Scaramanga hides the wings that he so conveniently attaches to his car.",
+        // Klong Ransit?
     },
     {
         // 01:27:15
