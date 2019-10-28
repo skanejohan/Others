@@ -177,11 +177,13 @@ function addItemElements(availableItems, currentElements, posFn, engine, context
 // Given a list of available items, and a list of item elements currently shown, this
 // function will the remove item elements no longer among the available items. 
 function removeItemElements(availableItems, currentElements, onRemoved) {
+    var elementsToRemove = [];
     currentElements.forEach(e => {
         if (!availableItems.filter(i => i.isVisible).some(i => i.element == e)) {
-            removeItemElement(e, currentElements, onRemoved);
+                elementsToRemove.push(e);
         }
     });
+    elementsToRemove.forEach(e => removeItemElement(e, currentElements, onRemoved));
 }
 
 function addItemElement(item, posFn, elems, engine, context, onAdded) {
