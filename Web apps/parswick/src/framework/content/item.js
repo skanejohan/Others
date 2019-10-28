@@ -115,11 +115,13 @@ class OpenableItem extends Item {
         return this.state === AccessState.CLOSED;
     }
 
-    verbClose(context) {
+    verbClose(context, suppressMessage) {
         this.private.do("close", context, () => {
             this.state = AccessState.CLOSED;
             this.historicStates.add(AccessState.CLOSED);
-            context.setMessage("You close the " + this.caption + ".");
+            if (!suppressMessage) {
+                context.setMessage("You close the " + this.caption + ".");
+            }
         });
     }
 

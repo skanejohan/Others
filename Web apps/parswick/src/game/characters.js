@@ -73,6 +73,8 @@ class MaleGhost extends Character {
         this.private.do("secondDance", context, () => {
             context.setMessage("You dance for a little longer this time, but he still does not seem completely satisfied.");
             context.flags.add(Flag.NEEDS_TO_PRACTICE_DANCING);
+            context.flags.delete(Flag.UNCLE_AILBERT_IN_BATHROOM);
+            context.flags.add(Flag.UNCLE_AILBERT_HAS_LEFT);            
         });
     }
 
@@ -130,7 +132,7 @@ class UncleAilbert extends Character{
     
         .addStatement(15, "Now that is a shame!", [11, 12])
     
-        .addStatement(16, "A cup of tea? Well, if you are out of whiskey... yes please.", [17])
+        .addStatement(16, "A cup of tea? Well, if you are out of whisky... yes please.", [17])
         .addResponseWithAction(17, "Follow me into the kitchen. I will make you a nice cup.", ctx => this.actionAddMakeTeaVerbToWaterCooker(ctx))
     
         .addStatement(18, "Water? I may be old and possibly not in perfect health but there are limits to your stupid modernity!", [10, 11])

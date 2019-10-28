@@ -73,6 +73,30 @@ class BathroomDoor extends OpenableItem {
         super("bathroomDoor", "bathroom door", true, true, AccessState.CLOSED);
         this.isDoor = true;
     }
+
+    verbOpenVisible(context) {
+        return !context.flags.has(Flag.UNCLE_AILBERT_IN_BATHROOM) && super.verbOpenVisible(context);
+    }
+
+    afterOpen(context) {
+        if (context.flags.has(Flag.UNCLE_AILBERT_HAS_LEFT)) {
+            context.setMessage("Uncle Ailbert must have left while you were in the cellar.");
+            context.flags.delete(Flag.UNCLE_AILBERT_HAS_LEFT);
+        }
+    }
+
+    beforeExamine(context) {
+        if (this.state == AccessState.CLOSED) {
+            if (context.flags.has(Flag.UNCLE_AILBERT_IN_BATHROOM)) {
+                this.description = "It is closed. You vaguely hear uncle Ailbert muttering something about whisky.";
+            } else {
+                this.description = "It is closed.";
+            }
+        }
+        else {
+            this.description = "It is open.";
+        }
+    }
 }
 
 class BathroomSink extends Item {
@@ -600,7 +624,7 @@ class Wall extends Item {
             else if (context.flags.has(Flag.UNCLE_AILBERT_INTRODUCED)) {
                 context.setMessage("You really don't want to smash the wall in uncle Ailbert's presence.");
             }
-            else if (context.flags.has(Flag.UNCLE_AILBERT_GONE)) {
+            else if (context.flags.has(Flag.UNCLE_AILBERT_IN_BATHROOM)) {
                 context.setMessage("You hit the wall with the axe until the door-shaped section has been demolished. Behind it, you see only darkness.");
                 context.location("historySection").exits["E"].isVisible = true;
                 context.setExitsHaveChanged();
@@ -636,9 +660,12 @@ class WaterCooker extends Item {
             if (context.location("kitchen").hasCharacter("uncleAilbert") && context.flags.has(Flag.UNCLE_AILBERT_INTRODUCED)) {
                 context.setMessage("You make some tea and offer it to uncle Ailbert who drinks it a bit hesitantly. After a while, he excuses himself and enters the bathroom. You hear him lock the door.");
                 context.allCharacters["uncleAilbert"].isVisible = false;
-                context.allItems["bathroomDoor"].isVisible = false;
                 context.flags.delete(Flag.UNCLE_AILBERT_INTRODUCED);
-                context.flags.add(Flag.UNCLE_AILBERT_GONE);
+                context.flags.add(Flag.UNCLE_AILBERT_IN_BATHROOM);
+                var door = context.allItems["bathroomDoor"];
+                if (door.state == AccessState.OPEN) {
+                    door.verbClose(context, true);
+                }
                 context.setGoal("revealDoorAgain");
             }
             else {
