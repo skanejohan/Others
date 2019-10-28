@@ -335,8 +335,8 @@ class Test {
     }
 
     findConversationResponse(id) {
-        var result = this.app.ui.conversationUI.statementAndResponses.find(r => r.responseId == id);
-        return result.elements[1].elements[0]; // Return the first text segment of the first text element, for click.
+        var result = this.app.ui.conversationUI.entryElements.find(r => r.responseId == id);
+        return result.entry.elements[1].elements[0]; // Return the first text segment of the first text element, for click.
     }
 
     findArrow(arrowName) {
