@@ -13,6 +13,11 @@
 
 <link href="https://fonts.googleapis.com/css?family=Caudex" rel="stylesheet">
 
+<!-- If we remove the following (invisible) div, text width calculation will not be 
+     correct until the font has been loaded and we risk having the first screen
+     completely wrong. -->
+<div style="font: 16px Caudex; position: absolute; left: -9999px">dummy text</div>
+
 <script type="text/javascript">
     const FONT = "16px Caudex";
     const LAYER1COLOR = "#ecd9c6";
