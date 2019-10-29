@@ -10,18 +10,30 @@ export { LocationUI };
 
 class LocationUI {
 
-    constructor(engine, context) {
+    constructor(engine, context, messagesUpdatedFn) {
         this.engine = engine;
         this.context = context;
+        this.messagesUpdatedFn = messagesUpdatedFn;
+        this.moodSentenceTimer = new PausableTimer();
         this.clearAllElements();
     }
 
+    pause() {
+        this.moodSentenceTimer.pause();
+    }
+    
+    resume() {
+        this.moodSentenceTimer.resume();
+    }
+    
     enter(location, doneFn) {
         this.location = location;
         this.leaveOldLocation(() => this.enterLocation(doneFn));
     }
 
     leaveOldLocation(doneFn) {
+        this.moodSentenceTimer.deactivate();
+
         let allElements = this.getAllElements();
         if (allElements.length == 0) {
             if (doneFn) { doneFn() }
@@ -39,9 +51,19 @@ class LocationUI {
     }
 
     enterLocation(doneFn) {
+        this.moodSentenceTimer.activate(20000, () => this.displayCurrentMoodSentence());
         this.calculateWalls(true);
         if (doneFn) {
             doneFn();
+        }
+    }
+
+    displayCurrentMoodSentence() {
+        var sentence = this.context.getNextMoodSentence();
+        if (sentence) {
+            this.context.setMessage(sentence);
+            this.messagesUpdatedFn();
+            this.moodSentenceTimer.activate(60000, () => this.displayCurrentMoodSentence());
         }
     }
 

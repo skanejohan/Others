@@ -8,6 +8,7 @@ mkdir .out\game
 
 copy ..\_include\utils\arrayutils.js .out\_include
 copy ..\_include\timing\timer.js .out\_include
+copy ..\_include\timing\pausabletimer.js .out\_include
 copy ..\_include\timing\timedvaluemodifier.js .out\_include
 copy ..\_include\drawing\scaling_canvas.js .out\_include
 copy ..\_include\drawing\text_utils.js .out\_include

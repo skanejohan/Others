@@ -137,6 +137,15 @@ class FictionSection extends Location {
             "W": { target: "travelSection" },
             "E": { target: "artSection" },
         }
+        this.moodSentences = [
+            "A man and a woman walk by, hand in hand. They look happy.",
+            "Snow falls lightly onto the pavement outside the window.",
+            "You hear the faint sound of \"Fairytale of New York\" being played somewhere nearby.",
+            "An old man walks by. He stops and looks at something in the window before walking on.",
+            "You hear the sound of pigeons from the square outside.",
+            "Further down the street, someone starts singing \"White Christmas\".",
+            "The smell of roasted chestnuts from the vendors in the square reaches your nose.",
+        ]
     }
 }
 

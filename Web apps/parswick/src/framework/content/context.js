@@ -21,6 +21,7 @@ class Context {
         this.visitedLocations = [initialLocation];    // Array of string
         this.onActionPerformed = onActionPerformed;   // (string, string) => undefined
         this.state = new State(this);                 // State  
+        this.locationCurrentMoodSentence = {}         // Dictionary string -> int
         if (initialGoal == "") {
             this.goal = "";
         }
@@ -152,6 +153,19 @@ class Context {
 
     getCurrentLocation() {
         return this.location(this.currentLocation);
+    }
+
+    getNextMoodSentence() {
+        var moodSentences = this.getCurrentLocation().moodSentences;
+        if (moodSentences) {
+            var index = -1;
+            if (this.locationCurrentMoodSentence.hasOwnProperty(this.currentLocation)) {
+                index = this.locationCurrentMoodSentence[this.currentLocation];
+            }
+            index = (index + 1) % moodSentences.length;
+            this.locationCurrentMoodSentence[this.currentLocation] = index;
+            return moodSentences[index];    
+        }
     }
 
     // ---------- Messages

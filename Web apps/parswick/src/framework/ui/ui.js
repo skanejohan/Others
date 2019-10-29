@@ -17,15 +17,17 @@ class UI {
         this.engine = new Engine(this.canvas, new ScalingCanvas(new OffscreenCanvas(800, 450), 800, 450));
 
         this.backgroundUI = new BackgroundUI(this.engine);
-        this.locationUI = new LocationUI(this.engine, this.context);
+        this.locationUI = new LocationUI(this.engine, this.context, () => this.showMessages());
         this.inventoryUI = new ItemListUI(this.engine, this.context, 500, 50, 250, 165, "You are carrying:");
         this.itemsHereUI = new ItemListUI(this.engine, this.context, 500, 235, 250, 165, "You also see:");
         this.messagesUI = new MessagesUI(this.engine, 450, 400, 300);
         this.combinationLockUI = new CombinationLockUI(this.engine, 130, 30, 540, 390, 30, "black", LAYER1COLOR);
         this.conversationUI = new ConversationUI(this.engine, this.context, 130, 30, 540, 390, 30, "black", LAYER1COLOR);
         this.cutsceneUI = new CutsceneUI(this.engine, this.context, 130, 30, 540, 390, 30, "black", LAYER1COLOR, 
-            () => this.messagesUI.activate());
-
+            () => {
+                this.messagesUI.activate();
+                this.locationUI.resume();
+        });
         this.moveToCurrentLocation();
 
         window.requestAnimationFrame(() => this.draw());
@@ -143,6 +145,7 @@ class UI {
     showCutscene() {
         var cs = this.context.getCutscene();
         if (cs != undefined) {
+            this.locationUI.pause();
             this.cutsceneUI.display(cs);
             this.messagesUI.deactivate();
         }
