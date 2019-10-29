@@ -52,6 +52,7 @@ class UI {
     endBatchOperations() {
         this.inBatchOperation = false;
         this.moveToCurrentLocation();
+        this.locationUI.updateExits();
     }
 
     onActionPerformed(verb, noun, extraData, preventedBeforeAction) {
