@@ -1,0 +1,5 @@
+open ftp://skanejohan@ftpcluster.loopia.se/
+put travels.html /apps.johanahlgren.se/public_html/aston/
+put data.js /apps.johanahlgren.se/public_html/aston/
+put code.js /apps.johanahlgren.se/public_html/aston/
+exit
