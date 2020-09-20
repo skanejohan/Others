@@ -2285,6 +2285,29 @@ Kris och Luhrs bröllop - Ronneby Brunn
 		]
 	},
 	{
+		name: "Thailand över jul",
+		start: new Date(2019, 11, ),
+		end: new Date(2019, 11, ),
+		locations: [
+			{
+				name: "Emporium Suites by Chatrium",
+				address: "622 Sukhumvit 24 Alley, Klongton klongtoey Bangkok 10110, Thailand",
+				url: "https://www.chatrium.com/emporiumsuitesbangkok",
+				position: new google.maps.LatLng(13.729877, 100.568257),
+				start: new Date(2019, 11, 21),
+				end: new Date(2019, 11, 23),
+			},
+			{
+				name: "Samed Pavilion Resort",
+				address: "89/1 หมู่ 4 อ่าวไผ่ เกาะเสม็ด Phe, Mueang Rayong District, Rayong 21160, Thailand",
+				url: "https://samedpavilionresort.com/",
+				position: new google.maps.LatLng(12.564083, 101.456045),
+				start: new Date(2019, 11, 23),
+				end: new Date(2019, 11, 30),
+			},
+		]
+	},
+	{
 		name: "Husbilshelg, Öströö och Åkulla",
 		start: new Date(2020, 3, 30),
 		end: new Date(2020, 4, 2),
