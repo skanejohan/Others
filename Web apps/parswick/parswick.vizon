@@ -1,0 +1,112 @@
+// https://eeyo.io/pdcbeta/
+
+: diagram  { 
+
+   events [] {
+   
+      get_office_door_key : event {
+         depends_on [] = take_cup;
+      }
+      
+      take_cup : event {
+         depends_on [] = ;
+      }
+
+      unlock_office_door : event {
+         depends_on [] = get_office_door_key;
+      }
+
+      open_office_door : event {
+         depends_on [] = unlock_office_door;
+      }
+
+      examine_plaque : event {
+         depends_on [] = ;
+      }
+
+      open_safe : event {
+         depends_on [] = open_office_door, examine_plaque;
+      }
+
+      get_history_book : event {
+         depends_on [] = open_safe;
+      }
+
+      examine_language_bookshelf : event {
+         depends_on [] = get_history_book;
+      }
+
+      get_latin_dictionary : event {
+         depends_on [] = examine_language_bookshelf;
+      }
+
+      reveal_secret_door : event {
+         depends_on [] = get_latin_dictionary;
+      }
+      
+      remove_books : event {
+         depends_on [] = reveal_secret_door;
+      }
+
+      get_paper_clip : event {
+         depends_on [] = open_office_door;
+      }
+      
+      pick_metal_box : event {
+         depends_on [] = get_paper_clip;
+      }
+      
+      get_axe : event {
+         depends_on [] = pick_metal_box;
+      }
+      
+      hit_wall : event {
+         depends_on [] = get_axe, remove_books;
+      }
+      
+      offer_uncle_ailbert_tea : event {
+         depends_on [] = hit_wall;
+      }
+      
+      make_tea : event {
+         depends_on [] = offer_uncle_ailbert_tea;
+      }
+      
+      hit_wall_again : event {
+         depends_on [] = make_tea;
+      }
+      
+      take_flashlight : event {
+         depends_on []   = hit_wall_again;
+      }
+      
+      talk_to_male_ghost : event {
+         depends_on []   = take_flashlight;
+      }
+      
+      dance_with_ghost : event {
+         depends_on []   = talk_to_male_ghost;
+      }
+      
+      read_book_on_dancing : event {
+         depends_on []   = dance_with_ghost;
+      }
+      
+      dance_with_ghost_again : event {
+         depends_on []   = read_book_on_dancing;
+      }
+      
+      lock_front_door : event {
+         depends_on []   = dance_with_ghost_again;
+      }
+      
+      practice_dancing : event {
+         depends_on []   = lock_front_door;
+      }
+
+      dance_with_ghost_successfully : event {
+         depends_on []   = practice_dancing;
+      }
+   }
+   
+}
