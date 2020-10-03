@@ -7,11 +7,9 @@ import * as Cutscenes from "./game/cutscenes.js";
 import * as Goals from "./game/goals.js";
 import { Game } from "./game/game.js";
 
-// TODO (data): windowedMoodSentences
-
 window.onload = function() {
     window.app = new App(document.getElementById("gameCanvas"), 
-        Game.startLocation, Game.startCutscene, Game.startMessage, Game.startGoal, Items, Locations,
+        Game.title, Game.startLocation, Game.startCutscene, Game.startMessage, Game.startGoal, Items, Locations,
         Characters, Cutscenes, Goals);
 }
 

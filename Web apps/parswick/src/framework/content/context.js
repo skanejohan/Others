@@ -5,7 +5,10 @@ import { AccessState } from "./item.js";
 export { Context };
 
 class Context {
-    constructor(items, locations, characters, cutscenes, goals, initialLocation, initialCutscene, initialMessage, initialGoal, onActionPerformed) {
+    constructor(title, items, locations, characters, cutscenes, goals, 
+            initialLocation, initialCutscene, initialMessage, initialGoal, 
+            onActionPerformed) {
+        this.title = title;                           // Title object
         this.allItems = items;                        // Dictionary string -> Item
         this.allLocations = locations;                // Dictionary string -> Location
         this.allCharacters = characters;              // Dictionary string -> Character
@@ -17,7 +20,7 @@ class Context {
         this.flags = new Set([]);                     // Set of Flag
         this.messages = [initialMessage];             // Array of string
         this.currentLocation = initialLocation;       // string
-        this.setCutscene(initialCutscene);            // string
+        this.initialCutscene = initialCutscene;       // string
         this.visitedLocations = [initialLocation];    // Array of string
         this.onActionPerformed = onActionPerformed;   // (string, string) => undefined
         this.state = new State(this);                 // State  
@@ -29,6 +32,7 @@ class Context {
             this.setGoal(initialGoal)
         }
         this.goal = initialGoal;
+        this.setTitle();
 
         // Set the container property of all items and characters (either to a location or another item)
         Object.keys(this.allLocations).forEach(name => {
@@ -212,6 +216,18 @@ class Context {
         var cs = this.cutscene;
         this.cutscene = undefined;
         return cs;
+    }
+
+    // ---------- Title
+
+    setTitle() {
+        this._title = this.title;
+    }
+
+    getTitle() {
+        var t = this._title;
+        this._title = undefined;
+        return t;
     }
 
     // ---------- Exits

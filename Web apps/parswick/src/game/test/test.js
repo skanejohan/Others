@@ -2,6 +2,7 @@ uiTest = function() {
     var test = new Test(window.app);
     
     // Get into the office
+    test.addCloseTitle();
     test.addCloseCutscene();
     test.addClickArrow("S");
     test.addClickElementMenu("cupboard", "Open");
@@ -114,6 +115,8 @@ uiTest = function() {
     test.addClickElementMenu("maleGhost", "Talk");
     test.addClickConversationResponse("2");
     test.addClickConversationResponse("4");
+    test.addCloseCutscene();
+    test.addClickArrow("E");
 
     test.runActions();
 }
@@ -177,6 +180,18 @@ class Test {
         ElementBase.getMousePos = this.oldGetMousePos;
         this.app.ui.messagesUI._messageTimeMs = this.oldMessageTimeMs;
         this.app.ui.messagesUI.maxMessageLength = 3;
+    }
+
+    addCloseTitle() {
+        this.actions.push(() => {
+            this.highlight(this.app.ui.titleUI.btn);
+            return 1000;
+        });
+        this.actions.push(() => {
+            this.app.ui.canvas._onclick();
+            this.moveTo(0, 0);
+            return 500;
+        })
     }
 
     addCloseCutscene() {

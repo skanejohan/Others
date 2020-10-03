@@ -4,7 +4,8 @@ import { UI } from "../ui/ui.js";
 export { App };
 
 class App {
-    constructor(canvasDiv, startLocation, startCutscene, startMessage, startGoal, items, locations, characters, cutscenes, goals) {
+    constructor(canvasDiv, title, startLocation, startCutscene, startMessage, startGoal, items, locations, characters, cutscenes, goals) {
+        this.title = title;
         this.items = items;
         this.locations = locations;
         this.characters = characters;
@@ -26,6 +27,7 @@ class App {
         }
         
         this.context = new Context(
+            this.title,
             this.items.getAll(), 
             this.locations.getAll(), 
             this.characters.getAll(),

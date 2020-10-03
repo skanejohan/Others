@@ -6,6 +6,7 @@ import { CombinationLockUI } from "./combinationLock.js";
 import { ConversationUI } from "./conversation.js";
 import { Utils } from "./utils.js";
 import { CutsceneUI } from "./cutscene.js";
+import { TitleUI } from "./title.js";
 
 export { UI };
 
@@ -28,6 +29,14 @@ class UI {
                 this.messagesUI.activate();
                 this.locationUI.resume();
         });
+        this.titleUI = new TitleUI(this.engine, this.context, 50, 25, 700, 400, 30, "black", LAYER1COLOR, 
+            () => {
+                this.context.setCutscene(this.context.initialCutscene);
+                this.messagesUI.activate();
+                this.locationUI.resume();
+                this.showCutscene();
+        });
+        
         this.moveToCurrentLocation();
 
         window.requestAnimationFrame(() => this.draw());
@@ -94,6 +103,7 @@ class UI {
         
         this.updateItemElements();
         this.locationUI.updateExits();
+        this.showTitle();
         this.showCutscene();
         this.showMessages();
     }
@@ -101,6 +111,7 @@ class UI {
     moveToCurrentLocation() {
         this.locationUI.enter(this.context.getCurrentLocation(), () => {
             this.updateItemElements();
+            this.showTitle();
             this.showCutscene();
             this.showMessages();
         });
@@ -141,6 +152,15 @@ class UI {
                 Utils.setVerbs(item.element, item, this.context);
             }
         });
+    }
+
+    showTitle() {
+        var t = this.context.getTitle();
+        if (t != undefined) {
+            this.locationUI.pause();
+            this.titleUI.display(t);
+            this.messagesUI.deactivate();
+        }
     }
 
     showCutscene() {
