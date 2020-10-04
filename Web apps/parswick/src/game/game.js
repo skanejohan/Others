@@ -8,4 +8,4 @@ Game.startLocation = "fictionSection";
 Game.startMessage = "Welcome to Parswick Books";
 Game.startCutscene = "intro";
 Game.startGoal = "office";
-Game.title = new Title("Parswick Books", 100, 100);
+Game.title = new Title("PARSWICK BOOKS", "a game by Johan Åhlgren");

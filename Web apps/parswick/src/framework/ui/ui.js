@@ -11,10 +11,11 @@ import { TitleUI } from "./title.js";
 export { UI };
 
 class UI {
-    constructor(canvasDiv, context) {
-        this.context = context;
+    constructor(app) {
+        this.app = app;
+        this.context = app.context;
         this.context.onActionPerformed = this.onActionPerformed.bind(this);
-        this.canvas = new ScalingCanvas(canvasDiv, 800, 450);
+        this.canvas = new ScalingCanvas(app.canvasDiv, 800, 450);
         this.engine = new Engine(this.canvas, new ScalingCanvas(new OffscreenCanvas(800, 450), 800, 450));
 
         this.backgroundUI = new BackgroundUI(this.engine);
@@ -30,11 +31,18 @@ class UI {
                 this.locationUI.resume();
         });
         this.titleUI = new TitleUI(this.engine, this.context, 50, 25, 700, 400, 30, "black", LAYER1COLOR, 
-            () => {
-                this.context.setCutscene(this.context.initialCutscene);
+            continuingGame => {
+                if (!continuingGame) {
+                    this.context.setCutscene(this.context.initialCutscene);
+                }
                 this.messagesUI.activate();
                 this.locationUI.resume();
-                this.showCutscene();
+                if (continuingGame) {
+                    app.loadState(SAVESLOT); 
+                }
+                else {
+                    this.showCutscene();
+                }
         });
         
         this.moveToCurrentLocation();
@@ -106,6 +114,7 @@ class UI {
         this.showTitle();
         this.showCutscene();
         this.showMessages();
+        window.app.saveState(SAVESLOT);
     }
 
     moveToCurrentLocation() {
@@ -114,6 +123,9 @@ class UI {
             this.showTitle();
             this.showCutscene();
             this.showMessages();
+            if (window.app) {
+                window.app.saveState(SAVESLOT);
+            }
         });
     }
 
@@ -158,7 +170,7 @@ class UI {
         var t = this.context.getTitle();
         if (t != undefined) {
             this.locationUI.pause();
-            this.titleUI.display(t);
+            this.titleUI.display(t, this.app);
             this.messagesUI.deactivate();
         }
     }

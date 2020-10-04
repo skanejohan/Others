@@ -184,7 +184,7 @@ class Test {
 
     addCloseTitle() {
         this.actions.push(() => {
-            this.highlight(this.app.ui.titleUI.btn);
+            this.highlight(this.app.ui.titleUI.startNewButton);
             return 1000;
         });
         this.actions.push(() => {

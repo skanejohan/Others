@@ -1,9 +1,8 @@
 export { Title };
 
 class Title {
-    constructor(text, x, y) {
+    constructor(text, creditsText) {
         this.text = text;
-        this.x = x;
-        this.y = y;
+        this.creditsText = creditsText;
     }
 }

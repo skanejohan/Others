@@ -17,8 +17,6 @@ class App {
         this.startGoal = startGoal;
         this.canvasDiv = canvasDiv;
         this.reset();
-
-        window.theseusApp = this; // FOR DEBUGGING TODO REMOVE
     }
 
     reset(suppressWelcomeMessage) {
@@ -40,8 +38,9 @@ class App {
         if (suppressWelcomeMessage) {
             this.context.removeAllMessages();
             this.context.setCutscene(undefined);
+            this.context.getTitle(); // to clear it
         }
-        this.ui = new UI(this.canvasDiv, this.context);
+        this.ui = new UI(this);
     }
 
     applyState(s) {
@@ -56,5 +55,24 @@ class App {
     readState() {
         return this.context.state.toString();
     }
+
+    saveState(slot) {
+        localStorage.setItem(this._fullName(slot), this.readState());
+    }
+
+    loadState(slot) {
+        this.applyState(localStorage.getItem(this._fullName(slot)));
+    }
+
+    clearState(slot) {
+        localStorage.removeItem(this._fullName(slot));
+    }
+
+    hasState(slot) {
+        var state = localStorage.getItem(this._fullName(slot));
+        return state != null && state != "";
+    }
+
+    _fullName = slotName => "parswick_books_" + slotName;
 }
 
