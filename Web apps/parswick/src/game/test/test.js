@@ -117,6 +117,7 @@ uiTest = function() {
     test.addClickConversationResponse("4");
     test.addCloseCutscene();
     test.addClickArrow("E");
+    test.addCloseCutscene();
 
     test.runActions();
 }

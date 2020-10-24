@@ -32,6 +32,7 @@ class Context {
             this.setGoal(initialGoal)
         }
         this.goal = initialGoal;
+        this.hasWon = false;
         this.setTitle();
 
         // Set the container property of all items and characters (either to a location or another item)

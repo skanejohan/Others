@@ -93,11 +93,13 @@ class CellarEast extends Location {
     }
 
     canEnterFrom(location, context) {
-        if(context.allCharacters["uncleAilbert"].isVisible) {
-            return true;
+        if (context.allCharacters["femaleGhost"].isVisible) {
+            context.setMessage("The young woman hovering in the air prevents you from entering.");
+            return false;
         }
-        context.setMessage("The young woman hovering in the air prevents you from entering.");
-        return false;
+        context.setCutscene("won");
+        context.hasWon = true;
+        return true;
     }
 }
 

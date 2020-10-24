@@ -29,7 +29,11 @@ class UI {
             () => {
                 this.messagesUI.activate();
                 this.locationUI.resume();
-        });
+                if (this.context.hasWon) {
+                    app.clearState(SAVESLOT); 
+                    app.reset();
+                }
+            });
         this.titleUI = new TitleUI(this.engine, this.context, 50, 25, 700, 400, 30, "black", LAYER1COLOR, 
             continuingGame => {
                 if (!continuingGame) {
