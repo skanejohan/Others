@@ -9,7 +9,6 @@ class CutsceneUI {
         this.dimensions = { x: x, y: y, w: w, h: h };
         this.frame = new FillRoundRect(x, y, w, h, radius, fgColor);
         this.background = new FillRoundRect(x+3, y+3, w-6, h-6, radius, bgColor);
-        var textBoxes = [];
         this.onHide = onHide;
 
         this.btn = new ButtonElement(
