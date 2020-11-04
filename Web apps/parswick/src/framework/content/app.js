@@ -37,7 +37,7 @@ class App {
             this.startGoal);
         if (suppressWelcomeMessage) {
             this.context.removeAllMessages();
-            this.context.setCutscene(undefined);
+            this.context.setCutscenes(undefined);
             this.context.getTitle(); // to clear it
         }
         this.ui = new UI(this);
@@ -49,7 +49,7 @@ class App {
         this.context.state.fromString(s);
         this.context.removeAllMessages();
         this.ui.endBatchOperations();
-        this.context.setCutscene(undefined);
+        this.context.setCutscenes(undefined);
     }
 
     readState() {

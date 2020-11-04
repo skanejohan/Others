@@ -209,13 +209,21 @@ class Context {
 
     // ---------- Cutscene
 
-    setCutscene(sceneId) {
-        this.cutscene = this.allCutscenes[sceneId];
+    setCutscenes(sceneIds) {
+        if (Array.isArray(sceneIds)) {
+            this.cutscenes = sceneIds.map(id => this.allCutscenes[id]);
+        }
+        else if (sceneIds == undefined) {
+            this.cutscenes = undefined;
+        }
+        else {
+            this.cutscenes = new Array(this.allCutscenes[sceneIds]);
+        }
     }
 
-    getCutscene() {
-        var cs = this.cutscene;
-        this.cutscene = undefined;
+    getCutscenes() {
+        var cs = this.cutscenes;
+        this.cutscenes = undefined;
         return cs;
     }
 

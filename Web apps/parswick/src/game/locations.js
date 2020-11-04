@@ -69,7 +69,7 @@ class CellarEntrance extends Location {
     canEnterFrom(location, context) {
         if (context.isItemInInventory("flashlight")) {
             if (!context.flags.has(Flag.GHOSTS_HAVE_BEEN_DESCRIBED)) {
-                context.setCutscene("ghosts");
+                context.setCutscenes("ghosts");
                 context.flags.add(Flag.GHOSTS_HAVE_BEEN_DESCRIBED);
             }
             context.setGoal("makeFriend");
@@ -97,7 +97,7 @@ class CellarEast extends Location {
             context.setMessage("The young woman hovering in the air prevents you from entering.");
             return false;
         }
-        context.setCutscene("won");
+        context.setCutscenes(["won", "later", "festive"]);
         context.hasWon = true;
         return true;
     }

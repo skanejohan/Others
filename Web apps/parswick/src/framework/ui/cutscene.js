@@ -9,15 +9,33 @@ class CutsceneUI {
         this.dimensions = { x: x, y: y, w: w, h: h };
         this.frame = new FillRoundRect(x, y, w, h, radius, fgColor);
         this.background = new FillRoundRect(x+3, y+3, w-6, h-6, radius, bgColor);
+        this.textBoxes = [];
         this.onHide = onHide;
 
         this.btn = new ButtonElement(
             this.dimensions.x + this.dimensions.w - 120, 
             this.dimensions.y + this.dimensions.h - 50, 
-            100, 30, "Continue", () => { this.hide(); });
+            100, 30, "Continue", () => { if (!this.displayNextText()) this.hide(); });
     }
 
-    display(text) {
+    display(texts) {
+        this.texts = texts;
+        this.engine.addModal(this.frame);
+        this.engine.addModal(this.background);
+        this.engine.addModal(this.btn);
+        this.displayNextText();
+    }
+
+    displayNextText() {
+        if (this.texts.length == 0) {
+            return false;
+        }
+
+        this.textBoxes.forEach(tb => this.engine.remove(tb));
+
+        var text = this.texts[0];
+        this.texts = this.texts.slice(1);
+
         var paragraphDistance = 10;
         var totalHeight = 0;
         this.textBoxes = [];
@@ -37,11 +55,9 @@ class CutsceneUI {
             tb.y = top;
             top += tb.h + paragraphDistance;
         });
-
-        this.engine.addModal(this.frame);
-        this.engine.addModal(this.background);
         this.textBoxes.forEach(tb => this.engine.addModal(tb));
-        this.engine.addModal(this.btn);
+
+        return true;
     }
 
     hide() {

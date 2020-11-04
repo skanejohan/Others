@@ -118,6 +118,8 @@ uiTest = function() {
     test.addCloseCutscene();
     test.addClickArrow("E");
     test.addCloseCutscene();
+    test.addCloseCutscene();
+    test.addCloseCutscene();
 
     test.runActions();
 }

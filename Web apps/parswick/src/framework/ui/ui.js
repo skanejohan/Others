@@ -37,7 +37,7 @@ class UI {
         this.titleUI = new TitleUI(this.engine, this.context, 50, 25, 700, 400, 30, "black", LAYER1COLOR, 
             continuingGame => {
                 if (!continuingGame) {
-                    this.context.setCutscene(this.context.initialCutscene);
+                    this.context.setCutscenes(this.context.initialCutscene);
                 }
                 this.messagesUI.activate();
                 this.locationUI.resume();
@@ -180,7 +180,7 @@ class UI {
     }
 
     showCutscene() {
-        var cs = this.context.getCutscene();
+        var cs = this.context.getCutscenes();
         if (cs != undefined) {
             this.locationUI.pause();
             this.cutsceneUI.display(cs);

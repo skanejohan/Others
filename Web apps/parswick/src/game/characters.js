@@ -95,7 +95,7 @@ class MaleGhost extends Character {
             context.allCharacters["femaleGhost"].isVisible = false;
             context.allCharacters["maleGhost"].isVisible = false;
             context.moveTo("cellarEntrance");
-            context.setCutscene("dance");
+            context.setCutscenes("dance");
         });
     }
 
