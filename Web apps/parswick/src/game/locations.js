@@ -97,7 +97,7 @@ class CellarEast extends Location {
             context.setMessage("The young woman hovering in the air prevents you from entering.");
             return false;
         }
-        context.setCutscenes(["won", "later", "festive"]);
+        context.setCutscenes(["won", "", "<pause>", "later", "<pause>", "", "<pause>", "festive", "", "<pause>", "congrats", "<pause>", "", "<pause>"]);
         context.hasWon = true;
         return true;
     }

@@ -9,13 +9,14 @@ class CutsceneUI {
         this.dimensions = { x: x, y: y, w: w, h: h };
         this.frame = new FillRoundRect(x, y, w, h, radius, fgColor);
         this.background = new FillRoundRect(x+3, y+3, w-6, h-6, radius, bgColor);
-        this.textBoxes = [];
+        this.buttonIsHidden = false;
         this.onHide = onHide;
+        this.textBoxes = [];
 
         this.btn = new ButtonElement(
             this.dimensions.x + this.dimensions.w - 120, 
             this.dimensions.y + this.dimensions.h - 50, 
-            100, 30, "Continue", () => { if (!this.displayNextText()) this.hide(); });
+            100, 30, "Continue", () => { this.displayNextText() });
     }
 
     display(texts) {
@@ -28,7 +29,8 @@ class CutsceneUI {
 
     displayNextText() {
         if (this.texts.length == 0) {
-            return false;
+            this.hide();
+            return;
         }
 
         this.textBoxes.forEach(tb => this.engine.remove(tb));
@@ -57,7 +59,14 @@ class CutsceneUI {
         });
         this.textBoxes.forEach(tb => this.engine.addModal(tb));
 
-        return true;
+        if (this.texts.length > 0 && this.texts[0] == "<pause>") {
+            this.texts = this.texts.slice(1);
+            this._hideButton();
+            setTimeout(() => this.displayNextText(), 2000);
+        }
+        else {
+            this._showButton();
+        }
     }
 
     hide() {
@@ -66,6 +75,20 @@ class CutsceneUI {
         this.textBoxes.forEach(tb => this.engine.remove(tb));
         this.engine.remove(this.btn);
         this.onHide();
+    }
+
+    _hideButton() {
+        if (!this.buttonIsHidden) {
+            this.engine.remove(this.btn);
+            this.buttonIsHidden = true;
+        }
+    }
+
+    _showButton() {
+        if (this.buttonIsHidden) {
+            this.engine.addModal(this.btn);
+            this.buttonIsHidden = false;
+        }
     }
 }
 

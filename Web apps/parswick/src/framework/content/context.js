@@ -211,13 +211,13 @@ class Context {
 
     setCutscenes(sceneIds) {
         if (Array.isArray(sceneIds)) {
-            this.cutscenes = sceneIds.map(id => this.allCutscenes[id]);
+            this.cutscenes = sceneIds.map(id => this._getCutSceneFromId(id));
         }
         else if (sceneIds == undefined) {
             this.cutscenes = undefined;
         }
         else {
-            this.cutscenes = new Array(this.allCutscenes[sceneIds]);
+            this.cutscenes = new Array(this._getCutSceneFromId(sceneIds));
         }
     }
 
@@ -226,6 +226,8 @@ class Context {
         this.cutscenes = undefined;
         return cs;
     }
+
+    _getCutSceneFromId = sceneId => this.allCutscenes[sceneId] || sceneId;
 
     // ---------- Title
 
