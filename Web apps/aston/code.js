@@ -107,6 +107,9 @@ var Travels = function() {
 // ---------- Trips (used internally by Travels) --------------------------------------------------
 
 var Trips = function(data) {
+
+    var _data = data.reverse();
+
     return {
         all : all,
         select : select,
@@ -114,17 +117,17 @@ var Trips = function(data) {
     }
 
     function all() {
-        return data;
+        return _data;
     }
 
     function select(i) {
         var result = [];
-        result.push(data[i]);
+        result.push(_data[i]);
         return result;
     }
 
     function get() {
-        return data.map(Utils.tripTitle);
+        return _data.map(Utils.tripTitle);
     }
 }
 
