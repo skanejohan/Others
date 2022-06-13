@@ -2637,6 +2637,156 @@ Kris och Luhrs bröllop - Ronneby Brunn
 			},
 		]
 	},
-
-
+	{
+		name: "Olof fyller 50",
+		start: new Date(2021, 9, 15),
+		end: new Date(2021, 9, 17),
+		locations: [
+			{
+				name: "Elite Hotel Mollberg",
+				address: "Stortorget 18, 251 14 Helsingborg, Sweden",
+				url: "http://www.elite.se/",
+				position: new google.maps.LatLng(56.046677532252914, 12.696048718935954),
+				start: new Date(2021, 9, 15),
+				end: new Date(2021, 9, 17),
+			},
+		]
+	},
+	{
+		name: "Danmark med mamma, Richard, Jessica och Wilhelm",
+		start: new Date(2021, 9, 31),
+		end: new Date(2021, 10, 05),
+		locations: [
+			{
+				name: "TODO", // TODO
+				address: "TODO",
+				url: "",
+				position: new google.maps.LatLng(41.198765, -73.726930),
+				start: new Date(2021, 9, 31),
+				end: new Date(2021, 10, 05),
+			},
+		]
+	},
+	{
+		name: "Helsingborg",
+		start: new Date(2021, 11, 25),
+		end: new Date(2021, 11, 27),
+		locations: [
+			{
+				name: "Clarion Grand Hotel Helsingborg",
+				address: "Stortorget 8, 252 23 Helsingborg, Sweden",
+				url: "https://www.nordicchoicehotels.se/hotell/sverige/helsingborg/clarion-grand-hotel-helsingborg",
+				position: new google.maps.LatLng(56.04626893416911, 12.694605690486272),
+				start: new Date(2021, 11, 25),
+				end: new Date(2021, 11, 27),
+			},
+		]
+	},
+	{
+		name: "Skidsemester i Stöten",
+		start: new Date(2022, 00, 01),
+		end: new Date(2022, 00, 06),
+		locations: [
+			{
+				name: "Hotel Frykenstrand",
+				address: "By 80, 686 93 Sunne, Sweden",
+				url: "http://www.frykenstrand.se/",
+				position: new google.maps.LatLng(59.88684000803969, 13.140842058716869),
+				start: new Date(2022, 00, 01),
+				end: new Date(2022, 00, 02),
+			},
+			{
+				name: "Stöten",
+				address: "",
+				url: "",
+				position: new google.maps.LatLng(61.265059061620306, 12.883567901584065),
+				start: new Date(2022, 00, 02),
+				end: new Date(2022, 00, 05),
+			},
+			{
+				name: "Hotel Frykenstrand",
+				address: "By 80, 686 93 Sunne, Sweden",
+				url: "http://www.frykenstrand.se/",
+				position: new google.maps.LatLng(59.88684000803969, 13.140842058716869),
+				start: new Date(2022, 00, 05),
+				end: new Date(2022, 00, 06),
+			},
+		]
+	},
+	{ 
+		name: "Skidor i Åre med mamma",
+		start: new Date(2022, 1, 13),
+		end: new Date(2022, 1, 15),
+		locations: [
+			{
+				name: "Hotell Fjällgården",
+				address: "Fjällgårdsvägen 35, 837 52 Åre",
+				url: "https://www.fjallgarden.se/",
+				position: new google.maps.LatLng(63.404468, 13.090496),
+				start: new Date(2022, 1, 13),
+				end: new Date(2022, 1, 15),
+			},
+		]
+	},
+	{
+		name: "Skidresa till Ischgl",
+		start: new Date(2022, 3, 09),
+		end: new Date(2022, 3, 16),
+		locations: [
+			{
+				name: "Hotel Piz Buin",
+				address: "Dorfstr. 16, 6561 Ischgl, Austria",
+				url: "http://www.pizbuin-ischgl.at/",
+				position: new google.maps.LatLng(47.01367946725322, 10.295222104724015),
+				start: new Date(2022, 3, 09),
+				end: new Date(2022, 3, 16),
+			},
+		]
+	},
+	{
+		name: "MTB i Isaberg",
+		start: new Date(2022, 3, 23),
+		end: new Date(2022, 3, 24),
+		locations: [
+			{
+				name: "Isaberg Mountain Resort",
+				address: "Nissastigen, 330 27 Hestra, Sweden",
+				url: "http://www.isaberg.com/",
+				position: new google.maps.LatLng(57.43454936618097, 13.619902330659304),
+				start: new Date(2022, 3, 23),
+				end: new Date(2022, 3, 24),
+			},
+		]
+	},
+	{
+		name: "Långhelg med husbilen",
+		start: new Date(2022, 5, 3),
+		end: new Date(2022, 5, 6),
+		locations: [
+			{
+				name: "Villa Björkhagen",
+				address: "Friggagatan 31, 554 54 Jönköping, Sverige",
+				url: "villabjorkhagen.se",
+				position: new google.maps.LatLng(57.787228, 14.216812),
+				start: new Date(2022, 5, 3),
+				end: new Date(2022, 5, 4)
+			},
+			{
+				name: "Paula och Jan-Åke (torpet)",
+				address: "",
+				url: "",
+				position: new google.maps.LatLng(57.8424731, 16.0566513),
+				start: new Date(2022, 5, 4),
+				end: new Date(2022, 5, 5)
+			},
+			{
+				name: "Vadstena Camping",
+				address: "Hofslagaregatan 11, 592 30 Vadstena",
+				url: "http://www.vadstenacamping.se/",
+				position: new google.maps.LatLng(58.468567, 14.939141),
+				start: new Date(2022, 5, 5),
+				end: new Date(2022, 5, 6),
+			},
+		]
+	},
 ]
