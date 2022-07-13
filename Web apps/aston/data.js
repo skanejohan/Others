@@ -2789,4 +2789,51 @@ Kris och Luhrs bröllop - Ronneby Brunn
 			},
 		]
 	},
+	{
+		name: "Europaresa med husbilen",
+		start: new Date(2022, 6, 6),
+		end: new Date(2022, 7, 14),
+		locations: [
+			{
+				name: "Kielfärjan",
+				address: "",
+				url: "stena.se",
+				position: new google.maps.LatLng(56.431173, 11.349044),
+				start: new Date(2022, 6, 6),
+				end: new Date(2022, 6, 7),
+			},
+			{
+				name: "Campingplatz Sinntal-Oberzell",
+				address: "Alfred-Kühnert-Straße 1, 36391 Sinntal, Tyskland",
+				url: "http://campingplatz-sinntal-oberzell.de/",
+				position: new google.maps.LatLng(50.33834960625175, 9.710938752691831),
+				start: new Date(2022, 6, 7),
+				end: new Date(2022, 6, 8)
+			},
+			{
+				name: "Bikepark Brandnertal",
+				address: "Tschengla 3, 6707 Bürserberg, Österrike",
+				url: "http://www.bikepark-brandnertal.at",
+				position: new google.maps.LatLng(47.14631259761436, 9.759379389490038),
+				start: new Date(2022, 6, 8),
+				end: new Date(2022, 6, 10),
+			},
+			{
+				name: "Campeggio di Merano",
+				address: "Via Piave, 44, 39012 Merano BZ, Italien",
+				url: "meran.eu",
+				position: new google.maps.LatLng(46.662995, 11.159075),
+				start: new Date(2022, 6, 10),
+				end: new Date(2022, 6, 12),
+			},
+			{
+				name: "La Rocca Camping Village",
+				address: "Via Gardesana dell'Acqua, 37, 37011 Bardolino VR, Italien",
+				url: "https://www.campinglarocca.com/",
+				position: new google.maps.LatLng(45.56426864089334, 10.711727335662241),
+				start: new Date(2022, 6, 12),
+				end: new Date(2022, 6, 15),
+			},
+		]
+	},
 ]
