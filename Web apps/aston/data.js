@@ -2458,7 +2458,7 @@ Kris och Luhrs bröllop - Ronneby Brunn
 	{
 		name: "MTB i Åre med mamma",
 		start: new Date(2021, 6, 8),
-		end: new Date(2021, 7, 16),
+		end: new Date(2021, 6, 16),
 		locations: [
 			{
 				name: "Parkvillan",
