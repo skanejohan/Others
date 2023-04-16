@@ -2948,4 +2948,73 @@ Kris och Luhrs bröllop - Ronneby Brunn
 			},
 		]
 	},
+	{
+        // Osäkra datum
+		name: "Med mamma på Mauritius",
+		start: new Date(2022, 9, 28),
+		end: new Date(2022, 10, 6),
+		locations: [
+			{
+				name: "InterContinental Resort Mauritius",
+				address: "Fort Coastal Road, MU, Balaclava 21306, Mauritius",
+				url: "https://www.ihg.com/intercontinental/hotels/gb/en/balaclava/mruma/hoteldetail",
+				position: new google.maps.LatLng(-20.09148242089895, 57.509482874018694),
+				start: new Date(2022, 9, 28),
+				end: new Date(2022, 10, 6)
+			},
+		]
+	},
+	{
+		name: "Skidresa till Obertauern",
+		start: new Date(2022, 11, 23),
+		end: new Date(2022, 11, 31),
+		locations: [
+			{
+				name: "Hotel Garni Haus Tyrol",
+				address: "Familie Aichmann, Gamsleitenstraße 5, 5562 Obertauern, Österrike",
+				url: "https://www.tyrol-obertauern.at/",
+				position: new google.maps.LatLng(47.24620408713833, 13.563108304329605),
+				start: new Date(2022, 11, 24),
+				end: new Date(2022, 11, 30)
+			},
+		]
+	},
+	{
+		name: "Farfar fyller 80",
+		start: new Date(2023, 3, 10),
+		end: new Date(2023, 3, 12),
+		locations: [
+			{
+				name: "Clarion Grand Hotel Helsingborg",
+				address: "Stortorget 8, 252 23 Helsingborg, Sweden",
+				url: "https://www.nordicchoicehotels.se/hotell/sverige/helsingborg/clarion-grand-hotel-helsingborg",
+				position: new google.maps.LatLng(56.04626893416911, 12.694605690486272),
+				start: new Date(2023, 2, 10),
+				end: new Date(2023, 3, 12)
+			},
+		]
+	},
+	{
+		name: "Skidresa till Sölden med avstickare till Berlin",
+		start: new Date(2023, 3, 7),
+		end: new Date(2023, 3, 16),
+		locations: [
+			{
+				name: "Hotel Bäckelar Wirt",
+				address: "Dorfstraße 125, 6450 Sölden, Österrike",
+				url: "https://www.baeckelarwirt-soelden.at",
+				position: new google.maps.LatLng(46.95866806767012, 11.009835076112967),
+				start: new Date(2023, 3, 8),
+				end: new Date(2023, 3, 14)
+			},
+			{
+				name: "Mercure Hotel & Residenz Berlin Checkpoint Charlie",
+				address: "Schützenstraße 11, 10117 Berlin, Tyskland",
+				url: "https://all.accor.com/lien_externe.svlt?goto=fiche_hotel&code_hotel=3120",
+				position: new google.maps.LatLng(52.508539068392324, 13.393512340632013),
+				start: new Date(2023, 3, 14),
+				end: new Date(2023, 3, 15)
+			},
+		]
+	},
 ]
