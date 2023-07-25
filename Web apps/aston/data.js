@@ -3017,4 +3017,106 @@ Kris och Luhrs bröllop - Ronneby Brunn
 			},
 		]
 	},
+	{
+		name: "Skadevi Cup, MBK P07",
+		start: new Date(2023, 5, 30),
+		end: new Date(2023, 6, 2),
+		locations: [
+			{
+				name: "Västerhöjdsgymnasiet, Skövde",
+				address: "Gymnasiegatan, 541 31 Skövde",
+				url: "https://www.gymnasiumskovde.se/vasterhojd/",
+				position: new google.maps.LatLng(58.38939488660359, 13.83995995705171),
+				start: new Date(2023, 5, 30),
+				end: new Date(2023, 6, 2)
+			},
+		]
+	},
+	{
+		name: "Europaresa med husbilen",
+		start: new Date(2023, 6, 3),
+		end: new Date(2023, 6, 19),
+		locations: [
+			{
+				name: "Knaus Campingpark Essen-Werden",
+				address: "Im Löwental 67, 45239 Essen, Tyskland",
+				url: "https://www.knauscamp.de/essen-werden/",
+				position: new google.maps.LatLng(51.380769431048435, 6.992010967555431),
+				start: new Date(2023, 6, 3),
+				end: new Date(2023, 6, 4)
+			},
+			{
+				name: "Camperplaats Helenawerf",
+				address: "De Ster 26, 6041 LP Roermond, Nederländerna",
+				url: "http://www.helenawerf.nl/wohnmobilstellplatze.shtml",
+				position: new google.maps.LatLng(51.19278410264541, 5.978955411926727),
+				start: new Date(2023, 6, 4),
+				end: new Date(2023, 6, 5)
+			},
+			{
+				name: "Moselle Camping",
+				address: "7 Av. Eugène Lerebourg, 54460 Liverdun, Frankrike",
+				url: "https://www.lesbouclesdelamoselle.com/",
+				position: new google.maps.LatLng(48.74813912955007, 6.05647016062765),
+				start: new Date(2023, 6, 5),
+				end: new Date(2023, 6, 6)
+			},
+			{
+				name: "TCS Camping Genève-Vésenaz",
+				address: "Chem. de la Bise 19, 1222 Vésenaz, Schweiz",
+				url: "https://www.tcs.ch/de/camping-reisen/camping/alle-campingplaetze/camping-genf-vesenaz.php",
+				position: new google.maps.LatLng(46.24522576915356, 6.193693315257437),
+				start: new Date(2023, 6, 6),
+				end: new Date(2023, 6, 8)
+			},
+			{
+				name: "Camping Les Prés Hauts",
+				address: "44 Chem. des Prés Hauts, 04200 Sisteron, Frankrike",
+				url: "http://www.camping-sisteron.com/",
+				position: new google.maps.LatLng(44.21534121709534, 5.937412498437262),
+				start: new Date(2023, 6, 8),
+				end: new Date(2023, 6, 9)
+			},
+			{
+				name: "Camping Embruns",
+				address: "63 Rte de Biot, 06600 Antibes, Frankrike",
+				url: "https://lesembrunscamping.jimdo.com/",
+				position: new google.maps.LatLng(43.61214358501269, 7.125204620782939),
+				start: new Date(2023, 6, 9),
+				end: new Date(2023, 6, 13)
+			},
+			{
+				name: "Camping Marino",
+				address: "Via Angiolo Silvio Novaro, 15, 18013 Diano Marina IM, Italien",
+				url: "http://www.campingmarino.it/",
+				position: new google.maps.LatLng(43.90588217088675, 8.076375214193423),
+				start: new Date(2023, 6, 13),
+				end: new Date(2023, 6, 14)
+			},
+			{
+				name: "Camping Village city of Milan",
+				address: "Via Gaetano Airaghi, 61, 20153 Milano MI, Italien",
+				url: "http://www.campingmilano.it/",
+				position: new google.maps.LatLng(45.473977223490756, 9.085512923333502),
+				start: new Date(2023, 6, 14),
+				end: new Date(2023, 6, 16)
+			},
+			{
+				name: "Camping Ansitz Wildberg",
+				address: "St. Martin 16a, 39030 San Lorenzo di Sebato BZ, Italien",
+				url: "https://www.campingwildberg.com/",
+				position: new google.maps.LatLng(46.7808963466012, 11.898627770025511),
+				start: new Date(2023, 6, 16),
+				end: new Date(2023, 6, 18)
+			},
+			{
+				name: "Wohnmobilstellplatz am Steinberger See",
+				address: "Am Steinberger See 6, 92449 Steinberg am See, Tyskland",
+				url: "https://www.wohnmobil-stellplatz-steinberger-see.de/",
+				position: new google.maps.LatLng(49.282410624524815, 12.173980340693292),
+				start: new Date(2023, 6, 18),
+				end: new Date(2023, 6, 19)
+			},
+		]
+	},
 ]
