@@ -1,0 +1,11 @@
+body {
+    background: black;
+    overflow: hidden;
+    margin: 0px;
+}
+ 
+canvas {
+    overflow: hidden;
+}
+
+@font-face { font-family: Kongtext; src: url('assets/kongtext.ttf'); } 
