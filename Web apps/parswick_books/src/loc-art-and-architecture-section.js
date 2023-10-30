@@ -1,12 +1,10 @@
 var artAndArchitectureSection = {
+    name: "\"Art and Architecture\" section",
     image: loadImage("art-and-architecture-section"),
 
-    name: "\"Art and Architecture\" section",
-
-    fixedObjects: [
-    ],
-
     initialize() {
+        this.objects = [
+        ];
         this.exits = [
             {
                 rect: leftExitRect, leadsTo: fictionSection
@@ -15,5 +13,8 @@ var artAndArchitectureSection = {
                 rect: bottomExitRect, leadsTo: historySection
             }
         ]
+    },
+
+    update() {
     }
 }
