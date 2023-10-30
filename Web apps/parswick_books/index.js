@@ -13,6 +13,7 @@ gameLoop = () => {
 }
 
 initialize = () => {
+    office.initialize();
     historySection.initialize();
     artAndArchitectureSection.initialize();
     travelAndLanguageSection.initialize();

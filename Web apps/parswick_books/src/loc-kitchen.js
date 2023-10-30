@@ -14,7 +14,7 @@ var kitchen = {
             this._fridge
         ];
         this.exits = [
-            { rect: { left: 343, top: 83, right: 365, bottom: 278 }, leadsTo: fictionSection },
+            { rect: { left: 300, top: 80, right: 425, bottom: 280 }, leadsTo: fictionSection },
             { rect: bottomExitRect, leadsTo: bathroom }
         ]
     },
@@ -42,42 +42,42 @@ var kitchen = {
     },
 
     _cup: {
-        rect: { left: 390, top: 85, right: 420, bottom: 115 }, image: loadImage("cup"), description: [ 
+        rect: { left: 500, top: 100, right: 540, bottom: 140 }, image: loadImage("cup"), description: [ 
             "The cup is white and has the text \"Hotel del Sol,", 
             "Tenerife\" written on it. As far as you can remember,",
             "you have never been to Tenerife." ]
     },
 
-    _key:             {
-        rect: { left: 390, top: 85, right: 420, bottom: 115 }, image: loadImage("office-door-key"), description: [ 
+    _key: {
+        rect: { left: 500, top: 100, right: 540, bottom: 140 }, image: loadImage("office-door-key"), description: [ 
             "This is the key to the office." ]
     },
 
     _closedCupboard:             {
-        rect: { left: 480, top: 130, right: 580, bottom: 190 }, image: loadImage("closed-cupboard"), description: [ 
+        rect: { left: 480, top: 80, right: 580, bottom: 140 }, description: [ 
             "A plain white cupboard, typical for a kitchen that", 
             "has been decorated with economy in mind." ]
     },
 
     _openCupboard:             {
-        rect: { left: 480, top: 130, right: 580, bottom: 190 }, image: loadImage("open-cupboard"), description: [ 
+        rect: { left: 430, top: 80, right: 630, bottom: 140 }, image: loadImage("open-cupboard"), description: [ 
             "The cupboard is open. And almost empty." ]
     },
 
     _sink:             {
-        rect: { left: 564, top: 250, right: 664, bottom: 410 }, description: [ 
+        rect: { left: 480, top: 200, right: 610, bottom: 290 }, description: [ 
             "The stainless steel sink has a strange coloration at", 
             "one end. You have a faint memory of pouring some kind", 
             "of paint into it at an early age." ]
     },
 
     _tap:             {
-        rect: { left: 624, top: 350, right: 664, bottom: 390 }, description: [ 
+        rect: { left: 540, top: 160, right: 580, bottom: 200 }, description: [ 
             "The tap provides cold water only." ]
     },
 
     _waterCooker:             {
-        rect: { left: 605, top: 260, right: 645, bottom: 300 }, description: [ 
+        rect: { left: 490, top: 160, right: 530, bottom: 200 }, description: [ 
             "A small water cooker, mysteriously stained." ]
     },
 

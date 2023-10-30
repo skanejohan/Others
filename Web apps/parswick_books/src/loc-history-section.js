@@ -4,6 +4,15 @@ var historySection = {
 
     initialize() {
         this.objects = [
+            this._keyhole,
+            {
+                rect: { left: 500, top: 80, right: 620, bottom: 290 }, description: [ 
+                    "This shelf is filled with books. World War II,", 
+                    "Christopher Columbus and the French Revolution.", 
+                    "Operation Desert Storm, ancient Greece and Titanic.", 
+                    "Creative chaos in this shelf, as well as in the", 
+                    "rest of the shop." ]
+            }            
         ];
         this.exits = [
             {
@@ -12,6 +21,23 @@ var historySection = {
         ]
     },
 
-    update() {
-    }
+    update(mouseClickedAt) {
+        if (mouseClickedAt) {
+            var o = getObjectAt(mouseClickedAt, this.objects);
+            if (o == this._keyhole) {
+                if (gameContext.activeItem == kitchen._key) {
+                    removeObject(o, this.objects);
+                    removeObject(kitchen._key, gameContext.inventory);
+                    gameContext.message = "You unlock the door to your office.";
+                    gameContext.messageRemainingMs = 2000;
+                    this.exits.push({ rect: bottomExitRect, leadsTo: office });
+                }
+            }
+        }
+    },
+
+    _keyhole: {
+        rect: { left: 300, top: 350, right: 460, bottom: 510 }, image: loadImage("keyhole"), description: [ 
+            "The door to your office is locked." ]
+    },
 }

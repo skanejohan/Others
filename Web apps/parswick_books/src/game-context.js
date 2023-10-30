@@ -3,6 +3,7 @@ var gameContext = {
     message: undefined,
     messageRemainingMs: 0,
     clickedLocationPos: undefined,
+    activeItem: undefined,
     inventory: [],
 
     update(ms) {
@@ -25,6 +26,10 @@ var gameContext = {
                 this.messageRemainingMs = undefined;
                 this.message = undefined;
             }
+        }
+
+        if (this.activeItemShouldBeDropped) {
+            this.activeItem = undefined;
         }
     },
 
@@ -71,14 +76,30 @@ var gameContext = {
         if (this.message) {
             drawMessage(this.message);
         }
+
+        // Draw custom cursor if any item is active
+        if (this.activeItem) {
+            context.drawImage(this.activeItem.image, mousePos.x - this.activeItem.image.width / 2, mousePos.y - this.activeItem.image.height / 2);
+        }
     },
 
     click()
     {
+        this.activeItemShouldBeDropped = true;
         var pos = mousePosInLocation();
         if (pos)
         {
             this.clickedLocationPos = pos;
+        }
+        
+        for (let i = 0; i < this.inventory.length; i++) {
+            let item = this.inventory[i];
+            var left = 100 + i * 40;
+            var top = 100;
+            if (insideRect(mousePos, { left: left, top: top, right: left + 40, bottom: top + 40 })) {
+                this.activeItemShouldBeDropped = false;
+                this.activeItem = item;
+            }
         }
     },
 

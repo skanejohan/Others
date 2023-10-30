@@ -22,8 +22,8 @@ var fictionSection = {
             {
                 rect: { left: 516, top: 71, right: 600, bottom: 187 }, description: [
                     "Through the window, you can see the large square, and", 
-                    "the beatiful old Gothic cathedral at the other side of", 
-                    "it. Tourists are milling about, but as usual nobody", 
+                    "the beautiful old Gothic cathedral at the other side", 
+                    "of it. Tourists are milling about, but as usual nobody", 
                     "seems to notice your fine establishment."]
             },
             {
