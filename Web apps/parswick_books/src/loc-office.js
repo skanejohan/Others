@@ -66,6 +66,22 @@ var office = {
                 removeObject(o, this.objects);
                 addObject(o, gameContext.inventory);
             }
+            if (o == this._houseHistoryBook) {
+                removeObject(o, this.objects);
+                addObject(o, gameContext.inventory);
+            }
+            if (o == this._safe) {
+                combinationLock.show(this._id.toString(), () => {
+                    removeObject(this._safe, this.objects);
+                    addObject(this._openSafe, this.objects);
+                    addObject(this._houseHistoryBook, this.objects);
+                    gameContext.message = "You enter the correct code and open the safe.";
+                    gameContext.messageRemainingMs = 2000;
+                }, () => {
+                    gameContext.message = "If only you knew the code...";
+                    gameContext.messageRemainingMs = 2000;
+                })
+            }
         }
     },
 
@@ -201,4 +217,23 @@ var office = {
             "the door." ]
     },
 
+    _openSafe:
+    {
+        rect: { left: 110, top: 80, width: 60, height: 60 }, description: [ 
+            "The old safe is painted black. Its heavy steel door",
+            "is open." ]
+    },
+
+    _houseHistoryBook:
+    {
+        rect: { left: 120, top: 90, width: 40, height: 40 }, image: loadImage("house-history-book"), description: [ 
+            "The leather-bound old book is written in what you assume", 
+            "is latin. Although you may recognize a word here and ", 
+            "there, you really have no way of telling what the book", 
+            "is about. You see a small map in one of the pages. You", 
+            "can't be sure but you have a slight feeling of", 
+            "recognition." ]
+    },
+
+    _id: (16 * (8 + 76 * 5) / 8) + 5 * 89 - 16 + 75 * 8 - 50 + 20 * 6 + 133 - 7 * 5 + 6,
 }

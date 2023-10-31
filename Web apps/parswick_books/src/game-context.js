@@ -2,11 +2,24 @@ var gameContext = {
     currentLocation: fictionSection,
     message: undefined,
     messageRemainingMs: 0,
+    combinationLockClicked: undefined,
     clickedLocationPos: undefined,
     activeItem: undefined,
     inventory: [],
 
     update(ms) {
+        if (combinationLock.callback === true && this.combinationLockClicked) { // Still entering digits
+            combinationLock.update();
+            this.combinationLockClicked = false;
+            return;
+        }
+
+        if (combinationLock.callback && combinationLock.callback != true) { // All digits now entered - call the callback function, then hide it
+            combinationLock.callback();
+            combinationLock.hide();
+            return;
+        }
+
         if (this.clickedLocationPos) {
             var pos = this.clickedLocationPos;
             this.clickedLocationPos = undefined;
@@ -37,6 +50,11 @@ var gameContext = {
         let renderRectangles = true;
         var pos = mousePosInLocation();
 
+        if (combinationLock.callback) {
+            combinationLock.render();
+            return;
+        }
+
         // Draw the location
         context.drawImage(this.currentLocation.image, 0, 0);
             for (let i = this.currentLocation.objects.length - 1; i >= 0; i--) {
@@ -53,7 +71,7 @@ var gameContext = {
                 }
             }
 
-        // Draw descrition for hovered object in location
+        // Draw description for hovered object in location
         for (let i = 0; i < this.currentLocation.objects.length; i++) {
             var o = this.currentLocation.objects[i];
             if (insideRect(pos, o.rect) && !o.hidden) {
@@ -95,8 +113,10 @@ var gameContext = {
         }
     },
 
-    click()
-    {
+    click() {
+        if (combinationLock.callback === true) {
+            this.combinationLockClicked = true;
+        }
         this.activeItemShouldBeDropped = true;
         var pos = mousePosInLocation();
         if (pos)
@@ -115,8 +135,7 @@ var gameContext = {
         }
     },
 
-    mouseMove(e)
-    {
+    mouseMove(e) {
         var rect = canvas.getBoundingClientRect();
         mousePos = {
             x: e.clientX - rect.left,
