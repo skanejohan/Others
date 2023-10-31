@@ -34,14 +34,22 @@ var gameContext = {
     },
 
     render() {
+        let renderRectangles = true;
         var pos = mousePosInLocation();
 
         // Draw the location
         context.drawImage(this.currentLocation.image, 0, 0);
             for (let i = this.currentLocation.objects.length - 1; i >= 0; i--) {
                 var o = this.currentLocation.objects[i];
-                if (hasObject(o, this.currentLocation.objects) && o.image) {
-                    context.drawImage(o.image, 600 + o.rect.left, 300 + o.rect.top);
+                if (hasObject(o, this.currentLocation.objects)) {
+                    let r = o.rect;
+                    if (o.image) {
+                        context.drawImage(o.image, 600 + r.left, 300 + r.top);
+                    }
+                    if (renderRectangles) {
+                        context.strokeStyle = "yellow";
+                        context.strokeRect(600 + r.left, 300 + r.top, r.width, r.height);
+                    }
                 }
             }
 
@@ -59,15 +67,19 @@ var gameContext = {
             if (insideRect(pos, e.rect)) {
                 drawDescription([ `This exit leads to the ${e.leadsTo.name}` ]);
             }
-        });
+            if (renderRectangles) {
+                context.strokeStyle = "yellow";
+                context.strokeRect(600 + e.rect.left, 300 + e.rect.top, e.rect.width, e.rect.height);
+            }
+});
 
-        // Draw descrition for hovered object in inventory
+        // Draw description for hovered object in inventory
         for (let i = 0; i < this.inventory.length; i++) {
             let item = this.inventory[i];
             var left = 100 + i * 40;
             var top = 100;
             context.drawImage(item.image, left, top);
-            if (insideRect(mousePos, { left: left, top: top, right: left + 40, bottom: top + 40 })) {
+            if (insideRect(mousePos, { left: left, top: top, width: 40, height: 40 })) {
                 drawDescription(item.description);
             }
         }
@@ -96,7 +108,7 @@ var gameContext = {
             let item = this.inventory[i];
             var left = 100 + i * 40;
             var top = 100;
-            if (insideRect(mousePos, { left: left, top: top, right: left + 40, bottom: top + 40 })) {
+            if (insideRect(mousePos, { left: left, top: top, width: 40, height: 40 })) {
                 this.activeItemShouldBeDropped = false;
                 this.activeItem = item;
             }

@@ -5,22 +5,22 @@ var artAndArchitectureSection = {
     initialize() {
         this.objects = [
             {
-                rect: { left: 80, top: 80, right: 200, bottom: 290 }, description: [ 
+                rect: { left: 80, top: 80, width: 120, height: 210 }, description: [ 
                     "Many of the books in these shelves are of the", 
                     "\"coffee table book\" variety." ]
             },
             {
-                rect: { left: 220, top: 80, right: 340, bottom: 290 }, description: [ 
+                rect: { left: 220, top: 80, width: 120, height: 210 }, description: [ 
                     "Many of the books in these shelves are of the", 
                     "\"coffee table book\" variety." ]
             },
             {
-                rect: { left: 360, top: 80, right: 480, bottom: 290 }, description: [ 
+                rect: { left: 360, top: 80, width: 120, height: 210 }, description: [ 
                     "Many of the books in these shelves are of the", 
                     "\"coffee table book\" variety." ]
             },
             {
-                rect: { left: 500, top: 80, right: 620, bottom: 290 }, description: [ 
+                rect: { left: 500, top: 80, width: 120, height: 210 }, description: [ 
                     "Many of the books in these shelves are of the", 
                     "\"coffee table book\" variety." ]
             },

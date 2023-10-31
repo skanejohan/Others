@@ -6,7 +6,7 @@ var historySection = {
         this.objects = [
             this._keyhole,
             {
-                rect: { left: 500, top: 80, right: 620, bottom: 290 }, description: [ 
+                rect: { left: 500, top: 80, width: 120, height: 210 }, description: [ 
                     "This shelf is filled with books. World War II,", 
                     "Christopher Columbus and the French Revolution.", 
                     "Operation Desert Storm, ancient Greece and Titanic.", 
@@ -16,7 +16,7 @@ var historySection = {
         ];
         this.exits = [
             {
-                rect: { left: 343, top: 83, right: 455, bottom: 278 }, leadsTo: artAndArchitectureSection
+                rect: doorExitRect, leadsTo: artAndArchitectureSection
             },
         ]
     },
@@ -37,7 +37,7 @@ var historySection = {
     },
 
     _keyhole: {
-        rect: { left: 300, top: 350, right: 460, bottom: 510 }, image: loadImage("keyhole"), description: [ 
+        rect: { left: 300, top: 350, width: 160, height: 160 }, image: loadImage("keyhole"), description: [ 
             "The door to your office is locked." ]
     },
 }

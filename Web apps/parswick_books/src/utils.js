@@ -27,7 +27,11 @@ function drawMessage(text) {
 }
 
 function insideRect(pos, rect) {
-    return pos && rect && pos.x >= rect.left && pos.y >= rect.top && pos.x <= rect.right && pos.y <= rect.bottom;
+    return pos && rect 
+        && pos.x >= rect.left 
+        && pos.y >= rect.top 
+        && pos.x <= rect.left + rect.width 
+        && pos.y <= rect.top + rect.height;
 }
 
 // Objects
