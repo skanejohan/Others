@@ -71,7 +71,7 @@ var gameContext = {
                 context.strokeStyle = "yellow";
                 context.strokeRect(600 + e.rect.left, 300 + e.rect.top, e.rect.width, e.rect.height);
             }
-});
+        });
 
         // Draw description for hovered object in inventory
         for (let i = 0; i < this.inventory.length; i++) {
