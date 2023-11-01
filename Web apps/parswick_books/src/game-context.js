@@ -61,7 +61,7 @@ var gameContext = {
         context.drawImage(this.currentLocation.image, 0, 0);
             for (let i = this.currentLocation.objects.length - 1; i >= 0; i--) {
                 var o = this.currentLocation.objects[i];
-                if (hasObject(o, this.currentLocation.objects)) {
+                if (Objects.has(o, this.currentLocation)) {
                     let r = o.rect;
                     if (o.image) {
                         context.drawImage(o.image, 600 + r.left, 300 + r.top);

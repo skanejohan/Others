@@ -17,64 +17,64 @@ var office = {
 
     update(mouseClickedAt) {
         if (mouseClickedAt) {
-            var o = getObjectAt(mouseClickedAt, this.objects);
-            if (o == this._desk && !hasObject(this._gasBill, this.objects)) {
-                addObject(this._gasBill, this.objects);
-                addObject(this._deGaulleClipping, this.objects);
-                addObject(this._phoneBill, this.objects);
-                addObject(this._bennyHillClipping, this.objects);
-                addObject(this._newspaperBill, this.objects);
-                addObject(this._poundClipping, this.objects);
-                addObject(this._drawer, this.objects);
+            var o = Objects.getAt(mouseClickedAt, this);
+            if (o == this._desk && !Objects.has(this._gasBill, this)) {
+                Objects.add(this._gasBill, this);
+                Objects.add(this._deGaulleClipping, this);
+                Objects.add(this._phoneBill, this);
+                Objects.add(this._bennyHillClipping, this);
+                Objects.add(this._newspaperBill, this);
+                Objects.add(this._poundClipping, this);
+                Objects.add(this._drawer, this);
             }
             if (o == this._drawer) {
-                replaceObject(o, this._openDrawer, this.objects);
-                addObject(this._paperClip, this.objects);
+                Objects.replace(o, this._openDrawer, this);
+                Objects.add(this._paperClip, this);
             }
             if (o == this._paperClip) {
-                removeObject(o, this.objects);
+                Objects.remove(o, this);
                 Objects.add(o, inventory);
                 this._openDrawer.description = [ "The drawer is empty." ];
             }
             if (o == this._cabinet) {
-                replaceObject(o, this._openCabinet, this.objects);
-                addObject(this._metalBox, this.objects);
-                addObject(this._magnifyingGlass, this.objects);
-                addObject(this._modelCar, this.objects);
+                Objects.replace(o, this._openCabinet, this);
+                Objects.add(this._metalBox, this);
+                Objects.add(this._magnifyingGlass, this);
+                Objects.add(this._modelCar, this);
             }
             if (o == this._metalBox && gameContext.activeItem == this._paperClip) {
-                replaceObject(this._metalBox, this._openMetalBox, this.objects);
+                Objects.replace(this._metalBox, this._openMetalBox, this);
                 Objects.remove(this._paperClip, inventory);
-                addObject(this._rockpick, this.objects);
-                addObject(this._stones, this.objects);
+                Objects.add(this._rockpick, this);
+                Objects.add(this._stones, this);
                 gameContext.message = [ "Using the paper clip, you manage to pick the lock." ];
                 gameContext.messageRemainingMs = 2000;
             }
             if (o == this._magnifyingGlass) {
-                removeObject(o, this.objects);
+                Objects.remove(o, this);
                 Objects.add(o, inventory);
             }
             if (o == this._rockpick) {
-                removeObject(o, this.objects);
+                Objects.remove(o, this);
                 Objects.add(o, inventory);
             }
             if (o == this._stones) {
-                removeObject(o, this.objects);
+                Objects.remove(o, this);
                 Objects.add(o, inventory);
             }
             if (o == this._modelCar) {
-                removeObject(o, this.objects);
+                Objects.remove(o, this);
                 Objects.add(o, inventory);
             }
             if (o == this._unknownBook) {
-                removeObject(o, this.objects);
+                Objects.remove(o, this);
                 Objects.add(o, inventory);
             }
             if (o == this._safe) {
                 combinationLock.show(this._id.toString(), () => {
-                    removeObject(this._safe, this.objects);
-                    addObject(this._openSafe, this.objects);
-                    addObject(this._unknownBook, this.objects);
+                    Objects.remove(this._safe, this);
+                    Objects.add(this._openSafe, this);
+                    Objects.add(this._unknownBook, this);
                     gameContext.message = [ "You enter the correct code and open the safe." ];
                     gameContext.messageRemainingMs = 2000;
                 }, () => {

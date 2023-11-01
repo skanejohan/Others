@@ -34,7 +34,7 @@ var Objects = {
     replace: (oldObject, newObject, scene) => {
         for (let i = 0; i < scene.objects.length; i++) {
             if (oldObject == scene.objects[i]) {
-                os.splice(i, 1, newObject);
+                scene.objects.splice(i, 1, newObject);
             }
         }
     }
@@ -83,45 +83,4 @@ function insideRect(pos, rect) {
         && pos.y >= rect.top 
         && pos.x <= rect.left + rect.width 
         && pos.y <= rect.top + rect.height;
-}
-
-// Objects
-
-function addObject(o, os) {
-    os.splice(0, 0, o);
-}
-
-function getObjectAt(pos, os) {
-    for (let i = 0; i < os.length; i++) {
-        var o = os[i];
-        if (insideRect(pos, o.rect) && !o.hidden) {
-            return o;
-        } 
-    }
-    return undefined;
-}
-
-function hasObject(o, os) {
-    for (let i = 0; i < os.length; i++) {
-        if (o == os[i]) {
-            return true;
-        }
-    }
-    return false;
-}
-
-function removeObject(o, os) {
-    for (let i = 0; i < os.length; i++) {
-        if (o == os[i]) {
-            os.splice(i, 1);
-        }
-    }
-}
-
-function replaceObject(oldObj, newObj, os) {
-    for (let i = 0; i < os.length; i++) {
-        if (oldObj == os[i]) {
-            os.splice(i, 1, newObj);
-        }
-    }
 }

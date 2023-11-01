@@ -23,10 +23,10 @@ var historySection = {
 
     update(mouseClickedAt) {
         if (mouseClickedAt) {
-            var o = getObjectAt(mouseClickedAt, this.objects);
+            var o = Objects.getAt(mouseClickedAt, this);
             if (o == this._keyhole) {
                 if (gameContext.activeItem == kitchen._key) {
-                    removeObject(o, this.objects);
+                    Objects.remove(o, this);
                     Objects.remove(kitchen._key, inventory);
                     gameContext.message = [ "You unlock the door to your office." ];
                     gameContext.messageRemainingMs = 2000;

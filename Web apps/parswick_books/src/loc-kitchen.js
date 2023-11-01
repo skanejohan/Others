@@ -21,22 +21,22 @@ var kitchen = {
 
     update(mouseClickedAt) {
         if (mouseClickedAt) {
-            var o = getObjectAt(mouseClickedAt, this.objects);
+            var o = Objects.getAt(mouseClickedAt, this);
             if (o == this._closedCupboard) {
-                replaceObject(o, this._openCupboard, this.objects);
-                addObject(this._cup, this.objects);
+                Objects.replace(o, this._openCupboard, this);
+                Objects.add(this._cup, this);
                 gameContext.message = [ "You open the cupboard" ];
                 gameContext.messageRemainingMs = 2000;
             }
             if (o == this._cup) {
                 Objects.add(o, inventory);
-                replaceObject(o, this._key, this.objects);
+                Objects.replace(o, this._key, this);
                 gameContext.message = [ "When you take the cup, a small key becomes visible." ];
                 gameContext.messageRemainingMs = 2000;
             }
             if (o == this._key) {
                 Objects.add(o, inventory);
-                removeObject(o, this.objects);
+                Objects.remove(o, this);
             }
         }
     },

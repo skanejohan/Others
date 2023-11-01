@@ -34,7 +34,7 @@ var travelAndLanguageSection = {
 
     update(mouseClickedAt) {
         if (mouseClickedAt) {
-            var o = getObjectAt(mouseClickedAt, this.objects);
+            var o = Objects.getAt(mouseClickedAt, this);
             if ((o == this._dictionaryShelf1 || o == this._dictionaryShelf2) && gameContext.activeItem == office._unknownBook) {
                 Objects.add(this._latinDictionary, inventory);
                 gameContext.message = [ 
