@@ -1,6 +1,6 @@
 var gameContext = {
     currentLocation: fictionSection,
-    message: undefined,
+    message: [],
     messageRemainingMs: 0,
     combinationLockClicked: undefined,
     clickedLocationPos: undefined,
@@ -33,11 +33,11 @@ var gameContext = {
             this.currentLocation.update(pos);
         }
 
-        if (this.message) {
+        if (this.messageRemainingMs > 0) {
             this.messageRemainingMs -= ms;
-            if (this.messageRemainingMs < 0) {
-                this.messageRemainingMs = undefined;
-                this.message = undefined;
+            if (this.messageRemainingMs <= 0) {
+                this.messageRemainingMs = 0;
+                this.message = [];
             }
         }
 
@@ -103,9 +103,7 @@ var gameContext = {
         }
 
         // Draw message
-        if (this.message) {
-            drawMessage(this.message);
-        }
+        drawMessage(this.message);
 
         // Draw custom cursor if any item is active
         if (this.activeItem) {

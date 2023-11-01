@@ -20,10 +20,11 @@ function drawDescription(texts) {
     texts.forEach(text => {context.fillText(text, 100, y + dy); dy += 40; });
 }
 
-function drawMessage(text) {
+function drawMessage(texts) {
     context.fillStyle = "yellow";
     context.font = "32px kongtext";
-    context.fillText(text, 100, 100);
+    var y = 100;
+    texts.forEach(text => {context.fillText(text, 100, y); y += 40; });
 }
 
 function insideRect(pos, rect) {

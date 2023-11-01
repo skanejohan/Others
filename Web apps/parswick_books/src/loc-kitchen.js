@@ -25,13 +25,13 @@ var kitchen = {
             if (o == this._closedCupboard) {
                 replaceObject(o, this._openCupboard, this.objects);
                 addObject(this._cup, this.objects);
-                gameContext.message = "You open the cupboard";
+                gameContext.message = [ "You open the cupboard" ];
                 gameContext.messageRemainingMs = 2000;
             }
             if (o == this._cup) {
                 addObject(o, gameContext.inventory);
                 replaceObject(o, this._key, this.objects);
-                gameContext.message = "When you take the cup, a small key becomes visible.";
+                gameContext.message = [ "When you take the cup, a small key becomes visible." ];
                 gameContext.messageRemainingMs = 2000;
             }
             if (o == this._key) {

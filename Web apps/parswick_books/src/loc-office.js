@@ -47,7 +47,7 @@ var office = {
                 removeObject(this._paperClip, gameContext.inventory);
                 addObject(this._rockpick, this.objects);
                 addObject(this._stones, this.objects);
-                gameContext.message = "Using the paper clip, you manage to pick the lock.";
+                gameContext.message = [ "Using the paper clip, you manage to pick the lock." ];
                 gameContext.messageRemainingMs = 2000;
             }
             if (o == this._magnifyingGlass) {
@@ -66,7 +66,7 @@ var office = {
                 removeObject(o, this.objects);
                 addObject(o, gameContext.inventory);
             }
-            if (o == this._houseHistoryBook) {
+            if (o == this._unknownBook) {
                 removeObject(o, this.objects);
                 addObject(o, gameContext.inventory);
             }
@@ -74,11 +74,11 @@ var office = {
                 combinationLock.show(this._id.toString(), () => {
                     removeObject(this._safe, this.objects);
                     addObject(this._openSafe, this.objects);
-                    addObject(this._houseHistoryBook, this.objects);
-                    gameContext.message = "You enter the correct code and open the safe.";
+                    addObject(this._unknownBook, this.objects);
+                    gameContext.message = [ "You enter the correct code and open the safe." ];
                     gameContext.messageRemainingMs = 2000;
                 }, () => {
-                    gameContext.message = "If only you knew the code...";
+                    gameContext.message = [ "If only you knew the code..." ];
                     gameContext.messageRemainingMs = 2000;
                 })
             }
@@ -224,9 +224,9 @@ var office = {
             "is open." ]
     },
 
-    _houseHistoryBook:
+    _unknownBook:
     {
-        rect: { left: 120, top: 90, width: 40, height: 40 }, image: loadImage("house-history-book"), description: [ 
+        rect: { left: 120, top: 90, width: 40, height: 40 }, image: loadImage("unknown-book"), description: [ 
             "The leather-bound old book is written in what you assume", 
             "is latin. Although you may recognize a word here and ", 
             "there, you really have no way of telling what the book", 
