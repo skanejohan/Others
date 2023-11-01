@@ -14,6 +14,7 @@ gameLoop = () => {
 
 initialize = () => {
     inventory.initialize();
+    combinationLock.initialize();
     office.initialize();
     historySection.initialize();
     artAndArchitectureSection.initialize();

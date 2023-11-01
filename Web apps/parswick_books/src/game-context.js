@@ -2,28 +2,15 @@ var gameContext = {
     currentLocation: fictionSection,
     message: [],
     messageRemainingMs: 0,
-    combinationLockClicked: undefined,
-    clickedLocationPos: undefined,
     activeItem: undefined,
  
     update(ms) {
+        combinationLock.update();
         inventory.update();
 
-        if (combinationLock.callback === true && this.combinationLockClicked) { // Still entering digits
-            combinationLock.update();
-            this.combinationLockClicked = false;
-            return;
-        }
-
-        if (combinationLock.callback && combinationLock.callback != true) { // All digits now entered - call the callback function, then hide it
-            combinationLock.callback();
-            combinationLock.hide();
-            return;
-        }
-
-        if (this.clickedLocationPos) {
-            var pos = this.clickedLocationPos;
-            this.clickedLocationPos = undefined;
+        if (Globals.mouseClicked) {
+            var pos = mousePosInLocation();
+            Globals.mouseClicked = false; // We have handled the click and no other object should
             for (let i = 0; i < this.currentLocation.exits.length; i++) {
                 var e = this.currentLocation.exits[i];
                 if (insideRect(pos, e.rect)) {
@@ -51,11 +38,6 @@ var gameContext = {
 
     render() {
         var pos = mousePosInLocation();
-
-        if (combinationLock.callback) {
-            combinationLock.render();
-            return;
-        }
 
         // Draw the location
         context.drawImage(this.currentLocation.image, 0, 0);
@@ -92,6 +74,7 @@ var gameContext = {
         });
 
         inventory.render();
+        combinationLock.render();
 
         // Draw message
         drawMessage(this.message);
@@ -104,16 +87,7 @@ var gameContext = {
 
     click() {
         Globals.mouseClicked = true;
-
-        if (combinationLock.callback === true) {
-            this.combinationLockClicked = true;
-        }
         this.activeItemShouldBeDropped = true;
-        var pos = mousePosInLocation();
-        if (pos)
-        {
-            this.clickedLocationPos = pos;
-        }
     },
 
     mouseMove(e) {
