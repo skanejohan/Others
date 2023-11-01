@@ -66,7 +66,7 @@ var gameContext = {
                     if (o.image) {
                         context.drawImage(o.image, 600 + r.left, 300 + r.top);
                     }
-                    if (Globals.renderDebugInformation) {
+                    if (Constants.renderDebugInformation) {
                         Draw.debugRectangle(600 + r.left, 300 + r.top, r.width, r.height);
                     }
                 }
@@ -86,7 +86,7 @@ var gameContext = {
             if (insideRect(pos, e.rect)) {
                 drawDescription([ `This exit leads to the ${e.leadsTo.name}` ]);
             }
-            if (Globals.renderDebugInformation) {
+            if (Constants.renderDebugInformation) {
                 Draw.debugRectangle(600 + e.rect.left, 300 + e.rect.top, e.rect.width, e.rect.height);
             }
         });

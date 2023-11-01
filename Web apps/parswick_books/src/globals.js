@@ -1,6 +1,10 @@
 var Globals = {
-    renderDebugInformation: false,
     mouseClicked: false,
+}
+
+var Constants = {
+    renderDebugInformation: true,
+    noRect: { left: 0, top: 0, width: 0, height: 0 }
 }
 
 var mousePos = { x : 0, y : 0 };

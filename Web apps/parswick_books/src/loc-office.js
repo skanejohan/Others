@@ -235,5 +235,21 @@ var office = {
             "recognition." ]
     },
 
+    
+    _houseHistoryBook: {
+        rect: Constants.noRect, image: loadImage("house-history-book"), description: [ 
+            "The leather-bound old book describes the history of the", 
+            "house in which the bookshop is located. Most of what is", 
+            "in the book you already know since your parents passed", 
+            "this information to you - whether as a child you wanted", 
+            "it or not - but you find a few nuggets of new", 
+            "information. The most interesting part is the fact that", 
+            "there used to be an entrance to a cellar from what is", 
+            "now the history section. Looking at the map, and reading", 
+            "the text surrounding it, you conclude that there must be", 
+            "a hidden entrance to the basement behind the eastern", 
+            "wall, currently covered by book shelves." ]
+    },
+
     _id: (16 * (8 + 76 * 5) / 8) + 5 * 89 - 16 + 75 * 8 - 50 + 20 * 6 + 133 - 7 * 5 + 6,
 }

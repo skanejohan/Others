@@ -7,7 +7,7 @@ var inventory = {
     render() {
         this._getAllItems().forEach(({o, left, top}) => {
             context.drawImage(o.image, left, top);
-            if (Globals.renderDebugInformation) {
+            if (Constants.renderDebugInformation) {
                 Draw.debugRectangle(left, top, this._itemWidth, this._itemWidth);
             }
             if (this._isHoveredItem(left, top)) {
@@ -20,9 +20,28 @@ var inventory = {
         if (Globals.mouseClicked) {
             let clickedItem = this._getHoveredItem();
             if (clickedItem) {
-                gameContext.activeItemShouldBeDropped = false;
-                gameContext.activeItem = clickedItem;
+                if (gameContext.activeItem) {
+                    this._applyItemOnItem(clickedItem, gameContext.activeItem);
+                }
+                else {
+                    gameContext.activeItemShouldBeDropped = false;
+                    gameContext.activeItem = clickedItem;
+                }
             }
+        }
+    },
+
+    _applyItemOnItem(applied, appliedOn) {
+        if ((applied == travelAndLanguageSection._latinDictionary && appliedOn == office._unknownBook) ||
+            (applied == office._unknownBook && appliedOn == travelAndLanguageSection._latinDictionary)) {
+                Objects.remove(applied, this);
+                Objects.remove(appliedOn, this);
+                Objects.add(office._houseHistoryBook, this);
+                gameContext.activeItem = undefined;
+                gameContext.message = [ 
+                    "Using the latin dictionary, you are able to decipher", 
+                    "the contents of the old book." ];
+                gameContext.messageRemainingMs = 2000;
         }
     },
 
