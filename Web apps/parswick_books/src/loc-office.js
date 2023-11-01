@@ -33,7 +33,7 @@ var office = {
             }
             if (o == this._paperClip) {
                 removeObject(o, this.objects);
-                addObject(o, gameContext.inventory);
+                Objects.add(o, inventory);
                 this._openDrawer.description = [ "The drawer is empty." ];
             }
             if (o == this._cabinet) {
@@ -44,7 +44,7 @@ var office = {
             }
             if (o == this._metalBox && gameContext.activeItem == this._paperClip) {
                 replaceObject(this._metalBox, this._openMetalBox, this.objects);
-                removeObject(this._paperClip, gameContext.inventory);
+                Objects.remove(this._paperClip, inventory);
                 addObject(this._rockpick, this.objects);
                 addObject(this._stones, this.objects);
                 gameContext.message = [ "Using the paper clip, you manage to pick the lock." ];
@@ -52,23 +52,23 @@ var office = {
             }
             if (o == this._magnifyingGlass) {
                 removeObject(o, this.objects);
-                addObject(o, gameContext.inventory);
+                Objects.add(o, inventory);
             }
             if (o == this._rockpick) {
                 removeObject(o, this.objects);
-                addObject(o, gameContext.inventory);
+                Objects.add(o, inventory);
             }
             if (o == this._stones) {
                 removeObject(o, this.objects);
-                addObject(o, gameContext.inventory);
+                Objects.add(o, inventory);
             }
             if (o == this._modelCar) {
                 removeObject(o, this.objects);
-                addObject(o, gameContext.inventory);
+                Objects.add(o, inventory);
             }
             if (o == this._unknownBook) {
                 removeObject(o, this.objects);
-                addObject(o, gameContext.inventory);
+                Objects.add(o, inventory);
             }
             if (o == this._safe) {
                 combinationLock.show(this._id.toString(), () => {

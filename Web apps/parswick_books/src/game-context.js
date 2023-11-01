@@ -5,9 +5,10 @@ var gameContext = {
     combinationLockClicked: undefined,
     clickedLocationPos: undefined,
     activeItem: undefined,
-    inventory: [],
-
+ 
     update(ms) {
+        inventory.update();
+
         if (combinationLock.callback === true && this.combinationLockClicked) { // Still entering digits
             combinationLock.update();
             this.combinationLockClicked = false;
@@ -44,10 +45,11 @@ var gameContext = {
         if (this.activeItemShouldBeDropped) {
             this.activeItem = undefined;
         }
+
+        Globals.mouseClicked = false;
     },
 
     render() {
-        let renderRectangles = true;
         var pos = mousePosInLocation();
 
         if (combinationLock.callback) {
@@ -64,9 +66,8 @@ var gameContext = {
                     if (o.image) {
                         context.drawImage(o.image, 600 + r.left, 300 + r.top);
                     }
-                    if (renderRectangles) {
-                        context.strokeStyle = "yellow";
-                        context.strokeRect(600 + r.left, 300 + r.top, r.width, r.height);
+                    if (Globals.renderDebugInformation) {
+                        Draw.debugRectangle(600 + r.left, 300 + r.top, r.width, r.height);
                     }
                 }
             }
@@ -85,22 +86,12 @@ var gameContext = {
             if (insideRect(pos, e.rect)) {
                 drawDescription([ `This exit leads to the ${e.leadsTo.name}` ]);
             }
-            if (renderRectangles) {
-                context.strokeStyle = "yellow";
-                context.strokeRect(600 + e.rect.left, 300 + e.rect.top, e.rect.width, e.rect.height);
+            if (Globals.renderDebugInformation) {
+                Draw.debugRectangle(600 + e.rect.left, 300 + e.rect.top, e.rect.width, e.rect.height);
             }
         });
 
-        // Draw description for hovered object in inventory
-        for (let i = 0; i < this.inventory.length; i++) {
-            let item = this.inventory[i];
-            var left = 100 + i * 40;
-            var top = 100;
-            context.drawImage(item.image, left, top);
-            if (insideRect(mousePos, { left: left, top: top, width: 40, height: 40 })) {
-                drawDescription(item.description);
-            }
-        }
+        inventory.render();
 
         // Draw message
         drawMessage(this.message);
@@ -112,6 +103,8 @@ var gameContext = {
     },
 
     click() {
+        Globals.mouseClicked = true;
+
         if (combinationLock.callback === true) {
             this.combinationLockClicked = true;
         }
@@ -120,16 +113,6 @@ var gameContext = {
         if (pos)
         {
             this.clickedLocationPos = pos;
-        }
-        
-        for (let i = 0; i < this.inventory.length; i++) {
-            let item = this.inventory[i];
-            var left = 100 + i * 40;
-            var top = 100;
-            if (insideRect(mousePos, { left: left, top: top, width: 40, height: 40 })) {
-                this.activeItemShouldBeDropped = false;
-                this.activeItem = item;
-            }
         }
     },
 

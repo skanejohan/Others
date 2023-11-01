@@ -27,7 +27,7 @@ var historySection = {
             if (o == this._keyhole) {
                 if (gameContext.activeItem == kitchen._key) {
                     removeObject(o, this.objects);
-                    removeObject(kitchen._key, gameContext.inventory);
+                    Objects.remove(kitchen._key, inventory);
                     gameContext.message = [ "You unlock the door to your office." ];
                     gameContext.messageRemainingMs = 2000;
                     this.exits.push({ rect: bottomExitRect, leadsTo: office });

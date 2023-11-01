@@ -1,3 +1,53 @@
+var Objects = {
+    
+    add: (object, scene) => {
+        scene.objects.splice(0, 0, object);
+    },
+    
+    getAt: (pos, scene) => {
+        for (let i = 0; i < scene.objects.length; i++) {
+            var object = scene.objects[i];
+            if (insideRect(pos, object.rect) && !object.hidden) {
+                return object;
+            } 
+        }
+        return undefined;
+    },
+    
+    has: (object, scene) => {
+        for (let i = 0; i < scene.objects.length; i++) {
+            if (object == scene.objects[i] && !object.hidden) {
+                return true;
+            }
+        }
+        return false;
+    },
+    
+    remove: (object, scene) => {
+        for (let i = 0; i < scene.objects.length; i++) {
+            if (object == scene.objects[i] && !object.hidden) {
+                scene.objects.splice(i, 1);
+            }
+        }
+    },
+    
+    replace: (oldObject, newObject, scene) => {
+        for (let i = 0; i < scene.objects.length; i++) {
+            if (oldObject == scene.objects[i]) {
+                os.splice(i, 1, newObject);
+            }
+        }
+    }
+}
+
+var Draw = {
+    debugRectangle: (left, top, width, height) => {
+        context.strokeStyle = "yellow";
+        context.strokeRect(left, top, width, height);
+    }
+}
+
+
 function loadImage(fileName) {
     var image = new Image();
     image.src = `assets/${fileName}.png`;

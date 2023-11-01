@@ -29,13 +29,13 @@ var kitchen = {
                 gameContext.messageRemainingMs = 2000;
             }
             if (o == this._cup) {
-                addObject(o, gameContext.inventory);
+                Objects.add(o, inventory);
                 replaceObject(o, this._key, this.objects);
                 gameContext.message = [ "When you take the cup, a small key becomes visible." ];
                 gameContext.messageRemainingMs = 2000;
             }
             if (o == this._key) {
-                addObject(o, gameContext.inventory);
+                Objects.add(o, inventory);
                 removeObject(o, this.objects);
             }
         }

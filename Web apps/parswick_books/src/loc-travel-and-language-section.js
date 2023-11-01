@@ -36,7 +36,7 @@ var travelAndLanguageSection = {
         if (mouseClickedAt) {
             var o = getObjectAt(mouseClickedAt, this.objects);
             if ((o == this._dictionaryShelf1 || o == this._dictionaryShelf2) && gameContext.activeItem == office._unknownBook) {
-                addObject(this._latinDictionary, gameContext.inventory);
+                Objects.add(this._latinDictionary, inventory);
                 gameContext.message = [ 
                     "Pondering the old book in your hand, you look more", 
                     "closely for a latin dictionary which you are able to", 

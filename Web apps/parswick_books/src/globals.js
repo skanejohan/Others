@@ -1,3 +1,8 @@
+var Globals = {
+    renderDebugInformation: false,
+    mouseClicked: false,
+}
+
 var mousePos = { x : 0, y : 0 };
 
 var leftExitRect = { left: 0, top: 165, width: 60, height: 150 };
