@@ -1,6 +1,7 @@
 createInventory = () => {
     let activeObject = undefined;
     let objects = createObjectList();
+    let actions = [];
     let forEachObject = fn => {
         let x = 10, y = 10;
         objects.forEachReversed(o => {
@@ -20,11 +21,18 @@ createInventory = () => {
     }
 
     return {
-        add: o => objects.add(o),
-        remove: o => objects.remove(o),
+        add: objects.add,
+        has: objects.has,
+        remove: o => { 
+            objects.remove(o); 
+            if (o == activeObject) {
+                activeObject = undefined;
+            }
+        },
         activeItem: () => activeObject,
         dropActiveItem: () => { activeObject = undefined },
-
+        registerAction: (actor, actedUpon, fn) => actions.push({ actors: (actor, actedUpon), fn: fn}),
+        
         render: () => {
             forEachObject((o, r) => {
                 Globals.drawContext.drawImageR(o.image, r);
@@ -45,6 +53,14 @@ createInventory = () => {
                 if (o && !activeObject) {
                     Globals.mouse.setClicked(false); // Once the item has been picked up, we have handled the click
                     activeObject = o;
+                }
+                else if (o && activeObject) { // Look for "object applied to another object" action
+                    actions.forEach(a => {
+                        if (a.actors == (activeObject, o)) {
+                            a.fn();
+                            Globals.mouse.setClicked(false); // Onve we have acted, we have handled the click
+                        }
+                    })
                 }
             }
         }
