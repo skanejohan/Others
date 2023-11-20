@@ -18,18 +18,12 @@ createInventory = () => {
         });
         return result;
     }
-    let activeItemMayBeDropped = false;
 
     return {
         add: o => objects.add(o),
         remove: o => objects.remove(o),
         activeItem: () => activeObject,
-
-        dropActiveItem: () => {
-            if (activeItemMayBeDropped) {
-                activeObject = undefined;
-            }
-        },
+        dropActiveItem: () => { activeObject = undefined },
 
         render: () => {
             forEachObject((o, r) => {
@@ -47,10 +41,9 @@ createInventory = () => {
 
         update: () => {
             if (Globals.mouse.isClicked()) {
-                activeItemMayBeDropped = true;
                 let o = hoveredObject();
                 if (o && !activeObject) {
-                    activeItemMayBeDropped = false; // This click picks it up, so don't drop it again!
+                    Globals.mouse.setClicked(false); // Once the item has been picked up, we have handled the click
                     activeObject = o;
                 }
             }
