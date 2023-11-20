@@ -11,9 +11,8 @@ gameLoop = () => {
     requestAnimationFrame(gameLoop);
     lastTime = now;
 }
-
+ 
 initialize = () => {
-    inventory.initialize();
     combinationLock.initialize();
     office.initialize();
     historySection.initialize();
@@ -23,17 +22,25 @@ initialize = () => {
     kitchen.initialize();
     bathroom.initialize();
 
-    canvas.width = 1920;
-    canvas.height = 1080;
+    var dimensions = createDimensions(320, 180, 4);
+    Globals.mouse = createMouse(dimensions, canvas);
+    Globals.drawContext = createDrawContext(dimensions, canvas);
+    Globals.drawContext.drawDebugRectangles(true);
+
+    Globals.location = fictionSection;
+    
+    Globals.inventory = createInventory();
+    
+    canvas.width = dimensions.width();
+    canvas.height = dimensions.height();
+
     window.addEventListener('resize', () => {
         handleResize();
     });
     canvas.addEventListener('click', () => {
         gameContext.click();
     });
-    canvas.addEventListener("mousemove", e => {
-        gameContext.mouseMove(e);
-    });
+
     handleResize();
     gameLoop();
 }

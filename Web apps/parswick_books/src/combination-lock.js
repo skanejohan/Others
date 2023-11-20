@@ -2,16 +2,16 @@ var combinationLock = {
 
     initialize() {
         this._buttons = [ 
-            {left : 25, top : 25, width: this._buttonSize, height: this._buttonSize, digit: "1" }, 
-            {left : 250, top : 25, width: this._buttonSize, height: this._buttonSize, digit: "2" }, 
-            {left : 475, top : 25, width: this._buttonSize, height: this._buttonSize, digit: "3" },
-            {left : 25, top : 250, width: this._buttonSize, height: this._buttonSize, digit: "4" }, 
-            {left : 250, top : 250, width: this._buttonSize, height: this._buttonSize, digit: "5" }, 
-            {left : 475, top : 250, width: this._buttonSize, height: this._buttonSize, digit: "6" },
-            {left : 25, top : 475, width: this._buttonSize, height: this._buttonSize, digit: "7" }, 
-            {left : 250, top : 475, width: this._buttonSize, height: this._buttonSize, digit: "8" }, 
-            {left : 475, top : 475, width: this._buttonSize, height: this._buttonSize, digit: "9" },
-            {left : 250, top : 700, width: this._buttonSize, height: this._buttonSize, digit: "0" }
+            { left : 108, top : 23, width: this._buttonSize, height: this._buttonSize, digit: "1" }, 
+            { left : 146, top : 23, width: this._buttonSize, height: this._buttonSize, digit: "2" }, 
+            { left : 184, top : 23, width: this._buttonSize, height: this._buttonSize, digit: "3" },
+            {left : 108, top : 61, width: this._buttonSize, height: this._buttonSize, digit: "4" }, 
+            {left : 146, top : 61, width: this._buttonSize, height: this._buttonSize, digit: "5" }, 
+            {left : 184, top : 61, width: this._buttonSize, height: this._buttonSize, digit: "6" },
+            {left : 108, top : 99, width: this._buttonSize, height: this._buttonSize, digit: "7" }, 
+            {left : 146, top : 99, width: this._buttonSize, height: this._buttonSize, digit: "8" }, 
+            {left : 184, top : 99, width: this._buttonSize, height: this._buttonSize, digit: "9" },
+            {left : 146, top : 137, width: this._buttonSize, height: this._buttonSize, digit: "0" }
         ];
     },
 
@@ -29,22 +29,18 @@ var combinationLock = {
             return;
         }
 
-        context.fillStyle = "black";
-        context.fillRect(0, 0, 1920, 1080);
-        context.strokeStyle = "yellow";
-        context.fillStyle = "yellow";
-        context.font = "40px kongtext";
-        context.strokeRect(this._left, this._top, 700, 925);
+        Globals.drawContext.clear();
+        Globals.drawContext.drawRect(98, 13, 124, 162, "yellow");
         for (let i = this._buttons.length - 1; i >= 0; i--) {
             var b = this._buttons[i];
-            context.strokeStyle = this._isHoveredButton(b.left, b.top) ? "white" : "yellow";
-            context.strokeRect(this._left + b.left, this._top + b.top, b.width, b.height);
-            context.fillText(b.digit, this._left + b.left, this._top + b.top);
+            var style = this._isHoveredButton(b) ? "white" : "yellow";
+            Globals.drawContext.drawRectR(b, style);
+            Globals.drawContext.drawText(b.digit, b.left, b.top, 5, style);
         }
     },
     
     update() {
-        if (!Globals.mouseClicked || !this._callback) {
+        if (!Globals.mouse.isClicked() || !this._callback) {
             return;
         }
 
@@ -57,7 +53,7 @@ var combinationLock = {
             this._callback = false;
         }
         
-        Globals.mouseClicked = false; // We have handled the click and no other object should
+        Globals.mouse.setClicked(false); // We have handled the click and no other object should
     },
 
     _click() {
@@ -74,11 +70,11 @@ var combinationLock = {
     },
 
     _getHoveredButton() {
-        return this._buttons.find(b => this._isHoveredButton(b.left, b.top));
+        return this._buttons.find(b => this._isHoveredButton(b));
     },
 
-    _isHoveredButton(left, top) {
-        return insideRect(mousePos, { left: left + this._left, top: top + this._top, width: this._buttonSize, height: this._buttonSize });
+    _isHoveredButton(b) {
+        return insideRect(Globals.mouse.pos(), b);
     },
 
     // - false if the combination lock is not used
@@ -86,7 +82,5 @@ var combinationLock = {
     // - otherwise represents the callback (success or failure depending on input)
     _callback: false,
 
-    _buttonSize: 200,
-    _left: 610,
-    _top: 75,
+    _buttonSize: 28,
 }

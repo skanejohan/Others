@@ -1,73 +1,7 @@
-var Objects = {
-    
-    add: (object, scene) => {
-        scene.objects.splice(0, 0, object);
-    },
-    
-    getAt: (pos, scene) => {
-        for (let i = 0; i < scene.objects.length; i++) {
-            var object = scene.objects[i];
-            if (insideRect(pos, object.rect) && !object.hidden) {
-                return object;
-            } 
-        }
-        return undefined;
-    },
-    
-    has: (object, scene) => {
-        for (let i = 0; i < scene.objects.length; i++) {
-            if (object == scene.objects[i] && !object.hidden) {
-                return true;
-            }
-        }
-        return false;
-    },
-    
-    remove: (object, scene) => {
-        for (let i = 0; i < scene.objects.length; i++) {
-            if (object == scene.objects[i] && !object.hidden) {
-                scene.objects.splice(i, 1);
-            }
-        }
-    },
-    
-    replace: (oldObject, newObject, scene) => {
-        for (let i = 0; i < scene.objects.length; i++) {
-            if (oldObject == scene.objects[i]) {
-                scene.objects.splice(i, 1, newObject);
-            }
-        }
-    }
-}
-
-var Draw = {
-    debugRectangle: (left, top, width, height) => {
-        context.strokeStyle = "yellow";
-        context.strokeRect(left, top, width, height);
-    }
-}
-
-
 function loadImage(fileName) {
     var image = new Image();
     image.src = `assets/${fileName}.png`;
     return image;
-}
-
-function mousePosInLocation() {
-    var pos = { x : mousePos.x - 600, y : mousePos.y - 300 };
-    return pos.x < 0 || pos.x > 720 || pos.y < 0 || pos.y > 520 ? null : pos;
-}
-
-function drawDescription(texts) {
-    context.fillStyle = "yellow";
-    context.font = "32px kongtext";
-    var dy = 0;
-    var y = 920;
-    if (texts.length > 4) {
-        y -= (texts.length - 4) * 40;
-    }
-    texts.forEach(text => {context.fillText(text, 100, y + dy); dy += 40; });
 }
 
 function drawMessage(texts) {
@@ -83,4 +17,25 @@ function insideRect(pos, rect) {
         && pos.y >= rect.top 
         && pos.x <= rect.left + rect.width 
         && pos.y <= rect.top + rect.height;
+}
+
+function yOffsetRect(r, y) {
+    return { left: r.left, top: r.top + y, width: r.width, height: r.height };
+}
+
+function breakText(text, maxLineLength) {
+    let sentences = [];
+    let longestLine = 0;
+    let words = text.split(' ').reverse();
+    while (words.length > 0) {
+        let sentence = words.pop();
+        while (words.length > 0 && sentence.length + words[words.length-1].length + 1 <= maxLineLength) {
+            sentence = sentence + " " + words.pop();
+        }
+        sentences.push(sentence);
+        if (sentence.length > longestLine) {
+            longestLine = sentence.length;
+        }
+    }
+    return { sentences: sentences, longestLine: longestLine };
 }
