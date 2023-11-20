@@ -9,8 +9,11 @@ var travelAndLanguageSection = {
         this.objects = createObjectList();
         this.manager = createLocationManager(loadImage("loc-travel-and-language-section"), this.objects, this.exits);
 
-        this.objects.add({ rect: { left: 16, top: 13, width: 41, height: 67 }, description: this._dictionaryShelfDescription });
-        this.objects.add({ rect: { left: 66, top: 13, width: 41, height: 67 }, description: this._dictionaryShelfDescription });
+        this._dictionaryShelf1 = { rect: { left: 16, top: 13, width: 41, height: 67 }, description: this._dictionaryShelfDescription };
+        this._dictionaryShelf2 = { rect: { left: 66, top: 13, width: 41, height: 67 }, description: this._dictionaryShelfDescription };
+    
+        this.objects.add(this._dictionaryShelf1);
+        this.objects.add(this._dictionaryShelf2);
         this.objects.add({ rect: { left: 265, top: 58, width: 30, height: 32 }, description:
             "Many a time have you sat in this worn armchair, dreaming of faraway beaches and cities where the lights never go out."});
         this.objects.add({ rect: { left: 166, top: 13, width: 41, height: 67 }, description:
@@ -26,7 +29,9 @@ var travelAndLanguageSection = {
         this.manager.update();
         if (Globals.mouse.isClicked()) {
             var o = this.manager.hoveredObject();
-            if ((o == this._dictionaryShelf1 || o == this._dictionaryShelf2) && Globals.inventory.activeItem == office._unknownBook) {
+            if ((o == this._dictionaryShelf1 || o == this._dictionaryShelf2) 
+                && Globals.inventory.activeItem() == office._unknownBook 
+                && !Globals.inventory.has(this._latinDictionary)) {
                 Globals.inventory.add(this._latinDictionary);
                 gameContext.message = [ 
                     "Pondering the old book in your hand, you look more", 
@@ -35,12 +40,31 @@ var travelAndLanguageSection = {
                     "Sprache gestern und heute\" and an old edition of", 
                     "\"The Oxford Companion to English Literature\"." ];
                 gameContext.messageRemainingMs = 10000;
+                Globals.inventory.registerAction(this._latinDictionary, office._unknownBook, 
+                    () => this._useDict(this._latinDictionary, office._unknownBook));
             }
         }
     },
 
     render() {
         this.manager.render();
+    },
+
+    _useDict: (dict, book) => {
+        Globals.inventory.remove(dict);
+        Globals.inventory.remove(book);
+        Globals.inventory.add(office._houseHistoryBook);
+        gameContext.message = [
+            "Using the latin dictionary, you are able to decipher the contents", 
+            "of the old book. It describes the history of the house in which the ", 
+            "bookshop is located. Most of what is in the book you already know ", 
+            "since your parents passed this information to you - whether as a child", 
+            "you wanted it or not - but you find a few nuggets of new information. ", 
+            "The most interesting part is the fact that there used to be an entrance ", 
+            "to a cellar from what is now the history section. Looking at the map, and ",
+            "reading the text surrounding it, you conclude that there must be a hidden ", 
+            "entrance to the basement behind the eastern wall, currently covered by book shelves."];
+        gameContext.messageRemainingMs = 10000;
     },
 
     _latinDictionary: {
