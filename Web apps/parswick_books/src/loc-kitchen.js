@@ -19,7 +19,7 @@ var kitchen = {
         this.objects.add(this._fridge);
 
         this.exits.push( { rect: { left: 160, top: 30, width: 20, height: 50 }, leadsTo: fictionSection } );
-        this.exits.push( { rect: bottomExitRect, leadsTo: bathroom } );
+        this.exits.push( { rect: Constants.bottomExitRect, leadsTo: bathroom } );
     },
 
     update() {

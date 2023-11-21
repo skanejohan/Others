@@ -22,7 +22,7 @@ var travelAndLanguageSection = {
         this.objects.add({ rect: { left: 215, top: 17, width: 25, height: 25 }, description:
             "Through the window, you can see the street outside, currently covered in a thin white layer of snow." });
 
-        this.exits.push({ rect: rightExitRect, leadsTo: fictionSection });
+        this.exits.push({ rect: Constants.rightExitRect, leadsTo: fictionSection });
     },
 
     update() {

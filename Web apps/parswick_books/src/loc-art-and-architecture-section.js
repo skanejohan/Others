@@ -14,8 +14,8 @@ var artAndArchitectureSection = {
         this.objects.add({ rect: { left: 180, top: 13, width: 41, height: 67 }, description: this._shelfDescription });
         this.objects.add({ rect: { left: 260, top: 13, width: 41, height: 67 }, description: this._shelfDescription });
 
-        this.exits.push({ rect: leftExitRect, leadsTo: fictionSection });
-        this.exits.push({ rect: bottomExitRect, leadsTo: historySection });
+        this.exits.push({ rect: Constants.leftExitRect, leadsTo: fictionSection });
+        this.exits.push({ rect: Constants.bottomExitRect, leadsTo: historySection });
     },
 
     update() {

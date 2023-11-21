@@ -39,6 +39,23 @@ createDrawContext = (dimensions, canvas) => {
         _context.fillText(text, x * s, y * s);
     }
 
+    let breakText = (text, maxLineLength) => {
+        let sentences = [];
+        let longestLine = 0;
+        let words = text.split(' ').reverse();
+        while (words.length > 0) {
+            let sentence = words.pop();
+            while (words.length > 0 && sentence.length + words[words.length-1].length + 1 <= maxLineLength) {
+                sentence = sentence + " " + words.pop();
+            }
+            sentences.push(sentence);
+            if (sentence.length > longestLine) {
+                longestLine = sentence.length;
+            }
+        }
+        return { sentences: sentences, longestLine: longestLine };
+    }
+    
     let _drawDescription = text => {
         _setFont(5, "yellow");
         let { sentences, longestLine } = breakText(text, 63);

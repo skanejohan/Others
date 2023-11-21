@@ -20,9 +20,9 @@ var fictionSection = {
         this.objects.add( { rect: { left: 101, top: 19, width: 28, height: 53 }, description: this._mainEntranceDescription } );
         this.objects.add( { rect: { left: 67, top: 25, width: 22, height: 15 }, description: this._plaqueDescription } );
     
-        this.exits.push({ rect: leftExitRect, leadsTo: travelAndLanguageSection });
-        this.exits.push({ rect: rightExitRect, leadsTo: artAndArchitectureSection });
-        this.exits.push({ rect: bottomExitRect, leadsTo: kitchen });
+        this.exits.push({ rect: Constants.leftExitRect, leadsTo: travelAndLanguageSection });
+        this.exits.push({ rect: Constants.rightExitRect, leadsTo: artAndArchitectureSection });
+        this.exits.push({ rect: Constants.bottomExitRect, leadsTo: kitchen });
     },
 
     update() {

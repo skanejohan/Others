@@ -24,7 +24,7 @@ var historySection = {
                     this.objects.remove(o);
                     GameContext.inventory().remove(kitchen._key);
                     GameContext.message().setMessage("You unlock the door to your office.", 2000);
-                    this.exits.push({ rect: bottomExitRect, leadsTo: office });
+                    this.exits.push({ rect: Constants.bottomExitRect, leadsTo: office });
                 }
             }
         }
@@ -35,7 +35,7 @@ var historySection = {
     },
 
     _keyhole: {
-        rect: bottomExitRect, image: loadImage("itm-keyhole"), description: "The door to your office is locked."
+        rect: Constants.bottomExitRect, image: loadImage("itm-keyhole"), description: "The door to your office is locked."
     },
 
     _shelfDescription:                     

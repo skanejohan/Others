@@ -1,5 +1,6 @@
 createLocationManager = (image, objects, exits) => {
-    let getRect = o => yOffsetRect(o.rect, Constants.locationTop);
+    let yOffsetRect = (r, y) => { return { left: r.left, top: r.top + y, width: r.width, height: r.height }; }
+    let getRect = o => yOffsetRect(o.rect, Constants.locationTop); 
     let isHovered = o => insideRect(GameContext.mouse().pos(), getRect(o));
 
     return {
