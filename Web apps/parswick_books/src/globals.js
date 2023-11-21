@@ -1,6 +1,10 @@
+var GameContext = undefined; 
+
+
+
+
 var Globals = {
-    mouse: undefined,
-    location: undefined,
+    message: undefined,
     inventory: undefined,
 }
 

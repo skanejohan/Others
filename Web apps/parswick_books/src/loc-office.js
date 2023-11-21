@@ -4,8 +4,6 @@ var office = {
         return "office";
     },
 
-    image: loadImage("loc-office"),
-
     initialize() {
         this.exits = [];
         this.objects = createObjectList();
@@ -28,7 +26,7 @@ var office = {
 
     update() {
         this.manager.update();
-        if (Globals.mouse.isClicked()) {
+        if (GameContext.mouse().isClicked()) {
             var o = this.manager.hoveredObject();
             if (o == this._drawer) {
                 this.objects.replace(o, this._openDrawer);
@@ -36,7 +34,7 @@ var office = {
             }
             if (o == this._paperClip) {
                 this.objects.remove(o);
-                Globals.inventory.add(o);
+                GameContext.inventory().add(o);
                 this._openDrawer.description = "The drawer is empty.";
             }
             if (o == this._cabinet) {
@@ -45,28 +43,25 @@ var office = {
                 this.objects.add(this._magnifyingGlass);
                 this.objects.add(this._modelCar);
             }
-            if (o == this._metalBox && Globals.inventory.activeItem() == this._paperClip) {
+            if (o == this._metalBox && GameContext.inventory().activeItem() == this._paperClip) {
                 this.objects.replace(this._metalBox, this._openMetalBox);
-                Globals.inventory.remove(this._paperClip);
+                GameContext.inventory().remove(this._paperClip);
                 this.objects.add(this._rockpick);
                 this.objects.add(this._stones);
-                gameContext.message = [ "Using the paper clip, you manage to pick the lock." ];
-                gameContext.messageRemainingMs = 2000;
+                GameContext.message().setMessage("Using the paper clip, you manage to pick the lock.", 2000);
             }
             if (o == this._magnifyingGlass || o == this._rockpick || o == this._stones || o == this._modelCar || o == this._unknownBook) {
                 this.objects.remove(o);
-                Globals.inventory.add(o);
+                GameContext.inventory().add(o);
             }
             if (o == this._safe) {
-                combinationLock.show(this._id.toString(), () => {
+                GameContext.combinationLock().show(this._id.toString(), () => {
                     this.objects.remove(this._safe);
                     this.objects.add(this._openSafe);
                     this.objects.add(this._unknownBook);
-                    gameContext.message = [ "You enter the correct code and open the safe." ];
-                    gameContext.messageRemainingMs = 2000;
+                    GameContext.message().setMessage("You enter the correct code and open the safe.", 2000);
                 }, () => {
-                    gameContext.message = [ "If only you knew the code..." ];
-                    gameContext.messageRemainingMs = 2000;
+                    GameContext.message().setMessage("If only you knew the code...", 2000);
                 })
             }
         }

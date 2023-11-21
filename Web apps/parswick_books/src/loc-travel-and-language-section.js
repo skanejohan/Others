@@ -27,20 +27,17 @@ var travelAndLanguageSection = {
 
     update() {
         this.manager.update();
-        if (Globals.mouse.isClicked()) {
+        if (GameContext.mouse().isClicked()) {
             var o = this.manager.hoveredObject();
             if ((o == this._dictionaryShelf1 || o == this._dictionaryShelf2) 
-                && Globals.inventory.activeItem() == office._unknownBook 
-                && !Globals.inventory.has(this._latinDictionary)) {
-                Globals.inventory.add(this._latinDictionary);
-                gameContext.message = [ 
-                    "Pondering the old book in your hand, you look more", 
-                    "closely for a latin dictionary which you are able to", 
-                    "find, squeezed between Astrid Stedje's \"Deutsche", 
-                    "Sprache gestern und heute\" and an old edition of", 
-                    "\"The Oxford Companion to English Literature\"." ];
-                gameContext.messageRemainingMs = 10000;
-                Globals.inventory.registerAction(this._latinDictionary, office._unknownBook, 
+                && GameContext.inventory().activeItem() == office._unknownBook 
+                && !GameContext.inventory().has(this._latinDictionary)) {
+                GameContext.inventory().add(this._latinDictionary);
+                GameContext.message().setMessage(
+                    "Pondering the old book in your hand, you look more closely for a latin dictionary which you are able to find, squeezed between " + 
+                    "Astrid Stedje's \"Deutsche Sprache gestern und heute\" and an old edition of \"The Oxford Companion to English Literature\".",
+                    10000);
+                GameContext.inventory().registerAction(this._latinDictionary, office._unknownBook, 
                     () => this._useDict(this._latinDictionary, office._unknownBook));
             }
         }
@@ -51,20 +48,16 @@ var travelAndLanguageSection = {
     },
 
     _useDict: (dict, book) => {
-        Globals.inventory.remove(dict);
-        Globals.inventory.remove(book);
-        Globals.inventory.add(office._houseHistoryBook);
-        gameContext.message = [
-            "Using the latin dictionary, you are able to decipher the contents", 
-            "of the old book. It describes the history of the house in which the ", 
-            "bookshop is located. Most of what is in the book you already know ", 
-            "since your parents passed this information to you - whether as a child", 
-            "you wanted it or not - but you find a few nuggets of new information. ", 
-            "The most interesting part is the fact that there used to be an entrance ", 
-            "to a cellar from what is now the history section. Looking at the map, and ",
-            "reading the text surrounding it, you conclude that there must be a hidden ", 
-            "entrance to the basement behind the eastern wall, currently covered by book shelves."];
-        gameContext.messageRemainingMs = 10000;
+        GameContext.inventory().remove(dict);
+        GameContext.inventory().remove(book);
+        GameContext.inventory().add(office._houseHistoryBook);
+        GameContext.message().setMessage(
+            "Using the latin dictionary, you are able to decipher the contents of the old book. It describes the history of the house in which the " +
+            "bookshop is located. Most of what is in the book you already know since your parents passed this information to you - whether as a child" + 
+            "you wanted it or not - but you find a few nuggets of new information. The most interesting part is the fact that there used to be an entrance " + 
+            "to a cellar from what is now the history section. Looking at the map, and reading the text surrounding it, you conclude that there must be " + 
+            "a hidden entrance to the basement behind the eastern wall, currently covered by book shelves.",
+            10000);
     },
 
     _latinDictionary: {

@@ -9,7 +9,7 @@ createInventory = () => {
             x += 10;
         });
     }
-    let isHovered = r => insideRect(Globals.mouse.pos(), r);
+    let isHovered = r => insideRect(GameContext.mouse().pos(), r);
     let hoveredObject = () => {
         var result = undefined;
         forEachObject((o, r) => {
@@ -35,30 +35,30 @@ createInventory = () => {
         
         render: () => {
             forEachObject((o, r) => {
-                Globals.drawContext.drawImageR(o.image, r);
+                GameContext.drawContext().drawImageR(o.image, r);
                 if (isHovered(r)) {
-                    Globals.drawContext.drawDescription(o.description);
+                    GameContext.drawContext().drawDescription(o.description);
                 }
             });
 
-            let pos = Globals.mouse.pos();
+            let pos = GameContext.mouse().pos();
             if (pos && activeObject) {
-                Globals.drawContext.drawImage(activeObject.image, pos.x - 5, pos.y - 5, 10, 10);
+                GameContext.drawContext().drawImage(activeObject.image, pos.x - 5, pos.y - 5, 10, 10);
             }
         },
 
         update: () => {
-            if (Globals.mouse.isClicked()) {
+            if (GameContext.mouse().isClicked()) {
                 let o = hoveredObject();
                 if (o && !activeObject) {
-                    Globals.mouse.setClicked(false); // Once the item has been picked up, we have handled the click
+                    GameContext.mouse().setClicked(false); // Once the item has been picked up, we have handled the click
                     activeObject = o;
                 }
                 else if (o && activeObject) { // Look for "object applied to another object" action
                     actions.forEach(a => {
                         if (a.actors == (activeObject, o)) {
                             a.fn();
-                            Globals.mouse.setClicked(false); // Onve we have acted, we have handled the click
+                            GameContext.mouse().setClicked(false); // Onve we have acted, we have handled the click
                         }
                     })
                 }

@@ -1,38 +1,28 @@
-var gameContext = {
-    message: [],
-    messageRemainingMs: 0,
- 
-    update(ms) {
-        combinationLock.update();
-        
-        Globals.inventory.update();
-        Globals.location.update();
-        
-        if (this.messageRemainingMs > 0) {
-            this.messageRemainingMs -= ms;
-            if (this.messageRemainingMs <= 0) {
-                this.messageRemainingMs = 0;
-                this.message = [];
-            }
-        }
+createGameContext = (dimensions, canvas) => {
+    let _mouse = createMouse(dimensions, canvas);
+    let _drawContext = createDrawContext(dimensions, canvas);
+    let _location = fictionSection;
+    let _message = createMessage();
+    let _inventory = createInventory();
+    let _combinationLock = createCombinationLock();
 
-        if (Globals.mouse.isClicked()) {
-            Globals.inventory.dropActiveItem();
-            Globals.mouse.setClicked(false);
-        }
-    },
+    // TODO create, and include as functions in return value
+    office.initialize();
+    historySection.initialize();
+    artAndArchitectureSection.initialize();
+    travelAndLanguageSection.initialize();
+    fictionSection.initialize();
+    kitchen.initialize();
+    bathroom.initialize();
 
-    render() {
-        Globals.drawContext.clear();
-        Globals.location.render();
-        drawMessage(this.message);
-        Globals.inventory.render();
-        combinationLock.render();
-    },
-
-    click() {
-        Globals.mouse.setClicked(true);
-    },
-
+    return {
+        mouse: () => _mouse,
+        location: () => _location,
+        setLocation: l => _location = l,
+        combinationLock: () => _combinationLock,
+        drawContext: () => _drawContext,
+        inventory: () => _inventory,
+        message: () => _message
+    }
 }
 

@@ -4,13 +4,6 @@ function loadImage(fileName) {
     return image;
 }
 
-function drawMessage(texts) {
-    context.fillStyle = "yellow";
-    context.font = "32px kongtext";
-    var y = 100;
-    texts.forEach(text => {context.fillText(text, 100, y); y += 40; });
-}
-
 function insideRect(pos, rect) {
     return pos && rect 
         && pos.x >= rect.left 

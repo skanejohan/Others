@@ -46,17 +46,24 @@ createDrawContext = (dimensions, canvas) => {
         sentences.forEach(text => {_context.fillText(text, x, y); y += dy; });
     }
 
+    let _drawMessage = text => {
+        _setFont(5, "yellow");
+        let { sentences, longestLine } = breakText(text, 63);
+        let s = dimensions.getScale(), x = 5 * s, y = 20 * s, dy = 6 * s;
+        sentences.forEach(text => {_context.fillText(text, x, y); y += dy; });
+    }
+
     return {
         clear: (color) => {
             _context.fillStyle = color || "black";
             _context.fillRect(0, 0, dimensions.width(), dimensions.height());
         },
-        drawDebugRectangles: b => _debug = b,
         drawImage: _drawImage,
         drawImageR: (image, r) => _drawImage(image, r.left, r.top, r.width, r.height),
         drawText: _drawText,
         drawRect: _drawRect,
         drawRectR: _drawRectR,
+        drawMessage: _drawMessage,
         drawDescription: _drawDescription
     }
 }

@@ -17,14 +17,13 @@ var historySection = {
 
     update() {
         this.manager.update();
-        if (Globals.mouse.isClicked()) {
+        if (GameContext.mouse().isClicked()) {
             var o = this.manager.hoveredObject();
             if (o == this._keyhole) {
-                if (Globals.inventory.activeItem() == kitchen._key) {
+                if (GameContext.inventory().activeItem() == kitchen._key) {
                     this.objects.remove(o);
-                    Globals.inventory.remove(kitchen._key);
-                    gameContext.message = [ "You unlock the door to your office." ];
-                    gameContext.messageRemainingMs = 2000;
+                    GameContext.inventory().remove(kitchen._key);
+                    GameContext.message().setMessage("You unlock the door to your office.", 2000);
                     this.exits.push({ rect: bottomExitRect, leadsTo: office });
                 }
             }

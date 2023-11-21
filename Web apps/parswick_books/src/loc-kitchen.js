@@ -25,24 +25,22 @@ var kitchen = {
     update() {
         this.manager.update();
         
-        if (Globals.mouse.isClicked()) {
+        if (GameContext.mouse().isClicked()) {
             var o = this.manager.hoveredObject();
             
             if (o == this._closedCupboard) {
                 this.objects.replace(o, this._openCupboard);
                 this.objects.add(this._cup);
-                gameContext.message = [ "You open the cupboard" ];
-                gameContext.messageRemainingMs = 2000;
+                GameContext.message().setMessage("You open the cupboard.", 2000);
             }
 
             if (o == this._cup) {
-                Globals.inventory.add(o);
+                GameContext.inventory().add(o);
                 this.objects.replace(o, this._key);
-                gameContext.message = [ "When you take the cup, a small key becomes visible." ];
-                gameContext.messageRemainingMs = 2000;
+                GameContext.message().setMessage("When you take the cup, a small key becomes visible.", 2000);
             }
             if (o == this._key) {
-                Globals.inventory.add(o);
+                GameContext.inventory().add(o);
                 this.objects.remove(o);
             }
         }
