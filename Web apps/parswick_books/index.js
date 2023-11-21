@@ -37,6 +37,7 @@ startGame = canvas => {
     let initialize = () => {
         var dimensions = createDimensions(320, 180, 4);
         GameContext = createGameContext(dimensions, canvas);
+        GameContext.initialize();
         canvas.width = dimensions.width();
         canvas.height = dimensions.height();
         window.addEventListener('resize', () => {
