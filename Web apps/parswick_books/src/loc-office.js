@@ -4,17 +4,8 @@ createOffice = () => {
     let manager = createLocationManager(loadImage("loc-office"), objects, exits);
 
     let initialize = () => {
-        objects.add(cabinet);
-        objects.add(desk);
-        objects.add(safe);
-
-        objects.add(gasBill);
-        objects.add(deGaulleClipping);
-        objects.add(phoneBill);
-        objects.add(bennyHillClipping);
-        objects.add(newspaperBill);
-        objects.add(poundClipping);
-        objects.add(drawer);
+        objects.add(darkness);
+        objects.add(lampSwitch);
 
         exits.push({ rect: { left: 114, top: 13, width: 20, height: 42 } , leadsTo: GameContext.historySection() });
     }
@@ -23,6 +14,26 @@ createOffice = () => {
         manager.update();
         if (GameContext.mouse().isClicked()) {
             var o = manager.hoveredObject();
+            if (o == lampSwitch && objects.has(darkness))
+            {
+                objects.replace(darkness, semiDarkness);
+                objects.add(tableLampSwitch);
+            }
+            if (o == tableLampSwitch)
+            {
+                objects.remove(semiDarkness);
+                objects.remove(tableLampSwitch);
+                objects.add(cabinet);
+                objects.add(desk);
+                objects.add(safe);
+                objects.add(gasBill);
+                objects.add(deGaulleClipping);
+                objects.add(phoneBill);
+                objects.add(bennyHillClipping);
+                objects.add(newspaperBill);
+                objects.add(poundClipping);
+                objects.add(drawer);
+                    }
             if (o == drawer) {
                 objects.replace(o, openDrawer);
                 objects.add(paperClip);
@@ -61,6 +72,14 @@ createOffice = () => {
             }
         }
     }
+
+    let darkness = { rect: Constants.fullLocationRect, image: loadImage("loc-office-dark"), isPassive: true }
+
+    let semiDarkness = { rect: Constants.fullLocationRect, image: loadImage("loc-office-semidark"), isPassive: true }
+
+    let lampSwitch = { rect: { left: 103, top: 26, width: 4, height: 8 } , image: loadImage("itm-lamp-switch"), description: "" }
+
+    let tableLampSwitch = { rect: { left: 209, top: 35, width: 4, height: 7 } , description: "" }
 
     let cabinet = {
         rect: { left: 36, top: 11, width: 59, height: 54 }, description: "This old cabinet takes up a large portion of the wall."
@@ -145,12 +164,12 @@ createOffice = () => {
     }
 
     let openDrawer = {
-        rect: { left: 229, top: 73, width: 16, height: 6 }, description: 
+        rect: { left: 229, top: 73, width: 16, height: 10 }, description: 
             "The drawer is, surprisingly enough, almost empty. The only thing you see is an old paper clip."
     }
 
     let paperClip = {
-        rect: { left: 230, top: 74, width: 3, height: 3 }, image: loadImage("itm-paper-clip"), description: "It is a paper clip. Nothing more. Nothing less."
+        rect: { left: 230, top: 74, width: 8, height: 8 }, image: loadImage("itm-paper-clip"), description: "It is a paper clip. Nothing more. Nothing less."
     }
 
     let safe = {
