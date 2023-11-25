@@ -5,8 +5,8 @@ createInventory = () => {
     let forEachObject = fn => {
         let x = 10, y = 10;
         objects.forEachReversed(o => {
-            fn(o, { left: x, top: y, width: 10, height: 10 });
-            x += 10;
+            fn(o, { left: x, top: y, width: 30, height: 30 });
+            x += 35;
         });
     }
     let isHovered = r => insideRect(GameContext.mouse().pos(), r);
@@ -35,7 +35,7 @@ createInventory = () => {
         
         render: () => {
             forEachObject((o, r) => {
-                GameContext.drawContext().drawImageR(o.image, r);
+                GameContext.drawContext().drawImageR(o.inventoryImage || o.image, r);
                 if (isHovered(r)) {
                     GameContext.drawContext().drawDescription(o.description);
                 }

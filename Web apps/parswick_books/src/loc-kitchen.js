@@ -59,7 +59,7 @@ createKitchen = () => {
     }
 
     let openCupboard = {
-        rect: { left: 208, top: 13, width: 60, height: 25 }, image: loadImage("itm-open-cupboard"), 
+        rect: { left: 208, top: 13, width: 60, height: 25 }, 
         description: "The cupboard is open. And almost empty."
     }
 

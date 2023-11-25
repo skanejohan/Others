@@ -14,6 +14,7 @@ createFictionSection = () => {
         _objects.add( { rect: { left: 175, top: 17, width: 25, height: 25 }, description: _windowsDescription } );
         _objects.add( { rect: { left: 101, top: 19, width: 28, height: 53 }, description: _mainEntranceDescription } );
         _objects.add( { rect: { left: 67, top: 25, width: 22, height: 15 }, description: _plaqueDescription } );
+        _objects.add( { rect: Constants.fullLocationRect, image: loadImage("fme-left-right-bottom"), isPassive: true});
 
         _exits.push({ rect: Constants.leftExitRect, leadsTo: GameContext.travelAndLanguageSection() });
         _exits.push({ rect: Constants.rightExitRect, leadsTo: GameContext.artAndArchitectureSection() });

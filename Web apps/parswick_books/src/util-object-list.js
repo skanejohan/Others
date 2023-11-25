@@ -3,6 +3,7 @@ createObjectList = () => {
 
     return {
         add: o => objectList.push(o),
+        addFirst: o => objectList.unshift(o),
         has: o => objectList.includes(o),
         replace: (old, replaceWith) => objectList.splice(objectList.indexOf(old), 1, replaceWith),
         remove: o => objectList.splice(objectList.indexOf(o), 1),

@@ -35,8 +35,9 @@ createOffice = () => {
                 objects.add(drawer);
                     }
             if (o == drawer) {
-                objects.replace(o, openDrawer);
-                objects.add(paperClip);
+                objects.remove(o);
+                objects.addFirst(openDrawer);
+                objects.addFirst(paperClip);
             }
             if (o == paperClip) {
                 objects.remove(o);
@@ -44,17 +45,18 @@ createOffice = () => {
                 openDrawer.description = "The drawer is empty.";
             }
             if (o == cabinet) {
-                objects.replace(o, openCabinet);
-                objects.add(metalBox);
-                objects.add(magnifyingGlass);
-                objects.add(modelCar);
+                objects.remove(o);
+                objects.addFirst(openCabinet);
+                objects.addFirst(metalBox);
+                objects.addFirst(magnifyingGlass);
+                objects.addFirst(modelCar);
             }
             if (o == metalBox && GameContext.inventory().activeItem() == paperClip) {
-                objects.replace(metalBox, openMetalBox);
+                objects.remove(metalBox);
                 GameContext.inventory().remove(paperClip);
-                objects.add(rockpick);
-                objects.add(stones);
-                GameContext.message().setMessage("Using the paper clip, you manage to pick the lock.", 2000);
+                objects.addFirst(rockpick);
+                objects.addFirst(stones);
+                GameContext.message().setMessage("Using the paper clip, you manage to pick the lock. You remove its content.", 2000);
             }
             if (o == magnifyingGlass || o == rockpick || o == stones || o == modelCar || o == unknownBook) {
                 objects.remove(o);
@@ -86,35 +88,30 @@ createOffice = () => {
     }
 
     let openCabinet = {
-        rect: { left: 27, top: 11, width: 77, height: 54 }, description: 
+        rect: { left: 15, top: 22, width: 101, height: 57 }, isPassive: true, image: loadImage("itm-open-cabinet"), description: 
             "You remember a lot of this stuff from your childhood. Many a time have you intended to go through this stuff, keeping some of it " + 
             "and throwing away some. Likely, you would throw away most of it, which may be the reason why you haven't gotten around to the task."
     }
 
     let magnifyingGlass = {
-        rect: { left: 30, top: 15, width: 10, height: 10 }, image: loadImage("itm-magnifying-glass"), description:
+        rect: { left: 67, top: 45, width: 20, height: 20 }, image: loadImage("itm-magnifying-glass"), inventoryImage: loadImage("itm-magnifying-glass-i"), description:
             "Your old magnifying glass. The thing you look at actually appears just a little bit bigger than it actually is. As you remember, it " + 
             "can also be used with insects in a rather harmful way. You feel a pang of guilt at the thought."
     }
 
     let metalBox = {
-        rect: { left: 50, top: 15, width: 10, height: 10 }, description:
-            "Most of the color has been scratched off this once green metal box. You remember it vaguely, but exactly what is inside it eludes you. " + 
+        rect: { left: 50, top: 27, width: 30, height: 15 }, image: loadImage("itm-metal-box"), description:
+            "Some of the color has been scratched off this green metal box. You remember it vaguely, but exactly what is inside it eludes you. " + 
             "It is quite heavy and when you shake it carefully, it rattles. It has a simple lock, which at the moment seems locked."
     }
 
-    let openMetalBox = {
-        rect: { left: 50, top: 10, width: 10, height: 15 }, description:
-            "The box contains your old rock collection. Not much of a collection really, a few small stones and your old rock pick."
-    }
-
     let modelCar = {
-        rect: { left: 40, top: 35, width: 10, height: 10 }, image: loadImage("itm-model-car"), description:
-            "You remember playing with this car. It is brown, and somebody once told you that it represents a Leyland Princess. You have no reason to doubt that."
+        rect: { left: 44, top: 48, width: 20, height: 12 }, image: loadImage("itm-model-car"), inventoryImage: loadImage("itm-model-car-i"), description:
+            "You remember playing with this car. It is green, and somebody once told you that it represents an Austin A30. You have no reason to doubt that."
     }
 
     let stones = {
-        rect: { left: 525, top: 190, width: 40, height: 40 }, image: loadImage("itm-stones"), description:
+        rect: { left: 47, top: 25, width: 17, height: 12 }, image: loadImage("itm-stones"), inventoryImage: loadImage("itm-stones-i"), description:
             "Your old stone collection. To be honest, you could probably go out to the square outside and pick these three rocks in just a few minutes. " + 
             "Come to think of it, that is probably exactly how they ended up in your possession."
     }
@@ -164,8 +161,7 @@ createOffice = () => {
     }
 
     let openDrawer = {
-        rect: { left: 229, top: 73, width: 16, height: 10 }, description: 
-            "The drawer is, surprisingly enough, almost empty. The only thing you see is an old paper clip."
+        rect: { left: 227, top: 72, width: 20, height: 18 }, image: loadImage("itm-open-drawer"), isPassive: true
     }
 
     let paperClip = {
