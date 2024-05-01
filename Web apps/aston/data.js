@@ -4,7 +4,7 @@ Haverdal med Farmor och Farfar. 2010?
 Hovfjället - 2009, till 30 december.
 hyrd husbil 2015 (Kungälv, Olofsbo)
 Kris och Luhrs bröllop - Ronneby Brunn
-
+Själland med Farmor och Farfar - pool.
 	{
 		name: "Rådastrands camping (Björnbyn, som mormor drev)",
 		start: new Date(2006, 8, 20), // TODO datum?
@@ -3116,6 +3116,36 @@ Kris och Luhrs bröllop - Ronneby Brunn
 				position: new google.maps.LatLng(49.282410624524815, 12.173980340693292),
 				start: new Date(2023, 6, 18),
 				end: new Date(2023, 6, 19)
+			},
+		]
+	},
+	{
+		name: "Skidresa, Österrike",
+		start: new Date(2023, 11, 22),
+		end: new Date(2023, 11, 30),
+		locations: [
+			{
+				name: "Pension Wallner",
+				address: "Oberdorf 153, 5753 Saalbach, Österrike",
+				url: "https://www.pension-saalbach.com/",
+				position: new google.maps.LatLng(47.393030786128215, 12.636378593152392),
+				start: new Date(2023, 11, 23),
+				end: new Date(2023, 11, 29)
+			},
+		]
+	},
+	{
+		name: "Skidresa, Österrike",
+		start: new Date(2024, 2, 31),
+		end: new Date(2024, 3, 8),
+		locations: [
+			{
+				name: "Hotel Bäckelar Wirt",
+				address: "Dorfstraße 125, 6450 Sölden, Österrike",
+				url: "https://www.baeckelarwirt-soelden.at",
+				position: new google.maps.LatLng(46.95862239431298, 11.01003896060611),
+				start: new Date(2024, 3, 1),
+				end: new Date(2024, 3, 7)
 			},
 		]
 	},
