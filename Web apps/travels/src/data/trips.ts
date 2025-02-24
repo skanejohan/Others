@@ -3284,6 +3284,46 @@ export const trips : Trip[] = [
 				start: { year: 2024, month: Aug, day: 1 },
 				end: { year: 2024, month: Aug, day: 4 }
 			},
+			{
+				location: {
+					name: "Hotel Löwenhof",
+					address: "Via Brennero, 60, 39040 Bressanone BZ, Italien",
+					url: "http://loewenhof.it/",
+					position: [46.735005765653014, 11.646981363783112],
+				},
+				start: { year: 2024, month: Aug, day: 4 },
+				end: { year: 2024, month: Aug, day: 6 }
+			},
+			{
+				location: {
+					name: "Campingplatz Landsberg am Lech",
+					address: "Pössinger Au 1, 86899 Landsberg am Lech, Tyskland",
+					url: "https://www.camping-landsberg.com/",
+					position: [48.03072716910102, 10.88382170788571],
+				},
+				start: { year: 2024, month: Aug, day: 6 },
+				end: { year: 2024, month: Aug, day: 7 }
+			},
+			{
+				location: {
+					name: "Schloss Issigau - Stefan Braitmaier",
+					address: "Altes Schloß 3, 95188 Issigau, Tyskland",
+					url: "http://www.schloss-issigau.de/",
+					position: [50.37398202534288, 11.72150838345746],
+				},
+				start: { year: 2024, month: Aug, day: 7 },
+				end: { year: 2024, month: Aug, day: 8 }
+			},
+			{
+				location: {
+					name: "Wohnmobilhafen Hamburg",
+					address: "Süderstraße 8, 20097 Hamburg, Tyskland",
+					url: "http://www.wohnmobilhafen-hamburg.de/",
+					position: [53.543325141927056, 10.026099764296765],
+				},
+				start: { year: 2024, month: Aug, day: 8 },
+				end: { year: 2024, month: Aug, day: 9 }
+			},
 
 		]
 	},
