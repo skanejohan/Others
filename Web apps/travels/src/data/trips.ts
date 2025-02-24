@@ -5,7 +5,6 @@ export const trips : Trip[] = [
 		name: "Mount Kisco, USA",
 		start: { year: 2006, month: Sep, day: undefined },
 		end: { year: 2006, month: Oct, day: undefined },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
 				location: {
@@ -13,9 +12,7 @@ export const trips : Trip[] = [
 					address: "37, Moore Avenue, Mt Kisco, NY 10549 USA",
 					url: "",
 					position: [41.198765, -73.726930],
-				},
-				start: { year: 2006, month: 8, day: undefined },
-				end: { year: 2006, month: 9, day: undefined }
+				}
 			}
 		]
 	},
@@ -23,7 +20,6 @@ export const trips : Trip[] = [
 		name: "Italien och Österrike",
 		start: { year: 2008, month: May, day: undefined},
 		end: { year: 2008, month: Jun, day: undefined},
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
 				location: {
@@ -61,7 +57,6 @@ export const trips : Trip[] = [
 		name: "Stockholm (Henrik Önnermark 40)",
 		start: { year: 2009, month: Mar, day: undefined },
 		end: { year: 2009, month: Mar, day: undefined },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
 				location: {
@@ -69,9 +64,7 @@ export const trips : Trip[] = [
 					address: "Birger Jarlsgatan 35, 111 45 Stockholm",
 					url: "crystalplazahotel.se",
 					position: [59.338263, 18.068591],
-				},
-				start: { year: 2009, month: Mar, day: undefined },
-				end: { year: 2009, month: Mar, day: undefined },
+				}
 			},
 		]
 	},
@@ -79,7 +72,6 @@ export const trips : Trip[] = [
 		name: "Polen med familjen Essunger",
 		start: { year: 2009, month: Aug, day: 8 },
 		end: { year: 2009, month: Aug, day: 15 },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
 				location: {
@@ -88,8 +80,6 @@ export const trips : Trip[] = [
 					url: "",
 					position: [54.256486, 16.098479],
 				},
-				start: { year: 2009, month: Aug, day: 8 },
-				end: { year: 2009, month: Aug, day: 15 },
 			},
 		]
 	},
@@ -97,7 +87,6 @@ export const trips : Trip[] = [
 		name: "Linköping (Johan 40)",
 		start: { year: 2010, month: Jan, day: undefined },
 		end: { year: 2010, month: Jan, day: undefined },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
 				location: {
@@ -106,8 +95,6 @@ export const trips : Trip[] = [
 					url: "scandichotels.se/frimurarehotellet",
 					position: [58.41403486734704, 15.62324530467015],
 				},
-				start: { year: 2010, month: Jan, day: undefined },
-				end: { year: 2010, month: Jan, day: undefined },
 			},
 		]
 	},
@@ -124,8 +111,6 @@ export const trips : Trip[] = [
 					url: "villathalassa.se",
 					position: [56.070469, 12.675485],
 				},
-				start: { year: 2010, month: Jul, day: undefined },
-				end: { year: 2010, month: Jul, day: undefined },
 			},
 		]
 	},
@@ -133,7 +118,6 @@ export const trips : Trip[] = [
 		name: "Stockholm Marathon",
 		start: { year: 2010, month: Jun, day: 4 },
 		end: { year: 2010, month: Jun, day: 6 },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
 				location: {
@@ -142,8 +126,6 @@ export const trips : Trip[] = [
 					url: "scandichotels.se",
 					position: [59.360014, 18.120433],
 				},
-				start: { year: 2010, month: Jun, day: 4 },
-				end: { year: 2010, month: Jun, day: 6 },
 			},
 		]
 	},
@@ -151,7 +133,6 @@ export const trips : Trip[] = [
 		name: "Teneriffa",
 		start: { year: 2010, month: Dec, day: 12 },
 		end: { year: 2010, month: Dec, day: 19 },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
 				location: {
@@ -160,8 +141,6 @@ export const trips : Trip[] = [
 					url: "besthotels.es",
 					position: [28.089175, -16.732283],
 				},
-				start: { year: 2010, month: Dec, day: 12 },
-				end: { year: 2010, month: Dec, day: 19 },
 			},
 		]
 	},
@@ -169,7 +148,6 @@ export const trips : Trip[] = [
 		name: "Venedig",
 		start: { year: 2011, month: Jun, day: 20 },
 		end: { year: 2011, month: Jun, day: 27 },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
 				location: {
@@ -178,16 +156,13 @@ export const trips : Trip[] = [
 					url: "hotel-atlantico.it",
 					position: [45.504483, 12.644548],
 				},
-				start: { year: 2011, month: Jun, day: 20 },
-				end: { year: 2011, month: Jun, day: 27 },
-					},
+			},
 		]
 	},
 	{
 		name: "Legoland",
 		start: { year: 2011, month: Aug, day: 6 },
 		end: { year: 2011, month: Aug, day: 9 },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
 				location: {
@@ -196,16 +171,13 @@ export const trips : Trip[] = [
 					url: "lalandia.dk",
 					position: [55.733272, 9.138306],
 				},
-				start: { year: 2011, month: Aug, day: 6 },
-				end: { year: 2011, month: Aug, day: 9 },
-					},
+			},
 		]
 	},
 	{
 		name: "Stockholm (Tjurruset)",
 		start: { year: 2011, month: Oct, day: 7 },
 		end: { year: 2011, month: Oct, day: 9 },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
 				location: {
@@ -214,16 +186,13 @@ export const trips : Trip[] = [
 					url: "diplomathotel.com",
 					position: [59.331985, 18.080399],
 				},
-				start: { year: 2011, month: Oct, day: 7 },
-				end: { year: 2011, month: Oct, day: 9 },
-					},
+			},
 		]
 	},
 	{
 		name: "Lanzarote",
 		start: { year: 2012, month: Jan, day: 6 },
 		end: { year: 2012, month: Jan, day: 13 },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
 				location: {
@@ -232,8 +201,6 @@ export const trips : Trip[] = [
 					url: "barcelo.com",
 					position: [28.996064, -13.488995],
 				},
-				start: { year: 2012, month: Jan, day: 6 },
-				end: { year: 2012, month: Jan, day: 13 },
             },
 		]
 	},
@@ -241,7 +208,6 @@ export const trips : Trip[] = [
 		name: "Bohuslän (Påsk med Richard och Jessica)",
 		start: { year: 2012, month: Apr, day: 6 },
 		end: { year: 2012, month: Apr, day: 9 },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
                 location: {
@@ -250,8 +216,6 @@ export const trips : Trip[] = [
                     url: "hafsten.se",
                     position: [58.315088, 11.721627],
                 },
-                start: { year: 2012, month: Apr, day: 6 },
-                end: { year: 2012, month: Apr, day: 9 },
             },
 		]
 	},
@@ -259,7 +223,6 @@ export const trips : Trip[] = [
 		name: "Legoland",
 		start: { year: 2012, month: Jun, day: 6 },
 		end: { year: 2012, month: Jun, day: 9 },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
                 location: {
@@ -268,8 +231,6 @@ export const trips : Trip[] = [
                     url: "lalandia.dk",
                     position: [55.733272, 9.138306],
                 },
-                start: { year: 2012, month: Jun, day: 6 },
-                end: { year: 2012, month: Jun, day: 9 },
             },
 		]
 	},
@@ -277,7 +238,6 @@ export const trips : Trip[] = [
 		name: "Mallorca",
 		start: { year: 2012, month: Jul, day: 8 },
 		end: { year: 2012, month: Jul, day: 18 },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
                 location: {
@@ -286,8 +246,6 @@ export const trips : Trip[] = [
                     url: "bghotels.com",
                     position: [39.763053, 3.149019],
                 },
-                start: { year: 2012, month: Jul, day: 8 },
-                end: { year: 2012, month: Jul, day: 18 },
             },
 		]
 	},
@@ -295,7 +253,6 @@ export const trips : Trip[] = [
 		name: "Marseille",
         start: { year: 2012, month: Oct, day: 28 },
 		end: { year: 2012, month: Nov, day: 1 },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
                 location: {
@@ -304,8 +261,6 @@ export const trips : Trip[] = [
                     url: "",
                     position: [43.292427, 5.367340],
                 },
-                start: { year: 2012, month: Oct, day: 28 },
-                end: { year: 2012, month: Nov, day: 1 },
             },
 		]
 	},
@@ -331,7 +286,6 @@ export const trips : Trip[] = [
 		name: "Borås (Jannikes födelsedag)",
         start: { year: 2013, month: Feb, day: 15 },
 		end: { year: 2013, month: Feb, day: 17 },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
                 location: {
@@ -340,8 +294,6 @@ export const trips : Trip[] = [
                     url: "nordicchoicehotels.se",
                     position: [57.722801, 12.941275],
                 },
-                start: { year: 2013, month: Feb, day: 15 },
-                end: { year: 2013, month: Feb, day: 17 },
             },
 		]
 	},
@@ -349,7 +301,6 @@ export const trips : Trip[] = [
 		name: "Legoland",
         start: { year: 2013, month: Jun, day: 6 },
 		end: { year: 2013, month: Jun, day: 9 },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
                 location: {
@@ -358,8 +309,6 @@ export const trips : Trip[] = [
                     url: "lalandia.dk",
                     position: [55.733272, 9.138306],
                 },
-                start: { year: 2013, month: Jun, day: 6 },
-                end: { year: 2013, month: Jun, day: 6 },
             },
 		]
 	},
@@ -367,7 +316,6 @@ export const trips : Trip[] = [
 		name: "Gullholmen",
         start: { year: 2013, month: Jul, day: 14 },
 		end: { year: 2013, month: Jul, day: 21 },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
                 location: {
@@ -376,8 +324,6 @@ export const trips : Trip[] = [
                     url: "",
                     position: [58.175556, 11.399463],
                 },
-                start: { year: 2013, month: Jul, day: 14 },
-                end: { year: 2013, month: Jul, day: 21 },
             },
 		]
 	},
@@ -385,7 +331,6 @@ export const trips : Trip[] = [
 		name: "Danmark och Tyskland",
         start: { year: 2013, month: Jul, day: 24 },
 		end: { year: 2013, month: Aug, day: 1 },
-		people: [Johan, Jannike, Aston],
 		stops: [
 			{
                 location: {
@@ -429,384 +374,433 @@ export const trips : Trip[] = [
 			},
 		]
 	},
-	/*{
+	{
 		name: "Stockholm (Daniels och Saras bröllop)",
-		start: new Date(2013, 10, 8),
-		end: new Date(2013, 10, 10),
-		locations: [
+        start: { year: 2013, month: Nov, day: 8 },
+		end: { year: 2013, month: Nov, day: 10 },
+		stops: [
 			{
-				name: "First Hotel Norrtull",
-				address: "Sankt Eriksgatan 119, 113 43 Stockholm",
-				url: "firsthotels.se",
-				position: new google.maps.LatLng(59.347910, 18.040371),
-				start: new Date(2013, 10, 8),
-				end: new Date(2013, 10, 10),
+				location: {
+					name: "First Hotel Norrtull",
+					address: "Sankt Eriksgatan 119, 113 43 Stockholm",
+					url: "firsthotels.se",
+					position: [59.347910, 18.040371],
+				},
 			},
 		]
 	},
 	{
 		name: "Florida",
-		start: new Date(2013, 11, 24),
-		end: new Date(2014, 0, 11),
-		locations: [
+        start: { year: 2013, month: Dec, day: 24 },
+		end: { year: 2014, month: Jan, day: 11 },
+		stops: [
 			{
-				name: "La Costa Beach Club",
-				address: "1504 North Ocean Boulevard, Pompano Beach, FL 33062, USA",
-				url: "http://lacostabeachclub.net",
-				position: new google.maps.LatLng(26.251484,-80.084877),
-				start: new Date(2013, 11, 24),
-				end: new Date(2013, 11, 25),
+				location: {
+					name: "La Costa Beach Club",
+					address: "1504 North Ocean Boulevard, Pompano Beach, FL 33062, USA",
+					url: "lacostabeachclub.net",
+					position: [26.251484, -80.084877],
+				},
+				start: { year: 2013, month: Dec, day: 24 },
+				end: { year: 2013, month: Dec, day: 25 },
 			},
 			{
-				name: "Riverside Hotel",
-				address: "620 E Las Olas Blvd, Fort Lauderdale, FL 33301, USA",
-				url: "http://www.hotelsone.com/fort-lauderdale-hotels-us/riverside-hotel.sv.html",
-				position: new google.maps.LatLng(26.119801,-80.136344),
-				start: new Date(2013, 11, 25),
-				end: new Date(2013, 11, 26),
+				location: {
+					name: "Riverside Hotel",
+					address: "620 E Las Olas Blvd, Fort Lauderdale, FL 33301, USA",
+					url: "hotelsone.com",
+					position: [26.119801, -80.136344],
+				},
+				start: { year: 2013, month: Dec, day: 25 },
+				end: { year: 2013, month: Dec, day: 26 },
 			},
 			{
-				name: "El Patio Motel",
-				address: "800 Washington St, Key West, FL 33040, USA",
-				url: "search.swiss-suites.club",
-				position: new google.maps.LatLng(24.549049, -81.791744),
-				start: new Date(2013, 11, 26),
-				end: new Date(2013, 11, 27),
+				location: {
+					name: "El Patio Motel",
+					address: "800 Washington St, Key West, FL 33040, USA",
+					url: "search.swiss-suites.club",
+					position: [24.549049, -81.791744],
+				},
+				start: { year: 2013, month: Dec, day: 26 },
+				end: { year: 2013, month: Dec, day: 27 },
 			},
 			{
-				name: "Lighthouse Court Hotel",
-				address: "902 Whitehead St, Key West, FL 33040, USA",
-				url: "http://www.historickeywestinns.com/the-inns/lighthouse-court",
-				position: new google.maps.LatLng(24.550886, -81.800898),
-				start: new Date(2013, 11, 27),
-				end: new Date(2013, 11, 28),
+				location: {
+					name: "Lighthouse Court Hotel",
+					address: "902 Whitehead St, Key West, FL 33040, USA",
+					url: "historickeywestinns.com",
+					position: [24.550886, -81.800898],
+				},
+				start: { year: 2013, month: Dec, day: 27 },
+				end: { year: 2013, month: Dec, day: 28 },
 			},
 			{
-				name: "Sea Cove Resort & Marina",
-				address: "12685 Overseas Hwy, Marathon, FL 33050, USA",
-				url: "http://floatingrooms.com",
-				position: new google.maps.LatLng(24.731552,-81.014646),
-				start: new Date(2013, 11, 28),
-				end: new Date(2013, 11, 29),
+				location: {
+					name: "Sea Cove Resort & Marina",
+					address: "12685 Overseas Hwy, Marathon, FL 33050, USA",
+					url: "floatingrooms.com",
+					position: [24.731552, -81.014646],
+				},
+				start: { year: 2013, month: Dec, day: 28 },
+				end: { year: 2013, month: Dec, day: 29 },
 			},
 			{
-				name: "Miami Beach Resort & Spa",
-				address: "4833 Collins Ave, Miami Beach, FL 33140, USA",
-				url: "http://www.miamibeachresortandspa.com",
-				position: new google.maps.LatLng(25.823999,-80.121621),
-				start: new Date(2013, 11, 29),
-				end: new Date(2013, 11, 30),
+				location: {
+					name: "Miami Beach Resort & Spa",
+					address: "4833 Collins Ave, Miami Beach, FL 33140, USA",
+					url: "miamibeachresortandspa.com",
+					position: [25.823999, -80.121621],
+				},
+				start: { year: 2013, month: Dec, day: 29 },
+				end: { year: 2013, month: Dec, day: 30 },
 			},
 			{
-				name: "Starlite Hotel",
-				address: "750 Ocean Dr, Miami Beach, FL 33139, USA",
-				url: "http://www.starlitehotel.com",
-				position: new google.maps.LatLng(25.777653,-80.13132),
-				start: new Date(2013, 11, 30),
-				end: new Date(2014, 0, 1),
+				location: {
+					name: "Starlite Hotel",
+					address: "750 Ocean Dr, Miami Beach, FL 33139, USA",
+					url: "starlitehotel.com",
+					position: [25.777653, -80.13132],
+				},
+				start: { year: 2013, month: Dec, day: 30 },
+				end: { year: 2014, month: Jan, day: 1 },
 			},
 			{
-				name: "Billie Swamp Safari",
-				address: "30000 Gator Tail Trl., Clewiston, FL 33440, USA",
-				url: "http://www.billieswamp.com",
-				position: new google.maps.LatLng(26.331288,-81.054107),
-				start: new Date(2014, 0, 1),
-				end: new Date(2014, 0, 2),
+				location: {
+					name: "Billie Swamp Safari",
+					address: "30000 Gator Tail Trl., Clewiston, FL 33440, USA",
+					url: "billieswamp.com",
+					position: [26.331288, -81.054107],
+				},
+				start: { year: 2014, month: Jan, day: 1 },
+				end: { year: 2014, month: Jan, day: 2 },
 			},
 			{
-				name: "Sunset Beach Inn",
-				address: "3287 W Gulf Dr, Sanibel, FL 33957, USA",
-				url: "http://www.theinnsofsanibel.com/sunsetbeach",
-				position: new google.maps.LatLng(26.426943,-82.100662),
-				start: new Date(2014, 0, 2),
-				end: new Date(2014, 0, 4),
+				location: {
+					name: "Sunset Beach Inn",
+					address: "3287 W Gulf Dr, Sanibel, FL 33957, USA",
+					url: "theinnsofsanibel.com/sunsetbeach",
+					position: [26.426943, -82.100662],
+				},
+				start: { year: 2014, month: Jan, day: 2 },
+				end: { year: 2014, month: Jan, day: 4 },
 			},
 			{
-				name: "Loews Royal Pacific Resort",
-				address: "6300 Hollywood Way, Orlando, FL 32819, USA",
-				url: "http://www.loewshotels.com/Royal-Pacific-Resort",
-				position: new google.maps.LatLng(28.031702,-81.945952),
-				start: new Date(2014, 0, 4),
-				end: new Date(2014, 0, 8),
+				location: {
+					name: "Loews Royal Pacific Resort",
+					address: "6300 Hollywood Way, Orlando, FL 32819, USA",
+					url: "loewshotels.com/Royal-Pacific-Resort",
+					position: [28.031702, -81.945952],
+				},
+				start: { year: 2014, month: Jan, day: 4 },
+				end: { year: 2014, month: Jan, day: 8 },
 			},
 			{
-				name: "Residence Inn",
-				address: "1350 N Ocean Blvd, Pompano Beach, FL 33062, USA",
-				url: "http://www.marriott.com/hotels/travel/fllpb-residence-inn-fort-lauderdale-pompano-beach-oceanfront",
-				position: new google.maps.LatLng(26.250122, -80.086108),
-				start: new Date(2014, 0, 8),
-				end: new Date(2014, 0, 10),
+				location: {
+					name: "Residence Inn",
+					address: "1350 N Ocean Blvd, Pompano Beach, FL 33062, USA",
+					url: "marriott.com/hotels/travel/fllpb-residence-inn-fort-lauderdale-pompano-beach-oceanfront",
+					position: [26.250122, -80.086108],
+				},
+				start: { year: 2014, month: Jan, day: 8 },
+				end: { year: 2014, month: Jan, day: 10 },
 			},
 		]
 	},
 	{
-		name: "Mullsjö (Mammas födelsedag)",
-		start: new Date(2014, 2, 21),
-		end: new Date(2014, 2, 23),
-		locations: [
+		name: "Mullsjö (Jannikes födelsedag)",
+		start: { year: 2014, month: Mar, day: 21 },
+		end: { year: 2014, month: Mar, day: 23 },
+		stops: [
 			{
-				name: "Hotell Mullsjö",
-				address: "Sjövägen, 565 32 Mullsjö",
-				url: "mullsjohotell.se",
-				position: new google.maps.LatLng(57.904073, 13.872609),
-				start: new Date(2014, 2, 21),
-				end: new Date(2014, 2, 23),
+				location: {
+					name: "Hotell Mullsjö",
+					address: "Sjövägen, 565 32 Mullsjö",
+					url: "mullsjohotell.se",
+					position: [57.904073, 13.872609],
+				},
 			},
 		]
 	},
 	{
 		name: "Berlin över påsk",
-		start: new Date(2014, 3, 18),
-		end: new Date(2014, 3, 21),
-		locations: [
+		start: { year: 2014, month: Apr, day: 18 },
+		end: { year: 2014, month: Apr, day: 21 },
+		stops: [
 			{
-				name: "Hotel Casa Camper Berlin",
-				address: "Weinmeisterstraße 1, 10178 Berlin, Tyskland",
-				url: "casacamper.com",
-				position: new google.maps.LatLng(52.525731, 13.404111),
-				start: new Date(2014, 3, 18),
-				end: new Date(2014, 3, 21),
+				location: {
+					name: "Hotel Casa Camper Berlin",
+					address: "Weinmeisterstraße 1, 10178 Berlin, Tyskland",
+					url: "casacamper.com",
+					position: [52.525731, 13.404111],
+				},
 			},
 		]
 	},
 	{
 		name: "Köpenhamn",
-		start: new Date(2014, 5, 5),
-		end: new Date(2014, 5, 8),
-		locations: [
+		start: { year: 2014, month: Jun, day: 5 },
+		end: { year: 2014, month: Jun, day: 8 },
+		stops: [
 			{
-				name: "71 Nyhavn Hotel",
-				address: "Nyhavn 71, 1051 København K, Danmark",
-				url: "71nyhavnhotel.dk",
-				position: new google.maps.LatLng(55.679258, 12.593846),
-				start: new Date(2014, 5, 5),
-				end: new Date(2014, 5, 8),
+				location: {
+					name: "71 Nyhavn Hotel",
+					address: "Nyhavn 71, 1051 København K, Danmark",
+					url: "71nyhavnhotel.dk",
+					position: [55.679258, 12.593846],
+				},
 			},
 		]
 	},
 	{
 		name: "Midsommarfirande hos familjen Björnström",
-		start: new Date(2014, 5, 20),
-		end: new Date(2014, 5, 22),
-		locations: [
+		start: { year: 2014, month: Jun, day: 20 },
+		end: { year: 2014, month: Jun, day: 22 },
+		stops: [
 			{
-				name: "Hotel Djingis Khan",
-				address: "Margaretavägen 7, 222 40 Lund",
-				url: "djingiskhan.se",
-				position: new google.maps.LatLng(55.719523, 13.194838),
-				start: new Date(2014, 5, 20),
-				end: new Date(2014, 5, 21),
+				location: {
+					name: "Hotel Djingis Khan",
+					address: "Margaretavägen 7, 222 40 Lund",
+					url: "djingiskhan.se",
+					position: [55.719523, 13.194838],
+				},
+				start: { year: 2014, month: Jun, day: 20 },
+				end: { year: 2014, month: Jun, day: 21 },
 			},
 			{
-				name: "Scandic S:t Jörgen",
-				address: "Stora Nygatan 35, 211 37 Malmö",
-				url: "scandichotels.com",
-				position: new google.maps.LatLng(55.603494, 13.001593),
-				start: new Date(2014, 5, 21),
-				end: new Date(2014, 5, 22),
+				location: {
+					name: "Scandic S:t Jörgen",
+					address: "Stora Nygatan 35, 211 37 Malmö",
+					url: "scandichotels.com",
+					position: [55.603494, 13.001593],
+				},
+				start: { year: 2014, month: Jun, day: 21 },
+				end: { year: 2014, month: Jun, day: 22 },
 			},
 		]
 	},
 	{
 		name: "Varberg (Hallifornia)",
-		start: new Date(2014, 6, 16),
-		end: new Date(2014, 6, 18),
-		locations: [
+		start: { year: 2014, month: Jul, day: 16 },
+		end: { year: 2014, month: Jul, day: 18 },
+		stops: [
 			{
-				name: "Hotell Gästis",
-				address: "Borgmästaregatan 1, 432 41 Varberg",
-				url: "hotellgastis.nu",
-				position: new google.maps.LatLng(57.107145, 12.249027),
-				start: new Date(2014, 6, 16),
-				end: new Date(2014, 6, 18),
+				location: {
+					name: "Hotell Gästis",
+					address: "Borgmästaregatan 1, 432 41 Varberg",
+					url: "hotellgastis.nu",
+					position: [57.107145, 12.249027],
+				},
 			},
 		]
 	},
 	{
 		name: "Mallorca",
-		start: new Date(2014, 6, 23),
-		end: new Date(2014, 7, 1),
-		locations: [
+		start: { year: 2014, month: Jul, day: 23 },
+		end: { year: 2014, month: Aug, day: 1 },
+		stops: [
 			{
-				name: "HM Tropical",
-				address: "Carrer de Marbella, 16, 07610 Palma, Illes Balears, Spanien",
-				url: "hmtropical.com",
-				position: new google.maps.LatLng(39.528068, 2.732143),
-				start: new Date(2014, 6, 23),
-				end: new Date(2014, 7, 1),
+				location: {
+					name: "HM Tropical",
+					address: "Carrer de Marbella, 16, 07610 Palma, Illes Balears, Spanien",
+					url: "hmtropical.com",
+					position: [39.528068, 2.732143],
+				},
 			},
 		]
 	},
 	{
 		name: "Småland med hyrd husbil",
-		start: new Date(2014, 8, 5),
-		end: new Date(2014, 8, 7),
-		locations: [
+		start: { year: 2014, month: Sep, day: 5 },
+		end: { year: 2014, month: Sep, day: 7 },
+		stops: [
 			{
-				name: "Paula och Jan-Åke",
-				address: "Kristdalavägen 12, 577 90 Hultsfred, Sverige",
-				url: "",
-				position: new google.maps.LatLng(57.520684, 15.971086),
-				start: new Date(2014, 8, 5),
-				end: new Date(2014, 8, 6)
+				location: {
+					name: "Paula och Jan-Åke",
+					address: "Kristdalavägen 12, 577 90 Hultsfred, Sverige",
+					url: "",
+					position: [57.520684, 15.971086],
+				},
+				start: { year: 2014, month: Sep, day: 5 },
+				end: { year: 2014, month: Sep, day: 6 },
 			},
 			{
-				name: "Chris och Anna",
-				address: "Fredsgatan 1, 598 35 Vimmerby, Sverige",
-				url: "",
-				position: new google.maps.LatLng(57.673178, 15.866224),
-				start: new Date(2014, 8, 6),
-				end: new Date(2014, 8, 7)
+				location: {
+					name: "Chris och Anna",
+					address: "Fredsgatan 1, 598 35 Vimmerby, Sverige",
+					url: "",
+					position: [57.673178, 15.866224],
+				},
+				start: { year: 2014, month: Sep, day: 6 },
+				end: { year: 2014, month: Sep, day: 7 },
 			},
 		]
 	},
 	{
 		name: "Legoland",
-		start: new Date(2014, 8, 18),
-		end: new Date(2014, 8, 21),
-		locations: [
+		start: { year: 2014, month: Sep, day: 18 },
+		end: { year: 2014, month: Sep, day: 21 },
+		stops: [
 			{
-				name: "Lalandia",
-				address: "Ellehammers Alle 3, 7190 Billund, Danmark",
-				url: "lalandia.dk",
-				position: new google.maps.LatLng(55.733272, 9.138306),
-				start: new Date(2014, 8, 18),
-				end: new Date(2014, 8, 21),
+				location: {
+					name: "Lalandia",
+					address: "Ellehammers Alle 3, 7190 Billund, Danmark",
+					url: "lalandia.dk",
+					position: [55.733272, 9.138306],
+				},
 			},
 		]
 	},
 	{
 		name: "Teneriffa över jul",
-		start: new Date(2014, 11, 16),
-		end: new Date(2014, 11, 28),
-		locations: [
+		start: { year: 2014, month: Dec, day: 16 },
+		end: { year: 2014, month: Dec, day: 28 },
+		stops: [
 			{
-				name: "Hotel Taburiente Tenerife",
-				address: "Calle Dr. Jose Naveiras, 24A, 38001 Santa Cruz de Tenerife, Spanien",
-				url: "hoteltaburiente.com",
-				position: new google.maps.LatLng(28.473424, -16.253059),
-				start: new Date(2014, 11, 16),
-				end: new Date(2014, 11, 18),
+				location: {
+					name: "Hotel Taburiente Tenerife",
+					address: "Calle Dr. Jose Naveiras, 24A, 38001 Santa Cruz de Tenerife, Spanien",
+					url: "hoteltaburiente.com",
+					position: [28.473424, -16.253059],
+				},
+				start: { year: 2014, month: Dec, day: 16 },
+				end: { year: 2014, month: Dec, day: 18 },
 			},
 			{
-				name: "Hotel ValleMar",
-				address: "Av de Colón, 4, 38400 Puerto de la Cruz, Santa Cruz de Tenerife, Spanien",
-				url: "hotelvallemar.com",
-				position: new google.maps.LatLng(28.417952, -16.544375),
-				start: new Date(2014, 11, 18),
-				end: new Date(2014, 11, 20),
+				location: {
+					name: "Hotel ValleMar",
+					address: "Av de Colón, 4, 38400 Puerto de la Cruz, Santa Cruz de Tenerife, Spanien",
+					url: "hotelvallemar.com",
+					position: [28.417952, -16.544375],
+				},
+				start: { year: 2014, month: Dec, day: 18 },
+				end: { year: 2014, month: Dec, day: 20 },
 			},
 			{
-				name: "Sandos San Blas Nature Resort & Golf",
-				address: "Urbanización San Blas, Av. de Greñamora, 1, 38639, Santa Cruz de Tenerife, Spanien",
-				url: "sandos.com",
-				position: new google.maps.LatLng(28.030330, -16.598563),
-				start: new Date(2014, 11, 20),
-				end: new Date(2014, 11, 23),
+				location: {
+					name: "Sandos San Blas Nature Resort & Golf",
+					address: "Urbanización San Blas, Av. de Greñamora, 1, 38639, Santa Cruz de Tenerife, Spanien",
+					url: "sandos.com",
+					position: [28.030330, -16.598563],
+				},
+				start: { year: 2014, month: Dec, day: 20 },
+				end: { year: 2014, month: Dec, day: 23 },
 			},
 			{
-				name: "Sunset View Club",
-				address: "Calle San Blas, s/n, 38639 Golf del Sur, 38620 Santa Cruz, Spanien",
-				url: "diamondresortsandhotels.com",
-				position: new google.maps.LatLng(28.028796, -16.602190),
-				start: new Date(2014, 11, 23),
-				end: new Date(2014, 11, 27),
+				location: {
+					name: "Sunset View Club",
+					address: "Calle San Blas, s/n, 38639 Golf del Sur, 38620 Santa Cruz, Spanien",
+					url: "diamondresortsandhotels.com",
+					position: [28.028796, -16.602190],
+				},
+				start: { year: 2014, month: Dec, day: 23 },
+				end: { year: 2014, month: Dec, day: 27 },
 			},
 			{
-				name: "Chayofa Country Club",
-				address: "Urbanización Chayofa, Calle El Morro, 2, 38652 Arona, Santa Cruz de Tenerife, Santa Cruz de Tenerife, Spanien",
-				url: "chayofacountryclub.co.uk",
-				position: new google.maps.LatLng(28.074182, -16.691996),
-				start: new Date(2014, 11, 27),
-				end: new Date(2014, 11, 28),
+				location: {
+					name: "Chayofa Country Club",
+					address: "Urbanización Chayofa, Calle El Morro, 2, 38652 Arona, Santa Cruz de Tenerife, Santa Cruz de Tenerife, Spanien",
+					url: "chayofacountryclub.co.uk",
+					position: [28.074182, -16.691996],
+				},
+				start: { year: 2014, month: Dec, day: 27 },
+				end: { year: 2014, month: Dec, day: 28 },
 			},
 		]
 	},
 	{
 		name: "Hamburg över påsk",
-		start: new Date(2015, 3, 3),
-		end: new Date(2015, 3, 6),
-		locations: [
+		start: { year: 2015, month: Apr, day: 3 },
+		end: { year: 2015, month: Apr, day: 6 },
+		stops: [
 			{
-				name: "Hamburg Marriott Hotel",
-				address: "ABC-Straße 52, 20354 Hamburg, Tyskland",
-				url: "marriott.com",
-				position: new google.maps.LatLng(53.554634, 9.987093),
-				start: new Date(2015, 3, 3),
-				end: new Date(2015, 3, 6),
+				location: {
+					name: "Hamburg Marriott Hotel",
+					address: "ABC-Straße 52, 20354 Hamburg, Tyskland",
+					url: "marriott.com",
+					position: [53.554634, 9.987093],
+				},
 			},
 		]
 	},
 	{
-		name: "Varberg med Farmor och Farfar",
-		start: new Date(2015, 3, 24),
-		end: new Date(2015, 3, 26),
-		locations: [
+		name: "Varberg med Karin och Bengt",
+		start: { year: 2015, month: Apr, day: 24 },
+		end: { year: 2015, month: Apr, day: 26 },
+		stops: [
 			{
-				name: "Apelvikens Camping",
-				address: "Sanatorievägen 4, 432 53 Varberg",
-				url: "apelviken.se",
-				position: new google.maps.LatLng(57.085433, 12.246959),
-				start: new Date(2015, 3, 24),
-				end: new Date(2015, 3, 26),
+				location: {
+					name: "Apelvikens Camping",
+					address: "Sanatorievägen 4, 432 53 Varberg",
+					url: "apelviken.se",
+					position: [57.085433, 12.246959],
+				},
 			},
 		]
 	},
 	{
-		name: "Köpenhamn med Mamma",
-		start: new Date(2015, 4, 1),
-		end: new Date(2015, 4, 3),
-		locations: [
+		name: "Köpenhamn",
+		start: { year: 2015, month: May, day: 1 },
+		end: { year: 2015, month: May, day: 3 },
+		people: [Jannike, Aston],
+		stops: [
 			{
-				name: "Tivoli Hotel & Congress Center",
-				address: "Arni Magnussons Gade 2, 1577 København V, Danmark",
-				url: "tivolihotel.dk",
-				position: new google.maps.LatLng(55.666490, 12.566188),
-				start: new Date(2015, 4, 1),
-				end: new Date(2015, 4, 3),
+				location: {
+					name: "Tivoli Hotel & Congress Center",
+					address: "Arni Magnussons Gade 2, 1577 København V, Danmark",
+					url: "tivolihotel.dk",
+					position: [55.666490, 12.566188],
+				},
 			},
 		]
 	},
 	{
 		name: "Småland och Öland",
-		start: new Date(2015, 4, 13),
-		end: new Date(2015, 4, 17),
-		locations: [
+		start: { year: 2015, month: May, day: 13 },
+		end: { year: 2015, month: May, day: 17 },
+		stops: [
 			{
-				name: "Vox Hotel",
-				address: "Lantmätargränd 2C, 553 20 Jönköping",
-				url: "voxhotel.se",
-				position: new google.maps.LatLng(57.782923, 14.173167),
-				start: new Date(2015, 4, 13),
-				end: new Date(2015, 4, 14),
+				location: {
+					name: "Vox Hotel",
+					address: "Lantmätargränd 2C, 553 20 Jönköping",
+					url: "voxhotel.se",
+					position: [57.782923, 14.173167],
+				},
+				start: { year: 2015, month: May, day: 13 },
+				end: { year: 2015, month: May, day: 14 },
 			},
 			{
-				name: "First Hotel Witt Kalmar",
-				address: "Södra Långgatan 42, 392 31 Kalmar",
-				url: "firsthotels.se",
-				position: new google.maps.LatLng(56.663808, 16.367413),
-				start: new Date(2015, 4, 14),
-				end: new Date(2015, 4, 15),
+				location: {
+					name: "First Hotel Witt Kalmar",
+					address: "Södra Långgatan 42, 392 31 Kalmar",
+					url: "firsthotels.se",
+					position: [56.663808, 16.367413],
+				},
+				start: { year: 2015, month: May, day: 14 },
+				end: { year: 2015, month: May, day: 15 },
 			},
 			{
-				name: "Strand Hotell Borgholm",
-				address: "Villagatan 4, 387 32 Borgholm",
-				url: "strandborgholm.se",
-				position: new google.maps.LatLng(56.878706, 16.647622),
-				start: new Date(2015, 4, 15),
-				end: new Date(2015, 4, 16),
+				location: {
+					name: "Strand Hotell Borgholm",
+					address: "Villagatan 4, 387 32 Borgholm",
+					url: "strandborgholm.se",
+					position: [56.878706, 16.647622],
+				},
+				start: { year: 2015, month: May, day: 15 },
+				end: { year: 2015, month: May, day: 16 },
 			},
 			{
-				name: "Scandic Växjö",
-				address: "Hejaregatan 19, 352 46 Växjö",
-				url: "scandichotel.se",
-				position: new google.maps.LatLng(56.884012, 14.760521),
-				start: new Date(2015, 4, 16),
-				end: new Date(2015, 4, 17),
+				location: {
+					name: "Scandic Växjö",
+					address: "Hejaregatan 19, 352 46 Växjö",
+					url: "scandichotel.se",
+					position: [56.884012, 14.760521],
+				},
+				start: { year: 2015, month: May, day: 16 },
+				end: { year: 2015, month: May, day: 17 },
 			},
 		]
 	},
-	{
+	/*{
 		name: "Europa med bil (Frankrike med Essungers)",
 		start: new Date(2015, 6, 4),
 		end: new Date(2016, 6, 28),
@@ -3127,21 +3121,170 @@ export const trips : Trip[] = [
 				end: new Date(2023, 11, 29)
 			},
 		]
-	},
+	},*/
 	{
-		name: "Skidresa, Österrike",
-		start: new Date(2024, 2, 31),
-		end: new Date(2024, 3, 8),
-		locations: [
+		name: "Skidresa, Sölden över påsk",
+		start: { year: 2024, month: Mar, day: 31 },
+		end: { year: 2024, month: Apr, day: 8 },
+		stops: [
 			{
-				name: "Hotel Bäckelar Wirt",
-				address: "Dorfstraße 125, 6450 Sölden, Österrike",
-				url: "https://www.baeckelarwirt-soelden.at",
-				position: new google.maps.LatLng(46.95862239431298, 11.01003896060611),
-				start: new Date(2024, 3, 1),
-				end: new Date(2024, 3, 7)
+				location: {
+					name: "Hotel Bäckelar Wirt",
+					address: "Dorfstraße 125, 6450 Sölden, Österrike",
+					url: "https://www.baeckelarwirt-soelden.at",
+					position: [46.95862239431298, 11.01003896060611],
+				},
+				start: { year: 2024, month: Apr, day: 1 },
+				end: { year: 2024, month: Apr, day: 7 }
 			},
 		]
 	},
-	*/
+	{
+		name: "Europaresa med husbilen",
+		start: { year: 2024, month: Jul, day: 12 },
+		end: { year: 2024, month: Aug, day: 10 },
+		stops: [
+			{
+				location: {
+					name: "Wellness-Rheinpark-Camping Bad Hönningen",
+					address: "Allee St.Pierre Les Nemours 1, 53557 Bad Hönningen, Tyskland",
+					url: "http://www.wellness-rheinpark-camping.de/",
+					position: [50.50897008315918, 7.309644488712306],
+				},
+				start: { year: 2024, month: Jul, day: 13 },
+				end: { year: 2024, month: Jul, day: 14 }
+			},
+			{
+				location: {
+					name: "Knaus Campingpark Bernkastel-Kues",
+					address: "Am Hafen 2, 54470 Bernkastel-Kues, Tyskland",
+					url: "http://www.knauscamp.de/",
+					position: [49.90778811439937, 7.057462337120981],
+				},
+				start: { year: 2024, month: Jul, day: 14 },
+				end: { year: 2024, month: Jul, day: 15 }
+			},
+			{
+				location: {
+					name: "Champagne Felix Des Lys",
+					address: "4 Rue Principale, 51700 Champvoisy, Frankrike",
+					url: "http://www.champagnefelixdeslys.com/",
+					position: [49.12180802062872, 3.633801249970427],
+				},
+				start: { year: 2024, month: Jul, day: 15 },
+				end: { year: 2024, month: Jul, day: 16 }
+			},
+			{
+				location: {
+					name: "Camping de Paris",
+					address: "2 Allée du Bord de l'Eau, 75016 Paris, Frankrike",
+					url: "campingparis.fr",
+					position: [48.8695916527174, 2.236517428163089],
+				},
+				start: { year: 2024, month: Jul, day: 16 },
+				end: { year: 2024, month: Jul, day: 19 }
+			},
+			{
+				location: {
+					name: "Nantes Camping",
+					address: "21 Bd du Petit Port, 44300 Nantes, Frankrike",
+					url: "https://www.nantes-camping.fr/",
+					position: [47.24304554955478, -1.5606320267555718],
+				},
+				start: { year: 2024, month: Jul, day: 19 },
+				end: { year: 2024, month: Jul, day: 20 }
+			},
+			{
+				location: {
+					name: "Camping Le Cadoret",
+					address: "Bd de Chaterny, 17450 Fouras, Frankrike",
+					url: "http://www.campings-fouras.com/camping-le-cadoret-fouras.php",
+					position: [45.9939141160536, -1.0860548968953934],
+				},
+				start: { year: 2024, month: Jul, day: 20 },
+				end: { year: 2024, month: Jul, day: 22 }
+			},
+			{
+				location: {
+					name: "Camping de mon Village (Aire Camping-Car Park)",
+					address: "7 Rue Lurien, 64260 Buzy, Frankrike",
+					url: "https://www.campingcarpark.com/fr_FR/sejour/camping/nouvelle-aquitaine/64-pyrenees-atlantiques/buzy",
+					position: [43.124610881393636, -0.46206748060741937],
+				},
+				start: { year: 2024, month: Jul, day: 22 },
+				end: { year: 2024, month: Jul, day: 23 }
+			},
+			{
+				location: {
+					name: "Camping Bellavista",
+					address: "Mequinenza, Spanien",
+					url: "",
+					position: [41.37684119767618, 0.3143143447423806],
+				},
+				start: { year: 2024, month: Jul, day: 23 },
+				end: { year: 2024, month: Jul, day: 24 }
+			},
+			{
+				location: {
+					name: "Camping 3 Estrellas",
+					address: "C-31, km 186,2, 08850, Barcelona, Spanien",
+					url: "http://tresestrellascampings.com/barcelona",
+					position: [41.270423081619896, 2.0433536830521275],
+				},
+				start: { year: 2024, month: Jul, day: 24 },
+				end: { year: 2024, month: Jul, day: 27 }
+			},
+			{
+				location: {
+					name: "Camping l'Enclave",
+					address: "Carrer dels, 2 Els Vinyals, 66800 Estavar, Frankrike",
+					url: "http://www.camping-lenclave.com/",
+					position: [42.47059409395558, 2.003096894805335],
+				},
+				start: { year: 2024, month: Jul, day: 27 },
+				end: { year: 2024, month: Jul, day: 29 }
+			},
+			{
+				location: {
+					name: "Camping FUN",
+					address: "Croix du Bayle, 11510 Fitou, Frankrike",
+					url: "http://www.lefun-camping.com/",
+					position: [42.914664294200236, 3.0008771237697536],
+				},
+				start: { year: 2024, month: Jul, day: 29 },
+				end: { year: 2024, month: Jul, day: 30 }
+			},
+			{
+				location: {
+					name: "Camping Lou Souleï",
+					address: "76 Av. Draio de la Mar, 13620 Carry-le-Rouet, Frankrike",
+					url: "https://www.lousoulei.com/",
+					position: [43.33267032484824, 5.136369068063109],
+				},
+				start: { year: 2024, month: Jul, day: 30 },
+				end: { year: 2024, month: Jul, day: 31 }
+			},
+			{
+				location: {
+					name: "Campeggio Camper il Pozzo",
+					address: "Via Gaetano Salvemini, 18017 San Lorenzo al Mare IM, Italien",
+					url: "http://www.campeggioilpozzo.it/",
+					position: [43.85519684321393, 7.960414219511584],
+				},
+				start: { year: 2024, month: Jul, day: 31 },
+				end: { year: 2024, month: Aug, day: 1 }
+			},
+			{
+				location: {
+					name: "La Rocca Camping Village",
+					address: "Via Gardesana dell'Acqua, 37, 37011 Bardolino VR, Italien",
+					url: "https://www.campinglarocca.com/",
+					position: [45.5646635972039, 10.712020624126094],
+				},
+				start: { year: 2024, month: Aug, day: 1 },
+				end: { year: 2024, month: Aug, day: 4 }
+			},
+
+		]
+	},
 ]

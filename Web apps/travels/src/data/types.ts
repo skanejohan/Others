@@ -13,8 +13,8 @@ export interface Location {
 
 export interface Stop {
     location: Location;
-    start: Date;
-    end: Date;
+    start?: Date;
+    end?: Date;
 }
 
 export interface Trip {
@@ -22,7 +22,7 @@ export interface Trip {
     start: Date;
     end: Date;
     stops: Stop[];
-    people: (typeof Johan | typeof Jannike | typeof Aston)[];
+    people?: (typeof Johan | typeof Jannike | typeof Aston)[];
 }
 
 export const Johan = "Johan";
