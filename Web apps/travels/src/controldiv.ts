@@ -11,6 +11,12 @@ export default class ControlDiv extends L.Control {
     participantSelect!: HTMLSelectElement;
     showMarkersCheckbox!: HTMLInputElement;
     showPathsCheckbox!: HTMLInputElement;
+   
+    initialize() {
+        for (let i = 0; i < trips.length; i++) {
+            trips[i].id = i.toString();
+        }
+    }
 
     // Determines which trips to display, given the selected participants. This list is used to filter the "trips" selector.
     private participantsPredicate() : (trip: Trip) => boolean {
@@ -27,18 +33,19 @@ export default class ControlDiv extends L.Control {
         if (this.tripSelect.value === "Alla") {
             return this.participantsPredicate();
         }
-        return t => t.name === this.tripSelect.value;
+        return t => (t.id !== undefined) && (t.id === this.tripSelect.value);
     }
 
-    private addOption(text: string, select: HTMLSelectElement) {
+    private addOption(text: string, value: any, select: HTMLSelectElement) {
         let opt = L.DomUtil.create('option', undefined, select);
+        opt.value = value;
         opt.text = text;
     }
 
     private selectTrips() {
         this.tripSelect.innerHTML = ""; // Clear existing options
-        this.addOption("Alla", this.tripSelect);
-        trips.filter(this.participantsPredicate()).reverse().map(t => this.addOption(t.name, this.tripSelect));
+        this.addOption("Alla", "Alla", this.tripSelect);
+        trips.filter(this.participantsPredicate()).reverse().map(t => this.addOption(t.name, t.id, this.tripSelect));
     }
 
     render() {
@@ -64,10 +71,10 @@ export default class ControlDiv extends L.Control {
         this.div = L.DomUtil.create('div');
 
         this.participantSelect = L.DomUtil.create('select', undefined, this.div);
-        this.addOption("Alla", this.participantSelect);
-        this.addOption(Johan, this.participantSelect);
-        this.addOption(Jannike, this.participantSelect);
-        this.addOption(Aston, this.participantSelect);
+        this.addOption("Alla", undefined, this.participantSelect);
+        this.addOption(Johan, undefined, this.participantSelect);
+        this.addOption(Jannike, undefined, this.participantSelect);
+        this.addOption(Aston, undefined, this.participantSelect);
 
         this.tripSelect = L.DomUtil.create('select', "header-margin-left", this.div);
         this.selectTrips();

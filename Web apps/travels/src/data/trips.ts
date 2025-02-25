@@ -1,4 +1,32 @@
-import { Aston, Jannike, Johan, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec, Trip } from "./types";
+import { Aston, Jannike, Johan, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec, Trip, Location } from "./types";
+
+const KielGoteborg : Location = {
+	name: "Färja Kiel-Göteborg",
+	address: "",
+	url: "",
+	position: [56.698964629410995, 11.303899837409976],
+};
+
+const GoteborgKiel : Location = {
+	name: "Färja Göteborg-Kiel",
+	address: "",
+	url: "",
+	position: [55.059714887215065, 11.023218474429443],
+};
+
+const TrelleborgRostock : Location = {
+	name: "Färja Trelleborg-Rostock",
+	address: "",
+	url: "",
+	position: [54.68586985763149, 12.250699267896799],
+};
+
+const RostockTrelleborg : Location = {
+	name: "Färja Rostock-Trelleborg",
+	address: "",
+	url: "",
+	position: [55.03353835434692, 12.82881067815772],
+};
 
 export const trips : Trip[] = [
 	{
@@ -1894,12 +1922,7 @@ export const trips : Trip[] = [
 		end: { year: 2018, month: Aug, day: 5 },
 		stops: [
 			{
-				location: {
-					name: "Kielfärjan",
-					address: "",
-					url: "stena.se",
-					position: [56.431173, 11.349044],
-				},
+				location: GoteborgKiel,
 				start: { year: 2018, month: Jul, day: 6 },
 				end: { year: 2018, month: Jul, day: 7 },
 			},
@@ -3480,22 +3503,34 @@ export const trips : Trip[] = [
 				end: new Date(2023, 6, 19)
 			},
 		]
-	},
+	},*/
 	{
-		name: "Skidresa, Österrike",
-		start: new Date(2023, 11, 22),
-		end: new Date(2023, 11, 30),
+		name: "Skidresa, Saalbach",
+		start: { year: 2023, month: Dec, day: 22 },
+		end: { year: 2023, month: Dec, day: 30 },
 		stops: [
 			{
-				name: "Pension Wallner",
-				address: "Oberdorf 153, 5753 Saalbach, Österrike",
-				url: "https://www.pension-saalbach.com/",
-				position: [47.393030786128215, 12.636378593152392),
-				start: new Date(2023, 11, 23),
-				end: new Date(2023, 11, 29)
+				location: TrelleborgRostock,
+				start: { year: 2023, month: Dec, day: 22 },
+				end: { year: 2023, month: Dec, day: 23 }
+			},
+			{
+				location: {
+					name: "Pension Wallner",
+					address: "Oberdorf 153, 5753 Saalbach, Österrike",
+					url: "https://www.pension-saalbach.com/",
+					position: [47.393030786128215, 12.636378593152392],
+				},
+				start: { year: 2023, month: Dec, day: 23 },
+				end: { year: 2023, month: Dec, day: 29 }
+			},
+			{
+				location: RostockTrelleborg,
+				start: { year: 2023, month: Dec, day: 29 },
+				end: { year: 2023, month: Dec, day: 30 }
 			},
 		]
-	},*/
+	},
 	{
 		name: "Mauritius med Richard, Jessica och Wilhelm",
 		start: { year: 2024, month: Feb, day: undefined },
@@ -3533,6 +3568,11 @@ export const trips : Trip[] = [
 		end: { year: 2024, month: Apr, day: 8 },
 		stops: [
 			{
+				location: TrelleborgRostock,
+				start: { year: 2024, month: Mar, day: 31 },
+				end: { year: 2024, month: Apr, day: 1 }
+			},
+			{
 				location: {
 					name: "Hotel Bäckelar Wirt",
 					address: "Dorfstraße 125, 6450 Sölden, Österrike",
@@ -3541,6 +3581,11 @@ export const trips : Trip[] = [
 				},
 				start: { year: 2024, month: Apr, day: 1 },
 				end: { year: 2024, month: Apr, day: 7 }
+			},
+			{
+				location: RostockTrelleborg,
+				start: { year: 2024, month: Apr, day: 7 },
+				end: { year: 2024, month: Apr, day: 8 }
 			},
 		]
 	},
@@ -3564,6 +3609,11 @@ export const trips : Trip[] = [
 		start: { year: 2024, month: Jul, day: 12 },
 		end: { year: 2024, month: Aug, day: 10 },
 		stops: [
+			{
+				location: KielGoteborg,
+				start: { year: 2024, month: Jul, day: 12 },
+				end: { year: 2024, month: Jul, day: 13 }
+			},
 			{
 				location: {
 					name: "Wellness-Rheinpark-Camping Bad Hönningen",
@@ -3744,6 +3794,11 @@ export const trips : Trip[] = [
 				start: { year: 2024, month: Aug, day: 8 },
 				end: { year: 2024, month: Aug, day: 9 }
 			},
+			{
+				location: RostockTrelleborg,
+				start: { year: 2024, month: Aug, day: 9 },
+				end: { year: 2024, month: Aug, day: 10 }
+			},
 		]
 	},
 	{
@@ -3768,6 +3823,11 @@ export const trips : Trip[] = [
 		end: { year: 2024, month: Dec, day: 28 },
 		stops: [
 			{
+				location: TrelleborgRostock,
+				start: { year: 2024, month: Dec, day: 20 },
+				end: { year: 2024, month: Dec, day: 21 }
+			},
+			{
 				location: {
 					name: "Pension Götschlhof",
 					address: "Rohrmoosstraße 54, 8971 Schladming, Österrike",
@@ -3776,6 +3836,11 @@ export const trips : Trip[] = [
 				},
 				start: { year: 2024, month: Dec, day: 21 },
 				end: { year: 2024, month: Dec, day: 27 }
+			},
+			{
+				location: RostockTrelleborg,
+				start: { year: 2024, month: Dec, day: 27 },
+				end: { year: 2024, month: Dec, day: 28 }
 			},
 		]
 	},

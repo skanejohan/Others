@@ -17,6 +17,7 @@ map.setView([57.692851143117124, 11.950782888463818], 7);
 tileLayer.addTo(map);
 
 let controlDiv = new ControlDiv({ position: 'topright' }).addTo(map);
+controlDiv.initialize();
 controlDiv.render();
 
 map.addEventListener('resize', () => controlDiv.setVisibility(map.getSize().x > 600));

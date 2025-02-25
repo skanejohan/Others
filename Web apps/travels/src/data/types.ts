@@ -18,6 +18,7 @@ export interface Stop {
 }
 
 export interface Trip {
+    id?: string;
     name: string;
     start: Date;
     end: Date;
