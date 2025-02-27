@@ -1,12 +1,13 @@
 import * as L from 'leaflet';
 import { trips } from './data/trips';
 import { renderTrips } from './render';
-import { Aston, Jannike, Johan, Trip } from './data/types';
+import { Aston, Jannike, Johan, Participant, Trip } from './data/types';
 
 export default class ControlDiv extends L.Control {
 
     map!: L.Map;
     div!: HTMLDivElement;
+    yearSelect!: HTMLSelectElement;
     tripSelect!: HTMLSelectElement;
     participantSelect!: HTMLSelectElement;
     showMarkersCheckbox!: HTMLInputElement;
@@ -18,45 +19,89 @@ export default class ControlDiv extends L.Control {
         }
     }
 
-    // Determines which trips to display, given the selected participants. This list is used to filter the "trips" selector.
-    private participantsPredicate() : (trip: Trip) => boolean {
-        switch(this.participantSelect.value) {
-            case Johan: return t => t.people === undefined || t.people.indexOf('Johan') > -1;
-            case Jannike: return t => t.people === undefined || t.people.indexOf('Jannike') > -1;
-            case Aston: return t => t.people === undefined || t.people.indexOf('Aston') > -1;
-            default: return _ => true; 
-        }
+    // Returns the currently selected participant, or undefined.
+    private selectedParticipant() : Participant | undefined {
+        return this.participantSelect.value === "Alla" ? undefined : this.participantSelect.value as Participant;
     }
 
-    // Determines which trips to display in the map. Either all trips in the "trips" selector, or only the selected trip.
-    private tripsPredicate() : (trip: Trip) => boolean {
-        if (this.tripSelect.value === "Alla") {
-            return this.participantsPredicate();
-        }
-        return t => (t.id !== undefined) && (t.id === this.tripSelect.value);
+    // Returns the currently selected year, or undefined.
+    private selectedYear() : number | undefined {
+        return this.yearSelect.value === "Alla" ? undefined : parseInt(this.yearSelect.value);
     }
 
+    // Returns the id of the currently selected trip, or undefined.
+    private selectedTripId() : string | undefined {
+        return this.tripSelect.value === "Alla" ? undefined : this.tripSelect.value;
+    }
+
+    // Returns a function that determines if a trip should be included, based on the selected people and year.
+    private tripIncluded(person: Participant | undefined, year: number | undefined) : (trip: Trip) => boolean {
+        console.log("tripIncluded");
+        if (person !== undefined && year !== undefined) {
+            return t => (t.people === undefined || t.people.indexOf(person) > -1) && (t.start.year === year || t.end.year === year);
+        }
+        if (person !== undefined) {
+            return t => t.people === undefined || t.people.indexOf(person) > -1;
+        }
+        if (year !== undefined) {
+            return t => t.start.year === year || t.end.year === year;
+        }
+        console.log("tripIncluded: no filter");
+        return _ => true;
+    }
+    
+    // Add an options to a selector
     private addOption(text: string, value: any, select: HTMLSelectElement) {
         let opt = L.DomUtil.create('option', undefined, select);
         opt.value = value;
         opt.text = text;
     }
 
-    private selectTrips() {
-        this.tripSelect.innerHTML = ""; // Clear existing options
-        this.addOption("Alla", "Alla", this.tripSelect);
-        trips.filter(this.participantsPredicate()).reverse().map(t => this.addOption(t.name, t.id, this.tripSelect));
+    // Which participants should be available in the "participants" selector.
+    private populateParticipantSelector() {
+        let options = ["Alla", Johan, Jannike, Aston];
+        this.participantSelect.innerHTML = ""; // Clear existing options
+        options.map(p => this.addOption(p, p, this.participantSelect));
     }
 
+    // Which years should be available in the "years" selector, based on selected participant.
+    private populateYearSelector() {
+        let tripsForSelectedPerson = trips.filter(this.tripIncluded(this.selectedParticipant(), undefined));
+        let years = new Set<number>();
+        tripsForSelectedPerson.map(t => { years.add(t.start.year); years.add(t.end.year); });
+        let availableYears = ["Alla"].concat(Array.from(years).sort().map(y => y.toString()));
+        this.yearSelect.innerHTML = ""; // Clear existing options
+        availableYears.map(y => this.addOption(y, y, this.yearSelect));
+    }
+
+    // Which trips should be available in the "trips" selector, based on selected participant and year.
+    private populateTripSelector() {
+        let selectableTrips = trips.filter(this.tripIncluded(this.selectedParticipant(), this.selectedYear()));
+        this.tripSelect.innerHTML = ""; // Clear existing options
+        this.addOption("Alla", "Alla", this.tripSelect)
+        selectableTrips.map(t => this.addOption(t.name, t.id, this.tripSelect));
+    }
+
+    // Draw the selected trips in the map.
     render() {
-        renderTrips(trips.filter(this.tripsPredicate()), this.map, this.showMarkersCheckbox.checked);
+        let selectedTripId = this.selectedTripId();
+        let visibleTrips = selectedTripId === undefined 
+            ? trips.filter(t => this.tripIncluded(this.selectedParticipant(), this.selectedYear())(t))
+            : trips.filter(t => t.id === selectedTripId);
+        renderTrips(visibleTrips, this.map, this.showMarkersCheckbox.checked);
     }
 
     private onParticipantChanged() {
-        this.selectTrips();
+        this.populateYearSelector();
+        this.populateTripSelector();
         this.render();
     }
 
+    private onYearChanged() {
+        this.populateTripSelector();
+        this.render();
+    }
+    
     private onTripChanged() {
         this.render();
     }
@@ -69,15 +114,9 @@ export default class ControlDiv extends L.Control {
         this.map = map;
 
         this.div = L.DomUtil.create('div');
-
         this.participantSelect = L.DomUtil.create('select', undefined, this.div);
-        this.addOption("Alla", undefined, this.participantSelect);
-        this.addOption(Johan, undefined, this.participantSelect);
-        this.addOption(Jannike, undefined, this.participantSelect);
-        this.addOption(Aston, undefined, this.participantSelect);
-
+        this.yearSelect = L.DomUtil.create('select', "header-margin-left", this.div);
         this.tripSelect = L.DomUtil.create('select', "header-margin-left", this.div);
-        this.selectTrips();
 
         this.showMarkersCheckbox = L.DomUtil.create('input', undefined, this.div);
         this.showMarkersCheckbox.type = "checkbox";
@@ -92,9 +131,16 @@ export default class ControlDiv extends L.Control {
         showPathsLabel.innerHTML = "Show paths";
 
         L.DomEvent.on(this.participantSelect, 'change', this.onParticipantChanged, this);
+        L.DomEvent.on(this.yearSelect, 'change', this.onYearChanged, this);
         L.DomEvent.on(this.tripSelect, 'change', this.onTripChanged, this);
         L.DomEvent.on(this.showMarkersCheckbox, 'change', this.render, this);
         L.DomEvent.on(this.showPathsCheckbox, 'change', this.render, this);
+
+        this.populateParticipantSelector();
+        this.populateYearSelector();
+        this.populateTripSelector();
+        this.render();
+
         return this.div;
     };
 

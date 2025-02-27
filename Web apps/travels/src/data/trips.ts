@@ -3848,6 +3848,7 @@ export const trips : Trip[] = [
 		name: "Helg i Växjö",
 		start: { year: 2025, month: Feb, day: 7 },
 		end: { year: 2025, month: Feb, day: 9 },
+		people: [Johan, Jannike],
 		stops: [
 			{
 				location: {

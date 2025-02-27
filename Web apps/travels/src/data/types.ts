@@ -23,8 +23,10 @@ export interface Trip {
     start: Date;
     end: Date;
     stops: Stop[];
-    people?: (typeof Johan | typeof Jannike | typeof Aston)[];
+    people?: Participant[];
 }
+
+export type Participant = typeof Johan | typeof Jannike | typeof Aston;
 
 export const Johan = "Johan";
 export const Jannike = "Jannike";
