@@ -36,7 +36,6 @@ export default class ControlDiv extends L.Control {
 
     // Returns a function that determines if a trip should be included, based on the selected people and year.
     private tripIncluded(person: Participant | undefined, year: number | undefined) : (trip: Trip) => boolean {
-        console.log("tripIncluded");
         if (person !== undefined && year !== undefined) {
             return t => (t.people === undefined || t.people.indexOf(person) > -1) && (t.start.year === year || t.end.year === year);
         }
@@ -46,7 +45,6 @@ export default class ControlDiv extends L.Control {
         if (year !== undefined) {
             return t => t.start.year === year || t.end.year === year;
         }
-        console.log("tripIncluded: no filter");
         return _ => true;
     }
     
@@ -66,9 +64,8 @@ export default class ControlDiv extends L.Control {
 
     // Which years should be available in the "years" selector, based on selected participant.
     private populateYearSelector() {
-        let tripsForSelectedPerson = trips.filter(this.tripIncluded(this.selectedParticipant(), undefined));
         let years = new Set<number>();
-        tripsForSelectedPerson.map(t => { years.add(t.start.year); years.add(t.end.year); });
+        trips.map(t => { years.add(t.start.year); years.add(t.end.year); });
         let availableYears = ["Alla"].concat(Array.from(years).sort().map(y => y.toString()));
         this.yearSelect.innerHTML = ""; // Clear existing options
         availableYears.map(y => this.addOption(y, y, this.yearSelect));
@@ -88,11 +85,10 @@ export default class ControlDiv extends L.Control {
         let visibleTrips = selectedTripId === undefined 
             ? trips.filter(t => this.tripIncluded(this.selectedParticipant(), this.selectedYear())(t))
             : trips.filter(t => t.id === selectedTripId);
-        renderTrips(visibleTrips, this.map, this.showMarkersCheckbox.checked);
+        renderTrips(visibleTrips, this.map, this.showMarkersCheckbox.checked, this.showPathsCheckbox.checked);
     }
 
     private onParticipantChanged() {
-        this.populateYearSelector();
         this.populateTripSelector();
         this.render();
     }

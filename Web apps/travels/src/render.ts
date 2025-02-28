@@ -4,18 +4,26 @@ import markerIconPng from "leaflet/dist/images/marker-icon.png"
 
 const icon = new L.Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]});
 
+let paths: L.Polyline[] = [];
 let markers: L.Marker[] = [];
 
-export const renderTrips = (trips: Trip[], map: L.Map, showMarkers: boolean) => {
+export const renderTrips = (trips: Trip[], map: L.Map, showMarkers: boolean, showPaths: boolean) => {
     markers.map(m => m.remove());
     markers = [];
+    paths.map(p => p.remove());
+    paths = [];
 
-    trips.map(t => renderTrip(t, map, showMarkers));
+    trips.map(t => renderTrip(t, map, showMarkers, showPaths));
 }
 
-const renderTrip = (trip: Trip, map: L.Map, showMarkers: boolean) => {
+const renderTrip = (trip: Trip, map: L.Map, showMarkers: boolean, showPaths: boolean) => {
     if (showMarkers) {
         trip.stops.map(s => renderStop(s, trip, map));
+    }
+    if (showPaths) {
+        let path = L.polyline(trip.stops.map(s => s.location.position));
+        paths.push(path); 
+        path.addTo(map);
     }
 }
 

@@ -1,5 +1,87 @@
 import { Aston, Jannike, Johan, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec, Trip, Location } from "./types";
 
+/*
+Haverdal med Farmor och Farfar. 2010?
+Hovfjället - 2009, till 30 december.
+hyrd husbil 2015 (Kungälv, Olofsbo)
+Kris och Luhrs bröllop - Ronneby Brunn
+Själland med Farmor och Farfar - pool. 2009-06-01?
+	{
+		name: "Rådastrands camping (Björnbyn, som mormor drev)",
+		start: new Date(2006, 8, 20), // TODO datum?
+		end: new Date(2006, 9, 10), // TODO datum?
+		locations: [
+			{
+				name: "Rådastrands camping",
+				address: "Rådastrand, Riksväg 62, 683 93 Råda, Sweden",
+				url: "radastrand.com",
+				position: new google.maps.LatLng(60.016659, 13.600117),
+				start: new Date(2006, 8, 20), // TODO datum?
+				end: new Date(2006, 9, 10), // TODO datum?
+			},
+		]
+	},
+
+	{
+		name: "Schack i Katrineholm",
+		start: new Date(2006, 8, 20), // TODO datum?
+		end: new Date(2006, 9, 10), // TODO datum?
+		locations: [
+			{
+				name: "Hotel Statt Katrineholm",
+				address: "Storgatan 20, 641 45 Katrineholm",
+				url: "hotelstatt.se",
+				position: new google.maps.LatLng(58.997217, 16.209595),
+				start: new Date(2006, 8, 20), // TODO datum?
+				end: new Date(2006, 9, 10), // TODO datum?
+			},
+		]
+	},
+
+
+	Koster + resa hem (Bengtsfors, Götene) 12-17/7 2011?
+	{
+		name: "Hem från Koster hos Luhrs",
+		start: new Date(2006, 8, 20), // TODO datum?
+		end: new Date(2006, 9, 10), // TODO datum?
+		locations: [
+			{
+				name: "First Hotel Bengtsfors",
+				address: "Karlsbergsvägen 3, 666 31 Bengtsfors",
+				url: "firsthotels.se",
+				position: new google.maps.LatLng(59.030004, 12.232089),
+				start: new Date(2006, 8, 20), // TODO datum?
+				end: new Date(2006, 9, 10), // TODO datum?
+			},
+			{
+				name: "Hotell Gustaf",
+				address: "Järnvägsgatan 2, 533 30 Götene",
+				url: "hotellgustaf.se",
+				position: new google.maps.LatLng(58.528807, 13.492399),
+				start: new Date(2006, 8, 20), // TODO datum?
+				end: new Date(2006, 9, 10), // TODO datum?
+			},
+		]
+	},
+
+	Tjörn med Mario?
+	{
+		name: "Husbilsutflykt med Mario",
+		start: new Date(2017, 8, 20), // TODO datum?
+		end: new Date(2017, 9, 10), // TODO datum?
+		locations: [
+			{
+				name: "Hav & Logi Skärhamn",
+				address: "Rövallen 1, 471 95 Skärhamn",
+				url: "http://www.havologi.se",
+				position: new google.maps.LatLng(57.970486, 11.551854),
+				start: new Date(2006, 8, 20), // TODO datum?
+				end: new Date(2006, 9, 10), // TODO datum?
+			},
+		]
+	},
+	*/
+
 const KielGoteborg : Location = {
 	name: "Färja Kiel-Göteborg",
 	address: "",
@@ -2283,6 +2365,24 @@ export const trips : Trip[] = [
 		]
 	},
 	{
+		name: "Fuerteventura",
+		start: { year: 2019, month: Feb, day: 9 },
+		end: { year: 2019, month: Feb, day: 17 },
+		people: [Johan, Aston],
+		stops: [
+			// TODO hotell i Stockholm innan?
+			{
+				location: {
+					name: "Playitas Resort",
+					address: "35629 Tuineje, Las Palmas, Spanien",
+					url: "playitas.net",
+					position: [28.230066956537957, -13.987383137788283],
+				},
+			},
+			// TODO hotell i Stockholm efter?
+		]
+	},
+	{
 		name: "Tjänsteresa (Combination), Mexico City",
 		start: { year: 2019, month: Mar, day: undefined },
 		end: { year: 2019, month: Mar, day: undefined },
@@ -2601,6 +2701,21 @@ export const trips : Trip[] = [
 		]
 	},
 	{
+		name: "Konferens (Combination), Prag",
+		start: { year: 2019, month: Nov, day: 20 },
+		end: { year: 2019, month: Nov, day: 24 },
+		stops: [
+			{
+				location: {
+					name: "Central Hotel",
+					address: "8, Rybná 677, Staré Město, 110 00 Praha 1, Tjeckien",
+					url: "http://hoteldetail.co/central",
+					position: [50.08884817974845, 14.426224405692764],
+				},
+			},
+		]
+	},
+	{
 		name: "Thailand över jul",
 		start: { year: 2019, month: Dec, day: undefined },
 		end: { year: 2019, month: Dec, day: undefined },
@@ -2788,6 +2903,7 @@ export const trips : Trip[] = [
 			},
 		]
 	},
+	// TODO Jönköping runt 10 augusti. 
 	{
 		name: "Höstlov med Richard, Jessica och Wilhelm",
 		start: { year: 2020, month: Oct, day: 27 },
@@ -2800,6 +2916,38 @@ export const trips : Trip[] = [
 					address: "Falkenbergsvägen 10, 311 63 Älvsered",
 					url: "https://www.route154.se/",
 					position: [57.239225, 12.858502],
+				},
+			},
+		]
+	},
+	{
+		name: "Trollhättan med Richard, Jessica och Wilhelm", // TODO alla tre?
+		start: { year: 2021, month: Jan, day: undefined },
+		end: { year: 2021, month: Jan, day: undefined },
+		people: [Johan, Jannike, Aston], // TODO alla tre?
+		stops: [
+			{
+				location: {
+					name: "Scandic Swania",
+					address: "Storgatan 47-49, 461 30 Trollhättan",
+					url: "http://www.scandichotels.se/swania",
+					position: [58.28460064721551, 12.285404223565024],
+				},
+			},
+		]
+	},
+	{
+		name: "Astons födelsedag",
+		start: { year: 2021, month: Apr, day: 8 }, // TODO datum?
+		end: { year: 2021, month: Apr, day: 9 },
+		people: [Johan, Jannike, Aston],
+		stops: [
+			{
+				location: {
+					name: "Strandflickornas Havshotell",
+					address: "Turistgatan 13, 453 30 Lysekil",
+					url: "https://strandflickorna.com/strandflickornas-havshotell/",
+					position: [58.26794437404685, 11.429500917314453],
 				},
 			},
 		]
