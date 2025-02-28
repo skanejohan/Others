@@ -28,6 +28,13 @@ const RostockTrelleborg : Location = {
 	position: [55.03353835434692, 12.82881067815772],
 };
 
+const Askim: Location = {
+	name: "Lisebergs camping Askim Strand",
+	address: "Marholmsvägen 124, 436 45 Askim",
+	url: "liseberg.se",
+	position: [57.62750272967534, 11.921874230565997],
+};
+
 export const trips : Trip[] = [
 	{
 		name: "Konferens (Spectronic), Istanbul",
@@ -3022,488 +3029,716 @@ export const trips : Trip[] = [
 			},
 		]
 	},
-	/*{
+	{
 		name: "Olof fyller 50",
-		start: new Date(2021, 9, 15),
-		end: new Date(2021, 9, 17),
+		start: { year: 2021, month: Oct, day: 15 },
+		end: { year: 2021, month: Oct, day: 17 },
 		stops: [
 			{
-				name: "Elite Hotel Mollberg",
-				address: "Stortorget 18, 251 14 Helsingborg, Sweden",
-				url: "http://www.elite.se/",
-				position: [56.046677532252914, 12.696048718935954),
-				start: new Date(2021, 9, 15),
-				end: new Date(2021, 9, 17),
+				location: {
+					name: "Elite Hotel Mollberg",
+					address: "Stortorget 18, 251 14 Helsingborg, Sweden",
+					url: "http://www.elite.se/",
+					position: [56.046677532252914, 12.696048718935954],
+				},
 			},
 		]
 	},
 	{
-		name: "Danmark med mamma, Richard, Jessica och Wilhelm",
-		start: new Date(2021, 9, 31),
-		end: new Date(2021, 10, 05),
+		name: "Danmark med Richard, Jessica och Wilhelm",
+		start: { year: 2021, month: Oct, day: 31 },
+		end: { year: 2021, month: Nov, day: 5 },
+		people: [Jannike, Aston],
 		stops: [
 			{
-				name: "TODO", // TODO
-				address: "TODO",
-				url: "",
-				position: [41.198765, -73.726930),
-				start: new Date(2021, 9, 31),
-				end: new Date(2021, 10, 05),
+				location: {
+					name: "TODO",
+					address: "TODO",
+					url: "TODO",
+					position: [0, 0],
+				},
 			},
 		]
 	},
 	{
-		name: "Helsingborg",
-		start: new Date(2021, 11, 25),
-		end: new Date(2021, 11, 27),
+		name: "Helsingborg i mellandagarna",
+		start: { year: 2021, month: Dec, day: 25 },
+		end: { year: 2021, month: Dec, day: 27 },
 		stops: [
 			{
-				name: "Clarion Grand Hotel Helsingborg",
-				address: "Stortorget 8, 252 23 Helsingborg, Sweden",
-				url: "https://www.nordicchoicehotels.se/hotell/sverige/helsingborg/clarion-grand-hotel-helsingborg",
-				position: [56.04626893416911, 12.694605690486272),
-				start: new Date(2021, 11, 25),
-				end: new Date(2021, 11, 27),
+				location: {
+					name: "Clarion Grand Hotel Helsingborg",
+					address: "Stortorget 8, 252 23 Helsingborg, Sweden",
+					url: "https://www.nordicchoicehotels.se/hotell/sverige/helsingborg/clarion-grand-hotel-helsingborg",
+					position: [56.04626893416911, 12.694605690486272],
+				},
 			},
 		]
 	},
 	{
 		name: "Skidsemester i Stöten",
-		start: new Date(2022, 00, 01),
-		end: new Date(2022, 00, 06),
+		start: { year: 2022, month: Jan, day: 1 },
+		end: { year: 2022, month: Jan, day: 6 },
 		stops: [
 			{
-				name: "Hotel Frykenstrand",
-				address: "By 80, 686 93 Sunne, Sweden",
-				url: "http://www.frykenstrand.se/",
-				position: [59.88684000803969, 13.140842058716869),
-				start: new Date(2022, 00, 01),
-				end: new Date(2022, 00, 02),
+				location: {
+					name: "Hotel Frykenstrand",
+					address: "By 80, 686 93 Sunne, Sweden",
+					url: "http://www.frykenstrand.se/",
+					position: [59.88684000803969, 13.140842058716869],
+				},
+				start: { year: 2022, month: Jan, day: 1 },
+				end: { year: 2022, month: Jan, day: 2 },
 			},
 			{
-				name: "Stöten",
-				address: "",
-				url: "",
-				position: [61.265059061620306, 12.883567901584065),
-				start: new Date(2022, 00, 02),
-				end: new Date(2022, 00, 05),
+				location: {
+					name: "Stöten",
+					address: "",
+					url: "",
+					position: [61.265059061620306, 12.883567901584065],
+				},
+				start: { year: 2022, month: Jan, day: 2 },
+				end: { year: 2022, month: Jan, day: 5 },
 			},
 			{
-				name: "Hotel Frykenstrand",
-				address: "By 80, 686 93 Sunne, Sweden",
-				url: "http://www.frykenstrand.se/",
-				position: [59.88684000803969, 13.140842058716869),
-				start: new Date(2022, 00, 05),
-				end: new Date(2022, 00, 06),
+				location: {
+					name: "Hotel Frykenstrand",
+					address: "By 80, 686 93 Sunne, Sweden",
+					url: "http://www.frykenstrand.se/",
+					position: [59.88684000803969, 13.140842058716869],
+				},
+				start: { year: 2022, month: Jan, day: 5 },
+				end: { year: 2022, month: Jan, day: 6 },
 			},
 		]
 	},
 	{ 
-		name: "Skidor i Åre med mamma",
-		start: new Date(2022, 1, 13),
-		end: new Date(2022, 1, 15),
+		name: "Skidor i Åre",
+		start: { year: 2022, month: Feb, day: 13 },
+		end: { year: 2022, month: Feb, day: 15 },
+		people: [Jannike, Aston],
 		stops: [
 			{
-				name: "Hotell Fjällgården",
-				address: "Fjällgårdsvägen 35, 837 52 Åre",
-				url: "https://www.fjallgarden.se/",
-				position: [63.404468, 13.090496),
-				start: new Date(2022, 1, 13),
-				end: new Date(2022, 1, 15),
+				location: {
+					name: "Hotell Fjällgården",
+					address: "Fjällgårdsvägen 35, 837 52 Åre",
+					url: "https://www.fjallgarden.se/",
+					position: [63.404468, 13.090496],
+				},
 			},
 		]
 	},
 	{
 		name: "Skidresa till Ischgl",
-		start: new Date(2022, 3, 09),
-		end: new Date(2022, 3, 16),
+		start: { year: 2022, month: Apr, day: 9 },
+		end: { year: 2022, month: Apr, day: 16 },
 		stops: [
 			{
-				name: "Hotel Piz Buin",
-				address: "Dorfstr. 16, 6561 Ischgl, Austria",
-				url: "http://www.pizbuin-ischgl.at/",
-				position: [47.01367946725322, 10.295222104724015),
-				start: new Date(2022, 3, 09),
-				end: new Date(2022, 3, 16),
+				location: {
+					name: "Hotel Piz Buin",
+					address: "Dorfstr. 16, 6561 Ischgl, Austria",
+					url: "http://www.pizbuin-ischgl.at/",
+					position: [47.01367946725322, 10.295222104724015],
+				},
 			},
 		]
 	},
 	{
 		name: "MTB i Isaberg",
-		start: new Date(2022, 3, 23),
-		end: new Date(2022, 3, 24),
+		start: { year: 2022, month: Apr, day: 23 },
+		end: { year: 2022, month: Apr, day: 24 },
 		stops: [
 			{
-				name: "Isaberg Mountain Resort",
-				address: "Nissastigen, 330 27 Hestra, Sweden",
-				url: "http://www.isaberg.com/",
-				position: [57.43454936618097, 13.619902330659304),
-				start: new Date(2022, 3, 23),
-				end: new Date(2022, 3, 24),
+				location: {
+					name: "Isaberg Mountain Resort",
+					address: "Nissastigen, 330 27 Hestra, Sweden",
+					url: "http://www.isaberg.com/",
+					position: [57.43454936618097, 13.619902330659304],
+				},
 			},
 		]
 	},
 	{
-		name: "Långhelg med husbilen",
-		start: new Date(2022, 5, 3),
-		end: new Date(2022, 5, 6),
+		name: "Långhelg i Halland med husbilen",
+		start: { year: 2022, month: May, day: 26 },
+		end: { year: 2022, month: May, day: 29 },
+		people: [Johan, Jannike],
 		stops: [
 			{
-				name: "Villa Björkhagen",
-				address: "Friggagatan 31, 554 54 Jönköping, Sverige",
-				url: "villabjorkhagen.se",
-				position: [57.787228, 14.216812),
-				start: new Date(2022, 5, 3),
-				end: new Date(2022, 5, 4)
+				location: {
+					name: "Bua Hamn Camping Park",
+					address: "Hamnvägen 2, 432 64 Bua",
+					url: "",
+					position: [57.2398512473669, 12.114912665299906],
+				},
+				start: { year: 2022, month: May, day: 26 },
+				end: { year: 2022, month: May, day: 27 },
 			},
 			{
-				name: "Paula och Jan-Åke (torpet)",
-				address: "",
-				url: "",
-				position: [57.8424731, 16.0566513),
-				start: new Date(2022, 5, 4),
-				end: new Date(2022, 5, 5)
+				location: {
+					name: "Varberg Ställplats",
+					address: "Otto Torells gata 24, 432 44 Varberg",
+					url: "https://www.visitvarberg.se/arkiv/sova/camping/stallplatser-for-husbilar.html",
+					position: [57.10885827712236, 12.243754290000401],
+				},
+				start: { year: 2022, month: May, day: 27 },
+				end: { year: 2022, month: May, day: 28 },
 			},
 			{
-				name: "Vadstena Camping",
-				address: "Hofslagaregatan 11, 592 30 Vadstena",
-				url: "http://www.vadstenacamping.se/",
-				position: [58.468567, 14.939141),
-				start: new Date(2022, 5, 5),
-				end: new Date(2022, 5, 6),
+				location: {
+					name: "Falkenbergs Båtsällskap",
+					address: "Gröningevägen, 311 45 Falkenberg",
+					url: "https://falkenbergs-batsallskap.se/",
+					position: [56.89407469816066, 12.493681914463522],
+				},
+				start: { year: 2022, month: May, day: 28 },
+				end: { year: 2022, month: May, day: 29 },
+			},
+		]
+	},
+	{
+		name: "Långhelg i Småland med husbilen",
+		start: { year: 2022, month: Jun, day: 3 },
+		end: { year: 2022, month: Jun, day: 6 },
+		stops: [
+			{
+				location: {
+					name: "Villa Björkhagen",
+					address: "Friggagatan 31, 554 54 Jönköping, Sverige",
+					url: "villabjorkhagen.se",
+					position: [57.787228, 14.216812],
+				},
+				start: { year: 2022, month: Jun, day: 3 },
+				end: { year: 2022, month: Jun, day: 4 },
+			},
+			{
+				location: {
+					name: "Paula och Jan-Åke (torpet)",
+					address: "",
+					url: "",
+					position: [57.8424731, 16.0566513],
+				},
+				start: { year: 2022, month: Jun, day: 4 },
+				end: { year: 2022, month: Jun, day: 5 },
+			},
+			{
+				location: {
+					name: "Vadstena Camping",
+					address: "Hofslagaregatan 11, 592 30 Vadstena",
+					url: "http://www.vadstenacamping.se/",
+					position: [58.468567, 14.939141],
+				},
+				start: { year: 2022, month: Jun, day: 5 },
+				end: { year: 2022, month: Jun, day: 6 },
 			},
 		]
 	},
 	{
 		name: "Europaresa med husbilen",
-		start: new Date(2022, 6, 6),
-		end: new Date(2022, 7, 14),
+		start: { year: 2022, month: Jul, day: 6 },
+		end: { year: 2022, month: Aug, day: 14 },
 		stops: [
 			{
-				name: "Kielfärjan",
-				address: "",
-				url: "stena.se",
-				position: [56.431173, 11.349044),
-				start: new Date(2022, 6, 6),
-				end: new Date(2022, 6, 7),
+				location: GoteborgKiel,
+				start: { year: 2022, month: Jul, day: 6 },
+				end: { year: 2022, month: Jul, day: 7 },
 			},
 			{
-				name: "Campingplatz Sinntal-Oberzell",
-				address: "Alfred-Kühnert-Straße 1, 36391 Sinntal, Tyskland",
-				url: "http://campingplatz-sinntal-oberzell.de/",
-				position: [50.33834960625175, 9.710938752691831),
-				start: new Date(2022, 6, 7),
-				end: new Date(2022, 6, 8)
+				location: {
+					name: "Campingplatz Sinntal-Oberzell",
+					address: "Alfred-Kühnert-Straße 1, 36391 Sinntal, Tyskland",
+					url: "http://campingplatz-sinntal-oberzell.de/",
+					position: [50.33834960625175, 9.710938752691831],
+				},
+				start: { year: 2022, month: Jul, day: 7 },
+				end: { year: 2022, month: Jul, day: 8 },
 			},
 			{
-				name: "Bikepark Brandnertal",
-				address: "Tschengla 3, 6707 Bürserberg, Österrike",
-				url: "http://www.bikepark-brandnertal.at",
-				position: [47.14631259761436, 9.759379389490038),
-				start: new Date(2022, 6, 8),
-				end: new Date(2022, 6, 10),
+				location: {
+					name: "Bikepark Brandnertal",
+					address: "Tschengla 3, 6707 Bürserberg, Österrike",
+					url: "http://www.bikepark-brandnertal.at",
+					position: [47.14631259761436, 9.759379389490038],
+				},
+				start: { year: 2022, month: Jul, day: 8 },
+				end: { year: 2022, month: Jul, day: 10 },
 			},
 			{
-				name: "Campeggio di Merano",
-				address: "Via Piave, 44, 39012 Merano BZ, Italien",
-				url: "meran.eu",
-				position: [46.662995, 11.159075),
-				start: new Date(2022, 6, 10),
-				end: new Date(2022, 6, 12),
+				location: {
+					name: "Campeggio di Merano",
+					address: "Via Piave, 44, 39012 Merano BZ, Italien",
+					url: "meran.eu",
+					position: [46.662995, 11.159075],
+				},
+				start: { year: 2022, month: Jul, day: 10 },
+				end: { year: 2022, month: Jul, day: 12 },
 			},
 			{
-				name: "La Rocca Camping Village",
-				address: "Via Gardesana dell'Acqua, 37, 37011 Bardolino VR, Italien",
-				url: "https://www.campinglarocca.com/",
-				position: [45.56426864089334, 10.711727335662241),
-				start: new Date(2022, 6, 12),
-				end: new Date(2022, 6, 15),
+				location: {
+					name: "La Rocca Camping Village",
+					address: "Via Gardesana dell'Acqua, 37, 37011 Bardolino VR, Italien",
+					url: "https://www.campinglarocca.com/",
+					position: [45.56426864089334, 10.711727335662241],
+				},
+				start: { year: 2022, month: Jul, day: 12 },
+				end: { year: 2022, month: Jul, day: 15 },
 			},
 			{
-				name: "Camping Seeblick - Toni",
-				address: "Moosen 46, 6233 Kramsach, Österrike",
-				url: "https://www.camping-seeblick.tirol/",
-				position: [47.46052088057337, 11.906459271083722),
-				start: new Date(2022, 6, 15),
-				end: new Date(2022, 6, 17),
+				location: {
+					name: "Camping Seeblick - Toni",
+					address: "Moosen 46, 6233 Kramsach, Österrike",
+					url: "https://www.camping-seeblick.tirol/",
+					position: [47.46052088057337, 11.906459271083722],
+				},
+				start: { year: 2022, month: Jul, day: 15 },
+				end: { year: 2022, month: Jul, day: 17 },
 			},
 			{
-				name: "Camping Lampenhäusl",
-				address: "5672, Gemeinde, 5672 Fusch an der Großglocknerstraße, Österrike",
-				url: "https://www.lampenhaeusl.at/",
-				position: [47.2239589645775, 12.82693601097002),
-				start: new Date(2022, 6, 17),
-				end: new Date(2022, 6, 18),
+				location: {
+					name: "Camping Lampenhäusl",
+					address: "5672, Gemeinde, 5672 Fusch an der Großglocknerstraße, Österrike",
+					url: "https://www.lampenhaeusl.at/",
+					position: [47.2239589645775, 12.82693601097002],
+				},
+				start: { year: 2022, month: Jul, day: 17 },
+				end: { year: 2022, month: Jul, day: 18 },
 			},
 			{
-				name: "Lago 3 Comuni Camping",
-				address: "Via Tolmezzo, 52, 33010 Trasaghis UD, Italien",
-				url: "http://www.lago3comuni.com/",
-				position: [46.32559362197108, 13.064472426091063),
-				start: new Date(2022, 6, 18),
-				end: new Date(2022, 6, 19),
+				location: {
+					name: "Lago 3 Comuni Camping",
+					address: "Via Tolmezzo, 52, 33010 Trasaghis UD, Italien",
+					url: "http://www.lago3comuni.com/",
+					position: [46.32559362197108, 13.064472426091063],
+				},
+				start: { year: 2022, month: Jul, day: 18 },
+				end: { year: 2022, month: Jul, day: 19 },
 			},
 			{
-				name: "Camping Opatija",
-				address: "Poljanska cesta 16, 51414, Ičići, Kroatien",
-				url: "http://www.rivijera-opatija.hr/",
-				position: [45.30859961646848, 14.28534691429489),
-				start: new Date(2022, 6, 19),
-				end: new Date(2022, 6, 22),
+				location: {
+					name: "Camping Opatija",
+					address: "Poljanska cesta 16, 51414, Ičići, Kroatien",
+					url: "http://www.rivijera-opatija.hr/",
+					position: [45.30859961646848, 14.28534691429489],
+				},
+				start: { year: 2022, month: Jul, day: 19 },
+				end: { year: 2022, month: Jul, day: 22 },
 			},
 			{
-				name: "Camping Plitvice",
-				address: "Smoljanac 67, 53231, Smoljanac, Kroatien",
-				url: "http://www.campingplitvice.hr/",
-				position: [44.9339635846878, 15.629290539263188),
-				start: new Date(2022, 6, 22),
-				end: new Date(2022, 6, 24),
+				location: {
+					name: "Camping Plitvice",
+					address: "Smoljanac 67, 53231, Smoljanac, Kroatien",
+					url: "http://www.campingplitvice.hr/",
+					position: [44.9339635846878, 15.629290539263188],
+				},
+				start: { year: 2022, month: Jul, day: 22 },
+				end: { year: 2022, month: Jul, day: 24 },
 			},
 			{
-				name: "Camping Cortina",
-				address: "Via Campo, 2, 32043 Cortina d'Ampezzo BL, Italien",
-				url: "http://www.campingcortina.it/",
-				position: [46.52141857856073, 12.134370538637732),
-				start: new Date(2022, 6, 24),
-				end: new Date(2022, 6, 25),
+				location: {
+					name: "Camping Cortina",
+					address: "Via Campo, 2, 32043 Cortina d'Ampezzo BL, Italien",
+					url: "http://www.campingcortina.it/",
+					position: [46.52141857856073, 12.134370538637732],
+				},
+				start: { year: 2022, month: Jul, day: 24 },
+				end: { year: 2022, month: Jul, day: 25 },
 			},
 			{
-				name: "Camper Schneeburghof",
-				address: "Via Monte Benedetto, 26, 39019 Tirolo BZ, Italien",
-				url: "http://www.schneeburghof.com/",
-				position: [46.675552036542, 11.166594800451175),
-				start: new Date(2022, 6, 25),
-				end: new Date(2022, 6, 28),
+				location: {
+					name: "Camper Schneeburghof",
+					address: "Via Monte Benedetto, 26, 39019 Tirolo BZ, Italien",
+					url: "http://www.schneeburghof.com/",
+					position: [46.675552036542, 11.166594800451175],
+				},
+				start: { year: 2022, month: Jul, day: 25 },
+				end: { year: 2022, month: Jul, day: 28 },
 			},
 			{
-				name: "Camping Ötztal Längenfeld",
-				address: "Unterlängenfeld 220, 6444 Längenfeld, Österrike",
-				url: "http://www.camping-oetztal.com/",
-				position: [47.072791950811755, 10.962662018246142),
-				start: new Date(2022, 6, 28),
-				end: new Date(2022, 6, 30),
+				location: {
+					name: "Camping Ötztal Längenfeld",
+					address: "Unterlängenfeld 220, 6444 Längenfeld, Österrike",
+					url: "http://www.camping-oetztal.com/",
+					position: [47.072791950811755, 10.962662018246142],
+				},
+				start: { year: 2022, month: Jul, day: 28 },
+				end: { year: 2022, month: Jul, day: 30 },
 			},
 			{
-				name: "Camping Lido Mappo",
-				address: "Via Mappo 20, 6598 Tenero-Contra, Schweiz",
-				url: "http://www.lidomappo.ch/",
-				position: [46.176499742869694, 8.842449552152258),
-				start: new Date(2022, 6, 30),
-				end: new Date(2022, 7, 2),
+				location: {
+					name: "Camping Lido Mappo",
+					address: "Via Mappo 20, 6598 Tenero-Contra, Schweiz",
+					url: "http://www.lidomappo.ch/",
+					position: [46.176499742869694, 8.842449552152258],
+				},
+				start: { year: 2022, month: Jul, day: 30 },
+				end: { year: 2022, month: Aug, day: 2 },
 			},
 			{
-				name: "Camping Municipal des Thézières",
-				address: "166 route du stade, 74440 Taninges, Frankrike",
-				url: "https://camping-taninges.fr/",
-				position: [46.099189684852455, 6.5870617989228855),
-				start: new Date(2022, 7, 2),
-				end: new Date(2022, 7, 4),
+				location: {
+					name: "Camping Municipal des Thézières",
+					address: "166 route du stade, 74440 Taninges, Frankrike",
+					url: "https://camping-taninges.fr/",
+					position: [46.099189684852455, 6.5870617989228855],
+				},
+				start: { year: 2022, month: Aug, day: 2 },
+				end: { year: 2022, month: Aug, day: 4 },
 			},
 			{
-				name: "Camping Le Clos Don Jean",
-				address: "435 Rte du Clos Don Jean, 74290 Menthon-Saint-Bernard, Frankrike",
-				url: "https://www.campingclosdonjean.com/",
-				position: [45.863142729437726, 6.198197375717023),
-				start: new Date(2022, 7, 4),
-				end: new Date(2022, 7, 6),
+				location: {
+					name: "Camping Le Clos Don Jean",
+					address: "435 Rte du Clos Don Jean, 74290 Menthon-Saint-Bernard, Frankrike",
+					url: "https://www.campingclosdonjean.com/",
+					position: [45.863142729437726, 6.198197375717023],
+				},
+				start: { year: 2022, month: Aug, day: 4 },
+				end: { year: 2022, month: Aug, day: 6 },
 			},
 			{
-				name: "Camping Kirchzarten KG",
-				address: "Dietenbacher Str. 17, 79199 Kirchzarten, Tyskland",
-				url: "https://www.camping-kirchzarten.de/",
-				position: [47.95898326615601, 7.952174316840061),
-				start: new Date(2022, 7, 6),
-				end: new Date(2022, 7, 7),
+				location: {
+					name: "Camping Kirchzarten KG",
+					address: "Dietenbacher Str. 17, 79199 Kirchzarten, Tyskland",
+					url: "https://www.camping-kirchzarten.de/",
+					position: [47.95898326615601, 7.952174316840061],
+				},
+				start: { year: 2022, month: Aug, day: 6 },
+				end: { year: 2022, month: Aug, day: 7 },
 			},
 			{
-				name: "Campingplatz Hohensyburg",
-				address: "Syburger Dorfstraße 69, 44265 Dortmund, Tyskland",
-				url: "http://www.camping-hohensyburg.de/",
-				position: [51.41925128934742, 7.493042637907155),
-				start: new Date(2022, 7, 7),
-				end: new Date(2022, 7, 10),
+				location: {
+					name: "Campingplatz Hohensyburg",
+					address: "Syburger Dorfstraße 69, 44265 Dortmund, Tyskland",
+					url: "http://www.camping-hohensyburg.de/",
+					position: [51.41925128934742, 7.493042637907155],
+				},
+				start: { year: 2022, month: Aug, day: 7 },
+				end: { year: 2022, month: Aug, day: 10 },
 			},
 			{
-				name: "Kielfärjan",
-				address: "",
-				url: "stena.se",
-				position: [56.431173, 11.349044),
-				start: new Date(2022, 7, 10),
-				end: new Date(2022, 7, 11),
+				location: KielGoteborg,
+				start: { year: 2022, month: Aug, day: 10 },
+				end: { year: 2022, month: Aug, day: 11 },
 			},
 		]
 	},
 	{
-		// Osäkra datum
-		name: "Med mamma på Mauritius",
-		start: new Date(2022, 9, 28),
-		end: new Date(2022, 10, 6),
+		name: "Konferens (Griffeye), Köpenhamn",
+		start: { year: 2022, month: Sep, day: 14 },
+		end: { year: 2022, month: Sep, day: 17 },
+		people: [Johan],
 		stops: [
 			{
-				name: "InterContinental Resort Mauritius",
-				address: "Fort Coastal Road, MU, Balaclava 21306, Mauritius",
-				url: "https://www.ihg.com/intercontinental/hotels/gb/en/balaclava/mruma/hoteldetail",
-				position: [-20.09148242089895, 57.509482874018694),
-				start: new Date(2022, 9, 28),
-				end: new Date(2022, 10, 6)
+				location: {
+					name: "Scandic Falkoner",
+					address: "Falkoner Alle 9, 2000 Frederiksberg, Danmark",
+					url: "https://www.scandichotels.dk/hoteller/danmark/kobenhavn/scandic-falkoner",
+					position: [55.679723952840845, 12.53295013141262],
+				},
+			},
+		]
+	},
+	{
+		name: "Mauritius",
+		start: { year: 2022, month: Oct, day: 28 },
+		end: { year: 2022, month: Nov, day: 6 },
+		people: [Jannike, Aston],
+		stops: [
+			{
+				location: {
+					name: "InterContinental Resort Mauritius",
+					address: "Fort Coastal Road, MU, Balaclava 21306, Mauritius",
+					url: "https://www.ihg.com/intercontinental/hotels/gb/en/balaclava/mruma/hoteldetail",
+					position: [-20.09148242089895, 57.509482874018694],
+				},
 			},
 		]
 	},
 	{
 		name: "Skidresa till Obertauern",
-		start: new Date(2022, 11, 23),
-		end: new Date(2022, 11, 31),
+		start: { year: 2022, month: Dec, day: 23 },
+		end: { year: 2022, month: Dec, day: 31 },
 		stops: [
 			{
-				name: "Hotel Garni Haus Tyrol",
-				address: "Familie Aichmann, Gamsleitenstraße 5, 5562 Obertauern, Österrike",
-				url: "https://www.tyrol-obertauern.at/",
-				position: [47.24620408713833, 13.563108304329605),
-				start: new Date(2022, 11, 24),
-				end: new Date(2022, 11, 30)
+				location: TrelleborgRostock,
+				start: { year: 2023, month: Dec, day: 23 },
+				end: { year: 2023, month: Dec, day: 24 },
+			},
+			{
+				location: {
+					name: "Hotel Garni Haus Tyrol",
+					address: "Familie Aichmann, Gamsleitenstraße 5, 5562 Obertauern, Österrike",
+					url: "https://www.tyrol-obertauern.at/",
+					position: [47.24620408713833, 13.563108304329605],
+				},
+				start: { year: 2022, month: Dec, day: 24 },
+				end: { year: 2022, month: Dec, day: 30 },
+			},
+			{
+				location: RostockTrelleborg,
+				start: { year: 2022, month: Dec, day: 30 },
+				end: { year: 2022, month: Dec, day: 31 },
 			},
 		]
 	},
 	{
-		name: "Farfar fyller 80",
-		start: new Date(2023, 3, 10),
-		end: new Date(2023, 3, 12),
+		name: "Bengt fyller 80",
+		start: { year: 2023, month: Mar, day: 10 },
+		end: { year: 2023, month: Mar, day: 12 },
 		stops: [
 			{
-				name: "Clarion Grand Hotel Helsingborg",
-				address: "Stortorget 8, 252 23 Helsingborg, Sweden",
-				url: "https://www.nordicchoicehotels.se/hotell/sverige/helsingborg/clarion-grand-hotel-helsingborg",
-				position: [56.04626893416911, 12.694605690486272),
-				start: new Date(2023, 2, 10),
-				end: new Date(2023, 3, 12)
+				location: {
+					name: "Clarion Grand Hotel Helsingborg",
+					address: "Stortorget 8, 252 23 Helsingborg, Sweden",
+					url: "https://www.nordicchoicehotels.se/hotell/sverige/helsingborg/clarion-grand-hotel-helsingborg",
+					position: [56.04626893416911, 12.694605690486272],
+				},
 			},
 		]
 	},
 	{
 		name: "Skidresa till Sölden med avstickare till Berlin",
-		start: new Date(2023, 3, 7),
-		end: new Date(2023, 3, 16),
+		start: { year: 2023, month: Apr, day: 7 },
+		end: { year: 2023, month: Apr, day: 16 },
 		stops: [
 			{
-				name: "Hotel Bäckelar Wirt",
-				address: "Dorfstraße 125, 6450 Sölden, Österrike",
-				url: "https://www.baeckelarwirt-soelden.at",
-				position: [46.95866806767012, 11.009835076112967),
-				start: new Date(2023, 3, 8),
-				end: new Date(2023, 3, 14)
+				location: TrelleborgRostock,
+				start: { year: 2023, month: Apr, day: 7 },
+				end: { year: 2023, month: Apr, day: 8 },
 			},
 			{
-				name: "Mercure Hotel & Residenz Berlin Checkpoint Charlie",
-				address: "Schützenstraße 11, 10117 Berlin, Tyskland",
-				url: "https://all.accor.com/lien_externe.svlt?goto=fiche_hotel&code_hotel=3120",
-				position: [52.508539068392324, 13.393512340632013),
-				start: new Date(2023, 3, 14),
-				end: new Date(2023, 3, 15)
+				location: {
+					name: "Hotel Bäckelar Wirt",
+					address: "Dorfstraße 125, 6450 Sölden, Österrike",
+					url: "https://www.baeckelarwirt-soelden.at",
+					position: [46.95866806767012, 11.009835076112967],
+				},
+				start: { year: 2023, month: Apr, day: 8 },
+				end: { year: 2023, month: Apr, day: 14 },
+			},
+			{
+				location: {
+					name: "Mercure Hotel & Residenz Berlin Checkpoint Charlie",
+					address: "Schützenstraße 11, 10117 Berlin, Tyskland",
+					url: "https://all.accor.com/lien_externe.svlt?goto=fiche_hotel&code_hotel=3120",
+					position: [52.508539068392324, 13.393512340632013],
+				},
+				start: { year: 2023, month: Apr, day: 14 },
+				end: { year: 2023, month: Apr, day: 15 },
+			},
+			{
+				location: RostockTrelleborg,
+				start: { year: 2023, month: Apr, day: 15 },
+				end: { year: 2023, month: Apr, day: 16 },
+			}
+		]
+	},
+	{
+		name: "Långhelg i Dalsland",
+		start: { year: 2023, month: May, day: 17 },
+		end: { year: 2023, month: May, day: 21 },
+		people: [Johan, Jannike],
+		stops: [
+			{
+				location: Askim,
+				start: { year: 2023, month: May, day: 17 },
+				end: { year: 2023, month: May, day: 18 },
+			},
+			{
+				location: {
+					name: "Ställplats, Trollhättans slussar",
+					address: "Åkerssjövägen 50, 461 53 Trollhättan",
+					url: "",
+					position: [58.265306377851196, 12.265930938983901],
+				},
+				start: { year: 2023, month: May, day: 18 },
+				end: { year: 2023, month: May, day: 19 },
+			},
+			{
+				location: {
+					name: "Håverud Camping",
+					address: "Kanalvägen 10, 464 72 Håverud",
+					url: "https://www.hafrestromsif.se/haveruds-camping/",
+					position: [58.81975163751612, 12.41472465997779],
+				},
+				start: { year: 2023, month: May, day: 19 },
+				end: { year: 2023, month: May, day: 20 },
+			},
+			{
+				location: {
+					name: "First Camp City-Strömstad",
+					address: "Uddevallavägen 50, 452 30 Strömstad",
+					url: "https://firstcamp.se/destinationer/city-stromstad",
+					position: [58.92964933658473, 11.17965097079511],
+				},
+				start: { year: 2023, month: May, day: 20 },
+				end: { year: 2023, month: May, day: 21 },
 			},
 		]
 	},
 	{
 		name: "Skadevi Cup, MBK P07",
-		start: new Date(2023, 5, 30),
-		end: new Date(2023, 6, 2),
+		start: { year: 2023, month: Jun, day: 30 },
+		end: { year: 2023, month: Jul, day: 2 },
+		people: [Aston],
 		stops: [
 			{
-				name: "Västerhöjdsgymnasiet, Skövde",
-				address: "Gymnasiegatan, 541 31 Skövde",
-				url: "https://www.gymnasiumskovde.se/vasterhojd/",
-				position: [58.38939488660359, 13.83995995705171),
-				start: new Date(2023, 5, 30),
-				end: new Date(2023, 6, 2)
+				location: {
+					name: "Västerhöjdsgymnasiet, Skövde",
+					address: "Gymnasiegatan, 541 31 Skövde",
+					url: "https://www.gymnasiumskovde.se/vasterhojd/",
+					position: [58.38939488660359, 13.83995995705171],
+				}
 			},
 		]
 	},
 	{
 		name: "Europaresa med husbilen",
-		start: new Date(2023, 6, 3),
-		end: new Date(2023, 6, 19),
+		start: { year: 2023, month: Jul, day: 2 },
+		end: { year: 2023, month: Jul, day: 19 },
 		stops: [
 			{
-				name: "Knaus Campingpark Essen-Werden",
-				address: "Im Löwental 67, 45239 Essen, Tyskland",
-				url: "https://www.knauscamp.de/essen-werden/",
-				position: [51.380769431048435, 6.992010967555431),
-				start: new Date(2023, 6, 3),
-				end: new Date(2023, 6, 4)
+				location: KielGoteborg,
+				start: { year: 2023, month: Jul, day: 2 },
+				end: { year: 2023, month: Jul, day: 3 },
 			},
 			{
-				name: "Camperplaats Helenawerf",
-				address: "De Ster 26, 6041 LP Roermond, Nederländerna",
-				url: "http://www.helenawerf.nl/wohnmobilstellplatze.shtml",
-				position: [51.19278410264541, 5.978955411926727),
-				start: new Date(2023, 6, 4),
-				end: new Date(2023, 6, 5)
+				location: {
+					name: "Knaus Campingpark Essen-Werden",
+					address: "Im Löwental 67, 45239 Essen, Tyskland",
+					url: "https://www.knauscamp.de/essen-werden/",
+					position: [51.380769431048435, 6.992010967555431],
+				},				
+				start: { year: 2023, month: Jul, day: 3 },
+				end: { year: 2023, month: Jul, day: 4 },
 			},
 			{
-				name: "Moselle Camping",
-				address: "7 Av. Eugène Lerebourg, 54460 Liverdun, Frankrike",
-				url: "https://www.lesbouclesdelamoselle.com/",
-				position: [48.74813912955007, 6.05647016062765),
-				start: new Date(2023, 6, 5),
-				end: new Date(2023, 6, 6)
+				location: {
+					name: "Camperplaats Helenawerf",
+					address: "De Ster 26, 6041 LP Roermond, Nederländerna",
+					url: "http://www.helenawerf.nl/wohnmobilstellplatze.shtml",
+					position: [51.19278410264541, 5.978955411926727],
+				},
+				start: { year: 2023, month: Jul, day: 4 },
+				end: { year: 2023, month: Jul, day: 5 },
 			},
 			{
-				name: "TCS Camping Genève-Vésenaz",
-				address: "Chem. de la Bise 19, 1222 Vésenaz, Schweiz",
-				url: "https://www.tcs.ch/de/camping-reisen/camping/alle-campingplaetze/camping-genf-vesenaz.php",
-				position: [46.24522576915356, 6.193693315257437),
-				start: new Date(2023, 6, 6),
-				end: new Date(2023, 6, 8)
+				location: {
+					name: "Moselle Camping",
+					address: "7 Av. Eugène Lerebourg, 54460 Liverdun, Frankrike",
+					url: "https://www.lesbouclesdelamoselle.com/",
+					position: [48.74813912955007, 6.05647016062765],
+				},
+				start: { year: 2023, month: Jul, day: 5 },
+				end: { year: 2023, month: Jul, day: 6 },
 			},
 			{
-				name: "Camping Les Prés Hauts",
-				address: "44 Chem. des Prés Hauts, 04200 Sisteron, Frankrike",
-				url: "http://www.camping-sisteron.com/",
-				position: [44.21534121709534, 5.937412498437262),
-				start: new Date(2023, 6, 8),
-				end: new Date(2023, 6, 9)
+				location: {
+					name: "TCS Camping Genève-Vésenaz",
+					address: "Chem. de la Bise 19, 1222 Vésenaz, Schweiz",
+					url: "https://www.tcs.ch/de/camping-reisen/camping/alle-campingplaetze/camping-genf-vesenaz.php",
+					position: [46.24522576915356, 6.193693315257437],
+				},
+				start: { year: 2023, month: Jul, day: 6 },
+				end: { year: 2023, month: Jul, day: 8 },
 			},
 			{
-				name: "Camping Embruns",
-				address: "63 Rte de Biot, 06600 Antibes, Frankrike",
-				url: "https://lesembrunscamping.jimdo.com/",
-				position: [43.61214358501269, 7.125204620782939),
-				start: new Date(2023, 6, 9),
-				end: new Date(2023, 6, 13)
+				location: {
+					name: "Camping Les Prés Hauts",
+					address: "44 Chem. des Prés Hauts, 04200 Sisteron, Frankrike",
+					url: "http://www.camping-sisteron.com/",
+					position: [44.21534121709534, 5.937412498437262],
+				},
+				start: { year: 2023, month: Jul, day: 8 },
+				end: { year: 2023, month: Jul, day: 9 },
 			},
 			{
-				name: "Camping Marino",
-				address: "Via Angiolo Silvio Novaro, 15, 18013 Diano Marina IM, Italien",
-				url: "http://www.campingmarino.it/",
-				position: [43.90588217088675, 8.076375214193423),
-				start: new Date(2023, 6, 13),
-				end: new Date(2023, 6, 14)
+				location: {
+					name: "Camping Embruns",
+					address: "63 Rte de Biot, 06600 Antibes, Frankrike",
+					url: "https://lesembrunscamping.jimdo.com/",
+					position: [43.61214358501269, 7.125204620782939],
+				},
+				start: { year: 2023, month: Jul, day: 9 },
+				end: { year: 2023, month: Jul, day: 13 },
 			},
 			{
-				name: "Camping Village city of Milan",
-				address: "Via Gaetano Airaghi, 61, 20153 Milano MI, Italien",
-				url: "http://www.campingmilano.it/",
-				position: [45.473977223490756, 9.085512923333502),
-				start: new Date(2023, 6, 14),
-				end: new Date(2023, 6, 16)
+				location: {
+					name: "Camping Marina",
+					address: "Via Angiolo Silvio Novaro, 15, 18013 Diano Marina IM, Italien",
+					url: "http://www.campingmarino.it/",
+					position: [43.90588217088675, 8.076375214193423],
+				},
+				start: { year: 2023, month: Jul, day: 13 },
+				end: { year: 2023, month: Jul, day: 14 },
 			},
 			{
-				name: "Camping Ansitz Wildberg",
-				address: "St. Martin 16a, 39030 San Lorenzo di Sebato BZ, Italien",
-				url: "https://www.campingwildberg.com/",
-				position: [46.7808963466012, 11.898627770025511),
-				start: new Date(2023, 6, 16),
-				end: new Date(2023, 6, 18)
+				location: {
+					name: "Camping Village city of Milan",
+					address: "Via Gaetano Airaghi, 61, 20153 Milano MI, Italien",
+					url: "http://www.campingmilano.it/",
+					position: [45.473977223490756, 9.085512923333502],
+				},
+				start: { year: 2023, month: Jul, day: 14 },
+				end: { year: 2023, month: Jul, day: 16 },
 			},
 			{
-				name: "Wohnmobilstellplatz am Steinberger See",
-				address: "Am Steinberger See 6, 92449 Steinberg am See, Tyskland",
-				url: "https://www.wohnmobil-stellplatz-steinberger-see.de/",
-				position: [49.282410624524815, 12.173980340693292),
-				start: new Date(2023, 6, 18),
-				end: new Date(2023, 6, 19)
+				location: {
+					name: "Camping Ansitz Wildberg",
+					address: "St. Martin 16a, 39030 San Lorenzo di Sebato BZ, Italien",
+					url: "https://www.campingwildberg.com/",
+					position: [46.7808963466012, 11.898627770025511],
+				},
+				start: { year: 2023, month: Jul, day: 16 },
+				end: { year: 2023, month: Jul, day: 18 },
+			},
+			{
+				location: {
+					name: "Wohnmobilstellplatz am Steinberger See",
+					address: "Am Steinberger See 6, 92449 Steinberg am See, Tyskland",
+					url: "https://www.wohnmobil-stellplatz-steinberger-see.de/",
+					position: [49.282410624524815, 12.173980340693292],
+				},
+				start: { year: 2023, month: Jul, day: 18 },
+				end: { year: 2023, month: Jul, day: 19 },
 			},
 		]
-	},*/
+	},
+	{
+		name: "Konferens (Griffeye), Berlin",
+		start: { year: 2023, month: Sep, day: 5 },
+		end: { year: 2023, month: Sep, day: 11 },
+		stops: [
+			{
+				location: TrelleborgRostock,
+				start: { year: 2023, month: Sep, day: 5 },
+				end: { year: 2023, month: Sep, day: 6 }
+			},
+			{
+				location: {
+					name: "The Social Hub Berlin",
+					address: "Alexanderstraße 40, 10179 Berlin, Tyskland",
+					url: "https://www.thesocialhub.co/berlin-mitte",
+					position: [52.51685335399883, 13.417768427384054],
+				},
+				start: { year: 2023, month: Sep, day: 6 },
+				end: { year: 2023, month: Sep, day: 8 }
+			},
+			{
+				location: {
+					name: "Schulz Hotel Berliner Mauer",
+					address: "Stralauer Pl. 36, 10243 Berlin, Tyskland",
+					url: "http://www.schulzhotels.com",
+					position: [52.50866438264668, 13.433819664844952],
+				},
+				start: { year: 2023, month: Sep, day: 8 },
+				end: { year: 2023, month: Sep, day: 10 }
+			},
+			{
+				location: RostockTrelleborg,
+				start: { year: 2023, month: Sep, day: 10 },
+				end: { year: 2023, month: Sep, day: 11 }
+			},
+		]
+	},
 	{
 		name: "Skidresa, Saalbach",
 		start: { year: 2023, month: Dec, day: 22 },
