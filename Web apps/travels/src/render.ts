@@ -14,6 +14,11 @@ export const renderTrips = (trips: Trip[], map: L.Map, showMarkers: boolean, sho
     paths = [];
 
     trips.map(t => renderTrip(t, map, showMarkers, showPaths));
+
+    if (markers.length > 0) {
+        let group = L.featureGroup(markers);
+        map.fitBounds(group.getBounds());
+    }
 }
 
 const renderTrip = (trip: Trip, map: L.Map, showMarkers: boolean, showPaths: boolean) => {

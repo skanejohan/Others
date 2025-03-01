@@ -2,10 +2,8 @@ import { Aston, Jannike, Johan, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct
 
 /*
 Haverdal med Farmor och Farfar. 2010?
-Hovfjället - 2009, till 30 december.
 hyrd husbil 2015 (Kungälv, Olofsbo)
 Kris och Luhrs bröllop - Ronneby Brunn
-Själland med Farmor och Farfar - pool. 2009-06-01?
 	{
 		name: "Rådastrands camping (Björnbyn, som mormor drev)",
 		start: new Date(2006, 8, 20), // TODO datum?
@@ -202,6 +200,21 @@ export const trips : Trip[] = [
 		]
 	},
 	{
+		name: "Själland med Farmor och Farfar",
+		start: { year: 2009, month: Jun, day: undefined },
+		end: { year: 2009, month: Jun, day: undefined },
+		stops: [
+			{
+				location: {
+					name: "TODO",
+					address: "TODO",
+					url: "",
+					position: [0, 0],
+				},
+			},
+		]
+	},
+	{
 		name: "Polen med familjen Essunger",
 		start: { year: 2009, month: Aug, day: 8 },
 		end: { year: 2009, month: Aug, day: 15 },
@@ -212,6 +225,21 @@ export const trips : Trip[] = [
 					address: "Podamirowo 6, 76-031 Dobiesławiec, Polen",
 					url: "",
 					position: [54.256486, 16.098479],
+				},
+			},
+		]
+	},
+	{
+		name: "Hovfjället med fam. Luhrs, Wenneberg, Björnström...",
+		start: { year: 2009, month: Dec, day: undefined },
+		end: { year: 2009, month: Dec, day: 30 },
+		stops: [
+			{
+				location: {
+					name: "TODO",
+					address: "TODO",
+					url: "",
+					position: [60.31287915294745, 13.012190758435073], // TODO
 				},
 			},
 		]
@@ -273,6 +301,21 @@ export const trips : Trip[] = [
 					address: "Av. de Bruselas, 4-6, 38670 Plaza de las Americas, Costa Adeje, Santa Cruz de Tenerife, Santa Cruz de Tenerife, Spanien",
 					url: "besthotels.es",
 					position: [28.089175, -16.732283],
+				},
+			},
+		]
+	},
+	{
+		name: "Aalborg",
+		start: { year: 2011, month: Apr, day: undefined },
+		end: { year: 2011, month: Apr, day: undefined },
+		stops: [
+			{
+				location: {
+					name: "Scandic Aalborg City",
+					address: "Europa Pl. 1, 9000 Aalborg, Danmark",
+					url: "https://www.scandichotels.dk/hoteller/danmark/aalborg/scandic-aalborg-city",
+					position: [57.04390554755651, 9.913060459924425],
 				},
 			},
 		]
@@ -378,6 +421,21 @@ export const trips : Trip[] = [
                     address: "Crta Alcudia Arta, s/n, 07458 Can Picafort, Mallorca,Islas Baleares, Spanien",
                     url: "bghotels.com",
                     position: [39.763053, 3.149019],
+                },
+            },
+		]
+	},
+	{
+		name: "Småland",
+		start: { year: 2012, month: Jul, day: 24 },
+		end: { year: 2012, month: Jul, day: undefined },
+		stops: [
+			{
+                location: {
+                    name: "Vox Hotel",
+                    address: "Lantmätargränd 2C, 553 20 Jönköping",
+                    url: "https://voxhotel.se/",
+                    position: [57.78294546171475, 14.174063161516502],
                 },
             },
 		]
@@ -518,6 +576,21 @@ export const trips : Trip[] = [
 					address: "Sankt Eriksgatan 119, 113 43 Stockholm",
 					url: "firsthotels.se",
 					position: [59.347910, 18.040371],
+				},
+			},
+		]
+	},
+	{
+		name: "Jobb (Enera), Stockholm",
+		start: { year: 2013, month: Nov, day: undefined },
+		end: { year: 2013, month: Nov, day: undefined },
+		stops: [
+			{
+				location: {
+					name: "Hotel Aldoria",
+					address: "Sankt Eriksgatan 38, 112 34 Stockholm",
+					url: "http://www.hotelfridhem.se/",
+					position: [59.33403821265424, 18.03252553872035],
 				},
 			},
 		]
@@ -837,6 +910,21 @@ export const trips : Trip[] = [
 				},
 				start: { year: 2014, month: Dec, day: 27 },
 				end: { year: 2014, month: Dec, day: 28 },
+			},
+		]
+	},
+	{
+		name: "Jobb (Enera), Stockholm",
+		start: { year: 2015, month: Mar, day: 24 },
+		end: { year: 2015, month: Mar, day: 26 },
+		stops: [
+			{
+				location: {
+					name: "Hotel Aldoria",
+					address: "Sankt Eriksgatan 38, 112 34 Stockholm",
+					url: "http://www.hotelfridhem.se/",
+					position: [59.33403821265424, 18.03252553872035],
+				},
 			},
 		]
 	},
@@ -1260,6 +1348,21 @@ export const trips : Trip[] = [
 		]
 	},
 	{
+		name: "London med Heffa, Luhr, Richard, Ricke och Björnström",
+		start: { year: 2016, month: May, day: 27 },
+		end: { year: 2016, month: May, day: 29 },
+		stops: [
+			{
+				location: {
+					name: "TODO",
+					address: "TODO",
+					url: "",
+					position: [0, 0],
+				},
+			},
+		]
+	},
+	{
 		name: "Dyrön, Karin 70 år",
 		start: { year: 2016, month: Jun, day: 4 },
 		end: { year: 2016, month: Jun, day: 6 },
@@ -1477,6 +1580,23 @@ export const trips : Trip[] = [
 		]
 	},
 	{
+		name: "Leetspeak",
+		start: { year: 2016, month: Oct, day: 14 },
+		end: { year: 2016, month: Oct, day: 15 },
+		stops: [
+			{
+				location: {
+					name: "First Hotel Mortensen",
+					address: "Baltzarsgatan 45, 211 36 Malmö",
+					url: "firsthotels.se",
+					position: [55.604718, 13.001451],
+				},
+				start: { year: 2016, month: Oct, day: 14 },
+				end: { year: 2016, month: Oct, day: 15 },
+			},
+		]
+	},
+	{
 		name: "Maldiverna med Maria, Mario och Nicholas",
 		start: { year: 2016, month: Oct, day: 30 },
 		end: { year: 2016, month: Nov, day: 7 },
@@ -1493,19 +1613,18 @@ export const trips : Trip[] = [
 		]
 	},
 	{
-		name: "Leetspeak",
-		start: { year: 2016, month: Oct, day: 14 },
-		end: { year: 2016, month: Oct, day: 15 },
+		name: "Konferens (Combination), Rom",
+		start: { year: 2016, month: Nov, day: 25 },
+		end: { year: 2016, month: Nov, day: 28 },
+		people: [Johan],
 		stops: [
 			{
 				location: {
-					name: "First Hotel Mortensen",
-					address: "Baltzarsgatan 45, 211 36 Malmö",
-					url: "firsthotels.se",
-					position: [55.604718, 13.001451],
+					name: "Grand Hotel Palatino",
+					address: "Via Cavour, 213/M, 00184 Roma RM, Italien",
+					url: "https://www.fhhotelgroup.it/it/grand-hotel-palatino-roma/index",
+					position: [41.894531679749036, 12.492277458200505],
 				},
-				start: { year: 2016, month: Oct, day: 14 },
-				end: { year: 2016, month: Oct, day: 15 },
 			},
 		]
 	},
@@ -1526,8 +1645,8 @@ export const trips : Trip[] = [
 	},
 	{
 		name: "Jönköping (Johans födelsedag)",
-		start: { year: 2017, month: Jan, day: 14 },
-		end: { year: 2017, month: Jan, day: 15 },
+		start: { year: 2017, month: Jan, day: 7 },
+		end: { year: 2017, month: Jan, day: 8 },
 		stops: [
 			{
 				location: {
@@ -1535,6 +1654,38 @@ export const trips : Trip[] = [
 					address: "Hotellplan, 553 20 Jönköping",
 					url: "elite.se",
 					position: [57.783292, 14.169588],
+				},
+			},
+		]
+	},
+	{
+		name: "Barnfria i Malmö",
+		start: { year: 2017, month: Jan, day: 21 },
+		end: { year: 2017, month: Jan, day: 22 },
+		people: [Johan, Jannike],
+		stops: [
+			{
+				location: {
+					name: "BEST WESTERN Hotel Royal",
+					address: "Norra Vallgatan 94, 211 22 Malmö",
+					url: "https://www.bestwestern.se/hotell/best-western-hotel-royal-88144",
+					position: [55.60658287252464, 12.995409152094984],
+				},
+			},
+		]
+	},
+	{
+		name: "ICE Totally Gaming Exhibition, ExCel London",
+		start: { year: 2017, month: Feb, day: 6 },
+		end: { year: 2017, month: Feb, day: 8 },
+		people: [Johan],
+		stops: [
+			{
+				location: {
+					name: "The Corner | London City",
+					address: "42 Adler St, London E1 1EE, Storbritannien",
+					url: "https://www.thecornerlondoncity.co.uk/",
+					position: [51.51617878203535, -0.0675236718669839],
 				},
 			},
 		]
@@ -1593,6 +1744,34 @@ export const trips : Trip[] = [
 					url: "legoland.dk",
 					position: [55.729693, 9.134079],
 				},
+			},
+		]
+	},
+	{
+		name: "Segling",
+		start: { year: 2017, month: Jun, day: 10 },
+		end: { year: 2017, month: Jun, day: 12 },
+		people: [Johan],
+		stops: [
+			{
+				location: {
+					name: "Knippla Gästhamn",
+					address: "Hamnbergsvägen 55G, 475 51 Källö-knippla",
+					url: "http://www.knipplahamn.se",
+					position: [57.749757787568846, 11.653727189263748],
+				},
+				start: { year: 2017, month: Jun, day: 10 },
+				end: { year: 2017, month: Jun, day: 11 },
+			},
+			{
+				location: {
+					name: "Åstols gästhamn",
+					address: "",
+					url: "",
+					position: [57.9240427108852, 11.58582388035606],
+				},
+				start: { year: 2017, month: Jun, day: 11 },
+				end: { year: 2017, month: Jun, day: 12 },
 			},
 		]
 	},
@@ -2004,7 +2183,33 @@ export const trips : Trip[] = [
 			},
 		]
 	},
-	// TODO Luhrs, Mölle, Ramlösa...
+	{
+		name: "Midsommarutflykt med husbilen",
+		start: { year: 2018, month: Jun, day: 22 },
+		end: { year: 2018, month: Jun, day: 24 },
+		stops: [
+			{
+				location: {
+					name: "Luhrs",
+					address: "Onsala Snäckväg 17, 439 37 Onsala",
+					url: "",
+					position: [57.433071152244906, 12.043827129500125],
+				},
+				start: { year: 2018, month: Jun, day: 22 },
+				end: { year: 2018, month: Jun, day: 23 },
+			},
+			{
+				location: {
+					name: "First Camp Mölle - Höganäs",
+					address: "Kullabergsvägen 286, 263 77 Mölle",
+					url: "https://firstcamp.se/destination/molle-hoganas/",
+					position: [56.27029908247391, 12.529169554950863],
+				},
+				start: { year: 2018, month: Jun, day: 23 },
+				end: { year: 2018, month: Jun, day: 24 },
+			},
+		]
+	},
 	{
 		name: "Europaresa med husbilen",
 		start: { year: 2018, month: Jul, day: 6 },
@@ -2370,7 +2575,16 @@ export const trips : Trip[] = [
 		end: { year: 2019, month: Feb, day: 17 },
 		people: [Johan, Aston],
 		stops: [
-			// TODO hotell i Stockholm innan?
+			{
+				location: {
+					name: "Clarion Hotel Arlanda Airport",
+					address: "Tornvägen 2, 190 45 Stockholm-Arlanda",
+					url: "https://www.strawberry.se/hotell/sverige/stockholm-arlanda-airport/clarion-hotel-arlanda-airport",
+					position: [59.64895923022927, 17.931203072973695],
+				},
+				start: { year: 2019, month: Feb, day: 9 },
+				end: { year: 2019, month: Feb, day: 10 },
+			},
 			{
 				location: {
 					name: "Playitas Resort",
@@ -2378,8 +2592,19 @@ export const trips : Trip[] = [
 					url: "playitas.net",
 					position: [28.230066956537957, -13.987383137788283],
 				},
+				start: { year: 2019, month: Feb, day: 10 },
+				end: { year: 2019, month: Feb, day: 16 },
 			},
-			// TODO hotell i Stockholm efter?
+			{
+				location: {
+					name: "Radisson Blu Airport Terminal Hotel, Stockholm-Arlanda Airport",
+					address: "Pelargången 1, 190 45 Stockholm",
+					url: "https://www.radissonhotels.com/en-us/hotels/radisson-blu-stockholm-airport",
+					position: [59.64879672948632, 17.929107513282617],
+				},
+				start: { year: 2019, month: Feb, day: 16 },
+				end: { year: 2019, month: Feb, day: 17 },
+			},
 		]
 	},
 	{
@@ -2921,10 +3146,10 @@ export const trips : Trip[] = [
 		]
 	},
 	{
-		name: "Trollhättan med Richard, Jessica och Wilhelm", // TODO alla tre?
+		name: "Trollhättan med Jessica och Wilhelm",
 		start: { year: 2021, month: Jan, day: undefined },
 		end: { year: 2021, month: Jan, day: undefined },
-		people: [Johan, Jannike, Aston], // TODO alla tre?
+		people: [Johan, Jannike, Aston],
 		stops: [
 			{
 				location: {
