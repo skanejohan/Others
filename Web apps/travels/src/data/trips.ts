@@ -4530,6 +4530,78 @@ export const trips : Trip[] = [
 		]
 	},
 	{
+		name: "Jannike i Seattle",
+		start: { year: 2025, month: Mar, day: 19 },
+		end: { year: 2025, month: Mar, day: 31 },
+		people: [Jannike],
+		stops: [
+			StopAt(Landvetter.position),
+			StopAt([47.45623489588673, -122.31425588803795]),
+			{
+				location: {
+					name: "Saratoga Inn",
+					address: "201 Cascade Ave, Langley, WA 98260, USA",
+					url: "http://saratogainnlangley.com/",
+					position: [48.039641671554016, -122.40619666505505],
+				},
+				start: { year: 2025, month: Mar, day: 19 },
+				end: { year: 2025, month: Mar, day: 20 },
+			},
+			{
+				location: {
+					name: "Palihotel Seattle",
+					address: "107 Pine St, Seattle, WA 98101, USA",
+					url: "https://www.palisociety.com/hotels/seattle",
+					position: [47.60972736123222, -122.3406423488521],
+				},
+				start: { year: 2025, month: Mar, day: 20 },
+				end: { year: 2025, month: Mar, day: 22 },
+			},
+			{
+				location: {
+					name: "Salish Lodge & Spa",
+					address: "6501 Railroad Ave, Snoqualmie, WA 98065, USA",
+					url: "http://www.salishlodge.com/",
+					position: [47.5420822022271, -121.83675553695757],
+				},
+				start: { year: 2025, month: Mar, day: 22 },
+				end: { year: 2025, month: Mar, day: 23 },
+			},
+			{
+				location: {
+					name: "Bavarian Lodge",
+					address: "810 US Hwy 2, Leavenworth, WA 98826, USA",
+					url: "http://www.bavarianlodge.com/",
+					position: [47.595854494902, -120.66286273202343],
+				},
+				start: { year: 2025, month: Mar, day: 23 },
+				end: { year: 2025, month: Mar, day: 24 },
+			},
+			{
+				location: {
+					name: "Archer Hotel Redmond",
+					address: "7200 164th Ave NE, Redmond, WA 98052, USA",
+					url: "https://archerhotel.com/redmond",
+					position: [47.669096194830495, -122.12024237468383],
+				},
+				start: { year: 2025, month: Mar, day: 24 },
+				end: { year: 2025, month: Mar, day: 28 },
+			},
+			{
+				location: {
+					name: "Ocean Crest Resort",
+					address: "4651 WA-109, Moclips, WA 98562, USA",
+					url: "https://www.oceancrestresort.com/",
+					position: [47.22365333882162, -124.20898088261306],
+				},
+				start: { year: 2025, month: Mar, day: 28 },
+				end: { year: 2025, month: Mar, day: 30 },
+			},
+			StopAt([47.45623489588673, -122.31425588803795]),
+			StopAt(Landvetter.position),
+		]
+	},
+	{
 		name: "Påskresa med husbilen",
 		start: { year: 2025, month: Apr, day: 17 },
 		end: { year: 2025, month: Apr, day: 21 },
