@@ -95,6 +95,14 @@ const Askim: Location = {
 	position: [57.62750272967534, 11.921874230565997],
 };
 
+const Landvetter : Location = {
+	name: "Landvetter",
+	address: "",
+	url: "",
+	position: [57.66823120276672, 12.295187844678518],
+};
+
+
 const StopAt = (position: [number, number]) : Stop => {
 	return {
 		location: {
@@ -4487,6 +4495,38 @@ export const trips : Trip[] = [
 					position: [56.87815269410974, 14.809208041833067],
 				},
 			},
+		]
+	},
+	{
+		name: "Aston, praktik i Sydafrika",
+		start: { year: 2025, month: Mar, day: 15 },
+		end: { year: 2025, month: Apr, day: 5 },
+		people: [Aston],
+		stops: [
+			StopAt(Landvetter.position),
+			StopAt([-26.136980574240035, 28.246026751667838]),
+			{
+				location: {
+					name: "Airport Bird & Game Lodge",
+					address: "21 4th Rd, Kempton Park, Johannesburg, 1624, Sydafrika",
+					url: "http://www.airport-game-lodge.co.za/",
+					position: [-26.07286275094143, 28.295749132977278],
+				},
+				start: { year: 2025, month: Mar, day: 16 },
+				end: { year: 2025, month: Mar, day: 17 },
+			},
+			{
+				location: {
+					name: "Pridelands Conservancy",
+					address: "Balule Nature Reserve, 1380, Sydafrika",
+					url: "http://www.pridelands.co.za/",
+					position: [-24.32929901253447, 30.972590893161883],
+				},
+				start: { year: 2025, month: Mar, day: 17 },
+				end: { year: 2025, month: Apr, day: 4 },
+			},
+			StopAt([-26.136980574240035, 28.246026751667838]),
+			StopAt(Landvetter.position),
 		]
 	},
 	{
