@@ -1,5 +1,5 @@
 import * as L from 'leaflet';
-import { Aston, Date, Jannike, Johan, Stop, Trip } from "./data/types";
+import { Aston, Aug, Date, Jannike, Johan, LaterThan, Mar, Stop, Trip } from "./data/types";
 import markerIconPng from "leaflet/dist/images/marker-icon.png"
 
 const icon = new L.Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]});
@@ -23,10 +23,13 @@ export const renderTrips = (trips: Trip[], map: L.Map, showMarkers: boolean, sho
 
 const renderTrip = (trip: Trip, map: L.Map, showMarkers: boolean, showPaths: boolean) => {
     if (showMarkers) {
-        trip.stops.map(s => renderStop(s, trip, map));
+        trip.stops.filter(s => s.location.name).map(s => renderStop(s, trip, map));
     }
     if (showPaths) {
-        let path = L.polyline(trip.stops.map(s => s.location.position));
+        let latlngs = trip.stops.map(s => s.location.position);
+        latlngs.unshift(homePos(trip));
+        latlngs.push(homePos(trip));
+        let path = L.polyline(latlngs);
         paths.push(path); 
         path.addTo(map);
     }
@@ -67,4 +70,17 @@ const monthNames = [
     "Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", 
     "Augusti", "September", "Oktober", "November", "December"
 ];
+
+const homePos = (trip: Trip) : [number, number] => {
+    if (LaterThan(trip.start, 2011, Aug, 10)) {
+        return [57.69277507683475, 11.950727528589015]; // Nordenskiöldsgatan
+    }
+    if (LaterThan(trip.start, 2007, Mar, 15)) {
+        return [57.444429584274964, 12.268926305606183]; // Slättängsvägen
+    }
+    if (LaterThan(trip.start, 2003, Mar, 3)) {
+        return [57.810519129370064, 11.966354560331803]; // Lilla Tolsereds Väg
+    }
+    return [56.04192443908478, 12.717053343971886];
+}
 

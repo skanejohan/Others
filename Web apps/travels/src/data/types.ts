@@ -44,3 +44,22 @@ export const Sep = 8;
 export const Oct = 9;
 export const Nov = 10;
 export const Dec = 11;
+
+export const LaterThan = (date: Date, yy: number, mm: number, dd: number) => {
+    if (date.year < yy) {
+        return false;
+    }
+    if (date.year > yy) {
+        return true;
+    }
+    if (date.month === undefined || date.month < mm) {
+        return false;
+    }    
+    if (date.month > mm) {
+        return true;
+    }    
+    if (date.day === undefined || date.day < dd) {
+        return false;
+    }    
+    return true;
+}

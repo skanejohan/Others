@@ -1,4 +1,4 @@
-import { Aston, Jannike, Johan, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec, Trip, Location } from "./types";
+import { Aston, Jannike, Johan, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec, Trip, Location, Stop } from "./types";
 
 /*
 Haverdal med Farmor och Farfar. 2010?
@@ -37,31 +37,6 @@ Kris och Luhrs bröllop - Ronneby Brunn
 	},
 
 
-	Koster + resa hem (Bengtsfors, Götene) 12-17/7 2011?
-	{
-		name: "Hem från Koster hos Luhrs",
-		start: new Date(2006, 8, 20), // TODO datum?
-		end: new Date(2006, 9, 10), // TODO datum?
-		locations: [
-			{
-				name: "First Hotel Bengtsfors",
-				address: "Karlsbergsvägen 3, 666 31 Bengtsfors",
-				url: "firsthotels.se",
-				position: new google.maps.LatLng(59.030004, 12.232089),
-				start: new Date(2006, 8, 20), // TODO datum?
-				end: new Date(2006, 9, 10), // TODO datum?
-			},
-			{
-				name: "Hotell Gustaf",
-				address: "Järnvägsgatan 2, 533 30 Götene",
-				url: "hotellgustaf.se",
-				position: new google.maps.LatLng(58.528807, 13.492399),
-				start: new Date(2006, 8, 20), // TODO datum?
-				end: new Date(2006, 9, 10), // TODO datum?
-			},
-		]
-	},
-
 	Tjörn med Mario?
 	{
 		name: "Husbilsutflykt med Mario",
@@ -78,6 +53,11 @@ Kris och Luhrs bröllop - Ronneby Brunn
 			},
 		]
 	},
+	Konferens Stockholm (Combination), Best Western Hotel Bentleys
+	Utvecklarkonferens Lustikulla (Combination), Best Western Hotel Bentleys
+	Öredev (Combination), Clarion Hotel Malmö Live?
+	Konferens (Combination), Köpenhamn
+	Griffeye, Klädesholmen
 	*/
 
 const KielGoteborg : Location = {
@@ -114,6 +94,17 @@ const Askim: Location = {
 	url: "liseberg.se",
 	position: [57.62750272967534, 11.921874230565997],
 };
+
+const StopAt = (position: [number, number]) : Stop => {
+	return {
+		location: {
+			name: "",
+			address: "",
+			url: "",
+			position: position,
+		}
+	};
+}
 
 export const trips : Trip[] = [
 	{
@@ -332,6 +323,36 @@ export const trips : Trip[] = [
 					url: "hotel-atlantico.it",
 					position: [45.504483, 12.644548],
 				},
+			},
+		]
+	},
+	{
+		name: "Hem från Koster hos Luhrs",
+		start: { year: 2011, month: Jul, day: 12 },
+		end: { year: 2011, month: Jul, day: 15 },
+		stops: [
+			StopAt([58.88456111666719, 11.029081960205618]),
+			{
+				location: {
+					name: "First Hotel Bengtsfors",
+					address: "Karlsbergsvägen 3, 666 31 Bengtsfors",
+					url: "firsthotels.se",
+					position: [59.030004, 12.232089],
+				},
+				start: { year: 2011, month: Jul, day: 12 },
+				end: { year: 2011, month: Jul, day: 13 },
+			},
+			StopAt([59.3949594891141, 13.508040855949092]),
+			StopAt([59.302339337716646, 14.11016375895033]),
+			{
+				location: {
+					name: "Hotell Gustaf",
+					address: "Järnvägsgatan 2, 533 30 Götene",
+					url: "hotellgustaf.se",
+					position: [58.528807, 13.492399],
+				},
+				start: { year: 2011, month: Jul, day: 12 },
+				end: { year: 2011, month: Jul, day: 13 },
 			},
 		]
 	},
@@ -4466,6 +4487,53 @@ export const trips : Trip[] = [
 					position: [56.87815269410974, 14.809208041833067],
 				},
 			},
+		]
+	},
+	{
+		name: "Påskresa med husbilen",
+		start: { year: 2025, month: Apr, day: 17 },
+		end: { year: 2025, month: Apr, day: 21 },
+		people: [Johan, Jannike],
+		stops: [
+			{
+				location: Askim,
+				start: { year: 2025, month: Apr, day: 17 },
+				end: { year: 2025, month: Apr, day: 18 },
+			},
+			StopAt([57.71532236951819, 11.994432030548978]),
+			StopAt([57.926764391874066, 12.545289920933115]),
+			{
+				location: {
+					name: "Nossebro bad och camping",
+					address: "Marknadsgatan 4, 465 30 Nossebro",
+					url: "https://www.essunga.se/nossebrobadochcamping.htm",
+					position: [58.19229754945541, 12.721858864646219],
+				},
+				start: { year: 2025, month: Apr, day: 18 },
+				end: { year: 2025, month: Apr, day: 19 },
+			},
+			{
+				location: {
+					name: "Ställplats Gästhamnen Mariestad",
+					address: "Hamngatan 43, 542 30 Mariestad",
+					url: "",
+					position: [58.71318028852726, 13.819095689264238],
+				},
+				start: { year: 2025, month: Apr, day: 19 },
+				end: { year: 2025, month: Apr, day: 20 },
+			},
+			{
+				location: {
+					name: "Lokstallet Ställplats Hjo",
+					address: "Änggatan 10, 544 36 Hjo",
+					url: "https://www.lokstallethjo.se/",
+					position: [58.30896286375425, 14.292645833180032],
+				},
+				start: { year: 2025, month: Apr, day: 20 },
+				end: { year: 2025, month: Apr, day: 21 },
+			},
+			StopAt([57.763819245574936, 13.829379935515274]),
+			StopAt(Askim.position),
 		]
 	},
 ]
