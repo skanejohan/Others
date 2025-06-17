@@ -73,7 +73,7 @@ export default class ControlDiv extends L.Control {
 
     // Which trips should be available in the "trips" selector, based on selected participant and year.
     private populateTripSelector() {
-        let selectableTrips = trips.filter(this.tripIncluded(this.selectedParticipant(), this.selectedYear()));
+        let selectableTrips = trips.filter(this.tripIncluded(this.selectedParticipant(), this.selectedYear())).reverse();
         this.tripSelect.innerHTML = ""; // Clear existing options
         this.addOption("Alla", "Alla", this.tripSelect)
         selectableTrips.map(t => this.addOption(t.name, t.id, this.tripSelect));

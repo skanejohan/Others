@@ -102,6 +102,13 @@ const Landvetter : Location = {
 	position: [57.66823120276672, 12.295187844678518],
 };
 
+const Paula : Location = {
+	name: "Paula och Jan-Åke",
+	address: "Kristdalavägen 12, 577 90 Hultsfred, Sverige",
+	url: "",
+	position: [57.520684, 15.971086],
+}
+
 
 const StopAt = (position: [number, number]) : Stop => {
 	return {
@@ -849,12 +856,7 @@ export const trips : Trip[] = [
 		end: { year: 2014, month: Sep, day: 7 },
 		stops: [
 			{
-				location: {
-					name: "Paula och Jan-Åke",
-					address: "Kristdalavägen 12, 577 90 Hultsfred, Sverige",
-					url: "",
-					position: [57.520684, 15.971086],
-				},
+				location: Paula,
 				start: { year: 2014, month: Sep, day: 5 },
 				end: { year: 2014, month: Sep, day: 6 },
 			},
@@ -1355,12 +1357,7 @@ export const trips : Trip[] = [
 				end: { year: 2016, month: May, day: 5 },
 			},
 			{
-				location: {
-					name: "Paula och Jan-Åke",
-					address: "Kristdalavägen 12, 577 90 Hultsfred, Sverige",
-					url: "",
-					position: [57.520684, 15.971086],
-				},
+				location: Paula,
 				start: { year: 2016, month: May, day: 5 },
 				end: { year: 2016, month: May, day: 6 },
 			},
@@ -2155,12 +2152,7 @@ export const trips : Trip[] = [
 				end: { year: 2018, month: Apr, day: 30 },
 			},
 			{
-				location: {
-					name: "Paula och Jan-Åke",
-					address: "Kristdalavägen 12, 577 90 Hultsfred, Sverige",
-					url: "",
-					position: [57.520684, 15.971086],
-				},
+				location: Paula,
 				start: { year: 2018, month: Apr, day: 30 },
 				end: { year: 2018, month: May, day: 1 },
 			},
@@ -2430,12 +2422,7 @@ export const trips : Trip[] = [
 				end: { year: 2018, month: Aug, day: 2 },
 			},
 			{
-				location: {
-					name: "Paula och Jan-Åke",
-					address: "Kristdalavägen 12, 577 90 Hultsfred, Sverige",
-					url: "",
-					position: [57.520684, 15.971086],
-				},
+				location: Paula,
 				start: { year: 2018, month: Aug, day: 2 },
 				end: { year: 2018, month: Aug, day: 5 },
 			},
@@ -4603,14 +4590,14 @@ export const trips : Trip[] = [
 	},
 	{
 		name: "Påskresa med husbilen",
-		start: { year: 2025, month: Apr, day: 17 },
-		end: { year: 2025, month: Apr, day: 21 },
+		start: { year: 2025, month: May, day: 1 },
+		end: { year: 2025, month: May, day: 5 },
 		people: [Johan, Jannike],
 		stops: [
 			{
 				location: Askim,
-				start: { year: 2025, month: Apr, day: 17 },
-				end: { year: 2025, month: Apr, day: 18 },
+				start: { year: 2025, month: May, day: 1 },
+				end: { year: 2025, month: May, day: 2 },
 			},
 			StopAt([57.71532236951819, 11.994432030548978]),
 			StopAt([57.926764391874066, 12.545289920933115]),
@@ -4621,8 +4608,8 @@ export const trips : Trip[] = [
 					url: "https://www.essunga.se/nossebrobadochcamping.htm",
 					position: [58.19229754945541, 12.721858864646219],
 				},
-				start: { year: 2025, month: Apr, day: 18 },
-				end: { year: 2025, month: Apr, day: 19 },
+				start: { year: 2025, month: May, day: 2 },
+				end: { year: 2025, month: May, day: 3 },
 			},
 			{
 				location: {
@@ -4631,8 +4618,8 @@ export const trips : Trip[] = [
 					url: "",
 					position: [58.71318028852726, 13.819095689264238],
 				},
-				start: { year: 2025, month: Apr, day: 19 },
-				end: { year: 2025, month: Apr, day: 20 },
+				start: { year: 2025, month: May, day: 3 },
+				end: { year: 2025, month: May, day: 4 },
 			},
 			{
 				location: {
@@ -4641,11 +4628,113 @@ export const trips : Trip[] = [
 					url: "https://www.lokstallethjo.se/",
 					position: [58.30896286375425, 14.292645833180032],
 				},
-				start: { year: 2025, month: Apr, day: 20 },
-				end: { year: 2025, month: Apr, day: 21 },
+				start: { year: 2025, month: May, day: 4 },
+				end: { year: 2025, month: May, day: 5 },
 			},
 			StopAt([57.763819245574936, 13.829379935515274]),
 			StopAt(Askim.position),
+		]
+	},
+	{
+		name: "Smålandsresa med husbilen",
+		start: { year: 2025, month: May, day: 14 },
+		end: { year: 2025, month: May, day: 18 },
+		people: [Johan, Jannike],
+		stops: [
+			{
+				location: Askim,
+				start: { year: 2025, month: May, day: 14 },
+				end: { year: 2025, month: May, day: 15 },
+			},
+			{
+				location: Paula,
+				start: { year: 2025, month: May, day: 15 },
+				end: { year: 2025, month: May, day: 16 },
+			},
+			{
+				location: {
+					name: "Hultsfred Strandcamping",
+					address: "Folkparksvägen 10, 577 36 Hultsfred",
+					url: "http://www.hultsfredstrandcamping.se/",
+					position: [57.491319755951984, 15.860945757849825],
+				},
+				start: { year: 2025, month: May, day: 16 },
+				end: { year: 2025, month: May, day: 17 },
+			},
+			{
+				location: {
+					name: "Elin och Andreas",
+					address: "Kuskvägen 11, 593 93 Västervik",
+					url: "",
+					position: [57.72117009407849, 16.668030092245242],
+				},
+				start: { year: 2025, month: May, day: 17 },
+				end: { year: 2025, month: May, day: 18 },
+			},
+			StopAt(Askim.position),
+		]
+	},
+	{
+		name: "Kristi himmelsfärdsresa med husbilen",
+		start: { year: 2025, month: May, day: 28 },
+		end: { year: 2025, month: Jun, day: 1 },
+		people: [Johan, Jannike],
+		stops: [
+			{
+				location: Askim,
+				start: { year: 2025, month: May, day: 28 },
+				end: { year: 2025, month: May, day: 29 },
+			},
+			{
+				location: {
+					name: "Hyppelns Hamn",
+					address: "475 52 Hyppeln",
+					url: "http://hyppeln.com/",
+					position: [57.75784812674132, 11.615236761449921],
+				},
+				start: { year: 2025, month: May, day: 29 },
+				end: { year: 2025, month: May, day: 30 },
+			},
+			StopAt([57.710030609617895, 11.772505069341264]),
+			{
+				location: {
+					name: "Vänersborg Guest Harbour and Marina",
+					address: "VÄNERPARKEN 12, 462 35 Vänersborg",
+					url: "http://www.vanersborgsmarina.se/sv/",
+					position: [58.377271, 12.316189],
+				},
+				start: { year: 2025, month: May, day: 30 },
+				end: { year: 2025, month: May, day: 31 },
+			},
+			{
+				location: {
+					name: "Henåns Ställplats",
+					address: "Ängsvägen 16, 473 33 Henån",
+					url: "https://www.henansstallplats.com/",
+					position: [58.24005993103237, 11.6760724004725],
+				},
+				start: { year: 2025, month: May, day: 31 },
+				end: { year: 2025, month: Jun, day: 1 },
+			},
+			StopAt(Askim.position),
+		]
+	},
+	{
+		name: "Greta och Hedvigs student",
+		start: { year: 2025, month: Jun, day: 4 },
+		end: { year: 2025, month: Jun, day: 7 },
+		people: [Johan, Jannike],
+		stops: [
+			{
+				location: {
+					name: "First Camp Råå Vallar-Helsingborg",
+					address: "Kustgatan 95, 252 70 Råå",
+					url: "https://firstcamp.se/destination/raa-vallar-helsingborg",
+					position: [56.00483370178907, 12.723468543750982],
+				},
+				start: { year: 2025, month: Jun, day: 4 },
+				end: { year: 2025, month: Jun, day: 5 },
+			},
 		]
 	},
 ]
