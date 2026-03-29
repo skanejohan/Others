@@ -1,6 +1,6 @@
 import * as L from 'leaflet';
 import { trips } from './data/trips';
-import { renderTrips } from './render';
+import { renderTrips, monthNames } from './render';
 import { Aston, Jannike, Johan, Participant, Trip } from './data/types';
 
 export default class ControlDiv extends L.Control {
@@ -66,7 +66,7 @@ export default class ControlDiv extends L.Control {
     private populateYearSelector() {
         let years = new Set<number>();
         trips.map(t => { years.add(t.start.year); years.add(t.end.year); });
-        let availableYears = ["Alla"].concat(Array.from(years).sort().map(y => y.toString()));
+        let availableYears = ["Alla"].concat(Array.from(years).sort().reverse().map(y => y.toString()));
         this.yearSelect.innerHTML = ""; // Clear existing options
         availableYears.map(y => this.addOption(y, y, this.yearSelect));
     }
@@ -76,7 +76,16 @@ export default class ControlDiv extends L.Control {
         let selectableTrips = trips.filter(this.tripIncluded(this.selectedParticipant(), this.selectedYear())).reverse();
         this.tripSelect.innerHTML = ""; // Clear existing options
         this.addOption("Alla", "Alla", this.tripSelect)
-        selectableTrips.map(t => this.addOption(t.name, t.id, this.tripSelect));
+        selectableTrips.map(t => 
+            {
+                let y = t.start.year;
+                let startMonth = t.start.month !== undefined ? monthNames[t.start.month] : "??";
+                let startDay = t.start.day !== undefined ? " " + t.start.day.toString() : "";
+                let endMonth = t.end.month !== undefined ? monthNames[t.end.month] : "??";
+                let endDay = t.end.day !== undefined ? " " + t.end.day.toString() : ""; 
+
+                this.addOption(`${y}: ${t.name} (${startMonth}${startDay} - ${endMonth}${endDay})`, t.id, this.tripSelect)
+            });
     }
 
     // Draw the selected trips in the map.

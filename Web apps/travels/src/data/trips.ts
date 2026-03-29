@@ -139,6 +139,22 @@ export const trips : Trip[] = [
 		]
 	},
 	{
+		name: "Sommarjobb, South Carolina",
+		start: { year: 1997, month: Jun, day: undefined },
+		end: { year: 1997, month: Aug, day: undefined },
+		people: [Johan],
+		stops: [
+			{
+				location: {
+					name: "1727 Greene St",
+					address: "1727 Greene St, Columbia, SC 29201, USA",
+					url: "",
+					position: [33.99886466440778, -81.02177596406456],
+				}
+			}
+		]
+	},
+	{
 		name: "Mount Kisco, USA",
 		start: { year: 2006, month: Sep, day: undefined },
 		end: { year: 2006, month: Oct, day: undefined },
@@ -1377,13 +1393,14 @@ export const trips : Trip[] = [
 		name: "London med Heffa, Luhr, Richard, Ricke och Björnström",
 		start: { year: 2016, month: May, day: 27 },
 		end: { year: 2016, month: May, day: 29 },
+		people: [Johan],
 		stops: [
 			{
 				location: {
-					name: "TODO",
-					address: "TODO",
+					name: "Airbnb",
+					address: "",
 					url: "",
-					position: [0, 0],
+					position: [51.522349764915845, -0.13825479520990486],
 				},
 			},
 		]
@@ -3433,7 +3450,7 @@ export const trips : Trip[] = [
 			},
 		]
 	},
-	{
+	{ 
 		name: "Danmark med Richard, Jessica och Wilhelm",
 		start: { year: 2021, month: Oct, day: 31 },
 		end: { year: 2021, month: Nov, day: 5 },
@@ -3441,10 +3458,10 @@ export const trips : Trip[] = [
 		stops: [
 			{
 				location: {
-					name: "TODO",
-					address: "TODO",
-					url: "TODO",
-					position: [0, 0],
+					name: "Semesterhus i Fjellerup Strand",
+					address: "",
+					url: "",
+					position: [56.521159144158304, 10.62535422092153],
 				},
 			},
 		]
@@ -4736,5 +4753,296 @@ export const trips : Trip[] = [
 				end: { year: 2025, month: Jun, day: 5 },
 			},
 		]
+	},
+	{
+		name: "Europaresa med husbilen",
+		start: { year: 2025, month: Jul, day: 17 },
+		end: { year: 2025, month: Aug, day: 17 },
+		people: [Johan, Jannike],
+		stops: [
+			{
+				location: Askim,
+				start: { year: 2025, month: Jul, day: 17 },
+				end: { year: 2025, month: Jul, day: 18 },
+			},
+			{
+				location: {
+					name: "Ljungby Semesterby och Camping Park",
+					address: "Campingvägen 1, 341 35 Ljungby",
+					url: "https://www.ljungbycamping.se/",
+					position: [56.841504172476974, 13.955462202870633],
+				},
+				start: { year: 2025, month: Jul, day: 18 },
+				end: { year: 2025, month: Jul, day: 19 },
+			},
+			{
+				location: {
+					name: "Färja, Karlskrona - Gdynia",
+					address: "",
+					url: "",
+					position: [55.49925804650701, 17.224744216020238],
+				},
+				start: { year: 2025, month: Jul, day: 19 },
+				end: { year: 2025, month: Jul, day: 20 },
+			},
+			{
+				location: {
+					name: "Camper Park Gdansk University",
+					address: "Towarowa 40, 80-218 Gdańsk, Polen",
+					url: "https://csa.pg.edu.pl/node/114",
+					position: [54.372092112838324, 18.630084149260107],
+				},
+				start: { year: 2025, month: Jul, day: 20 },
+				end: { year: 2025, month: Jul, day: 22 },
+				// Sopot, Gdansk, Poznan
+			},
+			{
+				location: {
+					name: "Camping 271 - SuliCamp",
+					address: "Towarowa 40, 80-218 Gdańsk, Polen",
+					url: "https://csa.pg.edu.pl/node/114",
+					position: [50.850186798371176, 16.742274184496004],
+				},
+				start: { year: 2025, month: Jul, day: 22 },
+				end: { year: 2025, month: Jul, day: 23 },
+				// Projekt Riese, Skallkyrkan
+			},
+			{
+				location: {
+					name: "Camping 169 Polanica Zdrój",
+					address: "Sportowa 6, 57-320 Polanica-Zdrój, Polen",
+					url: "https://osirpolanica.pl/camping",
+					position: [50.41527223549934, 16.51450892924782],
+				},
+				start: { year: 2025, month: Jul, day: 23 },
+				end: { year: 2025, month: Jul, day: 24 },
+			},
+			{
+				location: {
+					name: "Camping 49 Adam",
+					address: "Wioślarska 19, 30-206 Kraków, Polen",
+					url: "https://www.campingadam.pl/",
+					position: [50.04675959895122, 19.902983548330596],
+				},
+				start: { year: 2025, month: Jul, day: 24 },
+				end: { year: 2025, month: Jul, day: 25 },
+				// Krakow, Wieliczka
+			},
+			{
+				location: {
+					name: "Autocamp Jami",
+					address: "Vojenské, 029 01 Námestovo, Slovakien",
+					url: "https://www.autocampjami.sk/",
+					position: [49.410678745069426, 19.502409625060203],
+				},
+				start: { year: 2025, month: Jul, day: 25 },
+				end: { year: 2025, month: Jul, day: 26 },
+			},
+			{
+				location: {
+					name: "Haller Camping",
+					address: "Budapest, Óbester u. 2, 1097 Ungern",
+					url: "https://hallercamping.hu/",
+					position: [47.47555022448018, 19.083647015122057],
+				},
+				start: { year: 2025, month: Jul, day: 26 },
+				end: { year: 2025, month: Jul, day: 28 },
+			},
+			{
+				location: {
+					name: "Camping Au an der Donau",
+					address: "Hafenstraße 1, 4332 Au an der Donau, Österrike",
+					url: "http://www.camping-audonau.at/",
+					position: [48.228620899646344, 14.575822885066675],
+				},
+				start: { year: 2025, month: Jul, day: 28 },
+				end: { year: 2025, month: Jul, day: 29 },
+			},
+			{
+				location: {
+					name: "Lido Lilla' Camping & Bar",
+					address: "Via al Lago, 5 Fraz, Via al Lago, 5, 38096 Vallelaghi TN, Italien",
+					url: "http://www.campeggiolidolilla.it/",
+					position: [46.09896700344204, 11.058109581196328],
+				},
+				start: { year: 2025, month: Jul, day: 29 },
+				end: { year: 2025, month: Jul, day: 30 },
+			},
+			{
+				location: {
+					name: "Camping Belvedere",
+					address: "Via Cavalle, 5, 25080 Manerba del Garda BS, Italien",
+					url: "https://www.camping-belvedere.it/",
+					position: [45.5633587813535, 10.564994238013329],
+				},
+				start: { year: 2025, month: Jul, day: 30 },
+				end: { year: 2025, month: Aug, day: 2 },
+				// Gardasjön, Sirmione, motorcykel
+			},
+			{
+				location: {
+					name: "Camping Framura (S.R.L.)",
+					address: "Localita' La Spiaggetta, Framura, SP 19014, 19013 Deiva Marina SP, Italien",
+					url: "http://www.campingframura.com/",
+					position: [44.210853488408816, 9.52474496492319],
+				},
+				start: { year: 2025, month: Aug, day: 2 },
+				end: { year: 2025, month: Aug, day: 4 },
+			},
+			{
+				location: {
+					name: "CAMPING LIDO TOCE Di Cordula Zimmermann",
+					address: "Via per Feriolo, 41, 28924 Fondotoce VB, Italien",
+					url: "http://www.campinglidotoce.eu/",
+					position: [45.93778363158628, 8.488279629634077],
+				},
+				start: { year: 2025, month: Aug, day: 4 },
+				end: { year: 2025, month: Aug, day: 6 },
+			},
+			{
+				location: {
+					name: "Area Sosta Camper - Tavernola",
+					address: "Via Brennero, 7, 22100 Como CO, Italien",
+					url: "",
+					position: [45.834980484095475, 9.06113742744809],
+				},
+				start: { year: 2025, month: Aug, day: 6 },
+				end: { year: 2025, month: Aug, day: 7 },
+				// Como
+			},
+			{
+				location: {
+					name: "Olivella Camping - camping lake Iseo",
+					address: "Via Cave, 7, 25049 Pilzone BS, Italien",
+					url: "http://www.campingolivella.it/",
+					position: [45.67622668330619, 10.076260358982701],
+				},
+				start: { year: 2025, month: Aug, day: 7 },
+				end: { year: 2025, month: Aug, day: 9 },
+			},
+			{
+				location: {
+					name: "Camper Schneeburghof",
+					address: "Via Monte Benedetto, 26, 39019 Tirolo BZ, Italien",
+					url: "http://www.schneeburghof.com/",
+					position: [46.675629048010364, 11.166823942701525],
+				},
+				start: { year: 2025, month: Aug, day: 9 },
+				end: { year: 2025, month: Aug, day: 10 },
+				// Meran
+			},
+			{
+				location: {
+					name: "Hotel Löwenhof (ställplats)",
+					address: "Via Brennero, 60, 39040 Bressanone BZ, Italien",
+					url: "https://www.loewenhof.it/",
+					position: [46.734561638316954, 11.648959105595267],
+				},
+				start: { year: 2025, month: Aug, day: 10 },
+				end: { year: 2025, month: Aug, day: 11 },
+			},
+			{
+				location: {
+					name: "Hotel Löwenhof",
+					address: "Via Brennero, 60, 39040 Bressanone BZ, Italien",
+					url: "https://www.loewenhof.it/",
+					position: [46.73504333283243, 11.646914971438802],
+				},
+				start: { year: 2025, month: Aug, day: 11 },
+				end: { year: 2025, month: Aug, day: 13 },
+				// Brixen, Plose
+				// Wurzjoch, Sella, Val Gardena (motorcykel)
+			},
+			{
+				location: {
+					name: "Campingplatz \"Fischer-Michl\" und Campingstüberl",
+					address: "Wald-Seezentrum 4, 91710 Gunzenhausen, Tyskland",
+					url: "https://www.campingplatz-fischer-michl.de/",
+					position: [49.1241192879103, 10.718080278420565],
+				},
+				start: { year: 2025, month: Aug, day: 13 },
+				end: { year: 2025, month: Aug, day: 14 },
+			},
+			{
+				location: {
+					name: "Azur Camping Birkensee",
+					address: "an der B443, Campingplatz Birkensee, 30880 Laatzen, Tyskland",
+					url: "https://www.azur-camping.com/camp/Camp-Hannover",
+					position: [52.303428910714324, 9.862672264101553],
+				},
+				start: { year: 2025, month: Aug, day: 14 },
+				end: { year: 2025, month: Aug, day: 15 },
+			},
+			{
+				location: {
+					name: "Wohnmobilstellplatz Celle",
+					address: "77er Str. 36, 29221 Celle, Tyskland",
+					url: "",
+					position: [52.6171529654205, 10.083011119986027],
+				},
+				start: { year: 2025, month: Aug, day: 15 },
+				end: { year: 2025, month: Aug, day: 16 },
+			},
+			{
+				location: KielGoteborg,
+				start: { year: 2025, month: Aug, day: 16 },
+				end: { year: 2025, month: Aug, day: 17 },
+			},
+		]
+	},
+	{
+		name: "Lidköping med Henke och Pia",
+		start: { year: 2025, month: Sep, day: 13 },
+		end: { year: 2025, month: Sep, day: 14 },
+		people: [Johan, Jannike],
+		stops: [
+			{
+				location: {
+					name: "Kronocamping i Lidköping",
+					address: "Läckögatan 22, 531 60 Lidköping",
+					url: "http://www.kronocamping.com/",
+					position: [58.51397962523543, 13.143764846286878],
+				},
+				start: { year: 2025, month: Sep, day: 13 },
+				end: { year: 2025, month: Sep, day: 14 },
+			},
+		]
+	},
+	{
+		name: "Oslo",
+		start: { year: 2025, month: Dec, day: 26 },
+		end: { year: 2025, month: Dec, day: 28 },
+		people: [Johan, Jannike],
+		stops: [
+			{
+				location: {
+					name: "Grand Hotel Oslo",
+					address: "Karl Johans gt. 31, 0159 Oslo, Norge",
+					url: "http://www.grand.no/",
+					position: [59.91375698906094, 10.740300497460234],
+				},
+				start: { year: 2025, month: Dec, day: 26 },
+				end: { year: 2025, month: Dec, day: 28 },
+			},
+		]
+	},
+	{
+		name: "Tjänsteresa (Magnet)",
+		start: { year: 2026, month: Feb, day: 23 },
+		end: { year: 2026, month: Feb, day: 24 },
+		people: [Johan],
+		stops: [
+			{
+				location: {
+					name: "Golden Tulip Zoetermeer The Hague",
+					address: "Kinderen van Versteegplein 18, 2713 HB Zoetermeer, Nederländerna",
+					url: "http://twobrothershotels.nl/",
+					position: [52.049059396977256, 4.478897858422393],
+				},
+				start: { year: 2026, month: Feb, day: 23 },
+				end: { year: 2026, month: Feb, day: 24 },
+			},
+		]
+		// Besök Dutch Police, Europaweg 45, Zoetermeer
 	},
 ]
