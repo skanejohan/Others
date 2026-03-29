@@ -55,7 +55,6 @@ Kris och Luhrs bröllop - Ronneby Brunn
 	},
 	Konferens Stockholm (Combination), Best Western Hotel Bentleys
 	Utvecklarkonferens Lustikulla (Combination), Best Western Hotel Bentleys
-	Öredev (Combination), Clarion Hotel Malmö Live?
 	Konferens (Combination), Köpenhamn
 	Griffeye, Klädesholmen
 	*/
@@ -170,6 +169,23 @@ export const trips : Trip[] = [
 		]
 	},
 	{
+		name: "Danmark med kusinerna",
+		start: { year: 2007, month: Jun, day: undefined },
+		end: { year: 2007, month: Jun, day: undefined },
+		people: [Johan, Aston],
+		stops: [
+			{
+				location: {
+					name: "Semesterhus",
+					address: "",
+					url: "",
+					position: [55.712836151236104, 11.00618676697791],
+				}
+			}
+		]
+		// I närheten av Kalundborg, men ej exakt. 
+	},
+	{
 		name: "Italien och Österrike",
 		start: { year: 2008, month: May, day: undefined},
 		end: { year: 2008, month: Jun, day: undefined},
@@ -228,13 +244,14 @@ export const trips : Trip[] = [
 		stops: [
 			{
 				location: {
-					name: "TODO",
-					address: "TODO",
+					name: "Semesterhus",
+					address: "",
 					url: "",
-					position: [0, 0],
+					position: [56.07546725822337, 12.115079321059552],
 				},
 			},
 		]
+		// Norra Själland men ej exakt var.
 	},
 	{
 		name: "Polen med familjen Essunger",
@@ -2526,6 +2543,22 @@ export const trips : Trip[] = [
 				},
 				start: { year: 2018, month: Nov, day: 1 },
 				end: { year: 2018, month: Nov, day: 3 },
+			},
+		]
+	},
+	{
+		name: "Öredev (Combination)",
+		start: { year: 2018, month: Nov, day: 19 },
+		end: { year: 2018, month: Nov, day: 22 },
+		people: [Johan],
+		stops: [
+			{
+				location: {
+					name: "Clarion Hotel & Congress Malmö Live",
+					address: "Dag Hammarskjölds torg 2, 211 18 Malmö",
+					url: "https://www.strawberry.se/hotell/sverige/malmo/clarion-hotel-malmo-live/",
+					position: [55.60748785641014, 12.993790646356677],
+				},
 			},
 		]
 	},
