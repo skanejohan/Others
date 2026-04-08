@@ -13,8 +13,16 @@ export interface Location {
 
 export interface Stop {
     location: Location;
+    pictures?: string[];
     start?: Date;
     end?: Date;
+}
+
+export interface Pause {
+    location: Location;
+    pictures?: string[];
+    description?: string;
+    date: Date;
 }
 
 export interface Trip {
@@ -23,6 +31,7 @@ export interface Trip {
     start: Date;
     end: Date;
     stops: Stop[];
+    pauses?: Pause[];
     people?: Participant[];
 }
 

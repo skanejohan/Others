@@ -1,8 +1,9 @@
 import * as L from 'leaflet';
-import { Aston, Aug, Date, Jannike, Johan, LaterThan, Mar, Stop, Trip } from "./data/types";
+import { Aston, Aug, Date, Jannike, Johan, LaterThan, Mar, Pause, Stop, Trip } from "./data/types";
 import markerIconPng from "leaflet/dist/images/marker-icon.png"
 
-const icon = new L.Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]});
+const stopIcon = new L.Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]});
+const pauseIcon = new L.Icon({iconUrl: markerIconPng, iconSize: [15, 28], iconAnchor: [12, 41]});
 
 let paths: L.Polyline[] = [];
 let markers: L.Marker[] = [];
@@ -13,7 +14,8 @@ export const renderTrips = (trips: Trip[], map: L.Map, showMarkers: boolean, sho
     paths.map(p => p.remove());
     paths = [];
 
-    trips.map(t => renderTrip(t, map, showMarkers, showPaths));
+    let showPauses = trips.length === 1;
+    trips.map(t => renderTrip(t, map, showMarkers, showPaths, showPauses));
 
     if (markers.length > 0) {
         let group = L.featureGroup(markers);
@@ -21,9 +23,12 @@ export const renderTrips = (trips: Trip[], map: L.Map, showMarkers: boolean, sho
     }
 }
 
-const renderTrip = (trip: Trip, map: L.Map, showMarkers: boolean, showPaths: boolean) => {
+const renderTrip = (trip: Trip, map: L.Map, showMarkers: boolean, showPaths: boolean, showPauses: boolean) => {
     if (showMarkers) {
         trip.stops.filter(s => s.location.name).map(s => renderStop(s, trip, map));
+        if (showPauses) {
+            trip.pauses?.filter(p => p.location.name).map(p => renderPause(p, map));
+        }
     }
     if (showPaths) {
         let latlngs = trip.stops.map(s => s.location.position);
@@ -41,7 +46,17 @@ const renderStop = (stop: Stop, trip: Trip, map: L.Map) => {
     let p = trip.people === undefined ? [Johan, Jannike, Aston] : trip.people;
     let description = "<b>" + t + "</b><br>" + p + "<br><br>" + l + "<br>" + stop.location.address;
     let marker = L.marker(stop.location.position)
-        .setIcon(icon)
+        .setIcon(stopIcon)
+        .addTo(map)
+        .bindTooltip(description)
+        .bindPopup(description);
+    markers.push(marker);
+}
+
+const renderPause = (pause: Pause, map: L.Map) => {
+    let description = "<b>" + pause.location.name + "</b><br>" + (pause.description ?? "")+ "<br><br>" + formatDate(pause.date);
+    let marker = L.marker(pause.location.position)
+        .setIcon(pauseIcon)
         .addTo(map)
         .bindTooltip(description)
         .bindPopup(description);

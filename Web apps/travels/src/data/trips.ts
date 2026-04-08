@@ -120,6 +120,12 @@ const StopAt = (position: [number, number]) : Stop => {
 	};
 }
 
+const StopAtKielSchwedenKai = StopAt([54.31919592054965, 10.139430489153993]);
+const StopAtKielHbf = StopAt([54.315106139019775, 10.131891197411646]);
+const StopAtLubeckHbf = StopAt([53.86755208742279, 10.669413661426931]);
+const StopAtSchipholAirport = StopAt([52.31207640504875, 4.755621322197622]);
+
+
 export const trips : Trip[] = [
 	{
 		name: "Konferens (Spectronic), Istanbul",
@@ -5065,6 +5071,7 @@ export const trips : Trip[] = [
 		end: { year: 2026, month: Feb, day: 24 },
 		people: [Johan],
 		stops: [
+			StopAtSchipholAirport,
 			{
 				location: {
 					name: "Golden Tulip Zoetermeer The Hague",
@@ -5075,7 +5082,147 @@ export const trips : Trip[] = [
 				start: { year: 2026, month: Feb, day: 23 },
 				end: { year: 2026, month: Feb, day: 24 },
 			},
+			StopAtSchipholAirport,
+		],
+		pauses: [
+			{
+				location: {
+					name: "Nationale Politie (Holländska polisen)",
+					address: "Europaweg 45, 2711 EM Zoetermeer, Nederländerna",
+					url: "https://www.politie.nl/",
+					position: [52.06269841225075, 4.4897543500233175],
+				},
+				date: { year: 2026, month: Feb, day: 24 },
+				description: "Möte med holländska polisen"
+			},
 		]
-		// Besök Dutch Police, Europaweg 45, Zoetermeer
+	},
+	{
+		name: "Tågluff i Tyskland",
+		start: { year: 2026, month: Apr, day: 2 },
+		end: { year: 2026, month: Apr, day: 7 },
+		people: [Johan, Jannike],
+		stops: [
+			{
+				location: KielGoteborg,
+				start: { year: 2026, month: Apr, day: 2 },
+				end: { year: 2026, month: Apr, day: 3 },
+			},
+			StopAtKielSchwedenKai,
+			StopAtKielHbf,
+			StopAtLubeckHbf,
+			StopAt([53.76658832614396, 11.467162612229549]), // Bad Kleinen
+			{
+				location: {
+					name: "Townhouse Stadt Hamburg a Vagabond Club",
+					address: "Am Markt, 23966 Wismar, Tyskland",
+					url: "https://www.vagabondclub.com/wismar/",
+					position: [53.89164510146379, 11.466889386586843],
+				},
+				start: { year: 2026, month: Apr, day: 3 },
+				end: { year: 2026, month: Apr, day: 4 },
+			},
+			{
+				location: {
+					name: "Niederländischer Hof",
+					address: "Alexandrinenstraße 12-13, 19055 Schwerin, Tyskland",
+					url: "https://niederlaendischer-hof.de/",
+					position: [53.63353743464299, 11.410637090201199],
+				},
+				start: { year: 2026, month: Apr, day: 4 },
+				end: { year: 2026, month: Apr, day: 5 },
+			},
+			StopAt([53.76658832614396, 11.467162612229549]), // Bad Kleinen
+			StopAtLubeckHbf,
+			{
+				location: {
+					name: "The Layhead B&B",
+					address: "Fischstraße 22, 23552 Lübeck, Tyskland",
+					url: "http://thelayhead.de/",
+					position: [53.867697724641076, 10.682175909717182],
+				},
+				start: { year: 2026, month: Apr, day: 5 },
+				end: { year: 2026, month: Apr, day: 6 },
+			},
+			StopAtLubeckHbf,
+			StopAtKielHbf,
+			StopAtKielSchwedenKai,
+			{
+				location: GoteborgKiel,
+				start: { year: 2026, month: Apr, day: 6 },
+				end: { year: 2026, month: Apr, day: 7 },
+			},
+		],
+		pauses: [
+			{	
+				location: {
+					name: "Alter Schwede",
+					address: "Am Markt 22, 23966 Wismar, Tyskland",
+					url: "http://www.alter-schwede-wismar.de/",
+					position: [53.89130907555572, 11.466863300166658],
+				},
+				date: { year: 2026, month: Apr, day: 3 },
+				description: "Lunch"
+			},
+			{	
+				location: {
+					name: "Ahoi Steffen Henssler Wismar",
+					address: "Stockholmer Str. 24, 23966 Wismar, Tyskland",
+					url: "https://www.ahoisteffenhenssler.de/ahoi_speisekarte_wismar_052024_online/",
+					position: [53.89946871423588, 11.45754697652389],
+				},
+				date: { year: 2026, month: Apr, day: 3 },
+			},
+			{	
+				location: {
+					name: "Buddha Restaurant",
+					address: "Hinter dem Rathaus 1, 23966 Wismar, Tyskland",
+					url: "http://buddha-wismar.de/",
+					position: [53.892380564200224, 11.466983959913964],
+				},
+				date: { year: 2026, month: Apr, day: 3 },
+				description: "Middag"
+			},
+			{	
+				location: {
+					name: "Kartoffelhaus Nr. 1",
+					address: "Buschstraße 14, 19053 Schwerin, Tyskland",
+					url: "http://www.kartoffelhaus-schwerin.de/",
+					position: [53.62845171546013, 11.41339889736137],
+				},
+				date: { year: 2026, month: Apr, day: 4 },
+				description: "Lunch"
+			},
+			{	
+				location: {
+					name: "Löwe Schwerin",
+					address: "Am Markt 1, 19055 Schwerin, Tyskland",
+					url: "http://loeweschwerin.de/",
+					position: [53.62918740472145, 11.414816869870416],
+				},
+				date: { year: 2026, month: Apr, day: 4 },
+				description: "Paus vid torget. Demokratifestival. Sång av bland andra „Omas gegen Rechts“"
+			},
+			{	
+				location: {
+					name: "Altstadtbrauhaus „Zum Stadtkrug“",
+					address: "Wismarsche Str. 126, 19053 Schwerin, Tyskland",
+					url: "https://www.altstadtbrauhaus.de/",
+					position: [53.62966784592239, 11.41028057327629],
+				},
+				date: { year: 2026, month: Apr, day: 4 },
+				description: "Middag"
+			},
+			{	
+				location: {
+					name: "Jan & Hein & Klaas & Pit",
+					address: "Holstenbrücke 1, 24103 Kiel, Tyskland",
+					url: "https://janheinklaaspit.de/",
+					position: [54.322638087549024, 10.136441006710287],
+				},
+				date: { year: 2026, month: Apr, day: 5 },
+				description: "Lunch och öl i väntan på färjan."
+			}
+		]
 	},
 ]
