@@ -5245,4 +5245,68 @@ export const trips : Trip[] = [
 			}
 		]
 	},
+	{
+		name: "Sweden Rock med Johanna och Henrik",
+		start: { year: 2026, month: Jun, day: 2 },
+		end: { year: 2026, month: Jun, day: 7 },
+		people: [Johan, Jannike],
+		stops: [
+			{
+				location: {
+					name: "Ingemans camping",
+					address: "Truckvägen 6, 294 76 Sölvesborg",
+					url: "https://ingemanscamping.se/",
+					position: [56.11534032851381, 14.673614555669513],
+				}
+			},
+		],
+	},
+	{
+		name: "Tanzania med Liljeblads och Sundmarks",
+		start: { year: 2026, month: Jun, day: 21 },
+		end: { year: 2026, month: Jul, day: 5 },
+		people: [Johan, Jannike],
+		stops: [
+			{
+				location: {
+					name: "Kibo Palace Hotel Arusha",
+					address: "Nyerere Rd, Arusha, Tanzania",
+					url: "http://www.kibopalacehotel.com/",
+					position: [-3.3753199355572163, 36.69867290893372],
+				},
+				start: { year: 2026, month: Jun, day: 21 },
+				end: { year: 2026, month: Jun, day: 22 },
+			},
+			{
+				location: {
+					name: "Farm of Dreams Lodge",
+					address: "Plot no.3&4 Gyekrum Area Karatu district, Karatu, Tanzania",
+					url: "https://farmofdreamslodge.com/",
+					position: [-3.358920582035004, 35.66967236773486],
+				},
+				start: { year: 2026, month: Jun, day: 22 },
+				end: { year: 2026, month: Jun, day: 24 },
+			},
+			{
+				location: {
+					name: "Serengeti Tanzania Bush Camp-Simba",
+					address: "Seronera, Tanzania",
+					url: "http://www.tanzaniabushcamps.com/",
+					position: [-2.4184707836996866, 34.87489265373846],
+				},
+				start: { year: 2026, month: Jun, day: 24 },
+				end: { year: 2026, month: Jun, day: 26 },
+			},
+			{
+				location: {
+					name: "Zanzibar Queen Hotel",
+					address: "Kigomani, Tanzania",
+					url: "http://zanzibarqueen.com/",
+					position: [-5.8612330438726925, 39.354934685935596],
+				},
+				start: { year: 2026, month: Jun, day: 26 },
+				end: { year: 2026, month: Jul, day: 4 },
+			},
+		],
+	},
 ]
