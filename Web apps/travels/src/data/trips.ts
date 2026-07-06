@@ -5215,12 +5215,32 @@ export const trips : Trip[] = [
 			},
 			{	
 				location: {
+					name: "Sadhu Indisches Restaurant Lübeck",
+					address: "Mühlenbrücke 17, 23552 Lübeck, Tyskland",
+					url: "https://sadhu-restaurant-hl.de/",
+					position: [53.86024679411312, 10.690465615428137],
+				},
+				date: { year: 2026, month: Apr, day: 5 },
+				description: "Lunch"
+			},
+			{	
+				location: {
+					name: "Altstadt Bierhaus",
+					address: "Braunstraße 19, 23552 Lübeck, Tyskland",
+					url: "https://altstadt-bierhaus.de/",
+					position: [53.86687420943503, 10.681825519146127],
+				},
+				date: { year: 2026, month: Apr, day: 5 },
+				description: "Middag"
+			},
+			{	
+				location: {
 					name: "Jan & Hein & Klaas & Pit",
 					address: "Holstenbrücke 1, 24103 Kiel, Tyskland",
 					url: "https://janheinklaaspit.de/",
 					position: [54.322638087549024, 10.136441006710287],
 				},
-				date: { year: 2026, month: Apr, day: 5 },
+				date: { year: 2026, month: Apr, day: 6 },
 				description: "Lunch och öl i väntan på färjan."
 			}
 		]
