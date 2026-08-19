@@ -5,8 +5,8 @@ var lastTime = Date.now();
 let gameLoop = () => {
     let now = Date.now();
     let dt = (now - lastTime);
-    // update(level, dt);
-    // render(level, canvas.width, canvas.height);
+    update(dt);
+    render(canvas.width, canvas.height);
     requestAnimationFrame(gameLoop);
     lastTime = now;
 }
