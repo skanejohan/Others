@@ -5309,4 +5309,302 @@ export const trips : Trip[] = [
 			},
 		],
 	},
+	{
+		name: "Elin och Andreas bröllop",
+		start: { year: 2026, month: Jun, day: 31 },
+		end: { year: 2026, month: Aug, day: 2 },
+		people: [Johan, Jannike, Aston],
+		stops: [
+			{
+				location: {
+					name: "Slottsholmen",
+					address: "Slottsholmsvägen 10, 593 38 Västervik",
+					url: "http://www.slottsholmen.com/",
+					position: [57.761414874033235, 16.64309251525348],
+				},
+				start: { year: 2026, month: Jun, day: 31 },
+				end: { year: 2026, month: Aug, day: 2 },
+			}
+		],
+	},
+	{
+		name: "Med husbilen i Nederländerna och Tyskland",
+		start: { year: 2026, month: Aug, day: 2 },
+		end: { year: 2026, month: Aug, day: 16 },
+		people: [Johan, Jannike],
+		stops: [
+			{
+				location: GoteborgKiel,
+				start: { year: 2026, month: Aug, day: 2 },
+				end: { year: 2026, month: Aug, day: 3 },
+			},
+			{
+				location: {
+					name: "Reisemobilstellplatz an Kuhhirten, Bremen",
+					address: "Kuhhirtenweg, 28201 Bremen, Tyskland",
+					url: "http://www.stellplatz-bremen.de/",
+					position: [53.064923270224895, 8.820043796337051],
+				},
+				start: { year: 2026, month: Aug, day: 3 },
+				end: { year: 2026, month: Aug, day: 4 },
+			},
+			{
+				location: {
+					name: "Ardoer Vakantiepark 't Akkertien",
+					address: "Noordwal 3, 8325 PP Vollenhove, Nederländerna",
+					url: "http://www.ardoer.com/akkertien",
+					position: [52.67582938313603, 5.938694699933775],
+				},
+				start: { year: 2026, month: Aug, day: 4 },
+				end: { year: 2026, month: Aug, day: 5 },
+			},
+			{
+				location: {
+					name: "Hunsingo Texel",
+					address: "Postweg 15, 1795 JJ De Cocksdorp, Nederländerna",
+					url: "http://www.hunsingotexel.nl/",
+					position: [53.103679688626855, 4.807860478486471],
+				},
+				start: { year: 2026, month: Aug, day: 5 },
+				end: { year: 2026, month: Aug, day: 6 },
+			},
+			{
+				location: {
+					name: "Camping Streefland",
+					address: "Provincialeweg West 27, 2851 EJ Haastrecht, Nederländerna",
+					url: "https://www.camping-streefland.nl/",
+					position: [51.99776390582768, 4.757768270998354],
+				},
+				start: { year: 2026, month: Aug, day: 6 },
+				end: { year: 2026, month: Aug, day: 8 },
+			},
+			{
+				location: {
+					name: "Campingplatz \"Am Waldbad\"",
+					address: "Peter-Baum-Weg 20, 51069 Mülheim, Tyskland",
+					url: "https://waldbad-camping.de/camping/",
+					position: [50.99505823654738, 7.059042609278955],
+				},
+				start: { year: 2026, month: Aug, day: 8 },
+				end: { year: 2026, month: Aug, day: 10 },
+			},
+			{
+				location: {
+					name: "Campingplatz Nord am Unterbacher See",
+					address: "Kleiner Torfbruch 29, 40627 Düsseldorf, Tyskland",
+					url: "http://www.unterbachersee.de/touristencamping.html",
+					position: [51.198528953146926, 6.888079975587048],
+				},
+				start: { year: 2026, month: Aug, day: 10 },
+				end: { year: 2026, month: Aug, day: 12 },
+			},
+			{
+				location: {
+					name: "Wildwood Camping Harz",
+					address: " Wildwood Camping Harz",
+					url: "https://www.wildwoodcamping.de/",
+					position: [51.82152189418892, 10.318448003963196],
+				},
+				start: { year: 2026, month: Aug, day: 12 },
+				end: { year: 2026, month: Aug, day: 13 },
+			},
+			{
+				location: {
+					name: "Camping Innerstetalsperre",
+					address: "Innerstetalsperre 2, 38685 Langelsheim, Tyskland",
+					url: "http://www.campinginnerstetalsperre.de/",
+					position: [51.908455109581716, 10.285102762352821],
+				},
+				start: { year: 2026, month: Aug, day: 13 },
+				end: { year: 2026, month: Aug, day: 14 },
+			},
+			{
+				location: {
+					name: "Camping Aller-Leine-Tal",
+					address: "Marschweg 1, 29690 Essel-Engehausen, Tyskland",
+					url: "http://www.camping-aller-leine-tal.de/",
+					position: [52.68861956956925, 9.695784993782326],
+				},
+				start: { year: 2026, month: Aug, day: 14 },
+				end: { year: 2026, month: Aug, day: 15 },
+			},
+			{
+				location: KielGoteborg,
+				start: { year: 2026, month: Aug, day: 15 },
+				end: { year: 2026, month: Aug, day: 16 },
+			},
+		],
+		pauses: [
+			{	
+				location: {
+					name: "Café Sand",
+					address: "Strandweg 106, 28201 Bremen-Neustadt, Tyskland",
+					url: "https://www.cafe-sand.de/de/home",
+					position: [53.06705138560488, 8.821870874104416],
+				},
+				date: { year: 2026, month: Aug, day: 3 },
+				description: "Lunch"
+			},
+			{	
+				location: {
+					name: "Paviljoen Het ProefLab",
+					address: "Voorsterweg 34, 8316 PT Marknesse, Nederländerna",
+					url: "http://www.hetproeflab.nl/",
+					position: [52.6753435052326, 5.915115298050238],
+				},
+				date: { year: 2026, month: Aug, day: 4 },
+				description: "Lunch"
+			},
+			{	
+				location: {
+					name: "Café Eethuis Saantje",
+					address: "Kerkplein 14, 8325 BN Vollenhove, Nederländerna",
+					url: "https://www.saantje-vollenhove.nl/",
+					position: [52.681516515441146, 5.948218262692362],
+				},
+				date: { year: 2026, month: Aug, day: 4 },
+				description: "Middag"
+			},
+			{	
+				location: {
+					name: "Faro Beach Texel",
+					address: "Vuurtorenweg 193, 1795 LL De Cocksdorp, Nederländerna",
+					url: "http://www.farobeach.nl/",
+					position: [53.18146393682634, 4.851468527778322],
+				},
+				date: { year: 2026, month: Aug, day: 5 },
+				description: "Lunch"
+			},
+			{	
+				location: {
+					name: "Italiaans Restaurant Pizzeria Isola Bella",
+					address: "Dorpsstraat 173, 1796 CC De Koog, Nederländerna",
+					url: "https://www.isolabellatexel.com/",
+					position: [53.09733986350415, 4.763035828113385],
+				},
+				date: { year: 2026, month: Aug, day: 5 },
+				description: "Middag"
+			},
+			{	
+				location: {
+					name: "De Ouwe Stal",
+					address: "Provincialeweg West 27, 2851 EJ Haastrecht, Nederländerna",
+					url: "https://www.deouwestal.nl/",
+					position: [52.000611539709844, 4.755726673193953],
+				},
+				date: { year: 2026, month: Aug, day: 6 },
+				description: "Lunch"
+			},
+			{	
+				location: {
+					name: "APARTT - Steak on the Stone and Fondue",
+					address: "Blaak 4, 3011 MP Rotterdam, Nederländerna",
+					url: "http://apartt.nl/",
+					position: [51.91974036918596, 4.49098799208232],
+				},
+				date: { year: 2026, month: Aug, day: 7 },
+				description: "Lunch"
+			},
+			{	
+				location: {
+					name: "Vet & Lazy Bierkaai",
+					address: "Rhijnspoorkade, 3063 NS Rotterdam, Nederländerna",
+					url: "http://www.bierkaai.nl/",
+					position: [51.91956618321989, 4.5006432523645925],
+				},
+				date: { year: 2026, month: Aug, day: 7 },
+				description: "Ölprovning"
+			},
+			{	
+				location: {
+					name: "Foodhallen Rotterdam",
+					address: "Wilhelminakade 58, 3072 AR Rotterdam, Nederländerna",
+					url: "https://foodhallen.nl/en/venues/rotterdam",
+					position: [51.90610314952616, 4.4885112685696456],
+				},
+				date: { year: 2026, month: Aug, day: 7 },
+				description: "Middag"
+			},
+			{	
+				location: {
+					name: "Ex-Vertretung",
+					address: "Frankenwerft 31-33, 50667 Köln, Tyskland",
+					url: "https://exvertretung.de/",
+					position: [50.93835872552041, 6.962428353362951],
+				},
+				date: { year: 2026, month: Aug, day: 9 },
+				description: "Lunch"
+			},
+			{	
+				location: {
+					name: "Wilma Wunder Düsseldorf",
+					address: "Martin-Luther-Platz 27, 40212 Düsseldorf, Tyskland",
+					url: "https://www.wilma-wunder.de/restaurants/duesseldorf/",
+					position: [51.22495983401944, 6.7827763652391235],
+				},
+				date: { year: 2026, month: Aug, day: 10 },
+				description: "Frukost / lunch"
+			},
+			{	
+				location: {
+					name: "Se[h]restaurant",
+					address: "Kleiner Torfbruch 37, 40627 Düsseldorf, Tyskland",
+					url: "http://www.sehrestaurant.de/",
+					position: [51.19921191694323, 6.883776939606786],
+				},
+				date: { year: 2026, month: Aug, day: 10 },
+				description: "Middag"
+			},
+			{	
+				location: {
+					name: "Concept Glücklich Düsseldorf",
+					address: "Großer Torfbruch 16, 40627 Düsseldorf-Stadtbezirk 8, Tyskland",
+					url: "https://www.instagram.com/conceptgluecklich/",
+					position: [51.19767163371053, 6.892324921864623],
+				},
+				date: { year: 2026, month: Aug, day: 11 },
+				description: "Middag"
+			},
+			{	
+				location: {
+					name: "Altwernigeröder Kartoffelhaus",
+					address: "Marktstraße 14, 38855 Wernigerode, Tyskland",
+					url: "https://kartoffelhaus-wernigerode.de/",
+					position: [51.832123298451656, 10.785476701141247],
+				},
+				date: { year: 2026, month: Aug, day: 13 },
+				description: "Lunch"
+			},
+			{	
+				location: {
+					name: "Bäckeramtshaus",
+					address: "Markt 8, 31134 Hildesheim, Tyskland",
+					url: "",
+					position: [52.15269564242898, 9.951218992862037],
+				},
+				date: { year: 2026, month: Aug, day: 14 },
+				description: "Lunch"
+			},
+			{	
+				location: {
+					name: "Camping Aller-Leine-Tal",
+					address: "Marschweg 1, 29690 Essel-Engehausen, Tyskland",
+					url: "http://www.camping-aller-leine-tal.de/",
+					position: [52.68908803114232, 9.696982160110927],
+				},
+				date: { year: 2026, month: Aug, day: 14 },
+				description: "Middag"
+			},
+			{	
+				location: {
+					name: "Zum alten Schifferhaus",
+					address: "Elbstraße 114, 21481 Lauenburg/Elbe, Tyskland",
+					url: "http://www.schifferhaus.de/",
+					position: [53.370438326688166, 10.557929705076663],
+				},
+				date: { year: 2026, month: Aug, day: 15 },
+				description: "Lunch"
+			},
+		]
+	},
 ]
