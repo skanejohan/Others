@@ -30,6 +30,17 @@ let _fillRect = (x, y, w, h, color) => {
     ctx.fillRect(_x + left * _cell, _y + top * _cell, width * _cell, height * _cell);
 }
 
+let _drawImage = (img, x, y, w, h) => {
+    if (x > screenWidth || y > screenHeight || w < 0 || h < 0) {
+        return;
+    }
+    let left = Math.max(0, x);
+    let top = Math.max(0, y);
+    let width = Math.min(w, screenWidth - left);
+    let height = Math.min(h, screenHeight - top);
+    ctx.drawImage(img, _x + left * _cell, _y + top * _cell, width * _cell, height * _cell);
+}
+
 let _render = () => {
     // Draw Sky
     _fillRect(0, 0, screenWidth, screenHeight / 4, "#21d8de");
@@ -85,10 +96,10 @@ let _render = () => {
         let rbY = screenHeight / 2 + perspective * (screenHeight / 2);
 
         // Scale the sprite size with perspective so it shrinks into the distance
-        let rbSize = (perspective * 3) + 1;
-        let widthScale = Math.abs(1 - rbMiddle);
+        let rbSize = (perspective * 8) + 1;
+        let widthScale = 3 * Math.abs(1 - rbMiddle);
         let rbWidth = widthScale * rbSize;
-        _fillRect(rbX - rbWidth, rbY - rbSize, rbWidth * 2, rbSize * 2, "red");
+        _drawImage(badRainbow, rbX - rbWidth, rbY - rbSize, rbWidth * 2, rbSize * 2);
     }
 
     // Draw Car - car position on road is proportional to difference between
@@ -97,4 +108,37 @@ let _render = () => {
     carPos = playerCurvature - trackCurvature;
     let nCarPos = screenWidth / 2 + ((Math.floor(screenWidth * carPos) / 2.0) - 7); // Offset for sprite
     _fillRect(nCarPos, 80, 14, 7, "black");
+
 }
+
+let createRainbow = (colors) => {
+    let canvas = document.createElement('canvas');
+    canvas.width = 540;
+    canvas.height = 300;
+    let _ctx = canvas.getContext("2d");
+
+    const centerX = 270;
+    const centerY = 300;
+    const strokeWidth = 30;
+
+    // Färger och radier från SVG-designen
+    const radii = [150, 170, 190, 210, 230, 250];
+
+    // Inställningar för linjerna
+    _ctx.lineWidth = strokeWidth;
+    _ctx.lineCap = 'round';
+
+    // Rita varje båge
+    colors.forEach((color, index) => {
+        _ctx.beginPath();
+        // Rita en halvcirkel (från 180 grader till 0 grader)
+        _ctx.arc(centerX, centerY, radii[index], Math.PI, 0, false);
+        _ctx.strokeStyle = color;
+        _ctx.stroke();
+    });
+
+    return canvas;
+}
+
+let goodRainbow = createRainbow(['#ff4136', '#ff851b', '#ffdc00', '#2ecc40', '#0074d9', '#b10dc9']);
+let badRainbow = createRainbow(['#b10dc9', '#0074d9', '#2ecc40', '#ffdc00', '#ff851b', '#ff4136']);
