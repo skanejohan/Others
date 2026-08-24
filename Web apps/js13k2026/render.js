@@ -77,11 +77,12 @@ let _render = () => {
     // formulas as the road loop. drawDistance caps how far ahead we look.
     let drawDistance = 400;
     let nearClip = 10;  // obstacles closer than this are past the car
-    for (r of goodRainbows) {
+
+    let drawRainbow = (r, image, size) => {
         // Distance ahead of car, wrapping around the lap boundary
         let distAhead = (r[0] - distance + trackDistance) % trackDistance;
         if (distAhead <= nearClip || distAhead > drawDistance)
-            continue;
+            return;
 
         // Reciprocal mapping gives perspective-correct apparent speed: perspective grows
 		// slowly when distAhead is large and accelerates as the obstacle closes in.
@@ -96,19 +97,27 @@ let _render = () => {
         let rbY = screenHeight / 2 + perspective * (screenHeight / 2);
 
         // Scale the sprite size with perspective so it shrinks into the distance
-        let rbSize = (perspective * 8) + 1;
-        let widthScale = 3 * Math.abs(1 - rbMiddle);
+        let rbSize = size * ((perspective * 8) + 1);
+        let widthScale = 4 * Math.abs(1 - rbMiddle);
         let rbWidth = widthScale * rbSize;
-        _drawImage(badRainbow, rbX - rbWidth, rbY - rbSize, rbWidth * 2, rbSize * 2);
+        _drawImage(image, rbX - rbWidth, rbY - rbSize, rbWidth * 2, rbSize * 2);
     }
 
+    for (r of goodRainbows) {
+        drawRainbow(r, goodRainbow, 4);
+    }
+
+    for (r of badRainbows) {
+        drawRainbow(r, badRainbow, 4);
+    }
+
+    drawRainbow(endRainbow, goodRainbow, 10);
     // Draw Car - car position on road is proportional to difference between
     // current accumulated track curvature, and current accumulated player curvature
     // i.e. if they are similar, the car will be in the middle of the track
     carPos = playerCurvature - trackCurvature;
     let nCarPos = screenWidth / 2 + ((Math.floor(screenWidth * carPos) / 2.0) - 7); // Offset for sprite
     _fillRect(nCarPos, 80, 14, 7, "black");
-
 }
 
 let createRainbow = (colors) => {

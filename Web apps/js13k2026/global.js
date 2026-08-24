@@ -17,9 +17,17 @@ let goodRainbows = [
     [1400, 0.5], // slightly right, on the long bend
 ];
 
+let badRainbows = [ 
+    [400, 0],
+    [600, -0.5],
+    [800, 0.5],
+];
+
 let listLapTimes = [0.0, 0.0, 0.0, 0.0, 0.0]; // List of previous lap times
 let currentLapTime = 0.0; // Current lap time
 
 for (let t of tracks) {
     trackDistance += t[1];
 }
+
+let endRainbow = [trackDistance, 0]; // Rainbow at the end of the track
