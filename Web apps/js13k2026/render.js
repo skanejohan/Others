@@ -19,16 +19,15 @@ let render = (w, h) => {
 let _cw, _ch, _w, _h, _x, _y, _cell;
 
 let _fillRect = (x, y, w, h, color) => {
-    if (x > screenWidth) {
-        return;
-    }
-    if (w < 0) {
+    if (x > screenWidth || y > screenHeight || w < 0 || h < 0) {
         return;
     }
     ctx.fillStyle = color;
     let left = Math.max(0, x);
+    let top = Math.max(0, y);
     let width = Math.min(w, screenWidth - left);
-    ctx.fillRect(_x + left * _cell, _y + y * _cell, width * _cell, h * _cell);
+    let height = Math.min(h, screenHeight - top);
+    ctx.fillRect(_x + left * _cell, _y + top * _cell, width * _cell, height * _cell);
 }
 
 let _render = () => {
@@ -41,16 +40,16 @@ let _render = () => {
         let perspective = y / (screenHeight / 2);
         let roadWidth = 0.1 + perspective * 0.8; // Min 10% Max 90%
         let clipWidth = roadWidth * 0.15;
-        roadWidth *= 0.5;     // Halve it as track is symmetrical around center of track, but offset...
+        let halfRoadWidth = roadWidth / 2;
 
         // ...depending on where the middle point is, which is defined by the current track curvature.
         let middlePoint = 0.5 + curvature * Math.pow((1 - perspective), 3);
 
         // Work out segment boundaries
-        let leftGrass = (middlePoint - roadWidth - clipWidth) * screenWidth;
-        let leftClip = (middlePoint - roadWidth) * screenWidth;
-        let rightClip = (middlePoint + roadWidth) * screenWidth;
-        let rightGrass = (middlePoint + roadWidth + clipWidth) * screenWidth;
+        let leftGrass = (middlePoint - halfRoadWidth - clipWidth) * screenWidth;
+        let leftClip = (middlePoint - halfRoadWidth) * screenWidth;
+        let rightClip = (middlePoint + halfRoadWidth) * screenWidth;
+        let rightGrass = (middlePoint + halfRoadWidth + clipWidth) * screenWidth;
         
         let clipColor = Math.sin(80 * Math.pow(1 - perspective, 2) + distance) > 0 ? "red" : "white";
         let grassColor = Math.sin(20 * Math.pow(1 - perspective, 3) + distance * 0.1) > 0 ? "#32a852" : "#63d482";
@@ -61,6 +60,35 @@ let _render = () => {
         _fillRect(leftClip, row, rightClip - leftClip, 1, "gray");
         _fillRect(rightClip, row, rightGrass - rightClip, 1, clipColor);
         _fillRect(rightGrass, row, screenWidth - rightGrass, 1, grassColor);
+    }
+
+    // Draw Obstacles - project each obstacle onto the screen using the same perspective
+    // formulas as the road loop. drawDistance caps how far ahead we look.
+    let drawDistance = 400;
+    let nearClip = 10;  // obstacles closer than this are past the car
+    for (r of goodRainbows) {
+        // Distance ahead of car, wrapping around the lap boundary
+        let distAhead = (r[0] - distance + trackDistance) % trackDistance;
+        if (distAhead <= nearClip || distAhead > drawDistance)
+            continue;
+
+        // Reciprocal mapping gives perspective-correct apparent speed: perspective grows
+		// slowly when distAhead is large and accelerates as the obstacle closes in.
+		// Linear (1 - dist/max) advances at a constant screen rate — visually wrong.
+        let perspective = nearClip / distAhead;
+
+        // Road geometry at that depth, matching road-loop formulas exactly
+        let rbRoadWidth = (0.1 + perspective * 0.8) * 0.5;
+        let rbMiddle    = 0.5 + curvature * Math.pow((1.0 - perspective), 3);
+
+        let rbX = (rbMiddle + r[1] * rbRoadWidth) * screenWidth;
+        let rbY = screenHeight / 2 + perspective * (screenHeight / 2);
+
+        // Scale the sprite size with perspective so it shrinks into the distance
+        let rbSize = (perspective * 3) + 1;
+        let widthScale = Math.abs(1 - rbMiddle);
+        let rbWidth = widthScale * rbSize;
+        _fillRect(rbX - rbWidth, rbY - rbSize, rbWidth * 2, rbSize * 2, "red");
     }
 
     // Draw Car - car position on road is proportional to difference between

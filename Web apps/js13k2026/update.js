@@ -63,4 +63,27 @@ let update = (dt) => {
 
     // Accumulate track curvature
     trackCurvature += curvature * et * speed;
+
+    
+    // Collision detection work - entirely in world space, no screen maths needed.
+    // Depth: fDistAhead near 0 means obstacle is just ahead; near fTrackDistance means
+    // the car just passed it (fDistAhead wraps), so we check both ends of the range.
+    // Lateral: fCarPos and fLateralPos are both in road-fraction [-1, 1].
+    let collisionDepth   = 15.0;  // track units (around car length at world scale)
+    let collisionLateral = 0.3;   // road-fraction (car half-width almost equal to 0.15 + margin)
+    let colliding = false;
+
+    for (let rb of goodRainbows)
+    {
+        let fDistAhead = (rb[0] - distance + trackDistance) % trackDistance;
+        let bDepthHit   = fDistAhead < collisionDepth || fDistAhead > trackDistance - collisionDepth;
+        let bLateralHit = Math.abs(carPos - rb[1]) < collisionLateral;
+
+        //console.log(fDistAhead, bDepthHit, bLateralHit, carPos, rb[1]);
+        if (bDepthHit && bLateralHit)
+        {
+            colliding = true;
+            //console.log("BOOM");
+        }
+    }
 }
