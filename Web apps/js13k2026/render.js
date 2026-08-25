@@ -43,8 +43,16 @@ let _drawImage = (img, x, y, w, h) => {
 
 let _render = () => {
     // Draw Sky
-    _fillRect(0, 0, screenWidth, screenHeight / 4, "#21d8de");
-    _fillRect(0, screenHeight / 4, screenWidth, screenHeight / 4, "#1ba9bf");
+    let w = screenWidth * _cell
+    let h = screenHeight / 2 * _cell
+    const gradient = ctx.createLinearGradient(0, 0, 0, h);
+    gradient.addColorStop(0.00, '#3b2e91');
+    gradient.addColorStop(0.30, '#6a4fbf');
+    gradient.addColorStop(0.55, '#ff9ec4');
+    gradient.addColorStop(0.75, '#ffb347');
+    gradient.addColorStop(1.00, '#ffd194');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, _y, w, h);
 
     // Draw grass and road
     for (let y = 0; y < screenHeight / 2; y++) {
