@@ -52,9 +52,17 @@ let _render = () => {
     gradient.addColorStop(0.75, '#ffb347');
     gradient.addColorStop(1.00, '#ffd194');
     ctx.fillStyle = gradient;
-    ctx.fillRect(0, _y, w, h);
+    ctx.fillRect(_x, _y, w, h);
 
-    // Draw grass and road
+    let leftGrassXs = [];
+    let leftClipXs = [];
+    let rightGrassXs = [];
+    let rightClipXs = [];
+    let grassTop = 0;
+    let previousGrassColor = undefined;
+    let grassRegions = [];
+
+    // Calculate grass and road
     for (let y = 0; y < screenHeight / 2; y++) {
         let perspective = y / (screenHeight / 2);
         let roadWidth = 0.1 + perspective * 0.8; // Min 10% Max 90%
@@ -66,19 +74,45 @@ let _render = () => {
 
         // Work out segment boundaries
         let leftGrass = (middlePoint - halfRoadWidth - clipWidth) * screenWidth;
+        leftGrassXs.push(leftGrass);
         let leftClip = (middlePoint - halfRoadWidth) * screenWidth;
+        leftClipXs.push(leftClip);
         let rightClip = (middlePoint + halfRoadWidth) * screenWidth;
+        rightClipXs.push(rightClip);
         let rightGrass = (middlePoint + halfRoadWidth + clipWidth) * screenWidth;
+        rightGrassXs.push(rightGrass);
         
-        let clipColor = Math.sin(80 * Math.pow(1 - perspective, 2) + distance) > 0 ? "red" : "white";
         let grassColor = Math.sin(20 * Math.pow(1 - perspective, 3) + distance * 0.1) > 0 ? "#32a852" : "#63d482";
+        if (y == screenHeight / 2 - 1 || (previousGrassColor && previousGrassColor != grassColor)) {
+            grassRegions.push([grassTop, y - grassTop + 1]);
+            grassTop = y;
+        }
+        previousGrassColor = grassColor;
+    }
 
+    // Draw grass and road
+    for (let region of grassRegions) {
+        let top = region[0];
+        let height = region[1];
+        let x = _x;
+        let y = _y + (screenHeight / 2 + top) * _cell;
+        let w = screenWidth * _cell;
+        let h = height * _cell;
+        let gradient = ctx.createLinearGradient(0, y, 0, y + h);
+        gradient.addColorStop(0.0, '#d4f4c7');
+        gradient.addColorStop(0.4, '#a8e6a1');
+        gradient.addColorStop(0.7, '#6fcf6a');
+        gradient.addColorStop(0.9, '#3b7a3a');
+        gradient.addColorStop(1.0, '#d4f4c7');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(x, y, w, h);
+    }
+
+    for (let y = 0; y < screenHeight / 2; y++) {
         let row = screenHeight / 2 + y
-        _fillRect(0, row, leftGrass, 1, grassColor);
-        _fillRect(leftGrass, row, leftClip - leftGrass, 1, clipColor);
-        _fillRect(leftClip, row, rightClip - leftClip, 1, "gray");
-        _fillRect(rightClip, row, rightGrass - rightClip, 1, clipColor);
-        _fillRect(rightGrass, row, screenWidth - rightGrass, 1, grassColor);
+        if (y > 0) {
+            _fillRect(leftClipXs[y], row - 1, rightClipXs[y] - leftClipXs[y], 3, "gray");
+        }
     }
 
     // Draw Obstacles - project each obstacle onto the screen using the same perspective
