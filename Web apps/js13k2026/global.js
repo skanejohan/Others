@@ -10,7 +10,7 @@ let carPos = 0.0; // Current car position
 let playerCurvature = 0; // Accumulation of player curvature
 let speed = 0; // Current player speed
 
-let tracks = [[0, 10], [0, 200], [1, 200], [0, 400], [-1, 100], [0, 200], [-1, 200], [1, 200], [0, 200], [0.2, 500], [0, 200]]; // Track sections, sharpness of bend, length of section
+let tracks = [[0, 10], [0, 200], [0.6, 200], [0, 400], [-1, 100], [0, 200], [-1, 200], [1, 200], [0, 200], [0.2, 500], [0, 200]]; // Track sections, sharpness of bend, length of section
 let goodRainbows = [ 
     [350, 0], // center of track, after first straight
     [800, -0.5], // slightly left, mid-track
@@ -18,7 +18,7 @@ let goodRainbows = [
 ];
 
 let badRainbows = [ 
-    [400, 0],
+    [500, 0],
     [600, -0.5],
     [800, 0.5],
 ];

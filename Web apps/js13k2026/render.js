@@ -19,8 +19,7 @@ let render = (w, h) => {
     _renderGrass(positions.grassIntervals);
     _renderRoad(positions.polygon);
     _renderCar();
-
-    _render();
+    _render(); // TODO
     _restoreClipRect();
 }
 
@@ -45,7 +44,7 @@ let _calculatePositions = () => {
     let grassTop = 0;
     let previousGrassColor = undefined;
     let grassIntervals = [];
-    for (let y = 0; y < H / 2; y++) {
+    for (let y = 0; y <= H / 2; y++) {
         let perspective = y / (H / 2);
         let roadWidth = 0.1 + perspective * 0.8; // Min 10% Max 90%
         let clipWidth = roadWidth * 0.15;
@@ -129,17 +128,6 @@ let _w, _h, _x, _y, _cell;
 
 
 
-let _drawImage = (img, x, y, w, h) => {
-    if (x > W || y > H || w < 0 || h < 0) {
-        return;
-    }
-    let left = Math.max(0, x);
-    let top = Math.max(0, y);
-    let width = Math.min(w, W - left);
-    let height = Math.min(h, H - top);
-    ctx.drawImage(img, xx(left), yy(top), ww(width), hh(height));
-}
-
 let _render = () => {
     // Draw Obstacles - project each obstacle onto the screen using the same perspective
     // formulas as the road loop. drawDistance caps how far ahead we look.
@@ -168,7 +156,7 @@ let _render = () => {
         let rbSize = size * ((perspective * 8) + 1);
         let widthScale = 4 * Math.abs(1 - rbMiddle);
         let rbWidth = widthScale * rbSize;
-        _drawImage(image, rbX - rbWidth, rbY - rbSize, rbWidth * 2, rbSize * 2);
+        ctx.drawImage(image, xx(rbX - rbWidth), yy(rbY - rbSize), ww(rbWidth * 2), hh(rbSize * 2));
     }
 
     for (r of goodRainbows) {
