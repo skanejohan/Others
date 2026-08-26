@@ -1,5 +1,5 @@
-const screenWidth = 160;
-const screenHeight = 100;
+const W = 160;
+const H = 100;
 
 let distance = 0; // Distance car has travelled around track
 let curvature = 0; // Current track curvature, lerped between track sections

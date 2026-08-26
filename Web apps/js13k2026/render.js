@@ -1,103 +1,87 @@
 let render = (w, h) => {
-    if (w / h > screenWidth / screenHeight) {
+    if (w / h > W / H) {
         _h = h;
-        _w = _h * screenWidth / screenHeight;
+        _w = _h * W / H;
         _x = (w - _w) / 2;
         _y = 0;
     } else {
         _w = w;
-        _h = w * screenHeight / screenWidth;
+        _h = w * H / W;
         _x = 0;
         _y = (h - _h) / 2;
     }
-    _cell = Math.min(_w / screenWidth, _h / screenHeight);
-    _cw = w;
-    _ch = h;
+    _cell = Math.min(_w / W, _h / H);
+    
+    let positions = _calculatePositions();
+
+    _setClipRect();
+    _renderSky();
+    _renderGrass(positions.grassIntervals);
+    _renderRoad(positions.polygon);
+    _renderCar();
+
     _render();
+    _restoreClipRect();
 }
 
-let _cw, _ch, _w, _h, _x, _y, _cell;
+let _setClipRect = () => {
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(xx(0), yy(0));
+    ctx.lineTo(xx(W), yy(0));
+    ctx.lineTo(xx(W), yy(H));
+    ctx.lineTo(xx(0), yy(H));
+    ctx.closePath();
+    ctx.clip();
+};
 
-let _fillRect = (x, y, w, h, color) => {
-    if (x > screenWidth || y > screenHeight || w < 0 || h < 0) {
-        return;
+let _restoreClipRect = () => {
+    ctx.restore();
+};
+
+let _calculatePositions = () => {
+    let lefts = [];
+    let rights = [];
+    let grassTop = 0;
+    let previousGrassColor = undefined;
+    let grassIntervals = [];
+    for (let y = 0; y < H / 2; y++) {
+        let perspective = y / (H / 2);
+        let roadWidth = 0.1 + perspective * 0.8; // Min 10% Max 90%
+        let clipWidth = roadWidth * 0.15;
+        let halfRoadWidth = roadWidth / 2;
+        let middlePoint = 0.5 + curvature * Math.pow((1 - perspective), 3);
+        lefts.push([xx((middlePoint - halfRoadWidth - clipWidth) * W), yy(H / 2 + y)]);
+        rights.push([xx((middlePoint + halfRoadWidth + clipWidth) * W), yy(H / 2 + y)]);
+        
+        let grassColor = Math.sin(20 * Math.pow(1 - perspective, 3) + distance * 0.1) > 0 ? 0 : 1;
+        if (y == H / 2 - 1 || (previousGrassColor && previousGrassColor != grassColor)) {
+            grassIntervals.push([grassTop, y - grassTop + 1]);
+            grassTop = y;
+        }
+        previousGrassColor = grassColor;
     }
-    ctx.fillStyle = color;
-    let left = Math.max(0, x);
-    let top = Math.max(0, y);
-    let width = Math.min(w, screenWidth - left);
-    let height = Math.min(h, screenHeight - top);
-    ctx.fillRect(_x + left * _cell, _y + top * _cell, width * _cell, height * _cell);
+    let polygon = lefts.concat(rights.reverse());
+    return { polygon: polygon, grassIntervals: grassIntervals };
 }
 
-let _drawImage = (img, x, y, w, h) => {
-    if (x > screenWidth || y > screenHeight || w < 0 || h < 0) {
-        return;
-    }
-    let left = Math.max(0, x);
-    let top = Math.max(0, y);
-    let width = Math.min(w, screenWidth - left);
-    let height = Math.min(h, screenHeight - top);
-    ctx.drawImage(img, _x + left * _cell, _y + top * _cell, width * _cell, height * _cell);
-}
-
-let _render = () => {
-    // Draw Sky
-    let w = screenWidth * _cell
-    let h = screenHeight / 2 * _cell
-    const gradient = ctx.createLinearGradient(0, 0, 0, h);
+let _renderSky = () => {
+    const gradient = ctx.createLinearGradient(0, 0, 0, H / 2 * _cell);
     gradient.addColorStop(0.00, '#3b2e91');
     gradient.addColorStop(0.30, '#6a4fbf');
     gradient.addColorStop(0.55, '#ff9ec4');
     gradient.addColorStop(0.75, '#ffb347');
     gradient.addColorStop(1.00, '#ffd194');
     ctx.fillStyle = gradient;
-    ctx.fillRect(_x, _y, w, h);
+    ctx.fillRect(_x, _y, W * _cell, H / 2 * _cell);
+}
 
-    let leftGrassXs = [];
-    let leftClipXs = [];
-    let rightGrassXs = [];
-    let rightClipXs = [];
-    let grassTop = 0;
-    let previousGrassColor = undefined;
-    let grassRegions = [];
-
-    // Calculate grass and road
-    for (let y = 0; y < screenHeight / 2; y++) {
-        let perspective = y / (screenHeight / 2);
-        let roadWidth = 0.1 + perspective * 0.8; // Min 10% Max 90%
-        let clipWidth = roadWidth * 0.15;
-        let halfRoadWidth = roadWidth / 2;
-
-        // ...depending on where the middle point is, which is defined by the current track curvature.
-        let middlePoint = 0.5 + curvature * Math.pow((1 - perspective), 3);
-
-        // Work out segment boundaries
-        let leftGrass = (middlePoint - halfRoadWidth - clipWidth) * screenWidth;
-        leftGrassXs.push(leftGrass);
-        let leftClip = (middlePoint - halfRoadWidth) * screenWidth;
-        leftClipXs.push(leftClip);
-        let rightClip = (middlePoint + halfRoadWidth) * screenWidth;
-        rightClipXs.push(rightClip);
-        let rightGrass = (middlePoint + halfRoadWidth + clipWidth) * screenWidth;
-        rightGrassXs.push(rightGrass);
-        
-        let grassColor = Math.sin(20 * Math.pow(1 - perspective, 3) + distance * 0.1) > 0 ? "#32a852" : "#63d482";
-        if (y == screenHeight / 2 - 1 || (previousGrassColor && previousGrassColor != grassColor)) {
-            grassRegions.push([grassTop, y - grassTop + 1]);
-            grassTop = y;
-        }
-        previousGrassColor = grassColor;
-    }
-
-    // Draw grass and road
-    for (let region of grassRegions) {
-        let top = region[0];
-        let height = region[1];
-        let x = _x;
-        let y = _y + (screenHeight / 2 + top) * _cell;
-        let w = screenWidth * _cell;
-        let h = height * _cell;
+let _renderGrass = (intervals) => {
+    for (let int of intervals) {
+        let x = xx(0);
+        let y = yy(H / 2 + int[0]);
+        let w = ww(W);
+        let h = hh(int[1]);
         let gradient = ctx.createLinearGradient(0, y, 0, y + h);
         gradient.addColorStop(0.0, '#d4f4c7');
         gradient.addColorStop(0.4, '#a8e6a1');
@@ -107,14 +91,56 @@ let _render = () => {
         ctx.fillStyle = gradient;
         ctx.fillRect(x, y, w, h);
     }
+}
 
-    for (let y = 0; y < screenHeight / 2; y++) {
-        let row = screenHeight / 2 + y
-        if (y > 0) {
-            _fillRect(leftClipXs[y], row - 1, rightClipXs[y] - leftClipXs[y], 3, "gray");
-        }
+let _renderRoad = (polygon) => {
+    ctx.beginPath();
+    ctx.moveTo(polygon[0][0], polygon[0][1]);
+    for (let i = 1; i < polygon.length; i++) {
+        ctx.lineTo(polygon[i][0], polygon[i][1]);
     }
+    ctx.closePath();
+    const gradient = ctx.createLinearGradient(0, yy(H / 2), 0, yy(H));
+    gradient.addColorStop(0.0, '#777777');
+    gradient.addColorStop(0.5, '#555555');
+    gradient.addColorStop(1.0, '#333333');
+    ctx.fillStyle = gradient;
+    ctx.fill();
+}
 
+let _renderCar = () => {
+    let x = W / 2 + ((W * carPos) / 2 - 20);
+    ctx.drawImage(car, xx(x), yy(70));
+}
+
+let xx = x => _x + x * _cell;
+let yy = y => _y + y * _cell;
+let ww = w => w * _cell;
+let hh = h => h * _cell;
+
+let _w, _h, _x, _y, _cell;
+
+
+
+
+
+
+
+
+
+
+let _drawImage = (img, x, y, w, h) => {
+    if (x > W || y > H || w < 0 || h < 0) {
+        return;
+    }
+    let left = Math.max(0, x);
+    let top = Math.max(0, y);
+    let width = Math.min(w, W - left);
+    let height = Math.min(h, H - top);
+    ctx.drawImage(img, xx(left), yy(top), ww(width), hh(height));
+}
+
+let _render = () => {
     // Draw Obstacles - project each obstacle onto the screen using the same perspective
     // formulas as the road loop. drawDistance caps how far ahead we look.
     let drawDistance = 400;
@@ -135,8 +161,8 @@ let _render = () => {
         let rbRoadWidth = (0.1 + perspective * 0.8) * 0.5;
         let rbMiddle    = 0.5 + curvature * Math.pow((1.0 - perspective), 3);
 
-        let rbX = (rbMiddle + r[1] * rbRoadWidth) * screenWidth;
-        let rbY = screenHeight / 2 + perspective * (screenHeight / 2);
+        let rbX = (rbMiddle + r[1] * rbRoadWidth) * W;
+        let rbY = H / 2 + perspective * (H / 2);
 
         // Scale the sprite size with perspective so it shrinks into the distance
         let rbSize = size * ((perspective * 8) + 1);
@@ -154,12 +180,6 @@ let _render = () => {
     }
 
     drawRainbow(endRainbow, goodRainbow, 10);
-    // Draw Car - car position on road is proportional to difference between
-    // current accumulated track curvature, and current accumulated player curvature
-    // i.e. if they are similar, the car will be in the middle of the track
-    carPos = playerCurvature - trackCurvature;
-    let nCarPos = screenWidth / 2 + ((Math.floor(screenWidth * carPos) / 2.0) - 7); // Offset for sprite
-    _fillRect(nCarPos, 80, 14, 7, "black");
 }
 
 let createRainbow = (colors) => {

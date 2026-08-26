@@ -64,7 +64,10 @@ let update = (dt) => {
     // Accumulate track curvature
     trackCurvature += curvature * et * speed;
 
-    
+    // The car position on road is proportional to difference between current accumulated track curvature, and 
+    // current accumulated player curvature i.e. if they are similar, the car will be in the middle of the track
+    carPos = playerCurvature - trackCurvature;
+
     // Collision detection work - entirely in world space, no screen maths needed.
     // Depth: fDistAhead near 0 means obstacle is just ahead; near fTrackDistance means
     // the car just passed it (fDistAhead wraps), so we check both ends of the range.
