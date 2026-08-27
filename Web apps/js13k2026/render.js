@@ -12,14 +12,16 @@ let render = (w, h) => {
     }
     _cell = Math.min(_w / W, _h / H);
     
-    let positions = _calculatePositions();
+    let positions = _calculateRoadAndGrassPositions();
 
     _setClipRect();
     _renderSky();
     _renderGrass(positions.grassIntervals);
-    _renderRoad(positions.polygon);
+    _renderRoad(positions.lefts, positions.rights);
     _renderCar();
-    _render(); // TODO
+    goodRainbows.forEach(r => _renderObject(r, goodRainbow, 4, positions.lefts, positions.rights));
+    badRainbows.forEach(r => _renderObject(r, badRainbow, 4, positions.lefts, positions.rights));
+    _renderObject(endRainbow, goodRainbow, 10, positions.lefts, positions.rights);
     _restoreClipRect();
 }
 
@@ -38,7 +40,7 @@ let _restoreClipRect = () => {
     ctx.restore();
 };
 
-let _calculatePositions = () => {
+let _calculateRoadAndGrassPositions = () => {
     let lefts = [];
     let rights = [];
     let grassTop = 0;
@@ -60,8 +62,7 @@ let _calculatePositions = () => {
         }
         previousGrassColor = grassColor;
     }
-    let polygon = lefts.concat(rights.reverse());
-    return { polygon: polygon, grassIntervals: grassIntervals };
+    return { lefts: lefts, rights: rights, grassIntervals: grassIntervals };
 }
 
 let _renderSky = () => {
@@ -92,7 +93,9 @@ let _renderGrass = (intervals) => {
     }
 }
 
-let _renderRoad = (polygon) => {
+let _renderRoad = (lefts, rights) => {
+    let polygon = lefts.concat(rights.toReversed());
+
     ctx.beginPath();
     ctx.moveTo(polygon[0][0], polygon[0][1]);
     for (let i = 1; i < polygon.length; i++) {
@@ -110,6 +113,53 @@ let _renderRoad = (polygon) => {
 let _renderCar = () => {
     let x = W / 2 + ((W * carPos) / 2 - 20);
     ctx.drawImage(car, xx(x), yy(70));
+    //drawCanvasWithPerspective(car, ctx, xx(x), yy(70), 1.0, 0.8, true);
+}
+
+let _renderObject = (position, image, size, lefts, rights) => {
+    let _getObjectX = (y, offset) => {
+        if (y < lefts[0][1]) {
+            return;
+        }
+
+        let i = lefts.findIndex(e => e[1] >= y);
+        let leftTopY = lefts[i - 1][1];
+        let leftBotY = lefts[i][1];
+        let offsetY = (y - leftTopY) / (leftBotY - leftTopY);
+
+        let leftTopX = lefts[i - 1][0];
+        let leftBotX = lefts[i][0];
+        let rightTopX = rights[i - 1][0];
+        let rightBotX = rights[i][0];
+
+        let leftX = leftTopX + (leftBotX - leftTopX) * offsetY;
+        let rightX = rightTopX + (rightBotX - rightTopX) * offsetY;
+
+        return leftX + offset * (rightX - leftX);
+    }
+
+    let drawDistance = 400;
+    let nearClip = 10;  // Objects closer than this are past the car
+    let distAhead = (position[0] - distance + trackDistance) % trackDistance;
+    if (distAhead <= nearClip || distAhead > drawDistance) {
+        return;
+    }
+    let perspective = nearClip / distAhead;
+    let objSize = size * ((perspective * 8) + 1);
+    let rbY = H / 2 + perspective * (H / 2);
+    let y = yy(rbY) - hh(objSize / 2);
+    let x = _getObjectX(y, position[1]) - ww(objSize / 2);
+    if (distAhead > 200) {
+        ctx.globalAlpha = (drawDistance - distAhead) / (5 * drawDistance);
+    }
+    else if (distAhead > 100) {
+        ctx.globalAlpha = (drawDistance - distAhead) / (3 * drawDistance);
+    }
+    else {
+        ctx.globalAlpha = (drawDistance - distAhead) / drawDistance;
+    }
+    ctx.drawImage(image, x, y, ww(objSize) - ww(objSize / 2), hh(objSize) - hh(objSize / 2));
+    ctx.globalAlpha = 1;
 }
 
 let xx = x => _x + x * _cell;
@@ -118,86 +168,3 @@ let ww = w => w * _cell;
 let hh = h => h * _cell;
 
 let _w, _h, _x, _y, _cell;
-
-
-
-
-
-
-
-
-
-
-let _render = () => {
-    // Draw Obstacles - project each obstacle onto the screen using the same perspective
-    // formulas as the road loop. drawDistance caps how far ahead we look.
-    let drawDistance = 400;
-    let nearClip = 10;  // obstacles closer than this are past the car
-
-    let drawRainbow = (r, image, size) => {
-        // Distance ahead of car, wrapping around the lap boundary
-        let distAhead = (r[0] - distance + trackDistance) % trackDistance;
-        if (distAhead <= nearClip || distAhead > drawDistance)
-            return;
-
-        // Reciprocal mapping gives perspective-correct apparent speed: perspective grows
-		// slowly when distAhead is large and accelerates as the obstacle closes in.
-		// Linear (1 - dist/max) advances at a constant screen rate — visually wrong.
-        let perspective = nearClip / distAhead;
-
-        // Road geometry at that depth, matching road-loop formulas exactly
-        let rbRoadWidth = (0.1 + perspective * 0.8) * 0.5;
-        let rbMiddle    = 0.5 + curvature * Math.pow((1.0 - perspective), 3);
-
-        let rbX = (rbMiddle + r[1] * rbRoadWidth) * W;
-        let rbY = H / 2 + perspective * (H / 2);
-
-        // Scale the sprite size with perspective so it shrinks into the distance
-        let rbSize = size * ((perspective * 8) + 1);
-        let widthScale = 4 * Math.abs(1 - rbMiddle);
-        let rbWidth = widthScale * rbSize;
-        ctx.drawImage(image, xx(rbX - rbWidth), yy(rbY - rbSize), ww(rbWidth * 2), hh(rbSize * 2));
-    }
-
-    for (r of goodRainbows) {
-        drawRainbow(r, goodRainbow, 4);
-    }
-
-    for (r of badRainbows) {
-        drawRainbow(r, badRainbow, 4);
-    }
-
-    drawRainbow(endRainbow, goodRainbow, 10);
-}
-
-let createRainbow = (colors) => {
-    let canvas = document.createElement('canvas');
-    canvas.width = 540;
-    canvas.height = 300;
-    let _ctx = canvas.getContext("2d");
-
-    const centerX = 270;
-    const centerY = 300;
-    const strokeWidth = 30;
-
-    // Färger och radier från SVG-designen
-    const radii = [150, 170, 190, 210, 230, 250];
-
-    // Inställningar för linjerna
-    _ctx.lineWidth = strokeWidth;
-    _ctx.lineCap = 'round';
-
-    // Rita varje båge
-    colors.forEach((color, index) => {
-        _ctx.beginPath();
-        // Rita en halvcirkel (från 180 grader till 0 grader)
-        _ctx.arc(centerX, centerY, radii[index], Math.PI, 0, false);
-        _ctx.strokeStyle = color;
-        _ctx.stroke();
-    });
-
-    return canvas;
-}
-
-let goodRainbow = createRainbow(['#ff4136', '#ff851b', '#ffdc00', '#2ecc40', '#0074d9', '#b10dc9']);
-let badRainbow = createRainbow(['#b10dc9', '#0074d9', '#2ecc40', '#ffdc00', '#ff851b', '#ff4136']);
