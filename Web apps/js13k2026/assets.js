@@ -82,5 +82,5 @@ let _createRainbow = (colors) => _createCanvas(540, 300, _ctx => {
 });
 let car = _createCar();
 let goodRainbow = _createRainbowCoin(['#ff4136', '#ff851b', '#ffdc00', '#2ecc40', '#2dcfff', '#0051e0', '#b10dc9']);
-let badRainbow = _createRainbow(['#b10dc9', '#0074d9', '#2ecc40', '#ffdc00', '#ff851b', '#ff4136']);
+let badRainbow = _createRainbowCoin(["#F5F5F5", "#D3D3D3", "#A9A9A9", "#808080", "#555555", "#333333", "#1A1A1A"]);
 let endRainbowAsset = _createRainbow(['#ff4136', '#ff851b', '#ffdc00', '#2ecc40', '#2dcfff', '#0051e0', '#b10dc9']);
