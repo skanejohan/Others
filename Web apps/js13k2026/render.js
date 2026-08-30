@@ -23,6 +23,7 @@ let render = (w, h) => {
     badRainbows.forEach(r => _renderObject(r, badRainbow, 4, positions.lefts, positions.rights));
     unicorns.forEach(u => _renderObject(u, unicornAsset, 4, positions.lefts, positions.rights));
     _renderObject(endRainbow, endRainbowAsset, 10, positions.lefts, positions.rights);
+    _renderInformation();
     _restoreClipRect();
 }
 
@@ -156,6 +157,17 @@ let _renderObject = (position, image, size, lefts, rights) => {
     ctx.globalAlpha = (drawDistance - distAhead) / drawDistance;
     ctx.drawImage(image, x, y, ww(objSize) - ww(objSize / 2), hh(objSize) - hh(objSize / 2));
     ctx.globalAlpha = 1;
+}
+
+let _renderInformation = () => {
+    ctx.fillStyle = "green";
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2;
+    ctx.fillRect(xx(W / 2), yy(5), ww((W / 2) * (energy / 100)) * 0.9, hh(5));
+    ctx.strokeRect(xx(W / 2), yy(5), ww(W / 2) * 0.9, hh(5));
+    ctx.font = "48px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText(`Level: ${level} of 4`, xx(W / 20), yy(9));
 }
 
 let xx = x => _x + x * _cell;

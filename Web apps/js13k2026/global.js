@@ -36,3 +36,6 @@ for (let t of tracks) {
 }
 
 let endRainbow = [500, 0]; // Rainbow at the end of the track
+
+let level = 1;
+let energy = 100;
