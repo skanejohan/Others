@@ -1,6 +1,8 @@
 let update = (dt) => {
     let et = dt / 1000;
 
+    energy -= et;
+
     if (up) {
         speed += 2 * et;
     }
