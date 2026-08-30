@@ -21,7 +21,7 @@ let render = (w, h) => {
     _renderCar();
     goodRainbows.forEach(r => _renderObject(r, goodRainbow, 4, positions.lefts, positions.rights));
     badRainbows.forEach(r => _renderObject(r, badRainbow, 4, positions.lefts, positions.rights));
-    _renderObject(endRainbow, goodRainbow, 10, positions.lefts, positions.rights);
+    _renderObject(endRainbow, endRainbowAsset, 10, positions.lefts, positions.rights);
     _restoreClipRect();
 }
 
@@ -152,7 +152,7 @@ let _renderObject = (position, image, size, lefts, rights) => {
     if (!x) {
         return;
     }
-    ctx.globalAlpha = (170 - distAhead) / 170;
+    ctx.globalAlpha = (drawDistance - distAhead) / drawDistance;
     ctx.drawImage(image, x, y, ww(objSize) - ww(objSize / 2), hh(objSize) - hh(objSize / 2));
     ctx.globalAlpha = 1;
 }
