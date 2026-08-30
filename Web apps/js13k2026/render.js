@@ -21,6 +21,7 @@ let render = (w, h) => {
     _renderCar();
     goodRainbows.forEach(r => _renderObject(r, goodRainbow, 4, positions.lefts, positions.rights));
     badRainbows.forEach(r => _renderObject(r, badRainbow, 4, positions.lefts, positions.rights));
+    unicorns.forEach(u => _renderObject(u, unicornAsset, 4, positions.lefts, positions.rights));
     _renderObject(endRainbow, endRainbowAsset, 10, positions.lefts, positions.rights);
     _restoreClipRect();
 }

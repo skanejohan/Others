@@ -51,13 +51,25 @@ let _createCar = () => _createCanvas(400, 300, _ctx => {
     _ctx.fill();
 });
 
+let _createUnicornCoin = () => _createCanvas(310, 310, _ctx => {
+    _ctx.beginPath();
+    _ctx.arc(155, 155, 150, 0, 2 * Math.PI);
+    _ctx.clip();
+    _ctx.fillStyle = "blue";
+    _ctx.fillRect(0, 0, 310, 310);
+    _ctx.lineWidth = 30;
+    _ctx.strokeStyle = "black";
+    _ctx.arc(155, 155, 150, 0, 2 * Math.PI);
+    _ctx.stroke();
+});
+
 let _createRainbowCoin = (colors) => _createCanvas(310, 310, _ctx => {
     _ctx.beginPath();
     _ctx.arc(155, 155, 150, 0, 2 * Math.PI);
     _ctx.clip();
     colors.forEach((color, index) => {
         _ctx.fillStyle = color;
-        _ctx.fillRect(0, index * 43, 300, 43);
+        _ctx.fillRect(0, index * 43, 310, 43);
     });
     _ctx.lineWidth = 30;
     _ctx.strokeStyle = "black";
@@ -84,3 +96,5 @@ let car = _createCar();
 let goodRainbow = _createRainbowCoin(['#ff4136', '#ff851b', '#ffdc00', '#2ecc40', '#2dcfff', '#0051e0', '#b10dc9']);
 let badRainbow = _createRainbowCoin(["#F5F5F5", "#D3D3D3", "#A9A9A9", "#808080", "#555555", "#333333", "#1A1A1A"]);
 let endRainbowAsset = _createRainbow(['#ff4136', '#ff851b', '#ffdc00', '#2ecc40', '#2dcfff', '#0051e0', '#b10dc9']);
+let unicornAsset = _createUnicornCoin();
+
