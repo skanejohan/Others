@@ -138,7 +138,7 @@ let _renderObject = (position, image, size, lefts, rights) => {
         return leftX + offset * (rightX - leftX);
     }
 
-    let drawDistance = 400;
+    let drawDistance = 170;
     let nearClip = 10;  // Objects closer than this are past the car
     let distAhead = (position[0] - distance + trackDistance) % trackDistance;
     if (distAhead <= nearClip || distAhead > drawDistance) {
@@ -149,15 +149,10 @@ let _renderObject = (position, image, size, lefts, rights) => {
     let rbY = H / 2 + perspective * (H / 2);
     let y = yy(rbY) - hh(objSize / 2);
     let x = _getObjectX(y, position[1]) - ww(objSize / 2);
-    if (distAhead > 200) {
-        ctx.globalAlpha = (drawDistance - distAhead) / (5 * drawDistance);
+    if (!x) {
+        return;
     }
-    else if (distAhead > 100) {
-        ctx.globalAlpha = (drawDistance - distAhead) / (3 * drawDistance);
-    }
-    else {
-        ctx.globalAlpha = (drawDistance - distAhead) / drawDistance;
-    }
+    ctx.globalAlpha = (170 - distAhead) / 170;
     ctx.drawImage(image, x, y, ww(objSize) - ww(objSize / 2), hh(objSize) - hh(objSize / 2));
     ctx.globalAlpha = 1;
 }
