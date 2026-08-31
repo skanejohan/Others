@@ -6,19 +6,21 @@ let _createCanvas = (w, h, fn) => {
     return _canvas;
 }
 
-let _createCar = () => _createCanvas(400, 300, _ctx => {
+let _createCar = () => _createCanvas(280, 180, _ctx => {
+    _ctx.fillStyle = "yellow";
+
     _ctx.fillStyle = '#333';
     _ctx.beginPath();
-    _ctx.roundRect(130, 230, 50, 50, 5);
-    _ctx.roundRect(320, 230, 50, 50, 5);
+    _ctx.roundRect(20, 130, 50, 50, 5);
+    _ctx.roundRect(210, 130, 50, 50, 5);
     _ctx.fill();
 
     _ctx.fillStyle = '#F17B85FF';
     _ctx.beginPath();
-    _ctx.moveTo(150, 200);
-    _ctx.lineTo(350, 200);
-    _ctx.bezierCurveTo(370, 150, 370, 100, 250, 100);
-    _ctx.bezierCurveTo(130, 100, 130, 150, 150, 200);
+    _ctx.moveTo(40, 100);
+    _ctx.lineTo(240, 100);
+    _ctx.bezierCurveTo(260, 50, 260, 0, 140, 0);
+    _ctx.bezierCurveTo(20, 0, 20, 50, 40, 100);
     _ctx.closePath();
     _ctx.fill();
     _ctx.strokeStyle = '#b02a37';
@@ -27,10 +29,10 @@ let _createCar = () => _createCanvas(400, 300, _ctx => {
 
     _ctx.fillStyle = '#e63946';
     _ctx.beginPath();
-    _ctx.moveTo(120, 250); 
-    _ctx.lineTo(380, 250); 
-    _ctx.bezierCurveTo(400, 200, 400, 150, 250, 150);
-    _ctx.bezierCurveTo(100, 150, 100, 200, 120, 250);
+    _ctx.moveTo(10, 150); 
+    _ctx.lineTo(270, 150); 
+    _ctx.bezierCurveTo(290, 100, 290, 50, 140, 50);
+    _ctx.bezierCurveTo(-10, 50, -10, 100, 10, 150);
     _ctx.closePath();
     _ctx.fill();
     _ctx.strokeStyle = '#b02a37';
@@ -39,15 +41,15 @@ let _createCar = () => _createCanvas(400, 300, _ctx => {
 
     _ctx.fillStyle = "#A59495FF";
     _ctx.beginPath();
-    _ctx.roundRect(110, 240, 280, 20, 4);
+    _ctx.roundRect(0, 140, 280, 20, 4);
     _ctx.fill();
 
     _ctx.fillStyle = '#ff6b6b';
     _ctx.beginPath();
-    _ctx.arc(140, 210, 15, 0, Math.PI * 2);
+    _ctx.arc(30, 110, 15, 0, Math.PI * 2);
     _ctx.fill();
     _ctx.beginPath();
-    _ctx.arc(360, 210, 15, 0, Math.PI * 2);
+    _ctx.arc(250, 110, 15, 0, Math.PI * 2);
     _ctx.fill();
 });
 
@@ -92,7 +94,7 @@ let _createRainbow = (colors) => _createCanvas(540, 300, _ctx => {
     });
     return canvas;
 });
-let car = _createCar();
+let carAsset = _createCar();
 let goodRainbow = _createRainbowCoin(['#ff4136', '#ff851b', '#ffdc00', '#2ecc40', '#2dcfff', '#0051e0', '#b10dc9']);
 let badRainbow = _createRainbowCoin(["#F5F5F5", "#D3D3D3", "#A9A9A9", "#808080", "#555555", "#333333", "#1A1A1A"]);
 let endRainbowAsset = _createRainbow(['#ff4136', '#ff851b', '#ffdc00', '#2ecc40', '#2dcfff', '#0051e0', '#b10dc9']);

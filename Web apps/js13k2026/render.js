@@ -16,13 +16,13 @@ let render = (w, h) => {
 
     _setClipRect();
     _renderSky();
-    _renderGrass(positions.grassIntervals);
-    _renderRoad(positions.lefts, positions.rights);
+    _renderGrass();
+    _renderRoad();
     _renderCar();
-    goodRainbows.forEach(r => _renderObject(r, goodRainbow, 4, positions.lefts, positions.rights));
-    badRainbows.forEach(r => _renderObject(r, badRainbow, 4, positions.lefts, positions.rights));
-    unicorns.forEach(u => _renderObject(u, unicornAsset, 4, positions.lefts, positions.rights));
-    _renderObject(endRainbow, endRainbowAsset, 10, positions.lefts, positions.rights);
+    goodRainbows.forEach((_, i) => _renderObject(goodRainbow, 40, `GR${i}`));
+    badRainbows.forEach((_, i) => _renderObject(badRainbow, 40, `BR${i}`));
+    unicorns.forEach((_, i) => _renderObject(unicornAsset, 40, `U${i}`));
+    _renderObject(endRainbowAsset, 10, `E0`);
     _renderInformation();
     _restoreClipRect();
 }
@@ -78,8 +78,8 @@ let _renderSky = () => {
     ctx.fillRect(_x, _y, W * _cell, H / 2 * _cell);
 }
 
-let _renderGrass = (intervals) => {
-    for (let int of intervals) {
+let _renderGrass = () => {
+    for (let int of visualCoordinates.grassIntervals) {
         let x = xx(0);
         let y = yy(H / 2 + int[0]);
         let w = ww(W);
@@ -95,8 +95,8 @@ let _renderGrass = (intervals) => {
     }
 }
 
-let _renderRoad = (lefts, rights) => {
-    let polygon = lefts.concat(rights.toReversed());
+let _renderRoad = () => {
+    let polygon = visualCoordinates.lefts.concat(visualCoordinates.rights.toReversed());
 
     ctx.beginPath();
     ctx.moveTo(polygon[0][0], polygon[0][1]);
@@ -113,50 +113,35 @@ let _renderRoad = (lefts, rights) => {
 }
 
 let _renderCar = () => {
-    let x = W / 2 + ((W * carPos) / 2 - 20);
-    ctx.drawImage(car, xx(x), yy(70));
-    //drawCanvasWithPerspective(car, ctx, xx(x), yy(70), 1.0, 0.8, true);
+    let w = ww(28);
+    let h = hh(18);
+    ctx.drawImage(carAsset, visualCoordinates.carX - w / 2, visualCoordinates.carY - h / 2, w, h);
+
+    if (debug) {
+        ctx.fillStyle = "black";
+        ctx.fillRect(visualCoordinates.carX - 1, visualCoordinates.carY - 1, 2, 2);
+    }
 }
 
-let _renderObject = (position, image, size, lefts, rights) => {
-    let _getObjectX = (y, offset) => {
-        if (y < lefts[0][1]) {
-            return;
-        }
-
-        let i = lefts.findIndex(e => e[1] >= y);
-        let leftTopY = lefts[i - 1][1];
-        let leftBotY = lefts[i][1];
-        let offsetY = (y - leftTopY) / (leftBotY - leftTopY);
-
-        let leftTopX = lefts[i - 1][0];
-        let leftBotX = lefts[i][0];
-        let rightTopX = rights[i - 1][0];
-        let rightBotX = rights[i][0];
-
-        let leftX = leftTopX + (leftBotX - leftTopX) * offsetY;
-        let rightX = rightTopX + (rightBotX - rightTopX) * offsetY;
-
-        return leftX + offset * (rightX - leftX);
-    }
-
-    let drawDistance = 170;
-    let nearClip = 10;  // Objects closer than this are past the car
-    let distAhead = (position[0] - distance + trackDistance) % trackDistance;
-    if (distAhead <= nearClip || distAhead > drawDistance) {
+let _renderObject = (image, size, key) => {
+    let vo = visualCoordinates[key];
+    if (!vo) {
         return;
     }
-    let perspective = nearClip / distAhead;
-    let objSize = size * ((perspective * 8) + 1);
-    let rbY = H / 2 + perspective * (H / 2);
-    let y = yy(rbY) - hh(objSize / 2);
-    let x = _getObjectX(y, position[1]) - ww(objSize / 2);
-    if (!x) {
-        return;
-    }
-    ctx.globalAlpha = (drawDistance - distAhead) / drawDistance;
-    ctx.drawImage(image, x, y, ww(objSize) - ww(objSize / 2), hh(objSize) - hh(objSize / 2));
+
+    ctx.globalAlpha = vo.alpha;
+    let width = ww(size * vo.size);
+    let height = hh(size * vo.size);
+    ctx.drawImage(image, vo.x - width / 2, vo.y - height / 2, width, height);
     ctx.globalAlpha = 1;
+
+    if (debug) {
+        ctx.fillStyle = "black";
+        ctx.fillRect(vo.x-1, vo.y-1, 2, 2);
+        if (vo.dead) {
+            ctx.fillRect(vo.x-5, vo.y-5, 10, 10);
+        }
+    }
 }
 
 let _renderInformation = () => {

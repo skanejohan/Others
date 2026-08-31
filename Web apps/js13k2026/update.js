@@ -68,27 +68,102 @@ let update = (dt) => {
 
     // The car position on road is proportional to difference between current accumulated track curvature, and 
     // current accumulated player curvature i.e. if they are similar, the car will be in the middle of the track
-    carPos = playerCurvature - trackCurvature;
+    car.pos = playerCurvature - trackCurvature;
 
-    // Collision detection work - entirely in world space, no screen maths needed.
-    // Depth: fDistAhead near 0 means obstacle is just ahead; near fTrackDistance means
-    // the car just passed it (fDistAhead wraps), so we check both ends of the range.
-    // Lateral: fCarPos and fLateralPos are both in road-fraction [-1, 1].
-    let collisionDepth   = 15.0;  // track units (around car length at world scale)
-    let collisionLateral = 0.3;   // road-fraction (car half-width almost equal to 0.15 + margin)
-    let colliding = false;
+    _updateVisualCoordinates();
+    _checkForCollisions();
+}
 
-    for (let rb of goodRainbows)
-    {
-        let fDistAhead = (rb[0] - distance + trackDistance) % trackDistance;
-        let bDepthHit   = fDistAhead < collisionDepth || fDistAhead > trackDistance - collisionDepth;
-        let bLateralHit = Math.abs(carPos - rb[1]) < collisionLateral;
+let _updateVisualCoordinates = () => {
 
-        //console.log(fDistAhead, bDepthHit, bLateralHit, carPos, rb[1]);
-        if (bDepthHit && bLateralHit)
-        {
-            colliding = true;
-            //console.log("BOOM");
+    let _calculateRoadAndGrassPositions = () => {
+        visualCoordinates = { lefts: [], rights: [], grassIntervals: [] };
+        let grassTop = 0;
+        let previousGrassColor = undefined;
+        for (let y = 0; y <= H / 2; y++) {
+            let perspective = y / (H / 2);
+            let roadWidth = 0.1 + perspective * 0.8; // Min 10% Max 90%
+            let clipWidth = roadWidth * 0.15;
+            let halfRoadWidth = roadWidth / 2;
+            let middlePoint = 0.5 + curvature * Math.pow((1 - perspective), 3);
+            visualCoordinates.lefts.push([xx((middlePoint - halfRoadWidth - clipWidth) * W), yy(H / 2 + y)]);
+            visualCoordinates.rights.push([xx((middlePoint + halfRoadWidth + clipWidth) * W), yy(H / 2 + y)]);
+            
+            let grassColor = Math.sin(20 * Math.pow(1 - perspective, 3) + distance * 0.1) > 0 ? 0 : 1;
+            if (y == H / 2 - 1 || (previousGrassColor && previousGrassColor != grassColor)) {
+                visualCoordinates.grassIntervals.push([grassTop, y - grassTop + 1]);
+                grassTop = y;
+            }
+            previousGrassColor = grassColor;
         }
     }
+
+    let _getObjectX = (y, offset) => {
+        let l = visualCoordinates.lefts, r = visualCoordinates.rights;
+        if (y < l[0][1]) {
+            return;
+        }
+
+        let i = l.findIndex(e => e[1] >= y);
+        let leftTopY = l[i - 1][1];
+        let leftBotY = l[i][1];
+        let offsetY = (y - leftTopY) / (leftBotY - leftTopY);
+
+        let leftTopX = l[i - 1][0];
+        let leftBotX = l[i][0];
+        let rightTopX = r[i - 1][0];
+        let rightBotX = r[i][0];
+
+        let leftX = leftTopX + (leftBotX - leftTopX) * offsetY;
+        let rightX = rightTopX + (rightBotX - rightTopX) * offsetY;
+        
+        return leftX + offset * (rightX - leftX);
+    }
+
+    let _updateVisualObject = (o, i, name) => {
+        let key = `${name}${i}`;
+        visualCoordinates[key] = undefined;
+        let drawDistance = 170;
+        let nearClip = 10;  // Objects closer than this are past the car
+        let distAhead = (o.ahead - distance + trackDistance) % trackDistance;
+        if (distAhead <= nearClip || distAhead > drawDistance) {
+            return;
+        }
+        let perspective = nearClip / distAhead;
+        let y = yy(H / 2 + perspective * (H / 2));
+        let x = _getObjectX(y, o.left);
+        if (x) {
+            visualCoordinates[key] = { x : x, y : y, size: perspective, alpha: (drawDistance - distAhead) / drawDistance }
+        }
+    }
+
+    _calculateRoadAndGrassPositions();
+    goodRainbows.forEach((r, i) => _updateVisualObject(r, i, "GR"));
+    badRainbows.forEach((r, i) => _updateVisualObject(r, i, "BR"));
+    unicorns.forEach((r, i) => _updateVisualObject(r, i, "U"));
+    _updateVisualObject(endRainbow, 0, "E");
+    visualCoordinates.carX = xx(W / 2 + W * car.pos / 2);
+    visualCoordinates.carY = yy(0.9 * H);
+}
+
+let _checkForCollisions = () => {
+    let cx = visualCoordinates.carX;
+    let cy = visualCoordinates.carY;
+
+    let _checkForCollision = (i, name) => {
+        let key = `${name}${i}`;
+        if (!visualCoordinates[key]) {
+            return;
+        }
+        let ox = visualCoordinates[key].x;
+        let oy = visualCoordinates[key].y;
+        if ((ox - cx) * (ox - cx) + (oy - cy) * (oy - cy) < 1000) {
+            visualCoordinates[key].dead = true;
+        }
+    }
+
+    goodRainbows.forEach((_, i) => _checkForCollision(i, "GR"));
+    badRainbows.forEach((_, i) => _checkForCollision(i, "BR"));
+    unicorns.forEach((_, i) => _checkForCollision(i, "U"));
+    _checkForCollision(endRainbow, 0, "E");
 }

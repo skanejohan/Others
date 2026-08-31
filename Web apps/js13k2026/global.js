@@ -6,26 +6,27 @@ let curvature = 0; // Current track curvature, lerped between track sections
 let trackCurvature = 0; // Accumulation of track curvature
 let trackDistance = 0; // Total distance of track
 
-let carPos = 0.0; // Current car position
+let car = { pos : 0 }; // Current car position
 let playerCurvature = 0; // Accumulation of player curvature
 let speed = 0; // Current player speed
 
 let tracks = [[0, 10], [0, 600], [0.6, 200], [0, 400], [-1, 100], [0, 200], [-1, 200], [1, 200], [0, 200], [0.2, 500], [0, 200]]; // Track sections, sharpness of bend, length of section
+
 let goodRainbows = [ 
-    [300, 0.5], // center of track, after first straight
-    [800, 0.2], // slightly left, mid-track
-    [1400, 0.8], // slightly right, on the long bend
+    { ahead: 300, left: 0.5 },
+    { ahead: 800, left: 0.2 },
+    { ahead: 1400, left: 0.8 },
 ];
 
 let badRainbows = [ 
-    [500, 0.5],
-    [600, 0.2],
-    [800, 0.8],
+    { ahead: 500, left: 0.5 },
+    { ahead: 600, left: 0.2 },
+    { ahead: 800, left: 0.8 },
 ];
 
 let unicorns = [ 
-    [400, 0.5],
-    [800, 0.8]
+    { ahead: 400, left: 0.5 },
+    { ahead: 800, left: 0.8 }
 ];
 
 let listLapTimes = [0.0, 0.0, 0.0, 0.0, 0.0]; // List of previous lap times
@@ -35,7 +36,11 @@ for (let t of tracks) {
     trackDistance += t[1];
 }
 
-let endRainbow = [500, 0]; // Rainbow at the end of the track
+let endRainbow = { ahead: 500, left: 0, visual: {} }; // Rainbow at the end of the track
 
 let level = 1;
 let energy = 100;
+
+let visualCoordinates = {};
+
+let debug = true;
