@@ -42,5 +42,6 @@ let level = 1;
 let energy = 100;
 
 let visualCoordinates = {};
+let deadObjects = {};
 
 let debug = true;

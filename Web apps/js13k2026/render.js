@@ -18,11 +18,11 @@ let render = (w, h) => {
     _renderSky();
     _renderGrass();
     _renderRoad();
-    _renderCar();
     goodRainbows.forEach((_, i) => _renderObject(goodRainbow, 40, `GR${i}`));
     badRainbows.forEach((_, i) => _renderObject(badRainbow, 40, `BR${i}`));
     unicorns.forEach((_, i) => _renderObject(unicornAsset, 40, `U${i}`));
     _renderObject(endRainbowAsset, 10, `E0`);
+    _renderCar();
     _renderInformation();
     _restoreClipRect();
 }
@@ -125,7 +125,7 @@ let _renderCar = () => {
 
 let _renderObject = (image, size, key) => {
     let vo = visualCoordinates[key];
-    if (!vo) {
+    if (!vo || deadObjects[key]) {
         return;
     }
 
@@ -138,9 +138,6 @@ let _renderObject = (image, size, key) => {
     if (debug) {
         ctx.fillStyle = "black";
         ctx.fillRect(vo.x-1, vo.y-1, 2, 2);
-        if (vo.dead) {
-            ctx.fillRect(vo.x-5, vo.y-5, 10, 10);
-        }
     }
 }
 

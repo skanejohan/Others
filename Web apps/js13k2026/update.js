@@ -150,20 +150,33 @@ let _checkForCollisions = () => {
     let cx = visualCoordinates.carX;
     let cy = visualCoordinates.carY;
 
-    let _checkForCollision = (i, name) => {
+    let _checkForCollision = (i, name, fn) => {
         let key = `${name}${i}`;
-        if (!visualCoordinates[key]) {
+        if (!visualCoordinates[key] || deadObjects[key]) {
             return;
         }
         let ox = visualCoordinates[key].x;
         let oy = visualCoordinates[key].y;
-        if ((ox - cx) * (ox - cx) + (oy - cy) * (oy - cy) < 1000) {
-            visualCoordinates[key].dead = true;
+        if (Math.abs(ox - cx) < ww(20) && Math.abs(oy - cy) < hh(14)) {
+            deadObjects[key] = true;
+            fn();
         }
     }
 
-    goodRainbows.forEach((_, i) => _checkForCollision(i, "GR"));
-    badRainbows.forEach((_, i) => _checkForCollision(i, "BR"));
-    unicorns.forEach((_, i) => _checkForCollision(i, "U"));
-    _checkForCollision(endRainbow, 0, "E");
+    goodRainbows.forEach((_, i) => _checkForCollision(i, "GR", () => {
+        energy = Math.min(energy + 10, 100); 
+    }));
+    badRainbows.forEach((_, i) => _checkForCollision(i, "BR", () => {
+        // Handle collision with bad rainbow
+    }));
+    unicorns.forEach((_, i) => _checkForCollision(i, "U", () => {
+        console.log("unicorn");
+        energy = Math.max(energy - 10, 0);
+        if (energy == 0) {
+            // Handle game over
+        } 
+    }));
+    _checkForCollision(endRainbow, 0, "E", () => {
+        // Handle collision with end rainbow
+    });
 }
