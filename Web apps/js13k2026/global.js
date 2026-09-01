@@ -45,3 +45,8 @@ let visualCoordinates = {};
 let deadObjects = {};
 
 let debug = true;
+
+const PLAYING = 1;
+const GAMEOVER = 2;
+
+let state = PLAYING;

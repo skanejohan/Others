@@ -2,6 +2,10 @@ let update = (dt) => {
     let et = dt / 1000;
 
     energy -= et;
+    if (energy <= 0) {
+        state = GAMEOVER;
+        return;
+    }
 
     if (up) {
         speed += 2 * et;
@@ -170,11 +174,7 @@ let _checkForCollisions = () => {
         // Handle collision with bad rainbow
     }));
     unicorns.forEach((_, i) => _checkForCollision(i, "U", () => {
-        console.log("unicorn");
         energy = Math.max(energy - 10, 0);
-        if (energy == 0) {
-            // Handle game over
-        } 
     }));
     _checkForCollision(endRainbow, 0, "E", () => {
         // Handle collision with end rainbow

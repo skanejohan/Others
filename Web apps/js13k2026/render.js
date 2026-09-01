@@ -12,18 +12,22 @@ let render = (w, h) => {
     }
     _cell = Math.min(_w / W, _h / H);
     
-    let positions = _calculateRoadAndGrassPositions();
-
     _setClipRect();
-    _renderSky();
-    _renderGrass();
-    _renderRoad();
-    goodRainbows.forEach((_, i) => _renderObject(goodRainbow, 40, `GR${i}`));
-    badRainbows.forEach((_, i) => _renderObject(badRainbow, 40, `BR${i}`));
-    unicorns.forEach((_, i) => _renderObject(unicornAsset, 40, `U${i}`));
-    _renderObject(endRainbowAsset, 10, `E0`);
-    _renderCar();
-    _renderInformation();
+    if (state === PLAYING) {
+        _renderSky();
+        _renderGrass();
+        _renderRoad();
+        goodRainbows.forEach((_, i) => _renderObject(goodRainbow, 40, `GR${i}`));
+        badRainbows.forEach((_, i) => _renderObject(badRainbow, 40, `BR${i}`));
+        unicorns.forEach((_, i) => _renderObject(unicornAsset, 40, `U${i}`));
+        _renderObject(endRainbowAsset, 10, `E0`);
+        _renderCar();
+        _renderInformation();
+    } else if (state === GAMEOVER) {
+        ctx.fillStyle = "black";
+        ctx.font = "48px Arial";
+        ctx.fillText("Game Over", xx(W / 4), yy(H / 2));
+    }
     _restoreClipRect();
 }
 
@@ -41,31 +45,6 @@ let _setClipRect = () => {
 let _restoreClipRect = () => {
     ctx.restore();
 };
-
-let _calculateRoadAndGrassPositions = () => {
-    let lefts = [];
-    let rights = [];
-    let grassTop = 0;
-    let previousGrassColor = undefined;
-    let grassIntervals = [];
-    for (let y = 0; y <= H / 2; y++) {
-        let perspective = y / (H / 2);
-        let roadWidth = 0.1 + perspective * 0.8; // Min 10% Max 90%
-        let clipWidth = roadWidth * 0.15;
-        let halfRoadWidth = roadWidth / 2;
-        let middlePoint = 0.5 + curvature * Math.pow((1 - perspective), 3);
-        lefts.push([xx((middlePoint - halfRoadWidth - clipWidth) * W), yy(H / 2 + y)]);
-        rights.push([xx((middlePoint + halfRoadWidth + clipWidth) * W), yy(H / 2 + y)]);
-        
-        let grassColor = Math.sin(20 * Math.pow(1 - perspective, 3) + distance * 0.1) > 0 ? 0 : 1;
-        if (y == H / 2 - 1 || (previousGrassColor && previousGrassColor != grassColor)) {
-            grassIntervals.push([grassTop, y - grassTop + 1]);
-            grassTop = y;
-        }
-        previousGrassColor = grassColor;
-    }
-    return { lefts: lefts, rights: rights, grassIntervals: grassIntervals };
-}
 
 let _renderSky = () => {
     const gradient = ctx.createLinearGradient(0, 0, 0, H / 2 * _cell);
