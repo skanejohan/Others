@@ -1,17 +1,4 @@
 let render = (w, h) => {
-    if (w / h > W / H) {
-        _h = h;
-        _w = _h * W / H;
-        _x = (w - _w) / 2;
-        _y = 0;
-    } else {
-        _w = w;
-        _h = w * H / W;
-        _x = 0;
-        _y = (h - _h) / 2;
-    }
-    _cell = Math.min(_w / W, _h / H);
-    
     _setClipRect();
     if (state === PLAYING) {
         _renderSky();
@@ -27,6 +14,10 @@ let render = (w, h) => {
         ctx.fillStyle = "black";
         ctx.font = "48px Arial";
         ctx.fillText("Game Over", xx(W / 4), yy(H / 2));
+    } else if (state === LEVELCLEARED) {
+        ctx.fillStyle = "black";
+        ctx.font = "48px Arial";
+        ctx.fillText("Level Cleared!", xx(W / 4), yy(H / 2));
     }
     _restoreClipRect();
 }
@@ -121,11 +112,26 @@ let _renderObject = (image, size, key) => {
 }
 
 let _renderInformation = () => {
+    // Energy
     ctx.fillStyle = "green";
     ctx.strokeStyle = "black";
     ctx.lineWidth = 2;
     ctx.fillRect(xx(W / 2), yy(5), ww((W / 2) * (energy / 100)) * 0.9, hh(5));
     ctx.strokeRect(xx(W / 2), yy(5), ww(W / 2) * 0.9, hh(5));
+
+    // Speed
+    ctx.fillStyle = "blue";
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2;
+    let l = xx(W / 20);
+    let t = yy(H / 8);
+    let w = ww(5);
+    let h = hh(H / 2 - H / 6);
+    let sh = h * (speed / 5);
+    ctx.fillRect(l, t + (h - sh), w, sh);
+    ctx.strokeRect(l, t, w, h);   
+
+    // Level
     ctx.font = "48px Arial";
     ctx.fillStyle = "black";
     ctx.fillText(`Level: ${level} of 4`, xx(W / 20), yy(9));

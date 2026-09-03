@@ -1,17 +1,16 @@
 let update = (dt) => {
     let et = dt / 1000;
 
-    energy -= et;
+    energy -= 2 * et;
     if (energy <= 0) {
         state = GAMEOVER;
         return;
     }
 
-    if (up) {
-        speed += 2 * et;
-    }
-    else {
-        speed -= 1 * et;
+    if (breaking) {
+        speed -= 2 * et;
+    } else {
+        speed += 0.2 * et;
     }
 
     // Car Curvature is accumulated left/right input, but inversely proportional to speed i.e. it is harder to turn at high speed
@@ -25,19 +24,26 @@ let update = (dt) => {
 
     // If car curvature is too different to track curvature, slow down as car has gone off track
     if (Math.abs(playerCurvature - trackCurvature) >= 0.8) {
-        speed -= 5.0 * et;
+        speed -= 20.0 * et;
+        energy -= 5.0 * et;
     }
 
     // Clamp speed
-    if (speed > 1) {
-        speed = 1;
+    if (speed > 5) {
+        speed = 5;
     }
-    if (speed < 0) {
-        speed = 0;
+    if (speed < 1) {
+        speed = 1;
+        breaking = false;
     }
 
     // Move car along track according to car speed
     distance += 70 * speed * et;
+
+    if (distance >= trackDistance) {
+        state = LEVELCLEARED;
+        return;
+    }
 
     // Get Point on track
     let offset = 0;
@@ -171,10 +177,9 @@ let _checkForCollisions = () => {
         energy = Math.min(energy + 10, 100); 
     }));
     badRainbows.forEach((_, i) => _checkForCollision(i, "BR", () => {
-        // Handle collision with bad rainbow
     }));
     unicorns.forEach((_, i) => _checkForCollision(i, "U", () => {
-        energy = Math.max(energy - 10, 0);
+        breaking = true;
     }));
     _checkForCollision(endRainbow, 0, "E", () => {
         // Handle collision with end rainbow
