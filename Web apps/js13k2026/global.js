@@ -1,61 +1,59 @@
-const W = 160;
-const H = 100;
-
-let distance = 0; // Distance car has travelled around track
-let curvature = 0; // Current track curvature, lerped between track sections
-let trackCurvature = 0; // Accumulation of track curvature
-let trackDistance = 0; // Total distance of track
-
-let car = { pos : 0 }; // Current car position
-let playerCurvature = 0; // Accumulation of player curvature
-let speed = 0; // Current player speed
-
-let tracks = [
-    [0, 100], 
-    [0.6, 50], 
-    [0, 100], 
-    [-1, 50], 
-    [0, 100], 
-    [-1, 50], 
-    [1, 50], 
-    [0, 100], 
-    [0.2, 30], 
-    [-0.2, 30], 
-    [0.2, 30], 
-    [0, 200]]; // Track sections, sharpness of bend, length of section
-
-let goodRainbows = [];
-
-let badRainbows = [];
-
-let unicorns = [];
-
-let listLapTimes = [0.0, 0.0, 0.0, 0.0, 0.0]; // List of previous lap times
-let currentLapTime = 0.0; // Current lap time
-
-for (let t of tracks) {
-    trackDistance += t[1];
-}
-
-let endRainbow = { ahead: 500, left: 0, visual: {} }; // Rainbow at the end of the track
-
-let level = 1;
-let energy = 100;
-
-let visualCoordinates = {};
-let deadObjects = {};
-
-let breaking = false;
-
-let debug = true;
-
 const PLAYING = 1;
 const GAMEOVER = 2;
 const LEVELCLEARED = 3;
 
+const W = 160;
+const H = 100;
+
+let level = 0;
 let state = PLAYING;
 
-let populateTrackObjects = () => {
+let energy = 100;
+let distance = 0; // Distance car has travelled around track
+let curvature = 0; // Current track curvature, lerped between track sections
+let trackCurvature = 0; // Accumulation of track curvature
+let trackDistance = 0; // Total distance of track
+let car = { pos : 0 }; // Current car position
+let playerCurvature = 0; // Accumulation of player curvature
+let speed = 0; // Current player speed
+let tracks = []; // Track sections, sharpness of bend, length of section
+let goodRainbows = [];
+let badRainbows = [];
+let unicorns = [];
+
+let endRainbow = { ahead: 500, left: 0, visual: {} }; // Rainbow at the end of the track
+
+let visualCoordinates = {};
+let deadObjects = {};
+let breaking = false;
+let debug = true;
+
+let nextLevel = () => {
+    level++;
+
+    energy = 100;
+    distance = 0;
+    curvature = 0;
+    trackCurvature = 0;
+    trackDistance = 0;
+    car = { pos : 0 };
+    playerCurvature = 0;
+    speed = 0;
+
+    tracks = [[0, 100]];
+    for (let i = 0; i < 20 + 3 * level; i++) {
+        let sharpness = Math.random() * 1.8 - 0.8;
+        let length = Math.random() * 100 + 50;
+        tracks.push([sharpness, length]);
+    }
+    trackDistance = 0;
+    for (let t of tracks) {
+        trackDistance += t[1];
+    }
+
+    goodRainbows = [];
+    badRainbows = [];
+    unicorns = [];
     let d = 10 + Math.random() * 50;
     while (d < trackDistance) {
         let type = Math.floor(Math.random() * 3);
@@ -69,6 +67,7 @@ let populateTrackObjects = () => {
         }
         d += 10 + Math.random() * 50;
     }
+    breaking = false;
 }
 
-populateTrackObjects();
+nextLevel();

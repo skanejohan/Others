@@ -112,29 +112,66 @@ let _renderObject = (image, size, key) => {
 }
 
 let _renderInformation = () => {
-    // Energy
-    ctx.fillStyle = "green";
-    ctx.strokeStyle = "black";
-    ctx.lineWidth = 2;
-    ctx.fillRect(xx(W / 2), yy(5), ww((W / 2) * (energy / 100)) * 0.9, hh(5));
-    ctx.strokeRect(xx(W / 2), yy(5), ww(W / 2) * 0.9, hh(5));
 
-    // Speed
-    ctx.fillStyle = "blue";
-    ctx.strokeStyle = "black";
-    ctx.lineWidth = 2;
-    let l = xx(W / 20);
-    let t = yy(H / 8);
-    let w = ww(5);
-    let h = hh(H / 2 - H / 6);
-    let sh = h * (speed / 5);
-    ctx.fillRect(l, t + (h - sh), w, sh);
-    ctx.strokeRect(l, t, w, h);   
+    let infoCanvas = _createCanvas(ww(51), hh(20), _ctx => {
 
-    // Level
-    ctx.font = "48px Arial";
-    ctx.fillStyle = "black";
-    ctx.fillText(`Level: ${level} of 4`, xx(W / 20), yy(9));
+        let renderGauge = (x, y, level) => {
+            let cx = xx(x);
+            let cy = yy(y);
+            let r = ww(10);
+
+            _ctx.fillStyle = "#210413";
+            _ctx.beginPath();
+            _ctx.arc(cx, cy, r, 0, 2 * Math.PI);
+            _ctx.fill();
+
+            let angle = 0.75 + level * 1.5;
+            _ctx.fillStyle = "green";
+            _ctx.beginPath();
+            _ctx.arc(cx, cy, r, 0.75 * Math.PI, angle * Math.PI);
+            _ctx.lineTo(cx, cy);
+            _ctx.fill();
+
+            _ctx.fillStyle = "#0d0107";
+            _ctx.beginPath();
+            _ctx.arc(cx, cy, r * 0.7, 0, 2 * Math.PI);
+            _ctx.fill();
+
+            _ctx.fillStyle = "white";
+            _ctx.beginPath();
+            _ctx.arc(cx - r * 0.5, cy + r * 0.5, 3, 0, 2 * Math.PI);
+            _ctx.fill();
+            _ctx.beginPath();
+            _ctx.arc(cx, cy - r * 0.7 , 3, 0, 2 * Math.PI);
+            _ctx.fill();
+            _ctx.beginPath();
+            _ctx.arc(cx + r * 0.5, cy + r * 0.5, 3, 0, 2 * Math.PI);
+            _ctx.fill();
+        }
+
+        // Speed
+        renderGauge(-7, 10, speed / 5);
+
+        // Distance
+        renderGauge(23, 10, distance / trackDistance);
+
+        // Energy
+        _ctx.fillStyle = "green";
+        _ctx.strokeStyle = "black";
+        _ctx.lineWidth = 2;
+        let h = energy * 15 / 100;
+        _ctx.fillRect(xx(4), yy(15-h), ww(8), hh(h));
+        _ctx.strokeRect(xx(4), yy(0), ww(8), hh(15));
+
+        // Level
+        _ctx.font = "48px Arial";
+        _ctx.fillStyle = "black";
+        _ctx.fillText(`${level}`, xx(7), yy(19));
+    });
+
+    ctx.globalAlpha = 0.5;
+    ctx.drawImage(infoCanvas, xx(W / 2 - 30), yy(10));
+    ctx.globalAlpha = 1;
 }
 
 let xx = x => _x + x * _cell;

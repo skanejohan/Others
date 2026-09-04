@@ -1,7 +1,7 @@
 let update = (dt) => {
     let et = dt / 1000;
 
-    energy -= 2 * et;
+    energy -= 5 * et;
     if (energy <= 0) {
         state = GAMEOVER;
         return;
@@ -15,11 +15,11 @@ let update = (dt) => {
 
     // Car Curvature is accumulated left/right input, but inversely proportional to speed i.e. it is harder to turn at high speed
     if (left) {
-        playerCurvature -= 0.7 * et * (1 - speed / 2);
+        playerCurvature -= speed * et * (1 - speed / 2);
     }
 
     if (right) {
-        playerCurvature += 0.7 * et * (1 - speed / 2);
+        playerCurvature += speed * et * (1 - speed / 2);
     }
 
     // If car curvature is too different to track curvature, slow down as car has gone off track
@@ -49,14 +49,9 @@ let update = (dt) => {
     let offset = 0;
     let trackSection = 0;
 
-    // Lap Timing and counting
-    currentLapTime += et;
     if (distance >= trackDistance)
     {
         distance -= trackDistance;
-        listLapTimes.unshift([currentLapTime]);
-        listLapTimes.pop();
-        currentLapTime = 0.0;
     }
                
     // Find position on track (could optimise)
