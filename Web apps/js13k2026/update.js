@@ -89,6 +89,7 @@ let update = (dt) => {
 
     _updateVisualCoordinates();
     _checkForCollisions();
+    _updateDeadObjects(et);
 }
 
 let _updateVisualCoordinates = () => {
@@ -169,7 +170,7 @@ let _checkForCollisions = () => {
     let cx = visualCoordinates.carX;
     let cy = visualCoordinates.carY;
 
-    let _checkForCollision = (i, name, fn) => {
+    let _checkForCollision = (o, i, name, fn) => {
         let key = `${name}${i}`;
         if (!visualCoordinates[key] || deadObjects[key]) {
             return;
@@ -177,27 +178,40 @@ let _checkForCollisions = () => {
         let ox = visualCoordinates[key].x;
         let oy = visualCoordinates[key].y;
         if (Math.abs(ox - cx) < ww(20) && Math.abs(oy - cy) < hh(14)) {
-            deadObjects[key] = true;
+            deadObjects[key] = { x: ox, y: oy, dx: Math.random() * 20 - 10, dy: -20, alpha: 1, asset: o.asset };
             fn();
         }
     }
 
-    rainbowCoins.forEach((_, i) => _checkForCollision(i, "R", () => {
+    rainbowCoins.forEach((o, i) => _checkForCollision(o, i, "R", () => {
         increaseEnergy(10);
     }));
-    increaseSpeedCoins.forEach((_, i) => _checkForCollision(i, "IS", () => {
+    increaseSpeedCoins.forEach((o, i) => _checkForCollision(o, i, "IS", () => {
         increaseSpeed(1);
     }));
-    decreaseSpeedCoins.forEach((_, i) => _checkForCollision(i, "DS", () => {
+    decreaseSpeedCoins.forEach((o, i) => _checkForCollision(o, i, "DS", () => {
         decreaseSpeed(1);
     }));
-    increaseSteeringFactorCoins.forEach((_, i) => _checkForCollision(i, "ISF", () => {
+    increaseSteeringFactorCoins.forEach((o, i) => _checkForCollision(o, i, "ISF", () => {
         increaseSteeringFactor(1);
     }));
-    decreaseSteeringFactorCoins.forEach((_, i) => _checkForCollision(i, "DSF", () => {
+    decreaseSteeringFactorCoins.forEach((o, i) => _checkForCollision(o, i, "DSF", () => {
         decreaseSteeringFactor(1);
     }));
-    unicorns.forEach((_, i) => _checkForCollision(i, "U", () => {
+    unicorns.forEach((o, i) => _checkForCollision(o, i, "U", () => {
         decreaseEnergy(10);
     }));
 }
+
+let _updateDeadObjects = (et) => {
+    for (let key in deadObjects) {
+        let o = deadObjects[key];
+        o.x += o.dx * et * 100;
+        o.y += o.dy * et * 100;
+        o.alpha -= et;
+        if (o.alpha <= 0) {
+            delete deadObjects[key];
+        }
+        o.dy += et * 60;
+    }
+};

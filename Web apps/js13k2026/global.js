@@ -67,17 +67,17 @@ let nextLevel = () => {
         let type = Math.floor(Math.random() * 6);
         let x = Math.random() * 0.8 + 0.1;
         if (type === 0) {
-            rainbowCoins.push({ ahead: d, left: x });
+            rainbowCoins.push({ ahead: d, left: x, asset: rainbowCoinAsset });
         } else if (type === 1) {
-            increaseSpeedCoins.push({ ahead: d, left: x });
+            increaseSpeedCoins.push({ ahead: d, left: x, asset: increaseSpeedCoinAsset });
         } else if (type === 2) {
-            decreaseSpeedCoins.push({ ahead: d, left: x });
+            decreaseSpeedCoins.push({ ahead: d, left: x, asset: decreaseSpeedCoinAsset });
         } else if (type === 3) {
-            increaseSteeringFactorCoins.push({ ahead: d, left: x });
+            increaseSteeringFactorCoins.push({ ahead: d, left: x, asset: increaseSteeringFactorCoinAsset });
         } else if (type ===4){
-            decreaseSteeringFactorCoins.push({ ahead: d, left: x });
+            decreaseSteeringFactorCoins.push({ ahead: d, left: x, asset: decreaseSteeringFactorCoinAsset });
         } else {
-            unicorns.push({ ahead: d, left: x });
+            unicorns.push({ ahead: d, left: x, asset: unicornAsset });
         }
         d += 10 + Math.random() * 50;
     }

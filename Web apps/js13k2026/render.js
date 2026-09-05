@@ -4,12 +4,13 @@ let render = (w, h) => {
     _renderSky();
     _renderGrass();
     _renderRoad();
-    rainbowCoins.forEach((_, i) => _renderObject(rainbowCoinAsset, 40, `R${i}`));
-    increaseSpeedCoins.forEach((_, i) => _renderObject(increaseSpeedCoinAsset, 40, `IS${i}`));
-    decreaseSpeedCoins.forEach((_, i) => _renderObject(decreaseSpeedCoinAsset, 40, `DS${i}`));
-    increaseSteeringFactorCoins.forEach((_, i) => _renderObject(increaseSteeringFactorCoinAsset, 40, `ISF${i}`));
-    decreaseSteeringFactorCoins.forEach((_, i) => _renderObject(decreaseSteeringFactorCoinAsset, 40, `DSF${i}`));   
-    unicorns.forEach((_, i) => _renderObject(unicornAsset, 40, `U${i}`));
+    rainbowCoins.forEach((o, i) => _renderObject(o, 40, `R${i}`));
+    increaseSpeedCoins.forEach((o, i) => _renderObject(o, 40, `IS${i}`));
+    decreaseSpeedCoins.forEach((o, i) => _renderObject(o, 40, `DS${i}`));
+    increaseSteeringFactorCoins.forEach((o, i) => _renderObject(o, 40, `ISF${i}`));
+    decreaseSteeringFactorCoins.forEach((o, i) => _renderObject(o, 40, `DSF${i}`));   
+    unicorns.forEach((o, i) => _renderObject(o, 40, `U${i}`));
+    for (d in deadObjects) { _renderDeadObject(deadObjects[d]);}
     _renderCar();
     _renderInformation();
 
@@ -98,7 +99,7 @@ let _renderCar = () => {
     }
 }
 
-let _renderObject = (image, size, key) => {
+let _renderObject = (o, size, key) => {
     let vo = visualCoordinates[key];
     if (!vo || deadObjects[key]) {
         return;
@@ -107,13 +108,16 @@ let _renderObject = (image, size, key) => {
     ctx.globalAlpha = vo.alpha;
     let width = ww(size * vo.size);
     let height = hh(size * vo.size);
-    ctx.drawImage(image, vo.x - width / 2, vo.y - height / 2, width, height);
+    ctx.drawImage(o.asset, vo.x - width / 2, vo.y - height / 2, width, height);
     ctx.globalAlpha = 1;
+}
 
-    if (debug) {
-        ctx.fillStyle = "black";
-        ctx.fillRect(vo.x-1, vo.y-1, 2, 2);
-    }
+let _renderDeadObject = (o) => {
+    ctx.globalAlpha = o.alpha;
+    let width = ww(18);
+    let height = hh(18);
+    ctx.drawImage(o.asset, o.x - width / 2, o.y - height / 2, width, height);
+    ctx.globalAlpha = 1;
 }
 
 let _renderInformation = () => {
