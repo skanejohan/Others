@@ -17,15 +17,15 @@ let car = { pos : 0 }; // Current car position
 let playerCurvature = 0; // Accumulation of player curvature
 let speed = 0; // Current player speed
 let tracks = []; // Track sections, sharpness of bend, length of section
-let goodRainbows = [];
-let badRainbows = [];
+let rainbowCoins = [];
+let increaseSpeedCoins = [];
+let decreaseSpeedCoins = [];
 let unicorns = [];
 
 let endRainbow = { ahead: 500, left: 0, visual: {} }; // Rainbow at the end of the track
 
 let visualCoordinates = {};
 let deadObjects = {};
-let breaking = false;
 let debug = true;
 
 let infoFont;
@@ -54,17 +54,20 @@ let nextLevel = () => {
         trackDistance += t[1];
     }
 
-    goodRainbows = [];
-    badRainbows = [];
+    rainbowCoins = [];
+    increaseSpeedCoins = [];
+    decreaseSpeedCoins = [];
     unicorns = [];
     let d = 10 + Math.random() * 50;
     while (d < trackDistance) {
-        let type = Math.floor(Math.random() * 3);
+        let type = Math.floor(Math.random() * 4);
         let x = Math.random() * 0.8 + 0.1;
         if (type === 0) {
-            goodRainbows.push({ ahead: d, left: x });
+            rainbowCoins.push({ ahead: d, left: x });
         } else if (type === 1) {
-            badRainbows.push({ ahead: d, left: x });
+            increaseSpeedCoins.push({ ahead: d, left: x });
+        } else if (type === 2) {
+            decreaseSpeedCoins.push({ ahead: d, left: x });
         } else {
             unicorns.push({ ahead: d, left: x });
         }
@@ -73,10 +76,23 @@ let nextLevel = () => {
 
     visualCoordinates = {};
     deadObjects = {};
-    breaking = false;
 
     infoFont = 10;
     infoTimer = 0;
 }
 
 nextLevel();
+
+let increaseSpeed = by => {
+    speed += by;
+    if (speed > 5) {
+        speed = 5;
+    }
+}
+
+let decreaseSpeed = by => {
+    speed -= by;
+    if (speed < 0.5) {
+        speed = 0.5;
+    }
+}

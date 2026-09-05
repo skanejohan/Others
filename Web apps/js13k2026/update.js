@@ -32,11 +32,7 @@ let update = (dt) => {
         return;
     }
 
-    if (breaking) {
-        speed -= 2 * et;
-    } else {
-        speed += 0.2 * et;
-    }
+    increaseSpeed(0.2 * et);
 
     // Car Curvature is accumulated left/right input, but inversely proportional to speed i.e. it is harder to turn at high speed
     if (left) {
@@ -49,17 +45,8 @@ let update = (dt) => {
 
     // If car curvature is too different to track curvature, slow down as car has gone off track
     if (Math.abs(playerCurvature - trackCurvature) >= 0.8) {
-        speed -= 20.0 * et;
+        decreaseSpeed(20.0 * et);
         energy -= 5.0 * et;
-    }
-
-    // Clamp speed
-    if (speed > 5) {
-        speed = 5;
-    }
-    if (speed < 1) {
-        speed = 1;
-        breaking = false;
     }
 
     // Move car along track according to car speed
@@ -168,8 +155,9 @@ let _updateVisualCoordinates = () => {
     }
 
     _calculateRoadAndGrassPositions();
-    goodRainbows.forEach((r, i) => _updateVisualObject(r, i, "GR"));
-    badRainbows.forEach((r, i) => _updateVisualObject(r, i, "BR"));
+    rainbowCoins.forEach((r, i) => _updateVisualObject(r, i, "R"));
+    increaseSpeedCoins.forEach((r, i) => _updateVisualObject(r, i, "IS"));
+    decreaseSpeedCoins.forEach((r, i) => _updateVisualObject(r, i, "DS"));
     unicorns.forEach((r, i) => _updateVisualObject(r, i, "U"));
     _updateVisualObject(endRainbow, 0, "E");
     visualCoordinates.carX = xx(W / 2 + W * car.pos / 2);
@@ -193,13 +181,16 @@ let _checkForCollisions = () => {
         }
     }
 
-    goodRainbows.forEach((_, i) => _checkForCollision(i, "GR", () => {
+    rainbowCoins.forEach((_, i) => _checkForCollision(i, "R", () => {
         energy = Math.min(energy + 10, 100); 
     }));
-    badRainbows.forEach((_, i) => _checkForCollision(i, "BR", () => {
+    increaseSpeedCoins.forEach((_, i) => _checkForCollision(i, "IS", () => {
+        increaseSpeed(1);
+    }));
+    decreaseSpeedCoins.forEach((_, i) => _checkForCollision(i, "DS", () => {
+        decreaseSpeed(1);
     }));
     unicorns.forEach((_, i) => _checkForCollision(i, "U", () => {
-        breaking = true;
     }));
     _checkForCollision(endRainbow, 0, "E", () => {
         // Handle collision with end rainbow

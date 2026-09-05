@@ -94,9 +94,46 @@ let _createRainbow = (colors) => _createCanvas(540, 300, _ctx => {
     });
     return canvas;
 });
+
+let _createSpeedCoin = (higher) => _createCanvas(310, 310, _ctx => {
+    const gradient = _ctx.createConicGradient(0, 155, 155);
+    gradient.addColorStop(0, "red");
+    gradient.addColorStop(0.15, "red");
+    gradient.addColorStop(0.25, "green");
+    gradient.addColorStop(0.5, "yellow");
+    gradient.addColorStop(0.75, "orange");
+    gradient.addColorStop(1, "red");
+
+    _ctx.fillStyle = "black";
+    _ctx.beginPath();
+    _ctx.arc(155, 155, 155, 0, 2 * Math.PI);
+    _ctx.fill();
+
+    _ctx.fillStyle = gradient;
+    _ctx.beginPath();
+    _ctx.arc(155, 155, 147, 0.75 * Math.PI, 0.25 * Math.PI);
+    _ctx.lineTo(155, 155);
+    _ctx.fill();
+
+    _ctx.fillStyle = "black";
+    _ctx.beginPath();
+    _ctx.arc(155, 155, 80, 0, 2 * Math.PI);
+    _ctx.fill();
+
+    _ctx.strokeStyle = "white";
+    _ctx.lineWidth = 5;
+    _ctx.beginPath();
+    _ctx.moveTo(155, 155);
+    _ctx.lineTo(higher ? 210 : 100, 200);
+    _ctx.stroke();
+});
+
 let carAsset = _createCar();
-let goodRainbow = _createRainbowCoin(['#ff4136', '#ff851b', '#ffdc00', '#2ecc40', '#2dcfff', '#0051e0', '#b10dc9']);
-let badRainbow = _createRainbowCoin(["#F5F5F5", "#D3D3D3", "#A9A9A9", "#808080", "#555555", "#333333", "#1A1A1A"]);
+let rainbowCoinAsset = _createRainbowCoin(['#ff4136', '#ff851b', '#ffdc00', '#2ecc40', '#2dcfff', '#0051e0', '#b10dc9']);
+let increaseSpeedCoinAsset = _createSpeedCoin(true);
+let decreaseSpeedCoinAsset = _createSpeedCoin(false);
 let endRainbowAsset = _createRainbow(['#ff4136', '#ff851b', '#ffdc00', '#2ecc40', '#2dcfff', '#0051e0', '#b10dc9']);
 let unicornAsset = _createUnicornCoin();
+let hiSpeedCoin = _createSpeedCoin(true);
+let loSpeedCoin = _createSpeedCoin(false);
 

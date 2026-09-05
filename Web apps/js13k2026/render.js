@@ -4,8 +4,9 @@ let render = (w, h) => {
     _renderSky();
     _renderGrass();
     _renderRoad();
-    goodRainbows.forEach((_, i) => _renderObject(goodRainbow, 40, `GR${i}`));
-    badRainbows.forEach((_, i) => _renderObject(badRainbow, 40, `BR${i}`));
+    rainbowCoins.forEach((_, i) => _renderObject(rainbowCoinAsset, 40, `R${i}`));
+    increaseSpeedCoins.forEach((_, i) => _renderObject(increaseSpeedCoinAsset, 40, `IS${i}`));
+    decreaseSpeedCoins.forEach((_, i) => _renderObject(decreaseSpeedCoinAsset, 40, `DS${i}`));
     unicorns.forEach((_, i) => _renderObject(unicornAsset, 40, `U${i}`));
     _renderObject(endRainbowAsset, 10, `E0`);
     _renderCar();
@@ -21,7 +22,7 @@ let render = (w, h) => {
         ctx.fillText(msg, xx(W / 2), yy(H / 2));
         ctx.strokeText(msg, xx(W / 2), yy(H / 2));
     }
-    
+
     _restoreClipRect();
 }
 
