@@ -53,19 +53,168 @@ let _createCar = () => _createCanvas(280, 180, _ctx => {
     _ctx.fill();
 });
 
-let _createUnicornCoin = () => _createCanvas(310, 310, _ctx => {
+let _createUnicornCoin = () => _createCanvas(500, 500, _ctx => {
     _ctx.beginPath();
-    _ctx.arc(155, 155, 150, 0, 2 * Math.PI);
+    _ctx.arc(250, 250, 240, 0, 2 * Math.PI);
     _ctx.clip();
-    _ctx.fillStyle = "blue";
-    _ctx.fillRect(0, 0, 310, 310);
+
+    _ctx.fillStyle = "#52b8f2";
+    _ctx.beginPath();
+    _ctx.arc(250, 250, 240, 0, 2 * Math.PI);
+    _ctx.fill();
+
+    // Horn
+    let hornGrad = _ctx.createLinearGradient(250, 50, 250, 200);
+    hornGrad.addColorStop(0, '#ffe066');
+    hornGrad.addColorStop(0.5, '#f783ac');
+    hornGrad.addColorStop(1, '#da77f2');
+    _ctx.beginPath();
+    _ctx.moveTo(250, 40);
+    _ctx.lineTo(220, 200);
+    _ctx.lineTo(280, 200);
+    _ctx.closePath();
+    _ctx.fillStyle = hornGrad;
+    _ctx.fill();
+    _ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+    _ctx.lineWidth = 5;
+    for (let i = 70; i < 200; i += 30) {
+        _ctx.beginPath();
+        _ctx.moveTo(235 + (i*0.08), i);
+        _ctx.lineTo(265 - (i*0.08), i + 10);
+        _ctx.stroke();
+    }
+
+    // Left ear (outer)
+    _ctx.beginPath();
+    _ctx.ellipse(160, 180, 30, 60, -Math.PI / 6, 0, 2 * Math.PI);
+    _ctx.fillStyle = '#ffffff';
+    _ctx.fill();
+    _ctx.strokeStyle = '#e9ecef';
+    _ctx.lineWidth = 3;
+    _ctx.stroke();
+
+    // Left ear (inner)
+    _ctx.beginPath();
+    _ctx.ellipse(165, 185, 15, 40, -Math.PI / 6, 0, 2 * Math.PI);
+    _ctx.fillStyle = '#ffdeeb';
+    _ctx.fill();
+
+    // Right ear (outer)
+    _ctx.beginPath();
+    _ctx.ellipse(340, 180, 30, 60, Math.PI / 6, 0, 2 * Math.PI);
+    _ctx.fillStyle = '#ffffff';
+    _ctx.fill();
+    _ctx.stroke();
+
+    // Right ear (inner)
+    _ctx.beginPath();
+    _ctx.ellipse(335, 185, 15, 40, Math.PI / 6, 0, 2 * Math.PI);
+    _ctx.fillStyle = '#ffdeeb';
+    _ctx.fill();
+
+    // Head
+    _ctx.beginPath();
+    _ctx.arc(250, 280, 110, 0, 2 * Math.PI);
+    _ctx.fillStyle = '#ffffff';
+    _ctx.fill();
+    // Skugga/kontur för att framhäva huvudet mot vit bakgrund
+    _ctx.strokeStyle = '#e9ecef';
+    _ctx.lineWidth = 4;
+    _ctx.stroke();
+
+    // Hair
+    const colors = ['#ff8787', '#fcc419', '#4dadf7', '#da77f2'];
+    const manePositions = [
+        {x: 210, y: 190, r: 35},
+        {x: 250, y: 180, r: 40},
+        {x: 290, y: 190, r: 35},
+        {x: 180, y: 220, r: 25}
+    ];
+    manePositions.forEach((pos, index) => {
+        _ctx.beginPath();
+        _ctx.arc(pos.x, pos.y, pos.r, 0, 2 * Math.PI);
+        _ctx.fillStyle = colors[index % colors.length];
+        _ctx.fill();
+    });
+
+    // Eyes
+    function drawEye(x, y) {
+        _ctx.beginPath();
+        _ctx.arc(x, y, 24, 0, 2 * Math.PI);
+        _ctx.fillStyle = '#212529';
+        _ctx.fill();
+
+        _ctx.beginPath();
+        _ctx.arc(x - 8, y - 8, 8, 0, 2 * Math.PI);
+        _ctx.fillStyle = '#ffffff';
+        _ctx.fill();
+
+        _ctx.beginPath();
+        _ctx.arc(x + 8, y + 6, 4, 0, 2 * Math.PI);
+        _ctx.fillStyle = '#ffffff';
+        _ctx.fill();
+
+        _ctx.beginPath();
+        _ctx.arc(x - 4, y + 12, 2.5, 0, 2 * Math.PI);
+        _ctx.fillStyle = '#ffffff';
+        _ctx.fill();
+
+        _ctx.strokeStyle = '#212529';
+        _ctx.lineWidth = 3.5;
+        _ctx.lineCap = 'round';
+        
+        let direction = x < 250 ? -1 : 1;
+
+        _ctx.beginPath();
+        _ctx.moveTo(x + (18 * direction), y - 12);
+        _ctx.lineTo(x + (30 * direction), y - 18);
+        _ctx.moveTo(x + (22 * direction), y);
+        _ctx.lineTo(x + (34 * direction), y + 2);
+        _ctx.stroke();
+    }
+
+    drawEye(195, 270);
+    drawEye(305, 270);
+
+    // Cheeks
+    _ctx.fillStyle = 'rgba(255, 192, 203, 0.6)';
+    _ctx.beginPath();
+    _ctx.arc(165, 310, 18, 0, 2 * Math.PI);
+    _ctx.fill();
+    _ctx.beginPath();
+    _ctx.arc(335, 310, 18, 0, 2 * Math.PI);
+    _ctx.fill();
+
+    // Nose
+    _ctx.beginPath();
+    _ctx.ellipse(250, 345, 65, 35, 0, 0, 2 * Math.PI);
+    _ctx.fillStyle = '#fff0f6';
+    _ctx.fill();
+    _ctx.strokeStyle = '#fcc2d7';
+    _ctx.lineWidth = 2;
+    _ctx.stroke();
+    _ctx.fillStyle = '#ffb3c1';
+    _ctx.beginPath();
+    _ctx.arc(230, 345, 5, 0, 2 * Math.PI);
+    _ctx.arc(270, 345, 5, 0, 2 * Math.PI);
+    _ctx.fill();
+
+    // Mouth
+    _ctx.beginPath();
+    _ctx.arc(250, 350, 12, 0, Math.PI, false);
+    _ctx.strokeStyle = '#ffb3c1';
+    _ctx.lineWidth = 3;
+    _ctx.stroke();
+
+    _ctx.beginPath();
     _ctx.lineWidth = 30;
     _ctx.strokeStyle = "black";
-    _ctx.arc(155, 155, 150, 0, 2 * Math.PI);
+    _ctx.arc(250, 250, 240, 0, 2 * Math.PI);
     _ctx.stroke();
+
 });
 
-let _createRainbowCoin = (colors) => _createCanvas(310, 310, _ctx => {
+let _createRainbowCoin = () => _createCanvas(310, 310, _ctx => {
     _ctx.beginPath();
     _ctx.arc(155, 155, 150, 0, 2 * Math.PI);
     _ctx.clip();
