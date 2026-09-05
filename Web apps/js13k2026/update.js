@@ -26,7 +26,7 @@ let update = (dt) => {
         }
     }
 
-    energy -= 5 * et;
+    decreaseEnergy(5 * et);
     if (energy <= 0) {
         state = GAMEOVER;
         return;
@@ -36,11 +36,11 @@ let update = (dt) => {
 
     // Car Curvature is accumulated left/right input, but inversely proportional to speed i.e. it is harder to turn at high speed
     if (left) {
-        playerCurvature -= 2 * speed * et * (1 - speed / 2);
+        playerCurvature -= steeringFactor * speed * et * (1 - speed / 2);
     }
 
     if (right) {
-        playerCurvature += 2 * speed * et * (1 - speed / 2);
+        playerCurvature += steeringFactor * speed * et * (1 - speed / 2);
     }
 
     // If car curvature is too different to track curvature, slow down as car has gone off track
@@ -158,8 +158,9 @@ let _updateVisualCoordinates = () => {
     rainbowCoins.forEach((r, i) => _updateVisualObject(r, i, "R"));
     increaseSpeedCoins.forEach((r, i) => _updateVisualObject(r, i, "IS"));
     decreaseSpeedCoins.forEach((r, i) => _updateVisualObject(r, i, "DS"));
+    increaseSteeringFactorCoins.forEach((r, i) => _updateVisualObject(r, i, "ISF"));
+    decreaseSteeringFactorCoins.forEach((r, i) => _updateVisualObject(r, i, "DSF"));
     unicorns.forEach((r, i) => _updateVisualObject(r, i, "U"));
-    _updateVisualObject(endRainbow, 0, "E");
     visualCoordinates.carX = xx(W / 2 + W * car.pos / 2);
     visualCoordinates.carY = yy(0.9 * H);
 }
@@ -182,7 +183,7 @@ let _checkForCollisions = () => {
     }
 
     rainbowCoins.forEach((_, i) => _checkForCollision(i, "R", () => {
-        energy = Math.min(energy + 10, 100); 
+        increaseEnergy(10);
     }));
     increaseSpeedCoins.forEach((_, i) => _checkForCollision(i, "IS", () => {
         increaseSpeed(1);
@@ -190,9 +191,13 @@ let _checkForCollisions = () => {
     decreaseSpeedCoins.forEach((_, i) => _checkForCollision(i, "DS", () => {
         decreaseSpeed(1);
     }));
-    unicorns.forEach((_, i) => _checkForCollision(i, "U", () => {
+    increaseSteeringFactorCoins.forEach((_, i) => _checkForCollision(i, "ISF", () => {
+        increaseSteeringFactor(1);
     }));
-    _checkForCollision(endRainbow, 0, "E", () => {
-        // Handle collision with end rainbow
-    });
+    decreaseSteeringFactorCoins.forEach((_, i) => _checkForCollision(i, "DSF", () => {
+        decreaseSteeringFactor(1);
+    }));
+    unicorns.forEach((_, i) => _checkForCollision(i, "U", () => {
+        decreaseEnergy(10);
+    }));
 }

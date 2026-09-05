@@ -7,8 +7,9 @@ let render = (w, h) => {
     rainbowCoins.forEach((_, i) => _renderObject(rainbowCoinAsset, 40, `R${i}`));
     increaseSpeedCoins.forEach((_, i) => _renderObject(increaseSpeedCoinAsset, 40, `IS${i}`));
     decreaseSpeedCoins.forEach((_, i) => _renderObject(decreaseSpeedCoinAsset, 40, `DS${i}`));
+    increaseSteeringFactorCoins.forEach((_, i) => _renderObject(increaseSteeringFactorCoinAsset, 40, `ISF${i}`));
+    decreaseSteeringFactorCoins.forEach((_, i) => _renderObject(decreaseSteeringFactorCoinAsset, 40, `DSF${i}`));   
     unicorns.forEach((_, i) => _renderObject(unicornAsset, 40, `U${i}`));
-    _renderObject(endRainbowAsset, 10, `E0`);
     _renderCar();
     _renderInformation();
 

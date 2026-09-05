@@ -69,6 +69,7 @@ let _createRainbowCoin = (colors) => _createCanvas(310, 310, _ctx => {
     _ctx.beginPath();
     _ctx.arc(155, 155, 150, 0, 2 * Math.PI);
     _ctx.clip();
+    let colors = ['#ff4136', '#ff851b', '#ffdc00', '#2ecc40', '#2dcfff', '#0051e0', '#b10dc9'];
     colors.forEach((color, index) => {
         _ctx.fillStyle = color;
         _ctx.fillRect(0, index * 43, 310, 43);
@@ -128,12 +129,47 @@ let _createSpeedCoin = (higher) => _createCanvas(310, 310, _ctx => {
     _ctx.stroke();
 });
 
+let _createSteeringCoin = bg => _createCanvas(310, 310, _ctx => {
+    _ctx.beginPath();
+    _ctx.arc(155, 155, 150, 0, 2 * Math.PI);
+    _ctx.clip();
+    _ctx.fillStyle = bg;
+    _ctx.beginPath();
+    _ctx.arc(155, 155, 150, 0, 2 * Math.PI);
+    _ctx.fill();
+    _ctx.strokeStyle = "black";
+    _ctx.lineWidth = 20;
+    _ctx.beginPath();
+    _ctx.arc(155, 155, 110, 0, 2 * Math.PI);
+    _ctx.stroke();
+    _ctx.beginPath();
+    _ctx.moveTo(155, 155);
+    _ctx.lineTo(155, 275);
+    _ctx.stroke();
+    _ctx.moveTo(155, 155);
+    _ctx.lineTo(255, 95);
+    _ctx.stroke();
+    _ctx.moveTo(155, 155);
+    _ctx.lineTo(55, 95);
+    _ctx.stroke();
+    _ctx.fillStyle = "black";
+    _ctx.beginPath();
+    _ctx.arc(155, 155, 50, 0, 2 * Math.PI);
+    _ctx.fill();
+    _ctx.lineWidth = 30;
+    _ctx.strokeStyle = "black";
+    _ctx.beginPath();
+    _ctx.arc(155, 155, 150, 0, 2 * Math.PI);
+    _ctx.stroke();
+});
+
 let carAsset = _createCar();
-let rainbowCoinAsset = _createRainbowCoin(['#ff4136', '#ff851b', '#ffdc00', '#2ecc40', '#2dcfff', '#0051e0', '#b10dc9']);
+let rainbowCoinAsset = _createRainbowCoin();
 let increaseSpeedCoinAsset = _createSpeedCoin(true);
 let decreaseSpeedCoinAsset = _createSpeedCoin(false);
-let endRainbowAsset = _createRainbow(['#ff4136', '#ff851b', '#ffdc00', '#2ecc40', '#2dcfff', '#0051e0', '#b10dc9']);
 let unicornAsset = _createUnicornCoin();
 let hiSpeedCoin = _createSpeedCoin(true);
 let loSpeedCoin = _createSpeedCoin(false);
+let increaseSteeringFactorCoinAsset = _createSteeringCoin("#2ecc40");
+let decreaseSteeringFactorCoinAsset = _createSteeringCoin("#ff4136");
 
