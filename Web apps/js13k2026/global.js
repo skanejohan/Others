@@ -28,6 +28,9 @@ let deadObjects = {};
 let breaking = false;
 let debug = true;
 
+let infoFont;
+let infoTimer;
+
 let nextLevel = () => {
     level++;
 
@@ -67,7 +70,13 @@ let nextLevel = () => {
         }
         d += 10 + Math.random() * 50;
     }
+
+    visualCoordinates = {};
+    deadObjects = {};
     breaking = false;
+
+    infoFont = 10;
+    infoTimer = 0;
 }
 
 nextLevel();

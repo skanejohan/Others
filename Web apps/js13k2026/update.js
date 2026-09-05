@@ -1,6 +1,31 @@
 let update = (dt) => {
     let et = dt / 1000;
 
+    if (state == LEVELCLEARED) {
+        infoFont += 80 * et;
+        infoTimer += 80 * et;
+        infoFont = Math.min(infoFont, 144);
+        if (infoTimer > 300) {
+            nextLevel();
+            state = PLAYING;
+        } else {
+            return;
+        }
+    }
+
+    if (state == GAMEOVER) {
+        infoFont += 80 * et;
+        infoTimer += 80 * et;
+        infoFont = Math.min(infoFont, 144);
+        if (infoTimer > 500) {
+            level = 0;
+            nextLevel();
+            state = PLAYING;
+        } else {
+            return;
+        }
+    }
+
     energy -= 5 * et;
     if (energy <= 0) {
         state = GAMEOVER;
@@ -15,11 +40,11 @@ let update = (dt) => {
 
     // Car Curvature is accumulated left/right input, but inversely proportional to speed i.e. it is harder to turn at high speed
     if (left) {
-        playerCurvature -= speed * et * (1 - speed / 2);
+        playerCurvature -= 2 * speed * et * (1 - speed / 2);
     }
 
     if (right) {
-        playerCurvature += speed * et * (1 - speed / 2);
+        playerCurvature += 2 * speed * et * (1 - speed / 2);
     }
 
     // If car curvature is too different to track curvature, slow down as car has gone off track

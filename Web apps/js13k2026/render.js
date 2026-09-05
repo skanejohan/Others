@@ -1,24 +1,27 @@
 let render = (w, h) => {
     _setClipRect();
-    if (state === PLAYING) {
-        _renderSky();
-        _renderGrass();
-        _renderRoad();
-        goodRainbows.forEach((_, i) => _renderObject(goodRainbow, 40, `GR${i}`));
-        badRainbows.forEach((_, i) => _renderObject(badRainbow, 40, `BR${i}`));
-        unicorns.forEach((_, i) => _renderObject(unicornAsset, 40, `U${i}`));
-        _renderObject(endRainbowAsset, 10, `E0`);
-        _renderCar();
-        _renderInformation();
-    } else if (state === GAMEOVER) {
-        ctx.fillStyle = "black";
-        ctx.font = "48px Arial";
-        ctx.fillText("Game Over", xx(W / 4), yy(H / 2));
-    } else if (state === LEVELCLEARED) {
-        ctx.fillStyle = "black";
-        ctx.font = "48px Arial";
-        ctx.fillText("Level Cleared!", xx(W / 4), yy(H / 2));
+
+    _renderSky();
+    _renderGrass();
+    _renderRoad();
+    goodRainbows.forEach((_, i) => _renderObject(goodRainbow, 40, `GR${i}`));
+    badRainbows.forEach((_, i) => _renderObject(badRainbow, 40, `BR${i}`));
+    unicorns.forEach((_, i) => _renderObject(unicornAsset, 40, `U${i}`));
+    _renderObject(endRainbowAsset, 10, `E0`);
+    _renderCar();
+    _renderInformation();
+
+    if (state === LEVELCLEARED || state === GAMEOVER) {
+        let msg = state === LEVELCLEARED ? "LEVEL CLEARED" : "GAME OVER";
+        let fontSize = Math.floor(infoFont);
+        ctx.textAlign = "center";
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = "white";
+        ctx.font = `${fontSize}px Arial`;
+        ctx.fillText(msg, xx(W / 2), yy(H / 2));
+        ctx.strokeText(msg, xx(W / 2), yy(H / 2));
     }
+    
     _restoreClipRect();
 }
 
@@ -113,9 +116,23 @@ let _renderObject = (image, size, key) => {
 
 let _renderInformation = () => {
 
+    let getPercentColor = p => { // p = 0 - 1
+        let r, g, b = 0;
+        if (p < 0.5) {
+            // 0% to 50%: Red stays at 255, Green ramps up
+            r = 255;
+            g = Math.round((p / 0.5) * 255);
+        } else {
+            // 50% to 100%: Green stays at 255, Red ramps down
+            r = Math.round((1 - (p - 0.5) / 0.5) * 255);
+            g = 255;
+        }
+        return `rgb(${r}, ${g}, ${b})`;
+    }
+
     let infoCanvas = _createCanvas(ww(51), hh(20), _ctx => {
 
-        let renderGauge = (x, y, level) => {
+        let renderGauge = (x, y, level, invertColor) => {
             let cx = xx(x);
             let cy = yy(y);
             let r = ww(10);
@@ -125,8 +142,9 @@ let _renderInformation = () => {
             _ctx.arc(cx, cy, r, 0, 2 * Math.PI);
             _ctx.fill();
 
+            level = Math.min(Math.max(level, 0), 1); // Clamp level between 0 and 1
             let angle = 0.75 + level * 1.5;
-            _ctx.fillStyle = "green";
+            _ctx.fillStyle = getPercentColor(invertColor ? 1 - level : level);
             _ctx.beginPath();
             _ctx.arc(cx, cy, r, 0.75 * Math.PI, angle * Math.PI);
             _ctx.lineTo(cx, cy);
@@ -150,13 +168,12 @@ let _renderInformation = () => {
         }
 
         // Speed
-        renderGauge(-7, 10, speed / 5);
+        renderGauge(-7, 10, speed / 3, true);
 
         // Distance
-        renderGauge(23, 10, distance / trackDistance);
+        renderGauge(23, 10, distance / trackDistance, false);
 
-        // Energy
-        _ctx.fillStyle = "green";
+        _ctx.fillStyle = getPercentColor(energy / 100);
         _ctx.strokeStyle = "black";
         _ctx.lineWidth = 2;
         let h = energy * 15 / 100;
