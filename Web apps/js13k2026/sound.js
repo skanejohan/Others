@@ -74,16 +74,3 @@ let _play = (wave, ops, len) => {
     o.start(now);
     o.stop(now + len);
 }
-
-// let playMelody = melody => {
-//     let playNext = index => {
-//         if (index >= melody.length) {
-//             return;
-//         }
-//         _play(melody[index]);
-//         setTimeout(() => {
-//             playNext(index + 1);
-//         }, 300);
-//     }
-//     playNext(0);
-// }

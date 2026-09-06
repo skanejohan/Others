@@ -35,6 +35,25 @@ let infoTimer;
 let nextLevel = () => {
     level++;
 
+    let rp, isp, dsp, isfp, dsfp;
+    switch(level) {
+        case 1:
+            rp = 40, isp = 50, dsp = 70, isfp = 85, dsfp = 90;
+            break;
+        case 2:
+            rp = 35, isp = 50, dsp = 70, isfp = 85, dsfp = 90;
+            break;
+        case 3:
+            rp = 32, isp = 50, dsp = 70, isfp = 80, dsfp = 90;
+            break;
+        case 4:
+            rp = 32, isp = 53, dsp = 70, isfp = 80, dsfp = 90;
+            break;
+        case 5:
+            rp = 30, isp = 55, dsp = 70, isfp = 80, dsfp = 90;
+            break;
+    }
+
     energy = 100;
     distance = 0;
     curvature = 0;
@@ -64,17 +83,17 @@ let nextLevel = () => {
     unicorns = [];
     let d = 10 + Math.random() * 50;
     while (d < trackDistance) {
-        let type = Math.floor(Math.random() * 6);
+        let type = Math.floor(Math.random() * 100);
         let x = Math.random() * 0.8 + 0.1;
-        if (type === 0) {
+        if (type <= rp) {
             rainbowCoins.push({ ahead: d, left: x, asset: rainbowCoinAsset });
-        } else if (type === 1) {
+        } else if (type <= isp) {
             increaseSpeedCoins.push({ ahead: d, left: x, asset: increaseSpeedCoinAsset });
-        } else if (type === 2) {
+        } else if (type <= dsp) {
             decreaseSpeedCoins.push({ ahead: d, left: x, asset: decreaseSpeedCoinAsset });
-        } else if (type === 3) {
+        } else if (type < isfp) {
             increaseSteeringFactorCoins.push({ ahead: d, left: x, asset: increaseSteeringFactorCoinAsset });
-        } else if (type ===4){
+        } else if (type < dsfp){
             decreaseSteeringFactorCoins.push({ ahead: d, left: x, asset: decreaseSteeringFactorCoinAsset });
         } else {
             unicorns.push({ ahead: d, left: x, asset: unicornAsset });
