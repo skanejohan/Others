@@ -183,24 +183,32 @@ let _checkForCollisions = () => {
         }
     }
 
+    let octave = () => Math.trunc((energy - 1) / 20) + 2;
+
     rainbowCoins.forEach((o, i) => _checkForCollision(o, i, "R", () => {
+        playHappySound(octave());
         increaseEnergy(10);
-    }));
+    }, 440));
     increaseSpeedCoins.forEach((o, i) => _checkForCollision(o, i, "IS", () => {
+        playNeutralSound(octave());
         increaseSpeed(1);
-    }));
+    }, 261.63));
     decreaseSpeedCoins.forEach((o, i) => _checkForCollision(o, i, "DS", () => {
+        playNeutralSound(octave());
         decreaseSpeed(1);
-    }));
+    }, 392));
     increaseSteeringFactorCoins.forEach((o, i) => _checkForCollision(o, i, "ISF", () => {
+        playNeutralSound(octave());
         increaseSteeringFactor(1);
-    }));
+    }, 659.25));
     decreaseSteeringFactorCoins.forEach((o, i) => _checkForCollision(o, i, "DSF", () => {
+        playNeutralSound(octave());
         decreaseSteeringFactor(1);
-    }));
+    }, 493.88));
     unicorns.forEach((o, i) => _checkForCollision(o, i, "U", () => {
+        playSadSound(octave());
         decreaseEnergy(10);
-    }));
+    }, 440));
 }
 
 let _updateDeadObjects = (et) => {
