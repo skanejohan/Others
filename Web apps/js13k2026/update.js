@@ -1,6 +1,16 @@
 let update = (dt) => {
     let et = dt / 1000;
 
+    if (state === MENU) {
+        if (space.released) {
+            space.released = false;
+            nextLevel();
+            state = PLAYING;
+        } else {
+            return;
+        }
+    }
+
     if (state == LEVELCLEARED) {
         infoFont += 80 * et;
         infoTimer += 80 * et;
@@ -13,33 +23,46 @@ let update = (dt) => {
         }
     }
 
-    if (state == GAMEOVER) {
-        infoFont += 80 * et;
-        infoTimer += 80 * et;
-        infoFont = Math.min(infoFont, 144);
-        if (infoTimer > 500) {
-            level = 0;
-            nextLevel();
-            state = PLAYING;
-        } else {
+    if (state == LEVELFAILED) {
+        if (down.released) {
+            levelFailedMenuItemSelected = 1;
+            down.released = false;
             return;
+        }
+        if (up.released) {
+            levelFailedMenuItemSelected = 0;
+            up.released = false;
+            return;
+        }
+        if (space.released) {
+            space.released = false;
+            if (levelFailedMenuItemSelected === 0) {
+                level--;
+                nextLevel();
+                state = PLAYING;
+            } else {
+                levelFailedMenuItemSelected = 0;
+                level = 0;
+                state = MENU;
+                return;
+            }
         }
     }
 
     decreaseEnergy(5 * et);
     if (energy <= 0) {
-        state = GAMEOVER;
+        state = LEVELFAILED;
         return;
     }
 
     increaseSpeed(0.2 * et);
 
     // Car Curvature is accumulated left/right input, but inversely proportional to speed i.e. it is harder to turn at high speed
-    if (left) {
+    if (left.down) {
         playerCurvature -= steeringFactor * speed * et * (1 - speed / 2);
     }
 
-    if (right) {
+    if (right.down) {
         playerCurvature += steeringFactor * speed * et * (1 - speed / 2);
     }
 

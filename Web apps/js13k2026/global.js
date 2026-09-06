@@ -1,12 +1,13 @@
-const PLAYING = 1;
-const GAMEOVER = 2;
+const MENU = 1;
+const PLAYING = 2;
 const LEVELCLEARED = 3;
+const LEVELFAILED = 4;
 
 const W = 160;
 const H = 100;
 
 let level = 0;
-let state = PLAYING;
+let state = MENU;
 
 let energy = 100;
 let distance = 0; // Distance car has travelled around track
@@ -31,6 +32,8 @@ let debug = true;
 
 let infoFont;
 let infoTimer;
+
+let levelFailedMenuItemSelected = 0;
 
 let nextLevel = () => {
     level++;
@@ -107,8 +110,6 @@ let nextLevel = () => {
     infoFont = 10;
     infoTimer = 0;
 }
-
-nextLevel();
 
 let increaseEnergy = by => {
     energy += by;

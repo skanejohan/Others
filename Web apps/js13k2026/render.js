@@ -1,28 +1,57 @@
 let render = (w, h) => {
+
     _setClipRect();
 
-    _renderSky();
-    _renderGrass();
-    _renderRoad();
-    rainbowCoins.forEach((o, i) => _renderObject(o, 40, `R${i}`));
-    increaseSpeedCoins.forEach((o, i) => _renderObject(o, 40, `IS${i}`));
-    decreaseSpeedCoins.forEach((o, i) => _renderObject(o, 40, `DS${i}`));
-    increaseSteeringFactorCoins.forEach((o, i) => _renderObject(o, 40, `ISF${i}`));
-    decreaseSteeringFactorCoins.forEach((o, i) => _renderObject(o, 40, `DSF${i}`));   
-    unicorns.forEach((o, i) => _renderObject(o, 40, `U${i}`));
-    for (d in deadObjects) { _renderDeadObject(deadObjects[d]);}
-    _renderCar();
-    _renderInformation();
+    if (state === MENU) {
+        ctx.fillStyle = "blue";
+        ctx.fillRect(0, 0, w, h);
 
-    if (state === LEVELCLEARED || state === GAMEOVER) {
-        let msg = state === LEVELCLEARED ? "LEVEL CLEARED" : "GAME OVER";
-        let fontSize = Math.floor(infoFont);
-        ctx.textAlign = "center";
-        ctx.textBaseline = 'middle';
+        let fontSize = Math.trunc(w / 50);
         ctx.fillStyle = "white";
+        ctx.textAlign = "center";
         ctx.font = `${fontSize}px Arial`;
-        ctx.fillText(msg, xx(W / 2), yy(H / 2));
-        ctx.strokeText(msg, xx(W / 2), yy(H / 2));
+        ctx.fillText("PRESS SPACE TO PLAY", xx(W / 2), yy(24));
+        return;
+    } else if (state === LEVELFAILED) {
+        ctx.fillStyle = "blue";
+        ctx.fillRect(0, 0, w, h);
+
+        let fontSize = Math.trunc(w / 50);
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.font = `${fontSize}px Arial`;
+        ctx.fillText("LEVELFAILED", xx(W / 2), yy(24));
+
+        ctx.fillStyle = levelFailedMenuItemSelected === 0 ? "white" : "gray";
+        ctx.fillText("RESTART LEVEL", xx(W / 2), yy(38));
+        ctx.fillStyle = levelFailedMenuItemSelected === 1 ? "white" : "gray";
+        ctx.fillText("QUIT", xx(W / 2), yy(42));
+
+        return;
+    } else {
+        _renderSky();
+        _renderGrass();
+        _renderRoad();
+        rainbowCoins.forEach((o, i) => _renderObject(o, 40, `R${i}`));
+        increaseSpeedCoins.forEach((o, i) => _renderObject(o, 40, `IS${i}`));
+        decreaseSpeedCoins.forEach((o, i) => _renderObject(o, 40, `DS${i}`));
+        increaseSteeringFactorCoins.forEach((o, i) => _renderObject(o, 40, `ISF${i}`));
+        decreaseSteeringFactorCoins.forEach((o, i) => _renderObject(o, 40, `DSF${i}`));   
+        unicorns.forEach((o, i) => _renderObject(o, 40, `U${i}`));
+        for (d in deadObjects) { _renderDeadObject(deadObjects[d]);}
+        _renderCar();
+        _renderInformation();
+
+        if (state === LEVELCLEARED) {
+            let msg = "LEVEL CLEARED";
+            let fontSize = Math.floor(infoFont);
+            ctx.textAlign = "center";
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = "white";
+            ctx.font = `${fontSize}px Arial`;
+            ctx.fillText(msg, xx(W / 2), yy(H / 2));
+            ctx.strokeText(msg, xx(W / 2), yy(H / 2));
+        }
     }
 
     _restoreClipRect();
