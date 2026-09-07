@@ -9,6 +9,7 @@ const H = 100;
 
 let level = 0;
 let state = MENU;
+let wonObjects = [];
 
 let energy = 100;
 let distance = 0; // Distance car has travelled around track

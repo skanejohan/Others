@@ -5,6 +5,7 @@ let update = (dt) => {
     if (state === MENU) {
         if (space.released) {
             space.released = false;
+            level = 0;
             nextLevel();
             state = PLAYING;
         } else {
@@ -15,7 +16,19 @@ let update = (dt) => {
     if (state === WON) {
         if (space.released) {
             space.released = false;
+            wonObjects = [];
             state = MENU;
+        } else {
+            wonObjects = wonObjects.filter(o => !o.dead);
+            if (Math.random() < 0.2) {
+                wonObjects.push({ 
+                    x: Math.random() * 100, 
+                    y: Math.random() * 100, 
+                    time: totalTime, 
+                    dead: false,
+                    asset: Math.random() < 0.3 ? rainbowCoinAsset : unicornAsset
+                });
+            }
         }
         return;
     }
@@ -51,7 +64,6 @@ let update = (dt) => {
                 state = PLAYING;
             } else {
                 levelFailedMenuItemSelected = 0;
-                level = 0;
                 state = MENU;
                 return;
             }

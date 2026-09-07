@@ -62,7 +62,18 @@ let render = (w, h) => {
     } else if (state === WON) {
         _renderSky();
         _renderGrass([[0, 5], [4, 9], [12, 13], [24, 26]]);
-        text("WON", xx(W / 2), yy(24), large, "white");
+        text("CONGRATULATIONS!", xx(W / 2), yy(24), large, "white");
+        text("You have made it out of the dangerous unicorn school zone, and both you and the unicorns breathe a sigh of relief.", xx(W / 2), yy(34), small, "white");
+        text("And the ones you hit? Oh, I am sure they are just fine.", xx(W / 2), yy(44), small, "white");
+        text("THANK YOU FOR PLAYING", xx(W / 2), yy(80), small);
+        wonObjects.forEach(o => {
+            let dt = totalTime - o.time;
+            let side = ww(10 * Math.sin(dt / 300));
+            ctx.drawImage(o.asset, xx(o.x / 100 * W) - side / 2, yy(o.y / 100 * H) - side / 2, side, side);
+            if (dt > 0.1 && Math.sin(dt / 300) < 0) {
+                o.dead = true;
+            }
+        })
         return;
     } else {
         delta = onEdge ? Math.random() * 5 : 0;
