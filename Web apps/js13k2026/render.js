@@ -1,7 +1,9 @@
 let render = (w, h) => {
 
+    delta = 0;
     _setClipRect();
 
+    delta = onEdge ? Math.random() * 5 : 0;
     if (state === MENU) {
         ctx.fillStyle = "blue";
         ctx.fillRect(0, 0, w, h);
@@ -80,7 +82,7 @@ let _renderSky = () => {
     gradient.addColorStop(0.75, '#ffb347');
     gradient.addColorStop(1.00, '#ffd194');
     ctx.fillStyle = gradient;
-    ctx.fillRect(_x, _y, W * _cell, H / 2 * _cell);
+    ctx.fillRect(_x, _y, W * _cell + delta, H / 2 * _cell + delta);
 }
 
 let _renderGrass = () => {
@@ -170,8 +172,8 @@ let _renderInformation = () => {
     let infoCanvas = _createCanvas(s(53), s(20), _ctx => {
 
         let renderGauge = (x, y, level, invertColor) => {
-            let cx = x * _cell;
-            let cy = y * _cell;
+            let cx = x * _cell + delta;
+            let cy = y * _cell + delta;
             let r = 10 * _cell;
 
             _ctx.fillStyle = "#210413";
@@ -229,8 +231,8 @@ let _renderInformation = () => {
     ctx.globalAlpha = 1;
 }
 
-let xx = x => _x + x * _cell;
-let yy = y => _y + y * _cell;
+let xx = x => _x + x * _cell + delta;
+let yy = y => _y + y * _cell + delta;
 let ww = w => w * _cell;
 let hh = h => h * _cell;
 

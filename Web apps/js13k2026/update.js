@@ -58,18 +58,18 @@ let update = (dt) => {
     increaseSpeed(0.2 * et);
 
     // Car Curvature is accumulated left/right input, but inversely proportional to speed i.e. it is harder to turn at high speed
-    if (left.down) {
+    if (left.down && car.pos > -0.8) {
         playerCurvature -= steeringFactor * speed * et * (1 - speed / 2);
     }
 
-    if (right.down) {
+    if (right.down && car.pos < 0.8) {
         playerCurvature += steeringFactor * speed * et * (1 - speed / 2);
     }
 
-    // If car curvature is too different to track curvature, slow down as car has gone off track
-    if (Math.abs(playerCurvature - trackCurvature) >= 0.8) {
+    onEdge = Math.abs(car.pos) > 0.79;
+    if (onEdge) {
         decreaseSpeed(20.0 * et);
-        energy -= 5.0 * et;
+        energy -= 10.0 * et;
     }
 
     // Move car along track according to car speed

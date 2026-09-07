@@ -25,6 +25,8 @@ let decreaseSpeedCoins = [];
 let increaseSteeringFactorCoins = [];
 let decreaseSteeringFactorCoins = [];
 let unicorns = [];
+let onEdge = false;
+let delta = 0;
 
 let visualCoordinates = {};
 let deadObjects = {};
