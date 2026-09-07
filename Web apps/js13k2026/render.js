@@ -47,16 +47,17 @@ let render = (w, h) => {
         text("PRESS SPACE TO PLAY", xx(W / 2), yy(90), medium, "white");
         return;
     } else if (state === LEVELFAILED) {
-        ctx.fillStyle = "blue";
-        ctx.fillRect(0, 0, w, h);
-        text("LEVEL FAILED", xx(W / 2), yy(24), large);
+        _renderSky();
+        _renderGrass([[0, 5], [4, 9], [12, 13], [24, 26]]);
+        text("LEVEL FAILED", xx(W / 2), yy(24), large, "white");
         if (levelFailedMenuItemSelected === 0) {
-            text("RESTART LEVEL", xx(W / 2), yy(38), medium);
-            text("QUIT", xx(W / 2), yy(42), small, "#d7ded9", "#b1b5b2");
+            text("RESTART LEVEL", xx(W / 2), yy(38), medium, "white");
+            text("QUIT", xx(W / 2), yy(42), small);
         } else {
-            text("RESTART LEVEL", xx(W / 2), yy(38), small, "#d7ded9", "#b1b5b2");
-            text("QUIT", xx(W / 2), yy(42), medium);
+            text("RESTART LEVEL", xx(W / 2), yy(38), small);
+            text("QUIT", xx(W / 2), yy(42), medium, "white");
         }
+        text("USE ARROWS UP/DOWN TO SELECT OPTION. USE SPACE TO ACTIVATE", xx(W / 2), yy(80), small);
         return;
     } else {
         delta = onEdge ? Math.random() * 5 : 0;
