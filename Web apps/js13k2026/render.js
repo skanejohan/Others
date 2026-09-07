@@ -3,7 +3,6 @@ let render = (w, h) => {
     delta = 0;
     _setClipRect();
 
-    delta = onEdge ? Math.random() * 5 : 0;
     if (state === MENU) {
         ctx.fillStyle = "blue";
         ctx.fillRect(0, 0, w, h);
@@ -31,6 +30,7 @@ let render = (w, h) => {
 
         return;
     } else {
+        delta = onEdge ? Math.random() * 5 : 0;
         _renderSky();
         _renderGrass();
         _renderRoad();
