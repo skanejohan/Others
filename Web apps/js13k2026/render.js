@@ -59,6 +59,11 @@ let render = (w, h) => {
         }
         text("USE ARROWS UP/DOWN TO SELECT OPTION. USE SPACE TO ACTIVATE", xx(W / 2), yy(80), small);
         return;
+    } else if (state === WON) {
+        _renderSky();
+        _renderGrass([[0, 5], [4, 9], [12, 13], [24, 26]]);
+        text("WON", xx(W / 2), yy(24), large, "white");
+        return;
     } else {
         delta = onEdge ? Math.random() * 5 : 0;
         _renderSky();

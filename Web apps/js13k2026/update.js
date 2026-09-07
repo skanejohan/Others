@@ -12,6 +12,14 @@ let update = (dt) => {
         }
     }
 
+    if (state === WON) {
+        if (space.released) {
+            space.released = false;
+            state = MENU;
+        }
+        return;
+    }
+
     if (state == LEVELCLEARED) {
         infoFont += 80 * et;
         infoTimer += 80 * et;
@@ -77,7 +85,7 @@ let update = (dt) => {
     distance += 70 * speed * et;
 
     if (distance >= trackDistance) {
-        state = LEVELCLEARED;
+        state = level == 5 ? WON : LEVELCLEARED;
         return;
     }
 

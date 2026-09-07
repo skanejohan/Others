@@ -2,6 +2,7 @@ const MENU = 1;
 const PLAYING = 2;
 const LEVELCLEARED = 3;
 const LEVELFAILED = 4;
+const WON = 5;
 
 const W = 160;
 const H = 100;
