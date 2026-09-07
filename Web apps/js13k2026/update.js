@@ -1,4 +1,5 @@
 let update = (dt) => {
+    totalTime += dt;
     let et = dt / 1000;
 
     if (state === MENU) {

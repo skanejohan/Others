@@ -28,6 +28,8 @@ let unicorns = [];
 let onEdge = false;
 let delta = 0;
 
+let totalTime = 0;
+
 let visualCoordinates = {};
 let deadObjects = {};
 let debug = true;

@@ -317,8 +317,6 @@ let rainbowCoinAsset = _createRainbowCoin();
 let increaseSpeedCoinAsset = _createSpeedCoin(true);
 let decreaseSpeedCoinAsset = _createSpeedCoin(false);
 let unicornAsset = _createUnicornCoin();
-let hiSpeedCoin = _createSpeedCoin(true);
-let loSpeedCoin = _createSpeedCoin(false);
 let increaseSteeringFactorCoinAsset = _createSteeringCoin("#2ecc40");
 let decreaseSteeringFactorCoinAsset = _createSteeringCoin("#ff4136");
 

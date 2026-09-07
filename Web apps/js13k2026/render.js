@@ -1,38 +1,67 @@
 let render = (w, h) => {
 
+    let large = Math.trunc(w / 25);
+    let medium = Math.trunc(w / 50);
+    let small = Math.trunc(w / 75);
+
+    let text = (text, x, y, fontSize, fillStyle = "gray") => {
+        ctx.fillStyle = fillStyle;
+        ctx.textAlign = "center";
+        ctx.font = `${fontSize}px Arial`;
+        ctx.fillText(text, x, y);
+    }
+
     delta = 0;
     _setClipRect();
 
     if (state === MENU) {
-        ctx.fillStyle = "blue";
-        ctx.fillRect(0, 0, w, h);
+        let side = ww(3 * (3 + Math.sin(totalTime / 200)));
+        _renderSky();
+        _renderGrass([[0, 5], [4, 9], [12, 13], [24, 26]]);
+        text("REDUCE SPEED NOW", xx(W / 2), yy(12), large, "white");
+        text("A JS13K GAME BY JOHAN AHLGREN", xx(W / 2), yy(18), small, "white");
+        text("Please don't run over the unicorns... they are both cute and fragile.", xx(0.5 * W), yy(27), small);
+        ctx.drawImage(unicornAsset, xx(0.5 * W - 47) - side / 2, yy(26) - side / 2, side, side);
+        ctx.drawImage(unicornAsset, xx(0.5 * W + 47) - side / 2, yy(26) - side / 2, side, side);
 
-        let fontSize = Math.trunc(w / 50);
-        ctx.fillStyle = "white";
-        ctx.textAlign = "center";
-        ctx.font = `${fontSize}px Arial`;
-        ctx.fillText("PRESS SPACE TO PLAY", xx(W / 2), yy(24));
+        text("This coin helps you keep your speed down. That is good for the unicorns.", xx(0.4 * W), yy(37), small);
+        ctx.drawImage(decreaseSpeedCoinAsset, xx(0.4 * W - 49) - side / 2, yy(36) - side / 2, side, side);
+        ctx.drawImage(decreaseSpeedCoinAsset, xx(0.4 * W + 49) - side / 2, yy(36) - side / 2, side, side);
+
+        text("More speed. That is likely bad for both you and the unicorns.", xx(0.5 * W), yy(47), small);
+        ctx.drawImage(increaseSpeedCoinAsset, xx(0.5 * W - 45) - side / 2, yy(46) - side / 2, side, side);
+        ctx.drawImage(increaseSpeedCoinAsset, xx(0.5 * W + 45) - side / 2, yy(46) - side / 2, side, side);
+
+        text("Improved steering helps you avoid the unicorns...", xx(0.6 * W), yy(57), small);
+        ctx.drawImage(increaseSteeringFactorCoinAsset, xx(0.6 * W - 43) - side / 2, yy(56) - side / 2, side, side);
+        ctx.drawImage(increaseSteeringFactorCoinAsset, xx(0.6 * W + 43) - side / 2, yy(56) - side / 2, side, side);
+
+        text("...but this makes it harder to avoid them.", xx(0.5 * W), yy(67), small);
+        ctx.drawImage(decreaseSteeringFactorCoinAsset, xx(0.5 * W - 40) - side / 2, yy(66) - side / 2, side, side);
+        ctx.drawImage(decreaseSteeringFactorCoinAsset, xx(0.5 * W + 40) - side / 2, yy(66) - side / 2, side, side);
+
+        text("And finally, at the end of the rainbow is... a pot of energy?", xx(0.4 * W), yy(77), small);
+        ctx.drawImage(rainbowCoinAsset, xx(0.4 * W - 42) - side / 2, yy(76) - side / 2, side, side);
+        ctx.drawImage(rainbowCoinAsset, xx(0.4 * W + 42) - side / 2, yy(76) - side / 2, side, side);
+
+        text("PRESS SPACE TO PLAY", xx(W / 2), yy(90), medium, "white");
         return;
     } else if (state === LEVELFAILED) {
         ctx.fillStyle = "blue";
         ctx.fillRect(0, 0, w, h);
-
-        let fontSize = Math.trunc(w / 50);
-        ctx.fillStyle = "white";
-        ctx.textAlign = "center";
-        ctx.font = `${fontSize}px Arial`;
-        ctx.fillText("LEVELFAILED", xx(W / 2), yy(24));
-
-        ctx.fillStyle = levelFailedMenuItemSelected === 0 ? "white" : "gray";
-        ctx.fillText("RESTART LEVEL", xx(W / 2), yy(38));
-        ctx.fillStyle = levelFailedMenuItemSelected === 1 ? "white" : "gray";
-        ctx.fillText("QUIT", xx(W / 2), yy(42));
-
+        text("LEVEL FAILED", xx(W / 2), yy(24), large);
+        if (levelFailedMenuItemSelected === 0) {
+            text("RESTART LEVEL", xx(W / 2), yy(38), medium);
+            text("QUIT", xx(W / 2), yy(42), small, "#d7ded9", "#b1b5b2");
+        } else {
+            text("RESTART LEVEL", xx(W / 2), yy(38), small, "#d7ded9", "#b1b5b2");
+            text("QUIT", xx(W / 2), yy(42), medium);
+        }
         return;
     } else {
         delta = onEdge ? Math.random() * 5 : 0;
         _renderSky();
-        _renderGrass();
+        _renderGrass(visualCoordinates.grassIntervals);
         _renderRoad();
         rainbowCoins.forEach((o, i) => _renderObject(o, 40, `R${i}`));
         increaseSpeedCoins.forEach((o, i) => _renderObject(o, 40, `IS${i}`));
@@ -85,8 +114,8 @@ let _renderSky = () => {
     ctx.fillRect(_x, _y, W * _cell + delta, H / 2 * _cell + delta);
 }
 
-let _renderGrass = () => {
-    for (let int of visualCoordinates.grassIntervals) {
+let _renderGrass = (coordinates) => {
+    for (let int of coordinates) {
         let x = xx(0);
         let y = yy(H / 2 + int[0]);
         let w = ww(W);
