@@ -1,14 +1,14 @@
 let render = (w, h) => {
 
-    let large = Math.trunc(w / 25);
-    let medium = Math.trunc(w / 50);
-    let small = Math.trunc(w / 75);
+    let large = `${Math.trunc(w / 25)}px Arial`;
+    let medium = `${Math.trunc(w / 50)}px Arial`;
+    let small = `${Math.trunc(w / 75)}px Arial`;
 
-    let text = (text, x, y, fontSize, fillStyle = "gray") => {
-        ctx.fillStyle = fillStyle;
-        ctx.textAlign = "center";
-        ctx.font = `${fontSize}px Arial`;
-        ctx.fillText(text, x, y);
+    let text = (text, x, y, font, fillStyle = "gray", c = ctx) => {
+        c.fillStyle = fillStyle;
+        c.textAlign = "center";
+        c.font = font;
+        c.fillText(text, x, y);
     }
 
     delta = 0;
@@ -72,7 +72,7 @@ let render = (w, h) => {
         unicorns.forEach((o, i) => _renderObject(o, 40, `U${i}`));
         for (d in deadObjects) { _renderDeadObject(deadObjects[d]);}
         _renderCar();
-        _renderInformation();
+        _renderInformation(text, medium);
 
         if (state === LEVELCLEARED) {
             let msg = "LEVEL CLEARED";
@@ -181,7 +181,7 @@ let _renderDeadObject = (o) => {
     ctx.globalAlpha = 1;
 }
 
-let _renderInformation = () => {
+let _renderInformation = (text, font) => {
 
     let getPercentColor = p => { // p = 0 - 1
         let r, g, b = 0;
@@ -201,7 +201,7 @@ let _renderInformation = () => {
 
     let infoCanvas = _createCanvas(s(53), s(20), _ctx => {
 
-        let renderGauge = (x, y, level, invertColor) => {
+        let renderGauge = (x, y, level, invertColor, caption) => {
             let cx = x * _cell + delta;
             let cy = y * _cell + delta;
             let r = 10 * _cell;
@@ -234,13 +234,11 @@ let _renderInformation = () => {
             _ctx.beginPath();
             _ctx.arc(s(x) + s(5), s(y) + s(5), s(0.5), 0, 2 * Math.PI);
             _ctx.fill();
+
+            text(caption, s(x), s(y+1), font, "white", _ctx);
         }
-
-        // Speed
-        renderGauge(10, 10, speed / 3, true);
-
-        // Distance
-        renderGauge(42, 10, distance / trackDistance, false);
+        renderGauge(10, 10, speed / 3, true, "SPEED");
+        renderGauge(42, 10, distance / trackDistance, false, "DIST");
 
         _ctx.fillStyle = getPercentColor(energy / 100);
         _ctx.strokeStyle = "black";
@@ -249,11 +247,7 @@ let _renderInformation = () => {
         _ctx.fillRect(s(22), s(15-h), s(8), s(h));
         _ctx.strokeRect(s(22), 0, s(8), s(15));
 
-        // Level
-        _ctx.font = "48px Arial";
-        _ctx.fillStyle = "white";
-        _ctx.textAlign = "center";
-        _ctx.fillText(`${level}`, s(26), s(19));
+        text(`${level} / 5`, s(26), s(19), font, "white", _ctx);
     });
 
     ctx.globalAlpha = 0.5;
