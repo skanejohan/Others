@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" width="1500" height="500"></canvas>
+        <script src="operations.js"></script>
+        <script src="geometry.js"></script>
+        <script src="models.js"></script>
+        <script src="render.js"></script>
+
+        <script>
+            // X axis to the right, Y axis up, z axis away from camera
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+
+            ctx.fillStyle = "yellow";
+            ctx.fillRect(0, 0, 1500, 500);
+
+            let rects = getGeometry(chair());
+
+            ctx.fillStyle = "red";
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 3;
+
+            let ops3d = [p => rotate3(p, -Math.PI / 12, 'x'), p => rotate3(p, Math.PI / 5, 'y')];
+            let ops2d = [p => scale2(p, 30, 30), p => translate2(p, 350, 350)];
+
+            renderRectangles(rects, ops3d, ops2d, ctx);
+        </script>
+    </body>
+</html>
