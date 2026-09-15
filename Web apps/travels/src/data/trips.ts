@@ -5311,7 +5311,7 @@ export const trips : Trip[] = [
 	},
 	{
 		name: "Elin och Andreas bröllop",
-		start: { year: 2026, month: Jun, day: 31 },
+		start: { year: 2026, month: Jul, day: 31 },
 		end: { year: 2026, month: Aug, day: 2 },
 		people: [Johan, Jannike, Aston],
 		stops: [
@@ -5322,10 +5322,32 @@ export const trips : Trip[] = [
 					url: "http://www.slottsholmen.com/",
 					position: [57.761414874033235, 16.64309251525348],
 				},
-				start: { year: 2026, month: Jun, day: 31 },
+				start: { year: 2026, month: Jul, day: 31 },
 				end: { year: 2026, month: Aug, day: 2 },
 			}
 		],
+		pauses: [
+			{	
+				location: {
+					name: "S:t Petri kyrka",
+					address: "Östra Kyrkogatan 67, 593 33 Västervik",
+					url: "",
+					position: [57.755854716069514, 16.638928771722732],
+				},
+				date: { year: 2026, month: Aug, day: 1 },
+				description: "Bröllopet"
+			},
+			{	
+				location: {
+					name: "Brasserie AVA",
+					address: "Kulbacken, 593 38 Västervik",
+					url: "http://www.brasserieava.se/",
+					position: [57.76645566093603, 16.64282150110632],
+				},
+				date: { year: 2026, month: Aug, day: 1 },
+				description: "Bröllopsmottagning"
+			},
+		]
 	},
 	{
 		name: "Med husbilen i Nederländerna och Tyskland",
