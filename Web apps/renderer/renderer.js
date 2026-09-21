@@ -1,23 +1,22 @@
 let Renderer = cameraDistance => {
 
-    let renderObjects = (objects, ctx) => {
+    let renderObject = (object, ctx) => {
 
         // Turn the objects into a list of 3d polygons, where the 3d operations have been applied
+        let maxZ = {};
         let polygons3d = [];
-        for (var o of objects) {
-            let rects = getGeometry(o.model);
-            for (var r of rects) {
-                let polygon3d = r;
-                for(let op of o.ops3d) {
-                    polygon3d = polygon3d.map(op);
-                }
-                let z = Math.max(...polygon3d.map(p => p[2]));
-                polygons3d.push( { polygon: polygon3d, object: o, z: z });
+        for (var shape of object.model) {
+            let id = shape.id;
+            let polygon = shape.polygon;
+            for(let op of object.ops3d) {
+                polygon = polygon.map(op);
             }
+            let z = Math.min(...polygon.map(p => p[2]));
+            polygons3d.push( { polygon: polygon, object, id: id, z });
         }
 
         // Sort the 3d polygons, so that the one with highest z is at the beginning of the list, to draw in correct order
-        polygons3d.sort((a, b) => (b.z - a.z));
+        polygons3d.sort((a, b) => 100 * (object.renderorder.indexOf(a.id) - object.renderorder.indexOf(b.id)) + (b.z - a.z));
 
 
         // Project all polygons onto a 2-dimensional plane, and perform 2d operations
@@ -50,5 +49,5 @@ let Renderer = cameraDistance => {
         }
     } 
 
-    return { renderObjects };
+    return { renderObject };
 }

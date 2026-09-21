@@ -1,43 +1,53 @@
 let chair = () => {
     
-    let frontleg = [ 
-        { x1: 0, x2: 1, y1: 0, y2: 5, z: 0},
-        { x: 0, y1: 0, y2: 5, z1: 0, z2: 1},
-        { x1: 0, x2: 1, y1: 0, y2: 5, z: 1},
-        { x: 1, y1: 0, y2: 5, z1: 0, z2: 1},
-        { x1: 0, x2: 1, y: 5, z1: 0, z2: 1},
-    ]
-    
-    let rearleg = [ 
-        { x1: 0, x2: 1, y1: 0, y2: 10, z: 0},
-        { x: 0, y1: 0, y2: 10, z1: 0, z2: 1},
-        { x1: 0, x2: 1, y1: 0, y2: 10, z: 1},
-        { x: 1, y1: 0, y2: 10, z1: 0, z2: 1},
-        { x1: 0, x2: 1, y: 10, z1: 0, z2: 1},
-    ]
+    let model = {
+        models: [ 
+            { polygons: cuboid(0, 1, 0, 5, 0, 1), id: "leg1" },
+            { polygons: cuboid(4, 5, 0, 5, 0, 1), id: "leg2" },
+            { polygons: cuboid(0, 1, 0, 10, 4, 5), id: "leg3" },
+            { polygons: cuboid(4, 5, 0, 10, 4, 5), id: "leg4" },
+            { polygons: cuboid(1, 4, 4.1, 4.9, 0, 5), id: "seat" },
+            { polygons: cuboid(1, 4, 7, 7.8, 4.2, 5), id: "back1" },
+            { polygons: cuboid(1, 4, 9, 9.8, 4.2, 5), id: "back2" }
+        ]
+    };
 
-    let seat = [
-        { x1: 0, x2: 4, y1: 0, y2: 1, z: 0},
-        { x: 0, y1: 0, y2: 1, z1: 0, z2: 6},
-        { x1: 0, x2: 4, y1: 0, y2: 1, z: 6},
-        { x: 4, y1: 0, y2: 1, z1: 0, z2: 6},
-        { x1: 0, x2: 4, y: 1, z1: 0, z2: 6},
-    ]
+    return getPolygons(model);
+}
 
-    let back = [
-        { x1: 0, x2: 4, y1: 0, y2: 1, z: 0.2},
-        { x: 0, y1: 0, y2: 1, z1: 0.2, z2: 1},
-        { x1: 0, x2: 4, y1: 0, y2: 1, z: 1},
-        { x: 4, y1: 0, y2: 1, z1: 0.2, z2: 1},
-    ]
-
+let cuboid = (x1, x2, y1, y2, z1, z2) => {
     return [
-        { model: frontleg },
-        { model: frontleg, x: 5 },
-        { model: rearleg, z: 5 },
-        { model: rearleg, x: 5, z: 5 },
-        { model: seat, x: 1, y: 3.8 },
-        { model: back, x: 1, y: 6, z: 5 },
-        { model: back, x: 1, y: 8.5, z: 5 },
+        [ [x1, y1, z1], [x2, y1, z1], [x2, y2, z1], [x1, y2, z1] ],
+        [ [x1, y1, z2], [x2, y1, z2], [x2, y2, z2], [x1, y2, z2] ],
+        [ [x1, y1, z1], [x2, y1, z1], [x2, y1, z2], [x1, y1, z2] ],
+        [ [x1, y2, z1], [x2, y2, z1], [x2, y2, z2], [x1, y2, z2] ],
+        [ [x1, y1, z1], [x1, y2, z1], [x1, y2, z2], [x1, y1, z2] ],
+        [ [x2, y1, z1], [x2, y2, z1], [x2, y2, z2], [x2, y1, z2] ]
     ];
+}
+
+let getPolygons = (model, fillStyle, strokeStyle, lineWidth) => {
+
+    let results = [];
+
+    let get = (m, fS, sS, lW) => {
+        let _fS = m.fillStyle ?? fS;
+        let _sS = m.strokeStyle ?? sS;
+        let _lW = m.lineWidth ?? lW;
+        if (m.polygons) {
+            m.polygons.forEach(p => {
+                let result = { polygon: p };
+                result.id = m.id;
+                if (_fS) { result.fillStyle = _fS; } 
+                if (_sS) { result.strokeStyle = _sS; } 
+                if (_lW) { result.lineWidth = _lW; } 
+                results.push(result);
+            });
+        } else if (m.models) {
+            m.models.forEach(m => get(m, _fS, _sS, _lW));
+        }
+    }
+
+    get(model, fillStyle, strokeStyle, lineWidth);
+    return results;
 }
