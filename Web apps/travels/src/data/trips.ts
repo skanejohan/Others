@@ -5629,4 +5629,34 @@ export const trips : Trip[] = [
 			},
 		]
 	},
+	{
+		name: "Kortresa till Skåne",
+		start: { year: 2026, month: Sep, day: 19 },
+		end: { year: 2026, month: Sep, day: 20 },
+		people: [Johan, Jannike],
+		stops: [
+			{
+				location: {
+					name: "Ställplats, Båstads Hamn",
+					address: "Strandpromenaden, 269 33 Båstad",
+					url: "",
+					position: [56.4324407369034, 12.843440525714431],
+				},
+				start: { year: 2026, month: Sep, day: 19 },
+				end: { year: 2026, month: Sep, day: 20 },
+			}
+		],
+		pauses: [
+			{	
+				location: {
+					name: "Freadals Gårdskrog i Åsa",
+					address: "Näsbergsvägen 22, 439 55 Åsa",
+					url: "http://www.freadalsgard.se/",
+					position: [57.33800103768362, 12.140111832292382],
+				},
+				date: { year: 2026, month: Sep, day: 19 },
+				description: "Lunch"
+			},
+		]
+	},
 ]
