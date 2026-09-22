@@ -8,6 +8,7 @@
         <canvas id="canvas" width="1500" height="500"></canvas>
         <script src="operations.js"></script>
         <script src="models.js"></script>
+        <script src="scenes.js"></script>
         <script src="renderer.js"></script>
 
         <script>
@@ -15,31 +16,11 @@
             const canvas = document.getElementById("canvas");
             const ctx = canvas.getContext("2d");
 
-            let objects = [
-                {
-                    model: chair(),
-                    renderorder: ["leg3", "leg1", "seat", "back1", "back2", "leg4", "leg2"],
-                    fillStyle: "red",
-                    strokeStyle: "black",
-                    lineWidth: 3,
-                    ops3d: [p => rotate3(p, -Math.PI / 12, 'x'), p => rotate3(p, Math.PI / 5, 'y')],
-                    ops2d: [p => scale2(p, 30, 30), p => translate2(p, 350, 350)]
-                },
-                {
-                    model: chair(),
-                    renderorder: ["leg4", "back1", "back2", "leg2", "seat", "leg3", "leg1"],
-                    fillStyle: "red",
-                    strokeStyle: "black",
-                    lineWidth: 3,
-                    ops3d: [p => rotate3(p, -Math.PI / 12, 'x'), p => rotate3(p, -Math.PI / 5, 'y')],
-                    ops2d: [p => scale2(p, 30, 30), p => translate2(p, 150, 350)]
-                },
-            ]
             ctx.fillStyle = "yellow";
             ctx.fillRect(0, 0, 1500, 500);
 
             let renderer = Renderer(50);
-            objects.forEach(o => renderer.renderObject(o, ctx));
+            scene1().objects.forEach(o => renderer.renderObject(o, ctx));
         </script>
     </body>
 </html>
