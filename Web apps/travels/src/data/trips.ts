@@ -5659,4 +5659,194 @@ export const trips : Trip[] = [
 			},
 		]
 	},
+	{
+		name: "Högvakten, Aston",
+		start: { year: 2026, month: Oct, day: 7 },
+		end: { year: 2026, month: Oct, day: 11 },
+		people: [Johan, Jannike],
+		stops: [
+			{
+				location: {
+					name: "Hotel C",
+					address: "Vasaplan 4, 111 20 Stockholm",
+					url: "https://hotelcstockholm.se/?utm_source=google&utm_campaign=googleplus-gmb&utm_medium=link",
+					position: [59.33203599466844, 18.056711421572288],
+				},
+				start: { year: 2026, month: Oct, day: 7 },
+				end: { year: 2026, month: Oct, day: 8 },
+			},
+			{
+				location: {
+					name: "Unique Hotel Jungfrugatan",
+					address: "Jungfrugatan 7A, 114 44 Stockholm",
+					url: "https://uniquehotel.se/",
+					position: [59.336379303402865, 18.08100688521006],
+				},
+				start: { year: 2026, month: Oct, day: 8 },
+				end: { year: 2026, month: Oct, day: 11 },
+			}
+		],
+		pauses: [
+			{	
+				location: {
+					name: "Yttre Borggården",
+					address: "Kungliga slottet, Storkyrkobrinken, 111 30 Stockholm",
+					url: "https://www.forsvarsmakten.se/sv/var-verksamhet/publik-verksamhet/hogvakten/tid-och-plats-for-hogvakten/",
+					position: [59.326353326770935, 18.07055922113614],
+				},
+				date: { year: 2026, month: Oct, day: 7 },
+				description: "Högvaktsavlösning"
+			},
+			{	
+				location: {
+					name: "Non Solo Bar Gamla stan",
+					address: "Slussplan 5, 111 30 Stockholm",
+					url: "http://nonsolobar.se/",
+					position: [59.3220768472047, 18.07319154824535],
+				},
+				date: { year: 2026, month: Oct, day: 7 },
+				description: "Lunch"
+			},
+			{	
+				location: {
+					name: "Le Relais de La Gare",
+					address: "Vasagatan 38, 111 20 Stockholm",
+					url: "https://ligula.se/la-gare",
+					position: [59.33293411384508, 18.057575981374054],
+				},
+				date: { year: 2026, month: Oct, day: 7 },
+				description: "Middag"
+			},
+			{	
+				location: {
+					name: "Yttre Borggården",
+					address: "Kungliga slottet, Storkyrkobrinken, 111 30 Stockholm",
+					url: "https://www.forsvarsmakten.se/sv/var-verksamhet/publik-verksamhet/hogvakten/tid-och-plats-for-hogvakten/",
+					position: [59.326353326770935, 18.07055922113614],
+				},
+				date: { year: 2026, month: Oct, day: 8 },
+				description: "Högvaktsavlösning"
+			},
+			{	
+				location: {
+					name: 'KLUNK "by Brill and Barrels"',
+					address: "Bysistorget 4, 118 21 Stockholm",
+					url: "https://klunken.se/",
+					position: [59.31846271584215, 18.056359863118477],
+				},
+				date: { year: 2026, month: Oct, day: 8 },
+				description: "Middag"
+			},
+			{	
+				location: {
+					name: 'Teater Tribunalen',
+					address: "Hornsgatan 92, 118 21 Stockholm",
+					url: "http://tribunalen.com/",
+					position: [59.31777419446393, 18.052665417511463],
+				},
+				date: { year: 2026, month: Oct, day: 8 },
+				description: 'Teaterföreställning "Lars Lediga Dag" (teater Bulten)'
+			},
+			{	
+				location: {
+					name: "Indian Stories",
+					address: "Jungfrugatan 6, 114 44 Stockholm",
+					url: "https://www.indianstories.se/",
+					position: [59.33610653910307, 18.081394272820432],
+				},
+				date: { year: 2026, month: Oct, day: 9 },
+				description: "Lunch"
+			},
+			{	
+				location: {
+					name: "O'Learys Östermalm",
+					address: "Storgatan 27, 114 55 Stockholm",
+					url: "https://olearys.se/stockholm-ostermalm/",
+					position: [59.334728556670896, 18.08579318817438],
+				},
+				date: { year: 2026, month: Oct, day: 9 },
+				description: "Middag"
+			},
+			{	
+				location: {
+					name: "Yttre Borggården",
+					address: "Kungliga slottet, Storkyrkobrinken, 111 30 Stockholm",
+					url: "https://www.forsvarsmakten.se/sv/var-verksamhet/publik-verksamhet/hogvakten/tid-och-plats-for-hogvakten/",
+					position: [59.326353326770935, 18.07055922113614],
+				},
+				date: { year: 2026, month: Oct, day: 10 },
+				description: "Högvaktsavlösning"
+			},
+			{	
+				location: {
+					name: "Restaurang Casa Del Cava",
+					address: "Hornsgatan 2, 118 20 Stockholm",
+					url: "http://casadelcava.se/",
+					position: [59.320019472885605, 18.07030777722657],
+				},
+				date: { year: 2026, month: Oct, day: 10 },
+				description: "Lunch"
+			},
+			{	
+				location: {
+					name: 'Strindbergs Intima Teater',
+					address: "Barnhusgatan 20, 111 23 Stockholm",
+					url: "https://www.strindbergsintimateater.se/",
+					position: [59.33551151291397, 18.05372871665967],
+				},
+				date: { year: 2026, month: Oct, day: 10 },
+				description: 'Teaterföreställning "Strindbergs Inferno" (Anna Blomberg)'
+			},
+			{	
+				location: {
+					name: "Indian Stories",
+					address: "Jungfrugatan 6, 114 44 Stockholm",
+					url: "https://www.indianstories.se/",
+					position: [59.33610653910307, 18.081394272820432],
+				},
+				date: { year: 2026, month: Oct, day: 10 },
+				description: "Middag"
+			},
+			{	
+				location: {
+					name: "Yttre Borggården",
+					address: "Kungliga slottet, Storkyrkobrinken, 111 30 Stockholm",
+					url: "https://www.forsvarsmakten.se/sv/var-verksamhet/publik-verksamhet/hogvakten/tid-och-plats-for-hogvakten/",
+					position: [59.326353326770935, 18.07055922113614],
+				},
+				date: { year: 2026, month: Oct, day: 11 },
+				description: "Högvaktsavlösning"
+			},
+		]
+	},
+	{
+		name: "Husbil i Varberg",
+		start: { year: 2026, month: Oct, day: 30 },
+		end: { year: 2026, month: Oct, day: 31 },
+		people: [Johan, Jannike],
+		stops: [
+			{
+				location: {
+					name: "Ställplats, Varbergs Hamn",
+					address: "Otto Torells gata 24, 432 44 Varberg",
+					url: "https://visitvarberg.se/sova/stallplatser-for-husbilar",
+					position: [57.108674933735195, 12.244088435438375],
+				},
+				start: { year: 2026, month: Oct, day: 30 },
+				end: { year: 2026, month: Oct, day: 31 },
+			}
+		],
+		pauses: [
+			{	
+				location: {
+					name: "Invito",
+					address: "Norrgatan 13, 432 41 Varberg",
+					url: "http://invitovarberg.se/",
+					position: [57.10732232200099, 12.251043887102666],
+				},
+				date: { year: 2026, month: Oct, day: 30 },
+				description: "Middag"
+			},
+		]
+	},
 ]
